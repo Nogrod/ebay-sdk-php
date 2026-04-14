@@ -558,28 +558,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetVeROReasonCodeDetails
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsRequest $getVeROReasonCodeDetailsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsResponse
-     */
-    public function getVeROReasonCodeDetails(\Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsRequest $getVeROReasonCodeDetailsRequest): \Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsResponse
-    {
-        return $this->call('GetVeROReasonCodeDetails', 'Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsResponse', $getVeROReasonCodeDetailsRequest);
-    }
-
-    /**
-     * Call GetVeROReportStatus
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetVeROReportStatusRequest $getVeROReportStatusRequest
-     * @return \Nogrod\eBaySDK\Trading\GetVeROReportStatusResponse
-     */
-    public function getVeROReportStatus(\Nogrod\eBaySDK\Trading\GetVeROReportStatusRequest $getVeROReportStatusRequest): \Nogrod\eBaySDK\Trading\GetVeROReportStatusResponse
-    {
-        return $this->call('GetVeROReportStatus', 'Nogrod\eBaySDK\Trading\GetVeROReportStatusResponse', $getVeROReportStatusRequest);
-    }
-
-    /**
      * Call GeteBayDetails
      *
      * @param \Nogrod\eBaySDK\Trading\GeteBayDetailsRequest $geteBayDetailsRequest
@@ -830,17 +808,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function uploadSiteHostedPictures(\Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequest $uploadSiteHostedPicturesRequest): \Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponse
     {
         return $this->call('UploadSiteHostedPictures', 'Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponse', $uploadSiteHostedPicturesRequest);
-    }
-
-    /**
-     * Call VeROReportItems
-     *
-     * @param \Nogrod\eBaySDK\Trading\VeROReportItemsRequest $veROReportItemsRequest
-     * @return \Nogrod\eBaySDK\Trading\VeROReportItemsResponse
-     */
-    public function veROReportItems(\Nogrod\eBaySDK\Trading\VeROReportItemsRequest $veROReportItemsRequest): \Nogrod\eBaySDK\Trading\VeROReportItemsResponse
-    {
-        return $this->call('VeROReportItems', 'Nogrod\eBaySDK\Trading\VeROReportItemsResponse', $veROReportItemsRequest);
     }
 
     /**

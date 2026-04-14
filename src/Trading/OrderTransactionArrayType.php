@@ -92,7 +92,9 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrderTransaction();
         if (null !== $value && [] !== $this->getOrderTransaction()) {
-            $writer->write(array_map(function ($v) {return ["OrderTransaction" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["OrderTransaction" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderTransaction');
         if (null !== $value) {
-            $this->setOrderTransaction(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OrderTransactionType::fromKeyValue($v);}, $value));
+            $this->setOrderTransaction(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\OrderTransactionType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

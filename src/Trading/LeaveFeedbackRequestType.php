@@ -62,7 +62,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *
      * @var string $transactionID
@@ -73,7 +73,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Specifies the recipient user about whom the Feedback is being left.
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $targetUser
@@ -235,7 +235,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *
      * @return string
@@ -260,7 +260,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *  <br>
      *  The <b>TransactionID</b> value for auction listings is always <code>0</code> since there can be only one winning bidder/one sale for an auction listing.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *
      * @param string $transactionID
@@ -278,7 +278,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Specifies the recipient user about whom the Feedback is being left.
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -294,7 +294,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      * Specifies the recipient user about whom the Feedback is being left.
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $targetUser
@@ -483,7 +483,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = $this->getSellerItemRatingDetailArray();
         if (null !== $value && [] !== $this->getSellerItemRatingDetailArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {return ["ItemRatingDetails" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {
+                return ["ItemRatingDetails" => $v];
+            }, $value));
         }
         $value = $this->getOrderLineItemID();
         if (null !== $value) {
@@ -537,7 +539,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray');
         if (null !== $value) {
-            $this->setSellerItemRatingDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails'));}, $value));
+            $this->setSellerItemRatingDetailArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
         if (null !== $value) {

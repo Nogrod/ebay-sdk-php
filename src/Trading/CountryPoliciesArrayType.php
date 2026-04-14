@@ -92,7 +92,9 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCountryPolicies();
         if (null !== $value && [] !== $this->getCountryPolicies()) {
-            $writer->write(array_map(function ($v) {return ["CountryPolicies" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["CountryPolicies" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies');
         if (null !== $value) {
-            $this->setCountryPolicies(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);}, $value));
+            $this->setCountryPolicies(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

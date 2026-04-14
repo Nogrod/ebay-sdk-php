@@ -165,11 +165,15 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMaximumUnpaidItemStrikesCount();
         if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesCount()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount", array_map(function ($v) {return ["Count" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount", array_map(function ($v) {
+                return ["Count" => $v];
+            }, $value));
         }
         $value = $this->getMaximumUnpaidItemStrikesDuration();
         if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesDuration()) {
-            $writer->write(array_map(function ($v) {return ["MaximumUnpaidItemStrikesDuration" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["MaximumUnpaidItemStrikesDuration" => $v];
+            }, $value));
         }
     }
 
@@ -189,11 +193,15 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount', true);
         if (null !== $value) {
-            $this->setMaximumUnpaidItemStrikesCount(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Count');}, $value));
+            $this->setMaximumUnpaidItemStrikesCount(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Count');
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration');
         if (null !== $value) {
-            $this->setMaximumUnpaidItemStrikesDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType::fromKeyValue($v);}, $value));
+            $this->setMaximumUnpaidItemStrikesDuration(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

@@ -413,7 +413,9 @@ class VerifyAddItemResponseType extends AbstractResponseType
         }
         $value = $this->getFees();
         if (null !== $value && [] !== $this->getFees()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {
+                return ["Fee" => $v];
+            }, $value));
         }
         $value = $this->getCategoryID();
         if (null !== $value) {
@@ -425,11 +427,15 @@ class VerifyAddItemResponseType extends AbstractResponseType
         }
         $value = $this->getDiscountReason();
         if (null !== $value && [] !== $this->getDiscountReason()) {
-            $writer->write(array_map(function ($v) {return ["DiscountReason" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["DiscountReason" => $v];
+            }, $value));
         }
         $value = $this->getProductSuggestions();
         if (null !== $value && [] !== $this->getProductSuggestions()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {return ["ProductSuggestion" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {
+                return ["ProductSuggestion" => $v];
+            }, $value));
         }
     }
 
@@ -454,7 +460,9 @@ class VerifyAddItemResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
         if (null !== $value) {
-            $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Fee'));}, $value));
+            $this->setFees(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Fee'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
@@ -470,7 +478,9 @@ class VerifyAddItemResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestions');
         if (null !== $value) {
-            $this->setProductSuggestions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion'));}, $value));
+            $this->setProductSuggestions(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion'));
+            }, $value));
         }
     }
 }

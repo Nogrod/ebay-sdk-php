@@ -580,15 +580,21 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
         if (null !== $value && [] !== $this->getRefund()) {
-            $writer->write(array_map(function ($v) {return ["Refund" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Refund" => $v];
+            }, $value));
         }
         $value = $this->getReturnsWithin();
         if (null !== $value && [] !== $this->getReturnsWithin()) {
-            $writer->write(array_map(function ($v) {return ["ReturnsWithin" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ReturnsWithin" => $v];
+            }, $value));
         }
         $value = $this->getReturnsAccepted();
         if (null !== $value && [] !== $this->getReturnsAccepted()) {
-            $writer->write(array_map(function ($v) {return ["ReturnsAccepted" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ReturnsAccepted" => $v];
+            }, $value));
         }
         $value = $this->getDescription();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -597,11 +603,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getShippingCostPaidBy();
         if (null !== $value && [] !== $this->getShippingCostPaidBy()) {
-            $writer->write(array_map(function ($v) {return ["ShippingCostPaidBy" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingCostPaidBy" => $v];
+            }, $value));
         }
         $value = $this->getRestockingFeeValue();
         if (null !== $value && [] !== $this->getRestockingFeeValue()) {
-            $writer->write(array_map(function ($v) {return ["RestockingFeeValue" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["RestockingFeeValue" => $v];
+            }, $value));
         }
         $value = $this->getDetailVersion();
         if (null !== $value) {
@@ -629,15 +639,21 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
         if (null !== $value) {
-            $this->setRefund(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundDetailsType::fromKeyValue($v);}, $value));
+            $this->setRefund(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\RefundDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin');
         if (null !== $value) {
-            $this->setReturnsWithin(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType::fromKeyValue($v);}, $value));
+            $this->setReturnsWithin(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted');
         if (null !== $value) {
-            $this->setReturnsAccepted(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType::fromKeyValue($v);}, $value));
+            $this->setReturnsAccepted(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
         if (null !== $value) {
@@ -645,11 +661,15 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy');
         if (null !== $value) {
-            $this->setShippingCostPaidBy(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType::fromKeyValue($v);}, $value));
+            $this->setShippingCostPaidBy(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue');
         if (null !== $value) {
-            $this->setRestockingFeeValue(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType::fromKeyValue($v);}, $value));
+            $this->setRestockingFeeValue(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
         if (null !== $value) {

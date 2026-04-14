@@ -445,11 +445,15 @@ class VeROReportItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getRegion();
         if (null !== $value && [] !== $this->getRegion()) {
-            $writer->write(array_map(function ($v) {return ["Region" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Region" => $v];
+            }, $value));
         }
         $value = $this->getCountry();
         if (null !== $value && [] !== $this->getCountry()) {
-            $writer->write(array_map(function ($v) {return ["Country" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Country" => $v];
+            }, $value));
         }
         $value = $this->getPatent();
         if (null !== $value) {

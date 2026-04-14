@@ -622,7 +622,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = $this->getSecondChanceOffer();
         if (null !== $value && [] !== $this->getSecondChanceOffer()) {
-            $writer->write(array_map(function ($v) {return ["SecondChanceOffer" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["SecondChanceOffer" => $v];
+            }, $value));
         }
         $value = $this->getDeletedFromWonList();
         if (null !== $value) {
@@ -634,7 +636,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = $this->getUserDefinedList();
         if (null !== $value && [] !== $this->getUserDefinedList()) {
-            $writer->write(array_map(function ($v) {return ["UserDefinedList" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["UserDefinedList" => $v];
+            }, $value));
         }
     }
 
@@ -687,7 +691,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer');
         if (null !== $value) {
-            $this->setSecondChanceOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);}, $value));
+            $this->setSecondChanceOffer(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
         if (null !== $value) {
@@ -699,7 +705,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedList');
         if (null !== $value) {
-            $this->setUserDefinedList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);}, $value));
+            $this->setUserDefinedList(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

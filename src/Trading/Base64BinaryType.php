@@ -88,7 +88,7 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer) : void
+    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->value();
@@ -98,19 +98,19 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         $writer->writeAttribute("contentType", $value);
     }
 
-    public static function xmlDeserialize(\Sabre\Xml\Reader $reader) : mixed
+    public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
         return self::fromKeyValue($reader->parseInnerTree([]));
     }
 
-    public static function fromKeyValue($keyValue) : \Nogrod\eBaySDK\Trading\Base64BinaryType
+    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\Base64BinaryType
     {
         $self = new self($keyValue);
         $self->setKeyValue($keyValue);
         return $self;
     }
 
-    public function setKeyValue($keyValue) : void
+    public function setKeyValue($keyValue): void
     {
         $value = Func::mapObject($keyValue, 'value');
         if (null !== $value)

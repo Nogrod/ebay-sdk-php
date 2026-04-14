@@ -15,6 +15,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     /**
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @var string[] $userID
      */
@@ -27,6 +31,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return self
      * @param string $userID
@@ -42,6 +50,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -56,6 +68,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -70,6 +86,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @return string[]
      */
@@ -83,6 +103,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Unique eBay user ID for the user.
      *  Applies to eBay Motors Pro applications only.
+     *  <br><br>
+     *  <span class="tablenote"><strong>Note:</strong>
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  </span>
      *
      * @param string $userID
      * @return self
@@ -98,7 +122,9 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getUserID();
         if (null !== $value && [] !== $this->getUserID()) {
-            $writer->write(array_map(function ($v) {return ["UserID" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["UserID" => $v];
+            }, $value));
         }
     }
 

@@ -93,7 +93,9 @@ class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getReportedItem();
         if (null !== $value && [] !== $this->getReportedItem()) {
-            $writer->write(array_map(function ($v) {return ["ReportedItem" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ReportedItem" => $v];
+            }, $value));
         }
     }
 
@@ -113,7 +115,9 @@ class VeROReportedItemDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportedItem');
         if (null !== $value) {
-            $this->setReportedItem(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);}, $value));
+            $this->setReportedItem(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\VeROReportedItemType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

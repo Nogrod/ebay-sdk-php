@@ -662,7 +662,9 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         }
         $value = $this->getCategoryParentID();
         if (null !== $value && [] !== $this->getCategoryParentID()) {
-            $writer->write(array_map(function ($v) {return ["CategoryParentID" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["CategoryParentID" => $v];
+            }, $value));
         }
         $value = $this->getExpired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

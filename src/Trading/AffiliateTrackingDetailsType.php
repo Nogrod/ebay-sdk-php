@@ -59,7 +59,7 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This field is not required, but an affiliate may want to use this identifier to better monitor marketing efforts. If you are using the eBay Partner Network, and you provide an <b>AffiliateUserID</b>, the tracking URL returned by eBay Partner Network will contain the <b>AffiliateUserID</b>, but it will be referred to as a "customid".
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $affiliateUserID
@@ -194,7 +194,7 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This field is not required, but an affiliate may want to use this identifier to better monitor marketing efforts. If you are using the eBay Partner Network, and you provide an <b>AffiliateUserID</b>, the tracking URL returned by eBay Partner Network will contain the <b>AffiliateUserID</b>, but it will be referred to as a "customid".
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -210,7 +210,7 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      * This field is not required, but an affiliate may want to use this identifier to better monitor marketing efforts. If you are using the eBay Partner Network, and you provide an <b>AffiliateUserID</b>, the tracking URL returned by eBay Partner Network will contain the <b>AffiliateUserID</b>, but it will be referred to as a "customid".
      *  <br/><br/>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $affiliateUserID

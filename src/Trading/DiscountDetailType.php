@@ -122,7 +122,9 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDiscount();
         if (null !== $value && [] !== $this->getDiscount()) {
-            $writer->write(array_map(function ($v) {return ["Discount" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Discount" => $v];
+            }, $value));
         }
     }
 
@@ -142,7 +144,9 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Discount');
         if (null !== $value) {
-            $this->setDiscount(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DiscountType::fromKeyValue($v);}, $value));
+            $this->setDiscount(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\DiscountType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

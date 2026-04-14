@@ -253,9 +253,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Unique eBay user ID for the user.<br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
-     *  <br><br>
+     *  <br>
      *  Since a bidder's user info is anonymous, this tag contains the actual
      *  value of an ID only for that bidder, and for the seller of an item that the user is
      *  bidding on. For other users, the actual value is replaced by an
@@ -1150,9 +1150,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Unique eBay user ID for the user.<br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
-     *  <br><br>
+     *  <br>
      *  Since a bidder's user info is anonymous, this tag contains the actual
      *  value of an ID only for that bidder, and for the seller of an item that the user is
      *  bidding on. For other users, the actual value is replaced by an
@@ -1199,9 +1199,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Unique eBay user ID for the user.<br>
      *  <br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
-     *  <br><br>
+     *  <br>
      *  Since a bidder's user info is anonymous, this tag contains the actual
      *  value of an ID only for that bidder, and for the seller of an item that the user is
      *  bidding on. For other users, the actual value is replaced by an
@@ -2033,7 +2033,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getUserSubscription();
         if (null !== $value && [] !== $this->getUserSubscription()) {
-            $writer->write(array_map(function ($v) {return ["UserSubscription" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["UserSubscription" => $v];
+            }, $value));
         }
         $value = $this->getEBayWikiReadOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2077,7 +2079,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getMembership();
         if (null !== $value && [] !== $this->getMembership()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {return ["Program" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {
+                return ["Program" => $v];
+            }, $value));
         }
         $value = $this->getUserFirstName();
         if (null !== $value) {
@@ -2237,7 +2241,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Membership');
         if (null !== $value) {
-            $this->setMembership(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Program'));}, $value));
+            $this->setMembership(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Program'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserFirstName');
         if (null !== $value) {

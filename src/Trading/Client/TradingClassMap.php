@@ -14,8 +14,12 @@ class TradingClassMap
                 $value .= $elem->format('P');
             }$writer->write($value);
         },
-        'DateTime' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));},
-        'Date' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d'));},];
+        'DateTime' => function (Writer $writer, $elem) {
+            $writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));
+        },
+        'Date' => function (Writer $writer, $elem) {
+            $writer->write($elem->format('Y-m-d'));
+        },];
     }
 
     public static function GetElements(): array
@@ -75,8 +79,6 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}GetCategoriesResponse' => 'Nogrod\eBaySDK\Trading\GetCategoriesResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetCategoryFeaturesRequest' => 'Nogrod\eBaySDK\Trading\GetCategoryFeaturesRequest',
         '{urn:ebay:apis:eBLBaseComponents}GetCategoryFeaturesResponse' => 'Nogrod\eBaySDK\Trading\GetCategoryFeaturesResponse',
-        '{urn:ebay:apis:eBLBaseComponents}GetChallengeTokenRequest' => 'Nogrod\eBaySDK\Trading\GetChallengeTokenRequest',
-        '{urn:ebay:apis:eBLBaseComponents}GetChallengeTokenResponse' => 'Nogrod\eBaySDK\Trading\GetChallengeTokenResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetDescriptionTemplatesRequest' => 'Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequest',
         '{urn:ebay:apis:eBLBaseComponents}GetDescriptionTemplatesResponse' => 'Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetFeedbackRequest' => 'Nogrod\eBaySDK\Trading\GetFeedbackRequest',
@@ -129,14 +131,8 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}GetUserPreferencesResponse' => 'Nogrod\eBaySDK\Trading\GetUserPreferencesResponse',
         '{urn:ebay:apis:eBLBaseComponents}GetUserRequest' => 'Nogrod\eBaySDK\Trading\GetUserRequest',
         '{urn:ebay:apis:eBLBaseComponents}GetUserResponse' => 'Nogrod\eBaySDK\Trading\GetUserResponse',
-        '{urn:ebay:apis:eBLBaseComponents}GetVeROReasonCodeDetailsRequest' => 'Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsRequest',
-        '{urn:ebay:apis:eBLBaseComponents}GetVeROReasonCodeDetailsResponse' => 'Nogrod\eBaySDK\Trading\GetVeROReasonCodeDetailsResponse',
-        '{urn:ebay:apis:eBLBaseComponents}GetVeROReportStatusRequest' => 'Nogrod\eBaySDK\Trading\GetVeROReportStatusRequest',
-        '{urn:ebay:apis:eBLBaseComponents}GetVeROReportStatusResponse' => 'Nogrod\eBaySDK\Trading\GetVeROReportStatusResponse',
         '{urn:ebay:apis:eBLBaseComponents}GeteBayDetailsRequest' => 'Nogrod\eBaySDK\Trading\GeteBayDetailsRequest',
         '{urn:ebay:apis:eBLBaseComponents}GeteBayDetailsResponse' => 'Nogrod\eBaySDK\Trading\GeteBayDetailsResponse',
-        '{urn:ebay:apis:eBLBaseComponents}GeteBayOfficialTimeRequest' => 'Nogrod\eBaySDK\Trading\GeteBayOfficialTimeRequest',
-        '{urn:ebay:apis:eBLBaseComponents}GeteBayOfficialTimeResponse' => 'Nogrod\eBaySDK\Trading\GeteBayOfficialTimeResponse',
         '{urn:ebay:apis:eBLBaseComponents}LeaveFeedbackRequest' => 'Nogrod\eBaySDK\Trading\LeaveFeedbackRequest',
         '{urn:ebay:apis:eBLBaseComponents}LeaveFeedbackResponse' => 'Nogrod\eBaySDK\Trading\LeaveFeedbackResponse',
         '{urn:ebay:apis:eBLBaseComponents}NotificationMessage' => 'Nogrod\eBaySDK\Trading\NotificationMessage',
@@ -189,12 +185,6 @@ class TradingClassMap
         '{urn:ebay:apis:eBLBaseComponents}SetUserPreferencesResponse' => 'Nogrod\eBaySDK\Trading\SetUserPreferencesResponse',
         '{urn:ebay:apis:eBLBaseComponents}UploadSiteHostedPicturesRequest' => 'Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequest',
         '{urn:ebay:apis:eBLBaseComponents}UploadSiteHostedPicturesResponse' => 'Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesResponse',
-        '{urn:ebay:apis:eBLBaseComponents}ValidateChallengeInputRequest' => 'Nogrod\eBaySDK\Trading\ValidateChallengeInputRequest',
-        '{urn:ebay:apis:eBLBaseComponents}ValidateChallengeInputResponse' => 'Nogrod\eBaySDK\Trading\ValidateChallengeInputResponse',
-        '{urn:ebay:apis:eBLBaseComponents}ValidateTestUserRegistrationRequest' => 'Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationRequest',
-        '{urn:ebay:apis:eBLBaseComponents}ValidateTestUserRegistrationResponse' => 'Nogrod\eBaySDK\Trading\ValidateTestUserRegistrationResponse',
-        '{urn:ebay:apis:eBLBaseComponents}VeROReportItemsRequest' => 'Nogrod\eBaySDK\Trading\VeROReportItemsRequest',
-        '{urn:ebay:apis:eBLBaseComponents}VeROReportItemsResponse' => 'Nogrod\eBaySDK\Trading\VeROReportItemsResponse',
         '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemRequest' => 'Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemRequest',
         '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemResponse' => 'Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponse',
         '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemRequest' => 'Nogrod\eBaySDK\Trading\VerifyAddItemRequest',

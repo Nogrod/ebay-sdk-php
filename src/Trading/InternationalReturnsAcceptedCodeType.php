@@ -92,7 +92,9 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsAccepted();
         if (null !== $value && [] !== $this->getInternationalReturnsAccepted()) {
-            $writer->write(array_map(function ($v) {return ["InternationalReturnsAccepted" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["InternationalReturnsAccepted" => $v];
+            }, $value));
         }
     }
 

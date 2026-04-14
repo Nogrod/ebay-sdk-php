@@ -164,7 +164,9 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getErrorMessage();
         if (null !== $value && [] !== $this->getErrorMessage()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {return ["error" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {
+                return ["error" => $v];
+            }, $value));
         }
     }
 
@@ -192,7 +194,9 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
         if (null !== $value) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));}, $value));
+            $this->setErrorMessage(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));
+            }, $value));
         }
     }
 }

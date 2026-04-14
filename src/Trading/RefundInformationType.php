@@ -7,21 +7,13 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RefundInformationType
  *
- * Type defining the <strong>Refunds</strong> container, which contains an array of <strong>Refund</strong> containers. A <strong>Refund</strong> container consists of detailed information on an In-Store Pickup item refund.
- *  <br/><br/>
- *  <span class="tablenote">
- *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings.
- *  </span>
+ * Type defining the <strong>Refunds</strong> container, which contains an array of zero or more <strong>Refund</strong> objects, each with detailed refund information.
  * XSD Type: RefundInformationType
  */
 class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @var \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refund
      */
@@ -32,11 +24,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Adds as refund
      *
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund
@@ -50,11 +38,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * isset refund
      *
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @param int|string $index
      * @return bool
@@ -67,11 +51,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * unset refund
      *
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @param int|string $index
      * @return void
@@ -84,11 +64,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Gets as refund
      *
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[]
      */
@@ -100,11 +76,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     /**
      * Sets a new refund
      *
-     * This container consists of detailed information on an In-Store Pickup item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer for an In-Store Pickup item. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature to list an item that is eligible for In-Store Pickup. At this time, the In-Store Pickup feature is generally only available to large retail merchants on the US site, and can only be applied to multi-quantity, fixed-price listings. Eligible Merchants/developers can test In-Store Pickup functionality in the Sandbox environment, including listing items enabled with the In-Store Pickup feature, creating store locations and adding inventory to these stores using the Inventory Management API, and informing eBay of In-Store Pickup status changes using the Inbound Notifications API.
-     *  </span>
+     * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
      * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refund
      * @return self
@@ -120,7 +92,9 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
         if (null !== $value && [] !== $this->getRefund()) {
-            $writer->write(array_map(function ($v) {return ["Refund" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Refund" => $v];
+            }, $value));
         }
     }
 
@@ -140,7 +114,9 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
         if (null !== $value) {
-            $this->setRefund(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue($v);}, $value));
+            $this->setRefund(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

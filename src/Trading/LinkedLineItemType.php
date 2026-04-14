@@ -30,7 +30,7 @@ class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The eBay user ID of the seller who sold the linked line item. For example, the user ID of the tire seller.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $sellerUserID
@@ -119,7 +119,7 @@ class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The eBay user ID of the seller who sold the linked line item. For example, the user ID of the tire seller.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -135,7 +135,7 @@ class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * The eBay user ID of the seller who sold the linked line item. For example, the user ID of the tire seller.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $sellerUserID

@@ -236,15 +236,21 @@ class GetSellerProfilesResponseType extends BaseResponseType
         parent::xmlSerialize($writer);
         $value = $this->getPaymentProfileList();
         if (null !== $value && [] !== $this->getPaymentProfileList()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList", array_map(function ($v) {return ["PaymentProfile" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList", array_map(function ($v) {
+                return ["PaymentProfile" => $v];
+            }, $value));
         }
         $value = $this->getReturnPolicyProfileList();
         if (null !== $value && [] !== $this->getReturnPolicyProfileList()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList", array_map(function ($v) {return ["ReturnPolicyProfile" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList", array_map(function ($v) {
+                return ["ReturnPolicyProfile" => $v];
+            }, $value));
         }
         $value = $this->getShippingPolicyProfile();
         if (null !== $value && [] !== $this->getShippingPolicyProfile()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile", array_map(function ($v) {return ["ShippingPolicyProfile" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile", array_map(function ($v) {
+                return ["ShippingPolicyProfile" => $v];
+            }, $value));
         }
     }
 
@@ -265,15 +271,21 @@ class GetSellerProfilesResponseType extends BaseResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList');
         if (null !== $value) {
-            $this->setPaymentProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile'));}, $value));
+            $this->setPaymentProfileList(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile'));
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList');
         if (null !== $value) {
-            $this->setReturnPolicyProfileList(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile'));}, $value));
+            $this->setReturnPolicyProfileList(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile'));
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile');
         if (null !== $value) {
-            $this->setShippingPolicyProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile'));}, $value));
+            $this->setShippingPolicyProfile(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile'));
+            }, $value));
         }
     }
 }

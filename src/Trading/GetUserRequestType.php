@@ -27,7 +27,7 @@ class GetUserRequestType extends AbstractRequestType
      *  requesting user (as specified with the <strong>eBayAuthToken</strong> value).
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $userID
@@ -80,7 +80,7 @@ class GetUserRequestType extends AbstractRequestType
      *  requesting user (as specified with the <strong>eBayAuthToken</strong> value).
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -97,7 +97,7 @@ class GetUserRequestType extends AbstractRequestType
      *  requesting user (as specified with the <strong>eBayAuthToken</strong> value).
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $userID

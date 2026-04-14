@@ -129,7 +129,9 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getFavoriteSearch();
         if (null !== $value && [] !== $this->getFavoriteSearch()) {
-            $writer->write(array_map(function ($v) {return ["FavoriteSearch" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["FavoriteSearch" => $v];
+            }, $value));
         }
     }
 
@@ -153,7 +155,9 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearch');
         if (null !== $value) {
-            $this->setFavoriteSearch(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType::fromKeyValue($v);}, $value));
+            $this->setFavoriteSearch(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

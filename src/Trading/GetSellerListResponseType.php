@@ -303,7 +303,9 @@ class GetSellerListResponseType extends AbstractResponseType
         }
         $value = $this->getItemArray();
         if (null !== $value && [] !== $this->getItemArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {return ["Item" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
+                return ["Item" => $v];
+            }, $value));
         }
         $value = $this->getItemsPerPage();
         if (null !== $value) {
@@ -348,7 +350,9 @@ class GetSellerListResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
         if (null !== $value) {
-            $this->setItemArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));}, $value));
+            $this->setItemArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');
         if (null !== $value) {

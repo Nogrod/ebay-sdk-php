@@ -104,7 +104,9 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getType();
         if (null !== $value && [] !== $this->getType()) {
-            $writer->write(array_map(function ($v) {return ["Type" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Type" => $v];
+            }, $value));
         }
     }
 

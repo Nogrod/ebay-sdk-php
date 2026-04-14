@@ -268,7 +268,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getErrorMessage();
         if (null !== $value && [] !== $this->getErrorMessage()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {return ["error" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {
+                return ["error" => $v];
+            }, $value));
         }
         $value = $this->getVersion();
         if (null !== $value) {
@@ -280,7 +282,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getExtension();
         if (null !== $value && [] !== $this->getExtension()) {
-            $writer->write(array_map(function ($v) {return ["extension" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["extension" => $v];
+            }, $value));
         }
     }
 
@@ -304,7 +308,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
         if (null !== $value) {
-            $this->setErrorMessage(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));}, $value));
+            $this->setErrorMessage(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}version');
         if (null !== $value) {
@@ -316,7 +322,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}extension');
         if (null !== $value) {
-            $this->setExtension(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);}, $value));
+            $this->setExtension(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

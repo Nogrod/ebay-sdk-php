@@ -92,7 +92,9 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAccountEntry();
         if (null !== $value && [] !== $this->getAccountEntry()) {
-            $writer->write(array_map(function ($v) {return ["AccountEntry" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AccountEntry" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntry');
         if (null !== $value) {
-            $this->setAccountEntry(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);}, $value));
+            $this->setAccountEntry(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

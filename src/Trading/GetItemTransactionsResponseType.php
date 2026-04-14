@@ -396,7 +396,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         }
         $value = $this->getTransactionArray();
         if (null !== $value && [] !== $this->getTransactionArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
+                return ["Transaction" => $v];
+            }, $value));
         }
     }
 
@@ -441,7 +443,9 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray');
         if (null !== $value) {
-            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));}, $value));
+            $this->setTransactionArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));
+            }, $value));
         }
     }
 }

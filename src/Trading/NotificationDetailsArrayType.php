@@ -94,7 +94,9 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNotificationDetails();
         if (null !== $value && [] !== $this->getNotificationDetails()) {
-            $writer->write(array_map(function ($v) {return ["NotificationDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["NotificationDetails" => $v];
+            }, $value));
         }
     }
 
@@ -114,7 +116,9 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetails');
         if (null !== $value) {
-            $this->setNotificationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue($v);}, $value));
+            $this->setNotificationDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

@@ -129,7 +129,9 @@ class VeROSiteDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getReasonCodeDetail();
         if (null !== $value && [] !== $this->getReasonCodeDetail()) {
-            $writer->write(array_map(function ($v) {return ["ReasonCodeDetail" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ReasonCodeDetail" => $v];
+            }, $value));
         }
     }
 
@@ -153,7 +155,9 @@ class VeROSiteDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReasonCodeDetail');
         if (null !== $value) {
-            $this->setReasonCodeDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ReasonCodeDetailType::fromKeyValue($v);}, $value));
+            $this->setReasonCodeDetail(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ReasonCodeDetailType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

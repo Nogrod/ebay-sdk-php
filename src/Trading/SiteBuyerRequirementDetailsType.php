@@ -370,7 +370,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getMinimumFeedbackScore();
         if (null !== $value && [] !== $this->getMinimumFeedbackScore()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {return ["FeedbackScore" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {
+                return ["FeedbackScore" => $v];
+            }, $value));
         }
         $value = $this->getShipToRegistrationCountry();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -419,7 +421,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore', true);
         if (null !== $value) {
-            $this->setMinimumFeedbackScore(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');}, $value));
+            $this->setMinimumFeedbackScore(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
         if (null !== $value) {

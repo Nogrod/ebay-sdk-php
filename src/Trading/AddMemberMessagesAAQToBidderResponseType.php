@@ -92,7 +92,9 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderResponseContainer();
         if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderResponseContainer()) {
-            $writer->write(array_map(function ($v) {return ["AddMemberMessagesAAQToBidderResponseContainer" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AddMemberMessagesAAQToBidderResponseContainer" => $v];
+            }, $value));
         }
     }
 
@@ -113,7 +115,9 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderResponseContainer');
         if (null !== $value) {
-            $this->setAddMemberMessagesAAQToBidderResponseContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType::fromKeyValue($v);}, $value));
+            $this->setAddMemberMessagesAAQToBidderResponseContainer(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

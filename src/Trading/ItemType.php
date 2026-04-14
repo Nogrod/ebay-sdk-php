@@ -84,7 +84,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the following marketplaces: US, UK, CA, DE, and Motors.
      *
      * @var \Nogrod\eBaySDK\Trading\CharityType $charity
      */
@@ -701,6 +701,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerEvents</b> call, this field will be returned masked as <code>*****************</code> for on-hold listings.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b> When a line item comes from a multiple-variation listing, the variation aspect name-value pair will be appended to this title.
      *  </span>
      *
      * @var string $title
@@ -1733,38 +1735,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $digitalGoodInfo = null;
 
     /**
-     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
-     *  <br/><br/>
-     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
-     *  </span>
-     *  <br/>
-     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
-     *  <ul>
-     *  <li>Listing format must be fixed-price.</li>
-     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
-     *  <li>A free, next-day shipping option offered.</li>
-     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
-     *  </ul>
-     *
-     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
-     *
-     * @var bool $eBayPlus
-     */
-    private $eBayPlus = null;
-
-    /**
-     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
-     *  </span>
-     *
-     * @var bool $eBayPlusEligible
-     */
-    private $eBayPlusEligible = null;
-
-    /**
      * The boolean value that is returned in this field will indicate whether or not a digital gift card can be delivered by email to the buyer or recipient of the gift card. This field is only applicable to digital gift card listings.
      *
      * @var bool $eMailDeliveryAvailable
@@ -2002,7 +1972,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the following marketplaces: US, UK, CA, DE, and Motors.
      *
      * @return \Nogrod\eBaySDK\Trading\CharityType
      */
@@ -2020,7 +1990,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  <b>For Revise calls</b>: The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing.
      *  <br><br>
-     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the US and UK marketplaces.
+     *  This container will only be returned in Get calls for charitable listings. Charitable listings are only supported in the following marketplaces: US, UK, CA, DE, and Motors.
      *
      * @param \Nogrod\eBaySDK\Trading\CharityType $charity
      * @return self
@@ -3908,6 +3878,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
      *  </span>
+     *  <span class="tablenote"><b>Note:</b> When a line item comes from a multiple-variation listing, the variation aspect name-value pair will be appended to this title.
+     *  </span>
      *
      * @return string
      */
@@ -3929,6 +3901,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerEvents</b> call, this field will be returned masked as <code>*****************</code> for on-hold listings.
      *  </span>
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerTransactions</b> or <b>GetMyeBaySelling</b> call, the item ID value of the listing will be returned in this field to indicate that the listing is on hold.
+     *  </span>
+     *  <span class="tablenote"><b>Note:</b> When a line item comes from a multiple-variation listing, the variation aspect name-value pair will be appended to this title.
      *  </span>
      *
      * @param string $title
@@ -7312,94 +7286,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     }
 
     /**
-     * Gets as eBayPlus
-     *
-     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
-     *  <br/><br/>
-     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
-     *  </span>
-     *  <br/>
-     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
-     *  <ul>
-     *  <li>Listing format must be fixed-price.</li>
-     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
-     *  <li>A free, next-day shipping option offered.</li>
-     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
-     *  </ul>
-     *
-     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
-     *
-     * @return bool
-     */
-    public function getEBayPlus()
-    {
-        return $this->eBayPlus;
-    }
-
-    /**
-     * Sets a new eBayPlus
-     *
-     * eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their selling status must be 'Above Standard' or above.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is only available to buyers on the Germany and Australia marketplaces, and this field should only be used by sellers selling eligible items in Germany.
-     *  <br/><br/>
-     *  In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus. Due to this fact, an Australian seller will also get the <code>21919431: This listing isn't eligible for eBay Plus.</code> warning message in an add/revise/relist call, even though eBay may ultimately set the eBay Plus feature on the listing if the item is eligible.
-     *  </span>
-     *  <br/>
-     *  In an add/revise/relist call, a seller on the Germany site must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the following for the listing:
-     *  <ul>
-     *  <li>Listing format must be fixed-price.</li>
-     *  <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li>
-     *  <li>A free, next-day shipping option offered.</li>
-     *  <li>A return policy that offers a 30-day (or longer) return period.</li>
-     *  </ul>
-     *
-     *  If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the buyer is subscribed to eBay Plus.
-     *
-     * @param bool $eBayPlus
-     * @return self
-     */
-    public function setEBayPlus($eBayPlus)
-    {
-        $this->eBayPlus = $eBayPlus;
-        return $this;
-    }
-
-    /**
-     * Gets as eBayPlusEligible
-     *
-     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
-     *  </span>
-     *
-     * @return bool
-     */
-    public function getEBayPlusEligible()
-    {
-        return $this->eBayPlusEligible;
-    }
-
-    /**
-     * Sets a new eBayPlusEligible
-     *
-     * If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia marketplaces.
-     *  </span>
-     *
-     * @param bool $eBayPlusEligible
-     * @return self
-     */
-    public function setEBayPlusEligible($eBayPlusEligible)
-    {
-        $this->eBayPlusEligible = $eBayPlusEligible;
-        return $this;
-    }
-
-    /**
      * Gets as eMailDeliveryAvailable
      *
      * The boolean value that is returned in this field will indicate whether or not a digital gift card can be delivered by email to the buyer or recipient of the gift card. This field is only applicable to digital gift card listings.
@@ -7552,7 +7438,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getListingEnhancement();
         if (null !== $value && [] !== $this->getListingEnhancement()) {
-            $writer->write(array_map(function ($v) {return ["ListingEnhancement" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ListingEnhancement" => $v];
+            }, $value));
         }
         $value = $this->getListingType();
         if (null !== $value) {
@@ -7572,7 +7460,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PaymentMethods" => $v];
+            }, $value));
         }
         $value = $this->getPayPalEmailAddress();
         if (null !== $value) {
@@ -7643,7 +7533,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShipToLocations();
         if (null !== $value && [] !== $this->getShipToLocations()) {
-            $writer->write(array_map(function ($v) {return ["ShipToLocations" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShipToLocations" => $v];
+            }, $value));
         }
         $value = $this->getSite();
         if (null !== $value) {
@@ -7749,7 +7641,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getVideoDetails();
         if (null !== $value && [] !== $this->getVideoDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {return ["VideoID" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
+                return ["VideoID" => $v];
+            }, $value));
         }
         $value = $this->getExtendedProducerResponsibility();
         if (null !== $value) {
@@ -7790,7 +7684,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getItemSpecifics();
         if (null !== $value && [] !== $this->getItemSpecifics()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
+                return ["NameValueList" => $v];
+            }, $value));
         }
         $value = $this->getClassifiedAdPayPerLeadFee();
         if (null !== $value) {
@@ -7815,7 +7711,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getCrossBorderTrade();
         if (null !== $value && [] !== $this->getCrossBorderTrade()) {
-            $writer->write(array_map(function ($v) {return ["CrossBorderTrade" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["CrossBorderTrade" => $v];
+            }, $value));
         }
         $value = $this->getBusinessSellerDetails();
         if (null !== $value) {
@@ -7835,7 +7733,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getPaymentAllowedSite();
         if (null !== $value && [] !== $this->getPaymentAllowedSite()) {
-            $writer->write(array_map(function ($v) {return ["PaymentAllowedSite" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PaymentAllowedSite" => $v];
+            }, $value));
         }
         $value = $this->getInventoryTrackingMethod();
         if (null !== $value) {
@@ -7864,7 +7764,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getConditionDescriptors();
         if (null !== $value && [] !== $this->getConditionDescriptors()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {return ["ConditionDescriptor" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
+                return ["ConditionDescriptor" => $v];
+            }, $value));
         }
         $value = $this->getConditionDescription();
         if (null !== $value) {
@@ -7920,7 +7822,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value && [] !== $this->getShippingServiceCostOverrideList()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {return ["ShippingServiceCostOverride" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
+                return ["ShippingServiceCostOverride" => $v];
+            }, $value));
         }
         $value = $this->getShippingPackageDetails();
         if (null !== $value) {
@@ -7991,16 +7895,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getDigitalGoodInfo();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DigitalGoodInfo", $value);
-        }
-        $value = $this->getEBayPlus();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPlus", $value);
-        }
-        $value = $this->getEBayPlusEligible();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPlusEligible", $value);
         }
         $value = $this->getEMailDeliveryAvailable();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -8278,7 +8172,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoDetails', true);
         if (null !== $value) {
-            $this->setVideoDetails(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}VideoID');}, $value));
+            $this->setVideoDetails(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}VideoID');
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedProducerResponsibility');
         if (null !== $value) {
@@ -8318,7 +8214,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics');
         if (null !== $value) {
-            $this->setItemSpecifics(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
+            $this->setItemSpecifics(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPayPerLeadFee');
         if (null !== $value) {
@@ -8390,7 +8288,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors');
         if (null !== $value) {
-            $this->setConditionDescriptors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor'));}, $value));
+            $this->setConditionDescriptors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
         if (null !== $value) {
@@ -8446,7 +8346,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList');
         if (null !== $value) {
-            $this->setShippingServiceCostOverrideList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride'));}, $value));
+            $this->setShippingServiceCostOverrideList(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride'));
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails');
         if (null !== $value) {
@@ -8511,14 +8413,6 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DigitalGoodInfo');
         if (null !== $value) {
             $this->setDigitalGoodInfo(\Nogrod\eBaySDK\Trading\DigitalGoodInfoType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPlus');
-        if (null !== $value) {
-            $this->setEBayPlus(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPlusEligible');
-        if (null !== $value) {
-            $this->setEBayPlusEligible(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eMailDeliveryAvailable');
         if (null !== $value) {

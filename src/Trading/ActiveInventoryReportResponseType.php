@@ -94,7 +94,9 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getSKUDetails();
         if (null !== $value && [] !== $this->getSKUDetails()) {
-            $writer->write(array_map(function ($v) {return ["SKUDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["SKUDetails" => $v];
+            }, $value));
         }
     }
 
@@ -115,7 +117,9 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUDetails');
         if (null !== $value) {
-            $this->setSKUDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SKUDetailsType::fromKeyValue($v);}, $value));
+            $this->setSKUDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\SKUDetailsType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

@@ -160,14 +160,14 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     private $showOutOfStockControlPreference = null;
 
     /**
-     * To determine whether a seller can offer eBay Plus in qualified listings, include this field and set it to <code>true</code>.
+     * <span class="tablenote"><b>Note:</b> Do not use this boolean field. The opt-in and listing preference for eBayPlus has been disabled. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. If used, the ListingPreference and OptInStatus fields are returned as false. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
+     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
-     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top Rated eBay sellers must opt in to eBay Plus, and can offer the program on a per-listing basis.
-     *  <br/><br/>
-     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
+     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country).
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. The seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @var bool $showeBayPLUSPreference
@@ -699,14 +699,14 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     /**
      * Gets as showeBayPLUSPreference
      *
-     * To determine whether a seller can offer eBay Plus in qualified listings, include this field and set it to <code>true</code>.
+     * <span class="tablenote"><b>Note:</b> Do not use this boolean field. The opt-in and listing preference for eBayPlus has been disabled. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. If used, the ListingPreference and OptInStatus fields are returned as false. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
+     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
-     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top Rated eBay sellers must opt in to eBay Plus, and can offer the program on a per-listing basis.
-     *  <br/><br/>
-     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
+     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country).
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. The seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @return bool
@@ -719,14 +719,14 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     /**
      * Sets a new showeBayPLUSPreference
      *
-     * To determine whether a seller can offer eBay Plus in qualified listings, include this field and set it to <code>true</code>.
+     * <span class="tablenote"><b>Note:</b> Do not use this boolean field. The opt-in and listing preference for eBayPlus has been disabled. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. If used, the ListingPreference and OptInStatus fields are returned as false. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
+     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
-     *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top Rated eBay sellers must opt in to eBay Plus, and can offer the program on a per-listing basis.
-     *  <br/><br/>
-     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country), as well as the seller's opt-in status and listing preference for each country.
+     *  The <strong>eBayPLUSPreference</strong> container is returned in the response with information about each country where the seller is eligible to offer eBay Plus on listings (one <strong>eBayPLUSPreference</strong> container per country).
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
+     *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. The seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
      * @param bool $showeBayPLUSPreference

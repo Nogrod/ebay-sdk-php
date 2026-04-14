@@ -435,7 +435,9 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
         }
         $value = $this->getDeliveryURLDetails();
         if (null !== $value && [] !== $this->getDeliveryURLDetails()) {
-            $writer->write(array_map(function ($v) {return ["DeliveryURLDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["DeliveryURLDetails" => $v];
+            }, $value));
         }
     }
 
@@ -483,7 +485,9 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails');
         if (null !== $value) {
-            $this->setDeliveryURLDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::fromKeyValue($v);}, $value));
+            $this->setDeliveryURLDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

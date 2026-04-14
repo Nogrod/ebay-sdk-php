@@ -349,7 +349,9 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
         }
         $value = $this->getFeatureID();
         if (null !== $value && [] !== $this->getFeatureID()) {
-            $writer->write(array_map(function ($v) {return ["FeatureID" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["FeatureID" => $v];
+            }, $value));
         }
         $value = $this->getAllFeaturesForCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

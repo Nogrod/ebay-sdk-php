@@ -110,7 +110,9 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getStatement();
         if (null !== $value && [] !== $this->getStatement()) {
-            $writer->write(array_map(function ($v) {return ["Statement" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Statement" => $v];
+            }, $value));
         }
     }
 

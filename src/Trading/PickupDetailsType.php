@@ -132,7 +132,9 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPickupOptions();
         if (null !== $value && [] !== $this->getPickupOptions()) {
-            $writer->write(array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PickupOptions" => $v];
+            }, $value));
         }
     }
 
@@ -152,7 +154,9 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupOptions');
         if (null !== $value) {
-            $this->setPickupOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue($v);}, $value));
+            $this->setPickupOptions(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

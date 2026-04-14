@@ -100,7 +100,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -483,7 +483,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -527,7 +527,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -570,7 +570,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -613,7 +613,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -655,7 +655,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  "S", "M", and "L" as values, the View Item page
      *  shows the values in that order in the Size drop-down list.<br>
      *  <br>
-     *  Use the <a href="/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
+     *  Use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve recommendations for names and values.<br>
      *  <br>
      *  Required when Variations are specified in a new listing
      *  (e.g., in AddFixedPriceItem). Also required when you change
@@ -792,19 +792,27 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
         if (null !== $value && [] !== $this->getVariation()) {
-            $writer->write(array_map(function ($v) {return ["Variation" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Variation" => $v];
+            }, $value));
         }
         $value = $this->getPictures();
         if (null !== $value && [] !== $this->getPictures()) {
-            $writer->write(array_map(function ($v) {return ["Pictures" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Pictures" => $v];
+            }, $value));
         }
         $value = $this->getVariationSpecificsSet();
         if (null !== $value && [] !== $this->getVariationSpecificsSet()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {return ["NameValueList" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {
+                return ["NameValueList" => $v];
+            }, $value));
         }
         $value = $this->getModifyNameList();
         if (null !== $value && [] !== $this->getModifyNameList()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {return ["ModifyName" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {
+                return ["ModifyName" => $v];
+            }, $value));
         }
     }
 
@@ -824,19 +832,27 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
         if (null !== $value) {
-            $this->setVariation(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VariationType::fromKeyValue($v);}, $value));
+            $this->setVariation(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\VariationType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictures');
         if (null !== $value) {
-            $this->setPictures(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PicturesType::fromKeyValue($v);}, $value));
+            $this->setPictures(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\PicturesType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet');
         if (null !== $value) {
-            $this->setVariationSpecificsSet(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));}, $value));
+            $this->setVariationSpecificsSet(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList');
         if (null !== $value) {
-            $this->setModifyNameList(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ModifyName'));}, $value));
+            $this->setModifyNameList(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ModifyName'));
+            }, $value));
         }
     }
 }

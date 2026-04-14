@@ -167,11 +167,15 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrder();
         if (null !== $value && [] !== $this->getOrder()) {
-            $writer->write(array_map(function ($v) {return ["Order" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Order" => $v];
+            }, $value));
         }
         $value = $this->getErrors();
         if (null !== $value && [] !== $this->getErrors()) {
-            $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Errors" => $v];
+            }, $value));
         }
     }
 
@@ -191,11 +195,15 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Order');
         if (null !== $value) {
-            $this->setOrder(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($v);}, $value));
+            $this->setOrder(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\OrderType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
         if (null !== $value) {
-            $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);}, $value));
+            $this->setErrors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

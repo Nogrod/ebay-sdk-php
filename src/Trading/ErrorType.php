@@ -346,7 +346,9 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getErrorParameters();
         if (null !== $value && [] !== $this->getErrorParameters()) {
-            $writer->write(array_map(function ($v) {return ["ErrorParameters" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ErrorParameters" => $v];
+            }, $value));
         }
         $value = $this->getErrorClassification();
         if (null !== $value) {
@@ -390,7 +392,9 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters');
         if (null !== $value) {
-            $this->setErrorParameters(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorParameterType::fromKeyValue($v);}, $value));
+            $this->setErrorParameters(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ErrorParameterType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
         if (null !== $value) {

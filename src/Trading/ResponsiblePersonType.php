@@ -487,7 +487,9 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getTypes();
         if (null !== $value && [] !== $this->getTypes()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {return ["Type" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {
+                return ["Type" => $v];
+            }, $value));
         }
     }
 
@@ -547,7 +549,9 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types', true);
         if (null !== $value) {
-            $this->setTypes(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Type');}, $value));
+            $this->setTypes(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Type');
+            }, $value));
         }
     }
 }

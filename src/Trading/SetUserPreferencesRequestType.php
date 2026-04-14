@@ -111,8 +111,8 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  <br/><br/>
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
-     *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  You can return the value of this flag using the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @var bool $outOfStockControlPreference
      */
@@ -456,8 +456,8 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  <br/><br/>
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
-     *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  You can return the value of this flag using the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @return bool
      */
@@ -474,8 +474,8 @@ class SetUserPreferencesRequestType extends AbstractRequestType
      *  <br/><br/>
      *  When stock is available, the seller can use the <b>Revise</b> calls to update the inventory of the item (through the <b>Item.Quantity</b> or <b>Item.Variations.Variation.Quantity</b> fields) and the listing would appear again.
      *  <br/><br/>
-     *  You can return the value of this flag using the <a href="GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
-     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
+     *  You can return the value of this flag using the <a href="https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/GetUserPreferences.html#Request.ShowOutOfStockControlPreference">GetUserPreferences</a> call and setting the <b>ShowOutOfStockControlPreference</b> field to 'true'. <br/><br/>
+     *  <span class="tablenote"><b>IMPORTANT: </b> When a listing using the Out-of-Stock feature has zero quantity, the seller has 90 days to add inventory without incurring a listing fee. Fees are changed at the end of each the billing cycle but are then refunded if the item is out-of-stock for an entire billing period. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/out-of-stock-fees.html">Fees For a Listing With Zero Quantity</a> for details. </span>
      *
      * @param bool $outOfStockControlPreference
      * @return self

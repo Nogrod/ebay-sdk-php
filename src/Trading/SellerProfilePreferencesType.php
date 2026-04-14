@@ -149,7 +149,9 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getSupportedSellerProfiles();
         if (null !== $value && [] !== $this->getSupportedSellerProfiles()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {return ["SupportedSellerProfile" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {
+                return ["SupportedSellerProfile" => $v];
+            }, $value));
         }
     }
 
@@ -173,7 +175,9 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles');
         if (null !== $value) {
-            $this->setSupportedSellerProfiles(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile'));}, $value));
+            $this->setSupportedSellerProfiles(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile'));
+            }, $value));
         }
     }
 }

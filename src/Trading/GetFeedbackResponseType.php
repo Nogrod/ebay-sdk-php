@@ -314,7 +314,9 @@ class GetFeedbackResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getFeedbackDetailArray();
         if (null !== $value && [] !== $this->getFeedbackDetailArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray", array_map(function ($v) {return ["FeedbackDetail" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray", array_map(function ($v) {
+                return ["FeedbackDetail" => $v];
+            }, $value));
         }
         $value = $this->getFeedbackDetailItemTotal();
         if (null !== $value) {
@@ -359,7 +361,9 @@ class GetFeedbackResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray');
         if (null !== $value) {
-            $this->setFeedbackDetailArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail'));}, $value));
+            $this->setFeedbackDetailArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailItemTotal');
         if (null !== $value) {

@@ -92,7 +92,9 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getExtension();
         if (null !== $value && [] !== $this->getExtension()) {
-            $writer->write(array_map(function ($v) {return ["extension" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["extension" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}extension');
         if (null !== $value) {
-            $this->setExtension(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);}, $value));
+            $this->setExtension(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

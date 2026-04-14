@@ -362,7 +362,9 @@ class GetCategoriesResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getCategoryArray();
         if (null !== $value && [] !== $this->getCategoryArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryArray", array_map(function ($v) {return ["Category" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryArray", array_map(function ($v) {
+                return ["Category" => $v];
+            }, $value));
         }
         $value = $this->getCategoryCount();
         if (null !== $value) {
@@ -409,7 +411,9 @@ class GetCategoriesResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryArray');
         if (null !== $value) {
-            $this->setCategoryArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Category'));}, $value));
+            $this->setCategoryArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Category'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryCount');
         if (null !== $value) {

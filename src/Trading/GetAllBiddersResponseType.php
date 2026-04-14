@@ -23,7 +23,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
      * The eBay user ID for the user with the winning bid (if auction has ended) or current highest bid (if auction is still active). The seller should take note of or save this User ID as this user may be a a Second Chance Offer candidate.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $highBidder
@@ -116,7 +116,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
      * The eBay user ID for the user with the winning bid (if auction has ended) or current highest bid (if auction is still active). The seller should take note of or save this User ID as this user may be a a Second Chance Offer candidate.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -132,7 +132,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
      * The eBay user ID for the user with the winning bid (if auction has ended) or current highest bid (if auction is still active). The seller should take note of or save this User ID as this user may be a a Second Chance Offer candidate.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $highBidder
@@ -201,7 +201,9 @@ class GetAllBiddersResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getBidArray();
         if (null !== $value && [] !== $this->getBidArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {return ["Offer" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {
+                return ["Offer" => $v];
+            }, $value));
         }
         $value = $this->getHighBidder();
         if (null !== $value) {
@@ -234,7 +236,9 @@ class GetAllBiddersResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray');
         if (null !== $value) {
-            $this->setBidArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Offer'));}, $value));
+            $this->setBidArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Offer'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
         if (null !== $value) {

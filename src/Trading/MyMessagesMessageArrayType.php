@@ -92,7 +92,9 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMessage();
         if (null !== $value && [] !== $this->getMessage()) {
-            $writer->write(array_map(function ($v) {return ["Message" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Message" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {
-            $this->setMessage(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);}, $value));
+            $this->setMessage(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

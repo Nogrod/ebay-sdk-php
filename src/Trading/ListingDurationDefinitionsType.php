@@ -129,7 +129,9 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = $this->getListingDuration();
         if (null !== $value && [] !== $this->getListingDuration()) {
-            $writer->write(array_map(function ($v) {return ["ListingDuration" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ListingDuration" => $v];
+            }, $value));
         }
     }
 
@@ -153,7 +155,9 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingDuration');
         if (null !== $value) {
-            $this->setListingDuration(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ListingDurationDefinitionType::fromKeyValue($v);}, $value));
+            $this->setListingDuration(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ListingDurationDefinitionType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

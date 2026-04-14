@@ -14,8 +14,12 @@ class BusinessPoliciesManagementClassMap
                 $value .= $elem->format('P');
             }$writer->write($value);
         },
-        'DateTime' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));},
-        'Date' => function (Writer $writer, $elem) {$writer->write($elem->format('Y-m-d'));},];
+        'DateTime' => function (Writer $writer, $elem) {
+            $writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));
+        },
+        'Date' => function (Writer $writer, $elem) {
+            $writer->write($elem->format('Y-m-d'));
+        },];
     }
 
     public static function GetElements(): array

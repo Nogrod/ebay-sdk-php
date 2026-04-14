@@ -95,7 +95,9 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getProgram();
         if (null !== $value && [] !== $this->getProgram()) {
-            $writer->write(array_map(function ($v) {return ["Program" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Program" => $v];
+            }, $value));
         }
     }
 
@@ -115,7 +117,9 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Program');
         if (null !== $value) {
-            $this->setProgram(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);}, $value));
+            $this->setProgram(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

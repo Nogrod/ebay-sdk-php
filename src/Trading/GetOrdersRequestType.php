@@ -576,7 +576,9 @@ class GetOrdersRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getOrderIDArray();
         if (null !== $value && [] !== $this->getOrderIDArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {return ["OrderID" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
+                return ["OrderID" => $v];
+            }, $value));
         }
         $value = $this->getCreateTimeFrom();
         if (null !== $value) {
@@ -642,7 +644,9 @@ class GetOrdersRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray', true);
         if (null !== $value) {
-            $this->setOrderIDArray(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}OrderID');}, $value));
+            $this->setOrderIDArray(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}OrderID');
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreateTimeFrom');
         if (null !== $value) {

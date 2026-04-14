@@ -92,7 +92,9 @@ class AddItemsRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getAddItemRequestContainer();
         if (null !== $value && [] !== $this->getAddItemRequestContainer()) {
-            $writer->write(array_map(function ($v) {return ["AddItemRequestContainer" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AddItemRequestContainer" => $v];
+            }, $value));
         }
     }
 
@@ -113,7 +115,9 @@ class AddItemsRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequestContainer');
         if (null !== $value) {
-            $this->setAddItemRequestContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddItemRequestContainerType::fromKeyValue($v);}, $value));
+            $this->setAddItemRequestContainer(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AddItemRequestContainerType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

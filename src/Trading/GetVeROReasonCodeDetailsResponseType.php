@@ -90,7 +90,9 @@ class GetVeROReasonCodeDetailsResponseType extends AbstractResponseType
         parent::xmlSerialize($writer);
         $value = $this->getVeROReasonCodeDetails();
         if (null !== $value && [] !== $this->getVeROReasonCodeDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails", array_map(function ($v) {return ["VeROSiteDetail" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails", array_map(function ($v) {
+                return ["VeROSiteDetail" => $v];
+            }, $value));
         }
     }
 
@@ -111,7 +113,9 @@ class GetVeROReasonCodeDetailsResponseType extends AbstractResponseType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VeROReasonCodeDetails');
         if (null !== $value) {
-            $this->setVeROReasonCodeDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\VeROSiteDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}VeROSiteDetail'));}, $value));
+            $this->setVeROReasonCodeDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\VeROSiteDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}VeROSiteDetail'));
+            }, $value));
         }
     }
 }

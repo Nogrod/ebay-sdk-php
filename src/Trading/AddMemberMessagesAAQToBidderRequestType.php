@@ -92,7 +92,9 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderRequestContainer();
         if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderRequestContainer()) {
-            $writer->write(array_map(function ($v) {return ["AddMemberMessagesAAQToBidderRequestContainer" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AddMemberMessagesAAQToBidderRequestContainer" => $v];
+            }, $value));
         }
     }
 
@@ -113,7 +115,9 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddMemberMessagesAAQToBidderRequestContainer');
         if (null !== $value) {
-            $this->setAddMemberMessagesAAQToBidderRequestContainer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType::fromKeyValue($v);}, $value));
+            $this->setAddMemberMessagesAAQToBidderRequestContainer(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

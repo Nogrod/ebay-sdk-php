@@ -95,7 +95,9 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackScore();
         if (null !== $value && [] !== $this->getFeedbackScore()) {
-            $writer->write(array_map(function ($v) {return ["FeedbackScore" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["FeedbackScore" => $v];
+            }, $value));
         }
     }
 

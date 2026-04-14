@@ -92,7 +92,9 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFee();
         if (null !== $value && [] !== $this->getFee()) {
-            $writer->write(array_map(function ($v) {return ["Fee" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Fee" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fee');
         if (null !== $value) {
-            $this->setFee(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);}, $value));
+            $this->setFee(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

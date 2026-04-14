@@ -597,7 +597,9 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getFees();
         if (null !== $value && [] !== $this->getFees()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {return ["Fee" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {
+                return ["Fee" => $v];
+            }, $value));
         }
         $value = $this->getCategoryID();
         if (null !== $value) {
@@ -613,7 +615,9 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getErrors();
         if (null !== $value && [] !== $this->getErrors()) {
-            $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Errors" => $v];
+            }, $value));
         }
         $value = $this->getMessage();
         if (null !== $value) {
@@ -621,7 +625,9 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getDiscountReason();
         if (null !== $value && [] !== $this->getDiscountReason()) {
-            $writer->write(array_map(function ($v) {return ["DiscountReason" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["DiscountReason" => $v];
+            }, $value));
         }
     }
 
@@ -653,7 +659,9 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
         if (null !== $value) {
-            $this->setFees(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Fee'));}, $value));
+            $this->setFees(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Fee'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
         if (null !== $value) {
@@ -669,7 +677,9 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
         if (null !== $value) {
-            $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);}, $value));
+            $this->setErrors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
         if (null !== $value) {

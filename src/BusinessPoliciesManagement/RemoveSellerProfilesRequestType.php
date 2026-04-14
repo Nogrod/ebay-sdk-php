@@ -92,7 +92,9 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
         parent::xmlSerialize($writer);
         $value = $this->getProfileIds();
         if (null !== $value && [] !== $this->getProfileIds()) {
-            $writer->write(array_map(function ($v) {return ["profileIds" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["profileIds" => $v];
+            }, $value));
         }
     }
 

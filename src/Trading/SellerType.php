@@ -1308,7 +1308,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getCharityAffiliationDetails();
         if (null !== $value && [] !== $this->getCharityAffiliationDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {return ["CharityAffiliationDetail" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {
+                return ["CharityAffiliationDetail" => $v];
+            }, $value));
         }
         $value = $this->getTransactionPercent();
         if (null !== $value) {
@@ -1325,11 +1327,15 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = $this->getTopRatedSellerDetails();
         if (null !== $value && [] !== $this->getTopRatedSellerDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {return ["TopRatedProgram" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {
+                return ["TopRatedProgram" => $v];
+            }, $value));
         }
         $value = $this->getRecoupmentPolicyConsent();
         if (null !== $value && [] !== $this->getRecoupmentPolicyConsent()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {return ["Site" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {
+                return ["Site" => $v];
+            }, $value));
         }
         $value = $this->getDomesticRateTable();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1435,7 +1441,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails');
         if (null !== $value) {
-            $this->setCharityAffiliationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail'));}, $value));
+            $this->setCharityAffiliationDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
         if (null !== $value) {
@@ -1451,11 +1459,15 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails', true);
         if (null !== $value) {
-            $this->setTopRatedSellerDetails(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');}, $value));
+            $this->setTopRatedSellerDetails(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram');
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent', true);
         if (null !== $value) {
-            $this->setRecoupmentPolicyConsent(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Site');}, $value));
+            $this->setRecoupmentPolicyConsent(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Site');
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
         if (null !== $value) {

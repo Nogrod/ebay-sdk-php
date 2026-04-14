@@ -96,7 +96,9 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMarkUpMarkDownEvent();
         if (null !== $value && [] !== $this->getMarkUpMarkDownEvent()) {
-            $writer->write(array_map(function ($v) {return ["MarkUpMarkDownEvent" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["MarkUpMarkDownEvent" => $v];
+            }, $value));
         }
     }
 
@@ -116,7 +118,9 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent');
         if (null !== $value) {
-            $this->setMarkUpMarkDownEvent(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue($v);}, $value));
+            $this->setMarkUpMarkDownEvent(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

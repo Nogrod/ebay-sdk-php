@@ -194,7 +194,9 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
         }
         $value = $this->getCustomCategory();
         if (null !== $value && [] !== $this->getCustomCategory()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", array_map(function ($v) {
+                return ["CustomCategory" => $v];
+            }, $value));
         }
     }
 
@@ -223,7 +225,9 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategory');
         if (null !== $value) {
-            $this->setCustomCategory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
+            $this->setCustomCategory(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));
+            }, $value));
         }
     }
 }

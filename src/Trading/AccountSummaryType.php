@@ -747,7 +747,9 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getAdditionalAccount();
         if (null !== $value && [] !== $this->getAdditionalAccount()) {
-            $writer->write(array_map(function ($v) {return ["AdditionalAccount" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AdditionalAccount" => $v];
+            }, $value));
         }
         $value = $this->getAmountPastDue();
         if (null !== $value) {
@@ -844,7 +846,9 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalAccount');
         if (null !== $value) {
-            $this->setAdditionalAccount(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AdditionalAccountType::fromKeyValue($v);}, $value));
+            $this->setAdditionalAccount(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AdditionalAccountType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPastDue');
         if (null !== $value) {

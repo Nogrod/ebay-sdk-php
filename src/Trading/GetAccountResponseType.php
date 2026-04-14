@@ -382,7 +382,9 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = $this->getAccountEntries();
         if (null !== $value && [] !== $this->getAccountEntries()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {return ["AccountEntry" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {
+                return ["AccountEntry" => $v];
+            }, $value));
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {
@@ -436,7 +438,9 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries');
         if (null !== $value) {
-            $this->setAccountEntries(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));}, $value));
+            $this->setAccountEntries(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
         if (null !== $value) {

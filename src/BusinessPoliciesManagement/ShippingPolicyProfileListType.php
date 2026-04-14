@@ -92,7 +92,9 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getShippingPolicyProfile();
         if (null !== $value && [] !== $this->getShippingPolicyProfile()) {
-            $writer->write(array_map(function ($v) {return ["ShippingPolicyProfile" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingPolicyProfile" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile');
         if (null !== $value) {
-            $this->setShippingPolicyProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue($v);}, $value));
+            $this->setShippingPolicyProfile(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

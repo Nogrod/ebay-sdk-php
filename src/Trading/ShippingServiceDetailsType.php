@@ -1105,11 +1105,15 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = $this->getServiceType();
         if (null !== $value && [] !== $this->getServiceType()) {
-            $writer->write(array_map(function ($v) {return ["ServiceType" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ServiceType" => $v];
+            }, $value));
         }
         $value = $this->getShippingPackage();
         if (null !== $value && [] !== $this->getShippingPackage()) {
-            $writer->write(array_map(function ($v) {return ["ShippingPackage" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingPackage" => $v];
+            }, $value));
         }
         $value = $this->getDimensionsRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1128,7 +1132,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = $this->getShippingCarrier();
         if (null !== $value && [] !== $this->getShippingCarrier()) {
-            $writer->write(array_map(function ($v) {return ["ShippingCarrier" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingCarrier" => $v];
+            }, $value));
         }
         $value = $this->getCODService();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1137,7 +1143,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = $this->getDeprecationDetails();
         if (null !== $value && [] !== $this->getDeprecationDetails()) {
-            $writer->write(array_map(function ($v) {return ["DeprecationDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["DeprecationDetails" => $v];
+            }, $value));
         }
         $value = $this->getMappedToShippingServiceID();
         if (null !== $value) {
@@ -1149,7 +1157,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = $this->getShippingServicePackageDetails();
         if (null !== $value && [] !== $this->getShippingServicePackageDetails()) {
-            $writer->write(array_map(function ($v) {return ["ShippingServicePackageDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingServicePackageDetails" => $v];
+            }, $value));
         }
         $value = $this->getWeightRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1242,7 +1252,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeprecationDetails');
         if (null !== $value) {
-            $this->setDeprecationDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AnnouncementMessageType::fromKeyValue($v);}, $value));
+            $this->setDeprecationDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AnnouncementMessageType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedToShippingServiceID');
         if (null !== $value) {
@@ -1254,7 +1266,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails');
         if (null !== $value) {
-            $this->setShippingServicePackageDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType::fromKeyValue($v);}, $value));
+            $this->setShippingServicePackageDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightRequired');
         if (null !== $value) {

@@ -105,7 +105,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -226,7 +227,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * The eBay user ID of the order's buyer.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @var string $buyerUserID
@@ -372,6 +373,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     /**
      * This is the eBay user ID of the order's seller.
+     * <br/><br/>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @var string $sellerUserID
      */
@@ -457,7 +460,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     private $extendedOrderID = null;
 
     /**
-     * If <code>true</code>, the order contains a transaction for an item that was purchased under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If <code>true</code>, the order includes at least one transaction purchased under the eBay Plus program. eBay Plus is a premium buyer program offering fast, free domestic shipping and free returns on eligible items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
@@ -769,7 +772,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Adds as paymentMethods
      *
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -790,7 +794,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * isset paymentMethods
      *
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -810,7 +815,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * unset paymentMethods
      *
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -830,7 +836,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as paymentMethods
      *
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -849,7 +856,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new paymentMethods
      *
      * In <b>GetOrders</b> and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container.
-     *  <br>
+     *  <br><br>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, access to buyer payment details for U.S. users will be limited to select developers. All other developers will receive a value of "CustomCode" in place of buyer payment details. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *  <br>
      *  In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item.
      *  <br>
@@ -1196,7 +1204,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * The eBay user ID of the order's buyer.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @return string
@@ -1212,7 +1220,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * The eBay user ID of the order's buyer.
      *  <br><br>
      *  <span class="tablenote"><strong>Note:</strong>
-     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
+     *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
      * @param string $buyerUserID
@@ -1716,6 +1724,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Gets as sellerUserID
      *
      * This is the eBay user ID of the order's seller.
+     * <br/><br/>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @return string
      */
@@ -1728,6 +1738,8 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * Sets a new sellerUserID
      *
      * This is the eBay user ID of the order's seller.
+     * <br/><br/>
+     * <span class="tablenote"><strong>Note:</strong> Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.</span>
      *
      * @param string $sellerUserID
      * @return self
@@ -2101,7 +2113,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Gets as containseBayPlusTransaction
      *
-     * If <code>true</code>, the order contains a transaction for an item that was purchased under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If <code>true</code>, the order includes at least one transaction purchased under the eBay Plus program. eBay Plus is a premium buyer program offering fast, free domestic shipping and free returns on eligible items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
@@ -2116,7 +2128,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
     /**
      * Sets a new containseBayPlusTransaction
      *
-     * If <code>true</code>, the order contains a transaction for an item that was purchased under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+     * If <code>true</code>, the order includes at least one transaction purchased under the eBay Plus program. eBay Plus is a premium buyer program offering fast, free domestic shipping and free returns on eligible items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany and Australia.
      *  </span>
@@ -2245,7 +2257,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PaymentMethods" => $v];
+            }, $value));
         }
         $value = $this->getSellerEmail();
         if (null !== $value) {
@@ -2269,7 +2283,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getTransactionArray();
         if (null !== $value && [] !== $this->getTransactionArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {return ["Transaction" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
+                return ["Transaction" => $v];
+            }, $value));
         }
         $value = $this->getBuyerUserID();
         if (null !== $value) {
@@ -2323,7 +2339,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getPickupDetails();
         if (null !== $value && [] !== $this->getPickupDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {return ["PickupOptions" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
+                return ["PickupOptions" => $v];
+            }, $value));
         }
         $value = $this->getPickupMethodSelected();
         if (null !== $value) {
@@ -2351,11 +2369,15 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getBuyerTaxIdentifier();
         if (null !== $value && [] !== $this->getBuyerTaxIdentifier()) {
-            $writer->write(array_map(function ($v) {return ["BuyerTaxIdentifier" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["BuyerTaxIdentifier" => $v];
+            }, $value));
         }
         $value = $this->getBuyerPackageEnclosures();
         if (null !== $value && [] !== $this->getBuyerPackageEnclosures()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {return ["BuyerPackageEnclosure" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
+                return ["BuyerPackageEnclosure" => $v];
+            }, $value));
         }
         $value = $this->getExtendedOrderID();
         if (null !== $value) {
@@ -2453,7 +2475,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray');
         if (null !== $value) {
-            $this->setTransactionArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));}, $value));
+            $this->setTransactionArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Transaction'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerUserID');
         if (null !== $value) {
@@ -2505,7 +2529,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupDetails');
         if (null !== $value) {
-            $this->setPickupDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PickupOptions'));}, $value));
+            $this->setPickupDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\PickupOptionsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PickupOptions'));
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethodSelected');
         if (null !== $value) {
@@ -2533,11 +2559,15 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerTaxIdentifier');
         if (null !== $value) {
-            $this->setBuyerTaxIdentifier(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\TaxIdentifierType::fromKeyValue($v);}, $value));
+            $this->setBuyerTaxIdentifier(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\TaxIdentifierType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures');
         if (null !== $value) {
-            $this->setBuyerPackageEnclosures(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure'));}, $value));
+            $this->setBuyerPackageEnclosures(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosure'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedOrderID');
         if (null !== $value) {

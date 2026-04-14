@@ -94,7 +94,9 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDocument();
         if (null !== $value && [] !== $this->getDocument()) {
-            $writer->write(array_map(function ($v) {return ["Document" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Document" => $v];
+            }, $value));
         }
     }
 
@@ -114,7 +116,9 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Document');
         if (null !== $value) {
-            $this->setDocument(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue($v);}, $value));
+            $this->setDocument(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

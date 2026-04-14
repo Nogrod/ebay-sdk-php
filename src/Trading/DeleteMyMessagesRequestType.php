@@ -90,7 +90,9 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
         if (null !== $value && [] !== $this->getMessageIDs()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {return ["MessageID" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
+                return ["MessageID" => $v];
+            }, $value));
         }
     }
 
@@ -111,7 +113,9 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
         parent::setKeyValue($keyValue);
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs', true);
         if (null !== $value) {
-            $this->setMessageIDs(array_map(function ($v) {return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');}, $value));
+            $this->setMessageIDs(array_map(function ($v) {
+                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');
+            }, $value));
         }
     }
 }

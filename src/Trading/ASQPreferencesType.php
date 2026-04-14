@@ -190,7 +190,9 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getSubject();
         if (null !== $value && [] !== $this->getSubject()) {
-            $writer->write(array_map(function ($v) {return ["Subject" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Subject" => $v];
+            }, $value));
         }
     }
 

@@ -267,7 +267,9 @@ class GetCategoriesRequestType extends AbstractRequestType
         }
         $value = $this->getCategoryParent();
         if (null !== $value && [] !== $this->getCategoryParent()) {
-            $writer->write(array_map(function ($v) {return ["CategoryParent" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["CategoryParent" => $v];
+            }, $value));
         }
         $value = $this->getLevelLimit();
         if (null !== $value) {

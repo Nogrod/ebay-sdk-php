@@ -165,7 +165,9 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         }
         $value = $this->getValue();
         if (null !== $value && [] !== $this->getValue()) {
-            $writer->write(array_map(function ($v) {return ["Value" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Value" => $v];
+            }, $value));
         }
         $value = $this->getAdditionalInfo();
         if (null !== $value) {

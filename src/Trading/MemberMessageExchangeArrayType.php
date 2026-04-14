@@ -92,7 +92,9 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMemberMessageExchange();
         if (null !== $value && [] !== $this->getMemberMessageExchange()) {
-            $writer->write(array_map(function ($v) {return ["MemberMessageExchange" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["MemberMessageExchange" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange');
         if (null !== $value) {
-            $this->setMemberMessageExchange(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);}, $value));
+            $this->setMemberMessageExchange(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

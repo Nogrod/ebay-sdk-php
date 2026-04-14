@@ -105,7 +105,9 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSupportedSellerProfile();
         if (null !== $value && [] !== $this->getSupportedSellerProfile()) {
-            $writer->write(array_map(function ($v) {return ["SupportedSellerProfile" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["SupportedSellerProfile" => $v];
+            }, $value));
         }
     }
 
@@ -125,7 +127,9 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfile');
         if (null !== $value) {
-            $this->setSupportedSellerProfile(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue($v);}, $value));
+            $this->setSupportedSellerProfile(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

@@ -329,7 +329,9 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value && [] !== $this->getExternalPictureURL()) {
-            $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ExternalPictureURL" => $v];
+            }, $value));
         }
     }
 

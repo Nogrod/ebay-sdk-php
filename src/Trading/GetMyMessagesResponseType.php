@@ -141,7 +141,9 @@ class GetMyMessagesResponseType extends AbstractResponseType
         }
         $value = $this->getMessages();
         if (null !== $value && [] !== $this->getMessages()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {return ["Message" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {
+                return ["Message" => $v];
+            }, $value));
         }
     }
 
@@ -166,7 +168,9 @@ class GetMyMessagesResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages');
         if (null !== $value) {
-            $this->setMessages(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Message'));}, $value));
+            $this->setMessages(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Message'));
+            }, $value));
         }
     }
 }

@@ -448,7 +448,9 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getVariations();
         if (null !== $value && [] !== $this->getVariations()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variations", array_map(function ($v) {return ["Variation" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variations", array_map(function ($v) {
+                return ["Variation" => $v];
+            }, $value));
         }
     }
 
@@ -492,7 +494,9 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variations');
         if (null !== $value) {
-            $this->setVariations(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MerchantDataVariationType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Variation'));}, $value));
+            $this->setVariations(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MerchantDataVariationType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Variation'));
+            }, $value));
         }
     }
 }

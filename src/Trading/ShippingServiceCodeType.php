@@ -1169,6 +1169,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_StandardDelivery' value.
      *
      * Standard Delivery
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__STANDARD_DELIVERY = 'CA_StandardDelivery';
 
@@ -1176,6 +1181,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_ExpeditedDelivery' value.
      *
      * Expedited delivery
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__EXPEDITED_DELIVERY = 'CA_ExpeditedDelivery';
 
@@ -1183,6 +1193,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostLettermail' value.
      *
      * Canada Post Lettermail
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_LETTERMAIL = 'CA_PostLettermail';
 
@@ -1190,6 +1205,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostRegularParcel' value.
      *
      * Canada Post Regular Parcel
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_REGULAR_PARCEL = 'CA_PostRegularParcel';
 
@@ -1197,6 +1217,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostExpeditedParcel' value.
      *
      * Canada Post Expedited Parcel
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_EXPEDITED_PARCEL = 'CA_PostExpeditedParcel';
 
@@ -1204,6 +1229,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostXpresspost' value.
      *
      * Canada Post Xpresspost - International
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_XPRESSPOST = 'CA_PostXpresspost';
 
@@ -1211,6 +1241,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostPriorityCourier' value.
      *
      * Canada Post Priority Courier
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_PRIORITY_COURIER = 'CA_PostPriorityCourier';
 
@@ -1232,6 +1267,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_StandardInternational' value.
      *
      * Standard International Flat Rate Shipping
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__STANDARD_INTERNATIONAL = 'CA_StandardInternational';
 
@@ -1239,6 +1279,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_ExpeditedInternational' value.
      *
      * Expedited International Flat Rate Shipping
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__EXPEDITED_INTERNATIONAL = 'CA_ExpeditedInternational';
 
@@ -1246,6 +1291,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_OtherInternational' value.
      *
      * Other International Shipping (see description)
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__OTHER_INTERNATIONAL = 'CA_OtherInternational';
 
@@ -1253,6 +1303,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostExpeditedParcelUSA' value.
      *
      * Canada Post Expedited Parcel - USA
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_EXPEDITED_PARCEL_USA = 'CA_PostExpeditedParcelUSA';
 
@@ -1260,6 +1315,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostSmallPacketsUSA' value.
      *
      * Canada Post Small Packets - USA
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_SMALL_PACKETS_USA = 'CA_PostSmallPacketsUSA';
 
@@ -1267,6 +1327,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostXpresspostUSA' value.
      *
      * Canada Post Xpresspost - USA
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_XPRESSPOST_USA = 'CA_PostXpresspostUSA';
 
@@ -1274,6 +1339,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostXpresspostInternational' value.
      *
      * Canada Post Xpresspost - International
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_XPRESSPOST_INTERNATIONAL = 'CA_PostXpresspostInternational';
 
@@ -1281,6 +1351,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostInternationalParcelSurface' value.
      *
      * Canada Post International Parcel - Surface
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_INTERNATIONAL_PARCEL_SURFACE = 'CA_PostInternationalParcelSurface';
 
@@ -1288,6 +1363,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostInternationalParcelAir' value.
      *
      * Canada Post International Parcel - Air
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_INTERNATIONAL_PARCEL_AIR = 'CA_PostInternationalParcelAir';
 
@@ -1295,6 +1375,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_SmallPacketsInternational' value.
      *
      * Small Packets - International
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__SMALL_PACKETS_INTERNATIONAL = 'CA_SmallPacketsInternational';
 
@@ -1302,6 +1387,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PurolatorInternational' value.
      *
      * Purolator International
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__PUROLATOR_INTERNATIONAL = 'CA_PurolatorInternational';
 
@@ -1309,6 +1399,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostSmallPacketsUSAGround' value.
      *
      * Canada Post Small Packets - USA - Ground
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_SMALL_PACKETS_USAGROUND = 'CA_PostSmallPacketsUSAGround';
 
@@ -1316,6 +1411,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostSmallPacketsUSAAir' value.
      *
      * Canada Post Small Packets - USA - Air
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_SMALL_PACKETS_USAAIR = 'CA_PostSmallPacketsUSAAir';
 
@@ -1323,6 +1423,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_SmallPacketsInternationalGround' value.
      *
      * Small Packets - International - Ground
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__SMALL_PACKETS_INTERNATIONAL_GROUND = 'CA_SmallPacketsInternationalGround';
 
@@ -1330,6 +1435,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_SmallPacketsInternationalAir' value.
      *
      * Small Packets - International - Air
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__SMALL_PACKETS_INTERNATIONAL_AIR = 'CA_SmallPacketsInternationalAir';
 
@@ -1337,6 +1447,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostUSALetterPost' value.
      *
      * Canada Post USA Letter-post
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_USALETTER_POST = 'CA_PostUSALetterPost';
 
@@ -1344,6 +1459,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_PostInternationalLetterPost' value.
      *
      * Canada Post International Letter-post
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__POST_INTERNATIONAL_LETTER_POST = 'CA_PostInternationalLetterPost';
 
@@ -1358,6 +1478,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSExpressCanada' value.
      *
      * UPS Express Canada
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSEXPRESS_CANADA = 'CA_UPSExpressCanada';
 
@@ -1365,6 +1490,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSExpressSaverCanada' value.
      *
      * UPS Express Saver Canada
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSEXPRESS_SAVER_CANADA = 'CA_UPSExpressSaverCanada';
 
@@ -1372,6 +1502,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSExpeditedCanada' value.
      *
      * UPS Expedited Canada
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSEXPEDITED_CANADA = 'CA_UPSExpeditedCanada';
 
@@ -1379,6 +1514,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSStandardCanada' value.
      *
      * UPS Standard Canada
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSSTANDARD_CANADA = 'CA_UPSStandardCanada';
 
@@ -1386,6 +1526,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSExpressUnitedStates' value.
      *
      * UPS Express United States
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSEXPRESS_UNITED_STATES = 'CA_UPSExpressUnitedStates';
 
@@ -1393,6 +1538,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSExpeditedUnitedStates' value.
      *
      * UPS Expedited United States
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSEXPEDITED_UNITED_STATES = 'CA_UPSExpeditedUnitedStates';
 
@@ -1400,6 +1550,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPS3DaySelectUnitedStates' value.
      *
      * UPS 3 Day Select United States
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPS_3_DAY_SELECT_UNITED_STATES = 'CA_UPS3DaySelectUnitedStates';
 
@@ -1407,6 +1562,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSStandardUnitedStates' value.
      *
      * UPS Standard United States
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSSTANDARD_UNITED_STATES = 'CA_UPSStandardUnitedStates';
 
@@ -1414,6 +1574,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSWorldWideExpress' value.
      *
      * UPS Worldwide Express
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSWORLD_WIDE_EXPRESS = 'CA_UPSWorldWideExpress';
 
@@ -1421,6 +1586,11 @@ class ShippingServiceCodeType
      * Constant for 'CA_UPSWorldWideExpedited' value.
      *
      * UPS Worldwide Expedited
+     *  <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong> This shipping service is valid for both the English and
+     * French versions of the eBay Canada Marketplace.
+     *  </span>
      */
     public const VAL_CA__UPSWORLD_WIDE_EXPEDITED = 'CA_UPSWorldWideExpedited';
 
@@ -3893,238 +4063,476 @@ class ShippingServiceCodeType
     /**
      * Constant for 'CAFR_StandardDelivery' value.
      *
-     * Normes de livraison postale
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_StandardDelivery</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Normes de livraison postale
      */
     public const VAL_CAFR__STANDARD_DELIVERY = 'CAFR_StandardDelivery';
 
     /**
      * Constant for 'CAFR_ExpeditedDelivery' value.
      *
-     * Expedition acceleree
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_ExpeditedDelivery</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Expedition acceleree
      */
     public const VAL_CAFR__EXPEDITED_DELIVERY = 'CAFR_ExpeditedDelivery';
 
     /**
      * Constant for 'CAFR_PostLettermail' value.
      *
-     * Postes Canada, Poste-lettres
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostLettermail</code> should be used instead, as this shipping service
+     * value is valid for both the English and French versions of the eBay Canada
+     * Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Poste-lettres
      */
     public const VAL_CAFR__POST_LETTERMAIL = 'CAFR_PostLettermail';
 
     /**
      * Constant for 'CAFR_PostRegularParcel' value.
      *
-     * Postes Canada, Colis standard
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostRegularParcel</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Colis standard
      */
     public const VAL_CAFR__POST_REGULAR_PARCEL = 'CAFR_PostRegularParcel';
 
     /**
      * Constant for 'CAFR_PostExpeditedParcel' value.
      *
-     * Postes Canada, Colis acceleres
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostExpeditedParcel</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Colis acceleres
      */
     public const VAL_CAFR__POST_EXPEDITED_PARCEL = 'CAFR_PostExpeditedParcel';
 
     /**
      * Constant for 'CAFR_PostXpresspost' value.
      *
-     * Postes Canada, Xpresspost
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostXpresspost</code> should be used instead, as this shipping service
+     * value is valid for both the English and French versions of the eBay Canada
+     * Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Xpresspost
      */
     public const VAL_CAFR__POST_XPRESSPOST = 'CAFR_PostXpresspost';
 
     /**
      * Constant for 'CAFR_PostPriorityCourier' value.
      *
-     * Postes Canada, Messageries prioritaires
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostPriorityCourier</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Messageries prioritaires
      */
     public const VAL_CAFR__POST_PRIORITY_COURIER = 'CAFR_PostPriorityCourier';
 
     /**
      * Constant for 'CAFR_StandardInternational' value.
      *
-     * Expedition standard - International, tarif fixe
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_StandardInternational</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Expedition standard - International, tarif fixe
      */
     public const VAL_CAFR__STANDARD_INTERNATIONAL = 'CAFR_StandardInternational';
 
     /**
      * Constant for 'CAFR_ExpeditedInternational' value.
      *
-     * Expedition acceleree - International, tarif fixe
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_ExpeditedInternational</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Expedition acceleree - International, tarif fixe
      */
     public const VAL_CAFR__EXPEDITED_INTERNATIONAL = 'CAFR_ExpeditedInternational';
 
     /**
      * Constant for 'CAFR_OtherInternational' value.
      *
-     * Autres services d'expedition internationale (voir description)
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_OtherInternational</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Autres services d'expedition internationale (voir description)
      */
     public const VAL_CAFR__OTHER_INTERNATIONAL = 'CAFR_OtherInternational';
 
     /**
      * Constant for 'CAFR_PostExpeditedParcelUSA' value.
      *
-     * Postes Canada, Colis acceleres - E.U.
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostExpeditedParcelUSA</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Colis acceleres - E.U.
      */
     public const VAL_CAFR__POST_EXPEDITED_PARCEL_USA = 'CAFR_PostExpeditedParcelUSA';
 
     /**
      * Constant for 'CAFR_PostSmallPacketsUSA' value.
      *
-     * Postes Canada, Petits paquets - E.U.
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostSmallPacketsUSA</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Petits paquets - E.U.
      */
     public const VAL_CAFR__POST_SMALL_PACKETS_USA = 'CAFR_PostSmallPacketsUSA';
 
     /**
      * Constant for 'CAFR_PostXpresspostUSA' value.
      *
-     * Postes Canada, Xpresspost - E.U.
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostXpresspostUSA</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Xpresspost - E.U.
      */
     public const VAL_CAFR__POST_XPRESSPOST_USA = 'CAFR_PostXpresspostUSA';
 
     /**
      * Constant for 'CAFR_PostXpresspostInternational' value.
      *
-     * Postes Canada, Xpresspost - International
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostXpresspostInternational</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Xpresspost - International
      */
     public const VAL_CAFR__POST_XPRESSPOST_INTERNATIONAL = 'CAFR_PostXpresspostInternational';
 
     /**
      * Constant for 'CAFR_PostInternationalParcelSurface' value.
      *
-     * Postes Canada, Colis international de surface
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostInternationalParcelSurface</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Colis international de surface
      */
     public const VAL_CAFR__POST_INTERNATIONAL_PARCEL_SURFACE = 'CAFR_PostInternationalParcelSurface';
 
     /**
      * Constant for 'CAFR_PostInternationalParcelAir' value.
      *
-     * Postes Canada, Colis-avion - International
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostInternationalParcelAir</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Colis-avion - International
      */
     public const VAL_CAFR__POST_INTERNATIONAL_PARCEL_AIR = 'CAFR_PostInternationalParcelAir';
 
     /**
      * Constant for 'CAFR_SmallPacketsInternational' value.
      *
-     * Petits paquets - International
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_SmallPacketsInternational</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Petits paquets - International
      */
     public const VAL_CAFR__SMALL_PACKETS_INTERNATIONAL = 'CAFR_SmallPacketsInternational';
 
     /**
      * Constant for 'CAFR_PurolatorInternational' value.
      *
-     * Purolator International
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PurolatorInternational</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Purolator International
      */
     public const VAL_CAFR__PUROLATOR_INTERNATIONAL = 'CAFR_PurolatorInternational';
 
     /**
      * Constant for 'CAFR_PostSmallPacketsUSAGround' value.
      *
-     * Postes Canada, Petits paquets - E.U. service de surface
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostSmallPacketsUSAGround</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Petits paquets - E.U. service de surface
      */
     public const VAL_CAFR__POST_SMALL_PACKETS_USAGROUND = 'CAFR_PostSmallPacketsUSAGround';
 
     /**
      * Constant for 'CAFR_PostSmallPacketsUSAAir' value.
      *
-     * Postes Canada, Petits paquets - E.U. par avion
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostSmallPacketsUSAAir</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Petits paquets - E.U. par avion
      */
     public const VAL_CAFR__POST_SMALL_PACKETS_USAAIR = 'CAFR_PostSmallPacketsUSAAir';
 
     /**
      * Constant for 'CAFR_SmallPacketsInternationalGround' value.
      *
-     * Petits paquets - International, courrier-surface
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_SmallPacketsInternationalGround</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Petits paquets - International, courrier-surface
      */
     public const VAL_CAFR__SMALL_PACKETS_INTERNATIONAL_GROUND = 'CAFR_SmallPacketsInternationalGround';
 
     /**
      * Constant for 'CAFR_SmallPacketsInternationalAir' value.
      *
-     * Petits paquets - International, courrier-avion
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_SmallPacketsInternationalAir</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Petits paquets - International, courrier-avion
      */
     public const VAL_CAFR__SMALL_PACKETS_INTERNATIONAL_AIR = 'CAFR_SmallPacketsInternationalAir';
 
     /**
      * Constant for 'CAFR_PostUSALetterPost' value.
      *
-     * Postes Canada, Poste aux lettres - E.U.
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostUSALetterPost</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Poste aux lettres - E.U.
      */
     public const VAL_CAFR__POST_USALETTER_POST = 'CAFR_PostUSALetterPost';
 
     /**
      * Constant for 'CAFR_PostInternationalLetterPost' value.
      *
-     * Postes Canada, Poste aux lettres - International
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_PostInternationalLetterPost</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  Postes Canada, Poste aux lettres - International
      */
     public const VAL_CAFR__POST_INTERNATIONAL_LETTER_POST = 'CAFR_PostInternationalLetterPost';
 
     /**
      * Constant for 'CAFR_UPSExpressCanada' value.
      *
-     * UPS Express Saver
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSExpressCanada</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Express Saver
      */
     public const VAL_CAFR__UPSEXPRESS_CANADA = 'CAFR_UPSExpressCanada';
 
     /**
      * Constant for 'CAFR_UPSExpressSaverCanada' value.
      *
-     * UPS Express Saver Canada
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSExpressSaverCanada</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Express Saver Canada
      */
     public const VAL_CAFR__UPSEXPRESS_SAVER_CANADA = 'CAFR_UPSExpressSaverCanada';
 
     /**
      * Constant for 'CAFR_UPSExpeditedCanada' value.
      *
-     * UPS Expedited Canada
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSExpeditedCanada</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Expedited Canada
      */
     public const VAL_CAFR__UPSEXPEDITED_CANADA = 'CAFR_UPSExpeditedCanada';
 
     /**
      * Constant for 'CAFR_UPSStandardCanada' value.
      *
-     * UPS Standard au Canada
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSStandardCanada</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Standard au Canada
      */
     public const VAL_CAFR__UPSSTANDARD_CANADA = 'CAFR_UPSStandardCanada';
 
     /**
      * Constant for 'CAFR_UPSExpressUnitedStates' value.
      *
-     * UPS Express Etats-Unis
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSExpressUnitedStates</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Express Etats-Unis
      */
     public const VAL_CAFR__UPSEXPRESS_UNITED_STATES = 'CAFR_UPSExpressUnitedStates';
 
     /**
      * Constant for 'CAFR_UPSExpeditedUnitedStates' value.
      *
-     * UPS Expedited Etats-Unis
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSExpeditedUnitedStates</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Expedited Etats-Unis
      */
     public const VAL_CAFR__UPSEXPEDITED_UNITED_STATES = 'CAFR_UPSExpeditedUnitedStates';
 
     /**
      * Constant for 'CAFR_UPS3DaySelectUnitedStates' value.
      *
-     * 3Day Select aux Etats-Unis
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPS3DaySelectUnitedStates</code> should be used instead, as this
+     * shipping service value is valid for both the English and French versions of the
+     * eBay Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  3Day Select aux Etats-Unis
      */
     public const VAL_CAFR__UPS_3_DAY_SELECT_UNITED_STATES = 'CAFR_UPS3DaySelectUnitedStates';
 
     /**
      * Constant for 'CAFR_UPSStandardUnitedStates' value.
      *
-     * UPS Standard aux Etats-Unis
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSStandardUnitedStates</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Standard aux Etats-Unis
      */
     public const VAL_CAFR__UPSSTANDARD_UNITED_STATES = 'CAFR_UPSStandardUnitedStates';
 
     /**
      * Constant for 'CAFR_UPSWorldWideExpress' value.
      *
-     * UPS Worlwide Express
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSWorldWideExpress</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Worlwide Express
      */
     public const VAL_CAFR__UPSWORLD_WIDE_EXPRESS = 'CAFR_UPSWorldWideExpress';
 
     /**
      * Constant for 'CAFR_UPSWorldWideExpedited' value.
      *
-     * UPS Worlwide Expedited
+     * <span class="tablenote">
+     *  <strong>Note:</strong> This value is not supported.
+     * <code>CA_UPSWorldWideExpedited</code> should be used instead, as this shipping
+     * service value is valid for both the English and French versions of the eBay
+     * Canada Marketplace.
+     *  </span>
+     *  <br/>
+     *  UPS Worldwide Expedited
      */
     public const VAL_CAFR__UPSWORLD_WIDE_EXPEDITED = 'CAFR_UPSWorldWideExpedited';
 

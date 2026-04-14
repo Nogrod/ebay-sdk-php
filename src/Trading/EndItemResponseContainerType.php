@@ -268,7 +268,9 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = $this->getErrors();
         if (null !== $value && [] !== $this->getErrors()) {
-            $writer->write(array_map(function ($v) {return ["Errors" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["Errors" => $v];
+            }, $value));
         }
     }
 
@@ -296,7 +298,9 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
         if (null !== $value) {
-            $this->setErrors(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);}, $value));
+            $this->setErrors(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

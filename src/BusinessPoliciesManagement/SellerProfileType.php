@@ -393,7 +393,9 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getCategoryGroups();
         if (null !== $value && [] !== $this->getCategoryGroups()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups", array_map(function ($v) {return ["categoryGroup" => $v];}, $value));
+            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups", array_map(function ($v) {
+                return ["categoryGroup" => $v];
+            }, $value));
         }
     }
 
@@ -445,7 +447,9 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups');
         if (null !== $value) {
-            $this->setCategoryGroups(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup'));}, $value));
+            $this->setCategoryGroups(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup'));
+            }, $value));
         }
     }
 }

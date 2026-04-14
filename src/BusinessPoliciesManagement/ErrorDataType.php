@@ -369,7 +369,9 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = $this->getParameter();
         if (null !== $value && [] !== $this->getParameter()) {
-            $writer->write(array_map(function ($v) {return ["parameter" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["parameter" => $v];
+            }, $value));
         }
     }
 
@@ -417,7 +419,9 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
         }
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}parameter');
         if (null !== $value) {
-            $this->setParameter(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType::fromKeyValue($v);}, $value));
+            $this->setParameter(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

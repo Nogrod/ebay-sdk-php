@@ -7,14 +7,14 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing EBayPLUSPreferenceType
  *
- * Contains information about a country where a specified seller is eligible to offer eBay Plus on listings, as well as the seller's opt-in status and listing preference for that country.
+ * Contains information about a country where a specified seller is eligible to offer eBay Plus on listings for that country.
  *  <br/><br/>
- *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.
+ *  eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.
  *  <br/><br/>
  *  <span class="tablenote">
  *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. In Australia, the seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
  *  </span>
- *  For more details about eBay Plus, see <a href="/api-docs/user-guides/static/trading-user-guide/ebay-plus.html">eBay Plus</a>.
+ *  For more details about eBay Plus, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html">eBay Plus</a>.
  * XSD Type: EBayPLUSPreferenceType
  */
 class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -31,14 +31,15 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     private $country = null;
 
     /**
-     * A value of <code>true</code> indicates that the seller has opted in to eBay Plus for listings in the specified country.
+     * <span class="tablenote"><b>Note:</b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
      *
      * @var bool $optInStatus
      */
     private $optInStatus = null;
 
     /**
-     * A value of <code>true</code> indicates that if <strong>OptInStatus</strong> is also <code>true</code>, the seller will offer eBay Plus by default for new listings in the specified country. If this field's value is <code>false</code> (and <strong>OptInStatus</strong> is <code>true</code>), the seller will offer eBay Plus on a listing by listing basis in the specified country.
+     * <span class="tablenote"><b>Note:</b> <b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
      *
      * @var bool $listingPreference
      */
@@ -81,7 +82,7 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as optInStatus
      *
-     * A value of <code>true</code> indicates that the seller has opted in to eBay Plus for listings in the specified country.
+     * <span class="tablenote"><b>Note:</b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
      *
      * @return bool
      */
@@ -93,7 +94,7 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new optInStatus
      *
-     * A value of <code>true</code> indicates that the seller has opted in to eBay Plus for listings in the specified country.
+     * <span class="tablenote"><b>Note:</b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
      *
      * @param bool $optInStatus
      * @return self
@@ -107,7 +108,8 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Gets as listingPreference
      *
-     * A value of <code>true</code> indicates that if <strong>OptInStatus</strong> is also <code>true</code>, the seller will offer eBay Plus by default for new listings in the specified country. If this field's value is <code>false</code> (and <strong>OptInStatus</strong> is <code>true</code>), the seller will offer eBay Plus on a listing by listing basis in the specified country.
+     * <span class="tablenote"><b>Note:</b> <b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
      *
      * @return bool
      */
@@ -119,7 +121,8 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     /**
      * Sets a new listingPreference
      *
-     * A value of <code>true</code> indicates that if <strong>OptInStatus</strong> is also <code>true</code>, the seller will offer eBay Plus by default for new listings in the specified country. If this field's value is <code>false</code> (and <strong>OptInStatus</strong> is <code>true</code>), the seller will offer eBay Plus on a listing by listing basis in the specified country.
+     * <span class="tablenote"><b>Note:</b> <b> This boolean field is no longer in use and will be ignored. eBay determines which listings qualify for eBay Plus based on whether the buyer has an active eBay Plus subscription and whether the listing meets the program's requirements. See <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html" target="_blank">eBay Plus</a> for listing requirements.</span>
+     *  <br/>
      *
      * @param bool $listingPreference
      * @return self

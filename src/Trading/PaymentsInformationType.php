@@ -21,12 +21,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     /**
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refunds
      */
@@ -102,12 +96,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * Adds as refund
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund
@@ -122,12 +110,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * isset refunds
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @param int|string $index
      * @return bool
@@ -141,12 +123,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * unset refunds
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @param int|string $index
      * @return void
@@ -160,12 +136,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * Gets as refunds
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[]
      */
@@ -178,12 +148,6 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      * Sets a new refunds
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
-     *  <br/><br/>
-     *  This container is also returned if the buyer has returned an In-Store Pickup item to the merchant at a physical store, and the merchant has notified eBay through the <strong>ORDER.RETURNED</strong> notification of the Inbound Notifications API.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
-     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refunds
      * @return self
@@ -199,11 +163,15 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayments();
         if (null !== $value && [] !== $this->getPayments()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {return ["Payment" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
+                return ["Payment" => $v];
+            }, $value));
         }
         $value = $this->getRefunds();
         if (null !== $value && [] !== $this->getRefunds()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {return ["Refund" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {
+                return ["Refund" => $v];
+            }, $value));
         }
     }
 
@@ -223,11 +191,15 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments');
         if (null !== $value) {
-            $this->setPayments(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Payment'));}, $value));
+            $this->setPayments(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Payment'));
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refunds');
         if (null !== $value) {
-            $this->setRefunds(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Refund'));}, $value));
+            $this->setRefunds(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Refund'));
+            }, $value));
         }
     }
 }

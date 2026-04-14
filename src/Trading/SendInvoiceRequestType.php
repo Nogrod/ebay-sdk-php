@@ -22,7 +22,7 @@ class SendInvoiceRequestType extends AbstractRequestType
     /**
      * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *  <br>
      *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
@@ -171,7 +171,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *
      * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *  <br>
      *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
@@ -188,7 +188,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *
      * Unique identifier for an eBay sales transaction. This identifier is created once there is a commitment from a buyer to purchase an item. Since an auction listing can only have one sales transaction during the duration of the listing, the <b>TransactionID</b> value for auction listings is always <code>0</code>.
      *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> Beginning in July 2024, non-zero transaction IDs will start being returned for auction listings. If necessary, update code to handle non-zero transaction IDs for auction transactions before this time.
+     *  <span class="tablenote"><b>Note: </b> Historically, <b>TransactionID</b> values have been '0' for auction listings, and some developers may have built logic around this. However, non-zero <b>TransactionID</b> values for auction listings started being used for some eBay marketplaces beginning in July 2024, and all eBay marketplaces are expected to start using non-zero <b>TransactionID</b> values for auction listings in the near future. If necessary, developers should update code to handle non-zero transaction IDs for auction transactions.
      *  </span>
      *  <br>
      *  Unless <b>OrderID</b> or <b>OrderLineItemID</b> is provided in the request, the <b>TransactionID</b> value is required and must be paired with the corresponding <b>ItemID</b> value to identify an order line item. For a multiple line item order, <b>OrderID</b> should be used.
@@ -683,11 +683,15 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = $this->getInternationalShippingServiceOptions();
         if (null !== $value && [] !== $this->getInternationalShippingServiceOptions()) {
-            $writer->write(array_map(function ($v) {return ["InternationalShippingServiceOptions" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["InternationalShippingServiceOptions" => $v];
+            }, $value));
         }
         $value = $this->getShippingServiceOptions();
         if (null !== $value && [] !== $this->getShippingServiceOptions()) {
-            $writer->write(array_map(function ($v) {return ["ShippingServiceOptions" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ShippingServiceOptions" => $v];
+            }, $value));
         }
         $value = $this->getSalesTax();
         if (null !== $value) {
@@ -695,7 +699,9 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = $this->getPaymentMethods();
         if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {return ["PaymentMethods" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PaymentMethods" => $v];
+            }, $value));
         }
         $value = $this->getCheckoutInstructions();
         if (null !== $value) {
@@ -749,11 +755,15 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOptions');
         if (null !== $value) {
-            $this->setInternationalShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);}, $value));
+            $this->setInternationalShippingServiceOptions(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions');
         if (null !== $value) {
-            $this->setShippingServiceOptions(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);}, $value));
+            $this->setShippingServiceOptions(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
         if (null !== $value) {

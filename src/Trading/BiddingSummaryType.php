@@ -350,7 +350,9 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getItemBidDetails();
         if (null !== $value && [] !== $this->getItemBidDetails()) {
-            $writer->write(array_map(function ($v) {return ["ItemBidDetails" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ItemBidDetails" => $v];
+            }, $value));
         }
     }
 
@@ -394,7 +396,9 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBidDetails');
         if (null !== $value) {
-            $this->setItemBidDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\ItemBidDetailsType::fromKeyValue($v);}, $value));
+            $this->setItemBidDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\ItemBidDetailsType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

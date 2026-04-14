@@ -1365,28 +1365,6 @@ Nogrod\eBaySDK\Trading\ItemType:
                 getter: getDigitalGoodInfo
                 setter: setDigitalGoodInfo
             type: Nogrod\eBaySDK\Trading\DigitalGoodInfoType
-        eBayPlus:
-            expose: true
-            access_type: public_method
-            serialized_name: eBayPlus
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEBayPlus
-                setter: setEBayPlus
-            type: bool
-        eBayPlusEligible:
-            expose: true
-            access_type: public_method
-            serialized_name: eBayPlusEligible
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getEBayPlusEligible
-                setter: setEBayPlusEligible
-            type: bool
         eMailDeliveryAvailable:
             expose: true
             access_type: public_method

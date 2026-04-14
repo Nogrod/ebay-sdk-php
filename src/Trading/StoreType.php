@@ -416,7 +416,9 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = $this->getCustomCategories();
         if (null !== $value && [] !== $this->getCustomCategories()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {return ["CustomCategory" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {
+                return ["CustomCategory" => $v];
+            }, $value));
         }
         $value = $this->getMerchDisplay();
         if (null !== $value) {
@@ -464,7 +466,9 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories');
         if (null !== $value) {
-            $this->setCustomCategories(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));}, $value));
+            $this->setCustomCategories(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
         if (null !== $value) {

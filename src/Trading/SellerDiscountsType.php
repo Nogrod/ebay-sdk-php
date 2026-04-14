@@ -211,7 +211,9 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getSellerDiscount();
         if (null !== $value && [] !== $this->getSellerDiscount()) {
-            $writer->write(array_map(function ($v) {return ["SellerDiscount" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["SellerDiscount" => $v];
+            }, $value));
         }
     }
 
@@ -243,7 +245,9 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerDiscount');
         if (null !== $value) {
-            $this->setSellerDiscount(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\SellerDiscountType::fromKeyValue($v);}, $value));
+            $this->setSellerDiscount(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\SellerDiscountType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

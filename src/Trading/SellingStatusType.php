@@ -1096,7 +1096,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getSuggestedBidValues();
         if (null !== $value && [] !== $this->getSuggestedBidValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {return ["BidValue" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
+                return ["BidValue" => $v];
+            }, $value));
         }
         $value = $this->getListingOnHold();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1189,7 +1191,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues');
         if (null !== $value) {
-            $this->setSuggestedBidValues(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BidValue'));}, $value));
+            $this->setSuggestedBidValues(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BidValue'));
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');
         if (null !== $value) {

@@ -300,11 +300,15 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         }
         $value = $this->getNotificationDetailsArray();
         if (null !== $value && [] !== $this->getNotificationDetailsArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {return ["NotificationDetails" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {
+                return ["NotificationDetails" => $v];
+            }, $value));
         }
         $value = $this->getMarkUpMarkDownHistory();
         if (null !== $value && [] !== $this->getMarkUpMarkDownHistory()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {return ["MarkUpMarkDownEvent" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {
+                return ["MarkUpMarkDownEvent" => $v];
+            }, $value));
         }
         $value = $this->getNotificationStatistics();
         if (null !== $value) {
@@ -337,11 +341,15 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray');
         if (null !== $value) {
-            $this->setNotificationDetailsArray(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NotificationDetails'));}, $value));
+            $this->setNotificationDetailsArray(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NotificationDetails'));
+            }, $value));
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory');
         if (null !== $value) {
-            $this->setMarkUpMarkDownHistory(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent'));}, $value));
+            $this->setMarkUpMarkDownHistory(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent'));
+            }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationStatistics');
         if (null !== $value) {

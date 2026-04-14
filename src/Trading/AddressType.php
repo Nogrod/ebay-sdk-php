@@ -1282,7 +1282,9 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         }
         $value = $this->getAddressAttribute();
         if (null !== $value && [] !== $this->getAddressAttribute()) {
-            $writer->write(array_map(function ($v) {return ["AddressAttribute" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["AddressAttribute" => $v];
+            }, $value));
         }
     }
 
@@ -1410,7 +1412,9 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddressAttribute');
         if (null !== $value) {
-            $this->setAddressAttribute(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\AddressAttributeType::fromKeyValue($v);}, $value));
+            $this->setAddressAttribute(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\AddressAttributeType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

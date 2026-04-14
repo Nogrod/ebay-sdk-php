@@ -104,7 +104,9 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBestOffer();
         if (null !== $value && [] !== $this->getBestOffer()) {
-            $writer->write(array_map(function ($v) {return ["BestOffer" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["BestOffer" => $v];
+            }, $value));
         }
     }
 
@@ -124,7 +126,9 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
         if (null !== $value) {
-            $this->setBestOffer(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);}, $value));
+            $this->setBestOffer(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

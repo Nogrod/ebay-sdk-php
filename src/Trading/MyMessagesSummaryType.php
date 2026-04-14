@@ -272,7 +272,9 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFolderSummary();
         if (null !== $value && [] !== $this->getFolderSummary()) {
-            $writer->write(array_map(function ($v) {return ["FolderSummary" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["FolderSummary" => $v];
+            }, $value));
         }
         $value = $this->getNewMessageCount();
         if (null !== $value) {
@@ -312,7 +314,9 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary');
         if (null !== $value) {
-            $this->setFolderSummary(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);}, $value));
+            $this->setFolderSummary(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);
+            }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
         if (null !== $value) {

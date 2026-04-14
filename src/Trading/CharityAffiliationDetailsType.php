@@ -92,7 +92,9 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCharityAffiliationDetail();
         if (null !== $value && [] !== $this->getCharityAffiliationDetail()) {
-            $writer->write(array_map(function ($v) {return ["CharityAffiliationDetail" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["CharityAffiliationDetail" => $v];
+            }, $value));
         }
     }
 
@@ -112,7 +114,9 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail');
         if (null !== $value) {
-            $this->setCharityAffiliationDetail(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);}, $value));
+            $this->setCharityAffiliationDetail(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);
+            }, $value));
         }
     }
 }

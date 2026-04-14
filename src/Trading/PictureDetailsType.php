@@ -698,7 +698,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getPictureURL();
         if (null !== $value && [] !== $this->getPictureURL()) {
-            $writer->write(array_map(function ($v) {return ["PictureURL" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PictureURL" => $v];
+            }, $value));
         }
         $value = $this->getPictureSource();
         if (null !== $value) {
@@ -714,11 +716,15 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value && [] !== $this->getExternalPictureURL()) {
-            $writer->write(array_map(function ($v) {return ["ExternalPictureURL" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["ExternalPictureURL" => $v];
+            }, $value));
         }
         $value = $this->getExtendedPictureDetails();
         if (null !== $value && [] !== $this->getExtendedPictureDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {return ["PictureURLs" => $v];}, $value));
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
+                return ["PictureURLs" => $v];
+            }, $value));
         }
     }
 
@@ -766,7 +772,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         }
         $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
         if (null !== $value) {
-            $this->setExtendedPictureDetails(array_map(function ($v) {return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));}, $value));
+            $this->setExtendedPictureDetails(array_map(function ($v) {
+                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));
+            }, $value));
         }
     }
 }

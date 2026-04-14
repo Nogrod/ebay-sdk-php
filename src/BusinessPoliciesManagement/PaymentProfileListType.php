@@ -93,7 +93,9 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getPaymentProfile();
         if (null !== $value && [] !== $this->getPaymentProfile()) {
-            $writer->write(array_map(function ($v) {return ["PaymentProfile" => $v];}, $value));
+            $writer->write(array_map(function ($v) {
+                return ["PaymentProfile" => $v];
+            }, $value));
         }
     }
 
@@ -113,7 +115,9 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile');
         if (null !== $value) {
-            $this->setPaymentProfile(array_map(function ($v) {return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue($v);}, $value));
+            $this->setPaymentProfile(array_map(function ($v) {
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue($v);
+            }, $value));
         }
     }
 }
