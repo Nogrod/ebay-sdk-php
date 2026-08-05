@@ -4,4 +4,4 @@ Nogrod\eBaySDK\Trading\SetNotificationPreferencesResponseType:
             exp: '"urn:ebay:apis:eBLBaseComponents"'
             serialized_name: xmlns
             xml_attribute: true
-    properties: {  }
+    properties: {}

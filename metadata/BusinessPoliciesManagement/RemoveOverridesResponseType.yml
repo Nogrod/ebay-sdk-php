@@ -4,4 +4,4 @@ Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesResponseType:
             exp: '"http://www.ebay.com/marketplace/selling/v1/services"'
             serialized_name: xmlns
             xml_attribute: true
-    properties: {  }
+    properties: {}

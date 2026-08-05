@@ -56,5 +56,10 @@ xcopy /y metadata\MerchantData\SetShipmentTrackingInfoRequestType.yml metadata\T
 xcopy /y metadata\MerchantData\SetShipmentTrackingInfoResponse.yml metadata\Trading\
 xcopy /y metadata\MerchantData\SetShipmentTrackingInfoResponseType.yml metadata\Trading\
 
+rem MerchantData declares elements Trading does not (BulkDataExchangeRequests,
+rem SetShipmentTrackingInfoRequest, OrderAck*, ...). Its generated class map is
+rem discarded below, so merge those entries into TradingClassMap first.
+php mergeclassmap.php
+
 rmdir /s /q src\MerchantData
 rmdir /s /q metadata\MerchantData
