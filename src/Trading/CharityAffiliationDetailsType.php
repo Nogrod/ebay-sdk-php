@@ -31,6 +31,9 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToCharityAffiliationDetail(\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType $charityAffiliationDetail)
     {
+        if (!is_array($this->charityAffiliationDetail)) {
+            throw new \LogicException('charityAffiliationDetail is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->charityAffiliationDetail[] = $charityAffiliationDetail;
         return $this;
     }
@@ -66,7 +69,7 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * A <b>CharityAffiliationDetail</b> container will be returned for each eBay for Charity organization that is associated with the seller's account.
      *
-     * @return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType>
      */
     public function getCharityAffiliationDetail()
     {
@@ -78,10 +81,10 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * A <b>CharityAffiliationDetail</b> container will be returned for each eBay for Charity organization that is associated with the seller's account.
      *
-     * @param \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType[] $charityAffiliationDetail
+     * @param iterable<\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType> $charityAffiliationDetail
      * @return self
      */
-    public function setCharityAffiliationDetail(array $charityAffiliationDetail)
+    public function setCharityAffiliationDetail(iterable $charityAffiliationDetail)
     {
         $this->charityAffiliationDetail = $charityAffiliationDetail;
         return $this;
@@ -91,10 +94,10 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCharityAffiliationDetail();
-        if (null !== $value && [] !== $this->getCharityAffiliationDetail()) {
-            $writer->write(array_map(function ($v) {
-                return ["CharityAffiliationDetail" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CharityAffiliationDetail" => $v]]);
+            }
         }
     }
 

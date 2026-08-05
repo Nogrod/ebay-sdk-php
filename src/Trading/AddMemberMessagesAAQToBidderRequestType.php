@@ -31,6 +31,9 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
      */
     public function addToAddMemberMessagesAAQToBidderRequestContainer(\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType $addMemberMessagesAAQToBidderRequestContainer)
     {
+        if (!is_array($this->addMemberMessagesAAQToBidderRequestContainer)) {
+            throw new \LogicException('addMemberMessagesAAQToBidderRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addMemberMessagesAAQToBidderRequestContainer[] = $addMemberMessagesAAQToBidderRequestContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
      *
      * An <b>AddMemberMessagesAAQToBidderRequestContainer</b> container is required for each message being sent to unique bidders/potential buyers. A seller can send up to 10 messages to unique bidders/potential buyers in one <b>AddMemberMessagesAAQToBidder</b> call.
      *
-     * @return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType>
      */
     public function getAddMemberMessagesAAQToBidderRequestContainer()
     {
@@ -78,10 +81,10 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
      *
      * An <b>AddMemberMessagesAAQToBidderRequestContainer</b> container is required for each message being sent to unique bidders/potential buyers. A seller can send up to 10 messages to unique bidders/potential buyers in one <b>AddMemberMessagesAAQToBidder</b> call.
      *
-     * @param \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType[] $addMemberMessagesAAQToBidderRequestContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType> $addMemberMessagesAAQToBidderRequestContainer
      * @return self
      */
-    public function setAddMemberMessagesAAQToBidderRequestContainer(array $addMemberMessagesAAQToBidderRequestContainer)
+    public function setAddMemberMessagesAAQToBidderRequestContainer(iterable $addMemberMessagesAAQToBidderRequestContainer)
     {
         $this->addMemberMessagesAAQToBidderRequestContainer = $addMemberMessagesAAQToBidderRequestContainer;
         return $this;
@@ -91,10 +94,10 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderRequestContainer();
-        if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderRequestContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddMemberMessagesAAQToBidderRequestContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddMemberMessagesAAQToBidderRequestContainer" => $v]]);
+            }
         }
     }
 

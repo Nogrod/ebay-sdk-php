@@ -38,6 +38,9 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToMaximumUnpaidItemStrikesCount($count)
     {
+        if (!is_array($this->maximumUnpaidItemStrikesCount)) {
+            throw new \LogicException('maximumUnpaidItemStrikesCount is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->maximumUnpaidItemStrikesCount[] = $count;
         return $this;
     }
@@ -73,7 +76,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * The number of the maximum unpaid item strikes. This is applicable only to sellers.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getMaximumUnpaidItemStrikesCount()
     {
@@ -85,10 +88,10 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * The number of the maximum unpaid item strikes. This is applicable only to sellers.
      *
-     * @param int[] $maximumUnpaidItemStrikesCount
+     * @param iterable<int> $maximumUnpaidItemStrikesCount
      * @return self
      */
-    public function setMaximumUnpaidItemStrikesCount(array $maximumUnpaidItemStrikesCount)
+    public function setMaximumUnpaidItemStrikesCount(iterable $maximumUnpaidItemStrikesCount)
     {
         $this->maximumUnpaidItemStrikesCount = $maximumUnpaidItemStrikesCount;
         return $this;
@@ -104,6 +107,9 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToMaximumUnpaidItemStrikesDuration(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType $maximumUnpaidItemStrikesDuration)
     {
+        if (!is_array($this->maximumUnpaidItemStrikesDuration)) {
+            throw new \LogicException('maximumUnpaidItemStrikesDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->maximumUnpaidItemStrikesDuration[] = $maximumUnpaidItemStrikesDuration;
         return $this;
     }
@@ -139,7 +145,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * Range of time used to determine maximum unpaid item count. This is applicable only to sellers.
      *
-     * @return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType>
      */
     public function getMaximumUnpaidItemStrikesDuration()
     {
@@ -151,10 +157,10 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * Range of time used to determine maximum unpaid item count. This is applicable only to sellers.
      *
-     * @param \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType[] $maximumUnpaidItemStrikesDuration
+     * @param iterable<\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType> $maximumUnpaidItemStrikesDuration
      * @return self
      */
-    public function setMaximumUnpaidItemStrikesDuration(array $maximumUnpaidItemStrikesDuration)
+    public function setMaximumUnpaidItemStrikesDuration(iterable $maximumUnpaidItemStrikesDuration)
     {
         $this->maximumUnpaidItemStrikesDuration = $maximumUnpaidItemStrikesDuration;
         return $this;
@@ -164,16 +170,19 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMaximumUnpaidItemStrikesCount();
-        if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesCount()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount", array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount", array_map(function ($v) {
+                    return ["Count" => $v];
+                }, $value));
+            }
         }
         $value = $this->getMaximumUnpaidItemStrikesDuration();
-        if (null !== $value && [] !== $this->getMaximumUnpaidItemStrikesDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["MaximumUnpaidItemStrikesDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MaximumUnpaidItemStrikesDuration" => $v]]);
+            }
         }
     }
 

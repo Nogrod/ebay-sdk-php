@@ -215,6 +215,9 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToPictureSetMember(\Nogrod\eBaySDK\Trading\PictureSetMemberType $pictureSetMember)
     {
+        if (!is_array($this->pictureSetMember)) {
+            throw new \LogicException('pictureSetMember is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictureSetMember[] = $pictureSetMember;
         return $this;
     }
@@ -250,7 +253,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * The URL and size information for each generated image.
      *
-     * @return \Nogrod\eBaySDK\Trading\PictureSetMemberType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PictureSetMemberType>
      */
     public function getPictureSetMember()
     {
@@ -262,10 +265,10 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * The URL and size information for each generated image.
      *
-     * @param \Nogrod\eBaySDK\Trading\PictureSetMemberType[] $pictureSetMember
+     * @param iterable<\Nogrod\eBaySDK\Trading\PictureSetMemberType> $pictureSetMember
      * @return self
      */
-    public function setPictureSetMember(array $pictureSetMember)
+    public function setPictureSetMember(iterable $pictureSetMember)
     {
         $this->pictureSetMember = $pictureSetMember;
         return $this;
@@ -355,10 +358,10 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BaseURL", $value);
         }
         $value = $this->getPictureSetMember();
-        if (null !== $value && [] !== $this->getPictureSetMember()) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureSetMember" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PictureSetMember" => $v]]);
+            }
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value) {

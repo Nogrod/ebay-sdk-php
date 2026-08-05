@@ -202,6 +202,9 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerTaxIdentifier(\Nogrod\eBaySDK\Trading\TaxIdentifierType $buyerTaxIdentifier)
     {
+        if (!is_array($this->buyerTaxIdentifier)) {
+            throw new \LogicException('buyerTaxIdentifier is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerTaxIdentifier[] = $buyerTaxIdentifier;
         return $this;
     }
@@ -255,7 +258,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> will be returned for each tax ID that is associated with the buyer's account.
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxIdentifierType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierType>
      */
     public function getBuyerTaxIdentifier()
     {
@@ -273,10 +276,10 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br/><br/>
      *  This container is only returned for Spanish or Italian sellers when the buyer was asked to provide tax identifier information during checkout. A <strong>BuyerTaxIdentifier</strong> will be returned for each tax ID that is associated with the buyer's account.
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxIdentifierType[] $buyerTaxIdentifier
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierType> $buyerTaxIdentifier
      * @return self
      */
-    public function setBuyerTaxIdentifier(array $buyerTaxIdentifier)
+    public function setBuyerTaxIdentifier(iterable $buyerTaxIdentifier)
     {
         $this->buyerTaxIdentifier = $buyerTaxIdentifier;
         return $this;
@@ -290,10 +293,10 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingAddress", $value);
         }
         $value = $this->getBuyerTaxIdentifier();
-        if (null !== $value && [] !== $this->getBuyerTaxIdentifier()) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerTaxIdentifier" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BuyerTaxIdentifier" => $v]]);
+            }
         }
     }
 

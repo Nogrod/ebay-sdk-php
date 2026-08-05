@@ -31,6 +31,9 @@ class EndItemsResponseType extends AbstractResponseType
      */
     public function addToEndItemResponseContainer(\Nogrod\eBaySDK\Trading\EndItemResponseContainerType $endItemResponseContainer)
     {
+        if (!is_array($this->endItemResponseContainer)) {
+            throw new \LogicException('endItemResponseContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->endItemResponseContainer[] = $endItemResponseContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class EndItemsResponseType extends AbstractResponseType
      *
      * Returns a response for an individually ended item. Mutiple containers will be listed if multiple items are ended.
      *
-     * @return \Nogrod\eBaySDK\Trading\EndItemResponseContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\EndItemResponseContainerType>
      */
     public function getEndItemResponseContainer()
     {
@@ -78,10 +81,10 @@ class EndItemsResponseType extends AbstractResponseType
      *
      * Returns a response for an individually ended item. Mutiple containers will be listed if multiple items are ended.
      *
-     * @param \Nogrod\eBaySDK\Trading\EndItemResponseContainerType[] $endItemResponseContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\EndItemResponseContainerType> $endItemResponseContainer
      * @return self
      */
-    public function setEndItemResponseContainer(array $endItemResponseContainer)
+    public function setEndItemResponseContainer(iterable $endItemResponseContainer)
     {
         $this->endItemResponseContainer = $endItemResponseContainer;
         return $this;
@@ -91,10 +94,10 @@ class EndItemsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getEndItemResponseContainer();
-        if (null !== $value && [] !== $this->getEndItemResponseContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemResponseContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["EndItemResponseContainer" => $v]]);
+            }
         }
     }
 

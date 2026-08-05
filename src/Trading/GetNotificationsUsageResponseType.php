@@ -122,6 +122,9 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      */
     public function addToNotificationDetailsArray(\Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails)
     {
+        if (!is_array($this->notificationDetailsArray)) {
+            throw new \LogicException('notificationDetailsArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->notificationDetailsArray[] = $notificationDetails;
         return $this;
     }
@@ -160,7 +163,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * List of notification objects representing the notifications sent to an
      *  application for the given time period.
      *
-     * @return \Nogrod\eBaySDK\Trading\NotificationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NotificationDetailsType>
      */
     public function getNotificationDetailsArray()
     {
@@ -173,10 +176,10 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * List of notification objects representing the notifications sent to an
      *  application for the given time period.
      *
-     * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetailsArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\NotificationDetailsType> $notificationDetailsArray
      * @return self
      */
-    public function setNotificationDetailsArray(array $notificationDetailsArray)
+    public function setNotificationDetailsArray(iterable $notificationDetailsArray)
     {
         $this->notificationDetailsArray = $notificationDetailsArray;
         return $this;
@@ -193,6 +196,9 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      */
     public function addToMarkUpMarkDownHistory(\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType $markUpMarkDownEvent)
     {
+        if (!is_array($this->markUpMarkDownHistory)) {
+            throw new \LogicException('markUpMarkDownHistory is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->markUpMarkDownHistory[] = $markUpMarkDownEvent;
         return $this;
     }
@@ -231,7 +237,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * List of objects representing <b>MarkUp</b> or <b>MarkDown</b> history for a given appID
      *  and for given <b>StartTime</b> and <b>EndTime</b>. This node will always be returned.
      *
-     * @return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType>
      */
     public function getMarkUpMarkDownHistory()
     {
@@ -244,10 +250,10 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      * List of objects representing <b>MarkUp</b> or <b>MarkDown</b> history for a given appID
      *  and for given <b>StartTime</b> and <b>EndTime</b>. This node will always be returned.
      *
-     * @param \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType[] $markUpMarkDownHistory
+     * @param iterable<\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType> $markUpMarkDownHistory
      * @return self
      */
-    public function setMarkUpMarkDownHistory(array $markUpMarkDownHistory)
+    public function setMarkUpMarkDownHistory(iterable $markUpMarkDownHistory)
     {
         $this->markUpMarkDownHistory = $markUpMarkDownHistory;
         return $this;
@@ -299,16 +305,22 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
         }
         $value = $this->getNotificationDetailsArray();
-        if (null !== $value && [] !== $this->getNotificationDetailsArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {
-                return ["NotificationDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {
+                    return ["NotificationDetails" => $v];
+                }, $value));
+            }
         }
         $value = $this->getMarkUpMarkDownHistory();
-        if (null !== $value && [] !== $this->getMarkUpMarkDownHistory()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {
-                return ["MarkUpMarkDownEvent" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {
+                    return ["MarkUpMarkDownEvent" => $v];
+                }, $value));
+            }
         }
         $value = $this->getNotificationStatistics();
         if (null !== $value) {

@@ -31,6 +31,9 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToMessage(\Nogrod\eBaySDK\Trading\MyMessagesMessageType $message)
     {
+        if (!is_array($this->message)) {
+            throw new \LogicException('message is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->message[] = $message;
         return $this;
     }
@@ -66,7 +69,7 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * A <b>Message</b> container is returned for each message that matches the input criteria in the call request. Each <b>Message</b> container consists of detailed information on a message. The amount of information that is returned in each <b>Message</b> container is partially dependent on the value that is set in the required <b>DetailLevel</b> field.
      *
-     * @return \Nogrod\eBaySDK\Trading\MyMessagesMessageType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MyMessagesMessageType>
      */
     public function getMessage()
     {
@@ -78,10 +81,10 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * A <b>Message</b> container is returned for each message that matches the input criteria in the call request. Each <b>Message</b> container consists of detailed information on a message. The amount of information that is returned in each <b>Message</b> container is partially dependent on the value that is set in the required <b>DetailLevel</b> field.
      *
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesMessageType[] $message
+     * @param iterable<\Nogrod\eBaySDK\Trading\MyMessagesMessageType> $message
      * @return self
      */
-    public function setMessage(array $message)
+    public function setMessage(iterable $message)
     {
         $this->message = $message;
         return $this;
@@ -91,10 +94,10 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMessage();
-        if (null !== $value && [] !== $this->getMessage()) {
-            $writer->write(array_map(function ($v) {
-                return ["Message" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Message" => $v]]);
+            }
         }
     }
 

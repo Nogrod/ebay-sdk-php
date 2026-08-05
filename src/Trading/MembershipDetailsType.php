@@ -34,6 +34,9 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToProgram(\Nogrod\eBaySDK\Trading\MembershipDetailType $program)
     {
+        if (!is_array($this->program)) {
+            throw new \LogicException('program is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->program[] = $program;
         return $this;
     }
@@ -69,7 +72,7 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * A <b>Program</b> container will be returned for each eBay membership program for which the seller is enrolled. This container provides the the eBay site, the membership program (such as '<code>EBAYPLUS</code>'), and the membership expiration date.
      *
-     * @return \Nogrod\eBaySDK\Trading\MembershipDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MembershipDetailType>
      */
     public function getProgram()
     {
@@ -81,10 +84,10 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * A <b>Program</b> container will be returned for each eBay membership program for which the seller is enrolled. This container provides the the eBay site, the membership program (such as '<code>EBAYPLUS</code>'), and the membership expiration date.
      *
-     * @param \Nogrod\eBaySDK\Trading\MembershipDetailType[] $program
+     * @param iterable<\Nogrod\eBaySDK\Trading\MembershipDetailType> $program
      * @return self
      */
-    public function setProgram(array $program)
+    public function setProgram(iterable $program)
     {
         $this->program = $program;
         return $this;
@@ -94,10 +97,10 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getProgram();
-        if (null !== $value && [] !== $this->getProgram()) {
-            $writer->write(array_map(function ($v) {
-                return ["Program" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Program" => $v]]);
+            }
         }
     }
 

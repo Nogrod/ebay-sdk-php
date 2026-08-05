@@ -31,6 +31,9 @@ class SetTaxTableRequestType extends AbstractRequestType
      */
     public function addToTaxTable(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        if (!is_array($this->taxTable)) {
+            throw new \LogicException('taxTable is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxTable[] = $taxJurisdiction;
         return $this;
     }
@@ -66,7 +69,7 @@ class SetTaxTableRequestType extends AbstractRequestType
      *
      * This table is used to set or modify sales tax rates for one or more tax jurisdictions within that country. A <b>TaxJurisdiction</b> container is required for each tax jurisdiction that is being added/updated.
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxJurisdictionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType>
      */
     public function getTaxTable()
     {
@@ -78,10 +81,10 @@ class SetTaxTableRequestType extends AbstractRequestType
      *
      * This table is used to set or modify sales tax rates for one or more tax jurisdictions within that country. A <b>TaxJurisdiction</b> container is required for each tax jurisdiction that is being added/updated.
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxTable
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType> $taxTable
      * @return self
      */
-    public function setTaxTable(array $taxTable)
+    public function setTaxTable(iterable $taxTable)
     {
         $this->taxTable = $taxTable;
         return $this;
@@ -91,10 +94,13 @@ class SetTaxTableRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getTaxTable();
-        if (null !== $value && [] !== $this->getTaxTable()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
+                    return ["TaxJurisdiction" => $v];
+                }, $value));
+            }
         }
     }
 

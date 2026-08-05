@@ -1097,6 +1097,9 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      */
     public function addToAddressAttribute(\Nogrod\eBaySDK\Trading\AddressAttributeType $addressAttribute)
     {
+        if (!is_array($this->addressAttribute)) {
+            throw new \LogicException('addressAttribute is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addressAttribute[] = $addressAttribute;
         return $this;
     }
@@ -1144,7 +1147,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\AddressAttributeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddressAttributeType>
      */
     public function getAddressAttribute()
     {
@@ -1160,10 +1163,10 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      *  <span class="tablenote"><b>Note: </b> The <b>Seller.RegistrationAddress</b> container and its child fields will stop being returned in <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\AddressAttributeType[] $addressAttribute
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddressAttributeType> $addressAttribute
      * @return self
      */
-    public function setAddressAttribute(array $addressAttribute)
+    public function setAddressAttribute(iterable $addressAttribute)
     {
         $this->addressAttribute = $addressAttribute;
         return $this;
@@ -1281,10 +1284,10 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReferenceID", $value);
         }
         $value = $this->getAddressAttribute();
-        if (null !== $value && [] !== $this->getAddressAttribute()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddressAttribute" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddressAttribute" => $v]]);
+            }
         }
     }
 

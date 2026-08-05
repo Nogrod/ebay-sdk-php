@@ -47,6 +47,9 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToPickupOptions(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        if (!is_array($this->pickupOptions)) {
+            throw new \LogicException('pickupOptions is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pickupOptions[] = $pickupOptions;
         return $this;
     }
@@ -100,7 +103,7 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <strong>Note:</strong> At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings. In-Store Pickup is only applicable to the US site, and Click and Collect is only applicable to the UK, Germany, and Australia sites.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PickupOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType>
      */
     public function getPickupOptions()
     {
@@ -118,10 +121,10 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <strong>Note:</strong> At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings. In-Store Pickup is only applicable to the US site, and Click and Collect is only applicable to the UK, Germany, and Australia sites.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PickupOptionsType[] $pickupOptions
+     * @param iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType> $pickupOptions
      * @return self
      */
-    public function setPickupOptions(array $pickupOptions)
+    public function setPickupOptions(iterable $pickupOptions)
     {
         $this->pickupOptions = $pickupOptions;
         return $this;
@@ -131,10 +134,10 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPickupOptions();
-        if (null !== $value && [] !== $this->getPickupOptions()) {
-            $writer->write(array_map(function ($v) {
-                return ["PickupOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PickupOptions" => $v]]);
+            }
         }
     }
 

@@ -148,6 +148,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToAddFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType $addFixedPriceItemResponse)
     {
+        if (!is_array($this->addFixedPriceItemResponse)) {
+            throw new \LogicException('addFixedPriceItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addFixedPriceItemResponse[] = $addFixedPriceItemResponse;
         return $this;
     }
@@ -177,7 +180,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as addFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType>
      */
     public function getAddFixedPriceItemResponse()
     {
@@ -187,10 +190,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new addFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType[] $addFixedPriceItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddFixedPriceItemResponseType> $addFixedPriceItemResponse
      * @return self
      */
-    public function setAddFixedPriceItemResponse(array $addFixedPriceItemResponse)
+    public function setAddFixedPriceItemResponse(iterable $addFixedPriceItemResponse)
     {
         $this->addFixedPriceItemResponse = $addFixedPriceItemResponse;
         return $this;
@@ -204,6 +207,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToAddItemResponse(\Nogrod\eBaySDK\Trading\AddItemResponseType $addItemResponse)
     {
+        if (!is_array($this->addItemResponse)) {
+            throw new \LogicException('addItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addItemResponse[] = $addItemResponse;
         return $this;
     }
@@ -233,7 +239,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as addItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\AddItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddItemResponseType>
      */
     public function getAddItemResponse()
     {
@@ -243,10 +249,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new addItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\AddItemResponseType[] $addItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddItemResponseType> $addItemResponse
      * @return self
      */
-    public function setAddItemResponse(array $addItemResponse)
+    public function setAddItemResponse(iterable $addItemResponse)
     {
         $this->addItemResponse = $addItemResponse;
         return $this;
@@ -260,6 +266,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToEndFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType $endFixedPriceItemResponse)
     {
+        if (!is_array($this->endFixedPriceItemResponse)) {
+            throw new \LogicException('endFixedPriceItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->endFixedPriceItemResponse[] = $endFixedPriceItemResponse;
         return $this;
     }
@@ -289,7 +298,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as endFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType>
      */
     public function getEndFixedPriceItemResponse()
     {
@@ -299,10 +308,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new endFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType[] $endFixedPriceItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\EndFixedPriceItemResponseType> $endFixedPriceItemResponse
      * @return self
      */
-    public function setEndFixedPriceItemResponse(array $endFixedPriceItemResponse)
+    public function setEndFixedPriceItemResponse(iterable $endFixedPriceItemResponse)
     {
         $this->endFixedPriceItemResponse = $endFixedPriceItemResponse;
         return $this;
@@ -316,6 +325,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToEndItemResponse(\Nogrod\eBaySDK\Trading\EndItemResponseType $endItemResponse)
     {
+        if (!is_array($this->endItemResponse)) {
+            throw new \LogicException('endItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->endItemResponse[] = $endItemResponse;
         return $this;
     }
@@ -345,7 +357,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as endItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\EndItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\EndItemResponseType>
      */
     public function getEndItemResponse()
     {
@@ -355,10 +367,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new endItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\EndItemResponseType[] $endItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\EndItemResponseType> $endItemResponse
      * @return self
      */
-    public function setEndItemResponse(array $endItemResponse)
+    public function setEndItemResponse(iterable $endItemResponse)
     {
         $this->endItemResponse = $endItemResponse;
         return $this;
@@ -394,6 +406,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToOrderAckResponse(\Nogrod\eBaySDK\Trading\OrderAckResponseType $orderAckResponse)
     {
+        if (!is_array($this->orderAckResponse)) {
+            throw new \LogicException('orderAckResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->orderAckResponse[] = $orderAckResponse;
         return $this;
     }
@@ -423,7 +438,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as orderAckResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\OrderAckResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\OrderAckResponseType>
      */
     public function getOrderAckResponse()
     {
@@ -433,10 +448,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new orderAckResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\OrderAckResponseType[] $orderAckResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\OrderAckResponseType> $orderAckResponse
      * @return self
      */
-    public function setOrderAckResponse(array $orderAckResponse)
+    public function setOrderAckResponse(iterable $orderAckResponse)
     {
         $this->orderAckResponse = $orderAckResponse;
         return $this;
@@ -472,6 +487,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToRelistFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType $relistFixedPriceItemResponse)
     {
+        if (!is_array($this->relistFixedPriceItemResponse)) {
+            throw new \LogicException('relistFixedPriceItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->relistFixedPriceItemResponse[] = $relistFixedPriceItemResponse;
         return $this;
     }
@@ -501,7 +519,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as relistFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType>
      */
     public function getRelistFixedPriceItemResponse()
     {
@@ -511,10 +529,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new relistFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType[] $relistFixedPriceItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\RelistFixedPriceItemResponseType> $relistFixedPriceItemResponse
      * @return self
      */
-    public function setRelistFixedPriceItemResponse(array $relistFixedPriceItemResponse)
+    public function setRelistFixedPriceItemResponse(iterable $relistFixedPriceItemResponse)
     {
         $this->relistFixedPriceItemResponse = $relistFixedPriceItemResponse;
         return $this;
@@ -528,6 +546,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToRelistItemResponse(\Nogrod\eBaySDK\Trading\RelistItemResponseType $relistItemResponse)
     {
+        if (!is_array($this->relistItemResponse)) {
+            throw new \LogicException('relistItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->relistItemResponse[] = $relistItemResponse;
         return $this;
     }
@@ -557,7 +578,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as relistItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\RelistItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RelistItemResponseType>
      */
     public function getRelistItemResponse()
     {
@@ -567,10 +588,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new relistItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\RelistItemResponseType[] $relistItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\RelistItemResponseType> $relistItemResponse
      * @return self
      */
-    public function setRelistItemResponse(array $relistItemResponse)
+    public function setRelistItemResponse(iterable $relistItemResponse)
     {
         $this->relistItemResponse = $relistItemResponse;
         return $this;
@@ -584,6 +605,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToReviseFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType $reviseFixedPriceItemResponse)
     {
+        if (!is_array($this->reviseFixedPriceItemResponse)) {
+            throw new \LogicException('reviseFixedPriceItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->reviseFixedPriceItemResponse[] = $reviseFixedPriceItemResponse;
         return $this;
     }
@@ -613,7 +637,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType>
      */
     public function getReviseFixedPriceItemResponse()
     {
@@ -623,10 +647,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType[] $reviseFixedPriceItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\ReviseFixedPriceItemResponseType> $reviseFixedPriceItemResponse
      * @return self
      */
-    public function setReviseFixedPriceItemResponse(array $reviseFixedPriceItemResponse)
+    public function setReviseFixedPriceItemResponse(iterable $reviseFixedPriceItemResponse)
     {
         $this->reviseFixedPriceItemResponse = $reviseFixedPriceItemResponse;
         return $this;
@@ -640,6 +664,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToReviseInventoryStatusResponse(\Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType $reviseInventoryStatusResponse)
     {
+        if (!is_array($this->reviseInventoryStatusResponse)) {
+            throw new \LogicException('reviseInventoryStatusResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->reviseInventoryStatusResponse[] = $reviseInventoryStatusResponse;
         return $this;
     }
@@ -669,7 +696,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseInventoryStatusResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType>
      */
     public function getReviseInventoryStatusResponse()
     {
@@ -679,10 +706,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseInventoryStatusResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType[] $reviseInventoryStatusResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\ReviseInventoryStatusResponseType> $reviseInventoryStatusResponse
      * @return self
      */
-    public function setReviseInventoryStatusResponse(array $reviseInventoryStatusResponse)
+    public function setReviseInventoryStatusResponse(iterable $reviseInventoryStatusResponse)
     {
         $this->reviseInventoryStatusResponse = $reviseInventoryStatusResponse;
         return $this;
@@ -696,6 +723,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToReviseItemResponse(\Nogrod\eBaySDK\Trading\ReviseItemResponseType $reviseItemResponse)
     {
+        if (!is_array($this->reviseItemResponse)) {
+            throw new \LogicException('reviseItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->reviseItemResponse[] = $reviseItemResponse;
         return $this;
     }
@@ -725,7 +755,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as reviseItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\ReviseItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ReviseItemResponseType>
      */
     public function getReviseItemResponse()
     {
@@ -735,10 +765,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new reviseItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\ReviseItemResponseType[] $reviseItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\ReviseItemResponseType> $reviseItemResponse
      * @return self
      */
-    public function setReviseItemResponse(array $reviseItemResponse)
+    public function setReviseItemResponse(iterable $reviseItemResponse)
     {
         $this->reviseItemResponse = $reviseItemResponse;
         return $this;
@@ -752,6 +782,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToSetShipmentTrackingInfoResponse(\Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType $setShipmentTrackingInfoResponse)
     {
+        if (!is_array($this->setShipmentTrackingInfoResponse)) {
+            throw new \LogicException('setShipmentTrackingInfoResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->setShipmentTrackingInfoResponse[] = $setShipmentTrackingInfoResponse;
         return $this;
     }
@@ -781,7 +814,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as setShipmentTrackingInfoResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType>
      */
     public function getSetShipmentTrackingInfoResponse()
     {
@@ -791,10 +824,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new setShipmentTrackingInfoResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType[] $setShipmentTrackingInfoResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoResponseType> $setShipmentTrackingInfoResponse
      * @return self
      */
-    public function setSetShipmentTrackingInfoResponse(array $setShipmentTrackingInfoResponse)
+    public function setSetShipmentTrackingInfoResponse(iterable $setShipmentTrackingInfoResponse)
     {
         $this->setShipmentTrackingInfoResponse = $setShipmentTrackingInfoResponse;
         return $this;
@@ -808,6 +841,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToVerifyAddFixedPriceItemResponse(\Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType $verifyAddFixedPriceItemResponse)
     {
+        if (!is_array($this->verifyAddFixedPriceItemResponse)) {
+            throw new \LogicException('verifyAddFixedPriceItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->verifyAddFixedPriceItemResponse[] = $verifyAddFixedPriceItemResponse;
         return $this;
     }
@@ -837,7 +873,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as verifyAddFixedPriceItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType>
      */
     public function getVerifyAddFixedPriceItemResponse()
     {
@@ -847,10 +883,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new verifyAddFixedPriceItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType[] $verifyAddFixedPriceItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemResponseType> $verifyAddFixedPriceItemResponse
      * @return self
      */
-    public function setVerifyAddFixedPriceItemResponse(array $verifyAddFixedPriceItemResponse)
+    public function setVerifyAddFixedPriceItemResponse(iterable $verifyAddFixedPriceItemResponse)
     {
         $this->verifyAddFixedPriceItemResponse = $verifyAddFixedPriceItemResponse;
         return $this;
@@ -864,6 +900,9 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToVerifyAddItemResponse(\Nogrod\eBaySDK\Trading\VerifyAddItemResponseType $verifyAddItemResponse)
     {
+        if (!is_array($this->verifyAddItemResponse)) {
+            throw new \LogicException('verifyAddItemResponse is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->verifyAddItemResponse[] = $verifyAddItemResponse;
         return $this;
     }
@@ -893,7 +932,7 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as verifyAddItemResponse
      *
-     * @return \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VerifyAddItemResponseType>
      */
     public function getVerifyAddItemResponse()
     {
@@ -903,10 +942,10 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new verifyAddItemResponse
      *
-     * @param \Nogrod\eBaySDK\Trading\VerifyAddItemResponseType[] $verifyAddItemResponse
+     * @param iterable<\Nogrod\eBaySDK\Trading\VerifyAddItemResponseType> $verifyAddItemResponse
      * @return self
      */
-    public function setVerifyAddItemResponse(array $verifyAddItemResponse)
+    public function setVerifyAddItemResponse(iterable $verifyAddItemResponse)
     {
         $this->verifyAddItemResponse = $verifyAddItemResponse;
         return $this;
@@ -920,90 +959,90 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveInventoryReport", $value);
         }
         $value = $this->getAddFixedPriceItemResponse();
-        if (null !== $value && [] !== $this->getAddFixedPriceItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddFixedPriceItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddFixedPriceItemResponse" => $v]]);
+            }
         }
         $value = $this->getAddItemResponse();
-        if (null !== $value && [] !== $this->getAddItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddItemResponse" => $v]]);
+            }
         }
         $value = $this->getEndFixedPriceItemResponse();
-        if (null !== $value && [] !== $this->getEndFixedPriceItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["EndFixedPriceItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["EndFixedPriceItemResponse" => $v]]);
+            }
         }
         $value = $this->getEndItemResponse();
-        if (null !== $value && [] !== $this->getEndItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["EndItemResponse" => $v]]);
+            }
         }
         $value = $this->getFeeSettlementReport();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeSettlementReport", $value);
         }
         $value = $this->getOrderAckResponse();
-        if (null !== $value && [] !== $this->getOrderAckResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["OrderAckResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["OrderAckResponse" => $v]]);
+            }
         }
         $value = $this->getOrderReport();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderReport", $value);
         }
         $value = $this->getRelistFixedPriceItemResponse();
-        if (null !== $value && [] !== $this->getRelistFixedPriceItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["RelistFixedPriceItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RelistFixedPriceItemResponse" => $v]]);
+            }
         }
         $value = $this->getRelistItemResponse();
-        if (null !== $value && [] !== $this->getRelistItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["RelistItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RelistItemResponse" => $v]]);
+            }
         }
         $value = $this->getReviseFixedPriceItemResponse();
-        if (null !== $value && [] !== $this->getReviseFixedPriceItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseFixedPriceItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReviseFixedPriceItemResponse" => $v]]);
+            }
         }
         $value = $this->getReviseInventoryStatusResponse();
-        if (null !== $value && [] !== $this->getReviseInventoryStatusResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseInventoryStatusResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReviseInventoryStatusResponse" => $v]]);
+            }
         }
         $value = $this->getReviseItemResponse();
-        if (null !== $value && [] !== $this->getReviseItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReviseItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReviseItemResponse" => $v]]);
+            }
         }
         $value = $this->getSetShipmentTrackingInfoResponse();
-        if (null !== $value && [] !== $this->getSetShipmentTrackingInfoResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["SetShipmentTrackingInfoResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SetShipmentTrackingInfoResponse" => $v]]);
+            }
         }
         $value = $this->getVerifyAddFixedPriceItemResponse();
-        if (null !== $value && [] !== $this->getVerifyAddFixedPriceItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["VerifyAddFixedPriceItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VerifyAddFixedPriceItemResponse" => $v]]);
+            }
         }
         $value = $this->getVerifyAddItemResponse();
-        if (null !== $value && [] !== $this->getVerifyAddItemResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["VerifyAddItemResponse" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VerifyAddItemResponse" => $v]]);
+            }
         }
     }
 

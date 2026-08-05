@@ -45,6 +45,9 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      */
     public function addToDuration($duration)
     {
+        if (!is_array($this->duration)) {
+            throw new \LogicException('duration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->duration[] = $duration;
         return $this;
     }
@@ -95,7 +98,7 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
      *  The <code>Lifetime</code> value indicates that the Featured Gallery enhancement will be active for the lifetime of the listing.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDuration()
     {
@@ -112,10 +115,10 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
      *  Each returned <b>Duration</b> field indicates a supported time duration that a picture gallery can be featured.
      *  The <code>Lifetime</code> value indicates that the Featured Gallery enhancement will be active for the lifetime of the listing.
      *
-     * @param string[] $duration
+     * @param iterable<string> $duration
      * @return self
      */
-    public function setDuration(array $duration)
+    public function setDuration(iterable $duration)
     {
         $this->duration = $duration;
         return $this;
@@ -125,10 +128,10 @@ class ListingEnhancementDurationReferenceType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDuration();
-        if (null !== $value && [] !== $this->getDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Duration" => $v]]);
+            }
         }
     }
 

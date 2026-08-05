@@ -138,6 +138,9 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToSellerDiscount(\Nogrod\eBaySDK\Trading\SellerDiscountType $sellerDiscount)
     {
+        if (!is_array($this->sellerDiscount)) {
+            throw new \LogicException('sellerDiscount is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerDiscount[] = $sellerDiscount;
         return $this;
     }
@@ -173,7 +176,7 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A container consisting of name and ID of the seller's discount campaign, as well as the discount amount that is being applied to the order line item.
      *
-     * @return \Nogrod\eBaySDK\Trading\SellerDiscountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SellerDiscountType>
      */
     public function getSellerDiscount()
     {
@@ -185,10 +188,10 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * A container consisting of name and ID of the seller's discount campaign, as well as the discount amount that is being applied to the order line item.
      *
-     * @param \Nogrod\eBaySDK\Trading\SellerDiscountType[] $sellerDiscount
+     * @param iterable<\Nogrod\eBaySDK\Trading\SellerDiscountType> $sellerDiscount
      * @return self
      */
-    public function setSellerDiscount(array $sellerDiscount)
+    public function setSellerDiscount(iterable $sellerDiscount)
     {
         $this->sellerDiscount = $sellerDiscount;
         return $this;
@@ -210,10 +213,10 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalShippingService", $value);
         }
         $value = $this->getSellerDiscount();
-        if (null !== $value && [] !== $this->getSellerDiscount()) {
-            $writer->write(array_map(function ($v) {
-                return ["SellerDiscount" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SellerDiscount" => $v]]);
+            }
         }
     }
 

@@ -63,6 +63,9 @@ class GetBidderListResponseType extends AbstractResponseType
      */
     public function addToBidItemArray(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        if (!is_array($this->bidItemArray)) {
+            throw new \LogicException('bidItemArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bidItemArray[] = $item;
         return $this;
     }
@@ -98,7 +101,7 @@ class GetBidderListResponseType extends AbstractResponseType
      *
      * Array of items the bidder has bid on, has won or has lost.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemType>
      */
     public function getBidItemArray()
     {
@@ -110,10 +113,10 @@ class GetBidderListResponseType extends AbstractResponseType
      *
      * Array of items the bidder has bid on, has won or has lost.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemType[] $bidItemArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemType> $bidItemArray
      * @return self
      */
-    public function setBidItemArray(array $bidItemArray)
+    public function setBidItemArray(iterable $bidItemArray)
     {
         $this->bidItemArray = $bidItemArray;
         return $this;
@@ -127,10 +130,13 @@ class GetBidderListResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Bidder", $value);
         }
         $value = $this->getBidItemArray();
-        if (null !== $value && [] !== $this->getBidItemArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidItemArray", array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidItemArray", array_map(function ($v) {
+                    return ["Item" => $v];
+                }, $value));
+            }
         }
     }
 

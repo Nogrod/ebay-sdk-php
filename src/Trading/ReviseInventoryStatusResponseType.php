@@ -49,6 +49,9 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      */
     public function addToInventoryStatus(\Nogrod\eBaySDK\Trading\InventoryStatusType $inventoryStatus)
     {
+        if (!is_array($this->inventoryStatus)) {
+            throw new \LogicException('inventoryStatus is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->inventoryStatus[] = $inventoryStatus;
         return $this;
     }
@@ -93,7 +96,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      *  <br>
      *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
-     * @return \Nogrod\eBaySDK\Trading\InventoryStatusType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\InventoryStatusType>
      */
     public function getInventoryStatus()
     {
@@ -108,10 +111,10 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      *  <br>
      *  Note that the <b>SKU</b> field is returned as an empty tag if it is not defined for a single-variation listing.
      *
-     * @param \Nogrod\eBaySDK\Trading\InventoryStatusType[] $inventoryStatus
+     * @param iterable<\Nogrod\eBaySDK\Trading\InventoryStatusType> $inventoryStatus
      * @return self
      */
-    public function setInventoryStatus(array $inventoryStatus)
+    public function setInventoryStatus(iterable $inventoryStatus)
     {
         $this->inventoryStatus = $inventoryStatus;
         return $this;
@@ -130,6 +133,9 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      */
     public function addToFees(\Nogrod\eBaySDK\Trading\InventoryFeesType $fees)
     {
+        if (!is_array($this->fees)) {
+            throw new \LogicException('fees is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->fees[] = $fees;
         return $this;
     }
@@ -174,7 +180,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      *  <br>
      *  Please note that since fees are returned at the listing level, it is possible that the response will include one <b>Fees</b> container and four <b>InventoryStatus</b> containers if you made revisions to four different item variations within the same multiple-variation listing.
      *
-     * @return \Nogrod\eBaySDK\Trading\InventoryFeesType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\InventoryFeesType>
      */
     public function getFees()
     {
@@ -189,10 +195,10 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      *  <br>
      *  Please note that since fees are returned at the listing level, it is possible that the response will include one <b>Fees</b> container and four <b>InventoryStatus</b> containers if you made revisions to four different item variations within the same multiple-variation listing.
      *
-     * @param \Nogrod\eBaySDK\Trading\InventoryFeesType[] $fees
+     * @param iterable<\Nogrod\eBaySDK\Trading\InventoryFeesType> $fees
      * @return self
      */
-    public function setFees(array $fees)
+    public function setFees(iterable $fees)
     {
         $this->fees = $fees;
         return $this;
@@ -202,16 +208,16 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
-        if (null !== $value && [] !== $this->getInventoryStatus()) {
-            $writer->write(array_map(function ($v) {
-                return ["InventoryStatus" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InventoryStatus" => $v]]);
+            }
         }
         $value = $this->getFees();
-        if (null !== $value && [] !== $this->getFees()) {
-            $writer->write(array_map(function ($v) {
-                return ["Fees" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Fees" => $v]]);
+            }
         }
     }
 

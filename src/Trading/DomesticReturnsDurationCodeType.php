@@ -31,6 +31,9 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToDomesticReturnsDuration($domesticReturnsDuration)
     {
+        if (!is_array($this->domesticReturnsDuration)) {
+            throw new \LogicException('domesticReturnsDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsDuration[] = $domesticReturnsDuration;
         return $this;
     }
@@ -66,7 +69,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Defines the available options for the return durations for domestic returns in the specified marketplace and category. This is the time the buyer has to initiate a return once they receive the item.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsDuration()
     {
@@ -81,7 +84,7 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      * @param string $domesticReturnsDuration
      * @return self
      */
-    public function setDomesticReturnsDuration(array $domesticReturnsDuration)
+    public function setDomesticReturnsDuration(iterable $domesticReturnsDuration)
     {
         $this->domesticReturnsDuration = $domesticReturnsDuration;
         return $this;
@@ -91,10 +94,10 @@ class DomesticReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsDuration();
-        if (null !== $value && [] !== $this->getDomesticReturnsDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticReturnsDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DomesticReturnsDuration" => $v]]);
+            }
         }
     }
 

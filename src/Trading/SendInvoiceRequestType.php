@@ -257,6 +257,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToInternationalShippingServiceOptions(\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType $internationalShippingServiceOptions)
     {
+        if (!is_array($this->internationalShippingServiceOptions)) {
+            throw new \LogicException('internationalShippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalShippingServiceOptions[] = $internationalShippingServiceOptions;
         return $this;
     }
@@ -295,7 +298,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
-     * @return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType>
      */
     public function getInternationalShippingServiceOptions()
     {
@@ -308,10 +311,10 @@ class SendInvoiceRequestType extends AbstractRequestType
      * If the buyer has an international shipping address, use this container to offer up to four international shipping service options (or five if one of the shipping service options is Global Shipping Program or eBay International Shipping). If one or more international shipping service options are offered through this container, the (domestic) <b>ShippingServiceOptions</b> container should not be included in the same request.
      *  <br>
      *
-     * @param \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOptions
+     * @param iterable<\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType> $internationalShippingServiceOptions
      * @return self
      */
-    public function setInternationalShippingServiceOptions(array $internationalShippingServiceOptions)
+    public function setInternationalShippingServiceOptions(iterable $internationalShippingServiceOptions)
     {
         $this->internationalShippingServiceOptions = $internationalShippingServiceOptions;
         return $this;
@@ -331,6 +334,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToShippingServiceOptions(\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType $shippingServiceOptions)
     {
+        if (!is_array($this->shippingServiceOptions)) {
+            throw new \LogicException('shippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServiceOptions[] = $shippingServiceOptions;
         return $this;
     }
@@ -378,7 +384,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      *  not be included in the same request.
      *  <br>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType>
      */
     public function getShippingServiceOptions()
     {
@@ -394,10 +400,10 @@ class SendInvoiceRequestType extends AbstractRequestType
      *  not be included in the same request.
      *  <br>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[] $shippingServiceOptions
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType> $shippingServiceOptions
      * @return self
      */
-    public function setShippingServiceOptions(array $shippingServiceOptions)
+    public function setShippingServiceOptions(iterable $shippingServiceOptions)
     {
         $this->shippingServiceOptions = $shippingServiceOptions;
         return $this;
@@ -450,6 +456,9 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        if (!is_array($this->paymentMethods)) {
+            throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentMethods[] = $paymentMethods;
         return $this;
     }
@@ -488,7 +497,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * This field should only be used if the seller needs to add one or more offline payment options for an order that requires/supports offline payment. A seller should not submit any online payment methods here since eBay now controls the available online payment options that are available to buyers, and not the seller.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPaymentMethods()
     {
@@ -504,7 +513,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      * @param string $paymentMethods
      * @return self
      */
-    public function setPaymentMethods(array $paymentMethods)
+    public function setPaymentMethods(iterable $paymentMethods)
     {
         $this->paymentMethods = $paymentMethods;
         return $this;
@@ -682,26 +691,26 @@ class SendInvoiceRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
         }
         $value = $this->getInternationalShippingServiceOptions();
-        if (null !== $value && [] !== $this->getInternationalShippingServiceOptions()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalShippingServiceOptions" => $v]]);
+            }
         }
         $value = $this->getShippingServiceOptions();
-        if (null !== $value && [] !== $this->getShippingServiceOptions()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingServiceOptions" => $v]]);
+            }
         }
         $value = $this->getSalesTax();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentMethods" => $v]]);
+            }
         }
         $value = $this->getCheckoutInstructions();
         if (null !== $value) {

@@ -31,6 +31,9 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToAccountEntry(\Nogrod\eBaySDK\Trading\AccountEntryType $accountEntry)
     {
+        if (!is_array($this->accountEntry)) {
+            throw new \LogicException('accountEntry is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->accountEntry[] = $accountEntry;
         return $this;
     }
@@ -66,7 +69,7 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Container consisting of detailed information for each debit or credit transaction that occurs on an eBay user's account.
      *
-     * @return \Nogrod\eBaySDK\Trading\AccountEntryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AccountEntryType>
      */
     public function getAccountEntry()
     {
@@ -78,10 +81,10 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * Container consisting of detailed information for each debit or credit transaction that occurs on an eBay user's account.
      *
-     * @param \Nogrod\eBaySDK\Trading\AccountEntryType[] $accountEntry
+     * @param iterable<\Nogrod\eBaySDK\Trading\AccountEntryType> $accountEntry
      * @return self
      */
-    public function setAccountEntry(array $accountEntry)
+    public function setAccountEntry(iterable $accountEntry)
     {
         $this->accountEntry = $accountEntry;
         return $this;
@@ -91,10 +94,10 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAccountEntry();
-        if (null !== $value && [] !== $this->getAccountEntry()) {
-            $writer->write(array_map(function ($v) {
-                return ["AccountEntry" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AccountEntry" => $v]]);
+            }
         }
     }
 

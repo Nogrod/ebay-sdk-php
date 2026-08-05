@@ -31,6 +31,9 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
      */
     public function addToAddMemberMessagesAAQToBidderResponseContainer(\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType $addMemberMessagesAAQToBidderResponseContainer)
     {
+        if (!is_array($this->addMemberMessagesAAQToBidderResponseContainer)) {
+            throw new \LogicException('addMemberMessagesAAQToBidderResponseContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addMemberMessagesAAQToBidderResponseContainer[] = $addMemberMessagesAAQToBidderResponseContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
      *
      * Container consisting of the <b>Ack</b> field (indicating the result of the send message operation) and the <b>CorrelationID</b> field (used to track multiple send message operations performed in one call).
      *
-     * @return \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType>
      */
     public function getAddMemberMessagesAAQToBidderResponseContainer()
     {
@@ -78,10 +81,10 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
      *
      * Container consisting of the <b>Ack</b> field (indicating the result of the send message operation) and the <b>CorrelationID</b> field (used to track multiple send message operations performed in one call).
      *
-     * @param \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType[] $addMemberMessagesAAQToBidderResponseContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType> $addMemberMessagesAAQToBidderResponseContainer
      * @return self
      */
-    public function setAddMemberMessagesAAQToBidderResponseContainer(array $addMemberMessagesAAQToBidderResponseContainer)
+    public function setAddMemberMessagesAAQToBidderResponseContainer(iterable $addMemberMessagesAAQToBidderResponseContainer)
     {
         $this->addMemberMessagesAAQToBidderResponseContainer = $addMemberMessagesAAQToBidderResponseContainer;
         return $this;
@@ -91,10 +94,10 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddMemberMessagesAAQToBidderResponseContainer();
-        if (null !== $value && [] !== $this->getAddMemberMessagesAAQToBidderResponseContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddMemberMessagesAAQToBidderResponseContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddMemberMessagesAAQToBidderResponseContainer" => $v]]);
+            }
         }
     }
 

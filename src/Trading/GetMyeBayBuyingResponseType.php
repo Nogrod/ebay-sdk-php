@@ -385,6 +385,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      */
     public function addToSecondChanceOffer(\Nogrod\eBaySDK\Trading\ItemType $secondChanceOffer)
     {
+        if (!is_array($this->secondChanceOffer)) {
+            throw new \LogicException('secondChanceOffer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->secondChanceOffer[] = $secondChanceOffer;
         return $this;
     }
@@ -426,7 +429,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      *  <br><br>
      *  This container will not be returned in the response (even if user has received Second Chance Offers) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>SecondChanceOffer.Include</b> field is omitted or set to <code>false</code>.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemType>
      */
     public function getSecondChanceOffer()
     {
@@ -440,10 +443,10 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      *  <br><br>
      *  This container will not be returned in the response (even if user has received Second Chance Offers) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>SecondChanceOffer.Include</b> field is omitted or set to <code>false</code>.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemType[] $secondChanceOffer
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemType> $secondChanceOffer
      * @return self
      */
-    public function setSecondChanceOffer(array $secondChanceOffer)
+    public function setSecondChanceOffer(iterable $secondChanceOffer)
     {
         $this->secondChanceOffer = $secondChanceOffer;
         return $this;
@@ -521,6 +524,9 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      */
     public function addToUserDefinedList(\Nogrod\eBaySDK\Trading\UserDefinedListType $userDefinedList)
     {
+        if (!is_array($this->userDefinedList)) {
+            throw new \LogicException('userDefinedList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->userDefinedList[] = $userDefinedList;
         return $this;
     }
@@ -562,7 +568,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      *  <br><br>
      *  This container will not be returned in the response (even if one or more user-defined lists exist) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>UserDefinedList.Include</b> field is omitted or set to <code>false</code>.
      *
-     * @return \Nogrod\eBaySDK\Trading\UserDefinedListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\UserDefinedListType>
      */
     public function getUserDefinedList()
     {
@@ -576,10 +582,10 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      *  <br><br>
      *  This container will not be returned in the response (even if one or more user-defined lists exist) if the <b>DetailLevel</b> value is set to <code>ReturnSummary</code> and the <b>UserDefinedList.Include</b> field is omitted or set to <code>false</code>.
      *
-     * @param \Nogrod\eBaySDK\Trading\UserDefinedListType[] $userDefinedList
+     * @param iterable<\Nogrod\eBaySDK\Trading\UserDefinedListType> $userDefinedList
      * @return self
      */
-    public function setUserDefinedList(array $userDefinedList)
+    public function setUserDefinedList(iterable $userDefinedList)
     {
         $this->userDefinedList = $userDefinedList;
         return $this;
@@ -621,10 +627,10 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellers", $value);
         }
         $value = $this->getSecondChanceOffer();
-        if (null !== $value && [] !== $this->getSecondChanceOffer()) {
-            $writer->write(array_map(function ($v) {
-                return ["SecondChanceOffer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SecondChanceOffer" => $v]]);
+            }
         }
         $value = $this->getDeletedFromWonList();
         if (null !== $value) {
@@ -635,10 +641,10 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList", $value);
         }
         $value = $this->getUserDefinedList();
-        if (null !== $value && [] !== $this->getUserDefinedList()) {
-            $writer->write(array_map(function ($v) {
-                return ["UserDefinedList" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["UserDefinedList" => $v]]);
+            }
         }
     }
 

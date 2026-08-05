@@ -37,6 +37,9 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToOrderTransactionArray(\Nogrod\eBaySDK\Trading\OrderTransactionType $orderTransaction)
     {
+        if (!is_array($this->orderTransactionArray)) {
+            throw new \LogicException('orderTransactionArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->orderTransactionArray[] = $orderTransaction;
         return $this;
     }
@@ -72,7 +75,7 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
      *
      * Contains the list of orders.
      *
-     * @return \Nogrod\eBaySDK\Trading\OrderTransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\OrderTransactionType>
      */
     public function getOrderTransactionArray()
     {
@@ -84,10 +87,10 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
      *
      * Contains the list of orders.
      *
-     * @param \Nogrod\eBaySDK\Trading\OrderTransactionType[] $orderTransactionArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\OrderTransactionType> $orderTransactionArray
      * @return self
      */
-    public function setOrderTransactionArray(array $orderTransactionArray)
+    public function setOrderTransactionArray(iterable $orderTransactionArray)
     {
         $this->orderTransactionArray = $orderTransactionArray;
         return $this;
@@ -125,10 +128,13 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrderTransactionArray();
-        if (null !== $value && [] !== $this->getOrderTransactionArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderTransactionArray", array_map(function ($v) {
-                return ["OrderTransaction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderTransactionArray", array_map(function ($v) {
+                    return ["OrderTransaction" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {

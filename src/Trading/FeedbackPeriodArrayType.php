@@ -39,6 +39,9 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToFeedbackPeriod(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->feedbackPeriod)) {
+            throw new \LogicException('feedbackPeriod is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->feedbackPeriod[] = $feedbackPeriod;
         return $this;
     }
@@ -83,7 +86,7 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  (of the type given by the container, e.g. positive feedback) submitted during
      *  the indicated period. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getFeedbackPeriod()
     {
@@ -98,10 +101,10 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  (of the type given by the container, e.g. positive feedback) submitted during
      *  the indicated period. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $feedbackPeriod
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $feedbackPeriod
      * @return self
      */
-    public function setFeedbackPeriod(array $feedbackPeriod)
+    public function setFeedbackPeriod(iterable $feedbackPeriod)
     {
         $this->feedbackPeriod = $feedbackPeriod;
         return $this;
@@ -111,10 +114,10 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackPeriod();
-        if (null !== $value && [] !== $this->getFeedbackPeriod()) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FeedbackPeriod" => $v]]);
+            }
         }
     }
 

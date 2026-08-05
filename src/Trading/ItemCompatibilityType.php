@@ -139,6 +139,9 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->nameValueList)) {
+            throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->nameValueList[] = $nameValueList;
         return $this;
     }
@@ -243,7 +246,7 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  - DE seller help page: http://verkaeuferportal.ebay.de/fahrzeugteile-und-zubehoer-optimal-einstellen<br>
      *  - UK seller help page: http://pages.ebay.co.uk/help/sell/contextual/master-motorcycle-list-manually.html
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getNameValueList()
     {
@@ -278,10 +281,10 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *  - DE seller help page: http://verkaeuferportal.ebay.de/fahrzeugteile-und-zubehoer-optimal-einstellen<br>
      *  - UK seller help page: http://pages.ebay.co.uk/help/sell/contextual/master-motorcycle-list-manually.html
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $nameValueList
      * @return self
      */
-    public function setNameValueList(array $nameValueList)
+    public function setNameValueList(iterable $nameValueList)
     {
         $this->nameValueList = $nameValueList;
         return $this;
@@ -324,10 +327,10 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Delete", $value);
         }
         $value = $this->getNameValueList();
-        if (null !== $value && [] !== $this->getNameValueList()) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NameValueList" => $v]]);
+            }
         }
         $value = $this->getCompatibilityNotes();
         if (null !== $value) {

@@ -31,6 +31,9 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToCount($count)
     {
+        if (!is_array($this->count)) {
+            throw new \LogicException('count is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->count[] = $count;
         return $this;
     }
@@ -66,7 +69,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
      *
      * This field is deprecated.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getCount()
     {
@@ -78,10 +81,10 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
      *
      * This field is deprecated.
      *
-     * @param int[] $count
+     * @param iterable<int> $count
      * @return self
      */
-    public function setCount(array $count)
+    public function setCount(iterable $count)
     {
         $this->count = $count;
         return $this;
@@ -91,10 +94,10 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCount();
-        if (null !== $value && [] !== $this->getCount()) {
-            $writer->write(array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Count" => $v]]);
+            }
         }
     }
 

@@ -51,6 +51,9 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToTaxJurisdiction(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        if (!is_array($this->taxJurisdiction)) {
+            throw new \LogicException('taxJurisdiction is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxJurisdiction[] = $taxJurisdiction;
         return $this;
     }
@@ -116,7 +119,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxJurisdictionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType>
      */
     public function getTaxJurisdiction()
     {
@@ -138,10 +141,10 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  Currently, sales tax percentage rates can only be specified by sellers in Canada and 5 US territories, including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Palau (PW), and Virgin Islands (VI).
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxJurisdiction
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType> $taxJurisdiction
      * @return self
      */
-    public function setTaxJurisdiction(array $taxJurisdiction)
+    public function setTaxJurisdiction(iterable $taxJurisdiction)
     {
         $this->taxJurisdiction = $taxJurisdiction;
         return $this;
@@ -151,10 +154,10 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTaxJurisdiction();
-        if (null !== $value && [] !== $this->getTaxJurisdiction()) {
-            $writer->write(array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["TaxJurisdiction" => $v]]);
+            }
         }
     }
 

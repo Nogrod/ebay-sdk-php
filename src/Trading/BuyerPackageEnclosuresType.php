@@ -31,6 +31,9 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToBuyerPackageEnclosure(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        if (!is_array($this->buyerPackageEnclosure)) {
+            throw new \LogicException('buyerPackageEnclosure is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerPackageEnclosure[] = $buyerPackageEnclosure;
         return $this;
     }
@@ -66,7 +69,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * A <b>BuyerPackageEnclosure</b> container will be returned for each shipping package containing payment instructions. The 'Pay Upon Invoice' option is only available on the German site.
      *
-     * @return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType>
      */
     public function getBuyerPackageEnclosure()
     {
@@ -78,10 +81,10 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * A <b>BuyerPackageEnclosure</b> container will be returned for each shipping package containing payment instructions. The 'Pay Upon Invoice' option is only available on the German site.
      *
-     * @param \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosure
+     * @param iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType> $buyerPackageEnclosure
      * @return self
      */
-    public function setBuyerPackageEnclosure(array $buyerPackageEnclosure)
+    public function setBuyerPackageEnclosure(iterable $buyerPackageEnclosure)
     {
         $this->buyerPackageEnclosure = $buyerPackageEnclosure;
         return $this;
@@ -91,10 +94,10 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBuyerPackageEnclosure();
-        if (null !== $value && [] !== $this->getBuyerPackageEnclosure()) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerPackageEnclosure" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BuyerPackageEnclosure" => $v]]);
+            }
         }
     }
 

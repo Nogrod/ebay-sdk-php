@@ -149,6 +149,9 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
      */
     public function addToStoreCategories(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        if (!is_array($this->storeCategories)) {
+            throw new \LogicException('storeCategories is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->storeCategories[] = $customCategory;
         return $this;
     }
@@ -184,7 +187,7 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
      *
      * Specifies the store categories on which to act.
      *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
      */
     public function getStoreCategories()
     {
@@ -196,10 +199,10 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
      *
      * Specifies the store categories on which to act.
      *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $storeCategories
+     * @param iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType> $storeCategories
      * @return self
      */
-    public function setStoreCategories(array $storeCategories)
+    public function setStoreCategories(iterable $storeCategories)
     {
         $this->storeCategories = $storeCategories;
         return $this;
@@ -221,10 +224,13 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID", $value);
         }
         $value = $this->getStoreCategories();
-        if (null !== $value && [] !== $this->getStoreCategories()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {
+                    return ["CustomCategory" => $v];
+                }, $value));
+            }
         }
     }
 

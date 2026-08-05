@@ -46,6 +46,9 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToCompatibility(\Nogrod\eBaySDK\Trading\ItemCompatibilityType $compatibility)
     {
+        if (!is_array($this->compatibility)) {
+            throw new \LogicException('compatibility is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->compatibility[] = $compatibility;
         return $this;
     }
@@ -81,7 +84,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemCompatibilityType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemCompatibilityType>
      */
     public function getCompatibility()
     {
@@ -93,10 +96,10 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityType[] $compatibility
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemCompatibilityType> $compatibility
      * @return self
      */
-    public function setCompatibility(array $compatibility)
+    public function setCompatibility(iterable $compatibility)
     {
         $this->compatibility = $compatibility;
         return $this;
@@ -140,10 +143,10 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCompatibility();
-        if (null !== $value && [] !== $this->getCompatibility()) {
-            $writer->write(array_map(function ($v) {
-                return ["Compatibility" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Compatibility" => $v]]);
+            }
         }
         $value = $this->getReplaceAll();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

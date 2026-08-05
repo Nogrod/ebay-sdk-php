@@ -44,6 +44,9 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
      */
     public function addToCount($count)
     {
+        if (!is_array($this->count)) {
+            throw new \LogicException('count is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->count[] = $count;
         return $this;
     }
@@ -85,7 +88,7 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
      *  can be used in the <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.Count</b>
      *  field when using the Trading API to add, revise, or relist an item.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getCount()
     {
@@ -99,10 +102,10 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
      *  can be used in the <b>BuyerRequirementDetails.MaximumUnpaidItemStrikesInfo.Count</b>
      *  field when using the Trading API to add, revise, or relist an item.
      *
-     * @param int[] $count
+     * @param iterable<int> $count
      * @return self
      */
-    public function setCount(array $count)
+    public function setCount(iterable $count)
     {
         $this->count = $count;
         return $this;
@@ -112,10 +115,10 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCount();
-        if (null !== $value && [] !== $this->getCount()) {
-            $writer->write(array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Count" => $v]]);
+            }
         }
     }
 

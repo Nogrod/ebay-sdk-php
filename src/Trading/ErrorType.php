@@ -230,6 +230,9 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToErrorParameters(\Nogrod\eBaySDK\Trading\ErrorParameterType $errorParameters)
     {
+        if (!is_array($this->errorParameters)) {
+            throw new \LogicException('errorParameters is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->errorParameters[] = $errorParameters;
         return $this;
     }
@@ -271,7 +274,7 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  error variables that indicate details about the error condition.
      *  These are useful when multiple instances of <b>ErrorType</b> are returned.
      *
-     * @return \Nogrod\eBaySDK\Trading\ErrorParameterType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ErrorParameterType>
      */
     public function getErrorParameters()
     {
@@ -285,10 +288,10 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  error variables that indicate details about the error condition.
      *  These are useful when multiple instances of <b>ErrorType</b> are returned.
      *
-     * @param \Nogrod\eBaySDK\Trading\ErrorParameterType[] $errorParameters
+     * @param iterable<\Nogrod\eBaySDK\Trading\ErrorParameterType> $errorParameters
      * @return self
      */
-    public function setErrorParameters(array $errorParameters)
+    public function setErrorParameters(iterable $errorParameters)
     {
         $this->errorParameters = $errorParameters;
         return $this;
@@ -345,10 +348,10 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SeverityCode", $value);
         }
         $value = $this->getErrorParameters();
-        if (null !== $value && [] !== $this->getErrorParameters()) {
-            $writer->write(array_map(function ($v) {
-                return ["ErrorParameters" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ErrorParameters" => $v]]);
+            }
         }
         $value = $this->getErrorClassification();
         if (null !== $value) {

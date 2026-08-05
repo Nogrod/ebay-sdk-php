@@ -31,6 +31,9 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToBidValue(\Nogrod\eBaySDK\Trading\AmountType $bidValue)
     {
+        if (!is_array($this->bidValue)) {
+            throw new \LogicException('bidValue is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bidValue[] = $bidValue;
         return $this;
     }
@@ -66,7 +69,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * The <b>SuggestedBidValues</b> container is only returned if the buyer is attempting to bid on an auction item. A <b>BidValue</b> field is returned for each incremental bid value (up to the dollar value specified in the <b>Offer.MaxBid</b> field in the request) that eBay will bid on behalf of the buyer each time that buyer is outbid for the auction item. How many <b>BidValue</b> fields that appear will depend on the current winning bid amount, the required bid increment, and the buyer's specified max bid amount.
      *
-     * @return \Nogrod\eBaySDK\Trading\AmountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AmountType>
      */
     public function getBidValue()
     {
@@ -78,10 +81,10 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * The <b>SuggestedBidValues</b> container is only returned if the buyer is attempting to bid on an auction item. A <b>BidValue</b> field is returned for each incremental bid value (up to the dollar value specified in the <b>Offer.MaxBid</b> field in the request) that eBay will bid on behalf of the buyer each time that buyer is outbid for the auction item. How many <b>BidValue</b> fields that appear will depend on the current winning bid amount, the required bid increment, and the buyer's specified max bid amount.
      *
-     * @param \Nogrod\eBaySDK\Trading\AmountType[] $bidValue
+     * @param iterable<\Nogrod\eBaySDK\Trading\AmountType> $bidValue
      * @return self
      */
-    public function setBidValue(array $bidValue)
+    public function setBidValue(iterable $bidValue)
     {
         $this->bidValue = $bidValue;
         return $this;
@@ -91,10 +94,10 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidValue();
-        if (null !== $value && [] !== $this->getBidValue()) {
-            $writer->write(array_map(function ($v) {
-                return ["BidValue" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BidValue" => $v]]);
+            }
         }
     }
 

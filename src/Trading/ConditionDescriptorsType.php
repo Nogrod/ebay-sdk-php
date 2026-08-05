@@ -41,6 +41,9 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToConditionDescriptor(\Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor)
     {
+        if (!is_array($this->conditionDescriptor)) {
+            throw new \LogicException('conditionDescriptor is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->conditionDescriptor[] = $conditionDescriptor;
         return $this;
     }
@@ -91,7 +94,7 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ConditionDescriptorType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType>
      */
     public function getConditionDescriptor()
     {
@@ -108,10 +111,10 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptor
+     * @param iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType> $conditionDescriptor
      * @return self
      */
-    public function setConditionDescriptor(array $conditionDescriptor)
+    public function setConditionDescriptor(iterable $conditionDescriptor)
     {
         $this->conditionDescriptor = $conditionDescriptor;
         return $this;
@@ -121,10 +124,10 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getConditionDescriptor();
-        if (null !== $value && [] !== $this->getConditionDescriptor()) {
-            $writer->write(array_map(function ($v) {
-                return ["ConditionDescriptor" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ConditionDescriptor" => $v]]);
+            }
         }
     }
 

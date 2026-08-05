@@ -37,6 +37,9 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToOrderID($orderID)
     {
+        if (!is_array($this->orderID)) {
+            throw new \LogicException('orderID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->orderID[] = $orderID;
         return $this;
     }
@@ -81,7 +84,7 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <span class="tablenote"><b>Note: </b> The unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as request filters/parameters, including the <b>GetOrders</b> call, will support the identifiers for both unpaid and paid orders.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getOrderID()
     {
@@ -99,7 +102,7 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $orderID
      * @return self
      */
-    public function setOrderID(array $orderID)
+    public function setOrderID(iterable $orderID)
     {
         $this->orderID = $orderID;
         return $this;
@@ -109,10 +112,10 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrderID();
-        if (null !== $value && [] !== $this->getOrderID()) {
-            $writer->write(array_map(function ($v) {
-                return ["OrderID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["OrderID" => $v]]);
+            }
         }
     }
 

@@ -44,6 +44,9 @@ class AddToWatchListRequestType extends AbstractRequestType
      */
     public function addToItemID($itemID)
     {
+        if (!is_array($this->itemID)) {
+            throw new \LogicException('itemID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemID[] = $itemID;
         return $this;
     }
@@ -79,7 +82,7 @@ class AddToWatchListRequestType extends AbstractRequestType
      *
      * The unique identifier of the single-variation listing that is to be added to the eBay user's Watch List. The item must be a currently active item, and the total number of items in the user's Watch List (after the items in the request have been added) cannot exceed the maximum allowed number of Watch List items. One or more <b>ItemID</b> fields can be specified. A separate error node will be returned for each item that was not successfully added to the Watch List.<br> <br> The user must use either one or more <b>ItemID</b> values or one or more <b>VariationKey</b> containers, but the user may not use both of these entities in the same call.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getItemID()
     {
@@ -94,7 +97,7 @@ class AddToWatchListRequestType extends AbstractRequestType
      * @param string $itemID
      * @return self
      */
-    public function setItemID(array $itemID)
+    public function setItemID(iterable $itemID)
     {
         $this->itemID = $itemID;
         return $this;
@@ -114,6 +117,9 @@ class AddToWatchListRequestType extends AbstractRequestType
      */
     public function addToVariationKey(\Nogrod\eBaySDK\Trading\VariationKeyType $variationKey)
     {
+        if (!is_array($this->variationKey)) {
+            throw new \LogicException('variationKey is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationKey[] = $variationKey;
         return $this;
     }
@@ -161,7 +167,7 @@ class AddToWatchListRequestType extends AbstractRequestType
      *  <br>
      *  The user must use either one or more <b>ItemID</b> values or one or more <b>VariationKey</b> containers, but the user may not use both of these entities in the same call.
      *
-     * @return \Nogrod\eBaySDK\Trading\VariationKeyType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VariationKeyType>
      */
     public function getVariationKey()
     {
@@ -177,10 +183,10 @@ class AddToWatchListRequestType extends AbstractRequestType
      *  <br>
      *  The user must use either one or more <b>ItemID</b> values or one or more <b>VariationKey</b> containers, but the user may not use both of these entities in the same call.
      *
-     * @param \Nogrod\eBaySDK\Trading\VariationKeyType[] $variationKey
+     * @param iterable<\Nogrod\eBaySDK\Trading\VariationKeyType> $variationKey
      * @return self
      */
-    public function setVariationKey(array $variationKey)
+    public function setVariationKey(iterable $variationKey)
     {
         $this->variationKey = $variationKey;
         return $this;
@@ -190,16 +196,16 @@ class AddToWatchListRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
-        if (null !== $value && [] !== $this->getItemID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemID" => $v]]);
+            }
         }
         $value = $this->getVariationKey();
-        if (null !== $value && [] !== $this->getVariationKey()) {
-            $writer->write(array_map(function ($v) {
-                return ["VariationKey" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VariationKey" => $v]]);
+            }
         }
     }
 

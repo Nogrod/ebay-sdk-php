@@ -31,6 +31,9 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToReturnPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile)
     {
+        if (!is_array($this->returnPolicyProfile)) {
+            throw new \LogicException('returnPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->returnPolicyProfile[] = $returnPolicyProfile;
         return $this;
     }
@@ -66,7 +69,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *
      * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType>
      */
     public function getReturnPolicyProfile()
     {
@@ -78,10 +81,10 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *
      * Container consisting of detailed information for a specific return policy that matches the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfile
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType> $returnPolicyProfile
      * @return self
      */
-    public function setReturnPolicyProfile(array $returnPolicyProfile)
+    public function setReturnPolicyProfile(iterable $returnPolicyProfile)
     {
         $this->returnPolicyProfile = $returnPolicyProfile;
         return $this;
@@ -91,10 +94,10 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getReturnPolicyProfile();
-        if (null !== $value && [] !== $this->getReturnPolicyProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnPolicyProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReturnPolicyProfile" => $v]]);
+            }
         }
     }
 

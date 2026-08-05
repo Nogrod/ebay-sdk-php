@@ -350,6 +350,9 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToShipToLocation($shipToLocation)
     {
+        if (!is_array($this->shipToLocation)) {
+            throw new \LogicException('shipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipToLocation[] = $shipToLocation;
         return $this;
     }
@@ -409,7 +412,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br><br>
      *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShipToLocation()
     {
@@ -429,10 +432,10 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
      *  <br><br>
      *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, <b>ShipToLocation</b> fields will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, <b>ShipToLocation</b> fields are only returned to the buyer or seller, and a string value of <code>Unavailable</code> will be returned to all third parties.
      *
-     * @param string[] $shipToLocation
+     * @param iterable<string> $shipToLocation
      * @return self
      */
-    public function setShipToLocation(array $shipToLocation)
+    public function setShipToLocation(iterable $shipToLocation)
     {
         $this->shipToLocation = $shipToLocation;
         return $this;
@@ -514,10 +517,10 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority", $value);
         }
         $value = $this->getShipToLocation();
-        if (null !== $value && [] !== $this->getShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShipToLocation" => $v]]);
+            }
         }
         $value = $this->getImportCharge();
         if (null !== $value) {

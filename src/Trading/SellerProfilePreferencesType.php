@@ -75,6 +75,9 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToSupportedSellerProfiles(\Nogrod\eBaySDK\Trading\SupportedSellerProfileType $supportedSellerProfile)
     {
+        if (!is_array($this->supportedSellerProfiles)) {
+            throw new \LogicException('supportedSellerProfiles is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->supportedSellerProfiles[] = $supportedSellerProfile;
         return $this;
     }
@@ -116,7 +119,7 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  seller's account. This container is only returned if <b>SellerProfileOptedIn</b> = SellerProfilePreferences
      *  and the seller has one or more Business Policies profiles active on the account.
      *
-     * @return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SupportedSellerProfileType>
      */
     public function getSupportedSellerProfiles()
     {
@@ -130,10 +133,10 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  seller's account. This container is only returned if <b>SellerProfileOptedIn</b> = SellerProfilePreferences
      *  and the seller has one or more Business Policies profiles active on the account.
      *
-     * @param \Nogrod\eBaySDK\Trading\SupportedSellerProfileType[] $supportedSellerProfiles
+     * @param iterable<\Nogrod\eBaySDK\Trading\SupportedSellerProfileType> $supportedSellerProfiles
      * @return self
      */
-    public function setSupportedSellerProfiles(array $supportedSellerProfiles)
+    public function setSupportedSellerProfiles(iterable $supportedSellerProfiles)
     {
         $this->supportedSellerProfiles = $supportedSellerProfiles;
         return $this;
@@ -148,10 +151,13 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerProfileOptedIn", $value);
         }
         $value = $this->getSupportedSellerProfiles();
-        if (null !== $value && [] !== $this->getSupportedSellerProfiles()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {
-                return ["SupportedSellerProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SupportedSellerProfiles", array_map(function ($v) {
+                    return ["SupportedSellerProfile" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -76,6 +76,9 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToFee(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        if (!is_array($this->fee)) {
+            throw new \LogicException('fee is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->fee[] = $fee;
         return $this;
     }
@@ -111,7 +114,7 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * Contains the data for one fee (such as name and amount).
      *
-     * @return \Nogrod\eBaySDK\Trading\FeeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeeType>
      */
     public function getFee()
     {
@@ -123,10 +126,10 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * Contains the data for one fee (such as name and amount).
      *
-     * @param \Nogrod\eBaySDK\Trading\FeeType[] $fee
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeeType> $fee
      * @return self
      */
-    public function setFee(array $fee)
+    public function setFee(iterable $fee)
     {
         $this->fee = $fee;
         return $this;
@@ -140,10 +143,10 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getFee();
-        if (null !== $value && [] !== $this->getFee()) {
-            $writer->write(array_map(function ($v) {
-                return ["Fee" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Fee" => $v]]);
+            }
         }
     }
 

@@ -125,6 +125,9 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
      */
     public function addToCustomCategory(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        if (!is_array($this->customCategory)) {
+            throw new \LogicException('customCategory is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->customCategory[] = $customCategory;
         return $this;
     }
@@ -160,7 +163,7 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
      *
      * Contains hierarchy data for eBay Store categories that you have created/modified.
      *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
      */
     public function getCustomCategory()
     {
@@ -172,10 +175,10 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
      *
      * Contains hierarchy data for eBay Store categories that you have created/modified.
      *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $customCategory
+     * @param iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType> $customCategory
      * @return self
      */
-    public function setCustomCategory(array $customCategory)
+    public function setCustomCategory(iterable $customCategory)
     {
         $this->customCategory = $customCategory;
         return $this;
@@ -193,10 +196,13 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
         }
         $value = $this->getCustomCategory();
-        if (null !== $value && [] !== $this->getCustomCategory()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", array_map(function ($v) {
+                    return ["CustomCategory" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -424,6 +424,9 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToMemberMessage(\Nogrod\eBaySDK\Trading\MemberMessageExchangeType $memberMessageExchange)
     {
+        if (!is_array($this->memberMessage)) {
+            throw new \LogicException('memberMessage is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->memberMessage[] = $memberMessageExchange;
         return $this;
     }
@@ -459,7 +462,7 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Contains any mail message content shared between the seller and prospective buyer.
      *
-     * @return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType>
      */
     public function getMemberMessage()
     {
@@ -471,10 +474,10 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Contains any mail message content shared between the seller and prospective buyer.
      *
-     * @param \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[] $memberMessage
+     * @param iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType> $memberMessage
      * @return self
      */
-    public function setMemberMessage(array $memberMessage)
+    public function setMemberMessage(iterable $memberMessage)
     {
         $this->memberMessage = $memberMessage;
         return $this;
@@ -856,10 +859,13 @@ class AdFormatLeadType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
         }
         $value = $this->getMemberMessage();
-        if (null !== $value && [] !== $this->getMemberMessage()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
-                return ["MemberMessageExchange" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
+                    return ["MemberMessageExchange" => $v];
+                }, $value));
+            }
         }
         $value = $this->getStatus();
         if (null !== $value) {

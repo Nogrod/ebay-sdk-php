@@ -31,6 +31,9 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToSite($site)
     {
+        if (!is_array($this->site)) {
+            throw new \LogicException('site is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->site[] = $site;
         return $this;
     }
@@ -66,7 +69,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *
      * A unique identifier for an eBay site. Each site where the user (specified in <strong>UserID</strong> field of call request) has signed a cross-border trade Recoupment Policy Agreement is returned. The enumeration values that represent these eBay sites can be found in <strong>SiteCodeType</strong>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSite()
     {
@@ -81,7 +84,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
      * @param string $site
      * @return self
      */
-    public function setSite(array $site)
+    public function setSite(iterable $site)
     {
         $this->site = $site;
         return $this;
@@ -91,10 +94,10 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSite();
-        if (null !== $value && [] !== $this->getSite()) {
-            $writer->write(array_map(function ($v) {
-                return ["Site" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Site" => $v]]);
+            }
         }
     }
 

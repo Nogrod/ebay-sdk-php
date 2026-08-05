@@ -173,6 +173,9 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToShipToLocation($shipToLocation)
     {
+        if (!is_array($this->shipToLocation)) {
+            throw new \LogicException('shipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipToLocation[] = $shipToLocation;
         return $this;
     }
@@ -226,7 +229,7 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  <br><br>
      *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShipToLocation()
     {
@@ -244,10 +247,10 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  <br><br>
      *  All <b>shipToLocation</b> fields specified for the shipping policy are always returned in the <b>getSellerProfiles</b> call.
      *
-     * @param string[] $shipToLocation
+     * @param iterable<string> $shipToLocation
      * @return self
      */
-    public function setShipToLocation(array $shipToLocation)
+    public function setShipToLocation(iterable $shipToLocation)
     {
         $this->shipToLocation = $shipToLocation;
         return $this;
@@ -649,10 +652,10 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getShipToLocation();
-        if (null !== $value && [] !== $this->getShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["shipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["shipToLocation" => $v]]);
+            }
         }
         $value = $this->getShippingService();
         if (null !== $value) {

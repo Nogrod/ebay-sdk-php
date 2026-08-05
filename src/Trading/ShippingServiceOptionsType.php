@@ -561,6 +561,9 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingPackageInfo(\Nogrod\eBaySDK\Trading\ShippingPackageInfoType $shippingPackageInfo)
     {
+        if (!is_array($this->shippingPackageInfo)) {
+            throw new \LogicException('shippingPackageInfo is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingPackageInfo[] = $shippingPackageInfo;
         return $this;
     }
@@ -596,7 +599,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * This container is no longer applicable, and it was only applicable to eBay Now and 'eBay On Demand Delivery' orders, and neither of these features are available any longer.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingPackageInfoType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingPackageInfoType>
      */
     public function getShippingPackageInfo()
     {
@@ -608,10 +611,10 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * This container is no longer applicable, and it was only applicable to eBay Now and 'eBay On Demand Delivery' orders, and neither of these features are available any longer.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingPackageInfoType[] $shippingPackageInfo
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingPackageInfoType> $shippingPackageInfo
      * @return self
      */
-    public function setShippingPackageInfo(array $shippingPackageInfo)
+    public function setShippingPackageInfo(iterable $shippingPackageInfo)
     {
         $this->shippingPackageInfo = $shippingPackageInfo;
         return $this;
@@ -720,10 +723,10 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImportCharge", $value);
         }
         $value = $this->getShippingPackageInfo();
-        if (null !== $value && [] !== $this->getShippingPackageInfo()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingPackageInfo" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingPackageInfo" => $v]]);
+            }
         }
         $value = $this->getShippingServiceCutOffTime();
         if (null !== $value) {

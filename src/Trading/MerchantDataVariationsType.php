@@ -46,6 +46,9 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToVariation(\Nogrod\eBaySDK\Trading\MerchantDataVariationType $variation)
     {
+        if (!is_array($this->variation)) {
+            throw new \LogicException('variation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variation[] = $variation;
         return $this;
     }
@@ -96,7 +99,7 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  those colors and sizes. Always returned when variations
      *  are present.
      *
-     * @return \Nogrod\eBaySDK\Trading\MerchantDataVariationType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType>
      */
     public function getVariation()
     {
@@ -113,10 +116,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  those colors and sizes. Always returned when variations
      *  are present.
      *
-     * @param \Nogrod\eBaySDK\Trading\MerchantDataVariationType[] $variation
+     * @param iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType> $variation
      * @return self
      */
-    public function setVariation(array $variation)
+    public function setVariation(iterable $variation)
     {
         $this->variation = $variation;
         return $this;
@@ -126,10 +129,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
-        if (null !== $value && [] !== $this->getVariation()) {
-            $writer->write(array_map(function ($v) {
-                return ["Variation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Variation" => $v]]);
+            }
         }
     }
 

@@ -232,6 +232,9 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToExcludedUser($excludedUser)
     {
+        if (!is_array($this->excludedUser)) {
+            throw new \LogicException('excludedUser is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->excludedUser[] = $excludedUser;
         return $this;
     }
@@ -303,7 +306,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExcludedUser()
     {
@@ -327,10 +330,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      *  In <b>GetUserPreferences</b>, one or more <b>ExcludedUser</b> fields
      *  represent the current Excluded user list.
      *
-     * @param string[] $excludedUser
+     * @param iterable<string> $excludedUser
      * @return self
      */
-    public function setExcludedUser(array $excludedUser)
+    public function setExcludedUser(iterable $excludedUser)
     {
         $this->excludedUser = $excludedUser;
         return $this;
@@ -359,10 +362,10 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers", $value);
         }
         $value = $this->getExcludedUser();
-        if (null !== $value && [] !== $this->getExcludedUser()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludedUser" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExcludedUser" => $v]]);
+            }
         }
     }
 

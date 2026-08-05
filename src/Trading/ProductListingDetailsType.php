@@ -280,6 +280,9 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToCopyright($copyright)
     {
+        if (!is_array($this->copyright)) {
+            throw new \LogicException('copyright is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->copyright[] = $copyright;
         return $this;
     }
@@ -318,7 +321,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Copyright statement indicating the source of the product information. This information will be
      *  included in the listing if the seller used an eBay catalog product to list the item.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getCopyright()
     {
@@ -331,10 +334,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * Copyright statement indicating the source of the product information. This information will be
      *  included in the listing if the seller used an eBay catalog product to list the item.
      *
-     * @param string[] $copyright
+     * @param iterable<string> $copyright
      * @return self
      */
-    public function setCopyright(array $copyright)
+    public function setCopyright(iterable $copyright)
     {
         $this->copyright = $copyright;
         return $this;
@@ -714,6 +717,9 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->nameValueList)) {
+            throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->nameValueList[] = $nameValueList;
         return $this;
     }
@@ -749,7 +755,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This container is for future use. If it used, it will be ignored.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getNameValueList()
     {
@@ -761,10 +767,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This container is for future use. If it used, it will be ignored.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $nameValueList
      * @return self
      */
-    public function setNameValueList(array $nameValueList)
+    public function setNameValueList(iterable $nameValueList)
     {
         $this->nameValueList = $nameValueList;
         return $this;
@@ -788,10 +794,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StockPhotoURL", $value);
         }
         $value = $this->getCopyright();
-        if (null !== $value && [] !== $this->getCopyright()) {
-            $writer->write(array_map(function ($v) {
-                return ["Copyright" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Copyright" => $v]]);
+            }
         }
         $value = $this->getProductReferenceID();
         if (null !== $value) {
@@ -837,10 +843,10 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeeBayProductDetails", $value);
         }
         $value = $this->getNameValueList();
-        if (null !== $value && [] !== $this->getNameValueList()) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NameValueList" => $v]]);
+            }
         }
     }
 

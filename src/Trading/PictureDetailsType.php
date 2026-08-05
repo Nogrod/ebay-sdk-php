@@ -246,6 +246,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToPictureURL($pictureURL)
     {
+        if (!is_array($this->pictureURL)) {
+            throw new \LogicException('pictureURL is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictureURL[] = $pictureURL;
         return $this;
     }
@@ -392,7 +395,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <strong>Note:</strong> For some large merchants, there are no limitations on when pictures can be added or removed from a fixed-price listing, even when the listing has had transactions or is set to end within 12 hours.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPictureURL()
     {
@@ -441,10 +444,10 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <strong>Note:</strong> For some large merchants, there are no limitations on when pictures can be added or removed from a fixed-price listing, even when the listing has had transactions or is set to end within 12 hours.
      *  </span>
      *
-     * @param string[] $pictureURL
+     * @param iterable<string> $pictureURL
      * @return self
      */
-    public function setPictureURL(array $pictureURL)
+    public function setPictureURL(iterable $pictureURL)
     {
         $this->pictureURL = $pictureURL;
         return $this;
@@ -559,6 +562,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToExternalPictureURL($externalPictureURL)
     {
+        if (!is_array($this->externalPictureURL)) {
+            throw new \LogicException('externalPictureURL is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->externalPictureURL[] = $externalPictureURL;
         return $this;
     }
@@ -597,7 +603,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * When returned this contains the original URL of a self-hosted pictures, associated with the item when the item was listed.
      *  <br/>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExternalPictureURL()
     {
@@ -610,10 +616,10 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      * When returned this contains the original URL of a self-hosted pictures, associated with the item when the item was listed.
      *  <br/>
      *
-     * @param string[] $externalPictureURL
+     * @param iterable<string> $externalPictureURL
      * @return self
      */
-    public function setExternalPictureURL(array $externalPictureURL)
+    public function setExternalPictureURL(iterable $externalPictureURL)
     {
         $this->externalPictureURL = $externalPictureURL;
         return $this;
@@ -629,6 +635,9 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToExtendedPictureDetails(\Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs)
     {
+        if (!is_array($this->extendedPictureDetails)) {
+            throw new \LogicException('extendedPictureDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->extendedPictureDetails[] = $pictureURLs;
         return $this;
     }
@@ -664,7 +673,7 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
-     * @return \Nogrod\eBaySDK\Trading\PictureURLsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PictureURLsType>
      */
     public function getExtendedPictureDetails()
     {
@@ -676,10 +685,10 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the PictureDetails.ExternalPictureURL field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
-     * @param \Nogrod\eBaySDK\Trading\PictureURLsType[] $extendedPictureDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\PictureURLsType> $extendedPictureDetails
      * @return self
      */
-    public function setExtendedPictureDetails(array $extendedPictureDetails)
+    public function setExtendedPictureDetails(iterable $extendedPictureDetails)
     {
         $this->extendedPictureDetails = $extendedPictureDetails;
         return $this;
@@ -697,10 +706,10 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryURL", $value);
         }
         $value = $this->getPictureURL();
-        if (null !== $value && [] !== $this->getPictureURL()) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PictureURL" => $v]]);
+            }
         }
         $value = $this->getPictureSource();
         if (null !== $value) {
@@ -715,16 +724,19 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryErrorInfo", $value);
         }
         $value = $this->getExternalPictureURL();
-        if (null !== $value && [] !== $this->getExternalPictureURL()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExternalPictureURL" => $v]]);
+            }
         }
         $value = $this->getExtendedPictureDetails();
-        if (null !== $value && [] !== $this->getExtendedPictureDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
+                    return ["PictureURLs" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -41,6 +41,9 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToUserID($userID)
     {
+        if (!is_array($this->userID)) {
+            throw new \LogicException('userID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->userID[] = $userID;
         return $this;
     }
@@ -91,7 +94,7 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getUserID()
     {
@@ -111,7 +114,7 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * @param string $userID
      * @return self
      */
-    public function setUserID(array $userID)
+    public function setUserID(iterable $userID)
     {
         $this->userID = $userID;
         return $this;
@@ -121,10 +124,10 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getUserID();
-        if (null !== $value && [] !== $this->getUserID()) {
-            $writer->write(array_map(function ($v) {
-                return ["UserID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["UserID" => $v]]);
+            }
         }
     }
 

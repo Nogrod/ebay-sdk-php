@@ -86,6 +86,9 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      */
     public function addToFolderID($folderID)
     {
+        if (!is_array($this->folderID)) {
+            throw new \LogicException('folderID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->folderID[] = $folderID;
         return $this;
     }
@@ -130,7 +133,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b> If multiple folders will be renamed with one call, the user must pay close attention to the order of the <b>FolderID</b> and <b>FolderName</b> fields, as eBay will process these requests in order according to the placement of the the <b>FolderID</b> and <b>FolderName</b> fields. So, the existing folder identified by the first <b>FolderID</b> field in the request payload will get renamed to the folder name passed into the first <b>FolderName</b> field in the request payload, and so on.
      *  </span>
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getFolderID()
     {
@@ -145,10 +148,10 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b> If multiple folders will be renamed with one call, the user must pay close attention to the order of the <b>FolderID</b> and <b>FolderName</b> fields, as eBay will process these requests in order according to the placement of the the <b>FolderID</b> and <b>FolderName</b> fields. So, the existing folder identified by the first <b>FolderID</b> field in the request payload will get renamed to the folder name passed into the first <b>FolderName</b> field in the request payload, and so on.
      *  </span>
      *
-     * @param int[] $folderID
+     * @param iterable<int> $folderID
      * @return self
      */
-    public function setFolderID(array $folderID)
+    public function setFolderID(iterable $folderID)
     {
         $this->folderID = $folderID;
         return $this;
@@ -169,6 +172,9 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      */
     public function addToFolderName($folderName)
     {
+        if (!is_array($this->folderName)) {
+            throw new \LogicException('folderName is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->folderName[] = $folderName;
         return $this;
     }
@@ -219,7 +225,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b> If multiple folders will be renamed with one call, the user must pay close attention to the order of the <b>FolderID</b> and <b>FolderName</b> fields, as eBay will process these requests in order according to the placement of the the <b>FolderID</b> and <b>FolderName</b> fields. So, the existing folder identified by the first <b>FolderID</b> field in the request payload will get renamed to the folder name passed into the first <b>FolderName</b> field in the request payload, and so on.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getFolderName()
     {
@@ -236,10 +242,10 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b> If multiple folders will be renamed with one call, the user must pay close attention to the order of the <b>FolderID</b> and <b>FolderName</b> fields, as eBay will process these requests in order according to the placement of the the <b>FolderID</b> and <b>FolderName</b> fields. So, the existing folder identified by the first <b>FolderID</b> field in the request payload will get renamed to the folder name passed into the first <b>FolderName</b> field in the request payload, and so on.
      *  </span>
      *
-     * @param string[] $folderName
+     * @param iterable<string> $folderName
      * @return self
      */
-    public function setFolderName(array $folderName)
+    public function setFolderName(iterable $folderName)
     {
         $this->folderName = $folderName;
         return $this;
@@ -253,16 +259,16 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Operation", $value);
         }
         $value = $this->getFolderID();
-        if (null !== $value && [] !== $this->getFolderID()) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FolderID" => $v]]);
+            }
         }
         $value = $this->getFolderName();
-        if (null !== $value && [] !== $this->getFolderName()) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderName" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FolderName" => $v]]);
+            }
         }
     }
 

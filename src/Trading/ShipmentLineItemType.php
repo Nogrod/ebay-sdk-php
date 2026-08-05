@@ -31,6 +31,9 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      */
     public function addToLineItem(\Nogrod\eBaySDK\Trading\LineItemType $lineItem)
     {
+        if (!is_array($this->lineItem)) {
+            throw new \LogicException('lineItem is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->lineItem[] = $lineItem;
         return $this;
     }
@@ -66,7 +69,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
-     * @return \Nogrod\eBaySDK\Trading\LineItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\LineItemType>
      */
     public function getLineItem()
     {
@@ -78,10 +81,10 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *
      * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
      *
-     * @param \Nogrod\eBaySDK\Trading\LineItemType[] $lineItem
+     * @param iterable<\Nogrod\eBaySDK\Trading\LineItemType> $lineItem
      * @return self
      */
-    public function setLineItem(array $lineItem)
+    public function setLineItem(iterable $lineItem)
     {
         $this->lineItem = $lineItem;
         return $this;
@@ -91,10 +94,10 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLineItem();
-        if (null !== $value && [] !== $this->getLineItem()) {
-            $writer->write(array_map(function ($v) {
-                return ["LineItem" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["LineItem" => $v]]);
+            }
         }
     }
 

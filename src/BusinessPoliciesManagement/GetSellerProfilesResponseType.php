@@ -43,6 +43,9 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToPaymentProfileList(\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile)
     {
+        if (!is_array($this->paymentProfileList)) {
+            throw new \LogicException('paymentProfileList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentProfileList[] = $paymentProfile;
         return $this;
     }
@@ -78,7 +81,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType>
      */
     public function getPaymentProfileList()
     {
@@ -90,10 +93,10 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more payment policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no payment policies match the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfileList
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType> $paymentProfileList
      * @return self
      */
-    public function setPaymentProfileList(array $paymentProfileList)
+    public function setPaymentProfileList(iterable $paymentProfileList)
     {
         $this->paymentProfileList = $paymentProfileList;
         return $this;
@@ -109,6 +112,9 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToReturnPolicyProfileList(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile)
     {
+        if (!is_array($this->returnPolicyProfileList)) {
+            throw new \LogicException('returnPolicyProfileList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->returnPolicyProfileList[] = $returnPolicyProfile;
         return $this;
     }
@@ -144,7 +150,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType>
      */
     public function getReturnPolicyProfileList()
     {
@@ -156,10 +162,10 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no return policies match the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType[] $returnPolicyProfileList
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType> $returnPolicyProfileList
      * @return self
      */
-    public function setReturnPolicyProfileList(array $returnPolicyProfileList)
+    public function setReturnPolicyProfileList(iterable $returnPolicyProfileList)
     {
         $this->returnPolicyProfileList = $returnPolicyProfileList;
         return $this;
@@ -175,6 +181,9 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToShippingPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile)
     {
+        if (!is_array($this->shippingPolicyProfile)) {
+            throw new \LogicException('shippingPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingPolicyProfile[] = $shippingPolicyProfile;
         return $this;
     }
@@ -210,7 +219,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType>
      */
     public function getShippingPolicyProfile()
     {
@@ -222,10 +231,10 @@ class GetSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType> $shippingPolicyProfile
      * @return self
      */
-    public function setShippingPolicyProfile(array $shippingPolicyProfile)
+    public function setShippingPolicyProfile(iterable $shippingPolicyProfile)
     {
         $this->shippingPolicyProfile = $shippingPolicyProfile;
         return $this;
@@ -235,22 +244,31 @@ class GetSellerProfilesResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getPaymentProfileList();
-        if (null !== $value && [] !== $this->getPaymentProfileList()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList", array_map(function ($v) {
-                return ["PaymentProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList", array_map(function ($v) {
+                    return ["PaymentProfile" => $v];
+                }, $value));
+            }
         }
         $value = $this->getReturnPolicyProfileList();
-        if (null !== $value && [] !== $this->getReturnPolicyProfileList()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList", array_map(function ($v) {
-                return ["ReturnPolicyProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList", array_map(function ($v) {
+                    return ["ReturnPolicyProfile" => $v];
+                }, $value));
+            }
         }
         $value = $this->getShippingPolicyProfile();
-        if (null !== $value && [] !== $this->getShippingPolicyProfile()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile", array_map(function ($v) {
-                return ["ShippingPolicyProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile", array_map(function ($v) {
+                    return ["ShippingPolicyProfile" => $v];
+                }, $value));
+            }
         }
     }
 

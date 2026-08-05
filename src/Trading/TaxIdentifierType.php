@@ -105,6 +105,9 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToAttribute(\Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType $attribute)
     {
+        if (!is_array($this->attribute)) {
+            throw new \LogicException('attribute is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->attribute[] = $attribute;
         return $this;
     }
@@ -143,7 +146,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * <br>
      *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType>
      */
     public function getAttribute()
     {
@@ -156,10 +159,10 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * <br>
      *  This field shows an attribute, and its corresponding value for the buyer's tax identification card. Currently, this field is only used to indicate which country issued the buyer's tax ID, but in the future, other attributes related to the tax ID may be returned in this field. This field's value will be an <a href="http://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO 3166-1 two-digit code</a> that represents the issuing country.
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType[] $attribute
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType> $attribute
      * @return self
      */
-    public function setAttribute(array $attribute)
+    public function setAttribute(iterable $attribute)
     {
         $this->attribute = $attribute;
         return $this;
@@ -177,10 +180,10 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ID", $value);
         }
         $value = $this->getAttribute();
-        if (null !== $value && [] !== $this->getAttribute()) {
-            $writer->write(array_map(function ($v) {
-                return ["Attribute" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Attribute" => $v]]);
+            }
         }
     }
 

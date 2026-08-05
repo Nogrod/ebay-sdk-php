@@ -104,6 +104,9 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->nameValueList)) {
+            throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->nameValueList[] = $nameValueList;
         return $this;
     }
@@ -247,7 +250,7 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Unlike standard item specifics that allow a maximum of 65 characters in the <b>Value</b> field, the matching value for the 'California Prop 65 Warning' item specific allows up to 800 characters of text. When a seller passes in this item specific, eBay will automatically insert a warning symbol icon for the listing.
      *  </span><br>
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getNameValueList()
     {
@@ -295,10 +298,10 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  Unlike standard item specifics that allow a maximum of 65 characters in the <b>Value</b> field, the matching value for the 'California Prop 65 Warning' item specific allows up to 800 characters of text. When a seller passes in this item specific, eBay will automatically insert a warning symbol icon for the listing.
      *  </span><br>
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $nameValueList
      * @return self
      */
-    public function setNameValueList(array $nameValueList)
+    public function setNameValueList(iterable $nameValueList)
     {
         $this->nameValueList = $nameValueList;
         return $this;
@@ -308,10 +311,10 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNameValueList();
-        if (null !== $value && [] !== $this->getNameValueList()) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NameValueList" => $v]]);
+            }
         }
     }
 

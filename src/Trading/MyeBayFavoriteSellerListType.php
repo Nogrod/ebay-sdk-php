@@ -64,6 +64,9 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToFavoriteSeller(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType $favoriteSeller)
     {
+        if (!is_array($this->favoriteSeller)) {
+            throw new \LogicException('favoriteSeller is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->favoriteSeller[] = $favoriteSeller;
         return $this;
     }
@@ -99,7 +102,7 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * A favorite seller the user has saved, with a user ID and store name.
      *
-     * @return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType>
      */
     public function getFavoriteSeller()
     {
@@ -111,10 +114,10 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * A favorite seller the user has saved, with a user ID and store name.
      *
-     * @param \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType[] $favoriteSeller
+     * @param iterable<\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType> $favoriteSeller
      * @return self
      */
-    public function setFavoriteSeller(array $favoriteSeller)
+    public function setFavoriteSeller(iterable $favoriteSeller)
     {
         $this->favoriteSeller = $favoriteSeller;
         return $this;
@@ -128,10 +131,10 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAvailable", $value);
         }
         $value = $this->getFavoriteSeller();
-        if (null !== $value && [] !== $this->getFavoriteSeller()) {
-            $writer->write(array_map(function ($v) {
-                return ["FavoriteSeller" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FavoriteSeller" => $v]]);
+            }
         }
     }
 

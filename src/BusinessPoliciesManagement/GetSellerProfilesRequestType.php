@@ -69,6 +69,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileType($profileType)
     {
+        if (!is_array($this->profileType)) {
+            throw new \LogicException('profileType is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->profileType[] = $profileType;
         return $this;
     }
@@ -110,7 +113,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      *  <br><br>
      *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all policies that match any of the supplied filters are retrieved in the response.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getProfileType()
     {
@@ -127,7 +130,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      * @param string $profileType
      * @return self
      */
-    public function setProfileType(array $profileType)
+    public function setProfileType(iterable $profileType)
     {
         $this->profileType = $profileType;
         return $this;
@@ -145,6 +148,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileId($profileId)
     {
+        if (!is_array($this->profileId)) {
+            throw new \LogicException('profileId is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->profileId[] = $profileId;
         return $this;
     }
@@ -186,7 +192,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      *  <br><br>
      *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getProfileId()
     {
@@ -200,10 +206,10 @@ class GetSellerProfilesRequestType extends BaseRequestType
      *  <br><br>
      *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
-     * @param int[] $profileId
+     * @param iterable<int> $profileId
      * @return self
      */
-    public function setProfileId(array $profileId)
+    public function setProfileId(iterable $profileId)
     {
         $this->profileId = $profileId;
         return $this;
@@ -221,6 +227,9 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileName($profileName)
     {
+        if (!is_array($this->profileName)) {
+            throw new \LogicException('profileName is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->profileName[] = $profileName;
         return $this;
     }
@@ -262,7 +271,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      *  <br><br>
      *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getProfileName()
     {
@@ -276,10 +285,10 @@ class GetSellerProfilesRequestType extends BaseRequestType
      *  <br><br>
      *  Boolean OR logic is applied when using any combination of the <b>profileType</b>, <b>profileID</b>, and <b>profileName</b> filters in a <b>getSellerProfiles</b> request, so all business policies that match any of the supplied filters are retrieved in the response.
      *
-     * @param string[] $profileName
+     * @param iterable<string> $profileName
      * @return self
      */
-    public function setProfileName(array $profileName)
+    public function setProfileName(iterable $profileName)
     {
         $this->profileName = $profileName;
         return $this;
@@ -325,22 +334,22 @@ class GetSellerProfilesRequestType extends BaseRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getProfileType();
-        if (null !== $value && [] !== $this->getProfileType()) {
-            $writer->write(array_map(function ($v) {
-                return ["profileType" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["profileType" => $v]]);
+            }
         }
         $value = $this->getProfileId();
-        if (null !== $value && [] !== $this->getProfileId()) {
-            $writer->write(array_map(function ($v) {
-                return ["profileId" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["profileId" => $v]]);
+            }
         }
         $value = $this->getProfileName();
-        if (null !== $value && [] !== $this->getProfileName()) {
-            $writer->write(array_map(function ($v) {
-                return ["profileName" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["profileName" => $v]]);
+            }
         }
         $value = $this->getIncludeDetails();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

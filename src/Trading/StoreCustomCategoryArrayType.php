@@ -31,6 +31,9 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToCustomCategory(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        if (!is_array($this->customCategory)) {
+            throw new \LogicException('customCategory is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->customCategory[] = $customCategory;
         return $this;
     }
@@ -66,7 +69,7 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * This container is used to express details about a customized eBay Store category.
      *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
      */
     public function getCustomCategory()
     {
@@ -78,10 +81,10 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * This container is used to express details about a customized eBay Store category.
      *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $customCategory
+     * @param iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType> $customCategory
      * @return self
      */
-    public function setCustomCategory(array $customCategory)
+    public function setCustomCategory(iterable $customCategory)
     {
         $this->customCategory = $customCategory;
         return $this;
@@ -91,10 +94,10 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCustomCategory();
-        if (null !== $value && [] !== $this->getCustomCategory()) {
-            $writer->write(array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CustomCategory" => $v]]);
+            }
         }
     }
 

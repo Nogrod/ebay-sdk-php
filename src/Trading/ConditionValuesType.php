@@ -55,6 +55,9 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToCondition(\Nogrod\eBaySDK\Trading\ConditionType $condition)
     {
+        if (!is_array($this->condition)) {
+            throw new \LogicException('condition is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->condition[] = $condition;
         return $this;
     }
@@ -105,7 +108,7 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  'Certified Refurbished', 'Excellent - Refurbished', 'Very Good - Refurbished', and 'Good - Refurbished' item conditions will not be returned in this container for categories in the eBay Refurbished Program, but instead will be returned in the <b>Category.SpecialFeatures</b> container if the corresponding category supports any of these Refurbished item conditions. To used any of these Refurbished item conditions, sellers must go through an <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">application and qualification process</a>. The new item condition values appearing in the Category.SpecialFeatures container does not necessarily indicate that a seller is eligible to list with these item conditions. If the corresponding category supports it, 'Seller Refurbished' will still be returned in this container.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ConditionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ConditionType>
      */
     public function getCondition()
     {
@@ -122,10 +125,10 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  'Certified Refurbished', 'Excellent - Refurbished', 'Very Good - Refurbished', and 'Good - Refurbished' item conditions will not be returned in this container for categories in the eBay Refurbished Program, but instead will be returned in the <b>Category.SpecialFeatures</b> container if the corresponding category supports any of these Refurbished item conditions. To used any of these Refurbished item conditions, sellers must go through an <a href="https://pages.ebay.com/seller-center/listing-and-marketing/ebay-refurbished-program.html" target="_blank">application and qualification process</a>. The new item condition values appearing in the Category.SpecialFeatures container does not necessarily indicate that a seller is eligible to list with these item conditions. If the corresponding category supports it, 'Seller Refurbished' will still be returned in this container.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ConditionType[] $condition
+     * @param iterable<\Nogrod\eBaySDK\Trading\ConditionType> $condition
      * @return self
      */
-    public function setCondition(array $condition)
+    public function setCondition(iterable $condition)
     {
         $this->condition = $condition;
         return $this;
@@ -175,10 +178,10 @@ class ConditionValuesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCondition();
-        if (null !== $value && [] !== $this->getCondition()) {
-            $writer->write(array_map(function ($v) {
-                return ["Condition" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Condition" => $v]]);
+            }
         }
         $value = $this->getConditionHelpURL();
         if (null !== $value) {

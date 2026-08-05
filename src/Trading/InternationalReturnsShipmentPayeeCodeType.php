@@ -31,6 +31,9 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
      */
     public function addToInternationalReturnsShipmentPayee($internationalReturnsShipmentPayee)
     {
+        if (!is_array($this->internationalReturnsShipmentPayee)) {
+            throw new \LogicException('internationalReturnsShipmentPayee is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsShipmentPayee[] = $internationalReturnsShipmentPayee;
         return $this;
     }
@@ -66,7 +69,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
      *
      * Defines the available options for who pays the return shipping costs for international returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsShipmentPayee()
     {
@@ -81,7 +84,7 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
      * @param string $internationalReturnsShipmentPayee
      * @return self
      */
-    public function setInternationalReturnsShipmentPayee(array $internationalReturnsShipmentPayee)
+    public function setInternationalReturnsShipmentPayee(iterable $internationalReturnsShipmentPayee)
     {
         $this->internationalReturnsShipmentPayee = $internationalReturnsShipmentPayee;
         return $this;
@@ -91,10 +94,10 @@ class InternationalReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSeriali
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsShipmentPayee();
-        if (null !== $value && [] !== $this->getInternationalReturnsShipmentPayee()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalReturnsShipmentPayee" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalReturnsShipmentPayee" => $v]]);
+            }
         }
     }
 

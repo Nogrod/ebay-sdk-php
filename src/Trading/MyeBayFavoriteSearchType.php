@@ -830,6 +830,9 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSearchFlag($searchFlag)
     {
+        if (!is_array($this->searchFlag)) {
+            throw new \LogicException('searchFlag is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->searchFlag[] = $searchFlag;
         return $this;
     }
@@ -871,7 +874,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  specify whether you want to include charity listings, free-shipping listings, and
      *  listings with other features in your search.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSearchFlag()
     {
@@ -888,7 +891,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * @param string $searchFlag
      * @return self
      */
-    public function setSearchFlag(array $searchFlag)
+    public function setSearchFlag(iterable $searchFlag)
     {
         $this->searchFlag = $searchFlag;
         return $this;
@@ -939,6 +942,9 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSellerID($sellerID)
     {
+        if (!is_array($this->sellerID)) {
+            throw new \LogicException('sellerID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerID[] = $sellerID;
         return $this;
     }
@@ -989,7 +995,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSellerID()
     {
@@ -1006,10 +1012,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @param string[] $sellerID
+     * @param iterable<string> $sellerID
      * @return self
      */
-    public function setSellerID(array $sellerID)
+    public function setSellerID(iterable $sellerID)
     {
         $this->sellerID = $sellerID;
         return $this;
@@ -1030,6 +1036,9 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSellerIDExclude($sellerIDExclude)
     {
+        if (!is_array($this->sellerIDExclude)) {
+            throw new \LogicException('sellerIDExclude is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerIDExclude[] = $sellerIDExclude;
         return $this;
     }
@@ -1080,7 +1089,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSellerIDExclude()
     {
@@ -1097,10 +1106,10 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *  Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @param string[] $sellerIDExclude
+     * @param iterable<string> $sellerIDExclude
      * @return self
      */
-    public function setSellerIDExclude(array $sellerIDExclude)
+    public function setSellerIDExclude(iterable $sellerIDExclude)
     {
         $this->sellerIDExclude = $sellerIDExclude;
         return $this;
@@ -1354,26 +1363,26 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCountMin", $value);
         }
         $value = $this->getSearchFlag();
-        if (null !== $value && [] !== $this->getSearchFlag()) {
-            $writer->write(array_map(function ($v) {
-                return ["SearchFlag" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SearchFlag" => $v]]);
+            }
         }
         $value = $this->getPreferredLocation();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PreferredLocation", $value);
         }
         $value = $this->getSellerID();
-        if (null !== $value && [] !== $this->getSellerID()) {
-            $writer->write(array_map(function ($v) {
-                return ["SellerID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SellerID" => $v]]);
+            }
         }
         $value = $this->getSellerIDExclude();
-        if (null !== $value && [] !== $this->getSellerIDExclude()) {
-            $writer->write(array_map(function ($v) {
-                return ["SellerIDExclude" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SellerIDExclude" => $v]]);
+            }
         }
         $value = $this->getItemsAvailableTo();
         if (null !== $value) {

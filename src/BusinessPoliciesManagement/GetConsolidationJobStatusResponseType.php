@@ -31,6 +31,9 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
      */
     public function addToJob(\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType $job)
     {
+        if (!is_array($this->job)) {
+            throw new \LogicException('job is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->job[] = $job;
         return $this;
     }
@@ -66,7 +69,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
      *
      * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType>
      */
     public function getJob()
     {
@@ -78,10 +81,10 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
      *
      * Container consisting of details related to the shipping policies consolidation job, including the status of the job and the eBay site ID.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType[] $job
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType> $job
      * @return self
      */
-    public function setJob(array $job)
+    public function setJob(iterable $job)
     {
         $this->job = $job;
         return $this;
@@ -91,10 +94,10 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getJob();
-        if (null !== $value && [] !== $this->getJob()) {
-            $writer->write(array_map(function ($v) {
-                return ["Job" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Job" => $v]]);
+            }
         }
     }
 

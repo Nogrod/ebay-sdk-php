@@ -125,6 +125,9 @@ class RelistItemResponseType extends AbstractResponseType
      */
     public function addToFees(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        if (!is_array($this->fees)) {
+            throw new \LogicException('fees is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->fees[] = $fee;
         return $this;
     }
@@ -181,7 +184,7 @@ class RelistItemResponseType extends AbstractResponseType
      *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>RelistItem</b> call to relist an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\FeeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeeType>
      */
     public function getFees()
     {
@@ -200,10 +203,10 @@ class RelistItemResponseType extends AbstractResponseType
      *  <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>RelistItem</b> call to relist an item on the eBay US site, the currency type shown for each fee will be <code>USD</code> and not <code>CAD</code>.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\FeeType[] $fees
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeeType> $fees
      * @return self
      */
-    public function setFees(array $fees)
+    public function setFees(iterable $fees)
     {
         $this->fees = $fees;
         return $this;
@@ -327,6 +330,9 @@ class RelistItemResponseType extends AbstractResponseType
      */
     public function addToDiscountReason($discountReason)
     {
+        if (!is_array($this->discountReason)) {
+            throw new \LogicException('discountReason is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->discountReason[] = $discountReason;
         return $this;
     }
@@ -362,7 +368,7 @@ class RelistItemResponseType extends AbstractResponseType
      *
      * This field is returned if an eBay special offer or promotion is applicable to the listing.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDiscountReason()
     {
@@ -377,7 +383,7 @@ class RelistItemResponseType extends AbstractResponseType
      * @param string $discountReason
      * @return self
      */
-    public function setDiscountReason(array $discountReason)
+    public function setDiscountReason(iterable $discountReason)
     {
         $this->discountReason = $discountReason;
         return $this;
@@ -393,6 +399,9 @@ class RelistItemResponseType extends AbstractResponseType
      */
     public function addToProductSuggestions(\Nogrod\eBaySDK\Trading\ProductSuggestionType $productSuggestion)
     {
+        if (!is_array($this->productSuggestions)) {
+            throw new \LogicException('productSuggestions is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->productSuggestions[] = $productSuggestion;
         return $this;
     }
@@ -428,7 +437,7 @@ class RelistItemResponseType extends AbstractResponseType
      *
      * Provides a list of products recommended by eBay which match the item information provided by the seller.
      *
-     * @return \Nogrod\eBaySDK\Trading\ProductSuggestionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ProductSuggestionType>
      */
     public function getProductSuggestions()
     {
@@ -440,10 +449,10 @@ class RelistItemResponseType extends AbstractResponseType
      *
      * Provides a list of products recommended by eBay which match the item information provided by the seller.
      *
-     * @param \Nogrod\eBaySDK\Trading\ProductSuggestionType[] $productSuggestions
+     * @param iterable<\Nogrod\eBaySDK\Trading\ProductSuggestionType> $productSuggestions
      * @return self
      */
-    public function setProductSuggestions(array $productSuggestions)
+    public function setProductSuggestions(iterable $productSuggestions)
     {
         $this->productSuggestions = $productSuggestions;
         return $this;
@@ -457,10 +466,13 @@ class RelistItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getFees();
-        if (null !== $value && [] !== $this->getFees()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {
-                return ["Fee" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {
+                    return ["Fee" => $v];
+                }, $value));
+            }
         }
         $value = $this->getStartTime();
         if (null !== $value) {
@@ -479,16 +491,19 @@ class RelistItemResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Category2ID", $value);
         }
         $value = $this->getDiscountReason();
-        if (null !== $value && [] !== $this->getDiscountReason()) {
-            $writer->write(array_map(function ($v) {
-                return ["DiscountReason" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DiscountReason" => $v]]);
+            }
         }
         $value = $this->getProductSuggestions();
-        if (null !== $value && [] !== $this->getProductSuggestions()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {
-                return ["ProductSuggestion" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {
+                    return ["ProductSuggestion" => $v];
+                }, $value));
+            }
         }
     }
 

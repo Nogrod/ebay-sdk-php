@@ -122,6 +122,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToBidRetractionFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->bidRetractionFeedbackPeriodArray)) {
+            throw new \LogicException('bidRetractionFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bidRetractionFeedbackPeriodArray[] = $feedbackPeriod;
         return $this;
     }
@@ -160,7 +163,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Bid retractions count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getBidRetractionFeedbackPeriodArray()
     {
@@ -173,10 +176,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Bid retractions count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $bidRetractionFeedbackPeriodArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $bidRetractionFeedbackPeriodArray
      * @return self
      */
-    public function setBidRetractionFeedbackPeriodArray(array $bidRetractionFeedbackPeriodArray)
+    public function setBidRetractionFeedbackPeriodArray(iterable $bidRetractionFeedbackPeriodArray)
     {
         $this->bidRetractionFeedbackPeriodArray = $bidRetractionFeedbackPeriodArray;
         return $this;
@@ -193,6 +196,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToNegativeFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->negativeFeedbackPeriodArray)) {
+            throw new \LogicException('negativeFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->negativeFeedbackPeriodArray[] = $feedbackPeriod;
         return $this;
     }
@@ -231,7 +237,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Negative feedback entries count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getNegativeFeedbackPeriodArray()
     {
@@ -244,10 +250,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Negative feedback entries count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $negativeFeedbackPeriodArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $negativeFeedbackPeriodArray
      * @return self
      */
-    public function setNegativeFeedbackPeriodArray(array $negativeFeedbackPeriodArray)
+    public function setNegativeFeedbackPeriodArray(iterable $negativeFeedbackPeriodArray)
     {
         $this->negativeFeedbackPeriodArray = $negativeFeedbackPeriodArray;
         return $this;
@@ -264,6 +270,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToNeutralFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->neutralFeedbackPeriodArray)) {
+            throw new \LogicException('neutralFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->neutralFeedbackPeriodArray[] = $feedbackPeriod;
         return $this;
     }
@@ -302,7 +311,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Neutral feedback entries count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getNeutralFeedbackPeriodArray()
     {
@@ -315,10 +324,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Neutral feedback entries count, for multiple predefined time periods preceding
      *  the call. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $neutralFeedbackPeriodArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $neutralFeedbackPeriodArray
      * @return self
      */
-    public function setNeutralFeedbackPeriodArray(array $neutralFeedbackPeriodArray)
+    public function setNeutralFeedbackPeriodArray(iterable $neutralFeedbackPeriodArray)
     {
         $this->neutralFeedbackPeriodArray = $neutralFeedbackPeriodArray;
         return $this;
@@ -335,6 +344,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToPositiveFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->positiveFeedbackPeriodArray)) {
+            throw new \LogicException('positiveFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->positiveFeedbackPeriodArray[] = $feedbackPeriod;
         return $this;
     }
@@ -373,7 +385,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Positive feedback entries count, for multiple predefined time periods
      *  preceding the call. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getPositiveFeedbackPeriodArray()
     {
@@ -386,10 +398,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Positive feedback entries count, for multiple predefined time periods
      *  preceding the call. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $positiveFeedbackPeriodArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $positiveFeedbackPeriodArray
      * @return self
      */
-    public function setPositiveFeedbackPeriodArray(array $positiveFeedbackPeriodArray)
+    public function setPositiveFeedbackPeriodArray(iterable $positiveFeedbackPeriodArray)
     {
         $this->positiveFeedbackPeriodArray = $positiveFeedbackPeriodArray;
         return $this;
@@ -406,6 +418,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToTotalFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        if (!is_array($this->totalFeedbackPeriodArray)) {
+            throw new \LogicException('totalFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->totalFeedbackPeriodArray[] = $feedbackPeriod;
         return $this;
     }
@@ -444,7 +459,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Total feedback score, for multiple predefined time periods preceding the
      *  call. Returned if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackPeriodType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType>
      */
     public function getTotalFeedbackPeriodArray()
     {
@@ -457,10 +472,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * Total feedback score, for multiple predefined time periods preceding the
      *  call. Returned if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackPeriodType[] $totalFeedbackPeriodArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackPeriodType> $totalFeedbackPeriodArray
      * @return self
      */
-    public function setTotalFeedbackPeriodArray(array $totalFeedbackPeriodArray)
+    public function setTotalFeedbackPeriodArray(iterable $totalFeedbackPeriodArray)
     {
         $this->totalFeedbackPeriodArray = $totalFeedbackPeriodArray;
         return $this;
@@ -588,6 +603,9 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToSellerRatingSummaryArray(\Nogrod\eBaySDK\Trading\AverageRatingSummaryType $averageRatingSummary)
     {
+        if (!is_array($this->sellerRatingSummaryArray)) {
+            throw new \LogicException('sellerRatingSummaryArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerRatingSummaryArray[] = $averageRatingSummary;
         return $this;
     }
@@ -641,7 +659,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  The DSR feature is available everywhere on API-enabled country sites,
      *  including the US site (site ID 0).
      *
-     * @return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AverageRatingSummaryType>
      */
     public function getSellerRatingSummaryArray()
     {
@@ -659,10 +677,10 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  The DSR feature is available everywhere on API-enabled country sites,
      *  including the US site (site ID 0).
      *
-     * @param \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[] $sellerRatingSummaryArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\AverageRatingSummaryType> $sellerRatingSummaryArray
      * @return self
      */
-    public function setSellerRatingSummaryArray(array $sellerRatingSummaryArray)
+    public function setSellerRatingSummaryArray(iterable $sellerRatingSummaryArray)
     {
         $this->sellerRatingSummaryArray = $sellerRatingSummaryArray;
         return $this;
@@ -724,34 +742,49 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBidRetractionFeedbackPeriodArray();
-        if (null !== $value && [] !== $this->getBidRetractionFeedbackPeriodArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray", array_map(function ($v) {
+                    return ["FeedbackPeriod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getNegativeFeedbackPeriodArray();
-        if (null !== $value && [] !== $this->getNegativeFeedbackPeriodArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray", array_map(function ($v) {
+                    return ["FeedbackPeriod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getNeutralFeedbackPeriodArray();
-        if (null !== $value && [] !== $this->getNeutralFeedbackPeriodArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray", array_map(function ($v) {
+                    return ["FeedbackPeriod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPositiveFeedbackPeriodArray();
-        if (null !== $value && [] !== $this->getPositiveFeedbackPeriodArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray", array_map(function ($v) {
+                    return ["FeedbackPeriod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getTotalFeedbackPeriodArray();
-        if (null !== $value && [] !== $this->getTotalFeedbackPeriodArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray", array_map(function ($v) {
-                return ["FeedbackPeriod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray", array_map(function ($v) {
+                    return ["FeedbackPeriod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getNeutralCommentCountFromSuspendedUsers();
         if (null !== $value) {
@@ -770,10 +803,13 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniqueNeutralFeedbackCount", $value);
         }
         $value = $this->getSellerRatingSummaryArray();
-        if (null !== $value && [] !== $this->getSellerRatingSummaryArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray", array_map(function ($v) {
-                return ["AverageRatingSummary" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray", array_map(function ($v) {
+                    return ["AverageRatingSummary" => $v];
+                }, $value));
+            }
         }
         $value = $this->getSellerRoleMetrics();
         if (null !== $value) {

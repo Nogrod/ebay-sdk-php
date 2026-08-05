@@ -2301,6 +2301,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToListingEnhancement($listingEnhancement)
     {
+        if (!is_array($this->listingEnhancement)) {
+            throw new \LogicException('listingEnhancement is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->listingEnhancement[] = $listingEnhancement;
         return $this;
     }
@@ -2348,7 +2351,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  You can add a listing upgrade when you revise a listing, but you cannot remove a listing upgrade. When you
      *  relist an item, use <b>DeletedField</b> to remove a listing upgrade.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getListingEnhancement()
     {
@@ -2367,7 +2370,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @param string $listingEnhancement
      * @return self
      */
-    public function setListingEnhancement(array $listingEnhancement)
+    public function setListingEnhancement(iterable $listingEnhancement)
     {
         $this->listingEnhancement = $listingEnhancement;
         return $this;
@@ -2559,6 +2562,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        if (!is_array($this->paymentMethods)) {
+            throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentMethods[] = $paymentMethods;
         return $this;
     }
@@ -2630,7 +2636,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in order management calls on January 31, 2024.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPaymentMethods()
     {
@@ -2657,7 +2663,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @param string $paymentMethods
      * @return self
      */
-    public function setPaymentMethods(array $paymentMethods)
+    public function setPaymentMethods(iterable $paymentMethods)
     {
         $this->paymentMethods = $paymentMethods;
         return $this;
@@ -3458,6 +3464,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToShipToLocations($shipToLocations)
     {
+        if (!is_array($this->shipToLocations)) {
+            throw new \LogicException('shipToLocations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipToLocations[] = $shipToLocations;
         return $this;
     }
@@ -3580,7 +3589,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </ul>
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShipToLocations()
     {
@@ -3621,10 +3630,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </ul>
      *  </span>
      *
-     * @param string[] $shipToLocations
+     * @param iterable<string> $shipToLocations
      * @return self
      */
-    public function setShipToLocations(array $shipToLocations)
+    public function setShipToLocations(iterable $shipToLocations)
     {
         $this->shipToLocations = $shipToLocations;
         return $this;
@@ -4596,6 +4605,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToVideoDetails($videoID)
     {
+        if (!is_array($this->videoDetails)) {
+            throw new \LogicException('videoDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->videoDetails[] = $videoID;
         return $this;
     }
@@ -4643,7 +4655,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getVideoDetails()
     {
@@ -4659,10 +4671,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b> Videos can only be attached to listings on supported eBay marketplaces and can only be viewed through supported platforms. See <a href="https://developer.ebay.com/api-docs/sell/static/inventory/managing-video-media.html#AddingVideos" target="_blank">Managing videos</a> in the Selling Integration Guide for a full list of supported marketplaces and platforms.</span>
      *
-     * @param string[] $videoDetails
+     * @param iterable<string> $videoDetails
      * @return self
      */
-    public function setVideoDetails(array $videoDetails)
+    public function setVideoDetails(iterable $videoDetails)
     {
         $this->videoDetails = $videoDetails;
         return $this;
@@ -5018,6 +5030,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToItemSpecifics(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->itemSpecifics)) {
+            throw new \LogicException('itemSpecifics is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemSpecifics[] = $nameValueList;
         return $this;
     }
@@ -5143,7 +5158,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getItemSpecifics()
     {
@@ -5185,10 +5200,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  To delete all Item Specifics when you revise or relist, specify <b>Item.ItemSpecifics</b> in <b>DeletedField</b>, and don't pass <b>ItemSpecifics</b> in the request.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $itemSpecifics
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $itemSpecifics
      * @return self
      */
-    public function setItemSpecifics(array $itemSpecifics)
+    public function setItemSpecifics(iterable $itemSpecifics)
     {
         $this->itemSpecifics = $itemSpecifics;
         return $this;
@@ -5362,6 +5377,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToCrossBorderTrade($crossBorderTrade)
     {
+        if (!is_array($this->crossBorderTrade)) {
+            throw new \LogicException('crossBorderTrade is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->crossBorderTrade[] = $crossBorderTrade;
         return $this;
     }
@@ -5427,7 +5445,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  shipping to these locations do not need to specify Canada as a Cross Border Trade
      *  country.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getCrossBorderTrade()
     {
@@ -5449,10 +5467,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  shipping to these locations do not need to specify Canada as a Cross Border Trade
      *  country.
      *
-     * @param string[] $crossBorderTrade
+     * @param iterable<string> $crossBorderTrade
      * @return self
      */
-    public function setCrossBorderTrade(array $crossBorderTrade)
+    public function setCrossBorderTrade(iterable $crossBorderTrade)
     {
         $this->crossBorderTrade = $crossBorderTrade;
         return $this;
@@ -5665,6 +5683,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToPaymentAllowedSite($paymentAllowedSite)
     {
+        if (!is_array($this->paymentAllowedSite)) {
+            throw new \LogicException('paymentAllowedSite is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentAllowedSite[] = $paymentAllowedSite;
         return $this;
     }
@@ -5703,7 +5724,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * Enables you to view the sites on which an item can be purchased,
      *  based on the payment methods offered for the item.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPaymentAllowedSite()
     {
@@ -5719,7 +5740,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @param string $paymentAllowedSite
      * @return self
      */
-    public function setPaymentAllowedSite(array $paymentAllowedSite)
+    public function setPaymentAllowedSite(iterable $paymentAllowedSite)
     {
         $this->paymentAllowedSite = $paymentAllowedSite;
         return $this;
@@ -6155,6 +6176,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToConditionDescriptors(\Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor)
     {
+        if (!is_array($this->conditionDescriptors)) {
+            throw new \LogicException('conditionDescriptors is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->conditionDescriptors[] = $conditionDescriptor;
         return $this;
     }
@@ -6196,7 +6220,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
-     * @return \Nogrod\eBaySDK\Trading\ConditionDescriptorType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType>
      */
     public function getConditionDescriptors()
     {
@@ -6210,10 +6234,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID <code>2750</code> can be used to specify the card as a <b>Graded</b> card and Condition ID <code>4000</code> can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use this container to provide one or more applicable Condition Descriptor name-value pairs.
      *
-     * @param \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptors
+     * @param iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType> $conditionDescriptors
      * @return self
      */
-    public function setConditionDescriptors(array $conditionDescriptors)
+    public function setConditionDescriptors(iterable $conditionDescriptors)
     {
         $this->conditionDescriptors = $conditionDescriptors;
         return $this;
@@ -6709,6 +6733,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToShippingServiceCostOverrideList(\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType $shippingServiceCostOverride)
     {
+        if (!is_array($this->shippingServiceCostOverrideList)) {
+            throw new \LogicException('shippingServiceCostOverrideList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServiceCostOverrideList[] = $shippingServiceCostOverride;
         return $this;
     }
@@ -6768,7 +6795,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType>
      */
     public function getShippingServiceCostOverrideList()
     {
@@ -6788,10 +6815,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br><br>
      *  <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType[] $shippingServiceCostOverrideList
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType> $shippingServiceCostOverrideList
      * @return self
      */
-    public function setShippingServiceCostOverrideList(array $shippingServiceCostOverrideList)
+    public function setShippingServiceCostOverrideList(iterable $shippingServiceCostOverrideList)
     {
         $this->shippingServiceCostOverrideList = $shippingServiceCostOverrideList;
         return $this;
@@ -7437,10 +7464,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingDuration", $value);
         }
         $value = $this->getListingEnhancement();
-        if (null !== $value && [] !== $this->getListingEnhancement()) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingEnhancement" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ListingEnhancement" => $v]]);
+            }
         }
         $value = $this->getListingType();
         if (null !== $value) {
@@ -7459,10 +7486,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentDetails", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentMethods" => $v]]);
+            }
         }
         $value = $this->getPayPalEmailAddress();
         if (null !== $value) {
@@ -7532,10 +7559,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingDetails", $value);
         }
         $value = $this->getShipToLocations();
-        if (null !== $value && [] !== $this->getShipToLocations()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipToLocations" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShipToLocations" => $v]]);
+            }
         }
         $value = $this->getSite();
         if (null !== $value) {
@@ -7640,10 +7667,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureDetails", $value);
         }
         $value = $this->getVideoDetails();
-        if (null !== $value && [] !== $this->getVideoDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
-                return ["VideoID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
+                    return ["VideoID" => $v];
+                }, $value));
+            }
         }
         $value = $this->getExtendedProducerResponsibility();
         if (null !== $value) {
@@ -7683,10 +7713,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewLeadCount", $value);
         }
         $value = $this->getItemSpecifics();
-        if (null !== $value && [] !== $this->getItemSpecifics()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
+                    return ["NameValueList" => $v];
+                }, $value));
+            }
         }
         $value = $this->getClassifiedAdPayPerLeadFee();
         if (null !== $value) {
@@ -7710,10 +7743,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemPolicyViolation", $value);
         }
         $value = $this->getCrossBorderTrade();
-        if (null !== $value && [] !== $this->getCrossBorderTrade()) {
-            $writer->write(array_map(function ($v) {
-                return ["CrossBorderTrade" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CrossBorderTrade" => $v]]);
+            }
         }
         $value = $this->getBusinessSellerDetails();
         if (null !== $value) {
@@ -7732,10 +7765,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnPolicy", $value);
         }
         $value = $this->getPaymentAllowedSite();
-        if (null !== $value && [] !== $this->getPaymentAllowedSite()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentAllowedSite" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentAllowedSite" => $v]]);
+            }
         }
         $value = $this->getInventoryTrackingMethod();
         if (null !== $value) {
@@ -7763,10 +7796,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionID", $value);
         }
         $value = $this->getConditionDescriptors();
-        if (null !== $value && [] !== $this->getConditionDescriptors()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
-                return ["ConditionDescriptor" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
+                    return ["ConditionDescriptor" => $v];
+                }, $value));
+            }
         }
         $value = $this->getConditionDescription();
         if (null !== $value) {
@@ -7821,10 +7857,13 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerProfiles", $value);
         }
         $value = $this->getShippingServiceCostOverrideList();
-        if (null !== $value && [] !== $this->getShippingServiceCostOverrideList()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
+                    return ["ShippingServiceCostOverride" => $v];
+                }, $value));
+            }
         }
         $value = $this->getShippingPackageDetails();
         if (null !== $value) {

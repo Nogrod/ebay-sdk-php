@@ -33,6 +33,9 @@ class GeteBayDetailsRequestType extends AbstractRequestType
      */
     public function addToDetailName($detailName)
     {
+        if (!is_array($this->detailName)) {
+            throw new \LogicException('detailName is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->detailName[] = $detailName;
         return $this;
     }
@@ -68,7 +71,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
      *
      * One or more <b>DetailName</b> fields may be used to control the the type of metadata that is returned in the response. If no <b>DetailName</b> fields are used, all metadata will be returned in the response. It is a good idea to familiarize yourself with the metadata that can be returned with <b>GeteBayDetails</b> by reading through the enumeration values in <a href="types/DetailNameCodeType.html">DetailNameCodeType</a>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDetailName()
     {
@@ -83,7 +86,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
      * @param string $detailName
      * @return self
      */
-    public function setDetailName(array $detailName)
+    public function setDetailName(iterable $detailName)
     {
         $this->detailName = $detailName;
         return $this;
@@ -93,10 +96,10 @@ class GeteBayDetailsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getDetailName();
-        if (null !== $value && [] !== $this->getDetailName()) {
-            $writer->write(array_map(function ($v) {
-                return ["DetailName" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DetailName" => $v]]);
+            }
         }
     }
 

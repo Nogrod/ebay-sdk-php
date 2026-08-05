@@ -38,6 +38,9 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToProductSuggestion(\Nogrod\eBaySDK\Trading\ProductSuggestionType $productSuggestion)
     {
+        if (!is_array($this->productSuggestion)) {
+            throw new \LogicException('productSuggestion is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->productSuggestion[] = $productSuggestion;
         return $this;
     }
@@ -82,7 +85,7 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  is an exact match for the submitted item. This product information can be used
      *  to list subsequent items.
      *
-     * @return \Nogrod\eBaySDK\Trading\ProductSuggestionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ProductSuggestionType>
      */
     public function getProductSuggestion()
     {
@@ -97,10 +100,10 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  is an exact match for the submitted item. This product information can be used
      *  to list subsequent items.
      *
-     * @param \Nogrod\eBaySDK\Trading\ProductSuggestionType[] $productSuggestion
+     * @param iterable<\Nogrod\eBaySDK\Trading\ProductSuggestionType> $productSuggestion
      * @return self
      */
-    public function setProductSuggestion(array $productSuggestion)
+    public function setProductSuggestion(iterable $productSuggestion)
     {
         $this->productSuggestion = $productSuggestion;
         return $this;
@@ -110,10 +113,10 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getProductSuggestion();
-        if (null !== $value && [] !== $this->getProductSuggestion()) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductSuggestion" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ProductSuggestion" => $v]]);
+            }
         }
     }
 

@@ -786,6 +786,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        if (!is_array($this->paymentMethods)) {
+            throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentMethods[] = $paymentMethods;
         return $this;
     }
@@ -845,7 +848,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <span class="tablenote"><b>Note:</b> For <b>AddOrder</b>, the seller can only specify offline payment methods (if offline payment is supported for the listing), as eBay now controls all electronic payment methods avaialable to buyers, and sellers have no control over these payment methods.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPaymentMethods()
     {
@@ -868,7 +871,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      * @param string $paymentMethods
      * @return self
      */
-    public function setPaymentMethods(array $paymentMethods)
+    public function setPaymentMethods(iterable $paymentMethods)
     {
         $this->paymentMethods = $paymentMethods;
         return $this;
@@ -1134,6 +1137,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToTransactionArray(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        if (!is_array($this->transactionArray)) {
+            throw new \LogicException('transactionArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->transactionArray[] = $transaction;
         return $this;
     }
@@ -1175,7 +1181,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br><br>
      *  Under the <b>TransactionArray</b> container in an <b>AddOrder</b> call, a seller or buyer specifies two or more (up to 40) order line items into a 'Combined Invoice' order.
      *
-     * @return \Nogrod\eBaySDK\Trading\TransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TransactionType>
      */
     public function getTransactionArray()
     {
@@ -1189,10 +1195,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <br><br>
      *  Under the <b>TransactionArray</b> container in an <b>AddOrder</b> call, a seller or buyer specifies two or more (up to 40) order line items into a 'Combined Invoice' order.
      *
-     * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\TransactionType> $transactionArray
      * @return self
      */
-    public function setTransactionArray(array $transactionArray)
+    public function setTransactionArray(iterable $transactionArray)
     {
         $this->transactionArray = $transactionArray;
         return $this;
@@ -1602,6 +1608,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToPickupDetails(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        if (!is_array($this->pickupDetails)) {
+            throw new \LogicException('pickupDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pickupDetails[] = $pickupOptions;
         return $this;
     }
@@ -1655,7 +1664,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PickupOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType>
      */
     public function getPickupDetails()
     {
@@ -1673,10 +1682,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PickupOptionsType[] $pickupDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType> $pickupDetails
      * @return self
      */
-    public function setPickupDetails(array $pickupDetails)
+    public function setPickupDetails(iterable $pickupDetails)
     {
         $this->pickupDetails = $pickupDetails;
         return $this;
@@ -1894,6 +1903,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerTaxIdentifier(\Nogrod\eBaySDK\Trading\TaxIdentifierType $buyerTaxIdentifier)
     {
+        if (!is_array($this->buyerTaxIdentifier)) {
+            throw new \LogicException('buyerTaxIdentifier is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerTaxIdentifier[] = $buyerTaxIdentifier;
         return $this;
     }
@@ -1959,7 +1971,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxIdentifierType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierType>
      */
     public function getBuyerTaxIdentifier()
     {
@@ -1981,10 +1993,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerTaxIdentifier</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxIdentifierType[] $buyerTaxIdentifier
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxIdentifierType> $buyerTaxIdentifier
      * @return self
      */
-    public function setBuyerTaxIdentifier(array $buyerTaxIdentifier)
+    public function setBuyerTaxIdentifier(iterable $buyerTaxIdentifier)
     {
         $this->buyerTaxIdentifier = $buyerTaxIdentifier;
         return $this;
@@ -2004,6 +2016,9 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerPackageEnclosures(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        if (!is_array($this->buyerPackageEnclosures)) {
+            throw new \LogicException('buyerPackageEnclosures is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerPackageEnclosures[] = $buyerPackageEnclosure;
         return $this;
     }
@@ -2051,7 +2066,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType>
      */
     public function getBuyerPackageEnclosures()
     {
@@ -2067,10 +2082,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <span class="tablenote"><b>Note: </b> The <b>ContainingOrder.BuyerPackageEnclosures</b> container will stop being returned by <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosures
+     * @param iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType> $buyerPackageEnclosures
      * @return self
      */
-    public function setBuyerPackageEnclosures(array $buyerPackageEnclosures)
+    public function setBuyerPackageEnclosures(iterable $buyerPackageEnclosures)
     {
         $this->buyerPackageEnclosures = $buyerPackageEnclosures;
         return $this;
@@ -2256,10 +2271,10 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreatedTime", $value);
         }
         $value = $this->getPaymentMethods();
-        if (null !== $value && [] !== $this->getPaymentMethods()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethods" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentMethods" => $v]]);
+            }
         }
         $value = $this->getSellerEmail();
         if (null !== $value) {
@@ -2282,10 +2297,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Total", $value);
         }
         $value = $this->getTransactionArray();
-        if (null !== $value && [] !== $this->getTransactionArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
+                    return ["Transaction" => $v];
+                }, $value));
+            }
         }
         $value = $this->getBuyerUserID();
         if (null !== $value) {
@@ -2338,10 +2356,13 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MonetaryDetails", $value);
         }
         $value = $this->getPickupDetails();
-        if (null !== $value && [] !== $this->getPickupDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
-                return ["PickupOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
+                    return ["PickupOptions" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPickupMethodSelected();
         if (null !== $value) {
@@ -2368,16 +2389,19 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType", $value);
         }
         $value = $this->getBuyerTaxIdentifier();
-        if (null !== $value && [] !== $this->getBuyerTaxIdentifier()) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerTaxIdentifier" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BuyerTaxIdentifier" => $v]]);
+            }
         }
         $value = $this->getBuyerPackageEnclosures();
-        if (null !== $value && [] !== $this->getBuyerPackageEnclosures()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
-                return ["BuyerPackageEnclosure" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
+                    return ["BuyerPackageEnclosure" => $v];
+                }, $value));
+            }
         }
         $value = $this->getExtendedOrderID();
         if (null !== $value) {

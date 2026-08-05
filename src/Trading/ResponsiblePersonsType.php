@@ -37,6 +37,9 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToResponsiblePerson(\Nogrod\eBaySDK\Trading\ResponsiblePersonType $responsiblePerson)
     {
+        if (!is_array($this->responsiblePerson)) {
+            throw new \LogicException('responsiblePerson is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->responsiblePerson[] = $responsiblePerson;
         return $this;
     }
@@ -78,7 +81,7 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br /><br />
      *  A maximum of 5 EU Responsible Persons are supported.
      *
-     * @return \Nogrod\eBaySDK\Trading\ResponsiblePersonType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ResponsiblePersonType>
      */
     public function getResponsiblePerson()
     {
@@ -92,10 +95,10 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br /><br />
      *  A maximum of 5 EU Responsible Persons are supported.
      *
-     * @param \Nogrod\eBaySDK\Trading\ResponsiblePersonType[] $responsiblePerson
+     * @param iterable<\Nogrod\eBaySDK\Trading\ResponsiblePersonType> $responsiblePerson
      * @return self
      */
-    public function setResponsiblePerson(array $responsiblePerson)
+    public function setResponsiblePerson(iterable $responsiblePerson)
     {
         $this->responsiblePerson = $responsiblePerson;
         return $this;
@@ -105,10 +108,10 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getResponsiblePerson();
-        if (null !== $value && [] !== $this->getResponsiblePerson()) {
-            $writer->write(array_map(function ($v) {
-                return ["ResponsiblePerson" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ResponsiblePerson" => $v]]);
+            }
         }
     }
 

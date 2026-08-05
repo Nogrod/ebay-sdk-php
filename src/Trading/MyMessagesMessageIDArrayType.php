@@ -31,6 +31,9 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToMessageID($messageID)
     {
+        if (!is_array($this->messageID)) {
+            throw new \LogicException('messageID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageID[] = $messageID;
         return $this;
     }
@@ -66,7 +69,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * An ID that uniquely identifies a message for a given user.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getMessageID()
     {
@@ -81,7 +84,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @param string $messageID
      * @return self
      */
-    public function setMessageID(array $messageID)
+    public function setMessageID(iterable $messageID)
     {
         $this->messageID = $messageID;
         return $this;
@@ -91,10 +94,10 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMessageID();
-        if (null !== $value && [] !== $this->getMessageID()) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MessageID" => $v]]);
+            }
         }
     }
 

@@ -917,6 +917,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToSuggestedBidValues(\Nogrod\eBaySDK\Trading\AmountType $bidValue)
     {
+        if (!is_array($this->suggestedBidValues)) {
+            throw new \LogicException('suggestedBidValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->suggestedBidValues[] = $bidValue;
         return $this;
     }
@@ -958,7 +961,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <br><br>
      *  The <b>SuggestedBidValues</b> container consists of an array of incremental bid values (up to the dollar value in the <b>Offer.MaxBid</b> field) that eBay will bid on behalf of the buyer each time that buyer is outbid for the auction item.
      *
-     * @return \Nogrod\eBaySDK\Trading\AmountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AmountType>
      */
     public function getSuggestedBidValues()
     {
@@ -972,10 +975,10 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <br><br>
      *  The <b>SuggestedBidValues</b> container consists of an array of incremental bid values (up to the dollar value in the <b>Offer.MaxBid</b> field) that eBay will bid on behalf of the buyer each time that buyer is outbid for the auction item.
      *
-     * @param \Nogrod\eBaySDK\Trading\AmountType[] $suggestedBidValues
+     * @param iterable<\Nogrod\eBaySDK\Trading\AmountType> $suggestedBidValues
      * @return self
      */
-    public function setSuggestedBidValues(array $suggestedBidValues)
+    public function setSuggestedBidValues(iterable $suggestedBidValues)
     {
         $this->suggestedBidValues = $suggestedBidValues;
         return $this;
@@ -1095,10 +1098,13 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore", $value);
         }
         $value = $this->getSuggestedBidValues();
-        if (null !== $value && [] !== $this->getSuggestedBidValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
-                return ["BidValue" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
+                    return ["BidValue" => $v];
+                }, $value));
+            }
         }
         $value = $this->getListingOnHold();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

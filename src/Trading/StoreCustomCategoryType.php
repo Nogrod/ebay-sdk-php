@@ -148,6 +148,9 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToChildCategory(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $childCategory)
     {
+        if (!is_array($this->childCategory)) {
+            throw new \LogicException('childCategory is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->childCategory[] = $childCategory;
         return $this;
     }
@@ -183,7 +186,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
      */
     public function getChildCategory()
     {
@@ -195,10 +198,10 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container is used if the seller wants to add child categories to a top-level eBay store category. eBay Stores support three category levels.
      *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $childCategory
+     * @param iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType> $childCategory
      * @return self
      */
-    public function setChildCategory(array $childCategory)
+    public function setChildCategory(iterable $childCategory)
     {
         $this->childCategory = $childCategory;
         return $this;
@@ -220,10 +223,10 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Order", $value);
         }
         $value = $this->getChildCategory();
-        if (null !== $value && [] !== $this->getChildCategory()) {
-            $writer->write(array_map(function ($v) {
-                return ["ChildCategory" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ChildCategory" => $v]]);
+            }
         }
     }
 

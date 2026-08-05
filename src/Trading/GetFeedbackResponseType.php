@@ -81,6 +81,9 @@ class GetFeedbackResponseType extends AbstractResponseType
      */
     public function addToFeedbackDetailArray(\Nogrod\eBaySDK\Trading\FeedbackDetailType $feedbackDetail)
     {
+        if (!is_array($this->feedbackDetailArray)) {
+            throw new \LogicException('feedbackDetailArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->feedbackDetailArray[] = $feedbackDetail;
         return $this;
     }
@@ -116,7 +119,7 @@ class GetFeedbackResponseType extends AbstractResponseType
      *
      * Contains the individual Feedback records for the user or order line item specified in the request. There is one <b>FeedbackDetail</b> container returned for each Feedback record. Only populated with data when a detail level of <code>ReturnAll</code> is specified in the request. Not returned if you specify a <b>FeedbackID</b> in the request.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackDetailType>
      */
     public function getFeedbackDetailArray()
     {
@@ -128,10 +131,10 @@ class GetFeedbackResponseType extends AbstractResponseType
      *
      * Contains the individual Feedback records for the user or order line item specified in the request. There is one <b>FeedbackDetail</b> container returned for each Feedback record. Only populated with data when a detail level of <code>ReturnAll</code> is specified in the request. Not returned if you specify a <b>FeedbackID</b> in the request.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackDetailType[] $feedbackDetailArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackDetailType> $feedbackDetailArray
      * @return self
      */
-    public function setFeedbackDetailArray(array $feedbackDetailArray)
+    public function setFeedbackDetailArray(iterable $feedbackDetailArray)
     {
         $this->feedbackDetailArray = $feedbackDetailArray;
         return $this;
@@ -313,10 +316,13 @@ class GetFeedbackResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getFeedbackDetailArray();
-        if (null !== $value && [] !== $this->getFeedbackDetailArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray", array_map(function ($v) {
-                return ["FeedbackDetail" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray", array_map(function ($v) {
+                    return ["FeedbackDetail" => $v];
+                }, $value));
+            }
         }
         $value = $this->getFeedbackDetailItemTotal();
         if (null !== $value) {

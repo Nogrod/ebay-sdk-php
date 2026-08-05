@@ -36,6 +36,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToPayments(\Nogrod\eBaySDK\Trading\PaymentTransactionType $payment)
     {
+        if (!is_array($this->payments)) {
+            throw new \LogicException('payments is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->payments[] = $payment;
         return $this;
     }
@@ -71,7 +74,7 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * Contains information about how different portions of the funds exchanged for a specified order are allocated among payees. Each allocated portion is represented by a <strong>Payment</strong> container.
      *
-     * @return \Nogrod\eBaySDK\Trading\PaymentTransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PaymentTransactionType>
      */
     public function getPayments()
     {
@@ -83,10 +86,10 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * Contains information about how different portions of the funds exchanged for a specified order are allocated among payees. Each allocated portion is represented by a <strong>Payment</strong> container.
      *
-     * @param \Nogrod\eBaySDK\Trading\PaymentTransactionType[] $payments
+     * @param iterable<\Nogrod\eBaySDK\Trading\PaymentTransactionType> $payments
      * @return self
      */
-    public function setPayments(array $payments)
+    public function setPayments(iterable $payments)
     {
         $this->payments = $payments;
         return $this;
@@ -102,6 +105,9 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRefunds(\Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund)
     {
+        if (!is_array($this->refunds)) {
+            throw new \LogicException('refunds is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->refunds[] = $refund;
         return $this;
     }
@@ -137,7 +143,7 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *
-     * @return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RefundTransactionInfoType>
      */
     public function getRefunds()
     {
@@ -149,10 +155,10 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of an array of one or more <strong>Refund</strong> containers, and each <strong>Refund</strong> container consists of detailed information about a seller's refund (or store credit) to a buyer who has returned an item.
      *
-     * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refunds
+     * @param iterable<\Nogrod\eBaySDK\Trading\RefundTransactionInfoType> $refunds
      * @return self
      */
-    public function setRefunds(array $refunds)
+    public function setRefunds(iterable $refunds)
     {
         $this->refunds = $refunds;
         return $this;
@@ -162,16 +168,22 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayments();
-        if (null !== $value && [] !== $this->getPayments()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
-                return ["Payment" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
+                    return ["Payment" => $v];
+                }, $value));
+            }
         }
         $value = $this->getRefunds();
-        if (null !== $value && [] !== $this->getRefunds()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {
+                    return ["Refund" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -41,6 +41,9 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToDiscount(\Nogrod\eBaySDK\Trading\DiscountType $discount)
     {
+        if (!is_array($this->discount)) {
+            throw new \LogicException('discount is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->discount[] = $discount;
         return $this;
     }
@@ -91,7 +94,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\DiscountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DiscountType>
      */
     public function getDiscount()
     {
@@ -108,10 +111,10 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  The discount type will be shown for any account entry where a discount applies, but the discount amount will only be shown if the corresponding fee was deducted from a seller payout.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\DiscountType[] $discount
+     * @param iterable<\Nogrod\eBaySDK\Trading\DiscountType> $discount
      * @return self
      */
-    public function setDiscount(array $discount)
+    public function setDiscount(iterable $discount)
     {
         $this->discount = $discount;
         return $this;
@@ -121,10 +124,10 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDiscount();
-        if (null !== $value && [] !== $this->getDiscount()) {
-            $writer->write(array_map(function ($v) {
-                return ["Discount" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Discount" => $v]]);
+            }
         }
     }
 

@@ -429,6 +429,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToServiceType($serviceType)
     {
+        if (!is_array($this->serviceType)) {
+            throw new \LogicException('serviceType is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->serviceType[] = $serviceType;
         return $this;
     }
@@ -464,7 +467,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * The shipping cost types that this shipping service option supports, such as flat-rate or calculated. A <strong>ServiceType</strong> field is returned for each shipping cost type supported by the shipping service option.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getServiceType()
     {
@@ -479,7 +482,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @param string $serviceType
      * @return self
      */
-    public function setServiceType(array $serviceType)
+    public function setServiceType(iterable $serviceType)
     {
         $this->serviceType = $serviceType;
         return $this;
@@ -495,6 +498,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingPackage($shippingPackage)
     {
+        if (!is_array($this->shippingPackage)) {
+            throw new \LogicException('shippingPackage is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingPackage[] = $shippingPackage;
         return $this;
     }
@@ -530,7 +536,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * The shipping packages that can be used for this shipping service option. A <strong>ShippingPackage</strong> field is returned for each shipping package supported by the shipping service option.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShippingPackage()
     {
@@ -545,7 +551,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @param string $shippingPackage
      * @return self
      */
-    public function setShippingPackage(array $shippingPackage)
+    public function setShippingPackage(iterable $shippingPackage)
     {
         $this->shippingPackage = $shippingPackage;
         return $this;
@@ -643,6 +649,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingCarrier($shippingCarrier)
     {
+        if (!is_array($this->shippingCarrier)) {
+            throw new \LogicException('shippingCarrier is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingCarrier[] = $shippingCarrier;
         return $this;
     }
@@ -690,7 +699,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  <strong>Note:</strong> Commonly used shipping carriers can also be found by calling <b>GeteBayDetails</b> with <b>DetailName</b> set to <code>ShippingCarrierDetails</code> and examining the returned <b>ShippingCarrierDetails.ShippingCarrier</b> field.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShippingCarrier()
     {
@@ -709,7 +718,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * @param string $shippingCarrier
      * @return self
      */
-    public function setShippingCarrier(array $shippingCarrier)
+    public function setShippingCarrier(iterable $shippingCarrier)
     {
         $this->shippingCarrier = $shippingCarrier;
         return $this;
@@ -755,6 +764,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToDeprecationDetails(\Nogrod\eBaySDK\Trading\AnnouncementMessageType $deprecationDetails)
     {
+        if (!is_array($this->deprecationDetails)) {
+            throw new \LogicException('deprecationDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->deprecationDetails[] = $deprecationDetails;
         return $this;
     }
@@ -802,7 +814,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  shipping service and that the shipping service will be dropped from the
      *  listing without an accompanying warning message from the eBay API.
      *
-     * @return \Nogrod\eBaySDK\Trading\AnnouncementMessageType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AnnouncementMessageType>
      */
     public function getDeprecationDetails()
     {
@@ -818,10 +830,10 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *  shipping service and that the shipping service will be dropped from the
      *  listing without an accompanying warning message from the eBay API.
      *
-     * @param \Nogrod\eBaySDK\Trading\AnnouncementMessageType[] $deprecationDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\AnnouncementMessageType> $deprecationDetails
      * @return self
      */
-    public function setDeprecationDetails(array $deprecationDetails)
+    public function setDeprecationDetails(iterable $deprecationDetails)
     {
         $this->deprecationDetails = $deprecationDetails;
         return $this;
@@ -892,6 +904,9 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingServicePackageDetails(\Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType $shippingServicePackageDetails)
     {
+        if (!is_array($this->shippingServicePackageDetails)) {
+            throw new \LogicException('shippingServicePackageDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServicePackageDetails[] = $shippingServicePackageDetails;
         return $this;
     }
@@ -930,7 +945,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * Shipping Package level details for the enclosing shipping service, this
      *  complex type replaces the existing ShippingPackage type.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType>
      */
     public function getShippingServicePackageDetails()
     {
@@ -943,10 +958,10 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      * Shipping Package level details for the enclosing shipping service, this
      *  complex type replaces the existing ShippingPackage type.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType[] $shippingServicePackageDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType> $shippingServicePackageDetails
      * @return self
      */
-    public function setShippingServicePackageDetails(array $shippingServicePackageDetails)
+    public function setShippingServicePackageDetails(iterable $shippingServicePackageDetails)
     {
         $this->shippingServicePackageDetails = $shippingServicePackageDetails;
         return $this;
@@ -1104,16 +1119,16 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin", $value);
         }
         $value = $this->getServiceType();
-        if (null !== $value && [] !== $this->getServiceType()) {
-            $writer->write(array_map(function ($v) {
-                return ["ServiceType" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ServiceType" => $v]]);
+            }
         }
         $value = $this->getShippingPackage();
-        if (null !== $value && [] !== $this->getShippingPackage()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingPackage" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingPackage" => $v]]);
+            }
         }
         $value = $this->getDimensionsRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1131,10 +1146,10 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SurchargeApplicable", $value);
         }
         $value = $this->getShippingCarrier();
-        if (null !== $value && [] !== $this->getShippingCarrier()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingCarrier" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingCarrier" => $v]]);
+            }
         }
         $value = $this->getCODService();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -1142,10 +1157,10 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CODService", $value);
         }
         $value = $this->getDeprecationDetails();
-        if (null !== $value && [] !== $this->getDeprecationDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["DeprecationDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DeprecationDetails" => $v]]);
+            }
         }
         $value = $this->getMappedToShippingServiceID();
         if (null !== $value) {
@@ -1156,10 +1171,10 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CostGroupFlat", $value);
         }
         $value = $this->getShippingServicePackageDetails();
-        if (null !== $value && [] !== $this->getShippingServicePackageDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServicePackageDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingServicePackageDetails" => $v]]);
+            }
         }
         $value = $this->getWeightRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

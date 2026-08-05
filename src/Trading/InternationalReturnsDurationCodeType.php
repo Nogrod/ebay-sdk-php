@@ -31,6 +31,9 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
      */
     public function addToInternationalReturnsDuration($internationalReturnsDuration)
     {
+        if (!is_array($this->internationalReturnsDuration)) {
+            throw new \LogicException('internationalReturnsDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsDuration[] = $internationalReturnsDuration;
         return $this;
     }
@@ -66,7 +69,7 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
      *
      * Defines the available options for the return durations for international returns in the specified marketplace and category. This is the time the buyer has to initiate a return once they receive the item.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsDuration()
     {
@@ -81,7 +84,7 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
      * @param string $internationalReturnsDuration
      * @return self
      */
-    public function setInternationalReturnsDuration(array $internationalReturnsDuration)
+    public function setInternationalReturnsDuration(iterable $internationalReturnsDuration)
     {
         $this->internationalReturnsDuration = $internationalReturnsDuration;
         return $this;
@@ -91,10 +94,10 @@ class InternationalReturnsDurationCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsDuration();
-        if (null !== $value && [] !== $this->getInternationalReturnsDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalReturnsDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalReturnsDuration" => $v]]);
+            }
         }
     }
 

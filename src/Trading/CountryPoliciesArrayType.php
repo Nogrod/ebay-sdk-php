@@ -31,6 +31,9 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToCountryPolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        if (!is_array($this->countryPolicies)) {
+            throw new \LogicException('countryPolicies is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->countryPolicies[] = $countryPolicies;
         return $this;
     }
@@ -66,7 +69,7 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * Contains a country and the custom policy/policies for that country.
      *
-     * @return \Nogrod\eBaySDK\Trading\CountryPoliciesType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType>
      */
     public function getCountryPolicies()
     {
@@ -78,10 +81,10 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * Contains a country and the custom policy/policies for that country.
      *
-     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $countryPolicies
+     * @param iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType> $countryPolicies
      * @return self
      */
-    public function setCountryPolicies(array $countryPolicies)
+    public function setCountryPolicies(iterable $countryPolicies)
     {
         $this->countryPolicies = $countryPolicies;
         return $this;
@@ -91,10 +94,10 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCountryPolicies();
-        if (null !== $value && [] !== $this->getCountryPolicies()) {
-            $writer->write(array_map(function ($v) {
-                return ["CountryPolicies" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CountryPolicies" => $v]]);
+            }
         }
     }
 

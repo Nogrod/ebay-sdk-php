@@ -31,6 +31,9 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
      */
     public function addToDuration($duration)
     {
+        if (!is_array($this->duration)) {
+            throw new \LogicException('duration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->duration[] = $duration;
         return $this;
     }
@@ -66,7 +69,7 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
      *
      * Specifies the additional listing duration(s) (in days) supported by the eBay site and/or category. A <b>Duration</b> field is returned for each additional listing duration that the eBay marketplace or category supports.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDuration()
     {
@@ -78,10 +81,10 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
      *
      * Specifies the additional listing duration(s) (in days) supported by the eBay site and/or category. A <b>Duration</b> field is returned for each additional listing duration that the eBay marketplace or category supports.
      *
-     * @param string[] $duration
+     * @param iterable<string> $duration
      * @return self
      */
-    public function setDuration(array $duration)
+    public function setDuration(iterable $duration)
     {
         $this->duration = $duration;
         return $this;
@@ -91,10 +94,10 @@ class StoreOwnerExtendedListingDurationsType implements \Sabre\Xml\XmlSerializab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDuration();
-        if (null !== $value && [] !== $this->getDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Duration" => $v]]);
+            }
         }
     }
 

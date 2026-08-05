@@ -142,6 +142,9 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
     {
+        if (!is_array($this->errors)) {
+            throw new \LogicException('errors is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->errors[] = $errors;
         return $this;
     }
@@ -177,7 +180,7 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
      *
-     * @return \Nogrod\eBaySDK\Trading\ErrorType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ErrorType>
      */
     public function getErrors()
     {
@@ -189,10 +192,10 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
      *
-     * @param \Nogrod\eBaySDK\Trading\ErrorType[] $errors
+     * @param iterable<\Nogrod\eBaySDK\Trading\ErrorType> $errors
      * @return self
      */
-    public function setErrors(array $errors)
+    public function setErrors(iterable $errors)
     {
         $this->errors = $errors;
         return $this;
@@ -240,10 +243,10 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Version", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && [] !== $this->getErrors()) {
-            $writer->write(array_map(function ($v) {
-                return ["Errors" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Errors" => $v]]);
+            }
         }
         $value = $this->getOrderArray();
         if (null !== $value) {

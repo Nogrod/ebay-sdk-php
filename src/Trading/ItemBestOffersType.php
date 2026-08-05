@@ -86,6 +86,9 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToBestOfferArray(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        if (!is_array($this->bestOfferArray)) {
+            throw new \LogicException('bestOfferArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bestOfferArray[] = $bestOffer;
         return $this;
     }
@@ -136,7 +139,7 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  detail level <code>ReturnAll</code> is used.
      *  Only returned if a Best Offer has been made.
      *
-     * @return \Nogrod\eBaySDK\Trading\BestOfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BestOfferType>
      */
     public function getBestOfferArray()
     {
@@ -153,10 +156,10 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  detail level <code>ReturnAll</code> is used.
      *  Only returned if a Best Offer has been made.
      *
-     * @param \Nogrod\eBaySDK\Trading\BestOfferType[] $bestOfferArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\BestOfferType> $bestOfferArray
      * @return self
      */
-    public function setBestOfferArray(array $bestOfferArray)
+    public function setBestOfferArray(iterable $bestOfferArray)
     {
         $this->bestOfferArray = $bestOfferArray;
         return $this;
@@ -198,10 +201,13 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Role", $value);
         }
         $value = $this->getBestOfferArray();
-        if (null !== $value && [] !== $this->getBestOfferArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {
+                    return ["BestOffer" => $v];
+                }, $value));
+            }
         }
         $value = $this->getItem();
         if (null !== $value) {

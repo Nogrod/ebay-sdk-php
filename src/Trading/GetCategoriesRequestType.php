@@ -110,6 +110,9 @@ class GetCategoriesRequestType extends AbstractRequestType
      */
     public function addToCategoryParent($categoryParent)
     {
+        if (!is_array($this->categoryParent)) {
+            throw new \LogicException('categoryParent is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->categoryParent[] = $categoryParent;
         return $this;
     }
@@ -169,7 +172,7 @@ class GetCategoriesRequestType extends AbstractRequestType
      *  Numerous Category IDs may be specified under multiple <b>CategoryParent</b> fields in a <b>GetCategories</b> request, but if multiple <b>CategoryParent</b> fields are used, the specified Category IDs should all be at the same level (L1, L2, L3, etc.).
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getCategoryParent()
     {
@@ -189,10 +192,10 @@ class GetCategoriesRequestType extends AbstractRequestType
      *  Numerous Category IDs may be specified under multiple <b>CategoryParent</b> fields in a <b>GetCategories</b> request, but if multiple <b>CategoryParent</b> fields are used, the specified Category IDs should all be at the same level (L1, L2, L3, etc.).
      *  </span>
      *
-     * @param string[] $categoryParent
+     * @param iterable<string> $categoryParent
      * @return self
      */
-    public function setCategoryParent(array $categoryParent)
+    public function setCategoryParent(iterable $categoryParent)
     {
         $this->categoryParent = $categoryParent;
         return $this;
@@ -266,10 +269,10 @@ class GetCategoriesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategorySiteID", $value);
         }
         $value = $this->getCategoryParent();
-        if (null !== $value && [] !== $this->getCategoryParent()) {
-            $writer->write(array_map(function ($v) {
-                return ["CategoryParent" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CategoryParent" => $v]]);
+            }
         }
         $value = $this->getLevelLimit();
         if (null !== $value) {

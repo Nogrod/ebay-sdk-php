@@ -35,6 +35,9 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToItemRatingDetails(\Nogrod\eBaySDK\Trading\ItemRatingDetailsType $itemRatingDetails)
     {
+        if (!is_array($this->itemRatingDetails)) {
+            throw new \LogicException('itemRatingDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemRatingDetails[] = $itemRatingDetails;
         return $this;
     }
@@ -76,7 +79,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  <br><br>
      *  Applicable to sites that support the Detailed Seller Ratings feature.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemRatingDetailsType>
      */
     public function getItemRatingDetails()
     {
@@ -90,10 +93,10 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  <br><br>
      *  Applicable to sites that support the Detailed Seller Ratings feature.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemRatingDetailsType[] $itemRatingDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemRatingDetailsType> $itemRatingDetails
      * @return self
      */
-    public function setItemRatingDetails(array $itemRatingDetails)
+    public function setItemRatingDetails(iterable $itemRatingDetails)
     {
         $this->itemRatingDetails = $itemRatingDetails;
         return $this;
@@ -103,10 +106,10 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemRatingDetails();
-        if (null !== $value && [] !== $this->getItemRatingDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemRatingDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemRatingDetails" => $v]]);
+            }
         }
     }
 

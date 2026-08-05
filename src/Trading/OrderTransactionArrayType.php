@@ -31,6 +31,9 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToOrderTransaction(\Nogrod\eBaySDK\Trading\OrderTransactionType $orderTransaction)
     {
+        if (!is_array($this->orderTransaction)) {
+            throw new \LogicException('orderTransaction is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->orderTransaction[] = $orderTransaction;
         return $this;
     }
@@ -66,7 +69,7 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This container consists of detailed information on a specific order and each order line item in that order.
      *
-     * @return \Nogrod\eBaySDK\Trading\OrderTransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\OrderTransactionType>
      */
     public function getOrderTransaction()
     {
@@ -78,10 +81,10 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * This container consists of detailed information on a specific order and each order line item in that order.
      *
-     * @param \Nogrod\eBaySDK\Trading\OrderTransactionType[] $orderTransaction
+     * @param iterable<\Nogrod\eBaySDK\Trading\OrderTransactionType> $orderTransaction
      * @return self
      */
-    public function setOrderTransaction(array $orderTransaction)
+    public function setOrderTransaction(iterable $orderTransaction)
     {
         $this->orderTransaction = $orderTransaction;
         return $this;
@@ -91,10 +94,10 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOrderTransaction();
-        if (null !== $value && [] !== $this->getOrderTransaction()) {
-            $writer->write(array_map(function ($v) {
-                return ["OrderTransaction" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["OrderTransaction" => $v]]);
+            }
         }
     }
 

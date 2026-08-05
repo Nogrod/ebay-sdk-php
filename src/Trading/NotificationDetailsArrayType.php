@@ -33,6 +33,9 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToNotificationDetails(\Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails)
     {
+        if (!is_array($this->notificationDetails)) {
+            throw new \LogicException('notificationDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->notificationDetails[] = $notificationDetails;
         return $this;
     }
@@ -68,7 +71,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
-     * @return \Nogrod\eBaySDK\Trading\NotificationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NotificationDetailsType>
      */
     public function getNotificationDetails()
     {
@@ -80,10 +83,10 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
      *
-     * @param \Nogrod\eBaySDK\Trading\NotificationDetailsType[] $notificationDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\NotificationDetailsType> $notificationDetails
      * @return self
      */
-    public function setNotificationDetails(array $notificationDetails)
+    public function setNotificationDetails(iterable $notificationDetails)
     {
         $this->notificationDetails = $notificationDetails;
         return $this;
@@ -93,10 +96,10 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNotificationDetails();
-        if (null !== $value && [] !== $this->getNotificationDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["NotificationDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NotificationDetails" => $v]]);
+            }
         }
     }
 

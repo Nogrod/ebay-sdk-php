@@ -64,6 +64,9 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToDuration($duration)
     {
+        if (!is_array($this->duration)) {
+            throw new \LogicException('duration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->duration[] = $duration;
         return $this;
     }
@@ -99,7 +102,7 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * All values returned in the <b>Duration</b> fields indicate the listing durations that are supported for that listing type. The allowed durations vary according to the type of listing. The value <code>GTC</code> means Good 'Til Canceled. The complete list of enumeration values that may be returned in this field is shown in <b>ListingDurationCodeType</b>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDuration()
     {
@@ -111,10 +114,10 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * All values returned in the <b>Duration</b> fields indicate the listing durations that are supported for that listing type. The allowed durations vary according to the type of listing. The value <code>GTC</code> means Good 'Til Canceled. The complete list of enumeration values that may be returned in this field is shown in <b>ListingDurationCodeType</b>.
      *
-     * @param string[] $duration
+     * @param iterable<string> $duration
      * @return self
      */
-    public function setDuration(array $duration)
+    public function setDuration(iterable $duration)
     {
         $this->duration = $duration;
         return $this;
@@ -128,10 +131,10 @@ class ListingDurationDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
             $writer->writeAttribute("durationSetID", $value);
         }
         $value = $this->getDuration();
-        if (null !== $value && [] !== $this->getDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Duration" => $v]]);
+            }
         }
     }
 

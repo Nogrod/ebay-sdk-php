@@ -152,6 +152,9 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
      */
     public function addToCategory(\Nogrod\eBaySDK\Trading\CategoryFeatureType $category)
     {
+        if (!is_array($this->category)) {
+            throw new \LogicException('category is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->category[] = $category;
         return $this;
     }
@@ -232,7 +235,7 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
      *  If the category has children and they aren't returned,
      *  it means the children inherit the category's feature settings.
      *
-     * @return \Nogrod\eBaySDK\Trading\CategoryFeatureType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CategoryFeatureType>
      */
     public function getCategory()
     {
@@ -259,10 +262,10 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
      *  If the category has children and they aren't returned,
      *  it means the children inherit the category's feature settings.
      *
-     * @param \Nogrod\eBaySDK\Trading\CategoryFeatureType[] $category
+     * @param iterable<\Nogrod\eBaySDK\Trading\CategoryFeatureType> $category
      * @return self
      */
-    public function setCategory(array $category)
+    public function setCategory(iterable $category)
     {
         $this->category = $category;
         return $this;
@@ -336,10 +339,10 @@ class GetCategoryFeaturesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
         }
         $value = $this->getCategory();
-        if (null !== $value && [] !== $this->getCategory()) {
-            $writer->write(array_map(function ($v) {
-                return ["Category" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Category" => $v]]);
+            }
         }
         $value = $this->getSiteDefaults();
         if (null !== $value) {

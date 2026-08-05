@@ -263,6 +263,9 @@ class SetUserNotesRequestType extends AbstractRequestType
      */
     public function addToVariationSpecifics(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->variationSpecifics)) {
+            throw new \LogicException('variationSpecifics is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationSpecifics[] = $nameValueList;
         return $this;
     }
@@ -316,7 +319,7 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  <b>ItemID</b>/<b>TransactionID</b> pair or an <b>OrderLineItemID</b> value, any specified
      *  <b>VariationSpecifics</b> container is ignored by the call.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getVariationSpecifics()
     {
@@ -334,10 +337,10 @@ class SetUserNotesRequestType extends AbstractRequestType
      *  <b>ItemID</b>/<b>TransactionID</b> pair or an <b>OrderLineItemID</b> value, any specified
      *  <b>VariationSpecifics</b> container is ignored by the call.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $variationSpecifics
      * @return self
      */
-    public function setVariationSpecifics(array $variationSpecifics)
+    public function setVariationSpecifics(iterable $variationSpecifics)
     {
         $this->variationSpecifics = $variationSpecifics;
         return $this;
@@ -465,10 +468,13 @@ class SetUserNotesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
         }
         $value = $this->getVariationSpecifics();
-        if (null !== $value && [] !== $this->getVariationSpecifics()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
+                    return ["NameValueList" => $v];
+                }, $value));
+            }
         }
         $value = $this->getSKU();
         if (null !== $value) {

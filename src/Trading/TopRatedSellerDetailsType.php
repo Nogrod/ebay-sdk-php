@@ -31,6 +31,9 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToTopRatedProgram($topRatedProgram)
     {
+        if (!is_array($this->topRatedProgram)) {
+            throw new \LogicException('topRatedProgram is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->topRatedProgram[] = $topRatedProgram;
         return $this;
     }
@@ -66,7 +69,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * A <b>TopRatedProgram</b> field is returned for each Top-Rated Seller program that the eBay user qualifies for.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getTopRatedProgram()
     {
@@ -81,7 +84,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      * @param string $topRatedProgram
      * @return self
      */
-    public function setTopRatedProgram(array $topRatedProgram)
+    public function setTopRatedProgram(iterable $topRatedProgram)
     {
         $this->topRatedProgram = $topRatedProgram;
         return $this;
@@ -91,10 +94,10 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTopRatedProgram();
-        if (null !== $value && [] !== $this->getTopRatedProgram()) {
-            $writer->write(array_map(function ($v) {
-                return ["TopRatedProgram" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["TopRatedProgram" => $v]]);
+            }
         }
     }
 

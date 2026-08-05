@@ -43,6 +43,9 @@ class GetMemberMessagesResponseType extends AbstractResponseType
      */
     public function addToMemberMessage(\Nogrod\eBaySDK\Trading\MemberMessageExchangeType $memberMessageExchange)
     {
+        if (!is_array($this->memberMessage)) {
+            throw new \LogicException('memberMessage is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->memberMessage[] = $memberMessageExchange;
         return $this;
     }
@@ -78,7 +81,7 @@ class GetMemberMessagesResponseType extends AbstractResponseType
      *
      * The returned member messages. Returned if messages that meet the request criteria exist. Note that <b>GetMemberMessages</b> does not return messages when, in the request, the <b>MailMessageType</b> is <b>AskSellerQuestion</b>.
      *
-     * @return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType>
      */
     public function getMemberMessage()
     {
@@ -90,10 +93,10 @@ class GetMemberMessagesResponseType extends AbstractResponseType
      *
      * The returned member messages. Returned if messages that meet the request criteria exist. Note that <b>GetMemberMessages</b> does not return messages when, in the request, the <b>MailMessageType</b> is <b>AskSellerQuestion</b>.
      *
-     * @param \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[] $memberMessage
+     * @param iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType> $memberMessage
      * @return self
      */
-    public function setMemberMessage(array $memberMessage)
+    public function setMemberMessage(iterable $memberMessage)
     {
         $this->memberMessage = $memberMessage;
         return $this;
@@ -155,10 +158,13 @@ class GetMemberMessagesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMemberMessage();
-        if (null !== $value && [] !== $this->getMemberMessage()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
-                return ["MemberMessageExchange" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
+                    return ["MemberMessageExchange" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {

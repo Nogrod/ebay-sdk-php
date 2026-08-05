@@ -244,6 +244,9 @@ class GetFeedbackRequestType extends AbstractRequestType
      */
     public function addToCommentType($commentType)
     {
+        if (!is_array($this->commentType)) {
+            throw new \LogicException('commentType is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->commentType[] = $commentType;
         return $this;
     }
@@ -279,7 +282,7 @@ class GetFeedbackRequestType extends AbstractRequestType
      *
      * This field is used to retrieve Feedback records of a specific type (Positive, Negative, or Neutral) in <b>FeedbackDetailArray</b>. You can include one or two <b> CommentType</b> fields in the request. If no <b>CommentType</b> value is specified, Feedback records of all types are returned.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getCommentType()
     {
@@ -294,7 +297,7 @@ class GetFeedbackRequestType extends AbstractRequestType
      * @param string $commentType
      * @return self
      */
-    public function setCommentType(array $commentType)
+    public function setCommentType(iterable $commentType)
     {
         $this->commentType = $commentType;
         return $this;
@@ -428,10 +431,10 @@ class GetFeedbackRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
         }
         $value = $this->getCommentType();
-        if (null !== $value && [] !== $this->getCommentType()) {
-            $writer->write(array_map(function ($v) {
-                return ["CommentType" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CommentType" => $v]]);
+            }
         }
         $value = $this->getFeedbackType();
         if (null !== $value) {

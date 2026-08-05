@@ -112,6 +112,9 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToTaxDetails(\Nogrod\eBaySDK\Trading\TaxDetailsType $taxDetails)
     {
+        if (!is_array($this->taxDetails)) {
+            throw new \LogicException('taxDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxDetails[] = $taxDetails;
         return $this;
     }
@@ -147,7 +150,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of detailed sales tax information for an order line item, including the tax type and description, sales tax on the item cost, and sales tax related to shipping and handling.
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxDetailsType>
      */
     public function getTaxDetails()
     {
@@ -159,10 +162,10 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *
      * Container consisting of detailed sales tax information for an order line item, including the tax type and description, sales tax on the item cost, and sales tax related to shipping and handling.
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxDetailsType[] $taxDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxDetailsType> $taxDetails
      * @return self
      */
-    public function setTaxDetails(array $taxDetails)
+    public function setTaxDetails(iterable $taxDetails)
     {
         $this->taxDetails = $taxDetails;
         return $this;
@@ -180,10 +183,10 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount", $value);
         }
         $value = $this->getTaxDetails();
-        if (null !== $value && [] !== $this->getTaxDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["TaxDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["TaxDetails" => $v]]);
+            }
         }
     }
 

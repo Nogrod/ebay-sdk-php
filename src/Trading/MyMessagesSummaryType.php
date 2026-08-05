@@ -73,6 +73,9 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToFolderSummary(\Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType $folderSummary)
     {
+        if (!is_array($this->folderSummary)) {
+            throw new \LogicException('folderSummary is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->folderSummary[] = $folderSummary;
         return $this;
     }
@@ -111,7 +114,7 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * Folder summary for each folder. Always
      *  returned for detail level ReturnSummary.
      *
-     * @return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType>
      */
     public function getFolderSummary()
     {
@@ -124,10 +127,10 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * Folder summary for each folder. Always
      *  returned for detail level ReturnSummary.
      *
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType[] $folderSummary
+     * @param iterable<\Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType> $folderSummary
      * @return self
      */
-    public function setFolderSummary(array $folderSummary)
+    public function setFolderSummary(iterable $folderSummary)
     {
         $this->folderSummary = $folderSummary;
         return $this;
@@ -271,10 +274,10 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFolderSummary();
-        if (null !== $value && [] !== $this->getFolderSummary()) {
-            $writer->write(array_map(function ($v) {
-                return ["FolderSummary" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FolderSummary" => $v]]);
+            }
         }
         $value = $this->getNewMessageCount();
         if (null !== $value) {

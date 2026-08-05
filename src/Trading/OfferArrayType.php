@@ -31,6 +31,9 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToOffer(\Nogrod\eBaySDK\Trading\OfferType $offer)
     {
+        if (!is_array($this->offer)) {
+            throw new \LogicException('offer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->offer[] = $offer;
         return $this;
     }
@@ -66,7 +69,7 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * Each <b>Offer</b> container consists of detailed information on each bid made on an auction listing that is specified in the call request. Information in this container includes the amount of the bid, the time of the bid, and data for the user making the bid.
      *
-     * @return \Nogrod\eBaySDK\Trading\OfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\OfferType>
      */
     public function getOffer()
     {
@@ -78,10 +81,10 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * Each <b>Offer</b> container consists of detailed information on each bid made on an auction listing that is specified in the call request. Information in this container includes the amount of the bid, the time of the bid, and data for the user making the bid.
      *
-     * @param \Nogrod\eBaySDK\Trading\OfferType[] $offer
+     * @param iterable<\Nogrod\eBaySDK\Trading\OfferType> $offer
      * @return self
      */
-    public function setOffer(array $offer)
+    public function setOffer(iterable $offer)
     {
         $this->offer = $offer;
         return $this;
@@ -91,10 +94,10 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getOffer();
-        if (null !== $value && [] !== $this->getOffer()) {
-            $writer->write(array_map(function ($v) {
-                return ["Offer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Offer" => $v]]);
+            }
         }
     }
 

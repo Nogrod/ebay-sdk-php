@@ -229,6 +229,9 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
      */
     public function addToFavoriteItemID($favoriteItemID)
     {
+        if (!is_array($this->favoriteItemID)) {
+            throw new \LogicException('favoriteItemID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->favoriteItemID[] = $favoriteItemID;
         return $this;
     }
@@ -264,7 +267,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
      *
      * Specifies the list of favorite items.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getFavoriteItemID()
     {
@@ -279,7 +282,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
      * @param string $favoriteItemID
      * @return self
      */
-    public function setFavoriteItemID(array $favoriteItemID)
+    public function setFavoriteItemID(iterable $favoriteItemID)
     {
         $this->favoriteItemID = $favoriteItemID;
         return $this;
@@ -313,10 +316,10 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxPrice", $value);
         }
         $value = $this->getFavoriteItemID();
-        if (null !== $value && [] !== $this->getFavoriteItemID()) {
-            $writer->write(array_map(function ($v) {
-                return ["FavoriteItemID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FavoriteItemID" => $v]]);
+            }
         }
     }
 

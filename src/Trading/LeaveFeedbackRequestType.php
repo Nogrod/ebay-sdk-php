@@ -316,6 +316,9 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      */
     public function addToSellerItemRatingDetailArray(\Nogrod\eBaySDK\Trading\ItemRatingDetailsType $itemRatingDetails)
     {
+        if (!is_array($this->sellerItemRatingDetailArray)) {
+            throw new \LogicException('sellerItemRatingDetailArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerItemRatingDetailArray[] = $itemRatingDetails;
         return $this;
     }
@@ -351,7 +354,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *
      * Container for detailed seller ratings (DSRs). If a buyer is providing DSRs, they are specified in this container. Sellers have access to the number of ratings they've received, as well as to the averages of the DSRs they've received in each DSR area (i.e., to the average of ratings in the item-description area, etc.).
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemRatingDetailsType>
      */
     public function getSellerItemRatingDetailArray()
     {
@@ -363,10 +366,10 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      *
      * Container for detailed seller ratings (DSRs). If a buyer is providing DSRs, they are specified in this container. Sellers have access to the number of ratings they've received, as well as to the averages of the DSRs they've received in each DSR area (i.e., to the average of ratings in the item-description area, etc.).
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemRatingDetailsType[] $sellerItemRatingDetailArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemRatingDetailsType> $sellerItemRatingDetailArray
      * @return self
      */
-    public function setSellerItemRatingDetailArray(array $sellerItemRatingDetailArray)
+    public function setSellerItemRatingDetailArray(iterable $sellerItemRatingDetailArray)
     {
         $this->sellerItemRatingDetailArray = $sellerItemRatingDetailArray;
         return $this;
@@ -482,10 +485,13 @@ class LeaveFeedbackRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TargetUser", $value);
         }
         $value = $this->getSellerItemRatingDetailArray();
-        if (null !== $value && [] !== $this->getSellerItemRatingDetailArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {
-                return ["ItemRatingDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {
+                    return ["ItemRatingDetails" => $v];
+                }, $value));
+            }
         }
         $value = $this->getOrderLineItemID();
         if (null !== $value) {

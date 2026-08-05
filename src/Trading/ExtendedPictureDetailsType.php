@@ -31,6 +31,9 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToPictureURLs(\Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs)
     {
+        if (!is_array($this->pictureURLs)) {
+            throw new \LogicException('pictureURLs is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictureURLs[] = $pictureURLs;
         return $this;
     }
@@ -66,7 +69,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
-     * @return \Nogrod\eBaySDK\Trading\PictureURLsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PictureURLsType>
      */
     public function getPictureURLs()
     {
@@ -78,10 +81,10 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      *
      * The <b>ExtendedPictureDetails</b> container and its child fields are no longer returned under any circumstances, including when self-hosted pictures are used for the item. When self-hosted pictures are used by the seller, only the external URL of the gallery image is shown in the <b>PictureDetails.ExternalPictureURL</b> field, and only the equivalent eBay Picture Server (EPS) URLs are shown for the rest of the item's images in separate <b>PictureDetails.PictureURL</b> fields.
      *
-     * @param \Nogrod\eBaySDK\Trading\PictureURLsType[] $pictureURLs
+     * @param iterable<\Nogrod\eBaySDK\Trading\PictureURLsType> $pictureURLs
      * @return self
      */
-    public function setPictureURLs(array $pictureURLs)
+    public function setPictureURLs(iterable $pictureURLs)
     {
         $this->pictureURLs = $pictureURLs;
         return $this;
@@ -91,10 +94,10 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictureURLs();
-        if (null !== $value && [] !== $this->getPictureURLs()) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PictureURLs" => $v]]);
+            }
         }
     }
 

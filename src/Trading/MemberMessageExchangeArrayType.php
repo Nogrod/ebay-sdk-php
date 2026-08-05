@@ -31,6 +31,9 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToMemberMessageExchange(\Nogrod\eBaySDK\Trading\MemberMessageExchangeType $memberMessageExchange)
     {
+        if (!is_array($this->memberMessageExchange)) {
+            throw new \LogicException('memberMessageExchange is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->memberMessageExchange[] = $memberMessageExchange;
         return $this;
     }
@@ -66,7 +69,7 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
      *
      * Each <b>MemberMessageExchange</b> container consists of detailed information about a member-to-member message.
      *
-     * @return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType>
      */
     public function getMemberMessageExchange()
     {
@@ -78,10 +81,10 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
      *
      * Each <b>MemberMessageExchange</b> container consists of detailed information about a member-to-member message.
      *
-     * @param \Nogrod\eBaySDK\Trading\MemberMessageExchangeType[] $memberMessageExchange
+     * @param iterable<\Nogrod\eBaySDK\Trading\MemberMessageExchangeType> $memberMessageExchange
      * @return self
      */
-    public function setMemberMessageExchange(array $memberMessageExchange)
+    public function setMemberMessageExchange(iterable $memberMessageExchange)
     {
         $this->memberMessageExchange = $memberMessageExchange;
         return $this;
@@ -91,10 +94,10 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMemberMessageExchange();
-        if (null !== $value && [] !== $this->getMemberMessageExchange()) {
-            $writer->write(array_map(function ($v) {
-                return ["MemberMessageExchange" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MemberMessageExchange" => $v]]);
+            }
         }
     }
 

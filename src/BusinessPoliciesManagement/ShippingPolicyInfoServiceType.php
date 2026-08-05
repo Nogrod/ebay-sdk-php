@@ -239,6 +239,9 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToShipToLocation($shipToLocation)
     {
+        if (!is_array($this->shipToLocation)) {
+            throw new \LogicException('shipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipToLocation[] = $shipToLocation;
         return $this;
     }
@@ -292,7 +295,7 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
      *  <br><br>
      *  Each ship-to location specified for the shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShipToLocation()
     {
@@ -310,10 +313,10 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
      *  <br><br>
      *  Each ship-to location specified for the shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @param string[] $shipToLocation
+     * @param iterable<string> $shipToLocation
      * @return self
      */
-    public function setShipToLocation(array $shipToLocation)
+    public function setShipToLocation(iterable $shipToLocation)
     {
         $this->shipToLocation = $shipToLocation;
         return $this;
@@ -835,10 +838,10 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getShipToLocation();
-        if (null !== $value && [] !== $this->getShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["shipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["shipToLocation" => $v]]);
+            }
         }
         $value = $this->getShippingService();
         if (null !== $value) {

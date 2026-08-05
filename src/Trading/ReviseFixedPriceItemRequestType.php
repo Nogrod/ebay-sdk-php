@@ -120,6 +120,9 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
      */
     public function addToDeletedField($deletedField)
     {
+        if (!is_array($this->deletedField)) {
+            throw new \LogicException('deletedField is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->deletedField[] = $deletedField;
         return $this;
     }
@@ -230,7 +233,7 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
      *  deleting in square brackets ("[ ]"); for example,
      *  <b>Item.ListingEnhancement[BoldTitle]</b>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDeletedField()
     {
@@ -267,10 +270,10 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
      *  deleting in square brackets ("[ ]"); for example,
      *  <b>Item.ListingEnhancement[BoldTitle]</b>.
      *
-     * @param string[] $deletedField
+     * @param iterable<string> $deletedField
      * @return self
      */
-    public function setDeletedField(array $deletedField)
+    public function setDeletedField(iterable $deletedField)
     {
         $this->deletedField = $deletedField;
         return $this;
@@ -284,10 +287,10 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
         }
         $value = $this->getDeletedField();
-        if (null !== $value && [] !== $this->getDeletedField()) {
-            $writer->write(array_map(function ($v) {
-                return ["DeletedField" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DeletedField" => $v]]);
+            }
         }
     }
 

@@ -37,6 +37,9 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToStatement($statement)
     {
+        if (!is_array($this->statement)) {
+            throw new \LogicException('statement is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->statement[] = $statement;
         return $this;
     }
@@ -81,7 +84,7 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br> <br>
      *  For product safety statements, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getProductSafetyLabels" target="_blank">getProductSafetyLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site.</span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getStatement()
     {
@@ -96,10 +99,10 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br> <br>
      *  For product safety statements, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getProductSafetyLabels" target="_blank">getProductSafetyLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site.</span>
      *
-     * @param string[] $statement
+     * @param iterable<string> $statement
      * @return self
      */
-    public function setStatement(array $statement)
+    public function setStatement(iterable $statement)
     {
         $this->statement = $statement;
         return $this;
@@ -109,10 +112,10 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getStatement();
-        if (null !== $value && [] !== $this->getStatement()) {
-            $writer->write(array_map(function ($v) {
-                return ["Statement" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Statement" => $v]]);
+            }
         }
     }
 

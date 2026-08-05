@@ -39,6 +39,9 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToModifyName(\Nogrod\eBaySDK\Trading\ModifyNameType $modifyName)
     {
+        if (!is_array($this->modifyName)) {
+            throw new \LogicException('modifyName is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->modifyName[] = $modifyName;
         return $this;
     }
@@ -86,7 +89,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
-     * @return \Nogrod\eBaySDK\Trading\ModifyNameType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ModifyNameType>
      */
     public function getModifyName()
     {
@@ -102,10 +105,10 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  To get a current list of Variation Specifics defined for a multiple-variation listing, the seller can use <b>GetItem</b>, and then view all Variation Specific names in the <b>VariationSpecificsSet</b> container in the response.
      *
-     * @param \Nogrod\eBaySDK\Trading\ModifyNameType[] $modifyName
+     * @param iterable<\Nogrod\eBaySDK\Trading\ModifyNameType> $modifyName
      * @return self
      */
-    public function setModifyName(array $modifyName)
+    public function setModifyName(iterable $modifyName)
     {
         $this->modifyName = $modifyName;
         return $this;
@@ -115,10 +118,10 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getModifyName();
-        if (null !== $value && [] !== $this->getModifyName()) {
-            $writer->write(array_map(function ($v) {
-                return ["ModifyName" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ModifyName" => $v]]);
+            }
         }
     }
 

@@ -66,6 +66,9 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToAverageRatingDetails(\Nogrod\eBaySDK\Trading\AverageRatingDetailsType $averageRatingDetails)
     {
+        if (!is_array($this->averageRatingDetails)) {
+            throw new \LogicException('averageRatingDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->averageRatingDetails[] = $averageRatingDetails;
         return $this;
     }
@@ -104,7 +107,7 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Applicable to sites that support the Detailed Seller Ratings feature.
      *  Each <b>AverageRatingDetails</b> container consists of the average detailed seller ratings in an area. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling.
      *
-     * @return \Nogrod\eBaySDK\Trading\AverageRatingDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AverageRatingDetailsType>
      */
     public function getAverageRatingDetails()
     {
@@ -117,10 +120,10 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Applicable to sites that support the Detailed Seller Ratings feature.
      *  Each <b>AverageRatingDetails</b> container consists of the average detailed seller ratings in an area. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling.
      *
-     * @param \Nogrod\eBaySDK\Trading\AverageRatingDetailsType[] $averageRatingDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\AverageRatingDetailsType> $averageRatingDetails
      * @return self
      */
-    public function setAverageRatingDetails(array $averageRatingDetails)
+    public function setAverageRatingDetails(iterable $averageRatingDetails)
     {
         $this->averageRatingDetails = $averageRatingDetails;
         return $this;
@@ -134,10 +137,10 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod", $value);
         }
         $value = $this->getAverageRatingDetails();
-        if (null !== $value && [] !== $this->getAverageRatingDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["AverageRatingDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AverageRatingDetails" => $v]]);
+            }
         }
     }
 

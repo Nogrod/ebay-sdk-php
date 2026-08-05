@@ -347,6 +347,9 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToDetailLevel($detailLevel)
     {
+        if (!is_array($this->detailLevel)) {
+            throw new \LogicException('detailLevel is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->detailLevel[] = $detailLevel;
         return $this;
     }
@@ -475,7 +478,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <b>GetSellerList</b>, use a small <b>Pagination.EntriesPerPage</b> value and a narrow
      *  <b>EndTimeFrom</b>/<b>EndTimeTo</b> date range for better performance.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDetailLevel()
     {
@@ -521,7 +524,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @param string $detailLevel
      * @return self
      */
-    public function setDetailLevel(array $detailLevel)
+    public function setDetailLevel(iterable $detailLevel)
     {
         $this->detailLevel = $detailLevel;
         return $this;
@@ -996,6 +999,9 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToOutputSelector($outputSelector)
     {
+        if (!is_array($this->outputSelector)) {
+            throw new \LogicException('outputSelector is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->outputSelector[] = $outputSelector;
         return $this;
     }
@@ -1100,7 +1106,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </code>
      *  </pre>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getOutputSelector()
     {
@@ -1135,10 +1141,10 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  </code>
      *  </pre>
      *
-     * @param string[] $outputSelector
+     * @param iterable<string> $outputSelector
      * @return self
      */
-    public function setOutputSelector(array $outputSelector)
+    public function setOutputSelector(iterable $outputSelector)
     {
         $this->outputSelector = $outputSelector;
         return $this;
@@ -1254,10 +1260,10 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDetailLevel();
-        if (null !== $value && [] !== $this->getDetailLevel()) {
-            $writer->write(array_map(function ($v) {
-                return ["DetailLevel" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DetailLevel" => $v]]);
+            }
         }
         $value = $this->getErrorLanguage();
         if (null !== $value) {
@@ -1284,10 +1290,10 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvocationID", $value);
         }
         $value = $this->getOutputSelector();
-        if (null !== $value && [] !== $this->getOutputSelector()) {
-            $writer->write(array_map(function ($v) {
-                return ["OutputSelector" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["OutputSelector" => $v]]);
+            }
         }
         $value = $this->getWarningLevel();
         if (null !== $value) {

@@ -318,6 +318,9 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToDeliveryURLDetails(\Nogrod\eBaySDK\Trading\DeliveryURLDetailType $deliveryURLDetails)
     {
+        if (!is_array($this->deliveryURLDetails)) {
+            throw new \LogicException('deliveryURLDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->deliveryURLDetails[] = $deliveryURLDetails;
         return $this;
     }
@@ -374,7 +377,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
      *  SetNotificationPreferencesRequest.DeliveryURLName. Notifications will be sent to these
      *  URL(s) if ApplicationDeliveryPreferencesType.ApplicationEnable is set to Enable.
      *
-     * @return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DeliveryURLDetailType>
      */
     public function getDeliveryURLDetails()
     {
@@ -393,10 +396,10 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
      *  SetNotificationPreferencesRequest.DeliveryURLName. Notifications will be sent to these
      *  URL(s) if ApplicationDeliveryPreferencesType.ApplicationEnable is set to Enable.
      *
-     * @param \Nogrod\eBaySDK\Trading\DeliveryURLDetailType[] $deliveryURLDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\DeliveryURLDetailType> $deliveryURLDetails
      * @return self
      */
-    public function setDeliveryURLDetails(array $deliveryURLDetails)
+    public function setDeliveryURLDetails(iterable $deliveryURLDetails)
     {
         $this->deliveryURLDetails = $deliveryURLDetails;
         return $this;
@@ -434,10 +437,10 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayloadVersion", $value);
         }
         $value = $this->getDeliveryURLDetails();
-        if (null !== $value && [] !== $this->getDeliveryURLDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["DeliveryURLDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DeliveryURLDetails" => $v]]);
+            }
         }
     }
 

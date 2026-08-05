@@ -82,6 +82,9 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToDiscountProfile(\Nogrod\eBaySDK\Trading\DiscountProfileType $discountProfile)
     {
+        if (!is_array($this->discountProfile)) {
+            throw new \LogicException('discountProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->discountProfile[] = $discountProfile;
         return $this;
     }
@@ -144,7 +147,7 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
      *  Restrictions on how many profiles can exist for a given
      *  discount rule are discussed in the Features Guide documentation on Shipping Cost Discount Profiles.
      *
-     * @return \Nogrod\eBaySDK\Trading\DiscountProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DiscountProfileType>
      */
     public function getDiscountProfile()
     {
@@ -165,10 +168,10 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
      *  Restrictions on how many profiles can exist for a given
      *  discount rule are discussed in the Features Guide documentation on Shipping Cost Discount Profiles.
      *
-     * @param \Nogrod\eBaySDK\Trading\DiscountProfileType[] $discountProfile
+     * @param iterable<\Nogrod\eBaySDK\Trading\DiscountProfileType> $discountProfile
      * @return self
      */
-    public function setDiscountProfile(array $discountProfile)
+    public function setDiscountProfile(iterable $discountProfile)
     {
         $this->discountProfile = $discountProfile;
         return $this;
@@ -182,10 +185,10 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountName", $value);
         }
         $value = $this->getDiscountProfile();
-        if (null !== $value && [] !== $this->getDiscountProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["DiscountProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DiscountProfile" => $v]]);
+            }
         }
     }
 

@@ -91,6 +91,9 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToPolicyID($policyID)
     {
+        if (!is_array($this->policyID)) {
+            throw new \LogicException('policyID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->policyID[] = $policyID;
         return $this;
     }
@@ -126,7 +129,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * The policy Id specifying product compliance or take-back policy information.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getPolicyID()
     {
@@ -138,10 +141,10 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * The policy Id specifying product compliance or take-back policy information.
      *
-     * @param int[] $policyID
+     * @param iterable<int> $policyID
      * @return self
      */
-    public function setPolicyID(array $policyID)
+    public function setPolicyID(iterable $policyID)
     {
         $this->policyID = $policyID;
         return $this;
@@ -155,10 +158,10 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Country", $value);
         }
         $value = $this->getPolicyID();
-        if (null !== $value && [] !== $this->getPolicyID()) {
-            $writer->write(array_map(function ($v) {
-                return ["PolicyID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PolicyID" => $v]]);
+            }
         }
     }
 

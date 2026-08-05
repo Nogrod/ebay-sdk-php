@@ -45,6 +45,9 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToAverageRatingSummary(\Nogrod\eBaySDK\Trading\AverageRatingSummaryType $averageRatingSummary)
     {
+        if (!is_array($this->averageRatingSummary)) {
+            throw new \LogicException('averageRatingSummary is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->averageRatingSummary[] = $averageRatingSummary;
         return $this;
     }
@@ -92,7 +95,7 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  for each DSR type, and the period in which those ratings were received (the last year
      *  or the last 30 days).
      *
-     * @return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AverageRatingSummaryType>
      */
     public function getAverageRatingSummary()
     {
@@ -108,10 +111,10 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  for each DSR type, and the period in which those ratings were received (the last year
      *  or the last 30 days).
      *
-     * @param \Nogrod\eBaySDK\Trading\AverageRatingSummaryType[] $averageRatingSummary
+     * @param iterable<\Nogrod\eBaySDK\Trading\AverageRatingSummaryType> $averageRatingSummary
      * @return self
      */
-    public function setAverageRatingSummary(array $averageRatingSummary)
+    public function setAverageRatingSummary(iterable $averageRatingSummary)
     {
         $this->averageRatingSummary = $averageRatingSummary;
         return $this;
@@ -121,10 +124,10 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getAverageRatingSummary();
-        if (null !== $value && [] !== $this->getAverageRatingSummary()) {
-            $writer->write(array_map(function ($v) {
-                return ["AverageRatingSummary" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AverageRatingSummary" => $v]]);
+            }
         }
     }
 

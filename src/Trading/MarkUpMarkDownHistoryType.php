@@ -35,6 +35,9 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToMarkUpMarkDownEvent(\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType $markUpMarkDownEvent)
     {
+        if (!is_array($this->markUpMarkDownEvent)) {
+            throw new \LogicException('markUpMarkDownEvent is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->markUpMarkDownEvent[] = $markUpMarkDownEvent;
         return $this;
     }
@@ -70,7 +73,7 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Details for a MarkDown or MarkUp event.
      *
-     * @return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType>
      */
     public function getMarkUpMarkDownEvent()
     {
@@ -82,10 +85,10 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Details for a MarkDown or MarkUp event.
      *
-     * @param \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType[] $markUpMarkDownEvent
+     * @param iterable<\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType> $markUpMarkDownEvent
      * @return self
      */
-    public function setMarkUpMarkDownEvent(array $markUpMarkDownEvent)
+    public function setMarkUpMarkDownEvent(iterable $markUpMarkDownEvent)
     {
         $this->markUpMarkDownEvent = $markUpMarkDownEvent;
         return $this;
@@ -95,10 +98,10 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMarkUpMarkDownEvent();
-        if (null !== $value && [] !== $this->getMarkUpMarkDownEvent()) {
-            $writer->write(array_map(function ($v) {
-                return ["MarkUpMarkDownEvent" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MarkUpMarkDownEvent" => $v]]);
+            }
         }
     }
 

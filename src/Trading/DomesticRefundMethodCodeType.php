@@ -31,6 +31,9 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToDomesticRefundMethod($domesticRefundMethod)
     {
+        if (!is_array($this->domesticRefundMethod)) {
+            throw new \LogicException('domesticRefundMethod is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticRefundMethod[] = $domesticRefundMethod;
         return $this;
     }
@@ -66,7 +69,7 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * Defines the available options the seller has for handling domestic returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticRefundMethod()
     {
@@ -81,7 +84,7 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
      * @param string $domesticRefundMethod
      * @return self
      */
-    public function setDomesticRefundMethod(array $domesticRefundMethod)
+    public function setDomesticRefundMethod(iterable $domesticRefundMethod)
     {
         $this->domesticRefundMethod = $domesticRefundMethod;
         return $this;
@@ -91,10 +94,10 @@ class DomesticRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \Sabre
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticRefundMethod();
-        if (null !== $value && [] !== $this->getDomesticRefundMethod()) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DomesticRefundMethod" => $v]]);
+            }
         }
     }
 

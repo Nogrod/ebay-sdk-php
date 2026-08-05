@@ -110,6 +110,9 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToThemeID($themeID)
     {
+        if (!is_array($this->themeID)) {
+            throw new \LogicException('themeID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->themeID[] = $themeID;
         return $this;
     }
@@ -148,7 +151,7 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Unique identifier for each theme in this group. There
      *  is at least one theme in a theme group.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getThemeID()
     {
@@ -161,10 +164,10 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Unique identifier for each theme in this group. There
      *  is at least one theme in a theme group.
      *
-     * @param int[] $themeID
+     * @param iterable<int> $themeID
      * @return self
      */
-    public function setThemeID(array $themeID)
+    public function setThemeID(iterable $themeID)
     {
         $this->themeID = $themeID;
         return $this;
@@ -208,10 +211,10 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GroupName", $value);
         }
         $value = $this->getThemeID();
-        if (null !== $value && [] !== $this->getThemeID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ThemeID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ThemeID" => $v]]);
+            }
         }
         $value = $this->getThemeTotal();
         if (null !== $value) {

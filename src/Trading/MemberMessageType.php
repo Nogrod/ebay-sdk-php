@@ -348,6 +348,9 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToRecipientID($recipientID)
     {
+        if (!is_array($this->recipientID)) {
+            throw new \LogicException('recipientID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->recipientID[] = $recipientID;
         return $this;
     }
@@ -413,7 +416,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getRecipientID()
     {
@@ -435,10 +438,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to <a href="https://developer.ebay.com/api-docs/static/data-handling-update.html" target="_blank">Data Handling Compliance</a>.
      *  </span>
      *
-     * @param string[] $recipientID
+     * @param iterable<string> $recipientID
      * @return self
      */
-    public function setRecipientID(array $recipientID)
+    public function setRecipientID(iterable $recipientID)
     {
         $this->recipientID = $recipientID;
         return $this;
@@ -574,6 +577,9 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        if (!is_array($this->messageMedia)) {
+            throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageMedia[] = $messageMedia;
         return $this;
     }
@@ -609,7 +615,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * Media details attached to the message.
      *
-     * @return \Nogrod\eBaySDK\Trading\MessageMediaType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MessageMediaType>
      */
     public function getMessageMedia()
     {
@@ -621,10 +627,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * Media details attached to the message.
      *
-     * @param \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
+     * @param iterable<\Nogrod\eBaySDK\Trading\MessageMediaType> $messageMedia
      * @return self
      */
-    public function setMessageMedia(array $messageMedia)
+    public function setMessageMedia(iterable $messageMedia)
     {
         $this->messageMedia = $messageMedia;
         return $this;
@@ -660,10 +666,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SenderEmail", $value);
         }
         $value = $this->getRecipientID();
-        if (null !== $value && [] !== $this->getRecipientID()) {
-            $writer->write(array_map(function ($v) {
-                return ["RecipientID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RecipientID" => $v]]);
+            }
         }
         $value = $this->getSubject();
         if (null !== $value) {
@@ -682,10 +688,10 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ParentMessageID", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && [] !== $this->getMessageMedia()) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MessageMedia" => $v]]);
+            }
         }
     }
 

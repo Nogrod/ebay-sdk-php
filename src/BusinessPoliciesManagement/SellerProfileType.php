@@ -299,6 +299,9 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToCategoryGroups(\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup)
     {
+        if (!is_array($this->categoryGroups)) {
+            throw new \LogicException('categoryGroups is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->categoryGroups[] = $categoryGroup;
         return $this;
     }
@@ -334,7 +337,7 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType>
      */
     public function getCategoryGroups()
     {
@@ -346,10 +349,10 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This container consists of one or more <b>categoryGroup</b> containers. One or more category groups are linked to each business policy.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroups
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType> $categoryGroups
      * @return self
      */
-    public function setCategoryGroups(array $categoryGroups)
+    public function setCategoryGroups(iterable $categoryGroups)
     {
         $this->categoryGroups = $categoryGroups;
         return $this;
@@ -392,10 +395,13 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}siteId", $value);
         }
         $value = $this->getCategoryGroups();
-        if (null !== $value && [] !== $this->getCategoryGroups()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups", array_map(function ($v) {
-                return ["categoryGroup" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups", array_map(function ($v) {
+                    return ["categoryGroup" => $v];
+                }, $value));
+            }
         }
     }
 

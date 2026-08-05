@@ -237,6 +237,9 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
      */
     public function addToFeatureID($featureID)
     {
+        if (!is_array($this->featureID)) {
+            throw new \LogicException('featureID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->featureID[] = $featureID;
         return $this;
     }
@@ -272,7 +275,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
      *
      * Use this field if you want to know if specific features are enabled at the site or root category level. Multiple <b>FeatureID</b> elements can be used in the request. If no <b>FeatureID</b> elements are used, the call retrieves data for all features, as applicable to the other request parameters.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getFeatureID()
     {
@@ -287,7 +290,7 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
      * @param string $featureID
      * @return self
      */
-    public function setFeatureID(array $featureID)
+    public function setFeatureID(iterable $featureID)
     {
         $this->featureID = $featureID;
         return $this;
@@ -348,10 +351,10 @@ class GetCategoryFeaturesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ViewAllNodes", $value);
         }
         $value = $this->getFeatureID();
-        if (null !== $value && [] !== $this->getFeatureID()) {
-            $writer->write(array_map(function ($v) {
-                return ["FeatureID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FeatureID" => $v]]);
+            }
         }
         $value = $this->getAllFeaturesForCategory();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

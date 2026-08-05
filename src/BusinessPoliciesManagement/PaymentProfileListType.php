@@ -32,6 +32,9 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPaymentProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile)
     {
+        if (!is_array($this->paymentProfile)) {
+            throw new \LogicException('paymentProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentProfile[] = $paymentProfile;
         return $this;
     }
@@ -67,7 +70,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType>
      */
     public function getPaymentProfile()
     {
@@ -79,10 +82,10 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType[] $paymentProfile
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType> $paymentProfile
      * @return self
      */
-    public function setPaymentProfile(array $paymentProfile)
+    public function setPaymentProfile(iterable $paymentProfile)
     {
         $this->paymentProfile = $paymentProfile;
         return $this;
@@ -92,10 +95,10 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getPaymentProfile();
-        if (null !== $value && [] !== $this->getPaymentProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentProfile" => $v]]);
+            }
         }
     }
 

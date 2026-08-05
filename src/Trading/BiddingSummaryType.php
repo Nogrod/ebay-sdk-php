@@ -265,6 +265,9 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToItemBidDetails(\Nogrod\eBaySDK\Trading\ItemBidDetailsType $itemBidDetails)
     {
+        if (!is_array($this->itemBidDetails)) {
+            throw new \LogicException('itemBidDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemBidDetails[] = $itemBidDetails;
         return $this;
     }
@@ -300,7 +303,7 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container provides information on each auction item that the user has placed a bid on during the last 30 days (or the number of days specified in the <b>SummaryDays</b> field).
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemBidDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemBidDetailsType>
      */
     public function getItemBidDetails()
     {
@@ -312,10 +315,10 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container provides information on each auction item that the user has placed a bid on during the last 30 days (or the number of days specified in the <b>SummaryDays</b> field).
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemBidDetailsType[] $itemBidDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemBidDetailsType> $itemBidDetails
      * @return self
      */
-    public function setItemBidDetails(array $itemBidDetails)
+    public function setItemBidDetails(iterable $itemBidDetails)
     {
         $this->itemBidDetails = $itemBidDetails;
         return $this;
@@ -349,10 +352,10 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractions", $value);
         }
         $value = $this->getItemBidDetails();
-        if (null !== $value && [] !== $this->getItemBidDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemBidDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemBidDetails" => $v]]);
+            }
         }
     }
 

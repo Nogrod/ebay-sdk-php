@@ -54,6 +54,9 @@ class GetAllBiddersResponseType extends AbstractResponseType
      */
     public function addToBidArray(\Nogrod\eBaySDK\Trading\OfferType $offer)
     {
+        if (!is_array($this->bidArray)) {
+            throw new \LogicException('bidArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bidArray[] = $offer;
         return $this;
     }
@@ -89,7 +92,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
      *
      * This container consists of an array of bids made on the specified auction listing. Each <b>OfferType</b> object represents the data for one bid.
      *
-     * @return \Nogrod\eBaySDK\Trading\OfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\OfferType>
      */
     public function getBidArray()
     {
@@ -101,10 +104,10 @@ class GetAllBiddersResponseType extends AbstractResponseType
      *
      * This container consists of an array of bids made on the specified auction listing. Each <b>OfferType</b> object represents the data for one bid.
      *
-     * @param \Nogrod\eBaySDK\Trading\OfferType[] $bidArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\OfferType> $bidArray
      * @return self
      */
-    public function setBidArray(array $bidArray)
+    public function setBidArray(iterable $bidArray)
     {
         $this->bidArray = $bidArray;
         return $this;
@@ -200,10 +203,13 @@ class GetAllBiddersResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getBidArray();
-        if (null !== $value && [] !== $this->getBidArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {
-                return ["Offer" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidArray", array_map(function ($v) {
+                    return ["Offer" => $v];
+                }, $value));
+            }
         }
         $value = $this->getHighBidder();
         if (null !== $value) {

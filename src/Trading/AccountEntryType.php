@@ -612,6 +612,9 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDiscountDetail(\Nogrod\eBaySDK\Trading\DiscountType $discount)
     {
+        if (!is_array($this->discountDetail)) {
+            throw new \LogicException('discountDetail is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->discountDetail[] = $discount;
         return $this;
     }
@@ -647,7 +650,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
      *
-     * @return \Nogrod\eBaySDK\Trading\DiscountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DiscountType>
      */
     public function getDiscountDetail()
     {
@@ -659,10 +662,10 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
      *
-     * @param \Nogrod\eBaySDK\Trading\DiscountType[] $discountDetail
+     * @param iterable<\Nogrod\eBaySDK\Trading\DiscountType> $discountDetail
      * @return self
      */
-    public function setDiscountDetail(array $discountDetail)
+    public function setDiscountDetail(iterable $discountDetail)
     {
         $this->discountDetail = $discountDetail;
         return $this;
@@ -769,10 +772,13 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderId", $value);
         }
         $value = $this->getDiscountDetail();
-        if (null !== $value && [] !== $this->getDiscountDetail()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", array_map(function ($v) {
-                return ["Discount" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", array_map(function ($v) {
+                    return ["Discount" => $v];
+                }, $value));
+            }
         }
         $value = $this->getNetted();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

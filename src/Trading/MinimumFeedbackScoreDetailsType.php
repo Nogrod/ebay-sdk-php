@@ -34,6 +34,9 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToFeedbackScore($feedbackScore)
     {
+        if (!is_array($this->feedbackScore)) {
+            throw new \LogicException('feedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->feedbackScore[] = $feedbackScore;
         return $this;
     }
@@ -69,7 +72,7 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Each value that is returned in this field can be used as an account-level Minimum Feedback Score. Sellers can no longer set a buyer's Minimum Feedback Score threshold Buyer Requirement at the listing-level in Add/Revise/Relist calls. The Feedback Score for a potential buyer must be greater than or equal to the specified value in the seller's account settings, or that buyer is blocked from buying the item. <br/><br/> One or more <b>FeedbackScore</b> fields are always returned with the <b>MinimumFeedbackScore</b> container.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getFeedbackScore()
     {
@@ -81,10 +84,10 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Each value that is returned in this field can be used as an account-level Minimum Feedback Score. Sellers can no longer set a buyer's Minimum Feedback Score threshold Buyer Requirement at the listing-level in Add/Revise/Relist calls. The Feedback Score for a potential buyer must be greater than or equal to the specified value in the seller's account settings, or that buyer is blocked from buying the item. <br/><br/> One or more <b>FeedbackScore</b> fields are always returned with the <b>MinimumFeedbackScore</b> container.
      *
-     * @param int[] $feedbackScore
+     * @param iterable<int> $feedbackScore
      * @return self
      */
-    public function setFeedbackScore(array $feedbackScore)
+    public function setFeedbackScore(iterable $feedbackScore)
     {
         $this->feedbackScore = $feedbackScore;
         return $this;
@@ -94,10 +97,10 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackScore();
-        if (null !== $value && [] !== $this->getFeedbackScore()) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackScore" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FeedbackScore" => $v]]);
+            }
         }
     }
 

@@ -40,6 +40,9 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToMaximumItemCount($maximumItemCount)
     {
+        if (!is_array($this->maximumItemCount)) {
+            throw new \LogicException('maximumItemCount is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->maximumItemCount[] = $maximumItemCount;
         return $this;
     }
@@ -75,7 +78,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * Values returned in this field indicate the maximum quantity of an order line item that one buyer can purchase during a consecutive 10-day period.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getMaximumItemCount()
     {
@@ -87,10 +90,10 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * Values returned in this field indicate the maximum quantity of an order line item that one buyer can purchase during a consecutive 10-day period.
      *
-     * @param int[] $maximumItemCount
+     * @param iterable<int> $maximumItemCount
      * @return self
      */
-    public function setMaximumItemCount(array $maximumItemCount)
+    public function setMaximumItemCount(iterable $maximumItemCount)
     {
         $this->maximumItemCount = $maximumItemCount;
         return $this;
@@ -106,6 +109,9 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToMinimumFeedbackScore($minimumFeedbackScore)
     {
+        if (!is_array($this->minimumFeedbackScore)) {
+            throw new \LogicException('minimumFeedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->minimumFeedbackScore[] = $minimumFeedbackScore;
         return $this;
     }
@@ -141,7 +147,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * A Minimum Feedback Score threshold can be added to the Maximum Item Requirement rule if the seller only wishes to restrict possible buyers with low Feedback scores. The values returned in this field indicate the minimum Feedback Score thresholds that can be used.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getMinimumFeedbackScore()
     {
@@ -153,10 +159,10 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * A Minimum Feedback Score threshold can be added to the Maximum Item Requirement rule if the seller only wishes to restrict possible buyers with low Feedback scores. The values returned in this field indicate the minimum Feedback Score thresholds that can be used.
      *
-     * @param int[] $minimumFeedbackScore
+     * @param iterable<int> $minimumFeedbackScore
      * @return self
      */
-    public function setMinimumFeedbackScore(array $minimumFeedbackScore)
+    public function setMinimumFeedbackScore(iterable $minimumFeedbackScore)
     {
         $this->minimumFeedbackScore = $minimumFeedbackScore;
         return $this;
@@ -166,16 +172,16 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getMaximumItemCount();
-        if (null !== $value && [] !== $this->getMaximumItemCount()) {
-            $writer->write(array_map(function ($v) {
-                return ["MaximumItemCount" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MaximumItemCount" => $v]]);
+            }
         }
         $value = $this->getMinimumFeedbackScore();
-        if (null !== $value && [] !== $this->getMinimumFeedbackScore()) {
-            $writer->write(array_map(function ($v) {
-                return ["MinimumFeedbackScore" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MinimumFeedbackScore" => $v]]);
+            }
         }
     }
 

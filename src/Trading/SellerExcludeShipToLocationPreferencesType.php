@@ -69,6 +69,9 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        if (!is_array($this->excludeShipToLocation)) {
+            throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->excludeShipToLocation[] = $excludeShipToLocation;
         return $this;
     }
@@ -161,7 +164,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExcludeShipToLocation()
     {
@@ -192,10 +195,10 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      *  To see the valid exclude ship-to locations for a specified site, call
      *  <b>GeteBayDetails</b> with a <b>DetailName</b> field set to <b>ExcludeShippingLocationDetails</b>.
      *
-     * @param string[] $excludeShipToLocation
+     * @param iterable<string> $excludeShipToLocation
      * @return self
      */
-    public function setExcludeShipToLocation(array $excludeShipToLocation)
+    public function setExcludeShipToLocation(iterable $excludeShipToLocation)
     {
         $this->excludeShipToLocation = $excludeShipToLocation;
         return $this;
@@ -205,10 +208,10 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExcludeShipToLocation" => $v]]);
+            }
         }
     }
 

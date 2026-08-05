@@ -37,6 +37,9 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      */
     public function addToTransaction(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        if (!is_array($this->transaction)) {
+            throw new \LogicException('transaction is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->transaction[] = $transaction;
         return $this;
     }
@@ -78,7 +81,7 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  <br/><br/>
      *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
      *
-     * @return \Nogrod\eBaySDK\Trading\TransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TransactionType>
      */
     public function getTransaction()
     {
@@ -92,10 +95,10 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  <br/><br/>
      *  For the <b>AddOrder</b> call, a <b>Transaction</b> container is used to identified the unpaid order line items that are being combined into one Combined Invoice order.
      *
-     * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transaction
+     * @param iterable<\Nogrod\eBaySDK\Trading\TransactionType> $transaction
      * @return self
      */
-    public function setTransaction(array $transaction)
+    public function setTransaction(iterable $transaction)
     {
         $this->transaction = $transaction;
         return $this;
@@ -105,10 +108,10 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getTransaction();
-        if (null !== $value && [] !== $this->getTransaction()) {
-            $writer->write(array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Transaction" => $v]]);
+            }
         }
     }
 

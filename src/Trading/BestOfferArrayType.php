@@ -35,6 +35,9 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToBestOffer(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        if (!is_array($this->bestOffer)) {
+            throw new \LogicException('bestOffer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bestOffer[] = $bestOffer;
         return $this;
     }
@@ -76,7 +79,7 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br/><br/>
      *  For <b>RespondToBestOffer</b>, each <b>BestOffer</b> container provides the status ('Success' or 'Failure') of the Best Offer action (Accept, Counter, or Decline), which are defined in <a href="types/BestOfferActionCodeType.html">BestOfferActionCodeType</a>.
      *
-     * @return \Nogrod\eBaySDK\Trading\BestOfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BestOfferType>
      */
     public function getBestOffer()
     {
@@ -90,10 +93,10 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br/><br/>
      *  For <b>RespondToBestOffer</b>, each <b>BestOffer</b> container provides the status ('Success' or 'Failure') of the Best Offer action (Accept, Counter, or Decline), which are defined in <a href="types/BestOfferActionCodeType.html">BestOfferActionCodeType</a>.
      *
-     * @param \Nogrod\eBaySDK\Trading\BestOfferType[] $bestOffer
+     * @param iterable<\Nogrod\eBaySDK\Trading\BestOfferType> $bestOffer
      * @return self
      */
-    public function setBestOffer(array $bestOffer)
+    public function setBestOffer(iterable $bestOffer)
     {
         $this->bestOffer = $bestOffer;
         return $this;
@@ -103,10 +106,10 @@ class BestOfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getBestOffer();
-        if (null !== $value && [] !== $this->getBestOffer()) {
-            $writer->write(array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BestOffer" => $v]]);
+            }
         }
     }
 

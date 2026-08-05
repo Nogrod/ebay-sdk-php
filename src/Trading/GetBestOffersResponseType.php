@@ -58,6 +58,9 @@ class GetBestOffersResponseType extends AbstractResponseType
      */
     public function addToBestOfferArray(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        if (!is_array($this->bestOfferArray)) {
+            throw new \LogicException('bestOfferArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bestOfferArray[] = $bestOffer;
         return $this;
     }
@@ -93,7 +96,7 @@ class GetBestOffersResponseType extends AbstractResponseType
      *
      * All Best Offers for the item according to the filter or Best Offer ID (or both) used in the input. The buyer and seller messages are returned only if the detail level is defined. Includes the buyer and seller message only if the <code>ReturnAll</code> detail level is used. Only returned if Best Offers have been made.
      *
-     * @return \Nogrod\eBaySDK\Trading\BestOfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BestOfferType>
      */
     public function getBestOfferArray()
     {
@@ -105,10 +108,10 @@ class GetBestOffersResponseType extends AbstractResponseType
      *
      * All Best Offers for the item according to the filter or Best Offer ID (or both) used in the input. The buyer and seller messages are returned only if the detail level is defined. Includes the buyer and seller message only if the <code>ReturnAll</code> detail level is used. Only returned if Best Offers have been made.
      *
-     * @param \Nogrod\eBaySDK\Trading\BestOfferType[] $bestOfferArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\BestOfferType> $bestOfferArray
      * @return self
      */
-    public function setBestOfferArray(array $bestOfferArray)
+    public function setBestOfferArray(iterable $bestOfferArray)
     {
         $this->bestOfferArray = $bestOfferArray;
         return $this;
@@ -150,6 +153,9 @@ class GetBestOffersResponseType extends AbstractResponseType
      */
     public function addToItemBestOffersArray(\Nogrod\eBaySDK\Trading\ItemBestOffersType $itemBestOffers)
     {
+        if (!is_array($this->itemBestOffersArray)) {
+            throw new \LogicException('itemBestOffersArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemBestOffersArray[] = $itemBestOffers;
         return $this;
     }
@@ -185,7 +191,7 @@ class GetBestOffersResponseType extends AbstractResponseType
      *
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemBestOffersType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemBestOffersType>
      */
     public function getItemBestOffersArray()
     {
@@ -197,10 +203,10 @@ class GetBestOffersResponseType extends AbstractResponseType
      *
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemBestOffersType[] $itemBestOffersArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemBestOffersType> $itemBestOffersArray
      * @return self
      */
-    public function setItemBestOffersArray(array $itemBestOffersArray)
+    public function setItemBestOffersArray(iterable $itemBestOffersArray)
     {
         $this->itemBestOffersArray = $itemBestOffersArray;
         return $this;
@@ -264,20 +270,26 @@ class GetBestOffersResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getBestOfferArray();
-        if (null !== $value && [] !== $this->getBestOfferArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray", array_map(function ($v) {
+                    return ["BestOffer" => $v];
+                }, $value));
+            }
         }
         $value = $this->getItem();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
         }
         $value = $this->getItemBestOffersArray();
-        if (null !== $value && [] !== $this->getItemBestOffersArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray", array_map(function ($v) {
-                return ["ItemBestOffers" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray", array_map(function ($v) {
+                    return ["ItemBestOffers" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPageNumber();
         if (null !== $value) {

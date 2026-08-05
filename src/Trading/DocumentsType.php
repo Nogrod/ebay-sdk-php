@@ -33,6 +33,9 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToDocument(\Nogrod\eBaySDK\Trading\DocumentType $document)
     {
+        if (!is_array($this->document)) {
+            throw new \LogicException('document is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->document[] = $document;
         return $this;
     }
@@ -68,7 +71,7 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *
      * A regulatory document associated with the listing.<br /><br />Regulatory documents can be created and uploaded using the <a href = "/api-docs/commerce/media/resources/document/methods/createDocument" target="_blank">createDocument</a> method of the Media API. A variety of document types can be provided for regulatory compliance. For a list of supported document types, see <a href = "/api-docs/commerce/media/types/api:DocumentTypeEnum" target="_blank">DocumentTypeEnum</a>.
      *
-     * @return \Nogrod\eBaySDK\Trading\DocumentType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DocumentType>
      */
     public function getDocument()
     {
@@ -80,10 +83,10 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *
      * A regulatory document associated with the listing.<br /><br />Regulatory documents can be created and uploaded using the <a href = "/api-docs/commerce/media/resources/document/methods/createDocument" target="_blank">createDocument</a> method of the Media API. A variety of document types can be provided for regulatory compliance. For a list of supported document types, see <a href = "/api-docs/commerce/media/types/api:DocumentTypeEnum" target="_blank">DocumentTypeEnum</a>.
      *
-     * @param \Nogrod\eBaySDK\Trading\DocumentType[] $document
+     * @param iterable<\Nogrod\eBaySDK\Trading\DocumentType> $document
      * @return self
      */
-    public function setDocument(array $document)
+    public function setDocument(iterable $document)
     {
         $this->document = $document;
         return $this;
@@ -93,10 +96,10 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDocument();
-        if (null !== $value && [] !== $this->getDocument()) {
-            $writer->write(array_map(function ($v) {
-                return ["Document" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Document" => $v]]);
+            }
         }
     }
 

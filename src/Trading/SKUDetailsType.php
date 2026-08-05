@@ -342,6 +342,9 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariations(\Nogrod\eBaySDK\Trading\MerchantDataVariationType $variation)
     {
+        if (!is_array($this->variations)) {
+            throw new \LogicException('variations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variations[] = $variation;
         return $this;
     }
@@ -392,7 +395,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  colors and sizes. Each variation can have a different
      *  quantity and price.
      *
-     * @return \Nogrod\eBaySDK\Trading\MerchantDataVariationType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType>
      */
     public function getVariations()
     {
@@ -409,10 +412,10 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  colors and sizes. Each variation can have a different
      *  quantity and price.
      *
-     * @param \Nogrod\eBaySDK\Trading\MerchantDataVariationType[] $variations
+     * @param iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType> $variations
      * @return self
      */
-    public function setVariations(array $variations)
+    public function setVariations(iterable $variations)
     {
         $this->variations = $variations;
         return $this;
@@ -447,10 +450,13 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveMet", $value);
         }
         $value = $this->getVariations();
-        if (null !== $value && [] !== $this->getVariations()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variations", array_map(function ($v) {
-                return ["Variation" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variations", array_map(function ($v) {
+                    return ["Variation" => $v];
+                }, $value));
+            }
         }
     }
 

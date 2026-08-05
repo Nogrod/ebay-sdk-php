@@ -62,6 +62,9 @@ class GetTaxTableResponseType extends AbstractResponseType
      */
     public function addToTaxTable(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        if (!is_array($this->taxTable)) {
+            throw new \LogicException('taxTable is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxTable[] = $taxJurisdiction;
         return $this;
     }
@@ -97,7 +100,7 @@ class GetTaxTableResponseType extends AbstractResponseType
      *
      * A container of tax jurisdiction information unique to a user/site combination. Returned as an empty container if no Sales Tax Table information exists for the seller's account and no <b>DetailLevel</b> is used. If <b>DetailLevel</b> is not specified, information is only returned for the jurisdictions for which the user provided tax information. If <b>DetailLevel</b> is set to <b>ReturnAll</b>, tax information is returned for all possible jurisdictions, whether specified by the user or not. <b>ShippingIncludedInTax</b> and <b>SalesTaxPercent</b> are returned but are empty.
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxJurisdictionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType>
      */
     public function getTaxTable()
     {
@@ -109,10 +112,10 @@ class GetTaxTableResponseType extends AbstractResponseType
      *
      * A container of tax jurisdiction information unique to a user/site combination. Returned as an empty container if no Sales Tax Table information exists for the seller's account and no <b>DetailLevel</b> is used. If <b>DetailLevel</b> is not specified, information is only returned for the jurisdictions for which the user provided tax information. If <b>DetailLevel</b> is set to <b>ReturnAll</b>, tax information is returned for all possible jurisdictions, whether specified by the user or not. <b>ShippingIncludedInTax</b> and <b>SalesTaxPercent</b> are returned but are empty.
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxTable
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType> $taxTable
      * @return self
      */
-    public function setTaxTable(array $taxTable)
+    public function setTaxTable(iterable $taxTable)
     {
         $this->taxTable = $taxTable;
         return $this;
@@ -126,10 +129,13 @@ class GetTaxTableResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastUpdateTime", $value);
         }
         $value = $this->getTaxTable();
-        if (null !== $value && [] !== $this->getTaxTable()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
+                    return ["TaxJurisdiction" => $v];
+                }, $value));
+            }
         }
     }
 

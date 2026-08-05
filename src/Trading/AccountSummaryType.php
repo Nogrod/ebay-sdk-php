@@ -276,6 +276,9 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToAdditionalAccount(\Nogrod\eBaySDK\Trading\AdditionalAccountType $additionalAccount)
     {
+        if (!is_array($this->additionalAccount)) {
+            throw new \LogicException('additionalAccount is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->additionalAccount[] = $additionalAccount;
         return $this;
     }
@@ -311,7 +314,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container shows the identifier and current balance for another eBay account associated with the eBay user. This container will appear under the <b>AccountSummary</b> container for each additional account that the eBay user owns.
      *
-     * @return \Nogrod\eBaySDK\Trading\AdditionalAccountType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AdditionalAccountType>
      */
     public function getAdditionalAccount()
     {
@@ -323,10 +326,10 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container shows the identifier and current balance for another eBay account associated with the eBay user. This container will appear under the <b>AccountSummary</b> container for each additional account that the eBay user owns.
      *
-     * @param \Nogrod\eBaySDK\Trading\AdditionalAccountType[] $additionalAccount
+     * @param iterable<\Nogrod\eBaySDK\Trading\AdditionalAccountType> $additionalAccount
      * @return self
      */
-    public function setAdditionalAccount(array $additionalAccount)
+    public function setAdditionalAccount(iterable $additionalAccount)
     {
         $this->additionalAccount = $additionalAccount;
         return $this;
@@ -746,10 +749,10 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee", $value);
         }
         $value = $this->getAdditionalAccount();
-        if (null !== $value && [] !== $this->getAdditionalAccount()) {
-            $writer->write(array_map(function ($v) {
-                return ["AdditionalAccount" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AdditionalAccount" => $v]]);
+            }
         }
         $value = $this->getAmountPastDue();
         if (null !== $value) {

@@ -37,6 +37,9 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToPictogram($pictogram)
     {
+        if (!is_array($this->pictogram)) {
+            throw new \LogicException('pictogram is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictogram[] = $pictogram;
         return $this;
     }
@@ -81,7 +84,7 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br> <br>
      *  For product safety pictograms, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getProductSafetyLabels" target="_blank">getProductSafetyLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site.</span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPictogram()
     {
@@ -96,10 +99,10 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br> <br>
      *  For product safety pictograms, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getProductSafetyLabels" target="_blank">getProductSafetyLabels</a> method in the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/methods">Metadata API</a> to find supported values for a specific marketplace/site.</span>
      *
-     * @param string[] $pictogram
+     * @param iterable<string> $pictogram
      * @return self
      */
-    public function setPictogram(array $pictogram)
+    public function setPictogram(iterable $pictogram)
     {
         $this->pictogram = $pictogram;
         return $this;
@@ -109,10 +112,10 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictogram();
-        if (null !== $value && [] !== $this->getPictogram()) {
-            $writer->write(array_map(function ($v) {
-                return ["Pictogram" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Pictogram" => $v]]);
+            }
         }
     }
 

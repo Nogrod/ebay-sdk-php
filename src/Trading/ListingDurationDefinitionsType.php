@@ -64,6 +64,9 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToListingDuration(\Nogrod\eBaySDK\Trading\ListingDurationDefinitionType $listingDuration)
     {
+        if (!is_array($this->listingDuration)) {
+            throw new \LogicException('listingDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->listingDuration[] = $listingDuration;
         return $this;
     }
@@ -99,7 +102,7 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
      *
      * A <b>ListingDurations</b> container is returned for each listing type supported for the eBay site, and the supported listing duration times for those listing types. The <b>durationSetID</b> attribute value indicates the listing type.
      *
-     * @return \Nogrod\eBaySDK\Trading\ListingDurationDefinitionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ListingDurationDefinitionType>
      */
     public function getListingDuration()
     {
@@ -111,10 +114,10 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
      *
      * A <b>ListingDurations</b> container is returned for each listing type supported for the eBay site, and the supported listing duration times for those listing types. The <b>durationSetID</b> attribute value indicates the listing type.
      *
-     * @param \Nogrod\eBaySDK\Trading\ListingDurationDefinitionType[] $listingDuration
+     * @param iterable<\Nogrod\eBaySDK\Trading\ListingDurationDefinitionType> $listingDuration
      * @return self
      */
-    public function setListingDuration(array $listingDuration)
+    public function setListingDuration(iterable $listingDuration)
     {
         $this->listingDuration = $listingDuration;
         return $this;
@@ -128,10 +131,10 @@ class ListingDurationDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sab
             $writer->writeAttribute("Version", $value);
         }
         $value = $this->getListingDuration();
-        if (null !== $value && [] !== $this->getListingDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ListingDuration" => $v]]);
+            }
         }
     }
 

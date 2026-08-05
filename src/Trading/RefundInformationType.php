@@ -31,6 +31,9 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToRefund(\Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund)
     {
+        if (!is_array($this->refund)) {
+            throw new \LogicException('refund is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->refund[] = $refund;
         return $this;
     }
@@ -66,7 +69,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
-     * @return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RefundTransactionInfoType>
      */
     public function getRefund()
     {
@@ -78,10 +81,10 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
      *
-     * @param \Nogrod\eBaySDK\Trading\RefundTransactionInfoType[] $refund
+     * @param iterable<\Nogrod\eBaySDK\Trading\RefundTransactionInfoType> $refund
      * @return self
      */
-    public function setRefund(array $refund)
+    public function setRefund(iterable $refund)
     {
         $this->refund = $refund;
         return $this;
@@ -91,10 +94,10 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
-        if (null !== $value && [] !== $this->getRefund()) {
-            $writer->write(array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Refund" => $v]]);
+            }
         }
     }
 

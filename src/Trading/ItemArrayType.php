@@ -68,6 +68,9 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToItem(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        if (!is_array($this->item)) {
+            throw new \LogicException('item is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->item[] = $item;
         return $this;
     }
@@ -157,7 +160,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemType>
      */
     public function getItem()
     {
@@ -187,10 +190,10 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *  <span class="tablenote"><b>Note:</b> When making a <b>GetSellerList</b> call, items that are on-hold due to an eBay policy violation will not be returned in the response.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemType[] $item
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemType> $item
      * @return self
      */
-    public function setItem(array $item)
+    public function setItem(iterable $item)
     {
         $this->item = $item;
         return $this;
@@ -200,10 +203,10 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItem();
-        if (null !== $value && [] !== $this->getItem()) {
-            $writer->write(array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Item" => $v]]);
+            }
         }
     }
 

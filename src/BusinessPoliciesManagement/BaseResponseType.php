@@ -85,6 +85,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToErrorMessage(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error)
     {
+        if (!is_array($this->errorMessage)) {
+            throw new \LogicException('errorMessage is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->errorMessage[] = $error;
         return $this;
     }
@@ -120,7 +123,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Information for an error or warning that occurred when eBay processed the request.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType>
      */
     public function getErrorMessage()
     {
@@ -132,10 +135,10 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Information for an error or warning that occurred when eBay processed the request.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $errorMessage
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType> $errorMessage
      * @return self
      */
-    public function setErrorMessage(array $errorMessage)
+    public function setErrorMessage(iterable $errorMessage)
     {
         $this->errorMessage = $errorMessage;
         return $this;
@@ -203,6 +206,9 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToExtension(\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension)
     {
+        if (!is_array($this->extension)) {
+            throw new \LogicException('extension is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->extension[] = $extension;
         return $this;
     }
@@ -238,7 +244,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Reserved for future use.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType>
      */
     public function getExtension()
     {
@@ -250,10 +256,10 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Reserved for future use.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType> $extension
      * @return self
      */
-    public function setExtension(array $extension)
+    public function setExtension(iterable $extension)
     {
         $this->extension = $extension;
         return $this;
@@ -267,10 +273,13 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ack", $value);
         }
         $value = $this->getErrorMessage();
-        if (null !== $value && [] !== $this->getErrorMessage()) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {
-                return ["error" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {
+                    return ["error" => $v];
+                }, $value));
+            }
         }
         $value = $this->getVersion();
         if (null !== $value) {
@@ -281,10 +290,10 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}timestamp", $value);
         }
         $value = $this->getExtension();
-        if (null !== $value && [] !== $this->getExtension()) {
-            $writer->write(array_map(function ($v) {
-                return ["extension" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["extension" => $v]]);
+            }
         }
     }
 

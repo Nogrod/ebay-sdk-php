@@ -165,6 +165,9 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToPictureURL($pictureURL)
     {
+        if (!is_array($this->pictureURL)) {
+            throw new \LogicException('pictureURL is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictureURL[] = $pictureURL;
         return $this;
     }
@@ -299,7 +302,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  <strong>Note:</strong> For some large merchants, there are no limitations on when variation pictures can be added or removed from a fixed-price listing, even when the item variation has had transactions or is set to end within 12 hours.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPictureURL()
     {
@@ -344,10 +347,10 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  <strong>Note:</strong> For some large merchants, there are no limitations on when variation pictures can be added or removed from a fixed-price listing, even when the item variation has had transactions or is set to end within 12 hours.
      *  </span>
      *
-     * @param string[] $pictureURL
+     * @param iterable<string> $pictureURL
      * @return self
      */
-    public function setPictureURL(array $pictureURL)
+    public function setPictureURL(iterable $pictureURL)
     {
         $this->pictureURL = $pictureURL;
         return $this;
@@ -370,6 +373,9 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToExternalPictureURL($externalPictureURL)
     {
+        if (!is_array($this->externalPictureURL)) {
+            throw new \LogicException('externalPictureURL is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->externalPictureURL[] = $externalPictureURL;
         return $this;
     }
@@ -426,7 +432,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExternalPictureURL()
     {
@@ -445,10 +451,10 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *  </span>
      *  This is returned only when the seller used a self-hosted picture for the variation.
      *
-     * @param string[] $externalPictureURL
+     * @param iterable<string> $externalPictureURL
      * @return self
      */
-    public function setExternalPictureURL(array $externalPictureURL)
+    public function setExternalPictureURL(iterable $externalPictureURL)
     {
         $this->externalPictureURL = $externalPictureURL;
         return $this;
@@ -464,6 +470,9 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToExtendedPictureDetails(\Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs)
     {
+        if (!is_array($this->extendedPictureDetails)) {
+            throw new \LogicException('extendedPictureDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->extendedPictureDetails[] = $pictureURLs;
         return $this;
     }
@@ -499,7 +508,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Returns the URLs of the seller's self-hosted (hosted outside of eBay) variation specific pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the picture was uploaded.
      *
-     * @return \Nogrod\eBaySDK\Trading\PictureURLsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PictureURLsType>
      */
     public function getExtendedPictureDetails()
     {
@@ -511,10 +520,10 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Returns the URLs of the seller's self-hosted (hosted outside of eBay) variation specific pictures and the URL for the corresponding eBay Picture Services (EPS), that was generated when the picture was uploaded.
      *
-     * @param \Nogrod\eBaySDK\Trading\PictureURLsType[] $extendedPictureDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\PictureURLsType> $extendedPictureDetails
      * @return self
      */
-    public function setExtendedPictureDetails(array $extendedPictureDetails)
+    public function setExtendedPictureDetails(iterable $extendedPictureDetails)
     {
         $this->extendedPictureDetails = $extendedPictureDetails;
         return $this;
@@ -528,22 +537,25 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue", $value);
         }
         $value = $this->getPictureURL();
-        if (null !== $value && [] !== $this->getPictureURL()) {
-            $writer->write(array_map(function ($v) {
-                return ["PictureURL" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PictureURL" => $v]]);
+            }
         }
         $value = $this->getExternalPictureURL();
-        if (null !== $value && [] !== $this->getExternalPictureURL()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExternalPictureURL" => $v]]);
+            }
         }
         $value = $this->getExtendedPictureDetails();
-        if (null !== $value && [] !== $this->getExtendedPictureDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
-                return ["PictureURLs" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
+                    return ["PictureURLs" => $v];
+                }, $value));
+            }
         }
     }
 

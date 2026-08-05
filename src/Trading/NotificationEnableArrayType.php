@@ -39,6 +39,9 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToNotificationEnable(\Nogrod\eBaySDK\Trading\NotificationEnableType $notificationEnable)
     {
+        if (!is_array($this->notificationEnable)) {
+            throw new \LogicException('notificationEnable is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->notificationEnable[] = $notificationEnable;
         return $this;
     }
@@ -86,7 +89,7 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *  <br><br>
      *  In a <b>GetNotificationPreferences</b> call, one <b>NotificationEnable</b> container is returned for each notification that the user has set a preference on - enabled or disabled.
      *
-     * @return \Nogrod\eBaySDK\Trading\NotificationEnableType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NotificationEnableType>
      */
     public function getNotificationEnable()
     {
@@ -102,10 +105,10 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *  <br><br>
      *  In a <b>GetNotificationPreferences</b> call, one <b>NotificationEnable</b> container is returned for each notification that the user has set a preference on - enabled or disabled.
      *
-     * @param \Nogrod\eBaySDK\Trading\NotificationEnableType[] $notificationEnable
+     * @param iterable<\Nogrod\eBaySDK\Trading\NotificationEnableType> $notificationEnable
      * @return self
      */
-    public function setNotificationEnable(array $notificationEnable)
+    public function setNotificationEnable(iterable $notificationEnable)
     {
         $this->notificationEnable = $notificationEnable;
         return $this;
@@ -115,10 +118,10 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNotificationEnable();
-        if (null !== $value && [] !== $this->getNotificationEnable()) {
-            $writer->write(array_map(function ($v) {
-                return ["NotificationEnable" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NotificationEnable" => $v]]);
+            }
         }
     }
 

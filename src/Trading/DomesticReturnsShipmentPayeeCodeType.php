@@ -31,6 +31,9 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
      */
     public function addToDomesticReturnsShipmentPayee($domesticReturnsShipmentPayee)
     {
+        if (!is_array($this->domesticReturnsShipmentPayee)) {
+            throw new \LogicException('domesticReturnsShipmentPayee is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsShipmentPayee[] = $domesticReturnsShipmentPayee;
         return $this;
     }
@@ -66,7 +69,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
      *
      * Defines the available options for who pays the return shipping costs for domestic returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsShipmentPayee()
     {
@@ -81,7 +84,7 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
      * @param string $domesticReturnsShipmentPayee
      * @return self
      */
-    public function setDomesticReturnsShipmentPayee(array $domesticReturnsShipmentPayee)
+    public function setDomesticReturnsShipmentPayee(iterable $domesticReturnsShipmentPayee)
     {
         $this->domesticReturnsShipmentPayee = $domesticReturnsShipmentPayee;
         return $this;
@@ -91,10 +94,10 @@ class DomesticReturnsShipmentPayeeCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsShipmentPayee();
-        if (null !== $value && [] !== $this->getDomesticReturnsShipmentPayee()) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticReturnsShipmentPayee" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DomesticReturnsShipmentPayee" => $v]]);
+            }
         }
     }
 

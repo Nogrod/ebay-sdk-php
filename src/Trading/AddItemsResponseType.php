@@ -31,6 +31,9 @@ class AddItemsResponseType extends AbstractResponseType
      */
     public function addToAddItemResponseContainer(\Nogrod\eBaySDK\Trading\AddItemResponseContainerType $addItemResponseContainer)
     {
+        if (!is_array($this->addItemResponseContainer)) {
+            throw new \LogicException('addItemResponseContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addItemResponseContainer[] = $addItemResponseContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class AddItemsResponseType extends AbstractResponseType
      *
      * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
-     * @return \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddItemResponseContainerType>
      */
     public function getAddItemResponseContainer()
     {
@@ -78,10 +81,10 @@ class AddItemsResponseType extends AbstractResponseType
      *
      * One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      *
-     * @param \Nogrod\eBaySDK\Trading\AddItemResponseContainerType[] $addItemResponseContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddItemResponseContainerType> $addItemResponseContainer
      * @return self
      */
-    public function setAddItemResponseContainer(array $addItemResponseContainer)
+    public function setAddItemResponseContainer(iterable $addItemResponseContainer)
     {
         $this->addItemResponseContainer = $addItemResponseContainer;
         return $this;
@@ -91,10 +94,10 @@ class AddItemsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddItemResponseContainer();
-        if (null !== $value && [] !== $this->getAddItemResponseContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddItemResponseContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddItemResponseContainer" => $v]]);
+            }
         }
     }
 

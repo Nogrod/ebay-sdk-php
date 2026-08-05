@@ -80,6 +80,9 @@ class GetMyMessagesRequestType extends AbstractRequestType
      */
     public function addToMessageIDs($messageID)
     {
+        if (!is_array($this->messageIDs)) {
+            throw new \LogicException('messageIDs is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageIDs[] = $messageID;
         return $this;
     }
@@ -115,7 +118,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      *
      * This container can be used to retrieve one or more specific messages identified with their unique <b>MessageID</b> values. Up to 10 <b>MessageID</b> values can be specified with one call.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getMessageIDs()
     {
@@ -130,7 +133,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      * @param string $messageIDs
      * @return self
      */
-    public function setMessageIDs(array $messageIDs)
+    public function setMessageIDs(iterable $messageIDs)
     {
         $this->messageIDs = $messageIDs;
         return $this;
@@ -235,6 +238,9 @@ class GetMyMessagesRequestType extends AbstractRequestType
      */
     public function addToExternalMessageIDs($externalMessageID)
     {
+        if (!is_array($this->externalMessageIDs)) {
+            throw new \LogicException('externalMessageIDs is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->externalMessageIDs[] = $externalMessageID;
         return $this;
     }
@@ -279,7 +285,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      *  creation, this ID can be used to retrieve messages and will take precedence
      *  over message ID.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExternalMessageIDs()
     {
@@ -297,7 +303,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      * @param string $externalMessageIDs
      * @return self
      */
-    public function setExternalMessageIDs(array $externalMessageIDs)
+    public function setExternalMessageIDs(iterable $externalMessageIDs)
     {
         $this->externalMessageIDs = $externalMessageIDs;
         return $this;
@@ -363,10 +369,13 @@ class GetMyMessagesRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
-        if (null !== $value && [] !== $this->getMessageIDs()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
-                return ["MessageID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
+                    return ["MessageID" => $v];
+                }, $value));
+            }
         }
         $value = $this->getFolderID();
         if (null !== $value) {
@@ -381,10 +390,13 @@ class GetMyMessagesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
         }
         $value = $this->getExternalMessageIDs();
-        if (null !== $value && [] !== $this->getExternalMessageIDs()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs", array_map(function ($v) {
-                return ["ExternalMessageID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs", array_map(function ($v) {
+                    return ["ExternalMessageID" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPagination();
         if (null !== $value) {

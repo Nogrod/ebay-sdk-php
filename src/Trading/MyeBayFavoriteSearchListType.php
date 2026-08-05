@@ -64,6 +64,9 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToFavoriteSearch(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType $favoriteSearch)
     {
+        if (!is_array($this->favoriteSearch)) {
+            throw new \LogicException('favoriteSearch is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->favoriteSearch[] = $favoriteSearch;
         return $this;
     }
@@ -99,7 +102,7 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * A favorite search the user has saved, with a name and a search query.
      *
-     * @return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType>
      */
     public function getFavoriteSearch()
     {
@@ -111,10 +114,10 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
      *
      * A favorite search the user has saved, with a name and a search query.
      *
-     * @param \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType[] $favoriteSearch
+     * @param iterable<\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType> $favoriteSearch
      * @return self
      */
-    public function setFavoriteSearch(array $favoriteSearch)
+    public function setFavoriteSearch(iterable $favoriteSearch)
     {
         $this->favoriteSearch = $favoriteSearch;
         return $this;
@@ -128,10 +131,10 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAvailable", $value);
         }
         $value = $this->getFavoriteSearch();
-        if (null !== $value && [] !== $this->getFavoriteSearch()) {
-            $writer->write(array_map(function ($v) {
-                return ["FavoriteSearch" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FavoriteSearch" => $v]]);
+            }
         }
     }
 

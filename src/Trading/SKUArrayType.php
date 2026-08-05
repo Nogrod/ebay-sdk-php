@@ -65,6 +65,9 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToSKU($sKU)
     {
+        if (!is_array($this->sKU)) {
+            throw new \LogicException('sKU is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sKU[] = $sKU;
         return $this;
     }
@@ -151,7 +154,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  SKU instead of ItemID as a unique identifier in subsequent calls,
      *  such as GetItem and ReviseInventoryStatus.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSKU()
     {
@@ -183,7 +186,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      * @param string $sKU
      * @return self
      */
-    public function setSKU(array $sKU)
+    public function setSKU(iterable $sKU)
     {
         $this->sKU = $sKU;
         return $this;
@@ -193,10 +196,10 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSKU();
-        if (null !== $value && [] !== $this->getSKU()) {
-            $writer->write(array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SKU" => $v]]);
+            }
         }
     }
 

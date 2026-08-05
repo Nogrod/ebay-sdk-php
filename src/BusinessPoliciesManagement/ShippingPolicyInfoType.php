@@ -503,6 +503,9 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        if (!is_array($this->excludeShipToLocation)) {
+            throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->excludeShipToLocation[] = $excludeShipToLocation;
         return $this;
     }
@@ -562,7 +565,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or
      *  <b>setSellerProfile</b> calls.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExcludeShipToLocation()
     {
@@ -582,10 +585,10 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or
      *  <b>setSellerProfile</b> calls.
      *
-     * @param string[] $excludeShipToLocation
+     * @param iterable<string> $excludeShipToLocation
      * @return self
      */
-    public function setExcludeShipToLocation(array $excludeShipToLocation)
+    public function setExcludeShipToLocation(iterable $excludeShipToLocation)
     {
         $this->excludeShipToLocation = $excludeShipToLocation;
         return $this;
@@ -671,6 +674,9 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToShipToLocations($shipToLocations)
     {
+        if (!is_array($this->shipToLocations)) {
+            throw new \LogicException('shipToLocations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipToLocations[] = $shipToLocations;
         return $this;
     }
@@ -724,7 +730,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified ship-to location is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getShipToLocations()
     {
@@ -742,10 +748,10 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified ship-to location is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @param string[] $shipToLocations
+     * @param iterable<string> $shipToLocations
      * @return self
      */
-    public function setShipToLocations(array $shipToLocations)
+    public function setShipToLocations(iterable $shipToLocations)
     {
         $this->shipToLocations = $shipToLocations;
         return $this;
@@ -763,6 +769,9 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToDomesticShippingPolicyInfoService(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType $domesticShippingPolicyInfoService)
     {
+        if (!is_array($this->domesticShippingPolicyInfoService)) {
+            throw new \LogicException('domesticShippingPolicyInfoService is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticShippingPolicyInfoService[] = $domesticShippingPolicyInfoService;
         return $this;
     }
@@ -804,7 +813,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified domestic shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType>
      */
     public function getDomesticShippingPolicyInfoService()
     {
@@ -818,10 +827,10 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified domestic shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[] $domesticShippingPolicyInfoService
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType> $domesticShippingPolicyInfoService
      * @return self
      */
-    public function setDomesticShippingPolicyInfoService(array $domesticShippingPolicyInfoService)
+    public function setDomesticShippingPolicyInfoService(iterable $domesticShippingPolicyInfoService)
     {
         $this->domesticShippingPolicyInfoService = $domesticShippingPolicyInfoService;
         return $this;
@@ -839,6 +848,9 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToIntlShippingPolicyInfoService(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType $intlShippingPolicyInfoService)
     {
+        if (!is_array($this->intlShippingPolicyInfoService)) {
+            throw new \LogicException('intlShippingPolicyInfoService is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->intlShippingPolicyInfoService[] = $intlShippingPolicyInfoService;
         return $this;
     }
@@ -880,7 +892,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified international shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType>
      */
     public function getIntlShippingPolicyInfoService()
     {
@@ -894,10 +906,10 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br><br>
      *  Each specified international shipping service is returned with shipping policies returned in the <b>getSellerProfiles</b>, <b>addSellerProfile</b>, or <b>setSellerProfile</b> calls.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType[] $intlShippingPolicyInfoService
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType> $intlShippingPolicyInfoService
      * @return self
      */
-    public function setIntlShippingPolicyInfoService(array $intlShippingPolicyInfoService)
+    public function setIntlShippingPolicyInfoService(iterable $intlShippingPolicyInfoService)
     {
         $this->intlShippingPolicyInfoService = $intlShippingPolicyInfoService;
         return $this;
@@ -1231,10 +1243,10 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingOption", $value);
         }
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["excludeShipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["excludeShipToLocation" => $v]]);
+            }
         }
         $value = $this->getShippingProfileDiscountInfo();
         if (null !== $value) {
@@ -1245,22 +1257,22 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}freightShipping", $value);
         }
         $value = $this->getShipToLocations();
-        if (null !== $value && [] !== $this->getShipToLocations()) {
-            $writer->write(array_map(function ($v) {
-                return ["shipToLocations" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["shipToLocations" => $v]]);
+            }
         }
         $value = $this->getDomesticShippingPolicyInfoService();
-        if (null !== $value && [] !== $this->getDomesticShippingPolicyInfoService()) {
-            $writer->write(array_map(function ($v) {
-                return ["domesticShippingPolicyInfoService" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["domesticShippingPolicyInfoService" => $v]]);
+            }
         }
         $value = $this->getIntlShippingPolicyInfoService();
-        if (null !== $value && [] !== $this->getIntlShippingPolicyInfoService()) {
-            $writer->write(array_map(function ($v) {
-                return ["intlShippingPolicyInfoService" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["intlShippingPolicyInfoService" => $v]]);
+            }
         }
         $value = $this->getInsurance();
         if (null !== $value) {

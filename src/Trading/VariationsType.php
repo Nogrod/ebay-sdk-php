@@ -152,6 +152,9 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariation(\Nogrod\eBaySDK\Trading\VariationType $variation)
     {
+        if (!is_array($this->variation)) {
+            throw new \LogicException('variation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variation[] = $variation;
         return $this;
     }
@@ -229,7 +232,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\VariationType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VariationType>
      */
     public function getVariation()
     {
@@ -255,10 +258,10 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <span class="tablenote"><b>Note: </b> The <b>Item.Variations</b> container and its child fields will stop being returned in <b>GetItemTransactions</b> on January 31, 2024.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\VariationType[] $variation
+     * @param iterable<\Nogrod\eBaySDK\Trading\VariationType> $variation
      * @return self
      */
-    public function setVariation(array $variation)
+    public function setVariation(iterable $variation)
     {
         $this->variation = $variation;
         return $this;
@@ -299,6 +302,9 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToPictures(\Nogrod\eBaySDK\Trading\PicturesType $pictures)
     {
+        if (!is_array($this->pictures)) {
+            throw new \LogicException('pictures is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictures[] = $pictures;
         return $this;
     }
@@ -409,7 +415,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  the schema to allow for different use cases for some calls or sites
      *  in the future.</span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PicturesType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PicturesType>
      */
     public function getPictures()
     {
@@ -446,10 +452,10 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  the schema to allow for different use cases for some calls or sites
      *  in the future.</span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PicturesType[] $pictures
+     * @param iterable<\Nogrod\eBaySDK\Trading\PicturesType> $pictures
      * @return self
      */
-    public function setPictures(array $pictures)
+    public function setPictures(iterable $pictures)
     {
         $this->pictures = $pictures;
         return $this;
@@ -495,6 +501,9 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariationSpecificsSet(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->variationSpecificsSet)) {
+            throw new \LogicException('variationSpecificsSet is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationSpecificsSet[] = $nameValueList;
         return $this;
     }
@@ -620,7 +629,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  variation specific names or values in ReviseFixedPriceItem and
      *  RelistFixedPriceItem.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getVariationSpecificsSet()
     {
@@ -662,10 +671,10 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  variation specific names or values in ReviseFixedPriceItem and
      *  RelistFixedPriceItem.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecificsSet
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $variationSpecificsSet
      * @return self
      */
-    public function setVariationSpecificsSet(array $variationSpecificsSet)
+    public function setVariationSpecificsSet(iterable $variationSpecificsSet)
     {
         $this->variationSpecificsSet = $variationSpecificsSet;
         return $this;
@@ -691,6 +700,9 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToModifyNameList(\Nogrod\eBaySDK\Trading\ModifyNameType $modifyName)
     {
+        if (!is_array($this->modifyNameList)) {
+            throw new \LogicException('modifyNameList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->modifyNameList[] = $modifyName;
         return $this;
     }
@@ -756,7 +768,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br>
      *  Variation, Pictures, VariationSpecificsSet, or ModifyNameList (or all) need to be specified when the Variations node is specified in listing requests.
      *
-     * @return \Nogrod\eBaySDK\Trading\ModifyNameType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ModifyNameType>
      */
     public function getModifyNameList()
     {
@@ -778,10 +790,10 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br>
      *  Variation, Pictures, VariationSpecificsSet, or ModifyNameList (or all) need to be specified when the Variations node is specified in listing requests.
      *
-     * @param \Nogrod\eBaySDK\Trading\ModifyNameType[] $modifyNameList
+     * @param iterable<\Nogrod\eBaySDK\Trading\ModifyNameType> $modifyNameList
      * @return self
      */
-    public function setModifyNameList(array $modifyNameList)
+    public function setModifyNameList(iterable $modifyNameList)
     {
         $this->modifyNameList = $modifyNameList;
         return $this;
@@ -791,28 +803,34 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVariation();
-        if (null !== $value && [] !== $this->getVariation()) {
-            $writer->write(array_map(function ($v) {
-                return ["Variation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Variation" => $v]]);
+            }
         }
         $value = $this->getPictures();
-        if (null !== $value && [] !== $this->getPictures()) {
-            $writer->write(array_map(function ($v) {
-                return ["Pictures" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Pictures" => $v]]);
+            }
         }
         $value = $this->getVariationSpecificsSet();
-        if (null !== $value && [] !== $this->getVariationSpecificsSet()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {
+                    return ["NameValueList" => $v];
+                }, $value));
+            }
         }
         $value = $this->getModifyNameList();
-        if (null !== $value && [] !== $this->getModifyNameList()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {
-                return ["ModifyName" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {
+                    return ["ModifyName" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -105,6 +105,9 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToRegionalTakeBackPolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        if (!is_array($this->regionalTakeBackPolicies)) {
+            throw new \LogicException('regionalTakeBackPolicies is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->regionalTakeBackPolicies[] = $countryPolicies;
         return $this;
     }
@@ -152,7 +155,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\CountryPoliciesType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType>
      */
     public function getRegionalTakeBackPolicies()
     {
@@ -168,10 +171,10 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  Take-back policies that apply to <i>all</i> countries to which a seller ships are specified using <b>TakeBackPolicyID</b>.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalTakeBackPolicies
+     * @param iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType> $regionalTakeBackPolicies
      * @return self
      */
-    public function setRegionalTakeBackPolicies(array $regionalTakeBackPolicies)
+    public function setRegionalTakeBackPolicies(iterable $regionalTakeBackPolicies)
     {
         $this->regionalTakeBackPolicies = $regionalTakeBackPolicies;
         return $this;
@@ -191,6 +194,9 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToProductCompliancePolicyID($productCompliancePolicyID)
     {
+        if (!is_array($this->productCompliancePolicyID)) {
+            throw new \LogicException('productCompliancePolicyID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->productCompliancePolicyID[] = $productCompliancePolicyID;
         return $this;
     }
@@ -238,7 +244,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
      *  </span>
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getProductCompliancePolicyID()
     {
@@ -254,10 +260,10 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  For countries that support country-specific policies, use <b>RegionalProductCompliancePolicies</b> to apply them to a listing.
      *  </span>
      *
-     * @param int[] $productCompliancePolicyID
+     * @param iterable<int> $productCompliancePolicyID
      * @return self
      */
-    public function setProductCompliancePolicyID(array $productCompliancePolicyID)
+    public function setProductCompliancePolicyID(iterable $productCompliancePolicyID)
     {
         $this->productCompliancePolicyID = $productCompliancePolicyID;
         return $this;
@@ -279,6 +285,9 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToRegionalProductCompliancePolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        if (!is_array($this->regionalProductCompliancePolicies)) {
+            throw new \LogicException('regionalProductCompliancePolicies is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->regionalProductCompliancePolicies[] = $countryPolicies;
         return $this;
     }
@@ -332,7 +341,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\CountryPoliciesType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType>
      */
     public function getRegionalProductCompliancePolicies()
     {
@@ -350,10 +359,10 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  Product compliance policies that apply to <i>all</i> countries to which a seller ships are specified using <b>ProductCompliancePolicyID</b>.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\CountryPoliciesType[] $regionalProductCompliancePolicies
+     * @param iterable<\Nogrod\eBaySDK\Trading\CountryPoliciesType> $regionalProductCompliancePolicies
      * @return self
      */
-    public function setRegionalProductCompliancePolicies(array $regionalProductCompliancePolicies)
+    public function setRegionalProductCompliancePolicies(iterable $regionalProductCompliancePolicies)
     {
         $this->regionalProductCompliancePolicies = $regionalProductCompliancePolicies;
         return $this;
@@ -367,22 +376,28 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TakeBackPolicyID", $value);
         }
         $value = $this->getRegionalTakeBackPolicies();
-        if (null !== $value && [] !== $this->getRegionalTakeBackPolicies()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies", array_map(function ($v) {
-                return ["CountryPolicies" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies", array_map(function ($v) {
+                    return ["CountryPolicies" => $v];
+                }, $value));
+            }
         }
         $value = $this->getProductCompliancePolicyID();
-        if (null !== $value && [] !== $this->getProductCompliancePolicyID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ProductCompliancePolicyID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ProductCompliancePolicyID" => $v]]);
+            }
         }
         $value = $this->getRegionalProductCompliancePolicies();
-        if (null !== $value && [] !== $this->getRegionalProductCompliancePolicies()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies", array_map(function ($v) {
-                return ["CountryPolicies" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies", array_map(function ($v) {
+                    return ["CountryPolicies" => $v];
+                }, $value));
+            }
         }
     }
 

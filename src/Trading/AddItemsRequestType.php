@@ -31,6 +31,9 @@ class AddItemsRequestType extends AbstractRequestType
      */
     public function addToAddItemRequestContainer(\Nogrod\eBaySDK\Trading\AddItemRequestContainerType $addItemRequestContainer)
     {
+        if (!is_array($this->addItemRequestContainer)) {
+            throw new \LogicException('addItemRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->addItemRequestContainer[] = $addItemRequestContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class AddItemsRequestType extends AbstractRequestType
      *
      * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
-     * @return \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AddItemRequestContainerType>
      */
     public function getAddItemRequestContainer()
     {
@@ -78,10 +81,10 @@ class AddItemsRequestType extends AbstractRequestType
      *
      * An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      *
-     * @param \Nogrod\eBaySDK\Trading\AddItemRequestContainerType[] $addItemRequestContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\AddItemRequestContainerType> $addItemRequestContainer
      * @return self
      */
-    public function setAddItemRequestContainer(array $addItemRequestContainer)
+    public function setAddItemRequestContainer(iterable $addItemRequestContainer)
     {
         $this->addItemRequestContainer = $addItemRequestContainer;
         return $this;
@@ -91,10 +94,10 @@ class AddItemsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAddItemRequestContainer();
-        if (null !== $value && [] !== $this->getAddItemRequestContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["AddItemRequestContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AddItemRequestContainer" => $v]]);
+            }
         }
     }
 

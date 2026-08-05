@@ -50,6 +50,9 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToPictograms($pictogram)
     {
+        if (!is_array($this->pictograms)) {
+            throw new \LogicException('pictograms is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictograms[] = $pictogram;
         return $this;
     }
@@ -85,7 +88,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container is used by the seller to provide pictograms for the listing.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPictograms()
     {
@@ -97,10 +100,10 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container is used by the seller to provide pictograms for the listing.
      *
-     * @param string[] $pictograms
+     * @param iterable<string> $pictograms
      * @return self
      */
-    public function setPictograms(array $pictograms)
+    public function setPictograms(iterable $pictograms)
     {
         $this->pictograms = $pictograms;
         return $this;
@@ -142,6 +145,9 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToStatements($statement)
     {
+        if (!is_array($this->statements)) {
+            throw new \LogicException('statements is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->statements[] = $statement;
         return $this;
     }
@@ -177,7 +183,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container is used by the seller to provide hazard statements for the listing. This field is required if hazmat information is supplied.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getStatements()
     {
@@ -189,10 +195,10 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container is used by the seller to provide hazard statements for the listing. This field is required if hazmat information is supplied.
      *
-     * @param string[] $statements
+     * @param iterable<string> $statements
      * @return self
      */
-    public function setStatements(array $statements)
+    public function setStatements(iterable $statements)
     {
         $this->statements = $statements;
         return $this;
@@ -228,20 +234,26 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictograms();
-        if (null !== $value && [] !== $this->getPictograms()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {
-                return ["Pictogram" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {
+                    return ["Pictogram" => $v];
+                }, $value));
+            }
         }
         $value = $this->getSignalWord();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SignalWord", $value);
         }
         $value = $this->getStatements();
-        if (null !== $value && [] !== $this->getStatements()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {
-                return ["Statement" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {
+                    return ["Statement" => $v];
+                }, $value));
+            }
         }
         $value = $this->getComponent();
         if (null !== $value) {

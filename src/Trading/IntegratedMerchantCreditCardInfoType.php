@@ -31,6 +31,9 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      */
     public function addToSupportedSite($supportedSite)
     {
+        if (!is_array($this->supportedSite)) {
+            throw new \LogicException('supportedSite is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->supportedSite[] = $supportedSite;
         return $this;
     }
@@ -66,7 +69,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      *
      * The <b>SellerInfo.IntegratedMerchantCreditCardInfo</b> container (and this field) are no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSupportedSite()
     {
@@ -81,7 +84,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      * @param string $supportedSite
      * @return self
      */
-    public function setSupportedSite(array $supportedSite)
+    public function setSupportedSite(iterable $supportedSite)
     {
         $this->supportedSite = $supportedSite;
         return $this;
@@ -91,10 +94,10 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSupportedSite();
-        if (null !== $value && [] !== $this->getSupportedSite()) {
-            $writer->write(array_map(function ($v) {
-                return ["SupportedSite" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SupportedSite" => $v]]);
+            }
         }
     }
 

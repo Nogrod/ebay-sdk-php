@@ -76,6 +76,9 @@ class GetMyMessagesResponseType extends AbstractResponseType
      */
     public function addToMessages(\Nogrod\eBaySDK\Trading\MyMessagesMessageType $message)
     {
+        if (!is_array($this->messages)) {
+            throw new \LogicException('messages is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messages[] = $message;
         return $this;
     }
@@ -111,7 +114,7 @@ class GetMyMessagesResponseType extends AbstractResponseType
      *
      * This container consists of an array of one or more messages that match the search criteria in the call request.
      *
-     * @return \Nogrod\eBaySDK\Trading\MyMessagesMessageType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MyMessagesMessageType>
      */
     public function getMessages()
     {
@@ -123,10 +126,10 @@ class GetMyMessagesResponseType extends AbstractResponseType
      *
      * This container consists of an array of one or more messages that match the search criteria in the call request.
      *
-     * @param \Nogrod\eBaySDK\Trading\MyMessagesMessageType[] $messages
+     * @param iterable<\Nogrod\eBaySDK\Trading\MyMessagesMessageType> $messages
      * @return self
      */
-    public function setMessages(array $messages)
+    public function setMessages(iterable $messages)
     {
         $this->messages = $messages;
         return $this;
@@ -140,10 +143,13 @@ class GetMyMessagesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
         }
         $value = $this->getMessages();
-        if (null !== $value && [] !== $this->getMessages()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {
-                return ["Message" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {
+                    return ["Message" => $v];
+                }, $value));
+            }
         }
     }
 

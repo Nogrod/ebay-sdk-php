@@ -236,6 +236,9 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      */
     public function addToExternalPictureURL($externalPictureURL)
     {
+        if (!is_array($this->externalPictureURL)) {
+            throw new \LogicException('externalPictureURL is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->externalPictureURL[] = $externalPictureURL;
         return $this;
     }
@@ -280,7 +283,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExternalPictureURL()
     {
@@ -295,10 +298,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      *  <br><br>
      *  The eBay server uses the information in this field to retrieve a picture from an external web server. Once retrieved, the picture will be copied to eBay Picture Services and retained for 30 days if not associated with a listing. When associated with a listing, the duration is the length of the listing plus 90 days.
      *
-     * @param string[] $externalPictureURL
+     * @param iterable<string> $externalPictureURL
      * @return self
      */
-    public function setExternalPictureURL(array $externalPictureURL)
+    public function setExternalPictureURL(iterable $externalPictureURL)
     {
         $this->externalPictureURL = $externalPictureURL;
         return $this;
@@ -328,10 +331,10 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy", $value);
         }
         $value = $this->getExternalPictureURL();
-        if (null !== $value && [] !== $this->getExternalPictureURL()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalPictureURL" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExternalPictureURL" => $v]]);
+            }
         }
     }
 

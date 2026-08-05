@@ -71,6 +71,9 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToDiscountProfile(\Nogrod\eBaySDK\Trading\DiscountProfileType $discountProfile)
     {
+        if (!is_array($this->discountProfile)) {
+            throw new \LogicException('discountProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->discountProfile[] = $discountProfile;
         return $this;
     }
@@ -106,7 +109,7 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * Details of this particular flat-rate shipping discount profile. If the value of <b>ModifyActionCode</b> is <code>Modify</code>, all details of the new version of the profile must be provided. If <b>ModifyActionCode</b> is <code>Delete</code>, <b>DiscountProfileID</b> is required, <b>MappingDiscountProfileID</b> is optional, and all other fields of <b>DiscountProfile</b> are ignored.
      *
-     * @return \Nogrod\eBaySDK\Trading\DiscountProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DiscountProfileType>
      */
     public function getDiscountProfile()
     {
@@ -118,10 +121,10 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      *
      * Details of this particular flat-rate shipping discount profile. If the value of <b>ModifyActionCode</b> is <code>Modify</code>, all details of the new version of the profile must be provided. If <b>ModifyActionCode</b> is <code>Delete</code>, <b>DiscountProfileID</b> is required, <b>MappingDiscountProfileID</b> is optional, and all other fields of <b>DiscountProfile</b> are ignored.
      *
-     * @param \Nogrod\eBaySDK\Trading\DiscountProfileType[] $discountProfile
+     * @param iterable<\Nogrod\eBaySDK\Trading\DiscountProfileType> $discountProfile
      * @return self
      */
-    public function setDiscountProfile(array $discountProfile)
+    public function setDiscountProfile(iterable $discountProfile)
     {
         $this->discountProfile = $discountProfile;
         return $this;
@@ -135,10 +138,10 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountName", $value);
         }
         $value = $this->getDiscountProfile();
-        if (null !== $value && [] !== $this->getDiscountProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["DiscountProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DiscountProfile" => $v]]);
+            }
         }
     }
 

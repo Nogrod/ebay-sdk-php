@@ -31,6 +31,9 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
      */
     public function addToInternationalReturnsAccepted($internationalReturnsAccepted)
     {
+        if (!is_array($this->internationalReturnsAccepted)) {
+            throw new \LogicException('internationalReturnsAccepted is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsAccepted[] = $internationalReturnsAccepted;
         return $this;
     }
@@ -66,7 +69,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
      *
      * Defines the available options the seller has for accepting international returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsAccepted()
     {
@@ -81,7 +84,7 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
      * @param string $internationalReturnsAccepted
      * @return self
      */
-    public function setInternationalReturnsAccepted(array $internationalReturnsAccepted)
+    public function setInternationalReturnsAccepted(iterable $internationalReturnsAccepted)
     {
         $this->internationalReturnsAccepted = $internationalReturnsAccepted;
         return $this;
@@ -91,10 +94,10 @@ class InternationalReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalReturnsAccepted();
-        if (null !== $value && [] !== $this->getInternationalReturnsAccepted()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalReturnsAccepted" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalReturnsAccepted" => $v]]);
+            }
         }
     }
 

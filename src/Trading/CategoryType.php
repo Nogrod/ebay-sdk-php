@@ -342,6 +342,9 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToCategoryParentID($categoryParentID)
     {
+        if (!is_array($this->categoryParentID)) {
+            throw new \LogicException('categoryParentID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->categoryParentID[] = $categoryParentID;
         return $this;
     }
@@ -386,7 +389,7 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  and ending with the category that is the direct parent of
      *  the primary category specified in <b>CategoryID</b>. The <b>CategoryID</b> and <b>CategoryParentID</b> values will be the same if the <b>LevelLimit</b> value is set to <code>1</code>.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getCategoryParentID()
     {
@@ -401,10 +404,10 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  and ending with the category that is the direct parent of
      *  the primary category specified in <b>CategoryID</b>. The <b>CategoryID</b> and <b>CategoryParentID</b> values will be the same if the <b>LevelLimit</b> value is set to <code>1</code>.
      *
-     * @param string[] $categoryParentID
+     * @param iterable<string> $categoryParentID
      * @return self
      */
-    public function setCategoryParentID(array $categoryParentID)
+    public function setCategoryParentID(iterable $categoryParentID)
     {
         $this->categoryParentID = $categoryParentID;
         return $this;
@@ -661,10 +664,10 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryName", $value);
         }
         $value = $this->getCategoryParentID();
-        if (null !== $value && [] !== $this->getCategoryParentID()) {
-            $writer->write(array_map(function ($v) {
-                return ["CategoryParentID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CategoryParentID" => $v]]);
+            }
         }
         $value = $this->getExpired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

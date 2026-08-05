@@ -155,6 +155,9 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
     {
+        if (!is_array($this->errors)) {
+            throw new \LogicException('errors is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->errors[] = $errors;
         return $this;
     }
@@ -223,7 +226,7 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  <br>
      *  Only returned if there were warnings or errors.
      *
-     * @return \Nogrod\eBaySDK\Trading\ErrorType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ErrorType>
      */
     public function getErrors()
     {
@@ -246,10 +249,10 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      *  <br>
      *  Only returned if there were warnings or errors.
      *
-     * @param \Nogrod\eBaySDK\Trading\ErrorType[] $errors
+     * @param iterable<\Nogrod\eBaySDK\Trading\ErrorType> $errors
      * @return self
      */
-    public function setErrors(array $errors)
+    public function setErrors(iterable $errors)
     {
         $this->errors = $errors;
         return $this;
@@ -267,10 +270,10 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CorrelationID", $value);
         }
         $value = $this->getErrors();
-        if (null !== $value && [] !== $this->getErrors()) {
-            $writer->write(array_map(function ($v) {
-                return ["Errors" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Errors" => $v]]);
+            }
         }
     }
 

@@ -34,6 +34,9 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
      */
     public function addToInventoryStatus(\Nogrod\eBaySDK\Trading\InventoryStatusType $inventoryStatus)
     {
+        if (!is_array($this->inventoryStatus)) {
+            throw new \LogicException('inventoryStatus is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->inventoryStatus[] = $inventoryStatus;
         return $this;
     }
@@ -69,7 +72,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
      *
      * One <b>InventoryStatus</b> container is required for each item or item variation that is being revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *
-     * @return \Nogrod\eBaySDK\Trading\InventoryStatusType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\InventoryStatusType>
      */
     public function getInventoryStatus()
     {
@@ -81,10 +84,10 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
      *
      * One <b>InventoryStatus</b> container is required for each item or item variation that is being revised. Whether updating the price and/or quantity of a single-variation listing or a specific variation within a multiple-variation listing, the limit of items or item variations that can be modified with one call is four.
      *
-     * @param \Nogrod\eBaySDK\Trading\InventoryStatusType[] $inventoryStatus
+     * @param iterable<\Nogrod\eBaySDK\Trading\InventoryStatusType> $inventoryStatus
      * @return self
      */
-    public function setInventoryStatus(array $inventoryStatus)
+    public function setInventoryStatus(iterable $inventoryStatus)
     {
         $this->inventoryStatus = $inventoryStatus;
         return $this;
@@ -94,10 +97,10 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getInventoryStatus();
-        if (null !== $value && [] !== $this->getInventoryStatus()) {
-            $writer->write(array_map(function ($v) {
-                return ["InventoryStatus" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InventoryStatus" => $v]]);
+            }
         }
     }
 

@@ -45,6 +45,9 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToShippingServiceCostOverride(\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType $shippingServiceCostOverride)
     {
+        if (!is_array($this->shippingServiceCostOverride)) {
+            throw new \LogicException('shippingServiceCostOverride is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServiceCostOverride[] = $shippingServiceCostOverride;
         return $this;
     }
@@ -98,7 +101,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType>
      */
     public function getShippingServiceCostOverride()
     {
@@ -116,10 +119,10 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      *  <br/><br/>
      *  If shipping service cost overrides are used in a listing, the <b>ShippingServiceCostOverride</b> container will be returned in the <b>GetItem</b>, and <b>GetSellerList</b> calls.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType[] $shippingServiceCostOverride
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType> $shippingServiceCostOverride
      * @return self
      */
-    public function setShippingServiceCostOverride(array $shippingServiceCostOverride)
+    public function setShippingServiceCostOverride(iterable $shippingServiceCostOverride)
     {
         $this->shippingServiceCostOverride = $shippingServiceCostOverride;
         return $this;
@@ -129,10 +132,10 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getShippingServiceCostOverride();
-        if (null !== $value && [] !== $this->getShippingServiceCostOverride()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceCostOverride" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingServiceCostOverride" => $v]]);
+            }
         }
     }
 

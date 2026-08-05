@@ -37,6 +37,9 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
      */
     public function addToExternalMessageID($externalMessageID)
     {
+        if (!is_array($this->externalMessageID)) {
+            throw new \LogicException('externalMessageID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->externalMessageID[] = $externalMessageID;
         return $this;
     }
@@ -81,7 +84,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
      *  to retrieve messages, and will take precedence over the message ID. A total of 10
      *  message IDs can be specified.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExternalMessageID()
     {
@@ -99,7 +102,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
      * @param string $externalMessageID
      * @return self
      */
-    public function setExternalMessageID(array $externalMessageID)
+    public function setExternalMessageID(iterable $externalMessageID)
     {
         $this->externalMessageID = $externalMessageID;
         return $this;
@@ -109,10 +112,10 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getExternalMessageID();
-        if (null !== $value && [] !== $this->getExternalMessageID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExternalMessageID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExternalMessageID" => $v]]);
+            }
         }
     }
 

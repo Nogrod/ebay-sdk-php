@@ -29,6 +29,9 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
      */
     public function addToMessageIDs($messageID)
     {
+        if (!is_array($this->messageIDs)) {
+            throw new \LogicException('messageIDs is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageIDs[] = $messageID;
         return $this;
     }
@@ -64,7 +67,7 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
      *
      * Contains a list of up to 10 <b>MessageID</b> values.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getMessageIDs()
     {
@@ -79,7 +82,7 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
      * @param string $messageIDs
      * @return self
      */
-    public function setMessageIDs(array $messageIDs)
+    public function setMessageIDs(iterable $messageIDs)
     {
         $this->messageIDs = $messageIDs;
         return $this;
@@ -89,10 +92,13 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMessageIDs();
-        if (null !== $value && [] !== $this->getMessageIDs()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
-                return ["MessageID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
+                    return ["MessageID" => $v];
+                }, $value));
+            }
         }
     }
 

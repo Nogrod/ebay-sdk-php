@@ -113,6 +113,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRefund(\Nogrod\eBaySDK\Trading\RefundDetailsType $refund)
     {
+        if (!is_array($this->refund)) {
+            throw new \LogicException('refund is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->refund[] = $refund;
         return $this;
     }
@@ -160,7 +163,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\RefundDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RefundDetailsType>
      */
     public function getRefund()
     {
@@ -176,10 +179,10 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\RefundDetailsType[] $refund
+     * @param iterable<\Nogrod\eBaySDK\Trading\RefundDetailsType> $refund
      * @return self
      */
-    public function setRefund(array $refund)
+    public function setRefund(iterable $refund)
     {
         $this->refund = $refund;
         return $this;
@@ -199,6 +202,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToReturnsWithin(\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType $returnsWithin)
     {
+        if (!is_array($this->returnsWithin)) {
+            throw new \LogicException('returnsWithin is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->returnsWithin[] = $returnsWithin;
         return $this;
     }
@@ -246,7 +252,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType>
      */
     public function getReturnsWithin()
     {
@@ -262,10 +268,10 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType[] $returnsWithin
+     * @param iterable<\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType> $returnsWithin
      * @return self
      */
-    public function setReturnsWithin(array $returnsWithin)
+    public function setReturnsWithin(iterable $returnsWithin)
     {
         $this->returnsWithin = $returnsWithin;
         return $this;
@@ -285,6 +291,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToReturnsAccepted(\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType $returnsAccepted)
     {
+        if (!is_array($this->returnsAccepted)) {
+            throw new \LogicException('returnsAccepted is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->returnsAccepted[] = $returnsAccepted;
         return $this;
     }
@@ -332,7 +341,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType>
      */
     public function getReturnsAccepted()
     {
@@ -348,10 +357,10 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType[] $returnsAccepted
+     * @param iterable<\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType> $returnsAccepted
      * @return self
      */
-    public function setReturnsAccepted(array $returnsAccepted)
+    public function setReturnsAccepted(iterable $returnsAccepted)
     {
         $this->returnsAccepted = $returnsAccepted;
         return $this;
@@ -401,6 +410,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToShippingCostPaidBy(\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType $shippingCostPaidBy)
     {
+        if (!is_array($this->shippingCostPaidBy)) {
+            throw new \LogicException('shippingCostPaidBy is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingCostPaidBy[] = $shippingCostPaidBy;
         return $this;
     }
@@ -436,7 +448,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType>
      */
     public function getShippingCostPaidBy()
     {
@@ -448,10 +460,10 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType[] $shippingCostPaidBy
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType> $shippingCostPaidBy
      * @return self
      */
-    public function setShippingCostPaidBy(array $shippingCostPaidBy)
+    public function setShippingCostPaidBy(iterable $shippingCostPaidBy)
     {
         $this->shippingCostPaidBy = $shippingCostPaidBy;
         return $this;
@@ -467,6 +479,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRestockingFeeValue(\Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType $restockingFeeValue)
     {
+        if (!is_array($this->restockingFeeValue)) {
+            throw new \LogicException('restockingFeeValue is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->restockingFeeValue[] = $restockingFeeValue;
         return $this;
     }
@@ -502,7 +517,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This type is deprecated, as sellers are no longer allowed to set a restocking fee through a listings's return policy.
      *
-     * @return \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType>
      */
     public function getRestockingFeeValue()
     {
@@ -514,10 +529,10 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This type is deprecated, as sellers are no longer allowed to set a restocking fee through a listings's return policy.
      *
-     * @param \Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType[] $restockingFeeValue
+     * @param iterable<\Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType> $restockingFeeValue
      * @return self
      */
-    public function setRestockingFeeValue(array $restockingFeeValue)
+    public function setRestockingFeeValue(iterable $restockingFeeValue)
     {
         $this->restockingFeeValue = $restockingFeeValue;
         return $this;
@@ -579,22 +594,22 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getRefund();
-        if (null !== $value && [] !== $this->getRefund()) {
-            $writer->write(array_map(function ($v) {
-                return ["Refund" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Refund" => $v]]);
+            }
         }
         $value = $this->getReturnsWithin();
-        if (null !== $value && [] !== $this->getReturnsWithin()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnsWithin" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReturnsWithin" => $v]]);
+            }
         }
         $value = $this->getReturnsAccepted();
-        if (null !== $value && [] !== $this->getReturnsAccepted()) {
-            $writer->write(array_map(function ($v) {
-                return ["ReturnsAccepted" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ReturnsAccepted" => $v]]);
+            }
         }
         $value = $this->getDescription();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -602,16 +617,16 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
         }
         $value = $this->getShippingCostPaidBy();
-        if (null !== $value && [] !== $this->getShippingCostPaidBy()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingCostPaidBy" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingCostPaidBy" => $v]]);
+            }
         }
         $value = $this->getRestockingFeeValue();
-        if (null !== $value && [] !== $this->getRestockingFeeValue()) {
-            $writer->write(array_map(function ($v) {
-                return ["RestockingFeeValue" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RestockingFeeValue" => $v]]);
+            }
         }
         $value = $this->getDetailVersion();
         if (null !== $value) {

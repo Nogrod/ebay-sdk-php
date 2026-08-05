@@ -31,6 +31,9 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToShippingPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile)
     {
+        if (!is_array($this->shippingPolicyProfile)) {
+            throw new \LogicException('shippingPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingPolicyProfile[] = $shippingPolicyProfile;
         return $this;
     }
@@ -66,7 +69,7 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType>
      */
     public function getShippingPolicyProfile()
     {
@@ -78,10 +81,10 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
      *
      * Container consisting of one or more shipping policies that match the input criteria in the <b>getSellerProfiles</b> request. This container is not returned if no shipping policies match the input criteria.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType[] $shippingPolicyProfile
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType> $shippingPolicyProfile
      * @return self
      */
-    public function setShippingPolicyProfile(array $shippingPolicyProfile)
+    public function setShippingPolicyProfile(iterable $shippingPolicyProfile)
     {
         $this->shippingPolicyProfile = $shippingPolicyProfile;
         return $this;
@@ -91,10 +94,10 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getShippingPolicyProfile();
-        if (null !== $value && [] !== $this->getShippingPolicyProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingPolicyProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingPolicyProfile" => $v]]);
+            }
         }
     }
 

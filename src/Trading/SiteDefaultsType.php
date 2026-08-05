@@ -1189,6 +1189,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToListingDuration(\Nogrod\eBaySDK\Trading\ListingDurationReferenceType $listingDuration)
     {
+        if (!is_array($this->listingDuration)) {
+            throw new \LogicException('listingDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->listingDuration[] = $listingDuration;
         return $this;
     }
@@ -1224,7 +1227,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
-     * @return \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ListingDurationReferenceType>
      */
     public function getListingDuration()
     {
@@ -1236,10 +1239,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * A <b>ListingDuration</b> field will be returned for each different listing type that is supported on the eBay marketplace. Each field will show the listing type and the identifier associated with this listing type. These IDs will be used to match the default listing duration values that are displayed in the <b>FeatureDefinitions.ListingDurations</b> containers.
      *
-     * @param \Nogrod\eBaySDK\Trading\ListingDurationReferenceType[] $listingDuration
+     * @param iterable<\Nogrod\eBaySDK\Trading\ListingDurationReferenceType> $listingDuration
      * @return self
      */
-    public function setListingDuration(array $listingDuration)
+    public function setListingDuration(iterable $listingDuration)
     {
         $this->listingDuration = $listingDuration;
         return $this;
@@ -2487,6 +2490,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToGalleryFeaturedDurations($duration)
     {
+        if (!is_array($this->galleryFeaturedDurations)) {
+            throw new \LogicException('galleryFeaturedDurations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->galleryFeaturedDurations[] = $duration;
         return $this;
     }
@@ -2522,7 +2528,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the default site setting that enables durations for "Gallery Featured".
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getGalleryFeaturedDurations()
     {
@@ -2534,10 +2540,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Specifies the default site setting that enables durations for "Gallery Featured".
      *
-     * @param string[] $galleryFeaturedDurations
+     * @param iterable<string> $galleryFeaturedDurations
      * @return self
      */
-    public function setGalleryFeaturedDurations(array $galleryFeaturedDurations)
+    public function setGalleryFeaturedDurations(iterable $galleryFeaturedDurations)
     {
         $this->galleryFeaturedDurations = $galleryFeaturedDurations;
         return $this;
@@ -3695,6 +3701,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToStoreOwnerExtendedListingDurations($duration)
     {
+        if (!is_array($this->storeOwnerExtendedListingDurations)) {
+            throw new \LogicException('storeOwnerExtendedListingDurations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->storeOwnerExtendedListingDurations[] = $duration;
         return $this;
     }
@@ -3736,7 +3745,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  The extended listing durations provided here in this element should be merged
      *  in with the baseline listing durations provided in the <b>ListingDurations</b> container.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getStoreOwnerExtendedListingDurations()
     {
@@ -3750,10 +3759,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  The extended listing durations provided here in this element should be merged
      *  in with the baseline listing durations provided in the <b>ListingDurations</b> container.
      *
-     * @param string[] $storeOwnerExtendedListingDurations
+     * @param iterable<string> $storeOwnerExtendedListingDurations
      * @return self
      */
-    public function setStoreOwnerExtendedListingDurations(array $storeOwnerExtendedListingDurations)
+    public function setStoreOwnerExtendedListingDurations(iterable $storeOwnerExtendedListingDurations)
     {
         $this->storeOwnerExtendedListingDurations = $storeOwnerExtendedListingDurations;
         return $this;
@@ -4006,6 +4015,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToPaymentMethod($paymentMethod)
     {
+        if (!is_array($this->paymentMethod)) {
+            throw new \LogicException('paymentMethod is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentMethod[] = $paymentMethod;
         return $this;
     }
@@ -4050,7 +4062,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <span class="tablenote"><b>Note:</b>
      *  eBay now controls all electronic payment methods available to buyers, but sellers still need to specify offline payment methods for listings that require/support offline payment such as motor vehicle listings.</span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPaymentMethod()
     {
@@ -4068,7 +4080,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $paymentMethod
      * @return self
      */
-    public function setPaymentMethod(array $paymentMethod)
+    public function setPaymentMethod(iterable $paymentMethod)
     {
         $this->paymentMethod = $paymentMethod;
         return $this;
@@ -5078,6 +5090,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDomesticReturnsAcceptedValues($domesticReturnsAccepted)
     {
+        if (!is_array($this->domesticReturnsAcceptedValues)) {
+            throw new \LogicException('domesticReturnsAcceptedValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsAcceptedValues[] = $domesticReturnsAccepted;
         return $this;
     }
@@ -5119,7 +5134,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsAcceptedValues()
     {
@@ -5136,7 +5151,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $domesticReturnsAcceptedValues
      * @return self
      */
-    public function setDomesticReturnsAcceptedValues(array $domesticReturnsAcceptedValues)
+    public function setDomesticReturnsAcceptedValues(iterable $domesticReturnsAcceptedValues)
     {
         $this->domesticReturnsAcceptedValues = $domesticReturnsAcceptedValues;
         return $this;
@@ -5154,6 +5169,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToInternationalReturnsAcceptedValues($internationalReturnsAccepted)
     {
+        if (!is_array($this->internationalReturnsAcceptedValues)) {
+            throw new \LogicException('internationalReturnsAcceptedValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsAcceptedValues[] = $internationalReturnsAccepted;
         return $this;
     }
@@ -5195,7 +5213,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsAcceptedValues()
     {
@@ -5212,7 +5230,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $internationalReturnsAcceptedValues
      * @return self
      */
-    public function setInternationalReturnsAcceptedValues(array $internationalReturnsAcceptedValues)
+    public function setInternationalReturnsAcceptedValues(iterable $internationalReturnsAcceptedValues)
     {
         $this->internationalReturnsAcceptedValues = $internationalReturnsAcceptedValues;
         return $this;
@@ -5230,6 +5248,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDomesticReturnsDurationValues($domesticReturnsDuration)
     {
+        if (!is_array($this->domesticReturnsDurationValues)) {
+            throw new \LogicException('domesticReturnsDurationValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsDurationValues[] = $domesticReturnsDuration;
         return $this;
     }
@@ -5271,7 +5292,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsDurationValues()
     {
@@ -5288,7 +5309,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $domesticReturnsDurationValues
      * @return self
      */
-    public function setDomesticReturnsDurationValues(array $domesticReturnsDurationValues)
+    public function setDomesticReturnsDurationValues(iterable $domesticReturnsDurationValues)
     {
         $this->domesticReturnsDurationValues = $domesticReturnsDurationValues;
         return $this;
@@ -5306,6 +5327,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToInternationalReturnsDurationValues($internationalReturnsDuration)
     {
+        if (!is_array($this->internationalReturnsDurationValues)) {
+            throw new \LogicException('internationalReturnsDurationValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsDurationValues[] = $internationalReturnsDuration;
         return $this;
     }
@@ -5347,7 +5371,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsDurationValues()
     {
@@ -5364,7 +5388,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $internationalReturnsDurationValues
      * @return self
      */
-    public function setInternationalReturnsDurationValues(array $internationalReturnsDurationValues)
+    public function setInternationalReturnsDurationValues(iterable $internationalReturnsDurationValues)
     {
         $this->internationalReturnsDurationValues = $internationalReturnsDurationValues;
         return $this;
@@ -5382,6 +5406,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDomesticReturnsShipmentPayeeValues($domesticReturnsShipmentPayee)
     {
+        if (!is_array($this->domesticReturnsShipmentPayeeValues)) {
+            throw new \LogicException('domesticReturnsShipmentPayeeValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsShipmentPayeeValues[] = $domesticReturnsShipmentPayee;
         return $this;
     }
@@ -5423,7 +5450,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsShipmentPayeeValues()
     {
@@ -5440,7 +5467,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $domesticReturnsShipmentPayeeValues
      * @return self
      */
-    public function setDomesticReturnsShipmentPayeeValues(array $domesticReturnsShipmentPayeeValues)
+    public function setDomesticReturnsShipmentPayeeValues(iterable $domesticReturnsShipmentPayeeValues)
     {
         $this->domesticReturnsShipmentPayeeValues = $domesticReturnsShipmentPayeeValues;
         return $this;
@@ -5458,6 +5485,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToInternationalReturnsShipmentPayeeValues($internationalReturnsShipmentPayee)
     {
+        if (!is_array($this->internationalReturnsShipmentPayeeValues)) {
+            throw new \LogicException('internationalReturnsShipmentPayeeValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalReturnsShipmentPayeeValues[] = $internationalReturnsShipmentPayee;
         return $this;
     }
@@ -5499,7 +5529,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalReturnsShipmentPayeeValues()
     {
@@ -5516,7 +5546,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $internationalReturnsShipmentPayeeValues
      * @return self
      */
-    public function setInternationalReturnsShipmentPayeeValues(array $internationalReturnsShipmentPayeeValues)
+    public function setInternationalReturnsShipmentPayeeValues(iterable $internationalReturnsShipmentPayeeValues)
     {
         $this->internationalReturnsShipmentPayeeValues = $internationalReturnsShipmentPayeeValues;
         return $this;
@@ -5534,6 +5564,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDomesticRefundMethodValues($domesticRefundMethod)
     {
+        if (!is_array($this->domesticRefundMethodValues)) {
+            throw new \LogicException('domesticRefundMethodValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticRefundMethodValues[] = $domesticRefundMethod;
         return $this;
     }
@@ -5575,7 +5608,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticRefundMethodValues()
     {
@@ -5592,7 +5625,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $domesticRefundMethodValues
      * @return self
      */
-    public function setDomesticRefundMethodValues(array $domesticRefundMethodValues)
+    public function setDomesticRefundMethodValues(iterable $domesticRefundMethodValues)
     {
         $this->domesticRefundMethodValues = $domesticRefundMethodValues;
         return $this;
@@ -5610,6 +5643,9 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToInternationalRefundMethodValues($internationalRefundMethod)
     {
+        if (!is_array($this->internationalRefundMethodValues)) {
+            throw new \LogicException('internationalRefundMethodValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalRefundMethodValues[] = $internationalRefundMethod;
         return $this;
     }
@@ -5651,7 +5687,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br><br>
      *  The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalRefundMethodValues()
     {
@@ -5668,7 +5704,7 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      * @param string $internationalRefundMethodValues
      * @return self
      */
-    public function setInternationalRefundMethodValues(array $internationalRefundMethodValues)
+    public function setInternationalRefundMethodValues(iterable $internationalRefundMethodValues)
     {
         $this->internationalRefundMethodValues = $internationalRefundMethodValues;
         return $this;
@@ -5708,10 +5744,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getListingDuration();
-        if (null !== $value && [] !== $this->getListingDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ListingDuration" => $v]]);
+            }
         }
         $value = $this->getShippingTermsRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -5936,10 +5972,13 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedFixedPriceTreatmentEnabled", $value);
         }
         $value = $this->getGalleryFeaturedDurations();
-        if (null !== $value && [] !== $this->getGalleryFeaturedDurations()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations", array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryFeaturedDurations", array_map(function ($v) {
+                    return ["Duration" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPayPalRequired();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -6131,10 +6170,13 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurationsEnabled", $value);
         }
         $value = $this->getStoreOwnerExtendedListingDurations();
-        if (null !== $value && [] !== $this->getStoreOwnerExtendedListingDurations()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurations", array_map(function ($v) {
-                return ["Duration" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwnerExtendedListingDurations", array_map(function ($v) {
+                    return ["Duration" => $v];
+                }, $value));
+            }
         }
         $value = $this->getReturnPolicyEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -6168,10 +6210,10 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Group3MaxFlatShippingCost", $value);
         }
         $value = $this->getPaymentMethod();
-        if (null !== $value && [] !== $this->getPaymentMethod()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentMethod" => $v]]);
+            }
         }
         $value = $this->getVariationsEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -6312,52 +6354,76 @@ class SiteDefaultsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductRequiredEnabled", $value);
         }
         $value = $this->getDomesticReturnsAcceptedValues();
-        if (null !== $value && [] !== $this->getDomesticReturnsAcceptedValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues", array_map(function ($v) {
-                return ["DomesticReturnsAccepted" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsAcceptedValues", array_map(function ($v) {
+                    return ["DomesticReturnsAccepted" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInternationalReturnsAcceptedValues();
-        if (null !== $value && [] !== $this->getInternationalReturnsAcceptedValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedValues", array_map(function ($v) {
-                return ["InternationalReturnsAccepted" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedValues", array_map(function ($v) {
+                    return ["InternationalReturnsAccepted" => $v];
+                }, $value));
+            }
         }
         $value = $this->getDomesticReturnsDurationValues();
-        if (null !== $value && [] !== $this->getDomesticReturnsDurationValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDurationValues", array_map(function ($v) {
-                return ["DomesticReturnsDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsDurationValues", array_map(function ($v) {
+                    return ["DomesticReturnsDuration" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInternationalReturnsDurationValues();
-        if (null !== $value && [] !== $this->getInternationalReturnsDurationValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDurationValues", array_map(function ($v) {
-                return ["InternationalReturnsDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsDurationValues", array_map(function ($v) {
+                    return ["InternationalReturnsDuration" => $v];
+                }, $value));
+            }
         }
         $value = $this->getDomesticReturnsShipmentPayeeValues();
-        if (null !== $value && [] !== $this->getDomesticReturnsShipmentPayeeValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayeeValues", array_map(function ($v) {
-                return ["DomesticReturnsShipmentPayee" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticReturnsShipmentPayeeValues", array_map(function ($v) {
+                    return ["DomesticReturnsShipmentPayee" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInternationalReturnsShipmentPayeeValues();
-        if (null !== $value && [] !== $this->getInternationalReturnsShipmentPayeeValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues", array_map(function ($v) {
-                return ["InternationalReturnsShipmentPayee" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues", array_map(function ($v) {
+                    return ["InternationalReturnsShipmentPayee" => $v];
+                }, $value));
+            }
         }
         $value = $this->getDomesticRefundMethodValues();
-        if (null !== $value && [] !== $this->getDomesticRefundMethodValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {
-                return ["DomesticRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {
+                    return ["DomesticRefundMethod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInternationalRefundMethodValues();
-        if (null !== $value && [] !== $this->getInternationalRefundMethodValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {
-                return ["InternationalRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {
+                    return ["InternationalRefundMethod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getReturnPolicyDescriptionEnabled();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

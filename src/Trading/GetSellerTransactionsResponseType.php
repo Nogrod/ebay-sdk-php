@@ -241,6 +241,9 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
      */
     public function addToTransactionArray(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        if (!is_array($this->transactionArray)) {
+            throw new \LogicException('transactionArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->transactionArray[] = $transaction;
         return $this;
     }
@@ -288,7 +291,7 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
      *  See the reference guide for more information about the fields that are returned
      *  for each order line item.
      *
-     * @return \Nogrod\eBaySDK\Trading\TransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TransactionType>
      */
     public function getTransactionArray()
     {
@@ -304,10 +307,10 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
      *  See the reference guide for more information about the fields that are returned
      *  for each order line item.
      *
-     * @param \Nogrod\eBaySDK\Trading\TransactionType[] $transactionArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\TransactionType> $transactionArray
      * @return self
      */
-    public function setTransactionArray(array $transactionArray)
+    public function setTransactionArray(iterable $transactionArray)
     {
         $this->transactionArray = $transactionArray;
         return $this;
@@ -342,10 +345,13 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Seller", $value);
         }
         $value = $this->getTransactionArray();
-        if (null !== $value && [] !== $this->getTransactionArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
-                return ["Transaction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray", array_map(function ($v) {
+                    return ["Transaction" => $v];
+                }, $value));
+            }
         }
     }
 

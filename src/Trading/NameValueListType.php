@@ -156,6 +156,9 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToValue($value)
     {
+        if (!is_array($this->value)) {
+            throw new \LogicException('value is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->value[] = $value;
         return $this;
     }
@@ -233,7 +236,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getValue()
     {
@@ -259,10 +262,10 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> The standard maximum length for the value of an item specific is 65, but the maximum allowed length increases for instance aspects such as 'Bundle Description' and 'Modification Description'. For item specifics with max lengths greater than 65, the actual max length will be returned in a corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectMaxLength" target="_blank">aspectMaxLength</a> field. The maximum allowed length for the new 'California Prop 65 Warning' item specific is 800 characters. For more information about the 'California Prop 65 Warning' item specific, see the <b>ItemSpecifics.NameValueList</b> field description.
      *  </span>
      *
-     * @param string[] $value
+     * @param iterable<string> $value
      * @return self
      */
-    public function setValue(array $value)
+    public function setValue(iterable $value)
     {
         $this->value = $value;
         return $this;
@@ -302,10 +305,10 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
         }
         $value = $this->getValue();
-        if (null !== $value && [] !== $this->getValue()) {
-            $writer->write(array_map(function ($v) {
-                return ["Value" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Value" => $v]]);
+            }
         }
         $value = $this->getSource();
         if (null !== $value) {

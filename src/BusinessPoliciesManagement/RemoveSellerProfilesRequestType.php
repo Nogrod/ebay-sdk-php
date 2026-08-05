@@ -31,6 +31,9 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileIds($profileIds)
     {
+        if (!is_array($this->profileIds)) {
+            throw new \LogicException('profileIds is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->profileIds[] = $profileIds;
         return $this;
     }
@@ -66,7 +69,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
      *
      * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getProfileIds()
     {
@@ -78,10 +81,10 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
      *
      * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. The seller passes in one or more <b>profileIds</b> values to identify the business policies to delete. The <b>profileId</b> values can be obtained through the site or by making a <b>getSellerProfiles</b> call.
      *
-     * @param int[] $profileIds
+     * @param iterable<int> $profileIds
      * @return self
      */
-    public function setProfileIds(array $profileIds)
+    public function setProfileIds(iterable $profileIds)
     {
         $this->profileIds = $profileIds;
         return $this;
@@ -91,10 +94,10 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getProfileIds();
-        if (null !== $value && [] !== $this->getProfileIds()) {
-            $writer->write(array_map(function ($v) {
-                return ["profileIds" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["profileIds" => $v]]);
+            }
         }
     }
 

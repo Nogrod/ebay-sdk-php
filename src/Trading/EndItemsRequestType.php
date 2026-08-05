@@ -31,6 +31,9 @@ class EndItemsRequestType extends AbstractRequestType
      */
     public function addToEndItemRequestContainer(\Nogrod\eBaySDK\Trading\EndItemRequestContainerType $endItemRequestContainer)
     {
+        if (!is_array($this->endItemRequestContainer)) {
+            throw new \LogicException('endItemRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->endItemRequestContainer[] = $endItemRequestContainer;
         return $this;
     }
@@ -66,7 +69,7 @@ class EndItemsRequestType extends AbstractRequestType
      *
      * An <b>EndItemRequestContainer</b> container is required for each eBay listing that the seller plans to end through the <b>EndItems</b> call. Up to 10 eBay listings can be ended with one <b>EndItems</b> call.
      *
-     * @return \Nogrod\eBaySDK\Trading\EndItemRequestContainerType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\EndItemRequestContainerType>
      */
     public function getEndItemRequestContainer()
     {
@@ -78,10 +81,10 @@ class EndItemsRequestType extends AbstractRequestType
      *
      * An <b>EndItemRequestContainer</b> container is required for each eBay listing that the seller plans to end through the <b>EndItems</b> call. Up to 10 eBay listings can be ended with one <b>EndItems</b> call.
      *
-     * @param \Nogrod\eBaySDK\Trading\EndItemRequestContainerType[] $endItemRequestContainer
+     * @param iterable<\Nogrod\eBaySDK\Trading\EndItemRequestContainerType> $endItemRequestContainer
      * @return self
      */
-    public function setEndItemRequestContainer(array $endItemRequestContainer)
+    public function setEndItemRequestContainer(iterable $endItemRequestContainer)
     {
         $this->endItemRequestContainer = $endItemRequestContainer;
         return $this;
@@ -91,10 +94,10 @@ class EndItemsRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getEndItemRequestContainer();
-        if (null !== $value && [] !== $this->getEndItemRequestContainer()) {
-            $writer->write(array_map(function ($v) {
-                return ["EndItemRequestContainer" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["EndItemRequestContainer" => $v]]);
+            }
         }
     }
 

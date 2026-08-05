@@ -31,6 +31,9 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToCategory(\Nogrod\eBaySDK\Trading\CategoryType $category)
     {
+        if (!is_array($this->category)) {
+            throw new \LogicException('category is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->category[] = $category;
         return $this;
     }
@@ -66,7 +69,7 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This container provides details about the eBay category identified in the <b>CategoryID</b> field. The <b>DetailLevel</b> field must be included and set to <code>ReturnAll</code> for <b>Category</b>, nodes to appear.
      *
-     * @return \Nogrod\eBaySDK\Trading\CategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CategoryType>
      */
     public function getCategory()
     {
@@ -78,10 +81,10 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *
      * This container provides details about the eBay category identified in the <b>CategoryID</b> field. The <b>DetailLevel</b> field must be included and set to <code>ReturnAll</code> for <b>Category</b>, nodes to appear.
      *
-     * @param \Nogrod\eBaySDK\Trading\CategoryType[] $category
+     * @param iterable<\Nogrod\eBaySDK\Trading\CategoryType> $category
      * @return self
      */
-    public function setCategory(array $category)
+    public function setCategory(iterable $category)
     {
         $this->category = $category;
         return $this;
@@ -91,10 +94,10 @@ class CategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getCategory();
-        if (null !== $value && [] !== $this->getCategory()) {
-            $writer->write(array_map(function ($v) {
-                return ["Category" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Category" => $v]]);
+            }
         }
     }
 

@@ -31,6 +31,9 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToDomesticReturnsAccepted($domesticReturnsAccepted)
     {
+        if (!is_array($this->domesticReturnsAccepted)) {
+            throw new \LogicException('domesticReturnsAccepted is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticReturnsAccepted[] = $domesticReturnsAccepted;
         return $this;
     }
@@ -66,7 +69,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      *
      * Defines the available options the seller has for accepting domestic returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticReturnsAccepted()
     {
@@ -81,7 +84,7 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
      * @param string $domesticReturnsAccepted
      * @return self
      */
-    public function setDomesticReturnsAccepted(array $domesticReturnsAccepted)
+    public function setDomesticReturnsAccepted(iterable $domesticReturnsAccepted)
     {
         $this->domesticReturnsAccepted = $domesticReturnsAccepted;
         return $this;
@@ -91,10 +94,10 @@ class DomesticReturnsAcceptedCodeType implements \Sabre\Xml\XmlSerializable, \Sa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getDomesticReturnsAccepted();
-        if (null !== $value && [] !== $this->getDomesticReturnsAccepted()) {
-            $writer->write(array_map(function ($v) {
-                return ["DomesticReturnsAccepted" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DomesticReturnsAccepted" => $v]]);
+            }
         }
     }
 

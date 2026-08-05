@@ -98,6 +98,9 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      */
     public function addToUserDeliveryPreferenceArray(\Nogrod\eBaySDK\Trading\NotificationEnableType $notificationEnable)
     {
+        if (!is_array($this->userDeliveryPreferenceArray)) {
+            throw new \LogicException('userDeliveryPreferenceArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->userDeliveryPreferenceArray[] = $notificationEnable;
         return $this;
     }
@@ -133,7 +136,7 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      *
      * Specifies events and whether or not they are enabled.
      *
-     * @return \Nogrod\eBaySDK\Trading\NotificationEnableType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NotificationEnableType>
      */
     public function getUserDeliveryPreferenceArray()
     {
@@ -145,10 +148,10 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      *
      * Specifies events and whether or not they are enabled.
      *
-     * @param \Nogrod\eBaySDK\Trading\NotificationEnableType[] $userDeliveryPreferenceArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\NotificationEnableType> $userDeliveryPreferenceArray
      * @return self
      */
-    public function setUserDeliveryPreferenceArray(array $userDeliveryPreferenceArray)
+    public function setUserDeliveryPreferenceArray(iterable $userDeliveryPreferenceArray)
     {
         $this->userDeliveryPreferenceArray = $userDeliveryPreferenceArray;
         return $this;
@@ -191,6 +194,9 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      */
     public function addToEventProperty(\Nogrod\eBaySDK\Trading\NotificationEventPropertyType $eventProperty)
     {
+        if (!is_array($this->eventProperty)) {
+            throw new \LogicException('eventProperty is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->eventProperty[] = $eventProperty;
         return $this;
     }
@@ -229,7 +235,7 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      * Characteristics or details of an event such as type, name and value.
      *  Currently can only be set for wireless applications.
      *
-     * @return \Nogrod\eBaySDK\Trading\NotificationEventPropertyType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NotificationEventPropertyType>
      */
     public function getEventProperty()
     {
@@ -242,10 +248,10 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
      * Characteristics or details of an event such as type, name and value.
      *  Currently can only be set for wireless applications.
      *
-     * @param \Nogrod\eBaySDK\Trading\NotificationEventPropertyType[] $eventProperty
+     * @param iterable<\Nogrod\eBaySDK\Trading\NotificationEventPropertyType> $eventProperty
      * @return self
      */
-    public function setEventProperty(array $eventProperty)
+    public function setEventProperty(iterable $eventProperty)
     {
         $this->eventProperty = $eventProperty;
         return $this;
@@ -285,20 +291,23 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences", $value);
         }
         $value = $this->getUserDeliveryPreferenceArray();
-        if (null !== $value && [] !== $this->getUserDeliveryPreferenceArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray", array_map(function ($v) {
-                return ["NotificationEnable" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray", array_map(function ($v) {
+                    return ["NotificationEnable" => $v];
+                }, $value));
+            }
         }
         $value = $this->getUserData();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserData", $value);
         }
         $value = $this->getEventProperty();
-        if (null !== $value && [] !== $this->getEventProperty()) {
-            $writer->write(array_map(function ($v) {
-                return ["EventProperty" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["EventProperty" => $v]]);
+            }
         }
         $value = $this->getDeliveryURLName();
         if (null !== $value) {

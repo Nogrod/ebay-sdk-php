@@ -147,6 +147,9 @@ class GetOrdersRequestType extends AbstractRequestType
      */
     public function addToOrderIDArray($orderID)
     {
+        if (!is_array($this->orderIDArray)) {
+            throw new \LogicException('orderIDArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->orderIDArray[] = $orderID;
         return $this;
     }
@@ -194,7 +197,7 @@ class GetOrdersRequestType extends AbstractRequestType
      *  </span>
      *  <br>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getOrderIDArray()
     {
@@ -213,7 +216,7 @@ class GetOrdersRequestType extends AbstractRequestType
      * @param string $orderIDArray
      * @return self
      */
-    public function setOrderIDArray(array $orderIDArray)
+    public function setOrderIDArray(iterable $orderIDArray)
     {
         $this->orderIDArray = $orderIDArray;
         return $this;
@@ -575,10 +578,13 @@ class GetOrdersRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getOrderIDArray();
-        if (null !== $value && [] !== $this->getOrderIDArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
-                return ["OrderID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
+                    return ["OrderID" => $v];
+                }, $value));
+            }
         }
         $value = $this->getCreateTimeFrom();
         if (null !== $value) {

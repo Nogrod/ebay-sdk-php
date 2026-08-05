@@ -200,6 +200,9 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToMinimumFeedbackScore($feedbackScore)
     {
+        if (!is_array($this->minimumFeedbackScore)) {
+            throw new \LogicException('minimumFeedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->minimumFeedbackScore[] = $feedbackScore;
         return $this;
     }
@@ -241,7 +244,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      *  This field is no longer applicable, as sellers can no longer set a buyer's Minimum Feedback Score threshold Buyer Requirement at the listing-level in Add/Revise/Relist calls.
      *  </span>
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getMinimumFeedbackScore()
     {
@@ -255,10 +258,10 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      *  This field is no longer applicable, as sellers can no longer set a buyer's Minimum Feedback Score threshold Buyer Requirement at the listing-level in Add/Revise/Relist calls.
      *  </span>
      *
-     * @param int[] $minimumFeedbackScore
+     * @param iterable<int> $minimumFeedbackScore
      * @return self
      */
-    public function setMinimumFeedbackScore(array $minimumFeedbackScore)
+    public function setMinimumFeedbackScore(iterable $minimumFeedbackScore)
     {
         $this->minimumFeedbackScore = $minimumFeedbackScore;
         return $this;
@@ -369,10 +372,13 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo", $value);
         }
         $value = $this->getMinimumFeedbackScore();
-        if (null !== $value && [] !== $this->getMinimumFeedbackScore()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {
-                return ["FeedbackScore" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", array_map(function ($v) {
+                    return ["FeedbackScore" => $v];
+                }, $value));
+            }
         }
         $value = $this->getShipToRegistrationCountry();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

@@ -41,6 +41,9 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPayment(\Nogrod\eBaySDK\Trading\PaymentTransactionType $payment)
     {
+        if (!is_array($this->payment)) {
+            throw new \LogicException('payment is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->payment[] = $payment;
         return $this;
     }
@@ -91,7 +94,7 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PaymentTransactionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PaymentTransactionType>
      */
     public function getPayment()
     {
@@ -108,10 +111,10 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <span class="tablenote"><b>Note: </b> Australia import tax is only applicable to the Australia site.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PaymentTransactionType[] $payment
+     * @param iterable<\Nogrod\eBaySDK\Trading\PaymentTransactionType> $payment
      * @return self
      */
-    public function setPayment(array $payment)
+    public function setPayment(iterable $payment)
     {
         $this->payment = $payment;
         return $this;
@@ -121,10 +124,10 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPayment();
-        if (null !== $value && [] !== $this->getPayment()) {
-            $writer->write(array_map(function ($v) {
-                return ["Payment" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Payment" => $v]]);
+            }
         }
     }
 

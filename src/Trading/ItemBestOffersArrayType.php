@@ -32,6 +32,9 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToItemBestOffers(\Nogrod\eBaySDK\Trading\ItemBestOffersType $itemBestOffers)
     {
+        if (!is_array($this->itemBestOffers)) {
+            throw new \LogicException('itemBestOffers is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemBestOffers[] = $itemBestOffers;
         return $this;
     }
@@ -67,7 +70,7 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers. Includes the buyer and seller messages only if the <code>ReturnAll</code> detail level is used.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemBestOffersType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemBestOffersType>
      */
     public function getItemBestOffers()
     {
@@ -79,10 +82,10 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers. Includes the buyer and seller messages only if the <code>ReturnAll</code> detail level is used.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemBestOffersType[] $itemBestOffers
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemBestOffersType> $itemBestOffers
      * @return self
      */
-    public function setItemBestOffers(array $itemBestOffers)
+    public function setItemBestOffers(iterable $itemBestOffers)
     {
         $this->itemBestOffers = $itemBestOffers;
         return $this;
@@ -92,10 +95,10 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getItemBestOffers();
-        if (null !== $value && [] !== $this->getItemBestOffers()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemBestOffers" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemBestOffers" => $v]]);
+            }
         }
     }
 

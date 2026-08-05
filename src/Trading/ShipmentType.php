@@ -84,6 +84,9 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToShipmentTrackingDetails(\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType $shipmentTrackingDetails)
     {
+        if (!is_array($this->shipmentTrackingDetails)) {
+            throw new \LogicException('shipmentTrackingDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipmentTrackingDetails[] = $shipmentTrackingDetails;
         return $this;
     }
@@ -134,7 +137,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  multiple <b>ShipmentTrackingDetails</b> containers under the
      *  <b>Shipment</b> container.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType>
      */
     public function getShipmentTrackingDetails()
     {
@@ -151,10 +154,10 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  multiple <b>ShipmentTrackingDetails</b> containers under the
      *  <b>Shipment</b> container.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType> $shipmentTrackingDetails
      * @return self
      */
-    public function setShipmentTrackingDetails(array $shipmentTrackingDetails)
+    public function setShipmentTrackingDetails(iterable $shipmentTrackingDetails)
     {
         $this->shipmentTrackingDetails = $shipmentTrackingDetails;
         return $this;
@@ -168,10 +171,10 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippedTime", $value);
         }
         $value = $this->getShipmentTrackingDetails();
-        if (null !== $value && [] !== $this->getShipmentTrackingDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipmentTrackingDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShipmentTrackingDetails" => $v]]);
+            }
         }
     }
 

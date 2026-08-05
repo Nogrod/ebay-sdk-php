@@ -72,6 +72,9 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToValue($value)
     {
+        if (!is_array($this->value)) {
+            throw new \LogicException('value is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->value[] = $value;
         return $this;
     }
@@ -107,7 +110,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getValue()
     {
@@ -119,10 +122,10 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * A numeric ID is passed in this field. This numeric ID maps to the value associated with a condition descriptor name. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field houses the information on the <b>Grader</b> and <b>Grade</b> descriptors of graded cards and the <b>Card Condition</b> descriptor for ungraded cards.
      *
-     * @param string[] $value
+     * @param iterable<string> $value
      * @return self
      */
-    public function setValue(array $value)
+    public function setValue(iterable $value)
     {
         $this->value = $value;
         return $this;
@@ -164,10 +167,10 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
         }
         $value = $this->getValue();
-        if (null !== $value && [] !== $this->getValue()) {
-            $writer->write(array_map(function ($v) {
-                return ["Value" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Value" => $v]]);
+            }
         }
         $value = $this->getAdditionalInfo();
         if (null !== $value) {

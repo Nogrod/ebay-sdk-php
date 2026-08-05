@@ -31,6 +31,9 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToFeedbackDetail(\Nogrod\eBaySDK\Trading\FeedbackDetailType $feedbackDetail)
     {
+        if (!is_array($this->feedbackDetail)) {
+            throw new \LogicException('feedbackDetail is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->feedbackDetail[] = $feedbackDetail;
         return $this;
     }
@@ -66,7 +69,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of detailed information for a Feedback entry on a specific order line item. For Feedback entries that were left for the buyer by the seller, some of the fields in this container will not be returned to users who were not involved in the transaction as either the buyer or seller.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeedbackDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeedbackDetailType>
      */
     public function getFeedbackDetail()
     {
@@ -78,10 +81,10 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container consists of detailed information for a Feedback entry on a specific order line item. For Feedback entries that were left for the buyer by the seller, some of the fields in this container will not be returned to users who were not involved in the transaction as either the buyer or seller.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeedbackDetailType[] $feedbackDetail
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeedbackDetailType> $feedbackDetail
      * @return self
      */
-    public function setFeedbackDetail(array $feedbackDetail)
+    public function setFeedbackDetail(iterable $feedbackDetail)
     {
         $this->feedbackDetail = $feedbackDetail;
         return $this;
@@ -91,10 +94,10 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFeedbackDetail();
-        if (null !== $value && [] !== $this->getFeedbackDetail()) {
-            $writer->write(array_map(function ($v) {
-                return ["FeedbackDetail" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["FeedbackDetail" => $v]]);
+            }
         }
     }
 

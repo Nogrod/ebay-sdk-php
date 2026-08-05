@@ -281,6 +281,9 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPaymentReferenceID(\Nogrod\eBaySDK\Trading\TransactionReferenceType $paymentReferenceID)
     {
+        if (!is_array($this->paymentReferenceID)) {
+            throw new \LogicException('paymentReferenceID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentReferenceID[] = $paymentReferenceID;
         return $this;
     }
@@ -322,7 +325,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br/><br/>
      *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
-     * @return \Nogrod\eBaySDK\Trading\TransactionReferenceType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TransactionReferenceType>
      */
     public function getPaymentReferenceID()
     {
@@ -336,10 +339,10 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *  <br/><br/>
      *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
      *
-     * @param \Nogrod\eBaySDK\Trading\TransactionReferenceType[] $paymentReferenceID
+     * @param iterable<\Nogrod\eBaySDK\Trading\TransactionReferenceType> $paymentReferenceID
      * @return self
      */
-    public function setPaymentReferenceID(array $paymentReferenceID)
+    public function setPaymentReferenceID(iterable $paymentReferenceID)
     {
         $this->paymentReferenceID = $paymentReferenceID;
         return $this;
@@ -373,10 +376,10 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount", $value);
         }
         $value = $this->getPaymentReferenceID();
-        if (null !== $value && [] !== $this->getPaymentReferenceID()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentReferenceID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentReferenceID" => $v]]);
+            }
         }
     }
 

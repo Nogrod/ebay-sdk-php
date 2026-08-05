@@ -255,6 +255,9 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToResponsiblePersons(\Nogrod\eBaySDK\Trading\ResponsiblePersonType $responsiblePerson)
     {
+        if (!is_array($this->responsiblePersons)) {
+            throw new \LogicException('responsiblePersons is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->responsiblePersons[] = $responsiblePerson;
         return $this;
     }
@@ -302,7 +305,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br />
      *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide Responsible Persons information in their eBay listings if the manufacture is not based in the EU. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ResponsiblePersonType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ResponsiblePersonType>
      */
     public function getResponsiblePersons()
     {
@@ -318,10 +321,10 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br />
      *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide Responsible Persons information in their eBay listings if the manufacture is not based in the EU. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ResponsiblePersonType[] $responsiblePersons
+     * @param iterable<\Nogrod\eBaySDK\Trading\ResponsiblePersonType> $responsiblePersons
      * @return self
      */
-    public function setResponsiblePersons(array $responsiblePersons)
+    public function setResponsiblePersons(iterable $responsiblePersons)
     {
         $this->responsiblePersons = $responsiblePersons;
         return $this;
@@ -341,6 +344,9 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToDocuments(\Nogrod\eBaySDK\Trading\DocumentType $document)
     {
+        if (!is_array($this->documents)) {
+            throw new \LogicException('documents is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->documents[] = $document;
         return $this;
     }
@@ -388,7 +394,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br />
      *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide regulatory document information in their eBay listings. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
      *
-     * @return \Nogrod\eBaySDK\Trading\DocumentType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DocumentType>
      */
     public function getDocuments()
     {
@@ -404,10 +410,10 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *  <br />
      *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide regulatory document information in their eBay listings. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
      *
-     * @param \Nogrod\eBaySDK\Trading\DocumentType[] $documents
+     * @param iterable<\Nogrod\eBaySDK\Trading\DocumentType> $documents
      * @return self
      */
-    public function setDocuments(array $documents)
+    public function setDocuments(iterable $documents)
     {
         $this->documents = $documents;
         return $this;
@@ -437,16 +443,22 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Manufacturer", $value);
         }
         $value = $this->getResponsiblePersons();
-        if (null !== $value && [] !== $this->getResponsiblePersons()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons", array_map(function ($v) {
-                return ["ResponsiblePerson" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons", array_map(function ($v) {
+                    return ["ResponsiblePerson" => $v];
+                }, $value));
+            }
         }
         $value = $this->getDocuments();
-        if (null !== $value && [] !== $this->getDocuments()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Documents", array_map(function ($v) {
-                return ["Document" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Documents", array_map(function ($v) {
+                    return ["Document" => $v];
+                }, $value));
+            }
         }
     }
 

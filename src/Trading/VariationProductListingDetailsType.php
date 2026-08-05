@@ -202,6 +202,9 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->nameValueList)) {
+            throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->nameValueList[] = $nameValueList;
         return $this;
     }
@@ -237,7 +240,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * This container is for future use. If it used, it will be ignored.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getNameValueList()
     {
@@ -249,10 +252,10 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
      *
      * This container is for future use. If it used, it will be ignored.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $nameValueList
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $nameValueList
      * @return self
      */
-    public function setNameValueList(array $nameValueList)
+    public function setNameValueList(iterable $nameValueList)
     {
         $this->nameValueList = $nameValueList;
         return $this;
@@ -278,10 +281,10 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductReferenceID", $value);
         }
         $value = $this->getNameValueList();
-        if (null !== $value && [] !== $this->getNameValueList()) {
-            $writer->write(array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["NameValueList" => $v]]);
+            }
         }
     }
 

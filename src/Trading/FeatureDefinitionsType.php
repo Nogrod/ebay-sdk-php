@@ -4720,6 +4720,9 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToDomesticRefundMethodValues($domesticRefundMethod)
     {
+        if (!is_array($this->domesticRefundMethodValues)) {
+            throw new \LogicException('domesticRefundMethodValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->domesticRefundMethodValues[] = $domesticRefundMethod;
         return $this;
     }
@@ -4755,7 +4758,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * If present, this flag indicates the seller can set the method they use to refund domestic returns.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getDomesticRefundMethodValues()
     {
@@ -4770,7 +4773,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @param string $domesticRefundMethodValues
      * @return self
      */
-    public function setDomesticRefundMethodValues(array $domesticRefundMethodValues)
+    public function setDomesticRefundMethodValues(iterable $domesticRefundMethodValues)
     {
         $this->domesticRefundMethodValues = $domesticRefundMethodValues;
         return $this;
@@ -4786,6 +4789,9 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToInternationalRefundMethodValues($internationalRefundMethod)
     {
+        if (!is_array($this->internationalRefundMethodValues)) {
+            throw new \LogicException('internationalRefundMethodValues is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalRefundMethodValues[] = $internationalRefundMethod;
         return $this;
     }
@@ -4821,7 +4827,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      *
      * If present, this flag indicates the seller can set the method they use to refund international returns.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalRefundMethodValues()
     {
@@ -4836,7 +4842,7 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      * @param string $internationalRefundMethodValues
      * @return self
      */
-    public function setInternationalRefundMethodValues(array $internationalRefundMethodValues)
+    public function setInternationalRefundMethodValues(iterable $internationalRefundMethodValues)
     {
         $this->internationalRefundMethodValues = $internationalRefundMethodValues;
         return $this;
@@ -5412,16 +5418,22 @@ class FeatureDefinitionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsShipmentPayeeValues", $value);
         }
         $value = $this->getDomesticRefundMethodValues();
-        if (null !== $value && [] !== $this->getDomesticRefundMethodValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {
-                return ["DomesticRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRefundMethodValues", array_map(function ($v) {
+                    return ["DomesticRefundMethod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInternationalRefundMethodValues();
-        if (null !== $value && [] !== $this->getInternationalRefundMethodValues()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {
-                return ["InternationalRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundMethodValues", array_map(function ($v) {
+                    return ["InternationalRefundMethod" => $v];
+                }, $value));
+            }
         }
         $value = $this->getReturnPolicyDescriptionEnabled();
         if (null !== $value) {

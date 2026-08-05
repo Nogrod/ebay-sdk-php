@@ -1462,6 +1462,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToUserSubscription($userSubscription)
     {
+        if (!is_array($this->userSubscription)) {
+            throw new \LogicException('userSubscription is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->userSubscription[] = $userSubscription;
         return $this;
     }
@@ -1497,7 +1500,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * Specifies the subscription level for a user.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getUserSubscription()
     {
@@ -1512,7 +1515,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * @param string $userSubscription
      * @return self
      */
-    public function setUserSubscription(array $userSubscription)
+    public function setUserSubscription(iterable $userSubscription)
     {
         $this->userSubscription = $userSubscription;
         return $this;
@@ -1806,6 +1809,9 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToMembership(\Nogrod\eBaySDK\Trading\MembershipDetailType $program)
     {
+        if (!is_array($this->membership)) {
+            throw new \LogicException('membership is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->membership[] = $program;
         return $this;
     }
@@ -1841,7 +1847,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * The <strong>Membership</strong> container will be returned if the seller is enrolled in one or more membership programs on one or more eBay sites. A <b>Program</b> container will be returned for each applicable membership program, and provides details on that program, including the eBay site, the program name (such as '<code>EBAYPLUS</code>'), and the membership expiration date. This container will not be returned at all if the seller is not enrolled in any applicable membership programs.
      *
-     * @return \Nogrod\eBaySDK\Trading\MembershipDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MembershipDetailType>
      */
     public function getMembership()
     {
@@ -1853,10 +1859,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * The <strong>Membership</strong> container will be returned if the seller is enrolled in one or more membership programs on one or more eBay sites. A <b>Program</b> container will be returned for each applicable membership program, and provides details on that program, including the eBay site, the program name (such as '<code>EBAYPLUS</code>'), and the membership expiration date. This container will not be returned at all if the seller is not enrolled in any applicable membership programs.
      *
-     * @param \Nogrod\eBaySDK\Trading\MembershipDetailType[] $membership
+     * @param iterable<\Nogrod\eBaySDK\Trading\MembershipDetailType> $membership
      * @return self
      */
-    public function setMembership(array $membership)
+    public function setMembership(iterable $membership)
     {
         $this->membership = $membership;
         return $this;
@@ -2032,10 +2038,10 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BusinessRole", $value);
         }
         $value = $this->getUserSubscription();
-        if (null !== $value && [] !== $this->getUserSubscription()) {
-            $writer->write(array_map(function ($v) {
-                return ["UserSubscription" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["UserSubscription" => $v]]);
+            }
         }
         $value = $this->getEBayWikiReadOnly();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2078,10 +2084,13 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingAddress", $value);
         }
         $value = $this->getMembership();
-        if (null !== $value && [] !== $this->getMembership()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {
-                return ["Program" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {
+                    return ["Program" => $v];
+                }, $value));
+            }
         }
         $value = $this->getUserFirstName();
         if (null !== $value) {

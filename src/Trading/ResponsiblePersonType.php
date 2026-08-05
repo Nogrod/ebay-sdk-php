@@ -386,6 +386,9 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToTypes($type)
     {
+        if (!is_array($this->types)) {
+            throw new \LogicException('types is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->types[] = $type;
         return $this;
     }
@@ -421,7 +424,7 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * The type(s) associated with the Responsible Person or entity.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getTypes()
     {
@@ -436,7 +439,7 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      * @param string $types
      * @return self
      */
-    public function setTypes(array $types)
+    public function setTypes(iterable $types)
     {
         $this->types = $types;
         return $this;
@@ -486,10 +489,13 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContactURL", $value);
         }
         $value = $this->getTypes();
-        if (null !== $value && [] !== $this->getTypes()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {
-                return ["Type" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {
+                    return ["Type" => $v];
+                }, $value));
+            }
         }
     }
 

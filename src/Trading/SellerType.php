@@ -846,6 +846,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToCharityAffiliationDetails(\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType $charityAffiliationDetail)
     {
+        if (!is_array($this->charityAffiliationDetails)) {
+            throw new \LogicException('charityAffiliationDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->charityAffiliationDetails[] = $charityAffiliationDetail;
         return $this;
     }
@@ -881,7 +884,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container consists of one or more of nonprofit organizations associated with the seller's account. This container will not be returned if the user is not affiliated with any nonprofit organizations. A seller must be registered with the PayPal Giving Fund to be affiliated with an eBay for Charity nonprofit organization.
      *
-     * @return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType>
      */
     public function getCharityAffiliationDetails()
     {
@@ -893,10 +896,10 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * This container consists of one or more of nonprofit organizations associated with the seller's account. This container will not be returned if the user is not affiliated with any nonprofit organizations. A seller must be registered with the PayPal Giving Fund to be affiliated with an eBay for Charity nonprofit organization.
      *
-     * @param \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType[] $charityAffiliationDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType> $charityAffiliationDetails
      * @return self
      */
-    public function setCharityAffiliationDetails(array $charityAffiliationDetails)
+    public function setCharityAffiliationDetails(iterable $charityAffiliationDetails)
     {
         $this->charityAffiliationDetails = $charityAffiliationDetails;
         return $this;
@@ -1024,6 +1027,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToTopRatedSellerDetails($topRatedProgram)
     {
+        if (!is_array($this->topRatedSellerDetails)) {
+            throw new \LogicException('topRatedSellerDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->topRatedSellerDetails[] = $topRatedProgram;
         return $this;
     }
@@ -1059,7 +1065,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *
      * Contains Top Rated Seller program details for the seller.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getTopRatedSellerDetails()
     {
@@ -1074,7 +1080,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * @param string $topRatedSellerDetails
      * @return self
      */
-    public function setTopRatedSellerDetails(array $topRatedSellerDetails)
+    public function setTopRatedSellerDetails(iterable $topRatedSellerDetails)
     {
         $this->topRatedSellerDetails = $topRatedSellerDetails;
         return $this;
@@ -1094,6 +1100,9 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToRecoupmentPolicyConsent($site)
     {
+        if (!is_array($this->recoupmentPolicyConsent)) {
+            throw new \LogicException('recoupmentPolicyConsent is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->recoupmentPolicyConsent[] = $site;
         return $this;
     }
@@ -1141,7 +1150,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      *  agree to the recoupment terms before adding items to the site. This agreement allows eBay to
      *  reimburse a buyer during a dispute and then recoup the cost from the seller.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getRecoupmentPolicyConsent()
     {
@@ -1160,7 +1169,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      * @param string $recoupmentPolicyConsent
      * @return self
      */
-    public function setRecoupmentPolicyConsent(array $recoupmentPolicyConsent)
+    public function setRecoupmentPolicyConsent(iterable $recoupmentPolicyConsent)
     {
         $this->recoupmentPolicyConsent = $recoupmentPolicyConsent;
         return $this;
@@ -1307,10 +1316,13 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt", $value);
         }
         $value = $this->getCharityAffiliationDetails();
-        if (null !== $value && [] !== $this->getCharityAffiliationDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {
-                return ["CharityAffiliationDetail" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails", array_map(function ($v) {
+                    return ["CharityAffiliationDetail" => $v];
+                }, $value));
+            }
         }
         $value = $this->getTransactionPercent();
         if (null !== $value) {
@@ -1326,16 +1338,22 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSeller", $value);
         }
         $value = $this->getTopRatedSellerDetails();
-        if (null !== $value && [] !== $this->getTopRatedSellerDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {
-                return ["TopRatedProgram" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails", array_map(function ($v) {
+                    return ["TopRatedProgram" => $v];
+                }, $value));
+            }
         }
         $value = $this->getRecoupmentPolicyConsent();
-        if (null !== $value && [] !== $this->getRecoupmentPolicyConsent()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {
-                return ["Site" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent", array_map(function ($v) {
+                    return ["Site" => $v];
+                }, $value));
+            }
         }
         $value = $this->getDomesticRateTable();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

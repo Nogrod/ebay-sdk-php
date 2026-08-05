@@ -280,6 +280,9 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToParameter(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType $parameter)
     {
+        if (!is_array($this->parameter)) {
+            throw new \LogicException('parameter is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->parameter[] = $parameter;
         return $this;
     }
@@ -315,7 +318,7 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *
      * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType>
      */
     public function getParameter()
     {
@@ -327,10 +330,10 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      *
      * Various warning and error messages return one or more variables that contain contextual information about the error. This is often the field or value that triggered the error.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType[] $parameter
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType> $parameter
      * @return self
      */
-    public function setParameter(array $parameter)
+    public function setParameter(iterable $parameter)
     {
         $this->parameter = $parameter;
         return $this;
@@ -368,10 +371,10 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}exceptionId", $value);
         }
         $value = $this->getParameter();
-        if (null !== $value && [] !== $this->getParameter()) {
-            $writer->write(array_map(function ($v) {
-                return ["parameter" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["parameter" => $v]]);
+            }
         }
     }
 

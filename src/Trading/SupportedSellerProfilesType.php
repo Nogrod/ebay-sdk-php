@@ -36,6 +36,9 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToSupportedSellerProfile(\Nogrod\eBaySDK\Trading\SupportedSellerProfileType $supportedSellerProfile)
     {
+        if (!is_array($this->supportedSellerProfile)) {
+            throw new \LogicException('supportedSellerProfile is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->supportedSellerProfile[] = $supportedSellerProfile;
         return $this;
     }
@@ -77,7 +80,7 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *  and shipping policy profiles. The profile type is found in the
      *  <b>ProfileType</b> field.
      *
-     * @return \Nogrod\eBaySDK\Trading\SupportedSellerProfileType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SupportedSellerProfileType>
      */
     public function getSupportedSellerProfile()
     {
@@ -91,10 +94,10 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *  and shipping policy profiles. The profile type is found in the
      *  <b>ProfileType</b> field.
      *
-     * @param \Nogrod\eBaySDK\Trading\SupportedSellerProfileType[] $supportedSellerProfile
+     * @param iterable<\Nogrod\eBaySDK\Trading\SupportedSellerProfileType> $supportedSellerProfile
      * @return self
      */
-    public function setSupportedSellerProfile(array $supportedSellerProfile)
+    public function setSupportedSellerProfile(iterable $supportedSellerProfile)
     {
         $this->supportedSellerProfile = $supportedSellerProfile;
         return $this;
@@ -104,10 +107,10 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getSupportedSellerProfile();
-        if (null !== $value && [] !== $this->getSupportedSellerProfile()) {
-            $writer->write(array_map(function ($v) {
-                return ["SupportedSellerProfile" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SupportedSellerProfile" => $v]]);
+            }
         }
     }
 

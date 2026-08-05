@@ -400,6 +400,9 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      */
     public function addToSellerExcludeShipToLocationPreferences($excludeShipToLocation)
     {
+        if (!is_array($this->sellerExcludeShipToLocationPreferences)) {
+            throw new \LogicException('sellerExcludeShipToLocationPreferences is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerExcludeShipToLocationPreferences[] = $excludeShipToLocation;
         return $this;
     }
@@ -441,7 +444,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      *  <br/><br/>
      *  Sellers can override these default settings for an individual listing by using the <b>Item.ShippingDetails.ExcludeShipToLocation</b> field in the Add/Revise/Relist calls. This container is returned if the <b>ShowSellerExcludeShipToLocationPreference</b> field is included and set to <code>true</code> in the request.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSellerExcludeShipToLocationPreferences()
     {
@@ -455,10 +458,10 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      *  <br/><br/>
      *  Sellers can override these default settings for an individual listing by using the <b>Item.ShippingDetails.ExcludeShipToLocation</b> field in the Add/Revise/Relist calls. This container is returned if the <b>ShowSellerExcludeShipToLocationPreference</b> field is included and set to <code>true</code> in the request.
      *
-     * @param string[] $sellerExcludeShipToLocationPreferences
+     * @param iterable<string> $sellerExcludeShipToLocationPreferences
      * @return self
      */
-    public function setSellerExcludeShipToLocationPreferences(array $sellerExcludeShipToLocationPreferences)
+    public function setSellerExcludeShipToLocationPreferences(iterable $sellerExcludeShipToLocationPreferences)
     {
         $this->sellerExcludeShipToLocationPreferences = $sellerExcludeShipToLocationPreferences;
         return $this;
@@ -736,6 +739,9 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      */
     public function addToEBayPLUSPreference(\Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType $eBayPLUSPreference)
     {
+        if (!is_array($this->eBayPLUSPreference)) {
+            throw new \LogicException('eBayPLUSPreference is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->eBayPLUSPreference[] = $eBayPLUSPreference;
         return $this;
     }
@@ -795,7 +801,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. The seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType>
      */
     public function getEBayPLUSPreference()
     {
@@ -815,10 +821,10 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      *  <strong>Note:</strong> Currently, eBay Plus is available only to buyers in Germany and Australia. The seller has no control/responsibility over setting the eBay Plus feature for a listing. Instead, eBay will evaluate/determine whether a listing is eligible for eBay Plus.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType[] $eBayPLUSPreference
+     * @param iterable<\Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType> $eBayPLUSPreference
      * @return self
      */
-    public function setEBayPLUSPreference(array $eBayPLUSPreference)
+    public function setEBayPLUSPreference(iterable $eBayPLUSPreference)
     {
         $this->eBayPLUSPreference = $eBayPLUSPreference;
         return $this;
@@ -862,10 +868,13 @@ class GetUserPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences", $value);
         }
         $value = $this->getSellerExcludeShipToLocationPreferences();
-        if (null !== $value && [] !== $this->getSellerExcludeShipToLocationPreferences()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences", array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences", array_map(function ($v) {
+                    return ["ExcludeShipToLocation" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPurchaseReminderEmailPreferences();
         if (null !== $value) {
@@ -909,10 +918,10 @@ class GetUserPreferencesResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference", $value);
         }
         $value = $this->getEBayPLUSPreference();
-        if (null !== $value && [] !== $this->getEBayPLUSPreference()) {
-            $writer->write(array_map(function ($v) {
-                return ["eBayPLUSPreference" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["eBayPLUSPreference" => $v]]);
+            }
         }
     }
 

@@ -56,6 +56,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToPictograms($pictogram)
     {
+        if (!is_array($this->pictograms)) {
+            throw new \LogicException('pictograms is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pictograms[] = $pictogram;
         return $this;
     }
@@ -100,7 +103,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getPictograms()
     {
@@ -115,10 +118,10 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 2 pictograms are allowed for product safety.
      *
-     * @param string[] $pictograms
+     * @param iterable<string> $pictograms
      * @return self
      */
-    public function setPictograms(array $pictograms)
+    public function setPictograms(iterable $pictograms)
     {
         $this->pictograms = $pictograms;
         return $this;
@@ -137,6 +140,9 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToStatements($statement)
     {
+        if (!is_array($this->statements)) {
+            throw new \LogicException('statements is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->statements[] = $statement;
         return $this;
     }
@@ -181,7 +187,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getStatements()
     {
@@ -196,10 +202,10 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      *  <span class="tablenote"><b>Note:</b> When supplying product safety information, one of the following elements is required: <b>Pictograms</b> or <b>Statements</b>. Both elements can be included on a listing, but only one is required.</span>
      *  A maximum of 8 statements are allowed for product safety.
      *
-     * @param string[] $statements
+     * @param iterable<string> $statements
      * @return self
      */
-    public function setStatements(array $statements)
+    public function setStatements(iterable $statements)
     {
         $this->statements = $statements;
         return $this;
@@ -239,16 +245,22 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getPictograms();
-        if (null !== $value && [] !== $this->getPictograms()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {
-                return ["Pictogram" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictograms", array_map(function ($v) {
+                    return ["Pictogram" => $v];
+                }, $value));
+            }
         }
         $value = $this->getStatements();
-        if (null !== $value && [] !== $this->getStatements()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {
-                return ["Statement" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statements", array_map(function ($v) {
+                    return ["Statement" => $v];
+                }, $value));
+            }
         }
         $value = $this->getComponent();
         if (null !== $value) {

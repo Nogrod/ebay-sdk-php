@@ -33,6 +33,9 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
      */
     public function addToSKUDetails(\Nogrod\eBaySDK\Trading\SKUDetailsType $sKUDetails)
     {
+        if (!is_array($this->sKUDetails)) {
+            throw new \LogicException('sKUDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sKUDetails[] = $sKUDetails;
         return $this;
     }
@@ -68,7 +71,7 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
      *
      * Describes or includes keywords associated with the SKU.
      *
-     * @return \Nogrod\eBaySDK\Trading\SKUDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SKUDetailsType>
      */
     public function getSKUDetails()
     {
@@ -80,10 +83,10 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
      *
      * Describes or includes keywords associated with the SKU.
      *
-     * @param \Nogrod\eBaySDK\Trading\SKUDetailsType[] $sKUDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\SKUDetailsType> $sKUDetails
      * @return self
      */
-    public function setSKUDetails(array $sKUDetails)
+    public function setSKUDetails(iterable $sKUDetails)
     {
         $this->sKUDetails = $sKUDetails;
         return $this;
@@ -93,10 +96,10 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getSKUDetails();
-        if (null !== $value && [] !== $this->getSKUDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["SKUDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SKUDetails" => $v]]);
+            }
         }
     }
 

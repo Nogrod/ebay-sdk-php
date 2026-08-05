@@ -99,6 +99,9 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToAcceptedPaymentMethod($acceptedPaymentMethod)
     {
+        if (!is_array($this->acceptedPaymentMethod)) {
+            throw new \LogicException('acceptedPaymentMethod is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->acceptedPaymentMethod[] = $acceptedPaymentMethod;
         return $this;
     }
@@ -167,7 +170,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <li>PersonalCheck</li>
      *  </ul>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getAcceptedPaymentMethod()
     {
@@ -190,10 +193,10 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <li>PersonalCheck</li>
      *  </ul>
      *
-     * @param string[] $acceptedPaymentMethod
+     * @param iterable<string> $acceptedPaymentMethod
      * @return self
      */
-    public function setAcceptedPaymentMethod(array $acceptedPaymentMethod)
+    public function setAcceptedPaymentMethod(iterable $acceptedPaymentMethod)
     {
         $this->acceptedPaymentMethod = $acceptedPaymentMethod;
         return $this;
@@ -355,10 +358,10 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getAcceptedPaymentMethod();
-        if (null !== $value && [] !== $this->getAcceptedPaymentMethod()) {
-            $writer->write(array_map(function ($v) {
-                return ["acceptedPaymentMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["acceptedPaymentMethod" => $v]]);
+            }
         }
         $value = $this->getImmediatePay();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

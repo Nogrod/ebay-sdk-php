@@ -31,6 +31,9 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToLinkedLineItem(\Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem)
     {
+        if (!is_array($this->linkedLineItem)) {
+            throw new \LogicException('linkedLineItem is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->linkedLineItem[] = $linkedLineItem;
         return $this;
     }
@@ -66,7 +69,7 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container shows a line item that is related to the corresponding order, but not a part of that order. Details can identify the linked seller and also include delivery times, item information, and order information.
      *
-     * @return \Nogrod\eBaySDK\Trading\LinkedLineItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\LinkedLineItemType>
      */
     public function getLinkedLineItem()
     {
@@ -78,10 +81,10 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      *
      * This container shows a line item that is related to the corresponding order, but not a part of that order. Details can identify the linked seller and also include delivery times, item information, and order information.
      *
-     * @param \Nogrod\eBaySDK\Trading\LinkedLineItemType[] $linkedLineItem
+     * @param iterable<\Nogrod\eBaySDK\Trading\LinkedLineItemType> $linkedLineItem
      * @return self
      */
-    public function setLinkedLineItem(array $linkedLineItem)
+    public function setLinkedLineItem(iterable $linkedLineItem)
     {
         $this->linkedLineItem = $linkedLineItem;
         return $this;
@@ -91,10 +94,10 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getLinkedLineItem();
-        if (null !== $value && [] !== $this->getLinkedLineItem()) {
-            $writer->write(array_map(function ($v) {
-                return ["LinkedLineItem" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["LinkedLineItem" => $v]]);
+            }
         }
     }
 

@@ -31,6 +31,9 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToError(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error)
     {
+        if (!is_array($this->error)) {
+            throw new \LogicException('error is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->error[] = $error;
         return $this;
     }
@@ -66,7 +69,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Details about a single error.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType>
      */
     public function getError()
     {
@@ -78,10 +81,10 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * Details about a single error.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType[] $error
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType> $error
      * @return self
      */
-    public function setError(array $error)
+    public function setError(iterable $error)
     {
         $this->error = $error;
         return $this;
@@ -91,10 +94,10 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getError();
-        if (null !== $value && [] !== $this->getError()) {
-            $writer->write(array_map(function ($v) {
-                return ["error" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["error" => $v]]);
+            }
         }
     }
 

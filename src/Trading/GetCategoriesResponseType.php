@@ -99,6 +99,9 @@ class GetCategoriesResponseType extends AbstractResponseType
      */
     public function addToCategoryArray(\Nogrod\eBaySDK\Trading\CategoryType $category)
     {
+        if (!is_array($this->categoryArray)) {
+            throw new \LogicException('categoryArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->categoryArray[] = $category;
         return $this;
     }
@@ -137,7 +140,7 @@ class GetCategoriesResponseType extends AbstractResponseType
      * List of the returned categories. The category array contains one CategoryType
      *  object for each returned category. Returns empty if no detail level is specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\CategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CategoryType>
      */
     public function getCategoryArray()
     {
@@ -150,10 +153,10 @@ class GetCategoriesResponseType extends AbstractResponseType
      * List of the returned categories. The category array contains one CategoryType
      *  object for each returned category. Returns empty if no detail level is specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\CategoryType[] $categoryArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\CategoryType> $categoryArray
      * @return self
      */
-    public function setCategoryArray(array $categoryArray)
+    public function setCategoryArray(iterable $categoryArray)
     {
         $this->categoryArray = $categoryArray;
         return $this;
@@ -361,10 +364,13 @@ class GetCategoriesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getCategoryArray();
-        if (null !== $value && [] !== $this->getCategoryArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryArray", array_map(function ($v) {
-                return ["Category" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryArray", array_map(function ($v) {
+                    return ["Category" => $v];
+                }, $value));
+            }
         }
         $value = $this->getCategoryCount();
         if (null !== $value) {

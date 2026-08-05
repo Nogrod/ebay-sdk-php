@@ -62,6 +62,9 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToVariationSpecifics(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        if (!is_array($this->variationSpecifics)) {
+            throw new \LogicException('variationSpecifics is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationSpecifics[] = $nameValueList;
         return $this;
     }
@@ -97,7 +100,7 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This container is used to identify one or more item variations within the multiple-variation listing. If the specified name-value pairs do not match any item variation, the call behaves as if no variations were specified.
      *
-     * @return \Nogrod\eBaySDK\Trading\NameValueListType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
     public function getVariationSpecifics()
     {
@@ -109,10 +112,10 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *
      * This container is used to identify one or more item variations within the multiple-variation listing. If the specified name-value pairs do not match any item variation, the call behaves as if no variations were specified.
      *
-     * @param \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
+     * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $variationSpecifics
      * @return self
      */
-    public function setVariationSpecifics(array $variationSpecifics)
+    public function setVariationSpecifics(iterable $variationSpecifics)
     {
         $this->variationSpecifics = $variationSpecifics;
         return $this;
@@ -126,10 +129,13 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getVariationSpecifics();
-        if (null !== $value && [] !== $this->getVariationSpecifics()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
-                return ["NameValueList" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
+                    return ["NameValueList" => $v];
+                }, $value));
+            }
         }
     }
 

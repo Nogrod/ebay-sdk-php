@@ -87,6 +87,9 @@ class GetSellerEventsResponseType extends AbstractResponseType
      */
     public function addToItemArray(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        if (!is_array($this->itemArray)) {
+            throw new \LogicException('itemArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemArray[] = $item;
         return $this;
     }
@@ -155,7 +158,7 @@ class GetSellerEventsResponseType extends AbstractResponseType
      *  use a smaller time range in the request so that fewer than
      *  3000 are returned per response.
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemType>
      */
     public function getItemArray()
     {
@@ -178,10 +181,10 @@ class GetSellerEventsResponseType extends AbstractResponseType
      *  use a smaller time range in the request so that fewer than
      *  3000 are returned per response.
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemType[] $itemArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemType> $itemArray
      * @return self
      */
-    public function setItemArray(array $itemArray)
+    public function setItemArray(iterable $itemArray)
     {
         $this->itemArray = $itemArray;
         return $this;
@@ -195,10 +198,13 @@ class GetSellerEventsResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeTo", $value);
         }
         $value = $this->getItemArray();
-        if (null !== $value && [] !== $this->getItemArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
-                return ["Item" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
+                    return ["Item" => $v];
+                }, $value));
+            }
         }
     }
 

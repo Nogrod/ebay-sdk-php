@@ -852,6 +852,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToShippingServiceOptions(\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType $shippingServiceOptions)
     {
+        if (!is_array($this->shippingServiceOptions)) {
+            throw new \LogicException('shippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServiceOptions[] = $shippingServiceOptions;
         return $this;
     }
@@ -989,7 +992,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  in the buyer's region, it is removed. If no services remain after this
      *  filtering, a warning is returned.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType>
      */
     public function getShippingServiceOptions()
     {
@@ -1035,10 +1038,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  in the buyer's region, it is removed. If no services remain after this
      *  filtering, a warning is returned.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType[] $shippingServiceOptions
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType> $shippingServiceOptions
      * @return self
      */
-    public function setShippingServiceOptions(array $shippingServiceOptions)
+    public function setShippingServiceOptions(iterable $shippingServiceOptions)
     {
         $this->shippingServiceOptions = $shippingServiceOptions;
         return $this;
@@ -1064,6 +1067,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToInternationalShippingServiceOption(\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType $internationalShippingServiceOption)
     {
+        if (!is_array($this->internationalShippingServiceOption)) {
+            throw new \LogicException('internationalShippingServiceOption is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalShippingServiceOption[] = $internationalShippingServiceOption;
         return $this;
     }
@@ -1129,7 +1135,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
-     * @return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType>
      */
     public function getInternationalShippingServiceOption()
     {
@@ -1151,10 +1157,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <br><br>
      *  For <b>GetItemShipping</b>, results are filtered: if any service is not available in the buyer's region, it is removed. If no services remain after this filtering, a warning is returned.
      *
-     * @param \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType[] $internationalShippingServiceOption
+     * @param iterable<\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType> $internationalShippingServiceOption
      * @return self
      */
-    public function setInternationalShippingServiceOption(array $internationalShippingServiceOption)
+    public function setInternationalShippingServiceOption(iterable $internationalShippingServiceOption)
     {
         $this->internationalShippingServiceOption = $internationalShippingServiceOption;
         return $this;
@@ -1315,6 +1321,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToTaxTable(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        if (!is_array($this->taxTable)) {
+            throw new \LogicException('taxTable is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxTable[] = $taxJurisdiction;
         return $this;
     }
@@ -1377,7 +1386,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  to <code>ItemReturnAttributes</code></li>
      *  </ul>
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxJurisdictionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType>
      */
     public function getTaxTable()
     {
@@ -1398,10 +1407,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  to <code>ItemReturnAttributes</code></li>
      *  </ul>
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxTable
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType> $taxTable
      * @return self
      */
-    public function setTaxTable(array $taxTable)
+    public function setTaxTable(iterable $taxTable)
     {
         $this->taxTable = $taxTable;
         return $this;
@@ -1881,6 +1890,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        if (!is_array($this->excludeShipToLocation)) {
+            throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->excludeShipToLocation[] = $excludeShipToLocation;
         return $this;
     }
@@ -2024,7 +2036,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getExcludeShipToLocation()
     {
@@ -2072,10 +2084,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  <span class="tablenote"><b>Note: </b> This field will stop being returned in <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> responses on January 31, 2024.
      *  </span>
      *
-     * @param string[] $excludeShipToLocation
+     * @param iterable<string> $excludeShipToLocation
      * @return self
      */
-    public function setExcludeShipToLocation(array $excludeShipToLocation)
+    public function setExcludeShipToLocation(iterable $excludeShipToLocation)
     {
         $this->excludeShipToLocation = $excludeShipToLocation;
         return $this;
@@ -2179,6 +2191,9 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToShipmentTrackingDetails(\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType $shipmentTrackingDetails)
     {
+        if (!is_array($this->shipmentTrackingDetails)) {
+            throw new \LogicException('shipmentTrackingDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipmentTrackingDetails[] = $shipmentTrackingDetails;
         return $this;
     }
@@ -2262,7 +2277,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType>
      */
     public function getShipmentTrackingDetails()
     {
@@ -2290,10 +2305,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  Shipment tracking information does not appear in Merchant Data API's <b>OrderReport</b> responses, because once shipment tracking information is provided to the buyer, the order/order line item is considered acknowledged, and acknowledged orders do not show up in <b>OrderReport</b> responses.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType[] $shipmentTrackingDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType> $shipmentTrackingDetails
      * @return self
      */
-    public function setShipmentTrackingDetails(array $shipmentTrackingDetails)
+    public function setShipmentTrackingDetails(iterable $shipmentTrackingDetails)
     {
         $this->shipmentTrackingDetails = $shipmentTrackingDetails;
         return $this;
@@ -2394,16 +2409,16 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingRateType", $value);
         }
         $value = $this->getShippingServiceOptions();
-        if (null !== $value && [] !== $this->getShippingServiceOptions()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingServiceOptions" => $v]]);
+            }
         }
         $value = $this->getInternationalShippingServiceOption();
-        if (null !== $value && [] !== $this->getInternationalShippingServiceOption()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalShippingServiceOption" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalShippingServiceOption" => $v]]);
+            }
         }
         $value = $this->getShippingType();
         if (null !== $value) {
@@ -2419,10 +2434,13 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThirdPartyCheckout", $value);
         }
         $value = $this->getTaxTable();
-        if (null !== $value && [] !== $this->getTaxTable()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
+                    return ["TaxJurisdiction" => $v];
+                }, $value));
+            }
         }
         $value = $this->getGetItFast();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -2476,10 +2494,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
         }
         $value = $this->getExcludeShipToLocation();
-        if (null !== $value && [] !== $this->getExcludeShipToLocation()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShipToLocation" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExcludeShipToLocation" => $v]]);
+            }
         }
         $value = $this->getEBayEstimatedLabelCost();
         if (null !== $value) {
@@ -2491,10 +2509,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationsPreference", $value);
         }
         $value = $this->getShipmentTrackingDetails();
-        if (null !== $value && [] !== $this->getShipmentTrackingDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShipmentTrackingDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShipmentTrackingDetails" => $v]]);
+            }
         }
         $value = $this->getRateTableDetails();
         if (null !== $value) {

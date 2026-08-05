@@ -138,6 +138,9 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToResponse($response)
     {
+        if (!is_array($this->response)) {
+            throw new \LogicException('response is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->response[] = $response;
         return $this;
     }
@@ -185,7 +188,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  lead's question. Contains the body of the seller's response
      *  message.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getResponse()
     {
@@ -201,10 +204,10 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *  lead's question. Contains the body of the seller's response
      *  message.
      *
-     * @param string[] $response
+     * @param iterable<string> $response
      * @return self
      */
-    public function setResponse(array $response)
+    public function setResponse(iterable $response)
     {
         $this->response = $response;
         return $this;
@@ -298,6 +301,9 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        if (!is_array($this->messageMedia)) {
+            throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageMedia[] = $messageMedia;
         return $this;
     }
@@ -333,7 +339,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Media details stored as part of the message.
      *
-     * @return \Nogrod\eBaySDK\Trading\MessageMediaType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MessageMediaType>
      */
     public function getMessageMedia()
     {
@@ -345,10 +351,10 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      *
      * Media details stored as part of the message.
      *
-     * @param \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
+     * @param iterable<\Nogrod\eBaySDK\Trading\MessageMediaType> $messageMedia
      * @return self
      */
-    public function setMessageMedia(array $messageMedia)
+    public function setMessageMedia(iterable $messageMedia)
     {
         $this->messageMedia = $messageMedia;
         return $this;
@@ -366,10 +372,10 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Question", $value);
         }
         $value = $this->getResponse();
-        if (null !== $value && [] !== $this->getResponse()) {
-            $writer->write(array_map(function ($v) {
-                return ["Response" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Response" => $v]]);
+            }
         }
         $value = $this->getMessageStatus();
         if (null !== $value) {
@@ -384,10 +390,10 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastModifiedDate", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && [] !== $this->getMessageMedia()) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MessageMedia" => $v]]);
+            }
         }
     }
 

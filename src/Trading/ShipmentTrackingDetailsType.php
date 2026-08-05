@@ -162,6 +162,9 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToShipmentLineItem(\Nogrod\eBaySDK\Trading\LineItemType $lineItem)
     {
+        if (!is_array($this->shipmentLineItem)) {
+            throw new \LogicException('shipmentLineItem is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shipmentLineItem[] = $lineItem;
         return $this;
     }
@@ -197,7 +200,7 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *
      * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
      *
-     * @return \Nogrod\eBaySDK\Trading\LineItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\LineItemType>
      */
     public function getShipmentLineItem()
     {
@@ -209,10 +212,10 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      *
      * Contains information about one or more order line items in a Global Shipping Program package. Required or returned if the value of <strong>ShippingCarrierUsed</strong> is <code>PBI</code>.
      *
-     * @param \Nogrod\eBaySDK\Trading\LineItemType[] $shipmentLineItem
+     * @param iterable<\Nogrod\eBaySDK\Trading\LineItemType> $shipmentLineItem
      * @return self
      */
-    public function setShipmentLineItem(array $shipmentLineItem)
+    public function setShipmentLineItem(iterable $shipmentLineItem)
     {
         $this->shipmentLineItem = $shipmentLineItem;
         return $this;
@@ -230,10 +233,13 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingNumber", $value);
         }
         $value = $this->getShipmentLineItem();
-        if (null !== $value && [] !== $this->getShipmentLineItem()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem", array_map(function ($v) {
-                return ["LineItem" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem", array_map(function ($v) {
+                    return ["LineItem" => $v];
+                }, $value));
+            }
         }
     }
 

@@ -84,6 +84,9 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToSubject($subject)
     {
+        if (!is_array($this->subject)) {
+            throw new \LogicException('subject is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->subject[] = $subject;
         return $this;
     }
@@ -149,7 +152,7 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br><br>
      *  The <b>GetMessagePreferences</b> call will retrieve all custom ASQ subjects that have been set by the seller. If custom ASQ subjects have not been set up by the seller, the eBay default ASQ subjects will be returned in the <b>Subject</b> fields instead.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSubject()
     {
@@ -171,10 +174,10 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *  <br><br>
      *  The <b>GetMessagePreferences</b> call will retrieve all custom ASQ subjects that have been set by the seller. If custom ASQ subjects have not been set up by the seller, the eBay default ASQ subjects will be returned in the <b>Subject</b> fields instead.
      *
-     * @param string[] $subject
+     * @param iterable<string> $subject
      * @return self
      */
-    public function setSubject(array $subject)
+    public function setSubject(iterable $subject)
     {
         $this->subject = $subject;
         return $this;
@@ -189,10 +192,10 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects", $value);
         }
         $value = $this->getSubject();
-        if (null !== $value && [] !== $this->getSubject()) {
-            $writer->write(array_map(function ($v) {
-                return ["Subject" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Subject" => $v]]);
+            }
         }
     }
 

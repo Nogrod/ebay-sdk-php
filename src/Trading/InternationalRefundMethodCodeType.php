@@ -31,6 +31,9 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
      */
     public function addToInternationalRefundMethod($internationalRefundMethod)
     {
+        if (!is_array($this->internationalRefundMethod)) {
+            throw new \LogicException('internationalRefundMethod is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->internationalRefundMethod[] = $internationalRefundMethod;
         return $this;
     }
@@ -66,7 +69,7 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
      *
      * Defines the available options the seller has for handling international returns in the specified marketplace and category.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getInternationalRefundMethod()
     {
@@ -81,7 +84,7 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
      * @param string $internationalRefundMethod
      * @return self
      */
-    public function setInternationalRefundMethod(array $internationalRefundMethod)
+    public function setInternationalRefundMethod(iterable $internationalRefundMethod)
     {
         $this->internationalRefundMethod = $internationalRefundMethod;
         return $this;
@@ -91,10 +94,10 @@ class InternationalRefundMethodCodeType implements \Sabre\Xml\XmlSerializable, \
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getInternationalRefundMethod();
-        if (null !== $value && [] !== $this->getInternationalRefundMethod()) {
-            $writer->write(array_map(function ($v) {
-                return ["InternationalRefundMethod" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["InternationalRefundMethod" => $v]]);
+            }
         }
     }
 

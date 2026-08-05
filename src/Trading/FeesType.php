@@ -31,6 +31,9 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToFee(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        if (!is_array($this->fee)) {
+            throw new \LogicException('fee is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->fee[] = $fee;
         return $this;
     }
@@ -66,7 +69,7 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * A <b>Fee</b> container is returned for each listing fee associated with listing an item. Each <b>Fee</b> container consists of the fee type, the amount of the fee, and any applicable eBay promotional discount on that listing fee. A <b>Fee</b> container is returned for each listing feature, even if the associated cost is 0.
      *
-     * @return \Nogrod\eBaySDK\Trading\FeeType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\FeeType>
      */
     public function getFee()
     {
@@ -78,10 +81,10 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * A <b>Fee</b> container is returned for each listing fee associated with listing an item. Each <b>Fee</b> container consists of the fee type, the amount of the fee, and any applicable eBay promotional discount on that listing fee. A <b>Fee</b> container is returned for each listing feature, even if the associated cost is 0.
      *
-     * @param \Nogrod\eBaySDK\Trading\FeeType[] $fee
+     * @param iterable<\Nogrod\eBaySDK\Trading\FeeType> $fee
      * @return self
      */
-    public function setFee(array $fee)
+    public function setFee(iterable $fee)
     {
         $this->fee = $fee;
         return $this;
@@ -91,10 +94,10 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getFee();
-        if (null !== $value && [] !== $this->getFee()) {
-            $writer->write(array_map(function ($v) {
-                return ["Fee" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Fee" => $v]]);
+            }
         }
     }
 

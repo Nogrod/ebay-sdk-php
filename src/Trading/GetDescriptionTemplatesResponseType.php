@@ -75,6 +75,9 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToDescriptionTemplate(\Nogrod\eBaySDK\Trading\DescriptionTemplateType $descriptionTemplate)
     {
+        if (!is_array($this->descriptionTemplate)) {
+            throw new \LogicException('descriptionTemplate is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->descriptionTemplate[] = $descriptionTemplate;
         return $this;
     }
@@ -110,7 +113,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * A <b>DescriptionTemplate</b> container is retrieved for each available Listing Designer template. Each <b>DescriptionTemplate</b> container includes the unique identifier of the template, the Listing Designer Theme Group that it belongs to, the CDATA representation of the Listing Designer template, and the URL to an image that serves as an example of the Listing Designer template.
      *
-     * @return \Nogrod\eBaySDK\Trading\DescriptionTemplateType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DescriptionTemplateType>
      */
     public function getDescriptionTemplate()
     {
@@ -122,10 +125,10 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * A <b>DescriptionTemplate</b> container is retrieved for each available Listing Designer template. Each <b>DescriptionTemplate</b> container includes the unique identifier of the template, the Listing Designer Theme Group that it belongs to, the CDATA representation of the Listing Designer template, and the URL to an image that serves as an example of the Listing Designer template.
      *
-     * @param \Nogrod\eBaySDK\Trading\DescriptionTemplateType[] $descriptionTemplate
+     * @param iterable<\Nogrod\eBaySDK\Trading\DescriptionTemplateType> $descriptionTemplate
      * @return self
      */
-    public function setDescriptionTemplate(array $descriptionTemplate)
+    public function setDescriptionTemplate(iterable $descriptionTemplate)
     {
         $this->descriptionTemplate = $descriptionTemplate;
         return $this;
@@ -167,6 +170,9 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToObsoleteLayoutID($obsoleteLayoutID)
     {
+        if (!is_array($this->obsoleteLayoutID)) {
+            throw new \LogicException('obsoleteLayoutID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->obsoleteLayoutID[] = $obsoleteLayoutID;
         return $this;
     }
@@ -202,7 +208,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * The unique identifier of a Listing Designer Layout template that is now obsolete. An <b>ObsoleteLayoutID</b> field is returned for each obsolete Listing Designer Layout template.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getObsoleteLayoutID()
     {
@@ -214,10 +220,10 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * The unique identifier of a Listing Designer Layout template that is now obsolete. An <b>ObsoleteLayoutID</b> field is returned for each obsolete Listing Designer Layout template.
      *
-     * @param int[] $obsoleteLayoutID
+     * @param iterable<int> $obsoleteLayoutID
      * @return self
      */
-    public function setObsoleteLayoutID(array $obsoleteLayoutID)
+    public function setObsoleteLayoutID(iterable $obsoleteLayoutID)
     {
         $this->obsoleteLayoutID = $obsoleteLayoutID;
         return $this;
@@ -233,6 +239,9 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToObsoleteThemeID($obsoleteThemeID)
     {
+        if (!is_array($this->obsoleteThemeID)) {
+            throw new \LogicException('obsoleteThemeID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->obsoleteThemeID[] = $obsoleteThemeID;
         return $this;
     }
@@ -268,7 +277,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * The unique identifier of a Listing Designer Theme template that is now obsolete. An <b>ObsoleteThemeID</b> field is returned for each obsolete Listing Designer Theme template.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getObsoleteThemeID()
     {
@@ -280,10 +289,10 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * The unique identifier of a Listing Designer Theme template that is now obsolete. An <b>ObsoleteThemeID</b> field is returned for each obsolete Listing Designer Theme template.
      *
-     * @param int[] $obsoleteThemeID
+     * @param iterable<int> $obsoleteThemeID
      * @return self
      */
-    public function setObsoleteThemeID(array $obsoleteThemeID)
+    public function setObsoleteThemeID(iterable $obsoleteThemeID)
     {
         $this->obsoleteThemeID = $obsoleteThemeID;
         return $this;
@@ -299,6 +308,9 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToThemeGroup(\Nogrod\eBaySDK\Trading\ThemeGroupType $themeGroup)
     {
+        if (!is_array($this->themeGroup)) {
+            throw new \LogicException('themeGroup is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->themeGroup[] = $themeGroup;
         return $this;
     }
@@ -334,7 +346,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * A <b>ThemeGroup</b> container is retrieved for each available Listing Designer Theme Group. Each <b>ThemeGroup</b> container includes the unique identifier of the Theme Group, the Theme Group name, and all of the Listing Designer Theme template that belong to that Theme Group.
      *
-     * @return \Nogrod\eBaySDK\Trading\ThemeGroupType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ThemeGroupType>
      */
     public function getThemeGroup()
     {
@@ -346,10 +358,10 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      *
      * A <b>ThemeGroup</b> container is retrieved for each available Listing Designer Theme Group. Each <b>ThemeGroup</b> container includes the unique identifier of the Theme Group, the Theme Group name, and all of the Listing Designer Theme template that belong to that Theme Group.
      *
-     * @param \Nogrod\eBaySDK\Trading\ThemeGroupType[] $themeGroup
+     * @param iterable<\Nogrod\eBaySDK\Trading\ThemeGroupType> $themeGroup
      * @return self
      */
-    public function setThemeGroup(array $themeGroup)
+    public function setThemeGroup(iterable $themeGroup)
     {
         $this->themeGroup = $themeGroup;
         return $this;
@@ -385,32 +397,32 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getDescriptionTemplate();
-        if (null !== $value && [] !== $this->getDescriptionTemplate()) {
-            $writer->write(array_map(function ($v) {
-                return ["DescriptionTemplate" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DescriptionTemplate" => $v]]);
+            }
         }
         $value = $this->getLayoutTotal();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LayoutTotal", $value);
         }
         $value = $this->getObsoleteLayoutID();
-        if (null !== $value && [] !== $this->getObsoleteLayoutID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ObsoleteLayoutID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ObsoleteLayoutID" => $v]]);
+            }
         }
         $value = $this->getObsoleteThemeID();
-        if (null !== $value && [] !== $this->getObsoleteThemeID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ObsoleteThemeID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ObsoleteThemeID" => $v]]);
+            }
         }
         $value = $this->getThemeGroup();
-        if (null !== $value && [] !== $this->getThemeGroup()) {
-            $writer->write(array_map(function ($v) {
-                return ["ThemeGroup" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ThemeGroup" => $v]]);
+            }
         }
         $value = $this->getThemeTotal();
         if (null !== $value) {

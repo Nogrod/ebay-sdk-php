@@ -31,6 +31,9 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToCategoryGroup(\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup)
     {
+        if (!is_array($this->categoryGroup)) {
+            throw new \LogicException('categoryGroup is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->categoryGroup[] = $categoryGroup;
         return $this;
     }
@@ -66,7 +69,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType>
      */
     public function getCategoryGroup()
     {
@@ -78,10 +81,10 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This container indicates the category group to which the payment policy, return policy, or shipping policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). The 'MOTORS_VEHICLE' category group is not valid for return policies, as return policies cannot be used with motor vehicle listings. These enumeration values are case-sensitive. Each business policy can be associated with more than one category group.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType[] $categoryGroup
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType> $categoryGroup
      * @return self
      */
-    public function setCategoryGroup(array $categoryGroup)
+    public function setCategoryGroup(iterable $categoryGroup)
     {
         $this->categoryGroup = $categoryGroup;
         return $this;
@@ -91,10 +94,10 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getCategoryGroup();
-        if (null !== $value && [] !== $this->getCategoryGroup()) {
-            $writer->write(array_map(function ($v) {
-                return ["categoryGroup" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["categoryGroup" => $v]]);
+            }
         }
     }
 

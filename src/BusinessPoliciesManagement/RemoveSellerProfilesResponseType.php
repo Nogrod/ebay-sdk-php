@@ -31,6 +31,9 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
      */
     public function addToSellerProfileResponseStatus(\Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType $sellerProfileResponseStatus)
     {
+        if (!is_array($this->sellerProfileResponseStatus)) {
+            throw new \LogicException('sellerProfileResponseStatus is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sellerProfileResponseStatus[] = $sellerProfileResponseStatus;
         return $this;
     }
@@ -66,7 +69,7 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType>
      */
     public function getSellerProfileResponseStatus()
     {
@@ -78,10 +81,10 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
      *
      * Container consisting of the <b>profileId</b> values for business policies that were successfully deleted, as well as an <b>ack</b> value to indicate if the call was successful. An <b>errorMessage</b> container will be returned if the call generated any errors or warnings.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType[] $sellerProfileResponseStatus
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType> $sellerProfileResponseStatus
      * @return self
      */
-    public function setSellerProfileResponseStatus(array $sellerProfileResponseStatus)
+    public function setSellerProfileResponseStatus(iterable $sellerProfileResponseStatus)
     {
         $this->sellerProfileResponseStatus = $sellerProfileResponseStatus;
         return $this;
@@ -91,10 +94,10 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getSellerProfileResponseStatus();
-        if (null !== $value && [] !== $this->getSellerProfileResponseStatus()) {
-            $writer->write(array_map(function ($v) {
-                return ["sellerProfileResponseStatus" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["sellerProfileResponseStatus" => $v]]);
+            }
         }
     }
 

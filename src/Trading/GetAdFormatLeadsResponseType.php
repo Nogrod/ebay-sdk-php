@@ -46,6 +46,9 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
      */
     public function addToAdFormatLead(\Nogrod\eBaySDK\Trading\AdFormatLeadType $adFormatLead)
     {
+        if (!is_array($this->adFormatLead)) {
+            throw new \LogicException('adFormatLead is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->adFormatLead[] = $adFormatLead;
         return $this;
     }
@@ -90,7 +93,7 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
      *  least one lead must be available for the specified item to return
      *  AdFormatLead.
      *
-     * @return \Nogrod\eBaySDK\Trading\AdFormatLeadType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AdFormatLeadType>
      */
     public function getAdFormatLead()
     {
@@ -105,10 +108,10 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
      *  least one lead must be available for the specified item to return
      *  AdFormatLead.
      *
-     * @param \Nogrod\eBaySDK\Trading\AdFormatLeadType[] $adFormatLead
+     * @param iterable<\Nogrod\eBaySDK\Trading\AdFormatLeadType> $adFormatLead
      * @return self
      */
-    public function setAdFormatLead(array $adFormatLead)
+    public function setAdFormatLead(iterable $adFormatLead)
     {
         $this->adFormatLead = $adFormatLead;
         return $this;
@@ -146,10 +149,10 @@ class GetAdFormatLeadsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getAdFormatLead();
-        if (null !== $value && [] !== $this->getAdFormatLead()) {
-            $writer->write(array_map(function ($v) {
-                return ["AdFormatLead" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["AdFormatLead" => $v]]);
+            }
         }
         $value = $this->getAdFormatLeadCount();
         if (null !== $value) {

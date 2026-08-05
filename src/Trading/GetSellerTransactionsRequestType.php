@@ -306,6 +306,9 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      */
     public function addToSKUArray($sKU)
     {
+        if (!is_array($this->sKUArray)) {
+            throw new \LogicException('sKUArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sKUArray[] = $sKU;
         return $this;
     }
@@ -359,7 +362,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      *  <span class="tablenote"><b>Note: </b> SKU values must be defined for products in listings for this container to be applicable.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSKUArray()
     {
@@ -380,7 +383,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      * @param string $sKUArray
      * @return self
      */
-    public function setSKUArray(array $sKUArray)
+    public function setSKUArray(iterable $sKUArray)
     {
         $this->sKUArray = $sKUArray;
         return $this;
@@ -536,10 +539,13 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeContainingOrder", $value);
         }
         $value = $this->getSKUArray();
-        if (null !== $value && [] !== $this->getSKUArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
+                    return ["SKU" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPlatform();
         if (null !== $value) {

@@ -129,6 +129,9 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToVariationSpecificPictureSet(\Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType $variationSpecificPictureSet)
     {
+        if (!is_array($this->variationSpecificPictureSet)) {
+            throw new \LogicException('variationSpecificPictureSet is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationSpecificPictureSet[] = $variationSpecificPictureSet;
         return $this;
     }
@@ -224,7 +227,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  All images must comply with the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType>
      */
     public function getVariationSpecificPictureSet()
     {
@@ -256,10 +259,10 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      *  All images must comply with the <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/pictures.html">Picture Requirements</a>.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType[] $variationSpecificPictureSet
+     * @param iterable<\Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType> $variationSpecificPictureSet
      * @return self
      */
-    public function setVariationSpecificPictureSet(array $variationSpecificPictureSet)
+    public function setVariationSpecificPictureSet(iterable $variationSpecificPictureSet)
     {
         $this->variationSpecificPictureSet = $variationSpecificPictureSet;
         return $this;
@@ -273,10 +276,10 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificName", $value);
         }
         $value = $this->getVariationSpecificPictureSet();
-        if (null !== $value && [] !== $this->getVariationSpecificPictureSet()) {
-            $writer->write(array_map(function ($v) {
-                return ["VariationSpecificPictureSet" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VariationSpecificPictureSet" => $v]]);
+            }
         }
     }
 

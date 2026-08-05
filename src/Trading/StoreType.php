@@ -255,6 +255,9 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToCustomCategories(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        if (!is_array($this->customCategories)) {
+            throw new \LogicException('customCategories is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->customCategories[] = $customCategory;
         return $this;
     }
@@ -311,7 +314,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <b>StoreCategories</b> container in the request of a
      *  <b>SetStoreCategories</b> call.
      *
-     * @return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType>
      */
     public function getCustomCategories()
     {
@@ -330,10 +333,10 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <b>StoreCategories</b> container in the request of a
      *  <b>SetStoreCategories</b> call.
      *
-     * @param \Nogrod\eBaySDK\Trading\StoreCustomCategoryType[] $customCategories
+     * @param iterable<\Nogrod\eBaySDK\Trading\StoreCustomCategoryType> $customCategories
      * @return self
      */
-    public function setCustomCategories(array $customCategories)
+    public function setCustomCategories(iterable $customCategories)
     {
         $this->customCategories = $customCategories;
         return $this;
@@ -415,10 +418,13 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Logo", $value);
         }
         $value = $this->getCustomCategories();
-        if (null !== $value && [] !== $this->getCustomCategories()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {
-                return ["CustomCategory" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories", array_map(function ($v) {
+                    return ["CustomCategory" => $v];
+                }, $value));
+            }
         }
         $value = $this->getMerchDisplay();
         if (null !== $value) {

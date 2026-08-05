@@ -1988,6 +1988,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToPickupDetails(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        if (!is_array($this->pickupDetails)) {
+            throw new \LogicException('pickupDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->pickupDetails[] = $pickupOptions;
         return $this;
     }
@@ -2041,7 +2044,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PickupOptionsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType>
      */
     public function getPickupDetails()
     {
@@ -2059,10 +2062,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup feature or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants, and can only be applied to multiple-quantity, fixed-price listings.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PickupOptionsType[] $pickupDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\PickupOptionsType> $pickupDetails
      * @return self
      */
-    public function setPickupDetails(array $pickupDetails)
+    public function setPickupDetails(iterable $pickupDetails)
     {
         $this->pickupDetails = $pickupDetails;
         return $this;
@@ -2134,6 +2137,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToBuyerPackageEnclosures(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        if (!is_array($this->buyerPackageEnclosures)) {
+            throw new \LogicException('buyerPackageEnclosures is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerPackageEnclosures[] = $buyerPackageEnclosure;
         return $this;
     }
@@ -2169,7 +2175,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
      *
-     * @return \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType>
      */
     public function getBuyerPackageEnclosures()
     {
@@ -2181,10 +2187,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * This container is returned in <b>GetOrders</b> (and other order management calls) if the 'Pay Upon Invoice' option is being offered to the buyer, and the seller is including payment instructions in the shipping package(s) for the order. The 'Pay Upon Invoice' option is only available on the Germany site.
      *
-     * @param \Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType[] $buyerPackageEnclosures
+     * @param iterable<\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType> $buyerPackageEnclosures
      * @return self
      */
-    public function setBuyerPackageEnclosures(array $buyerPackageEnclosures)
+    public function setBuyerPackageEnclosures(iterable $buyerPackageEnclosures)
     {
         $this->buyerPackageEnclosures = $buyerPackageEnclosures;
         return $this;
@@ -2527,6 +2533,9 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToLinkedLineItemArray(\Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem)
     {
+        if (!is_array($this->linkedLineItemArray)) {
+            throw new \LogicException('linkedLineItemArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->linkedLineItemArray[] = $linkedLineItem;
         return $this;
     }
@@ -2565,7 +2574,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
      *  Container consisting of an array of linked line item objects.
      *
-     * @return \Nogrod\eBaySDK\Trading\LinkedLineItemType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\LinkedLineItemType>
      */
     public function getLinkedLineItemArray()
     {
@@ -2578,10 +2587,10 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      * <span class="tablenote"><b>Note: </b> This array is only returned if the order has associated linked line items.</span>
      *  Container consisting of an array of linked line item objects.
      *
-     * @param \Nogrod\eBaySDK\Trading\LinkedLineItemType[] $linkedLineItemArray
+     * @param iterable<\Nogrod\eBaySDK\Trading\LinkedLineItemType> $linkedLineItemArray
      * @return self
      */
-    public function setLinkedLineItemArray(array $linkedLineItemArray)
+    public function setLinkedLineItemArray(iterable $linkedLineItemArray)
     {
         $this->linkedLineItemArray = $linkedLineItemArray;
         return $this;
@@ -2775,10 +2784,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MonetaryDetails", $value);
         }
         $value = $this->getPickupDetails();
-        if (null !== $value && [] !== $this->getPickupDetails()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
-                return ["PickupOptions" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDetails", array_map(function ($v) {
+                    return ["PickupOptions" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPickupMethodSelected();
         if (null !== $value) {
@@ -2789,10 +2801,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticsPlanType", $value);
         }
         $value = $this->getBuyerPackageEnclosures();
-        if (null !== $value && [] !== $this->getBuyerPackageEnclosures()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
-                return ["BuyerPackageEnclosure" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerPackageEnclosures", array_map(function ($v) {
+                    return ["BuyerPackageEnclosure" => $v];
+                }, $value));
+            }
         }
         $value = $this->getInventoryReservationID();
         if (null !== $value) {
@@ -2844,10 +2859,13 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Program", $value);
         }
         $value = $this->getLinkedLineItemArray();
-        if (null !== $value && [] !== $this->getLinkedLineItemArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LinkedLineItemArray", array_map(function ($v) {
-                return ["LinkedLineItem" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LinkedLineItemArray", array_map(function ($v) {
+                    return ["LinkedLineItem" => $v];
+                }, $value));
+            }
         }
     }
 

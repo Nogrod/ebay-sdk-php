@@ -31,6 +31,9 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToExtension(\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension)
     {
+        if (!is_array($this->extension)) {
+            throw new \LogicException('extension is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->extension[] = $extension;
         return $this;
     }
@@ -66,7 +69,7 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Reserved for future use.
      *
-     * @return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[]
+     * @return iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType>
      */
     public function getExtension()
     {
@@ -78,10 +81,10 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      *
      * Reserved for future use.
      *
-     * @param \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType[] $extension
+     * @param iterable<\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType> $extension
      * @return self
      */
-    public function setExtension(array $extension)
+    public function setExtension(iterable $extension)
     {
         $this->extension = $extension;
         return $this;
@@ -91,10 +94,10 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
     {
         $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getExtension();
-        if (null !== $value && [] !== $this->getExtension()) {
-            $writer->write(array_map(function ($v) {
-                return ["extension" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["extension" => $v]]);
+            }
         }
     }
 

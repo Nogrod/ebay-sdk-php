@@ -38,6 +38,9 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToNumberOfPolicyViolations($count)
     {
+        if (!is_array($this->numberOfPolicyViolations)) {
+            throw new \LogicException('numberOfPolicyViolations is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->numberOfPolicyViolations[] = $count;
         return $this;
     }
@@ -73,7 +76,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
      *
-     * @return int[]
+     * @return iterable<int>
      */
     public function getNumberOfPolicyViolations()
     {
@@ -85,10 +88,10 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
      *
-     * @param int[] $numberOfPolicyViolations
+     * @param iterable<int> $numberOfPolicyViolations
      * @return self
      */
-    public function setNumberOfPolicyViolations(array $numberOfPolicyViolations)
+    public function setNumberOfPolicyViolations(iterable $numberOfPolicyViolations)
     {
         $this->numberOfPolicyViolations = $numberOfPolicyViolations;
         return $this;
@@ -104,6 +107,9 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToPolicyViolationDuration(\Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType $policyViolationDuration)
     {
+        if (!is_array($this->policyViolationDuration)) {
+            throw new \LogicException('policyViolationDuration is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->policyViolationDuration[] = $policyViolationDuration;
         return $this;
     }
@@ -139,7 +145,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
      *
-     * @return \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType>
      */
     public function getPolicyViolationDuration()
     {
@@ -151,10 +157,10 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      *
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
      *
-     * @param \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType[] $policyViolationDuration
+     * @param iterable<\Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType> $policyViolationDuration
      * @return self
      */
-    public function setPolicyViolationDuration(array $policyViolationDuration)
+    public function setPolicyViolationDuration(iterable $policyViolationDuration)
     {
         $this->policyViolationDuration = $policyViolationDuration;
         return $this;
@@ -164,16 +170,19 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getNumberOfPolicyViolations();
-        if (null !== $value && [] !== $this->getNumberOfPolicyViolations()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations", array_map(function ($v) {
-                return ["Count" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations", array_map(function ($v) {
+                    return ["Count" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPolicyViolationDuration();
-        if (null !== $value && [] !== $this->getPolicyViolationDuration()) {
-            $writer->write(array_map(function ($v) {
-                return ["PolicyViolationDuration" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PolicyViolationDuration" => $v]]);
+            }
         }
     }
 

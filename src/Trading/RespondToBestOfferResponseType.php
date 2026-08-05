@@ -29,6 +29,9 @@ class RespondToBestOfferResponseType extends AbstractResponseType
      */
     public function addToRespondToBestOffer(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        if (!is_array($this->respondToBestOffer)) {
+            throw new \LogicException('respondToBestOffer is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->respondToBestOffer[] = $bestOffer;
         return $this;
     }
@@ -64,7 +67,7 @@ class RespondToBestOfferResponseType extends AbstractResponseType
      *
      * The <b>BestOffer.CallStatus</b> value returned in this container will indicate whether or not the action specified in the call request (accept, decline, or counter offer) was successful. The accept and counter offer actions can only be applied toward a single Best Offer. However, multiple Best Offers on a listing can be declined with one call. All Best Offers must be successfully declined with the <b>RespondToBestOffer</b> call for the <b> BestOffer.CallStatus</b> value to be <code>Success</code>.
      *
-     * @return \Nogrod\eBaySDK\Trading\BestOfferType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\BestOfferType>
      */
     public function getRespondToBestOffer()
     {
@@ -76,10 +79,10 @@ class RespondToBestOfferResponseType extends AbstractResponseType
      *
      * The <b>BestOffer.CallStatus</b> value returned in this container will indicate whether or not the action specified in the call request (accept, decline, or counter offer) was successful. The accept and counter offer actions can only be applied toward a single Best Offer. However, multiple Best Offers on a listing can be declined with one call. All Best Offers must be successfully declined with the <b>RespondToBestOffer</b> call for the <b> BestOffer.CallStatus</b> value to be <code>Success</code>.
      *
-     * @param \Nogrod\eBaySDK\Trading\BestOfferType[] $respondToBestOffer
+     * @param iterable<\Nogrod\eBaySDK\Trading\BestOfferType> $respondToBestOffer
      * @return self
      */
-    public function setRespondToBestOffer(array $respondToBestOffer)
+    public function setRespondToBestOffer(iterable $respondToBestOffer)
     {
         $this->respondToBestOffer = $respondToBestOffer;
         return $this;
@@ -89,10 +92,13 @@ class RespondToBestOfferResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getRespondToBestOffer();
-        if (null !== $value && [] !== $this->getRespondToBestOffer()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {
-                return ["BestOffer" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {
+                    return ["BestOffer" => $v];
+                }, $value));
+            }
         }
     }
 

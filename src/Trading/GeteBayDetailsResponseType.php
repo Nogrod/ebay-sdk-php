@@ -406,6 +406,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToCountryDetails(\Nogrod\eBaySDK\Trading\CountryDetailsType $countryDetails)
     {
+        if (!is_array($this->countryDetails)) {
+            throw new \LogicException('countryDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->countryDetails[] = $countryDetails;
         return $this;
     }
@@ -456,7 +459,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  This container is only returned if <b>CountryDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\CountryDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CountryDetailsType>
      */
     public function getCountryDetails()
     {
@@ -473,10 +476,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  This container is only returned if <b>CountryDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\CountryDetailsType[] $countryDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\CountryDetailsType> $countryDetails
      * @return self
      */
-    public function setCountryDetails(array $countryDetails)
+    public function setCountryDetails(iterable $countryDetails)
     {
         $this->countryDetails = $countryDetails;
         return $this;
@@ -499,6 +502,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToCurrencyDetails(\Nogrod\eBaySDK\Trading\CurrencyDetailsType $currencyDetails)
     {
+        if (!is_array($this->currencyDetails)) {
+            throw new \LogicException('currencyDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->currencyDetails[] = $currencyDetails;
         return $this;
     }
@@ -555,7 +561,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\CurrencyDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\CurrencyDetailsType>
      */
     public function getCurrencyDetails()
     {
@@ -574,10 +580,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\CurrencyDetailsType[] $currencyDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\CurrencyDetailsType> $currencyDetails
      * @return self
      */
-    public function setCurrencyDetails(array $currencyDetails)
+    public function setCurrencyDetails(iterable $currencyDetails)
     {
         $this->currencyDetails = $currencyDetails;
         return $this;
@@ -599,6 +605,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToDispatchTimeMaxDetails(\Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType $dispatchTimeMaxDetails)
     {
+        if (!is_array($this->dispatchTimeMaxDetails)) {
+            throw new \LogicException('dispatchTimeMaxDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->dispatchTimeMaxDetails[] = $dispatchTimeMaxDetails;
         return $this;
     }
@@ -652,7 +661,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType>
      */
     public function getDispatchTimeMaxDetails()
     {
@@ -670,10 +679,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType[] $dispatchTimeMaxDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType> $dispatchTimeMaxDetails
      * @return self
      */
-    public function setDispatchTimeMaxDetails(array $dispatchTimeMaxDetails)
+    public function setDispatchTimeMaxDetails(iterable $dispatchTimeMaxDetails)
     {
         $this->dispatchTimeMaxDetails = $dispatchTimeMaxDetails;
         return $this;
@@ -692,6 +701,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToPaymentOptionDetails(\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType $paymentOptionDetails)
     {
+        if (!is_array($this->paymentOptionDetails)) {
+            throw new \LogicException('paymentOptionDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->paymentOptionDetails[] = $paymentOptionDetails;
         return $this;
     }
@@ -736,7 +748,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType>
      */
     public function getPaymentOptionDetails()
     {
@@ -751,10 +763,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType[] $paymentOptionDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType> $paymentOptionDetails
      * @return self
      */
-    public function setPaymentOptionDetails(array $paymentOptionDetails)
+    public function setPaymentOptionDetails(iterable $paymentOptionDetails)
     {
         $this->paymentOptionDetails = $paymentOptionDetails;
         return $this;
@@ -776,6 +788,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRegionDetails(\Nogrod\eBaySDK\Trading\RegionDetailsType $regionDetails)
     {
+        if (!is_array($this->regionDetails)) {
+            throw new \LogicException('regionDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->regionDetails[] = $regionDetails;
         return $this;
     }
@@ -829,7 +844,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\RegionDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RegionDetailsType>
      */
     public function getRegionDetails()
     {
@@ -847,10 +862,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\RegionDetailsType[] $regionDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\RegionDetailsType> $regionDetails
      * @return self
      */
-    public function setRegionDetails(array $regionDetails)
+    public function setRegionDetails(iterable $regionDetails)
     {
         $this->regionDetails = $regionDetails;
         return $this;
@@ -872,6 +887,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingLocationDetails(\Nogrod\eBaySDK\Trading\ShippingLocationDetailsType $shippingLocationDetails)
     {
+        if (!is_array($this->shippingLocationDetails)) {
+            throw new \LogicException('shippingLocationDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingLocationDetails[] = $shippingLocationDetails;
         return $this;
     }
@@ -925,7 +943,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingLocationDetailsType>
      */
     public function getShippingLocationDetails()
     {
@@ -943,10 +961,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType[] $shippingLocationDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingLocationDetailsType> $shippingLocationDetails
      * @return self
      */
-    public function setShippingLocationDetails(array $shippingLocationDetails)
+    public function setShippingLocationDetails(iterable $shippingLocationDetails)
     {
         $this->shippingLocationDetails = $shippingLocationDetails;
         return $this;
@@ -968,6 +986,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingServiceDetails(\Nogrod\eBaySDK\Trading\ShippingServiceDetailsType $shippingServiceDetails)
     {
+        if (!is_array($this->shippingServiceDetails)) {
+            throw new \LogicException('shippingServiceDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingServiceDetails[] = $shippingServiceDetails;
         return $this;
     }
@@ -1021,7 +1042,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingServiceDetailsType>
      */
     public function getShippingServiceDetails()
     {
@@ -1039,10 +1060,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType[] $shippingServiceDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingServiceDetailsType> $shippingServiceDetails
      * @return self
      */
-    public function setShippingServiceDetails(array $shippingServiceDetails)
+    public function setShippingServiceDetails(iterable $shippingServiceDetails)
     {
         $this->shippingServiceDetails = $shippingServiceDetails;
         return $this;
@@ -1064,6 +1085,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToSiteDetails(\Nogrod\eBaySDK\Trading\SiteDetailsType $siteDetails)
     {
+        if (!is_array($this->siteDetails)) {
+            throw new \LogicException('siteDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->siteDetails[] = $siteDetails;
         return $this;
     }
@@ -1117,7 +1141,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\SiteDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SiteDetailsType>
      */
     public function getSiteDetails()
     {
@@ -1135,10 +1159,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\SiteDetailsType[] $siteDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\SiteDetailsType> $siteDetails
      * @return self
      */
-    public function setSiteDetails(array $siteDetails)
+    public function setSiteDetails(iterable $siteDetails)
     {
         $this->siteDetails = $siteDetails;
         return $this;
@@ -1161,6 +1185,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToTaxJurisdiction(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        if (!is_array($this->taxJurisdiction)) {
+            throw new \LogicException('taxJurisdiction is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->taxJurisdiction[] = $taxJurisdiction;
         return $this;
     }
@@ -1217,7 +1244,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\TaxJurisdictionType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType>
      */
     public function getTaxJurisdiction()
     {
@@ -1236,10 +1263,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\TaxJurisdictionType[] $taxJurisdiction
+     * @param iterable<\Nogrod\eBaySDK\Trading\TaxJurisdictionType> $taxJurisdiction
      * @return self
      */
-    public function setTaxJurisdiction(array $taxJurisdiction)
+    public function setTaxJurisdiction(iterable $taxJurisdiction)
     {
         $this->taxJurisdiction = $taxJurisdiction;
         return $this;
@@ -1261,6 +1288,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToURLDetails(\Nogrod\eBaySDK\Trading\URLDetailsType $uRLDetails)
     {
+        if (!is_array($this->uRLDetails)) {
+            throw new \LogicException('uRLDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->uRLDetails[] = $uRLDetails;
         return $this;
     }
@@ -1314,7 +1344,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\URLDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\URLDetailsType>
      */
     public function getURLDetails()
     {
@@ -1332,10 +1362,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\URLDetailsType[] $uRLDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\URLDetailsType> $uRLDetails
      * @return self
      */
-    public function setURLDetails(array $uRLDetails)
+    public function setURLDetails(iterable $uRLDetails)
     {
         $this->uRLDetails = $uRLDetails;
         return $this;
@@ -1357,6 +1387,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToTimeZoneDetails(\Nogrod\eBaySDK\Trading\TimeZoneDetailsType $timeZoneDetails)
     {
+        if (!is_array($this->timeZoneDetails)) {
+            throw new \LogicException('timeZoneDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->timeZoneDetails[] = $timeZoneDetails;
         return $this;
     }
@@ -1410,7 +1443,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\TimeZoneDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\TimeZoneDetailsType>
      */
     public function getTimeZoneDetails()
     {
@@ -1428,10 +1461,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\TimeZoneDetailsType[] $timeZoneDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\TimeZoneDetailsType> $timeZoneDetails
      * @return self
      */
-    public function setTimeZoneDetails(array $timeZoneDetails)
+    public function setTimeZoneDetails(iterable $timeZoneDetails)
     {
         $this->timeZoneDetails = $timeZoneDetails;
         return $this;
@@ -1453,6 +1486,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToItemSpecificDetails(\Nogrod\eBaySDK\Trading\ItemSpecificDetailsType $itemSpecificDetails)
     {
+        if (!is_array($this->itemSpecificDetails)) {
+            throw new \LogicException('itemSpecificDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemSpecificDetails[] = $itemSpecificDetails;
         return $this;
     }
@@ -1506,7 +1542,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ItemSpecificDetailsType>
      */
     public function getItemSpecificDetails()
     {
@@ -1524,10 +1560,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType[] $itemSpecificDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ItemSpecificDetailsType> $itemSpecificDetails
      * @return self
      */
-    public function setItemSpecificDetails(array $itemSpecificDetails)
+    public function setItemSpecificDetails(iterable $itemSpecificDetails)
     {
         $this->itemSpecificDetails = $itemSpecificDetails;
         return $this;
@@ -1549,6 +1585,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRegionOfOriginDetails(\Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType $regionOfOriginDetails)
     {
+        if (!is_array($this->regionOfOriginDetails)) {
+            throw new \LogicException('regionOfOriginDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->regionOfOriginDetails[] = $regionOfOriginDetails;
         return $this;
     }
@@ -1602,7 +1641,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType>
      */
     public function getRegionOfOriginDetails()
     {
@@ -1620,10 +1659,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType[] $regionOfOriginDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType> $regionOfOriginDetails
      * @return self
      */
-    public function setRegionOfOriginDetails(array $regionOfOriginDetails)
+    public function setRegionOfOriginDetails(iterable $regionOfOriginDetails)
     {
         $this->regionOfOriginDetails = $regionOfOriginDetails;
         return $this;
@@ -1645,6 +1684,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingPackageDetails(\Nogrod\eBaySDK\Trading\ShippingPackageDetailsType $shippingPackageDetails)
     {
+        if (!is_array($this->shippingPackageDetails)) {
+            throw new \LogicException('shippingPackageDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingPackageDetails[] = $shippingPackageDetails;
         return $this;
     }
@@ -1698,7 +1740,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingPackageDetailsType>
      */
     public function getShippingPackageDetails()
     {
@@ -1716,10 +1758,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType[] $shippingPackageDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingPackageDetailsType> $shippingPackageDetails
      * @return self
      */
-    public function setShippingPackageDetails(array $shippingPackageDetails)
+    public function setShippingPackageDetails(iterable $shippingPackageDetails)
     {
         $this->shippingPackageDetails = $shippingPackageDetails;
         return $this;
@@ -1741,6 +1783,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingCarrierDetails(\Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType $shippingCarrierDetails)
     {
+        if (!is_array($this->shippingCarrierDetails)) {
+            throw new \LogicException('shippingCarrierDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingCarrierDetails[] = $shippingCarrierDetails;
         return $this;
     }
@@ -1794,7 +1839,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType>
      */
     public function getShippingCarrierDetails()
     {
@@ -1812,10 +1857,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType[] $shippingCarrierDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType> $shippingCarrierDetails
      * @return self
      */
-    public function setShippingCarrierDetails(array $shippingCarrierDetails)
+    public function setShippingCarrierDetails(iterable $shippingCarrierDetails)
     {
         $this->shippingCarrierDetails = $shippingCarrierDetails;
         return $this;
@@ -1881,6 +1926,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToListingStartPriceDetails(\Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType $listingStartPriceDetails)
     {
+        if (!is_array($this->listingStartPriceDetails)) {
+            throw new \LogicException('listingStartPriceDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->listingStartPriceDetails[] = $listingStartPriceDetails;
         return $this;
     }
@@ -1934,7 +1982,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType>
      */
     public function getListingStartPriceDetails()
     {
@@ -1952,10 +2000,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType[] $listingStartPriceDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType> $listingStartPriceDetails
      * @return self
      */
-    public function setListingStartPriceDetails(array $listingStartPriceDetails)
+    public function setListingStartPriceDetails(iterable $listingStartPriceDetails)
     {
         $this->listingStartPriceDetails = $listingStartPriceDetails;
         return $this;
@@ -1977,6 +2025,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToBuyerRequirementDetails(\Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType $buyerRequirementDetails)
     {
+        if (!is_array($this->buyerRequirementDetails)) {
+            throw new \LogicException('buyerRequirementDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->buyerRequirementDetails[] = $buyerRequirementDetails;
         return $this;
     }
@@ -2030,7 +2081,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType>
      */
     public function getBuyerRequirementDetails()
     {
@@ -2048,10 +2099,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType[] $buyerRequirementDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType> $buyerRequirementDetails
      * @return self
      */
-    public function setBuyerRequirementDetails(array $buyerRequirementDetails)
+    public function setBuyerRequirementDetails(iterable $buyerRequirementDetails)
     {
         $this->buyerRequirementDetails = $buyerRequirementDetails;
         return $this;
@@ -2073,6 +2124,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToListingFeatureDetails(\Nogrod\eBaySDK\Trading\ListingFeatureDetailsType $listingFeatureDetails)
     {
+        if (!is_array($this->listingFeatureDetails)) {
+            throw new \LogicException('listingFeatureDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->listingFeatureDetails[] = $listingFeatureDetails;
         return $this;
     }
@@ -2126,7 +2180,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ListingFeatureDetailsType>
      */
     public function getListingFeatureDetails()
     {
@@ -2144,10 +2198,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType[] $listingFeatureDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ListingFeatureDetailsType> $listingFeatureDetails
      * @return self
      */
-    public function setListingFeatureDetails(array $listingFeatureDetails)
+    public function setListingFeatureDetails(iterable $listingFeatureDetails)
     {
         $this->listingFeatureDetails = $listingFeatureDetails;
         return $this;
@@ -2204,6 +2258,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToExcludeShippingLocationDetails(\Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType $excludeShippingLocationDetails)
     {
+        if (!is_array($this->excludeShippingLocationDetails)) {
+            throw new \LogicException('excludeShippingLocationDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->excludeShippingLocationDetails[] = $excludeShippingLocationDetails;
         return $this;
     }
@@ -2260,7 +2317,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType>
      */
     public function getExcludeShippingLocationDetails()
     {
@@ -2279,10 +2336,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType[] $excludeShippingLocationDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType> $excludeShippingLocationDetails
      * @return self
      */
-    public function setExcludeShippingLocationDetails(array $excludeShippingLocationDetails)
+    public function setExcludeShippingLocationDetails(iterable $excludeShippingLocationDetails)
     {
         $this->excludeShippingLocationDetails = $excludeShippingLocationDetails;
         return $this;
@@ -2334,6 +2391,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRecoupmentPolicyDetails(\Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType $recoupmentPolicyDetails)
     {
+        if (!is_array($this->recoupmentPolicyDetails)) {
+            throw new \LogicException('recoupmentPolicyDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->recoupmentPolicyDetails[] = $recoupmentPolicyDetails;
         return $this;
     }
@@ -2387,7 +2447,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @return \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType>
      */
     public function getRecoupmentPolicyDetails()
     {
@@ -2405,10 +2465,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  filters are used in the request.
      *  </span>
      *
-     * @param \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType[] $recoupmentPolicyDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType> $recoupmentPolicyDetails
      * @return self
      */
-    public function setRecoupmentPolicyDetails(array $recoupmentPolicyDetails)
+    public function setRecoupmentPolicyDetails(iterable $recoupmentPolicyDetails)
     {
         $this->recoupmentPolicyDetails = $recoupmentPolicyDetails;
         return $this;
@@ -2443,6 +2503,9 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingCategoryDetails(\Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType $shippingCategoryDetails)
     {
+        if (!is_array($this->shippingCategoryDetails)) {
+            throw new \LogicException('shippingCategoryDetails is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->shippingCategoryDetails[] = $shippingCategoryDetails;
         return $this;
     }
@@ -2535,7 +2598,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  with <b>DetailName</b> set to <b>ShippingServiceDetails</b>.
      *  Then sort these results by <b>ShippingCategory</b> and populate the picklist.
      *
-     * @return \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType>
      */
     public function getShippingCategoryDetails()
     {
@@ -2566,10 +2629,10 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      *  with <b>DetailName</b> set to <b>ShippingServiceDetails</b>.
      *  Then sort these results by <b>ShippingCategory</b> and populate the picklist.
      *
-     * @param \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType[] $shippingCategoryDetails
+     * @param iterable<\Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType> $shippingCategoryDetails
      * @return self
      */
-    public function setShippingCategoryDetails(array $shippingCategoryDetails)
+    public function setShippingCategoryDetails(iterable $shippingCategoryDetails)
     {
         $this->shippingCategoryDetails = $shippingCategoryDetails;
         return $this;
@@ -2623,142 +2686,142 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     {
         parent::xmlSerialize($writer);
         $value = $this->getCountryDetails();
-        if (null !== $value && [] !== $this->getCountryDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["CountryDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CountryDetails" => $v]]);
+            }
         }
         $value = $this->getCurrencyDetails();
-        if (null !== $value && [] !== $this->getCurrencyDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["CurrencyDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["CurrencyDetails" => $v]]);
+            }
         }
         $value = $this->getDispatchTimeMaxDetails();
-        if (null !== $value && [] !== $this->getDispatchTimeMaxDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["DispatchTimeMaxDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["DispatchTimeMaxDetails" => $v]]);
+            }
         }
         $value = $this->getPaymentOptionDetails();
-        if (null !== $value && [] !== $this->getPaymentOptionDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["PaymentOptionDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["PaymentOptionDetails" => $v]]);
+            }
         }
         $value = $this->getRegionDetails();
-        if (null !== $value && [] !== $this->getRegionDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["RegionDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RegionDetails" => $v]]);
+            }
         }
         $value = $this->getShippingLocationDetails();
-        if (null !== $value && [] !== $this->getShippingLocationDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingLocationDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingLocationDetails" => $v]]);
+            }
         }
         $value = $this->getShippingServiceDetails();
-        if (null !== $value && [] !== $this->getShippingServiceDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingServiceDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingServiceDetails" => $v]]);
+            }
         }
         $value = $this->getSiteDetails();
-        if (null !== $value && [] !== $this->getSiteDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["SiteDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["SiteDetails" => $v]]);
+            }
         }
         $value = $this->getTaxJurisdiction();
-        if (null !== $value && [] !== $this->getTaxJurisdiction()) {
-            $writer->write(array_map(function ($v) {
-                return ["TaxJurisdiction" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["TaxJurisdiction" => $v]]);
+            }
         }
         $value = $this->getURLDetails();
-        if (null !== $value && [] !== $this->getURLDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["URLDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["URLDetails" => $v]]);
+            }
         }
         $value = $this->getTimeZoneDetails();
-        if (null !== $value && [] !== $this->getTimeZoneDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["TimeZoneDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["TimeZoneDetails" => $v]]);
+            }
         }
         $value = $this->getItemSpecificDetails();
-        if (null !== $value && [] !== $this->getItemSpecificDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemSpecificDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemSpecificDetails" => $v]]);
+            }
         }
         $value = $this->getRegionOfOriginDetails();
-        if (null !== $value && [] !== $this->getRegionOfOriginDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["RegionOfOriginDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RegionOfOriginDetails" => $v]]);
+            }
         }
         $value = $this->getShippingPackageDetails();
-        if (null !== $value && [] !== $this->getShippingPackageDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingPackageDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingPackageDetails" => $v]]);
+            }
         }
         $value = $this->getShippingCarrierDetails();
-        if (null !== $value && [] !== $this->getShippingCarrierDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingCarrierDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingCarrierDetails" => $v]]);
+            }
         }
         $value = $this->getReturnPolicyDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails", $value);
         }
         $value = $this->getListingStartPriceDetails();
-        if (null !== $value && [] !== $this->getListingStartPriceDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingStartPriceDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ListingStartPriceDetails" => $v]]);
+            }
         }
         $value = $this->getBuyerRequirementDetails();
-        if (null !== $value && [] !== $this->getBuyerRequirementDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["BuyerRequirementDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BuyerRequirementDetails" => $v]]);
+            }
         }
         $value = $this->getListingFeatureDetails();
-        if (null !== $value && [] !== $this->getListingFeatureDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ListingFeatureDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ListingFeatureDetails" => $v]]);
+            }
         }
         $value = $this->getVariationDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationDetails", $value);
         }
         $value = $this->getExcludeShippingLocationDetails();
-        if (null !== $value && [] !== $this->getExcludeShippingLocationDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ExcludeShippingLocationDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ExcludeShippingLocationDetails" => $v]]);
+            }
         }
         $value = $this->getUpdateTime();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
         }
         $value = $this->getRecoupmentPolicyDetails();
-        if (null !== $value && [] !== $this->getRecoupmentPolicyDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["RecoupmentPolicyDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["RecoupmentPolicyDetails" => $v]]);
+            }
         }
         $value = $this->getShippingCategoryDetails();
-        if (null !== $value && [] !== $this->getShippingCategoryDetails()) {
-            $writer->write(array_map(function ($v) {
-                return ["ShippingCategoryDetails" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ShippingCategoryDetails" => $v]]);
+            }
         }
         $value = $this->getProductDetails();
         if (null !== $value) {

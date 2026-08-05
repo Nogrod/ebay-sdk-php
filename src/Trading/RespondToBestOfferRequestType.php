@@ -97,6 +97,9 @@ class RespondToBestOfferRequestType extends AbstractRequestType
      */
     public function addToBestOfferID($bestOfferID)
     {
+        if (!is_array($this->bestOfferID)) {
+            throw new \LogicException('bestOfferID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->bestOfferID[] = $bestOfferID;
         return $this;
     }
@@ -132,7 +135,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
      *
      * The unique identifier of a buyer's Best Offer for the order line item. This ID is created once the buyer makes a Best Offer. It is possible that a seller will get multiple Best Offers for an order line item, and if that seller would like to decline multiple/all of the Best Offers with one <b>RespondToBestOffer</b> call, the seller would pass in each of these identifiers in a separate <b>BestOfferID</b> field. However, the seller can only accept or counter offer one Best Offer at a time.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getBestOfferID()
     {
@@ -147,7 +150,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
      * @param string $bestOfferID
      * @return self
      */
-    public function setBestOfferID(array $bestOfferID)
+    public function setBestOfferID(iterable $bestOfferID)
     {
         $this->bestOfferID = $bestOfferID;
         return $this;
@@ -267,10 +270,10 @@ class RespondToBestOfferRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getBestOfferID();
-        if (null !== $value && [] !== $this->getBestOfferID()) {
-            $writer->write(array_map(function ($v) {
-                return ["BestOfferID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["BestOfferID" => $v]]);
+            }
         }
         $value = $this->getAction();
         if (null !== $value) {

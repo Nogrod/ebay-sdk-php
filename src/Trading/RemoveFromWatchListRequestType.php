@@ -54,6 +54,9 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      */
     public function addToItemID($itemID)
     {
+        if (!is_array($this->itemID)) {
+            throw new \LogicException('itemID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->itemID[] = $itemID;
         return $this;
     }
@@ -95,7 +98,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      *  user's Watch List. Multiple <b>ItemID</b> fields can be specified in the same request, but note that the <b>RemoveAllItems</b> field or <b>VariationKey</b> container cannot be specified if one or more <b>ItemID</b> fields are used.
      *  <br/><br/>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getItemID()
     {
@@ -112,7 +115,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      * @param string $itemID
      * @return self
      */
-    public function setItemID(array $itemID)
+    public function setItemID(iterable $itemID)
     {
         $this->itemID = $itemID;
         return $this;
@@ -156,6 +159,9 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      */
     public function addToVariationKey(\Nogrod\eBaySDK\Trading\VariationKeyType $variationKey)
     {
+        if (!is_array($this->variationKey)) {
+            throw new \LogicException('variationKey is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->variationKey[] = $variationKey;
         return $this;
     }
@@ -191,7 +197,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      *
      * This container is used if the user want to remove one or more product variations (within a multiple-variation listing) from the Watch List. Note that if the <b>VariationKey</b> container is used, one or more <b>ItemID</b> fields or the <b>RemoveAllItems</b> field cannot be used.
      *
-     * @return \Nogrod\eBaySDK\Trading\VariationKeyType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\VariationKeyType>
      */
     public function getVariationKey()
     {
@@ -203,10 +209,10 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      *
      * This container is used if the user want to remove one or more product variations (within a multiple-variation listing) from the Watch List. Note that if the <b>VariationKey</b> container is used, one or more <b>ItemID</b> fields or the <b>RemoveAllItems</b> field cannot be used.
      *
-     * @param \Nogrod\eBaySDK\Trading\VariationKeyType[] $variationKey
+     * @param iterable<\Nogrod\eBaySDK\Trading\VariationKeyType> $variationKey
      * @return self
      */
-    public function setVariationKey(array $variationKey)
+    public function setVariationKey(iterable $variationKey)
     {
         $this->variationKey = $variationKey;
         return $this;
@@ -216,10 +222,10 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getItemID();
-        if (null !== $value && [] !== $this->getItemID()) {
-            $writer->write(array_map(function ($v) {
-                return ["ItemID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["ItemID" => $v]]);
+            }
         }
         $value = $this->getRemoveAllItems();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
@@ -227,10 +233,10 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllItems", $value);
         }
         $value = $this->getVariationKey();
-        if (null !== $value && [] !== $this->getVariationKey()) {
-            $writer->write(array_map(function ($v) {
-                return ["VariationKey" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VariationKey" => $v]]);
+            }
         }
     }
 

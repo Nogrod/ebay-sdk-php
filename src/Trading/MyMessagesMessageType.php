@@ -915,6 +915,9 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        if (!is_array($this->messageMedia)) {
+            throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->messageMedia[] = $messageMedia;
         return $this;
     }
@@ -950,7 +953,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * Media details stored as part of the message.
      *
-     * @return \Nogrod\eBaySDK\Trading\MessageMediaType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\MessageMediaType>
      */
     public function getMessageMedia()
     {
@@ -962,10 +965,10 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      *
      * Media details stored as part of the message.
      *
-     * @param \Nogrod\eBaySDK\Trading\MessageMediaType[] $messageMedia
+     * @param iterable<\Nogrod\eBaySDK\Trading\MessageMediaType> $messageMedia
      * @return self
      */
-    public function setMessageMedia(array $messageMedia)
+    public function setMessageMedia(iterable $messageMedia)
     {
         $this->messageMedia = $messageMedia;
         return $this;
@@ -1067,10 +1070,10 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemTitle", $value);
         }
         $value = $this->getMessageMedia();
-        if (null !== $value && [] !== $this->getMessageMedia()) {
-            $writer->write(array_map(function ($v) {
-                return ["MessageMedia" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["MessageMedia" => $v]]);
+            }
         }
     }
 

@@ -142,6 +142,9 @@ class GetSellerListRequestType extends AbstractRequestType
      */
     public function addToMotorsDealerUsers($userID)
     {
+        if (!is_array($this->motorsDealerUsers)) {
+            throw new \LogicException('motorsDealerUsers is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->motorsDealerUsers[] = $userID;
         return $this;
     }
@@ -180,7 +183,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * Specifies the list of Motors Dealer sellers for which a special set of
      *  metrics can be requested. Applies to eBay Motors Pro applications only.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getMotorsDealerUsers()
     {
@@ -196,7 +199,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * @param string $motorsDealerUsers
      * @return self
      */
-    public function setMotorsDealerUsers(array $motorsDealerUsers)
+    public function setMotorsDealerUsers(iterable $motorsDealerUsers)
     {
         $this->motorsDealerUsers = $motorsDealerUsers;
         return $this;
@@ -426,6 +429,9 @@ class GetSellerListRequestType extends AbstractRequestType
      */
     public function addToSKUArray($sKU)
     {
+        if (!is_array($this->sKUArray)) {
+            throw new \LogicException('sKUArray is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->sKUArray[] = $sKU;
         return $this;
     }
@@ -479,7 +485,7 @@ class GetSellerListRequestType extends AbstractRequestType
      *  <b>Item.InventoryTrackingMethod</b> setting.
      *  </span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getSKUArray()
     {
@@ -500,7 +506,7 @@ class GetSellerListRequestType extends AbstractRequestType
      * @param string $sKUArray
      * @return self
      */
-    public function setSKUArray(array $sKUArray)
+    public function setSKUArray(iterable $sKUArray)
     {
         $this->sKUArray = $sKUArray;
         return $this;
@@ -622,10 +628,13 @@ class GetSellerListRequestType extends AbstractRequestType
     {
         parent::xmlSerialize($writer);
         $value = $this->getMotorsDealerUsers();
-        if (null !== $value && [] !== $this->getMotorsDealerUsers()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {
-                return ["UserID" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {
+                    return ["UserID" => $v];
+                }, $value));
+            }
         }
         $value = $this->getEndTimeFrom();
         if (null !== $value) {
@@ -656,10 +665,13 @@ class GetSellerListRequestType extends AbstractRequestType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GranularityLevel", $value);
         }
         $value = $this->getSKUArray();
-        if (null !== $value && [] !== $this->getSKUArray()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                return ["SKU" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
+                    return ["SKU" => $v];
+                }, $value));
+            }
         }
         $value = $this->getIncludeWatchCount();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;

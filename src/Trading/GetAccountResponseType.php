@@ -201,6 +201,9 @@ class GetAccountResponseType extends AbstractResponseType
      */
     public function addToAccountEntries(\Nogrod\eBaySDK\Trading\AccountEntryType $accountEntry)
     {
+        if (!is_array($this->accountEntries)) {
+            throw new \LogicException('accountEntries is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->accountEntries[] = $accountEntry;
         return $this;
     }
@@ -236,7 +239,7 @@ class GetAccountResponseType extends AbstractResponseType
      *
      * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
-     * @return \Nogrod\eBaySDK\Trading\AccountEntryType[]
+     * @return iterable<\Nogrod\eBaySDK\Trading\AccountEntryType>
      */
     public function getAccountEntries()
     {
@@ -248,10 +251,10 @@ class GetAccountResponseType extends AbstractResponseType
      *
      * This container holds an array of account entries. The account entries that are returned are dependent on the selection that the user made in the <b>AccountHistorySelection</b> field in the call request. Each <b>AccountEntry</b> container consists of one credit, one debit, or one administrative action on the account. It is possible that no <b>AccountEntry</b> containers will be returned if no account entries exist since the last invoice (if <code>LastInvoice</code> value is used), between the specified dates (if <code>BetweenSpecifiedDates</code> value is used), or no entries exist for an order (if <code>OrderId</code> value is used).
      *
-     * @param \Nogrod\eBaySDK\Trading\AccountEntryType[] $accountEntries
+     * @param iterable<\Nogrod\eBaySDK\Trading\AccountEntryType> $accountEntries
      * @return self
      */
-    public function setAccountEntries(array $accountEntries)
+    public function setAccountEntries(iterable $accountEntries)
     {
         $this->accountEntries = $accountEntries;
         return $this;
@@ -381,10 +384,13 @@ class GetAccountResponseType extends AbstractResponseType
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
         }
         $value = $this->getAccountEntries();
-        if (null !== $value && [] !== $this->getAccountEntries()) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {
-                return ["AccountEntry" => $v];
-            }, $value));
+        if (null !== $value) {
+            $value = is_array($value) ? $value : iterator_to_array($value);
+            if ([] !== $value) {
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {
+                    return ["AccountEntry" => $v];
+                }, $value));
+            }
         }
         $value = $this->getPaginationResult();
         if (null !== $value) {

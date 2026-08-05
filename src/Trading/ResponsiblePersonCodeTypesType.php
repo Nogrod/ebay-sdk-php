@@ -35,6 +35,9 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToType($type)
     {
+        if (!is_array($this->type)) {
+            throw new \LogicException('type is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->type[] = $type;
         return $this;
     }
@@ -76,7 +79,7 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
      *  <br />
      *  <span class="tablenote"><b>Note: </b> Currently, the only supported value is <code>EUResponsiblePerson</code>.</span>
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getType()
     {
@@ -93,7 +96,7 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
      * @param string $type
      * @return self
      */
-    public function setType(array $type)
+    public function setType(iterable $type)
     {
         $this->type = $type;
         return $this;
@@ -103,10 +106,10 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getType();
-        if (null !== $value && [] !== $this->getType()) {
-            $writer->write(array_map(function ($v) {
-                return ["Type" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["Type" => $v]]);
+            }
         }
     }
 

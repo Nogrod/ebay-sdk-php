@@ -55,6 +55,9 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToVideoID($videoID)
     {
+        if (!is_array($this->videoID)) {
+            throw new \LogicException('videoID is a lazy iterable and cannot be appended to; set an array instead.');
+        }
         $this->videoID[] = $videoID;
         return $this;
     }
@@ -123,7 +126,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br/>
      *  The <b>GetItem</b> call can be used by the seller to see which video (if any) is attached to the listing. The <b>VideoDetails</b> container will be returned if the listing contains a video. The <b>VideoDetails</b> container will only be returned to the seller of the item and no one else.
      *
-     * @return string[]
+     * @return iterable<string>
      */
     public function getVideoID()
     {
@@ -146,10 +149,10 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      *  <br/>
      *  The <b>GetItem</b> call can be used by the seller to see which video (if any) is attached to the listing. The <b>VideoDetails</b> container will be returned if the listing contains a video. The <b>VideoDetails</b> container will only be returned to the seller of the item and no one else.
      *
-     * @param string[] $videoID
+     * @param iterable<string> $videoID
      * @return self
      */
-    public function setVideoID(array $videoID)
+    public function setVideoID(iterable $videoID)
     {
         $this->videoID = $videoID;
         return $this;
@@ -159,10 +162,10 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     {
         $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getVideoID();
-        if (null !== $value && [] !== $this->getVideoID()) {
-            $writer->write(array_map(function ($v) {
-                return ["VideoID" => $v];
-            }, $value));
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->write([["VideoID" => $v]]);
+            }
         }
     }
 
