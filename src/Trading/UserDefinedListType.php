@@ -313,90 +313,125 @@ class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getName();
+        $value = $this->name;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
+            $writer->writeElementNs(null, 'Name', null, (string) $value);
         }
-        $value = $this->getItemCount();
+        $value = $this->itemCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCount", $value);
+            $writer->writeElementNs(null, 'ItemCount', null, (string) $value);
         }
-        $value = $this->getFavoriteSearcheCount();
+        $value = $this->favoriteSearcheCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSearcheCount", $value);
+            $writer->writeElementNs(null, 'FavoriteSearcheCount', null, (string) $value);
         }
-        $value = $this->getFavoriteSellerCount();
+        $value = $this->favoriteSellerCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellerCount", $value);
+            $writer->writeElementNs(null, 'FavoriteSellerCount', null, (string) $value);
         }
-        $value = $this->getItemArray();
+        $value = $this->itemArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ItemArray");
+                    $writer->startElementNs(null, 'ItemArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $v);
+                $writer->startElementNs(null, 'Item', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getFavoriteSearches();
+        $value = $this->favoriteSearches;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSearches", $value);
+            $writer->startElementNs(null, 'FavoriteSearches', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFavoriteSellers();
+        $value = $this->favoriteSellers;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellers", $value);
+            $writer->startElementNs(null, 'FavoriteSellers', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UserDefinedListType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\UserDefinedListType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
-        if (null !== $value) {
-            $this->setName($value);
+        $this->itemArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->name = $value;
+                    }
+                    return true;
+                case 'ItemCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemCount = (int) $value;
+                    }
+                    return true;
+                case 'FavoriteSearcheCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->favoriteSearcheCount = (int) $value;
+                    }
+                    return true;
+                case 'FavoriteSellerCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->favoriteSellerCount = (int) $value;
+                    }
+                    return true;
+                case 'ItemArray':
+                    $this->itemArray = Func::readList($reader, 'Item', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ItemType::xmlRead($reader));
+                    return true;
+                case 'FavoriteSearches':
+                    $this->favoriteSearches = \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::xmlRead($reader);
+                    return true;
+                case 'FavoriteSellers':
+                    $this->favoriteSellers = \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCount');
-        if (null !== $value) {
-            $this->setItemCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearcheCount');
-        if (null !== $value) {
-            $this->setFavoriteSearcheCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellerCount');
-        if (null !== $value) {
-            $this->setFavoriteSellerCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Item');
-            $this->setItemArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
-        if (null !== $value) {
-            $this->setFavoriteSearches(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
-        if (null !== $value) {
-            $this->setFavoriteSellers(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::fromKeyValue($value));
-        }
+        return false;
     }
 }

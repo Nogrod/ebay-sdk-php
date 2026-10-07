@@ -1016,139 +1016,182 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSKU();
+        $value = $this->sKU;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
+            $writer->writeElementNs(null, 'SKU', null, (string) $value);
         }
-        $value = $this->getStartPrice();
+        $value = $this->startPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartPrice", $value);
+            $writer->startElementNs(null, 'StartPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getQuantity();
+        $value = $this->quantity;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Quantity", $value);
+            $writer->writeElementNs(null, 'Quantity', null, (string) $value);
         }
-        $value = $this->getVariationSpecifics();
+        $value = $this->variationSpecifics;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics");
+                    $writer->startElementNs(null, 'VariationSpecifics', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+                $writer->startElementNs(null, 'NameValueList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getSellingStatus();
+        $value = $this->sellingStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingStatus", $value);
+            $writer->startElementNs(null, 'SellingStatus', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getVariationTitle();
+        $value = $this->variationTitle;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationTitle", $value);
+            $writer->writeElementNs(null, 'VariationTitle', null, (string) $value);
         }
-        $value = $this->getVariationViewItemURL();
+        $value = $this->variationViewItemURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationViewItemURL", $value);
+            $writer->writeElementNs(null, 'VariationViewItemURL', null, (string) $value);
         }
-        $value = $this->getDelete();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->delete;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Delete", $value);
+            $writer->writeElementNs(null, 'Delete', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getWatchCount();
+        $value = $this->watchCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WatchCount", $value);
+            $writer->writeElementNs(null, 'WatchCount', null, (string) $value);
         }
-        $value = $this->getPrivateNotes();
+        $value = $this->privateNotes;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PrivateNotes", $value);
+            $writer->writeElementNs(null, 'PrivateNotes', null, (string) $value);
         }
-        $value = $this->getDiscountPriceInfo();
+        $value = $this->discountPriceInfo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountPriceInfo", $value);
+            $writer->startElementNs(null, 'DiscountPriceInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getVariationProductListingDetails();
+        $value = $this->variationProductListingDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails", $value);
+            $writer->startElementNs(null, 'VariationProductListingDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getVariationExtendedProducerResponsibility();
+        $value = $this->variationExtendedProducerResponsibility;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility", $value);
+            $writer->startElementNs(null, 'VariationExtendedProducerResponsibility', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VariationType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VariationType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
-        if (null !== $value) {
-            $this->setSKU($value);
+        $this->variationSpecifics = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SKU':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sKU = $value;
+                    }
+                    return true;
+                case 'StartPrice':
+                    $this->startPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'Quantity':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantity = (int) $value;
+                    }
+                    return true;
+                case 'VariationSpecifics':
+                    $this->variationSpecifics = Func::readList($reader, 'NameValueList', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\NameValueListType::xmlRead($reader));
+                    return true;
+                case 'SellingStatus':
+                    $this->sellingStatus = \Nogrod\eBaySDK\Trading\SellingStatusType::xmlRead($reader);
+                    return true;
+                case 'VariationTitle':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->variationTitle = $value;
+                    }
+                    return true;
+                case 'VariationViewItemURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->variationViewItemURL = $value;
+                    }
+                    return true;
+                case 'Delete':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->delete = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'WatchCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->watchCount = (int) $value;
+                    }
+                    return true;
+                case 'PrivateNotes':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->privateNotes = $value;
+                    }
+                    return true;
+                case 'DiscountPriceInfo':
+                    $this->discountPriceInfo = \Nogrod\eBaySDK\Trading\DiscountPriceInfoType::xmlRead($reader);
+                    return true;
+                case 'VariationProductListingDetails':
+                    $this->variationProductListingDetails = \Nogrod\eBaySDK\Trading\VariationProductListingDetailsType::xmlRead($reader);
+                    return true;
+                case 'VariationExtendedProducerResponsibility':
+                    $this->variationExtendedProducerResponsibility = \Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartPrice');
-        if (null !== $value) {
-            $this->setStartPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Quantity');
-        if (null !== $value) {
-            $this->setQuantity($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
-            $this->setVariationSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingStatus');
-        if (null !== $value) {
-            $this->setSellingStatus(\Nogrod\eBaySDK\Trading\SellingStatusType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationTitle');
-        if (null !== $value) {
-            $this->setVariationTitle($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationViewItemURL');
-        if (null !== $value) {
-            $this->setVariationViewItemURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Delete');
-        if (null !== $value) {
-            $this->setDelete(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchCount');
-        if (null !== $value) {
-            $this->setWatchCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PrivateNotes');
-        if (null !== $value) {
-            $this->setPrivateNotes($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountPriceInfo');
-        if (null !== $value) {
-            $this->setDiscountPriceInfo(\Nogrod\eBaySDK\Trading\DiscountPriceInfoType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationProductListingDetails');
-        if (null !== $value) {
-            $this->setVariationProductListingDetails(\Nogrod\eBaySDK\Trading\VariationProductListingDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationExtendedProducerResponsibility');
-        if (null !== $value) {
-            $this->setVariationExtendedProducerResponsibility(\Nogrod\eBaySDK\Trading\VariationExtendedProducerResponsibilityType::fromKeyValue($value));
-        }
+        return false;
     }
 }

@@ -169,53 +169,85 @@ class ShippingServiceCostOverrideType implements \Sabre\Xml\XmlSerializable, \Sa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShippingServicePriority();
+        $value = $this->shippingServicePriority;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority", $value);
+            $writer->writeElementNs(null, 'ShippingServicePriority', null, (string) $value);
         }
-        $value = $this->getShippingServiceType();
+        $value = $this->shippingServiceType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceType", $value);
+            $writer->writeElementNs(null, 'ShippingServiceType', null, (string) $value);
         }
-        $value = $this->getShippingServiceCost();
+        $value = $this->shippingServiceCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost", $value);
+            $writer->startElementNs(null, 'ShippingServiceCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingServiceAdditionalCost();
+        $value = $this->shippingServiceAdditionalCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost", $value);
+            $writer->startElementNs(null, 'ShippingServiceAdditionalCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority');
-        if (null !== $value) {
-            $this->setShippingServicePriority($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShippingServicePriority':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingServicePriority = (int) $value;
+                    }
+                    return true;
+                case 'ShippingServiceType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingServiceType = $value;
+                    }
+                    return true;
+                case 'ShippingServiceCost':
+                    $this->shippingServiceCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingServiceAdditionalCost':
+                    $this->shippingServiceAdditionalCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceType');
-        if (null !== $value) {
-            $this->setShippingServiceType($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
-        if (null !== $value) {
-            $this->setShippingServiceCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost');
-        if (null !== $value) {
-            $this->setShippingServiceAdditionalCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

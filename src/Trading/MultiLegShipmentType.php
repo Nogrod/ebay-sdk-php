@@ -169,53 +169,85 @@ class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShippingServiceDetails();
+        $value = $this->shippingServiceDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails", $value);
+            $writer->startElementNs(null, 'ShippingServiceDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShipToAddress();
+        $value = $this->shipToAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipToAddress", $value);
+            $writer->startElementNs(null, 'ShipToAddress', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingTimeMin();
+        $value = $this->shippingTimeMin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin", $value);
+            $writer->writeElementNs(null, 'ShippingTimeMin', null, (string) $value);
         }
-        $value = $this->getShippingTimeMax();
+        $value = $this->shippingTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax", $value);
+            $writer->writeElementNs(null, 'ShippingTimeMax', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MultiLegShipmentType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MultiLegShipmentType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails');
-        if (null !== $value) {
-            $this->setShippingServiceDetails(\Nogrod\eBaySDK\Trading\MultiLegShippingServiceType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShippingServiceDetails':
+                    $this->shippingServiceDetails = \Nogrod\eBaySDK\Trading\MultiLegShippingServiceType::xmlRead($reader);
+                    return true;
+                case 'ShipToAddress':
+                    $this->shipToAddress = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+                case 'ShippingTimeMin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingTimeMin = (int) $value;
+                    }
+                    return true;
+                case 'ShippingTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingTimeMax = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToAddress');
-        if (null !== $value) {
-            $this->setShipToAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
-        if (null !== $value) {
-            $this->setShippingTimeMin($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
-        if (null !== $value) {
-            $this->setShippingTimeMax($value);
-        }
+        return false;
     }
 }

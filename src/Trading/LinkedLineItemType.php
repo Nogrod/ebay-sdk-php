@@ -244,69 +244,106 @@ class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getOrderID();
+        $value = $this->orderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
+            $writer->writeElementNs(null, 'OrderID', null, (string) $value);
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
-        $value = $this->getSellerUserID();
+        $value = $this->sellerUserID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerUserID", $value);
+            $writer->writeElementNs(null, 'SellerUserID', null, (string) $value);
         }
-        $value = $this->getEstimatedDeliveryTimeMax();
+        $value = $this->estimatedDeliveryTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax", $value);
+            $writer->writeElementNs(null, 'EstimatedDeliveryTimeMax', null, Func::formatDateTime($value));
         }
-        $value = $this->getEstimatedDeliveryTimeMin();
+        $value = $this->estimatedDeliveryTimeMin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin", $value);
+            $writer->writeElementNs(null, 'EstimatedDeliveryTimeMin', null, Func::formatDateTime($value));
         }
-        $value = $this->getItem();
+        $value = $this->item;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
+            $writer->startElementNs(null, 'Item', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\LinkedLineItemType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\LinkedLineItemType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
-        if (null !== $value) {
-            $this->setOrderID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'OrderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderID = $value;
+                    }
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+                case 'SellerUserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerUserID = $value;
+                    }
+                    return true;
+                case 'EstimatedDeliveryTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->estimatedDeliveryTimeMax = new \DateTime($value);
+                    }
+                    return true;
+                case 'EstimatedDeliveryTimeMin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->estimatedDeliveryTimeMin = new \DateTime($value);
+                    }
+                    return true;
+                case 'Item':
+                    $this->item = \Nogrod\eBaySDK\Trading\ItemType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerUserID');
-        if (null !== $value) {
-            $this->setSellerUserID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax');
-        if (null !== $value) {
-            $this->setEstimatedDeliveryTimeMax(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin');
-        if (null !== $value) {
-            $this->setEstimatedDeliveryTimeMin(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
-        if (null !== $value) {
-            $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
-        }
+        return false;
     }
 }

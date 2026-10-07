@@ -751,195 +751,225 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBidRetractionFeedbackPeriodArray();
+        $value = $this->bidRetractionFeedbackPeriodArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray");
+                    $writer->startElementNs(null, 'BidRetractionFeedbackPeriodArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod", $v);
+                $writer->startElementNs(null, 'FeedbackPeriod', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getNegativeFeedbackPeriodArray();
+        $value = $this->negativeFeedbackPeriodArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray");
+                    $writer->startElementNs(null, 'NegativeFeedbackPeriodArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod", $v);
+                $writer->startElementNs(null, 'FeedbackPeriod', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getNeutralFeedbackPeriodArray();
+        $value = $this->neutralFeedbackPeriodArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray");
+                    $writer->startElementNs(null, 'NeutralFeedbackPeriodArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod", $v);
+                $writer->startElementNs(null, 'FeedbackPeriod', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPositiveFeedbackPeriodArray();
+        $value = $this->positiveFeedbackPeriodArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray");
+                    $writer->startElementNs(null, 'PositiveFeedbackPeriodArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod", $v);
+                $writer->startElementNs(null, 'FeedbackPeriod', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getTotalFeedbackPeriodArray();
+        $value = $this->totalFeedbackPeriodArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray");
+                    $writer->startElementNs(null, 'TotalFeedbackPeriodArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod", $v);
+                $writer->startElementNs(null, 'FeedbackPeriod', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getNeutralCommentCountFromSuspendedUsers();
+        $value = $this->neutralCommentCountFromSuspendedUsers;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralCommentCountFromSuspendedUsers", $value);
+            $writer->writeElementNs(null, 'NeutralCommentCountFromSuspendedUsers', null, (string) $value);
         }
-        $value = $this->getUniqueNegativeFeedbackCount();
+        $value = $this->uniqueNegativeFeedbackCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniqueNegativeFeedbackCount", $value);
+            $writer->writeElementNs(null, 'UniqueNegativeFeedbackCount', null, (string) $value);
         }
-        $value = $this->getUniquePositiveFeedbackCount();
+        $value = $this->uniquePositiveFeedbackCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniquePositiveFeedbackCount", $value);
+            $writer->writeElementNs(null, 'UniquePositiveFeedbackCount', null, (string) $value);
         }
-        $value = $this->getUniqueNeutralFeedbackCount();
+        $value = $this->uniqueNeutralFeedbackCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniqueNeutralFeedbackCount", $value);
+            $writer->writeElementNs(null, 'UniqueNeutralFeedbackCount', null, (string) $value);
         }
-        $value = $this->getSellerRatingSummaryArray();
+        $value = $this->sellerRatingSummaryArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray");
+                    $writer->startElementNs(null, 'SellerRatingSummaryArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AverageRatingSummary", $v);
+                $writer->startElementNs(null, 'AverageRatingSummary', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getSellerRoleMetrics();
+        $value = $this->sellerRoleMetrics;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerRoleMetrics", $value);
+            $writer->startElementNs(null, 'SellerRoleMetrics', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBuyerRoleMetrics();
+        $value = $this->buyerRoleMetrics;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerRoleMetrics", $value);
+            $writer->startElementNs(null, 'BuyerRoleMetrics', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FeedbackSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeedbackSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidRetractionFeedbackPeriodArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod');
-            $this->setBidRetractionFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
+        $this->bidRetractionFeedbackPeriodArray = [];
+        $this->negativeFeedbackPeriodArray = [];
+        $this->neutralFeedbackPeriodArray = [];
+        $this->positiveFeedbackPeriodArray = [];
+        $this->totalFeedbackPeriodArray = [];
+        $this->sellerRatingSummaryArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BidRetractionFeedbackPeriodArray':
+                    $this->bidRetractionFeedbackPeriodArray = Func::readList($reader, 'FeedbackPeriod', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackPeriodType::xmlRead($reader));
+                    return true;
+                case 'NegativeFeedbackPeriodArray':
+                    $this->negativeFeedbackPeriodArray = Func::readList($reader, 'FeedbackPeriod', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackPeriodType::xmlRead($reader));
+                    return true;
+                case 'NeutralFeedbackPeriodArray':
+                    $this->neutralFeedbackPeriodArray = Func::readList($reader, 'FeedbackPeriod', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackPeriodType::xmlRead($reader));
+                    return true;
+                case 'PositiveFeedbackPeriodArray':
+                    $this->positiveFeedbackPeriodArray = Func::readList($reader, 'FeedbackPeriod', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackPeriodType::xmlRead($reader));
+                    return true;
+                case 'TotalFeedbackPeriodArray':
+                    $this->totalFeedbackPeriodArray = Func::readList($reader, 'FeedbackPeriod', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackPeriodType::xmlRead($reader));
+                    return true;
+                case 'NeutralCommentCountFromSuspendedUsers':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->neutralCommentCountFromSuspendedUsers = (int) $value;
+                    }
+                    return true;
+                case 'UniqueNegativeFeedbackCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uniqueNegativeFeedbackCount = (int) $value;
+                    }
+                    return true;
+                case 'UniquePositiveFeedbackCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uniquePositiveFeedbackCount = (int) $value;
+                    }
+                    return true;
+                case 'UniqueNeutralFeedbackCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uniqueNeutralFeedbackCount = (int) $value;
+                    }
+                    return true;
+                case 'SellerRatingSummaryArray':
+                    $this->sellerRatingSummaryArray = Func::readList($reader, 'AverageRatingSummary', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\AverageRatingSummaryType::xmlRead($reader));
+                    return true;
+                case 'SellerRoleMetrics':
+                    $this->sellerRoleMetrics = \Nogrod\eBaySDK\Trading\SellerRoleMetricsType::xmlRead($reader);
+                    return true;
+                case 'BuyerRoleMetrics':
+                    $this->buyerRoleMetrics = \Nogrod\eBaySDK\Trading\BuyerRoleMetricsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackPeriodArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod');
-            $this->setNegativeFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackPeriodArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod');
-            $this->setNeutralFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackPeriodArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod');
-            $this->setPositiveFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalFeedbackPeriodArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackPeriod');
-            $this->setTotalFeedbackPeriodArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackPeriodType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralCommentCountFromSuspendedUsers');
-        if (null !== $value) {
-            $this->setNeutralCommentCountFromSuspendedUsers($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueNegativeFeedbackCount');
-        if (null !== $value) {
-            $this->setUniqueNegativeFeedbackCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniquePositiveFeedbackCount');
-        if (null !== $value) {
-            $this->setUniquePositiveFeedbackCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueNeutralFeedbackCount');
-        if (null !== $value) {
-            $this->setUniqueNeutralFeedbackCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerRatingSummaryArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}AverageRatingSummary');
-            $this->setSellerRatingSummaryArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AverageRatingSummaryType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerRoleMetrics');
-        if (null !== $value) {
-            $this->setSellerRoleMetrics(\Nogrod\eBaySDK\Trading\SellerRoleMetricsType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerRoleMetrics');
-        if (null !== $value) {
-            $this->setBuyerRoleMetrics(\Nogrod\eBaySDK\Trading\BuyerRoleMetricsType::fromKeyValue($value));
-        }
+        return false;
     }
 }

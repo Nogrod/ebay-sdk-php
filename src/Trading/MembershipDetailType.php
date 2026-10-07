@@ -127,45 +127,77 @@ class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getProgramName();
+        $value = $this->programName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProgramName", $value);
+            $writer->writeElementNs(null, 'ProgramName', null, (string) $value);
         }
-        $value = $this->getSite();
+        $value = $this->site;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Site", $value);
+            $writer->writeElementNs(null, 'Site', null, (string) $value);
         }
-        $value = $this->getExpiryDate();
+        $value = $this->expiryDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpiryDate", $value);
+            $writer->writeElementNs(null, 'ExpiryDate', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MembershipDetailType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MembershipDetailType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProgramName');
-        if (null !== $value) {
-            $this->setProgramName($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ProgramName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->programName = $value;
+                    }
+                    return true;
+                case 'Site':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->site = $value;
+                    }
+                    return true;
+                case 'ExpiryDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->expiryDate = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
-        if (null !== $value) {
-            $this->setSite($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiryDate');
-        if (null !== $value) {
-            $this->setExpiryDate(new \DateTime($value));
-        }
+        return false;
     }
 }

@@ -2416,322 +2416,386 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAllowPaymentEdit();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->allowPaymentEdit;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit", $value);
+            $writer->writeElementNs(null, 'AllowPaymentEdit', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getApplyShippingDiscount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->applyShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplyShippingDiscount", $value);
+            $writer->writeElementNs(null, 'ApplyShippingDiscount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getGlobalShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->globalShipping;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GlobalShipping", $value);
+            $writer->writeElementNs(null, 'GlobalShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCalculatedShippingRate();
+        $value = $this->calculatedShippingRate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CalculatedShippingRate", $value);
+            $writer->startElementNs(null, 'CalculatedShippingRate', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getChangePaymentInstructions();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->changePaymentInstructions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ChangePaymentInstructions", $value);
+            $writer->writeElementNs(null, 'ChangePaymentInstructions', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPaymentEdited();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->paymentEdited;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentEdited", $value);
+            $writer->writeElementNs(null, 'PaymentEdited', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSalesTax();
+        $value = $this->salesTax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
+            $writer->startElementNs(null, 'SalesTax', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingRateErrorMessage();
+        $value = $this->shippingRateErrorMessage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingRateErrorMessage", $value);
+            $writer->writeElementNs(null, 'ShippingRateErrorMessage', null, (string) $value);
         }
-        $value = $this->getShippingRateType();
+        $value = $this->shippingRateType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingRateType", $value);
+            $writer->writeElementNs(null, 'ShippingRateType', null, (string) $value);
         }
-        $value = $this->getShippingServiceOptions();
-        if (null !== $value) {
-            foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions", $v);
-            }
-        }
-        $value = $this->getInternationalShippingServiceOption();
+        $value = $this->shippingServiceOptions;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption", $v);
+                $writer->startElementNs(null, 'ShippingServiceOptions', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingType();
+        $value = $this->internationalShippingServiceOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingType", $value);
+            foreach ($value as $v) {
+                $writer->startElementNs(null, 'InternationalShippingServiceOption', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
+            }
         }
-        $value = $this->getSellingManagerSalesRecordNumber();
+        $value = $this->shippingType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingManagerSalesRecordNumber", $value);
+            $writer->writeElementNs(null, 'ShippingType', null, (string) $value);
         }
-        $value = $this->getThirdPartyCheckout();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->sellingManagerSalesRecordNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThirdPartyCheckout", $value);
+            $writer->writeElementNs(null, 'SellingManagerSalesRecordNumber', null, (string) $value);
         }
-        $value = $this->getTaxTable();
+        $value = $this->thirdPartyCheckout;
+        if (null !== $value) {
+            $writer->writeElementNs(null, 'ThirdPartyCheckout', null, ($value ? 'true' : 'false'));
+        }
+        $value = $this->taxTable;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}TaxTable");
+                    $writer->startElementNs(null, 'TaxTable', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction", $v);
+                $writer->startElementNs(null, 'TaxJurisdiction', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getGetItFast();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->getItFast;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GetItFast", $value);
+            $writer->writeElementNs(null, 'GetItFast', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShippingServiceUsed();
+        $value = $this->shippingServiceUsed;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceUsed", $value);
+            $writer->writeElementNs(null, 'ShippingServiceUsed', null, (string) $value);
         }
-        $value = $this->getDefaultShippingCost();
+        $value = $this->defaultShippingCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DefaultShippingCost", $value);
+            $writer->startElementNs(null, 'DefaultShippingCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingDiscountProfileID();
+        $value = $this->shippingDiscountProfileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingDiscountProfileID", $value);
+            $writer->writeElementNs(null, 'ShippingDiscountProfileID', null, (string) $value);
         }
-        $value = $this->getFlatShippingDiscount();
+        $value = $this->flatShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount", $value);
+            $writer->startElementNs(null, 'FlatShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCalculatedShippingDiscount();
+        $value = $this->calculatedShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount", $value);
+            $writer->startElementNs(null, 'CalculatedShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPromotionalShippingDiscount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->promotionalShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount", $value);
+            $writer->writeElementNs(null, 'PromotionalShippingDiscount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getInternationalShippingDiscountProfileID();
+        $value = $this->internationalShippingDiscountProfileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingDiscountProfileID", $value);
+            $writer->writeElementNs(null, 'InternationalShippingDiscountProfileID', null, (string) $value);
         }
-        $value = $this->getInternationalFlatShippingDiscount();
+        $value = $this->internationalFlatShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalFlatShippingDiscount", $value);
+            $writer->startElementNs(null, 'InternationalFlatShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInternationalCalculatedShippingDiscount();
+        $value = $this->internationalCalculatedShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalCalculatedShippingDiscount", $value);
+            $writer->startElementNs(null, 'InternationalCalculatedShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInternationalPromotionalShippingDiscount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->internationalPromotionalShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalPromotionalShippingDiscount", $value);
+            $writer->writeElementNs(null, 'InternationalPromotionalShippingDiscount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPromotionalShippingDiscountDetails();
+        $value = $this->promotionalShippingDiscountDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
+            $writer->startElementNs(null, 'PromotionalShippingDiscountDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getExcludeShipToLocation();
+        $value = $this->excludeShipToLocation;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation", $v);
+                $writer->writeElementNs(null, 'ExcludeShipToLocation', null, (string) $v);
             }
         }
-        $value = $this->getEBayEstimatedLabelCost();
+        $value = $this->eBayEstimatedLabelCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayEstimatedLabelCost", $value);
+            $writer->startElementNs(null, 'eBayEstimatedLabelCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerExcludeShipToLocationsPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->sellerExcludeShipToLocationsPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationsPreference", $value);
+            $writer->writeElementNs(null, 'SellerExcludeShipToLocationsPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShipmentTrackingDetails();
+        $value = $this->shipmentTrackingDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails", $v);
+                $writer->startElementNs(null, 'ShipmentTrackingDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getRateTableDetails();
+        $value = $this->rateTableDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RateTableDetails", $value);
+            $writer->startElementNs(null, 'RateTableDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingLabelPolicy();
+        $value = $this->shippingLabelPolicy;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingLabelPolicy", $value);
+            $writer->writeElementNs(null, 'ShippingLabelPolicy', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ShippingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ShippingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit');
-        if (null !== $value) {
-            $this->setAllowPaymentEdit(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        $this->shippingServiceOptions = [];
+        $this->internationalShippingServiceOption = [];
+        $this->taxTable = [];
+        $this->excludeShipToLocation = [];
+        $this->shipmentTrackingDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AllowPaymentEdit':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->allowPaymentEdit = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ApplyShippingDiscount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applyShippingDiscount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'GlobalShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->globalShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CalculatedShippingRate':
+                    $this->calculatedShippingRate = \Nogrod\eBaySDK\Trading\CalculatedShippingRateType::xmlRead($reader);
+                    return true;
+                case 'ChangePaymentInstructions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->changePaymentInstructions = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PaymentEdited':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentEdited = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SalesTax':
+                    $this->salesTax = \Nogrod\eBaySDK\Trading\SalesTaxType::xmlRead($reader);
+                    return true;
+                case 'ShippingRateErrorMessage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingRateErrorMessage = $value;
+                    }
+                    return true;
+                case 'ShippingRateType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingRateType = $value;
+                    }
+                    return true;
+                case 'ShippingServiceOptions':
+                    $this->shippingServiceOptions[] = \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::xmlRead($reader);
+                    return true;
+                case 'InternationalShippingServiceOption':
+                    $this->internationalShippingServiceOption[] = \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::xmlRead($reader);
+                    return true;
+                case 'ShippingType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingType = $value;
+                    }
+                    return true;
+                case 'SellingManagerSalesRecordNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellingManagerSalesRecordNumber = (int) $value;
+                    }
+                    return true;
+                case 'ThirdPartyCheckout':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->thirdPartyCheckout = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'TaxTable':
+                    $this->taxTable = Func::readList($reader, 'TaxJurisdiction', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\TaxJurisdictionType::xmlRead($reader));
+                    return true;
+                case 'GetItFast':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->getItFast = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShippingServiceUsed':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingServiceUsed = $value;
+                    }
+                    return true;
+                case 'DefaultShippingCost':
+                    $this->defaultShippingCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingDiscountProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingDiscountProfileID = $value;
+                    }
+                    return true;
+                case 'FlatShippingDiscount':
+                    $this->flatShippingDiscount = \Nogrod\eBaySDK\Trading\FlatShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'CalculatedShippingDiscount':
+                    $this->calculatedShippingDiscount = \Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'PromotionalShippingDiscount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->promotionalShippingDiscount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'InternationalShippingDiscountProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalShippingDiscountProfileID = $value;
+                    }
+                    return true;
+                case 'InternationalFlatShippingDiscount':
+                    $this->internationalFlatShippingDiscount = \Nogrod\eBaySDK\Trading\FlatShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'InternationalCalculatedShippingDiscount':
+                    $this->internationalCalculatedShippingDiscount = \Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'InternationalPromotionalShippingDiscount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalPromotionalShippingDiscount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PromotionalShippingDiscountDetails':
+                    $this->promotionalShippingDiscountDetails = \Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::xmlRead($reader);
+                    return true;
+                case 'ExcludeShipToLocation':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->excludeShipToLocation[] = $value;
+                    }
+                    return true;
+                case 'eBayEstimatedLabelCost':
+                    $this->eBayEstimatedLabelCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'SellerExcludeShipToLocationsPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerExcludeShipToLocationsPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShipmentTrackingDetails':
+                    $this->shipmentTrackingDetails[] = \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::xmlRead($reader);
+                    return true;
+                case 'RateTableDetails':
+                    $this->rateTableDetails = \Nogrod\eBaySDK\Trading\RateTableDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingLabelPolicy':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingLabelPolicy = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplyShippingDiscount');
-        if (null !== $value) {
-            $this->setApplyShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShipping');
-        if (null !== $value) {
-            $this->setGlobalShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingRate');
-        if (null !== $value) {
-            $this->setCalculatedShippingRate(\Nogrod\eBaySDK\Trading\CalculatedShippingRateType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ChangePaymentInstructions');
-        if (null !== $value) {
-            $this->setChangePaymentInstructions(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentEdited');
-        if (null !== $value) {
-            $this->setPaymentEdited(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
-        if (null !== $value) {
-            $this->setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingRateErrorMessage');
-        if (null !== $value) {
-            $this->setShippingRateErrorMessage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingRateType');
-        if (null !== $value) {
-            $this->setShippingRateType($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions');
-        if (null !== $value) {
-            $this->setShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption');
-        if (null !== $value) {
-            $this->setInternationalShippingServiceOption(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingType');
-        if (null !== $value) {
-            $this->setShippingType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingManagerSalesRecordNumber');
-        if (null !== $value) {
-            $this->setSellingManagerSalesRecordNumber($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThirdPartyCheckout');
-        if (null !== $value) {
-            $this->setThirdPartyCheckout(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction');
-            $this->setTaxTable(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
-        if (null !== $value) {
-            $this->setGetItFast(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceUsed');
-        if (null !== $value) {
-            $this->setShippingServiceUsed($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultShippingCost');
-        if (null !== $value) {
-            $this->setDefaultShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountProfileID');
-        if (null !== $value) {
-            $this->setShippingDiscountProfileID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
-        if (null !== $value) {
-            $this->setFlatShippingDiscount(\Nogrod\eBaySDK\Trading\FlatShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
-        if (null !== $value) {
-            $this->setCalculatedShippingDiscount(\Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount');
-        if (null !== $value) {
-            $this->setPromotionalShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingDiscountProfileID');
-        if (null !== $value) {
-            $this->setInternationalShippingDiscountProfileID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalFlatShippingDiscount');
-        if (null !== $value) {
-            $this->setInternationalFlatShippingDiscount(\Nogrod\eBaySDK\Trading\FlatShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalCalculatedShippingDiscount');
-        if (null !== $value) {
-            $this->setInternationalCalculatedShippingDiscount(\Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPromotionalShippingDiscount');
-        if (null !== $value) {
-            $this->setInternationalPromotionalShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
-        if (null !== $value) {
-            $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
-        if (null !== $value) {
-            $this->setExcludeShipToLocation($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayEstimatedLabelCost');
-        if (null !== $value) {
-            $this->setEBayEstimatedLabelCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationsPreference');
-        if (null !== $value) {
-            $this->setSellerExcludeShipToLocationsPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails');
-        if (null !== $value) {
-            $this->setShipmentTrackingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RateTableDetails');
-        if (null !== $value) {
-            $this->setRateTableDetails(\Nogrod\eBaySDK\Trading\RateTableDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingLabelPolicy');
-        if (null !== $value) {
-            $this->setShippingLabelPolicy($value);
-        }
+        return false;
     }
 }

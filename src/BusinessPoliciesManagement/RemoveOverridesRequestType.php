@@ -53,30 +53,58 @@ class RemoveOverridesRequestType extends BaseRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getProfileId();
+        $value = $this->profileId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileId", $value);
+            $writer->writeElementNs(null, 'profileId', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\RemoveOverridesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
-        if (null !== $value) {
-            $this->setProfileId($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'profileId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileId = (int) $value;
+                    }
+                    return true;
+            }
         }
+        return parent::xmlReadElement($reader);
     }
 }

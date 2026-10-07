@@ -264,67 +264,99 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getMessageIDs();
+        $value = $this->messageIDs;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs");
+                    $writer->startElementNs(null, 'MessageIDs', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $v);
+                $writer->writeElementNs(null, 'MessageID', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getRead();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->read;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Read", $value);
+            $writer->writeElementNs(null, 'Read', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getFlagged();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->flagged;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Flagged", $value);
+            $writer->writeElementNs(null, 'Flagged', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getFolderID();
+        $value = $this->folderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderID", $value);
+            $writer->writeElementNs(null, 'FolderID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ReviseMyMessagesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ReviseMyMessagesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MessageID', true);
-            $this->setMessageIDs($value);
+        parent::xmlInitLists();
+        $this->messageIDs = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MessageIDs':
+                    $this->messageIDs = Func::readList($reader, 'MessageID', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'Read':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->read = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Flagged':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->flagged = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'FolderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->folderID = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
-        if (null !== $value) {
-            $this->setRead(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Flagged');
-        if (null !== $value) {
-            $this->setFlagged(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
-        if (null !== $value) {
-            $this->setFolderID($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

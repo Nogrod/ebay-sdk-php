@@ -162,60 +162,87 @@ class GetMemberMessagesResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getMemberMessage();
+        $value = $this->memberMessage;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage");
+                    $writer->startElementNs(null, 'MemberMessage', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange", $v);
+                $writer->startElementNs(null, 'MemberMessageExchange', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPaginationResult();
+        $value = $this->paginationResult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
+            $writer->startElementNs(null, 'PaginationResult', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHasMoreItems();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasMoreItems;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasMoreItems", $value);
+            $writer->writeElementNs(null, 'HasMoreItems', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMemberMessagesResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMemberMessagesResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange');
-            $this->setMemberMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->memberMessage = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MemberMessage':
+                    $this->memberMessage = Func::readList($reader, 'MemberMessageExchange', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::xmlRead($reader));
+                    return true;
+                case 'PaginationResult':
+                    $this->paginationResult = \Nogrod\eBaySDK\Trading\PaginationResultType::xmlRead($reader);
+                    return true;
+                case 'HasMoreItems':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasMoreItems = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
-        if (null !== $value) {
-            $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreItems');
-        if (null !== $value) {
-            $this->setHasMoreItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

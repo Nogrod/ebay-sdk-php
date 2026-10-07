@@ -96,15 +96,15 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getMessageIDs();
+        $value = $this->messageIDs;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs");
+                    $writer->startElementNs(null, 'MessageIDs', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $v);
+                $writer->writeElementNs(null, 'MessageID', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
@@ -114,23 +114,51 @@ class DeleteMyMessagesRequestType extends AbstractRequestType
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\DeleteMyMessagesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\DeleteMyMessagesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MessageID', true);
-            $this->setMessageIDs($value);
+        parent::xmlInitLists();
+        $this->messageIDs = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MessageIDs':
+                    $this->messageIDs = Func::readList($reader, 'MessageID', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+            }
         }
+        return parent::xmlReadElement($reader);
     }
 }

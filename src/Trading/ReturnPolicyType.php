@@ -717,125 +717,177 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getRefundOption();
+        $value = $this->refundOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundOption", $value);
+            $writer->writeElementNs(null, 'RefundOption', null, (string) $value);
         }
-        $value = $this->getRefund();
+        $value = $this->refund;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refund", $value);
+            $writer->writeElementNs(null, 'Refund', null, (string) $value);
         }
-        $value = $this->getReturnsWithinOption();
+        $value = $this->returnsWithinOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsWithinOption", $value);
+            $writer->writeElementNs(null, 'ReturnsWithinOption', null, (string) $value);
         }
-        $value = $this->getReturnsWithin();
+        $value = $this->returnsWithin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsWithin", $value);
+            $writer->writeElementNs(null, 'ReturnsWithin', null, (string) $value);
         }
-        $value = $this->getReturnsAcceptedOption();
+        $value = $this->returnsAcceptedOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsAcceptedOption", $value);
+            $writer->writeElementNs(null, 'ReturnsAcceptedOption', null, (string) $value);
         }
-        $value = $this->getReturnsAccepted();
+        $value = $this->returnsAccepted;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted", $value);
+            $writer->writeElementNs(null, 'ReturnsAccepted', null, (string) $value);
         }
-        $value = $this->getDescription();
+        $value = $this->description;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
+            $writer->writeElementNs(null, 'Description', null, (string) $value);
         }
-        $value = $this->getShippingCostPaidByOption();
+        $value = $this->shippingCostPaidByOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidByOption", $value);
+            $writer->writeElementNs(null, 'ShippingCostPaidByOption', null, (string) $value);
         }
-        $value = $this->getShippingCostPaidBy();
+        $value = $this->shippingCostPaidBy;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy", $value);
+            $writer->writeElementNs(null, 'ShippingCostPaidBy', null, (string) $value);
         }
-        $value = $this->getInternationalRefundOption();
+        $value = $this->internationalRefundOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRefundOption", $value);
+            $writer->writeElementNs(null, 'InternationalRefundOption', null, (string) $value);
         }
-        $value = $this->getInternationalReturnsAcceptedOption();
+        $value = $this->internationalReturnsAcceptedOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedOption", $value);
+            $writer->writeElementNs(null, 'InternationalReturnsAcceptedOption', null, (string) $value);
         }
-        $value = $this->getInternationalReturnsWithinOption();
+        $value = $this->internationalReturnsWithinOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalReturnsWithinOption", $value);
+            $writer->writeElementNs(null, 'InternationalReturnsWithinOption', null, (string) $value);
         }
-        $value = $this->getInternationalShippingCostPaidByOption();
+        $value = $this->internationalShippingCostPaidByOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingCostPaidByOption", $value);
+            $writer->writeElementNs(null, 'InternationalShippingCostPaidByOption', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ReturnPolicyType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ReturnPolicyType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundOption');
-        if (null !== $value) {
-            $this->setRefundOption($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'RefundOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refundOption = $value;
+                    }
+                    return true;
+                case 'Refund':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refund = $value;
+                    }
+                    return true;
+                case 'ReturnsWithinOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsWithinOption = $value;
+                    }
+                    return true;
+                case 'ReturnsWithin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsWithin = $value;
+                    }
+                    return true;
+                case 'ReturnsAcceptedOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsAcceptedOption = $value;
+                    }
+                    return true;
+                case 'ReturnsAccepted':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsAccepted = $value;
+                    }
+                    return true;
+                case 'Description':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->description = $value;
+                    }
+                    return true;
+                case 'ShippingCostPaidByOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingCostPaidByOption = $value;
+                    }
+                    return true;
+                case 'ShippingCostPaidBy':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingCostPaidBy = $value;
+                    }
+                    return true;
+                case 'InternationalRefundOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalRefundOption = $value;
+                    }
+                    return true;
+                case 'InternationalReturnsAcceptedOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalReturnsAcceptedOption = $value;
+                    }
+                    return true;
+                case 'InternationalReturnsWithinOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalReturnsWithinOption = $value;
+                    }
+                    return true;
+                case 'InternationalShippingCostPaidByOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalShippingCostPaidByOption = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refund');
-        if (null !== $value) {
-            $this->setRefund($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithinOption');
-        if (null !== $value) {
-            $this->setReturnsWithinOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsWithin');
-        if (null !== $value) {
-            $this->setReturnsWithin($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAcceptedOption');
-        if (null !== $value) {
-            $this->setReturnsAcceptedOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted');
-        if (null !== $value) {
-            $this->setReturnsAccepted($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
-        if (null !== $value) {
-            $this->setDescription($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidByOption');
-        if (null !== $value) {
-            $this->setShippingCostPaidByOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy');
-        if (null !== $value) {
-            $this->setShippingCostPaidBy($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRefundOption');
-        if (null !== $value) {
-            $this->setInternationalRefundOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsAcceptedOption');
-        if (null !== $value) {
-            $this->setInternationalReturnsAcceptedOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalReturnsWithinOption');
-        if (null !== $value) {
-            $this->setInternationalReturnsWithinOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingCostPaidByOption');
-        if (null !== $value) {
-            $this->setInternationalShippingCostPaidByOption($value);
-        }
+        return false;
     }
 }

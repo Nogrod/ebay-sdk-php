@@ -101,38 +101,66 @@ class GetItemShippingResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getShippingDetails();
+        $value = $this->shippingDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingDetails", $value);
+            $writer->startElementNs(null, 'ShippingDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPickUpInStoreDetails();
+        $value = $this->pickUpInStoreDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickUpInStoreDetails", $value);
+            $writer->startElementNs(null, 'PickUpInStoreDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetItemShippingResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetItemShippingResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDetails');
-        if (null !== $value) {
-            $this->setShippingDetails(\Nogrod\eBaySDK\Trading\ShippingDetailsType::fromKeyValue($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShippingDetails':
+                    $this->shippingDetails = \Nogrod\eBaySDK\Trading\ShippingDetailsType::xmlRead($reader);
+                    return true;
+                case 'PickUpInStoreDetails':
+                    $this->pickUpInStoreDetails = \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickUpInStoreDetails');
-        if (null !== $value) {
-            $this->setPickUpInStoreDetails(\Nogrod\eBaySDK\Trading\PickupInStoreDetailsType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

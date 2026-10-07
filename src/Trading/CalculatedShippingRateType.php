@@ -115,37 +115,65 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getPackagingHandlingCosts();
+        $value = $this->packagingHandlingCosts;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts", $value);
+            $writer->startElementNs(null, 'PackagingHandlingCosts', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInternationalPackagingHandlingCosts();
+        $value = $this->internationalPackagingHandlingCosts;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts", $value);
+            $writer->startElementNs(null, 'InternationalPackagingHandlingCosts', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CalculatedShippingRateType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CalculatedShippingRateType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackagingHandlingCosts');
-        if (null !== $value) {
-            $this->setPackagingHandlingCosts(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PackagingHandlingCosts':
+                    $this->packagingHandlingCosts = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'InternationalPackagingHandlingCosts':
+                    $this->internationalPackagingHandlingCosts = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalPackagingHandlingCosts');
-        if (null !== $value) {
-            $this->setInternationalPackagingHandlingCosts(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

@@ -64,30 +64,57 @@ class BidderNoticePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getUnsuccessfulBidderNoticeIncludeMyItems();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->unsuccessfulBidderNoticeIncludeMyItems;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnsuccessfulBidderNoticeIncludeMyItems", $value);
+            $writer->writeElementNs(null, 'UnsuccessfulBidderNoticeIncludeMyItems', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BidderNoticePreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BidderNoticePreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsuccessfulBidderNoticeIncludeMyItems');
-        if (null !== $value) {
-            $this->setUnsuccessfulBidderNoticeIncludeMyItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'UnsuccessfulBidderNoticeIncludeMyItems':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->unsuccessfulBidderNoticeIncludeMyItems = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
+        return false;
     }
 }

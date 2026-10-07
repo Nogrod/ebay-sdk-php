@@ -136,41 +136,69 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTotalAvailable();
+        $value = $this->totalAvailable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAvailable", $value);
+            $writer->writeElementNs(null, 'TotalAvailable', null, (string) $value);
         }
-        $value = $this->getFavoriteSeller();
+        $value = $this->favoriteSeller;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSeller", $v);
+                $writer->startElementNs(null, 'FavoriteSeller', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAvailable');
-        if (null !== $value) {
-            $this->setTotalAvailable($value);
+        $this->favoriteSeller = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TotalAvailable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalAvailable = (int) $value;
+                    }
+                    return true;
+                case 'FavoriteSeller':
+                    $this->favoriteSeller[] = \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSeller');
-        if (null !== $value) {
-            $this->setFavoriteSeller(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

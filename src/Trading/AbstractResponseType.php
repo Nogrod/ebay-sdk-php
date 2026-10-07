@@ -757,145 +757,197 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTimestamp();
+        $value = $this->timestamp;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Timestamp", $value);
+            $writer->writeElementNs(null, 'Timestamp', null, Func::formatDateTime($value));
         }
-        $value = $this->getAck();
+        $value = $this->ack;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Ack", $value);
+            $writer->writeElementNs(null, 'Ack', null, (string) $value);
         }
-        $value = $this->getCorrelationID();
+        $value = $this->correlationID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CorrelationID", $value);
+            $writer->writeElementNs(null, 'CorrelationID', null, (string) $value);
         }
-        $value = $this->getErrors();
+        $value = $this->errors;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Errors", $v);
+                $writer->startElementNs(null, 'Errors', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getMessage();
+        $value = $this->message;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Message", $value);
+            $writer->writeElementNs(null, 'Message', null, (string) $value);
         }
-        $value = $this->getVersion();
+        $value = $this->version;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Version", $value);
+            $writer->writeElementNs(null, 'Version', null, (string) $value);
         }
-        $value = $this->getBuild();
+        $value = $this->build;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Build", $value);
+            $writer->writeElementNs(null, 'Build', null, (string) $value);
         }
-        $value = $this->getNotificationEventName();
+        $value = $this->notificationEventName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationEventName", $value);
+            $writer->writeElementNs(null, 'NotificationEventName', null, (string) $value);
         }
-        $value = $this->getDuplicateInvocationDetails();
+        $value = $this->duplicateInvocationDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationDetails", $value);
+            $writer->startElementNs(null, 'DuplicateInvocationDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRecipientUserID();
+        $value = $this->recipientUserID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecipientUserID", $value);
+            $writer->writeElementNs(null, 'RecipientUserID', null, (string) $value);
         }
-        $value = $this->getEIASToken();
+        $value = $this->eIASToken;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EIASToken", $value);
+            $writer->writeElementNs(null, 'EIASToken', null, (string) $value);
         }
-        $value = $this->getNotificationSignature();
+        $value = $this->notificationSignature;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationSignature", $value);
+            $writer->writeElementNs(null, 'NotificationSignature', null, (string) $value);
         }
-        $value = $this->getHardExpirationWarning();
+        $value = $this->hardExpirationWarning;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning", $value);
+            $writer->writeElementNs(null, 'HardExpirationWarning', null, (string) $value);
         }
-        $value = $this->getBotBlock();
+        $value = $this->botBlock;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BotBlock", $value);
+            $writer->startElementNs(null, 'BotBlock', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getExternalUserData();
+        $value = $this->externalUserData;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalUserData", $value);
+            $writer->writeElementNs(null, 'ExternalUserData', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AbstractResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AbstractResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Timestamp');
-        if (null !== $value) {
-            $this->setTimestamp(new \DateTime($value));
+        $this->errors = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Timestamp':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->timestamp = new \DateTime($value);
+                    }
+                    return true;
+                case 'Ack':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->ack = $value;
+                    }
+                    return true;
+                case 'CorrelationID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->correlationID = $value;
+                    }
+                    return true;
+                case 'Errors':
+                    $this->errors[] = \Nogrod\eBaySDK\Trading\ErrorType::xmlRead($reader);
+                    return true;
+                case 'Message':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->message = $value;
+                    }
+                    return true;
+                case 'Version':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->version = $value;
+                    }
+                    return true;
+                case 'Build':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->build = $value;
+                    }
+                    return true;
+                case 'NotificationEventName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->notificationEventName = $value;
+                    }
+                    return true;
+                case 'DuplicateInvocationDetails':
+                    $this->duplicateInvocationDetails = \Nogrod\eBaySDK\Trading\DuplicateInvocationDetailsType::xmlRead($reader);
+                    return true;
+                case 'RecipientUserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->recipientUserID = $value;
+                    }
+                    return true;
+                case 'EIASToken':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eIASToken = $value;
+                    }
+                    return true;
+                case 'NotificationSignature':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->notificationSignature = $value;
+                    }
+                    return true;
+                case 'HardExpirationWarning':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hardExpirationWarning = $value;
+                    }
+                    return true;
+                case 'BotBlock':
+                    $this->botBlock = \Nogrod\eBaySDK\Trading\BotBlockResponseType::xmlRead($reader);
+                    return true;
+                case 'ExternalUserData':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->externalUserData = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Ack');
-        if (null !== $value) {
-            $this->setAck($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
-        if (null !== $value) {
-            $this->setCorrelationID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Errors');
-        if (null !== $value) {
-            $this->setErrors(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ErrorType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
-        if (null !== $value) {
-            $this->setMessage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
-        if (null !== $value) {
-            $this->setVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Build');
-        if (null !== $value) {
-            $this->setBuild($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationEventName');
-        if (null !== $value) {
-            $this->setNotificationEventName($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DuplicateInvocationDetails');
-        if (null !== $value) {
-            $this->setDuplicateInvocationDetails(\Nogrod\eBaySDK\Trading\DuplicateInvocationDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientUserID');
-        if (null !== $value) {
-            $this->setRecipientUserID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIASToken');
-        if (null !== $value) {
-            $this->setEIASToken($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationSignature');
-        if (null !== $value) {
-            $this->setNotificationSignature($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationWarning');
-        if (null !== $value) {
-            $this->setHardExpirationWarning($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
-        if (null !== $value) {
-            $this->setBotBlock(\Nogrod\eBaySDK\Trading\BotBlockResponseType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalUserData');
-        if (null !== $value) {
-            $this->setExternalUserData($value);
-        }
+        return false;
     }
 }

@@ -716,180 +716,233 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAccountDetailsEntryType();
+        $value = $this->accountDetailsEntryType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountDetailsEntryType", $value);
+            $writer->writeElementNs(null, 'AccountDetailsEntryType', null, (string) $value);
         }
-        $value = $this->getDescription();
+        $value = $this->description;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
+            $writer->writeElementNs(null, 'Description', null, (string) $value);
         }
-        $value = $this->getBalance();
+        $value = $this->balance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Balance", $value);
+            $writer->startElementNs(null, 'Balance', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDate();
+        $value = $this->date;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Date", $value);
+            $writer->writeElementNs(null, 'Date', null, Func::formatDateTime($value));
         }
-        $value = $this->getGrossDetailAmount();
+        $value = $this->grossDetailAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GrossDetailAmount", $value);
+            $writer->startElementNs(null, 'GrossDetailAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getMemo();
+        $value = $this->memo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Memo", $value);
+            $writer->writeElementNs(null, 'Memo', null, (string) $value);
         }
-        $value = $this->getConversionRate();
+        $value = $this->conversionRate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConversionRate", $value);
+            $writer->startElementNs(null, 'ConversionRate', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getNetDetailAmount();
+        $value = $this->netDetailAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NetDetailAmount", $value);
+            $writer->startElementNs(null, 'NetDetailAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRefNumber();
+        $value = $this->refNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefNumber", $value);
+            $writer->writeElementNs(null, 'RefNumber', null, (string) $value);
         }
-        $value = $this->getVATPercent();
+        $value = $this->vATPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATPercent", $value);
+            $writer->writeElementNs(null, 'VATPercent', null, (string) $value);
         }
-        $value = $this->getTitle();
+        $value = $this->title;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Title", $value);
+            $writer->writeElementNs(null, 'Title', null, (string) $value);
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getReceivedTopRatedDiscount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->receivedTopRatedDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReceivedTopRatedDiscount", $value);
+            $writer->writeElementNs(null, 'ReceivedTopRatedDiscount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getOrderId();
+        $value = $this->orderId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderId", $value);
+            $writer->writeElementNs(null, 'OrderId', null, (string) $value);
         }
-        $value = $this->getDiscountDetail();
+        $value = $this->discountDetail;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail");
+                    $writer->startElementNs(null, 'DiscountDetail', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Discount", $v);
+                $writer->startElementNs(null, 'Discount', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getNetted();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->netted;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Netted", $value);
+            $writer->writeElementNs(null, 'Netted', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AccountEntryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AccountEntryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountDetailsEntryType');
-        if (null !== $value) {
-            $this->setAccountDetailsEntryType($value);
+        $this->discountDetail = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AccountDetailsEntryType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountDetailsEntryType = $value;
+                    }
+                    return true;
+                case 'Description':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->description = $value;
+                    }
+                    return true;
+                case 'Balance':
+                    $this->balance = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'Date':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->date = new \DateTime($value);
+                    }
+                    return true;
+                case 'GrossDetailAmount':
+                    $this->grossDetailAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'Memo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->memo = $value;
+                    }
+                    return true;
+                case 'ConversionRate':
+                    $this->conversionRate = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'NetDetailAmount':
+                    $this->netDetailAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'RefNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refNumber = $value;
+                    }
+                    return true;
+                case 'VATPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->vATPercent = (float) $value;
+                    }
+                    return true;
+                case 'Title':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->title = $value;
+                    }
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'ReceivedTopRatedDiscount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->receivedTopRatedDiscount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'OrderId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderId = $value;
+                    }
+                    return true;
+                case 'DiscountDetail':
+                    $this->discountDetail = Func::readList($reader, 'Discount', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\DiscountType::xmlRead($reader));
+                    return true;
+                case 'Netted':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->netted = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
-        if (null !== $value) {
-            $this->setDescription($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
-        if (null !== $value) {
-            $this->setBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Date');
-        if (null !== $value) {
-            $this->setDate(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}GrossDetailAmount');
-        if (null !== $value) {
-            $this->setGrossDetailAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Memo');
-        if (null !== $value) {
-            $this->setMemo($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConversionRate');
-        if (null !== $value) {
-            $this->setConversionRate(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NetDetailAmount');
-        if (null !== $value) {
-            $this->setNetDetailAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefNumber');
-        if (null !== $value) {
-            $this->setRefNumber($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
-        if (null !== $value) {
-            $this->setVATPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Title');
-        if (null !== $value) {
-            $this->setTitle($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReceivedTopRatedDiscount');
-        if (null !== $value) {
-            $this->setReceivedTopRatedDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderId');
-        if (null !== $value) {
-            $this->setOrderId($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountDetail');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Discount');
-            $this->setDiscountDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DiscountType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Netted');
-        if (null !== $value) {
-            $this->setNetted(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

@@ -352,89 +352,129 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getErrorId();
+        $value = $this->errorId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorId", $value);
+            $writer->writeElementNs(null, 'errorId', null, (string) $value);
         }
-        $value = $this->getDomain();
+        $value = $this->domain;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domain", $value);
+            $writer->writeElementNs(null, 'domain', null, (string) $value);
         }
-        $value = $this->getSubdomain();
+        $value = $this->subdomain;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}subdomain", $value);
+            $writer->writeElementNs(null, 'subdomain', null, (string) $value);
         }
-        $value = $this->getSeverity();
+        $value = $this->severity;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}severity", $value);
+            $writer->writeElementNs(null, 'severity', null, (string) $value);
         }
-        $value = $this->getCategory();
+        $value = $this->category;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}category", $value);
+            $writer->writeElementNs(null, 'category', null, (string) $value);
         }
-        $value = $this->getMessage();
+        $value = $this->message;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}message", $value);
+            $writer->writeElementNs(null, 'message', null, (string) $value);
         }
-        $value = $this->getExceptionId();
+        $value = $this->exceptionId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}exceptionId", $value);
+            $writer->writeElementNs(null, 'exceptionId', null, (string) $value);
         }
-        $value = $this->getParameter();
+        $value = $this->parameter;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}parameter", $v);
+                $writer->startElementNs(null, 'parameter', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorId');
-        if (null !== $value) {
-            $this->setErrorId($value);
+        $this->parameter = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'errorId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorId = (int) $value;
+                    }
+                    return true;
+                case 'domain':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domain = $value;
+                    }
+                    return true;
+                case 'subdomain':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->subdomain = $value;
+                    }
+                    return true;
+                case 'severity':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->severity = $value;
+                    }
+                    return true;
+                case 'category':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->category = $value;
+                    }
+                    return true;
+                case 'message':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->message = $value;
+                    }
+                    return true;
+                case 'exceptionId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->exceptionId = $value;
+                    }
+                    return true;
+                case 'parameter':
+                    $this->parameter[] = \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domain');
-        if (null !== $value) {
-            $this->setDomain($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}subdomain');
-        if (null !== $value) {
-            $this->setSubdomain($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}severity');
-        if (null !== $value) {
-            $this->setSeverity($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}category');
-        if (null !== $value) {
-            $this->setCategory($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}message');
-        if (null !== $value) {
-            $this->setMessage($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}exceptionId');
-        if (null !== $value) {
-            $this->setExceptionId($value);
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}parameter');
-        if (null !== $value) {
-            $this->setParameter(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

@@ -157,53 +157,87 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSuperscript();
+        $value = $this->superscript;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}superscript", $value);
+            $writer->writeElementNs(null, 'superscript', null, (string) $value);
         }
-        $value = $this->getMaxDeliveryServiceDefinition();
+        $value = $this->maxDeliveryServiceDefinition;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}maxDeliveryServiceDefinition", $value);
+            $writer->writeElementNs(null, 'maxDeliveryServiceDefinition', null, (string) $value);
         }
-        $value = $this->getMinDeliveryServiceDefinition();
+        $value = $this->minDeliveryServiceDefinition;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}minDeliveryServiceDefinition", $value);
+            $writer->writeElementNs(null, 'minDeliveryServiceDefinition', null, (string) $value);
         }
-        $value = $this->getName();
+        $value = $this->name;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}name", $value);
+            $writer->writeElementNs(null, 'name', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ServiceDefinitionType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ServiceDefinitionType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}superscript');
-        if (null !== $value) {
-            $this->setSuperscript($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'superscript':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->superscript = $value;
+                    }
+                    return true;
+                case 'maxDeliveryServiceDefinition':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxDeliveryServiceDefinition = (int) $value;
+                    }
+                    return true;
+                case 'minDeliveryServiceDefinition':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minDeliveryServiceDefinition = (int) $value;
+                    }
+                    return true;
+                case 'name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->name = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}maxDeliveryServiceDefinition');
-        if (null !== $value) {
-            $this->setMaxDeliveryServiceDefinition($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}minDeliveryServiceDefinition');
-        if (null !== $value) {
-            $this->setMinDeliveryServiceDefinition($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}name');
-        if (null !== $value) {
-            $this->setName($value);
-        }
+        return false;
     }
 }

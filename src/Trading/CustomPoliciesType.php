@@ -381,39 +381,43 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTakeBackPolicyID();
+        $value = $this->takeBackPolicyID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TakeBackPolicyID", $value);
+            $writer->writeElementNs(null, 'TakeBackPolicyID', null, (string) $value);
         }
-        $value = $this->getRegionalTakeBackPolicies();
+        $value = $this->regionalTakeBackPolicies;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies");
+                    $writer->startElementNs(null, 'RegionalTakeBackPolicies', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CountryPolicies", $v);
+                $writer->startElementNs(null, 'CountryPolicies', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getProductCompliancePolicyID();
+        $value = $this->productCompliancePolicyID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID", $v);
+                $writer->writeElementNs(null, 'ProductCompliancePolicyID', null, (string) $v);
             }
         }
-        $value = $this->getRegionalProductCompliancePolicies();
+        $value = $this->regionalProductCompliancePolicies;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies");
+                    $writer->startElementNs(null, 'RegionalProductCompliancePolicies', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CountryPolicies", $v);
+                $writer->startElementNs(null, 'CountryPolicies', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -423,39 +427,64 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CustomPoliciesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CustomPoliciesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TakeBackPolicyID');
-        if (null !== $value) {
-            $this->setTakeBackPolicyID($value);
+        $this->regionalTakeBackPolicies = [];
+        $this->productCompliancePolicyID = [];
+        $this->regionalProductCompliancePolicies = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TakeBackPolicyID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->takeBackPolicyID = (int) $value;
+                    }
+                    return true;
+                case 'RegionalTakeBackPolicies':
+                    $this->regionalTakeBackPolicies = Func::readList($reader, 'CountryPolicies', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\CountryPoliciesType::xmlRead($reader));
+                    return true;
+                case 'ProductCompliancePolicyID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->productCompliancePolicyID[] = (int) $value;
+                    }
+                    return true;
+                case 'RegionalProductCompliancePolicies':
+                    $this->regionalProductCompliancePolicies = Func::readList($reader, 'CountryPolicies', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\CountryPoliciesType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalTakeBackPolicies');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies');
-            $this->setRegionalTakeBackPolicies(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductCompliancePolicyID', true);
-        if (null !== $value) {
-            $this->setProductCompliancePolicyID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionalProductCompliancePolicies');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CountryPolicies');
-            $this->setRegionalProductCompliancePolicies(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CountryPoliciesType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

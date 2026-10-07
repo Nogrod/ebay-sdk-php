@@ -2663,306 +2663,337 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getCountryDetails();
+        $value = $this->countryDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CountryDetails", $v);
+                $writer->startElementNs(null, 'CountryDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getCurrencyDetails();
+        $value = $this->currencyDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrencyDetails", $v);
+                $writer->startElementNs(null, 'CurrencyDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getDispatchTimeMaxDetails();
+        $value = $this->dispatchTimeMaxDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxDetails", $v);
+                $writer->startElementNs(null, 'DispatchTimeMaxDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getPaymentOptionDetails();
+        $value = $this->paymentOptionDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOptionDetails", $v);
+                $writer->startElementNs(null, 'PaymentOptionDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getRegionDetails();
+        $value = $this->regionDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionDetails", $v);
+                $writer->startElementNs(null, 'RegionDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingLocationDetails();
+        $value = $this->shippingLocationDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingLocationDetails", $v);
+                $writer->startElementNs(null, 'ShippingLocationDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingServiceDetails();
+        $value = $this->shippingServiceDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails", $v);
+                $writer->startElementNs(null, 'ShippingServiceDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getSiteDetails();
+        $value = $this->siteDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteDetails", $v);
+                $writer->startElementNs(null, 'SiteDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getTaxJurisdiction();
+        $value = $this->taxJurisdiction;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction", $v);
+                $writer->startElementNs(null, 'TaxJurisdiction', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getURLDetails();
+        $value = $this->uRLDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URLDetails", $v);
+                $writer->startElementNs(null, 'URLDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getTimeZoneDetails();
+        $value = $this->timeZoneDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeZoneDetails", $v);
+                $writer->startElementNs(null, 'TimeZoneDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getItemSpecificDetails();
+        $value = $this->itemSpecificDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecificDetails", $v);
+                $writer->startElementNs(null, 'ItemSpecificDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getRegionOfOriginDetails();
+        $value = $this->regionOfOriginDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails", $v);
+                $writer->startElementNs(null, 'RegionOfOriginDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingPackageDetails();
+        $value = $this->shippingPackageDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails", $v);
+                $writer->startElementNs(null, 'ShippingPackageDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingCarrierDetails();
+        $value = $this->shippingCarrierDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCarrierDetails", $v);
+                $writer->startElementNs(null, 'ShippingCarrierDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getReturnPolicyDetails();
+        $value = $this->returnPolicyDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails", $value);
+            $writer->startElementNs(null, 'ReturnPolicyDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getListingStartPriceDetails();
+        $value = $this->listingStartPriceDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails", $v);
+                $writer->startElementNs(null, 'ListingStartPriceDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getBuyerRequirementDetails();
+        $value = $this->buyerRequirementDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerRequirementDetails", $v);
+                $writer->startElementNs(null, 'BuyerRequirementDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getListingFeatureDetails();
+        $value = $this->listingFeatureDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingFeatureDetails", $v);
+                $writer->startElementNs(null, 'ListingFeatureDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getVariationDetails();
+        $value = $this->variationDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationDetails", $value);
+            $writer->startElementNs(null, 'VariationDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getExcludeShippingLocationDetails();
+        $value = $this->excludeShippingLocationDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeShippingLocationDetails", $v);
+                $writer->startElementNs(null, 'ExcludeShippingLocationDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getRecoupmentPolicyDetails();
+        $value = $this->recoupmentPolicyDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyDetails", $v);
+                $writer->startElementNs(null, 'RecoupmentPolicyDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingCategoryDetails();
+        $value = $this->shippingCategoryDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCategoryDetails", $v);
+                $writer->startElementNs(null, 'ShippingCategoryDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getProductDetails();
+        $value = $this->productDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductDetails", $value);
+            $writer->startElementNs(null, 'ProductDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GeteBayDetailsResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GeteBayDetailsResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CountryDetails');
-        if (null !== $value) {
-            $this->setCountryDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CountryDetailsType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->countryDetails = [];
+        $this->currencyDetails = [];
+        $this->dispatchTimeMaxDetails = [];
+        $this->paymentOptionDetails = [];
+        $this->regionDetails = [];
+        $this->shippingLocationDetails = [];
+        $this->shippingServiceDetails = [];
+        $this->siteDetails = [];
+        $this->taxJurisdiction = [];
+        $this->uRLDetails = [];
+        $this->timeZoneDetails = [];
+        $this->itemSpecificDetails = [];
+        $this->regionOfOriginDetails = [];
+        $this->shippingPackageDetails = [];
+        $this->shippingCarrierDetails = [];
+        $this->listingStartPriceDetails = [];
+        $this->buyerRequirementDetails = [];
+        $this->listingFeatureDetails = [];
+        $this->excludeShippingLocationDetails = [];
+        $this->recoupmentPolicyDetails = [];
+        $this->shippingCategoryDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CountryDetails':
+                    $this->countryDetails[] = \Nogrod\eBaySDK\Trading\CountryDetailsType::xmlRead($reader);
+                    return true;
+                case 'CurrencyDetails':
+                    $this->currencyDetails[] = \Nogrod\eBaySDK\Trading\CurrencyDetailsType::xmlRead($reader);
+                    return true;
+                case 'DispatchTimeMaxDetails':
+                    $this->dispatchTimeMaxDetails[] = \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType::xmlRead($reader);
+                    return true;
+                case 'PaymentOptionDetails':
+                    $this->paymentOptionDetails[] = \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType::xmlRead($reader);
+                    return true;
+                case 'RegionDetails':
+                    $this->regionDetails[] = \Nogrod\eBaySDK\Trading\RegionDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingLocationDetails':
+                    $this->shippingLocationDetails[] = \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingServiceDetails':
+                    $this->shippingServiceDetails[] = \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType::xmlRead($reader);
+                    return true;
+                case 'SiteDetails':
+                    $this->siteDetails[] = \Nogrod\eBaySDK\Trading\SiteDetailsType::xmlRead($reader);
+                    return true;
+                case 'TaxJurisdiction':
+                    $this->taxJurisdiction[] = \Nogrod\eBaySDK\Trading\TaxJurisdictionType::xmlRead($reader);
+                    return true;
+                case 'URLDetails':
+                    $this->uRLDetails[] = \Nogrod\eBaySDK\Trading\URLDetailsType::xmlRead($reader);
+                    return true;
+                case 'TimeZoneDetails':
+                    $this->timeZoneDetails[] = \Nogrod\eBaySDK\Trading\TimeZoneDetailsType::xmlRead($reader);
+                    return true;
+                case 'ItemSpecificDetails':
+                    $this->itemSpecificDetails[] = \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType::xmlRead($reader);
+                    return true;
+                case 'RegionOfOriginDetails':
+                    $this->regionOfOriginDetails[] = \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingPackageDetails':
+                    $this->shippingPackageDetails[] = \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingCarrierDetails':
+                    $this->shippingCarrierDetails[] = \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType::xmlRead($reader);
+                    return true;
+                case 'ReturnPolicyDetails':
+                    $this->returnPolicyDetails = \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::xmlRead($reader);
+                    return true;
+                case 'ListingStartPriceDetails':
+                    $this->listingStartPriceDetails[] = \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType::xmlRead($reader);
+                    return true;
+                case 'BuyerRequirementDetails':
+                    $this->buyerRequirementDetails[] = \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType::xmlRead($reader);
+                    return true;
+                case 'ListingFeatureDetails':
+                    $this->listingFeatureDetails[] = \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType::xmlRead($reader);
+                    return true;
+                case 'VariationDetails':
+                    $this->variationDetails = \Nogrod\eBaySDK\Trading\VariationDetailsType::xmlRead($reader);
+                    return true;
+                case 'ExcludeShippingLocationDetails':
+                    $this->excludeShippingLocationDetails[] = \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType::xmlRead($reader);
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'RecoupmentPolicyDetails':
+                    $this->recoupmentPolicyDetails[] = \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType::xmlRead($reader);
+                    return true;
+                case 'ShippingCategoryDetails':
+                    $this->shippingCategoryDetails[] = \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType::xmlRead($reader);
+                    return true;
+                case 'ProductDetails':
+                    $this->productDetails = \Nogrod\eBaySDK\Trading\ProductDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyDetails');
-        if (null !== $value) {
-            $this->setCurrencyDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CurrencyDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxDetails');
-        if (null !== $value) {
-            $this->setDispatchTimeMaxDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentOptionDetails');
-        if (null !== $value) {
-            $this->setPaymentOptionDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionDetails');
-        if (null !== $value) {
-            $this->setRegionDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RegionDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingLocationDetails');
-        if (null !== $value) {
-            $this->setShippingLocationDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingLocationDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails');
-        if (null !== $value) {
-            $this->setShippingServiceDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteDetails');
-        if (null !== $value) {
-            $this->setSiteDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SiteDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction');
-        if (null !== $value) {
-            $this->setTaxJurisdiction(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLDetails');
-        if (null !== $value) {
-            $this->setURLDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\URLDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneDetails');
-        if (null !== $value) {
-            $this->setTimeZoneDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TimeZoneDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecificDetails');
-        if (null !== $value) {
-            $this->setItemSpecificDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemSpecificDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails');
-        if (null !== $value) {
-            $this->setRegionOfOriginDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails');
-        if (null !== $value) {
-            $this->setShippingPackageDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingPackageDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCarrierDetails');
-        if (null !== $value) {
-            $this->setShippingCarrierDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnPolicyDetails');
-        if (null !== $value) {
-            $this->setReturnPolicyDetails(\Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails');
-        if (null !== $value) {
-            $this->setListingStartPriceDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerRequirementDetails');
-        if (null !== $value) {
-            $this->setBuyerRequirementDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingFeatureDetails');
-        if (null !== $value) {
-            $this->setListingFeatureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationDetails');
-        if (null !== $value) {
-            $this->setVariationDetails(\Nogrod\eBaySDK\Trading\VariationDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeShippingLocationDetails');
-        if (null !== $value) {
-            $this->setExcludeShippingLocationDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyDetails');
-        if (null !== $value) {
-            $this->setRecoupmentPolicyDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCategoryDetails');
-        if (null !== $value) {
-            $this->setShippingCategoryDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductDetails');
-        if (null !== $value) {
-            $this->setProductDetails(\Nogrod\eBaySDK\Trading\ProductDetailsType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

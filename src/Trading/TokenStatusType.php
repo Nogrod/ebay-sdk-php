@@ -157,53 +157,87 @@ class TokenStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getStatus();
+        $value = $this->status;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
+            $writer->writeElementNs(null, 'Status', null, (string) $value);
         }
-        $value = $this->getEIASToken();
+        $value = $this->eIASToken;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EIASToken", $value);
+            $writer->writeElementNs(null, 'EIASToken', null, (string) $value);
         }
-        $value = $this->getExpirationTime();
+        $value = $this->expirationTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpirationTime", $value);
+            $writer->writeElementNs(null, 'ExpirationTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getRevocationTime();
+        $value = $this->revocationTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RevocationTime", $value);
+            $writer->writeElementNs(null, 'RevocationTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TokenStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TokenStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Status':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->status = $value;
+                    }
+                    return true;
+                case 'EIASToken':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eIASToken = $value;
+                    }
+                    return true;
+                case 'ExpirationTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->expirationTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'RevocationTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->revocationTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EIASToken');
-        if (null !== $value) {
-            $this->setEIASToken($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpirationTime');
-        if (null !== $value) {
-            $this->setExpirationTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RevocationTime');
-        if (null !== $value) {
-            $this->setRevocationTime(new \DateTime($value));
-        }
+        return false;
     }
 }

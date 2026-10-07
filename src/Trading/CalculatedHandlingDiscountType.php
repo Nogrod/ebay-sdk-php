@@ -301,61 +301,94 @@ class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDiscountName();
+        $value = $this->discountName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountName", $value);
+            $writer->writeElementNs(null, 'DiscountName', null, (string) $value);
         }
-        $value = $this->getOrderHandlingAmount();
+        $value = $this->orderHandlingAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderHandlingAmount", $value);
+            $writer->startElementNs(null, 'OrderHandlingAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEachAdditionalAmount();
+        $value = $this->eachAdditionalAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount", $value);
+            $writer->startElementNs(null, 'EachAdditionalAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEachAdditionalOffAmount();
+        $value = $this->eachAdditionalOffAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalOffAmount", $value);
+            $writer->startElementNs(null, 'EachAdditionalOffAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEachAdditionalPercentOff();
+        $value = $this->eachAdditionalPercentOff;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff", $value);
+            $writer->writeElementNs(null, 'EachAdditionalPercentOff', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
-        if (null !== $value) {
-            $this->setDiscountName($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DiscountName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountName = $value;
+                    }
+                    return true;
+                case 'OrderHandlingAmount':
+                    $this->orderHandlingAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EachAdditionalAmount':
+                    $this->eachAdditionalAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EachAdditionalOffAmount':
+                    $this->eachAdditionalOffAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EachAdditionalPercentOff':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eachAdditionalPercentOff = (float) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderHandlingAmount');
-        if (null !== $value) {
-            $this->setOrderHandlingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
-        if (null !== $value) {
-            $this->setEachAdditionalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalOffAmount');
-        if (null !== $value) {
-            $this->setEachAdditionalOffAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
-        if (null !== $value) {
-            $this->setEachAdditionalPercentOff($value);
-        }
+        return false;
     }
 }

@@ -1240,284 +1240,346 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAllowPaymentEdit();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->allowPaymentEdit;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit", $value);
+            $writer->writeElementNs(null, 'AllowPaymentEdit', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBillingCurrency();
+        $value = $this->billingCurrency;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BillingCurrency", $value);
+            $writer->writeElementNs(null, 'BillingCurrency', null, (string) $value);
         }
-        $value = $this->getCheckoutEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->checkoutEnabled;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled", $value);
+            $writer->writeElementNs(null, 'CheckoutEnabled', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCIPBankAccountStored();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->cIPBankAccountStored;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CIPBankAccountStored", $value);
+            $writer->writeElementNs(null, 'CIPBankAccountStored', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getGoodStanding();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->goodStanding;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GoodStanding", $value);
+            $writer->writeElementNs(null, 'GoodStanding', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getMerchandizingPref();
+        $value = $this->merchandizingPref;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MerchandizingPref", $value);
+            $writer->writeElementNs(null, 'MerchandizingPref', null, (string) $value);
         }
-        $value = $this->getQualifiesForB2BVAT();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiesForB2BVAT;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiesForB2BVAT", $value);
+            $writer->writeElementNs(null, 'QualifiesForB2BVAT', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSellerGuaranteeLevel();
+        $value = $this->sellerGuaranteeLevel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeLevel", $value);
+            $writer->writeElementNs(null, 'SellerGuaranteeLevel', null, (string) $value);
         }
-        $value = $this->getSellerLevel();
+        $value = $this->sellerLevel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerLevel", $value);
+            $writer->writeElementNs(null, 'SellerLevel', null, (string) $value);
         }
-        $value = $this->getSellerPaymentAddress();
+        $value = $this->sellerPaymentAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress", $value);
+            $writer->startElementNs(null, 'SellerPaymentAddress', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSchedulingInfo();
+        $value = $this->schedulingInfo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SchedulingInfo", $value);
+            $writer->startElementNs(null, 'SchedulingInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getStoreOwner();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->storeOwner;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreOwner", $value);
+            $writer->writeElementNs(null, 'StoreOwner', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getStoreURL();
+        $value = $this->storeURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreURL", $value);
+            $writer->writeElementNs(null, 'StoreURL', null, (string) $value);
         }
-        $value = $this->getSellerBusinessType();
+        $value = $this->sellerBusinessType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerBusinessType", $value);
+            $writer->writeElementNs(null, 'SellerBusinessType', null, (string) $value);
         }
-        $value = $this->getRegisteredBusinessSeller();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->registeredBusinessSeller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegisteredBusinessSeller", $value);
+            $writer->writeElementNs(null, 'RegisteredBusinessSeller', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getStoreSite();
+        $value = $this->storeSite;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreSite", $value);
+            $writer->writeElementNs(null, 'StoreSite', null, (string) $value);
         }
-        $value = $this->getPaymentMethod();
+        $value = $this->paymentMethod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
+            $writer->writeElementNs(null, 'PaymentMethod', null, (string) $value);
         }
-        $value = $this->getCharityRegistered();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->charityRegistered;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityRegistered", $value);
+            $writer->writeElementNs(null, 'CharityRegistered', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSafePaymentExempt();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->safePaymentExempt;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt", $value);
+            $writer->writeElementNs(null, 'SafePaymentExempt', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCharityAffiliationDetails();
+        $value = $this->charityAffiliationDetails;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails");
+                    $writer->startElementNs(null, 'CharityAffiliationDetails', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail", $v);
+                $writer->startElementNs(null, 'CharityAffiliationDetail', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getTransactionPercent();
+        $value = $this->transactionPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionPercent", $value);
+            $writer->writeElementNs(null, 'TransactionPercent', null, (string) $value);
         }
-        $value = $this->getFeatureEligibility();
+        $value = $this->featureEligibility;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeatureEligibility", $value);
+            $writer->startElementNs(null, 'FeatureEligibility', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTopRatedSeller();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->topRatedSeller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSeller", $value);
+            $writer->writeElementNs(null, 'TopRatedSeller', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getTopRatedSellerDetails();
+        $value = $this->topRatedSellerDetails;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails");
+                    $writer->startElementNs(null, 'TopRatedSellerDetails', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TopRatedProgram", $v);
+                $writer->writeElementNs(null, 'TopRatedProgram', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getRecoupmentPolicyConsent();
+        $value = $this->recoupmentPolicyConsent;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent");
+                    $writer->startElementNs(null, 'RecoupmentPolicyConsent', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Site", $v);
+                $writer->writeElementNs(null, 'Site', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getDomesticRateTable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->domesticRateTable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRateTable", $value);
+            $writer->writeElementNs(null, 'DomesticRateTable', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getInternationalRateTable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->internationalRateTable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRateTable", $value);
+            $writer->writeElementNs(null, 'InternationalRateTable', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AllowPaymentEdit');
-        if (null !== $value) {
-            $this->setAllowPaymentEdit(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        $this->charityAffiliationDetails = [];
+        $this->topRatedSellerDetails = [];
+        $this->recoupmentPolicyConsent = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AllowPaymentEdit':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->allowPaymentEdit = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BillingCurrency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->billingCurrency = $value;
+                    }
+                    return true;
+                case 'CheckoutEnabled':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->checkoutEnabled = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CIPBankAccountStored':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->cIPBankAccountStored = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'GoodStanding':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->goodStanding = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'MerchandizingPref':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->merchandizingPref = $value;
+                    }
+                    return true;
+                case 'QualifiesForB2BVAT':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiesForB2BVAT = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SellerGuaranteeLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerGuaranteeLevel = $value;
+                    }
+                    return true;
+                case 'SellerLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerLevel = $value;
+                    }
+                    return true;
+                case 'SellerPaymentAddress':
+                    $this->sellerPaymentAddress = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+                case 'SchedulingInfo':
+                    $this->schedulingInfo = \Nogrod\eBaySDK\Trading\SchedulingInfoType::xmlRead($reader);
+                    return true;
+                case 'StoreOwner':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeOwner = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'StoreURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeURL = $value;
+                    }
+                    return true;
+                case 'SellerBusinessType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerBusinessType = $value;
+                    }
+                    return true;
+                case 'RegisteredBusinessSeller':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->registeredBusinessSeller = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'StoreSite':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeSite = $value;
+                    }
+                    return true;
+                case 'PaymentMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentMethod = $value;
+                    }
+                    return true;
+                case 'CharityRegistered':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->charityRegistered = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SafePaymentExempt':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->safePaymentExempt = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CharityAffiliationDetails':
+                    $this->charityAffiliationDetails = Func::readList($reader, 'CharityAffiliationDetail', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::xmlRead($reader));
+                    return true;
+                case 'TransactionPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionPercent = (float) $value;
+                    }
+                    return true;
+                case 'FeatureEligibility':
+                    $this->featureEligibility = \Nogrod\eBaySDK\Trading\FeatureEligibilityType::xmlRead($reader);
+                    return true;
+                case 'TopRatedSeller':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->topRatedSeller = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'TopRatedSellerDetails':
+                    $this->topRatedSellerDetails = Func::readList($reader, 'TopRatedProgram', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'RecoupmentPolicyConsent':
+                    $this->recoupmentPolicyConsent = Func::readList($reader, 'Site', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'DomesticRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticRateTable = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'InternationalRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalRateTable = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCurrency');
-        if (null !== $value) {
-            $this->setBillingCurrency($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled');
-        if (null !== $value) {
-            $this->setCheckoutEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CIPBankAccountStored');
-        if (null !== $value) {
-            $this->setCIPBankAccountStored(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GoodStanding');
-        if (null !== $value) {
-            $this->setGoodStanding(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchandizingPref');
-        if (null !== $value) {
-            $this->setMerchandizingPref($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForB2BVAT');
-        if (null !== $value) {
-            $this->setQualifiesForB2BVAT(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerGuaranteeLevel');
-        if (null !== $value) {
-            $this->setSellerGuaranteeLevel($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerLevel');
-        if (null !== $value) {
-            $this->setSellerLevel($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
-        if (null !== $value) {
-            $this->setSellerPaymentAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SchedulingInfo');
-        if (null !== $value) {
-            $this->setSchedulingInfo(\Nogrod\eBaySDK\Trading\SchedulingInfoType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreOwner');
-        if (null !== $value) {
-            $this->setStoreOwner(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
-        if (null !== $value) {
-            $this->setStoreURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerBusinessType');
-        if (null !== $value) {
-            $this->setSellerBusinessType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegisteredBusinessSeller');
-        if (null !== $value) {
-            $this->setRegisteredBusinessSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreSite');
-        if (null !== $value) {
-            $this->setStoreSite($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
-        if (null !== $value) {
-            $this->setPaymentMethod($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityRegistered');
-        if (null !== $value) {
-            $this->setCharityRegistered(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SafePaymentExempt');
-        if (null !== $value) {
-            $this->setSafePaymentExempt(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetails');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CharityAffiliationDetail');
-            $this->setCharityAffiliationDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
-        if (null !== $value) {
-            $this->setTransactionPercent($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeatureEligibility');
-        if (null !== $value) {
-            $this->setFeatureEligibility(\Nogrod\eBaySDK\Trading\FeatureEligibilityType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSeller');
-        if (null !== $value) {
-            $this->setTopRatedSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TopRatedSellerDetails');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}TopRatedProgram', true);
-            $this->setTopRatedSellerDetails($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyConsent');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Site', true);
-            $this->setRecoupmentPolicyConsent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
-        if (null !== $value) {
-            $this->setDomesticRateTable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
-        if (null !== $value) {
-            $this->setInternationalRateTable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

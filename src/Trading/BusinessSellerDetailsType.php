@@ -289,86 +289,125 @@ class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAddress();
+        $value = $this->address;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Address", $value);
+            $writer->startElementNs(null, 'Address', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFax();
+        $value = $this->fax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fax", $value);
+            $writer->writeElementNs(null, 'Fax', null, (string) $value);
         }
-        $value = $this->getEmail();
+        $value = $this->email;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
+            $writer->writeElementNs(null, 'Email', null, (string) $value);
         }
-        $value = $this->getAdditionalContactInformation();
+        $value = $this->additionalContactInformation;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdditionalContactInformation", $value);
+            $writer->writeElementNs(null, 'AdditionalContactInformation', null, (string) $value);
         }
-        $value = $this->getTradeRegistrationNumber();
+        $value = $this->tradeRegistrationNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TradeRegistrationNumber", $value);
+            $writer->writeElementNs(null, 'TradeRegistrationNumber', null, (string) $value);
         }
-        $value = $this->getLegalInvoice();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->legalInvoice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LegalInvoice", $value);
+            $writer->writeElementNs(null, 'LegalInvoice', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getTermsAndConditions();
+        $value = $this->termsAndConditions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TermsAndConditions", $value);
+            $writer->writeElementNs(null, 'TermsAndConditions', null, (string) $value);
         }
-        $value = $this->getVATDetails();
+        $value = $this->vATDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATDetails", $value);
+            $writer->startElementNs(null, 'VATDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BusinessSellerDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BusinessSellerDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Address');
-        if (null !== $value) {
-            $this->setAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Address':
+                    $this->address = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+                case 'Fax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->fax = $value;
+                    }
+                    return true;
+                case 'Email':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->email = $value;
+                    }
+                    return true;
+                case 'AdditionalContactInformation':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->additionalContactInformation = $value;
+                    }
+                    return true;
+                case 'TradeRegistrationNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->tradeRegistrationNumber = $value;
+                    }
+                    return true;
+                case 'LegalInvoice':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->legalInvoice = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'TermsAndConditions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->termsAndConditions = $value;
+                    }
+                    return true;
+                case 'VATDetails':
+                    $this->vATDetails = \Nogrod\eBaySDK\Trading\VATDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fax');
-        if (null !== $value) {
-            $this->setFax($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
-        if (null !== $value) {
-            $this->setEmail($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalContactInformation');
-        if (null !== $value) {
-            $this->setAdditionalContactInformation($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TradeRegistrationNumber');
-        if (null !== $value) {
-            $this->setTradeRegistrationNumber($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LegalInvoice');
-        if (null !== $value) {
-            $this->setLegalInvoice(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TermsAndConditions');
-        if (null !== $value) {
-            $this->setTermsAndConditions($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATDetails');
-        if (null !== $value) {
-            $this->setVATDetails(\Nogrod\eBaySDK\Trading\VATDetailsType::fromKeyValue($value));
-        }
+        return false;
     }
 }

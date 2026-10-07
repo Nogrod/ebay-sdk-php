@@ -124,45 +124,77 @@ class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getImageURL();
+        $value = $this->imageURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImageURL", $value);
+            $writer->writeElementNs(null, 'ImageURL', null, (string) $value);
         }
-        $value = $this->getImageDescription();
+        $value = $this->imageDescription;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImageDescription", $value);
+            $writer->writeElementNs(null, 'ImageDescription', null, (string) $value);
         }
-        $value = $this->getProductInformationsheet();
+        $value = $this->productInformationsheet;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductInformationsheet", $value);
+            $writer->writeElementNs(null, 'ProductInformationsheet', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\EnergyEfficiencyType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\EnergyEfficiencyType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
-        if (null !== $value) {
-            $this->setImageURL($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ImageURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->imageURL = $value;
+                    }
+                    return true;
+                case 'ImageDescription':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->imageDescription = $value;
+                    }
+                    return true;
+                case 'ProductInformationsheet':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->productInformationsheet = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageDescription');
-        if (null !== $value) {
-            $this->setImageDescription($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductInformationsheet');
-        if (null !== $value) {
-            $this->setProductInformationsheet($value);
-        }
+        return false;
     }
 }

@@ -15,7 +15,10 @@ class BusinessPoliciesManagementClassMap
             }$writer->write($value);
         },
         'DateTime' => function (Writer $writer, $elem) {
-            $writer->write($elem->format('Y-m-d\TH:i:s.v\Z'));
+            $writer->write(\Nogrod\XMLClientRuntime\Func::formatDateTime($elem));
+        },
+        'DateTimeImmutable' => function (Writer $writer, $elem) {
+            $writer->write(\Nogrod\XMLClientRuntime\Func::formatDateTime($elem));
         },
         'Date' => function (Writer $writer, $elem) {
             $writer->write($elem->format('Y-m-d'));

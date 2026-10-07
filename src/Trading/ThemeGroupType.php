@@ -212,55 +212,90 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getGroupID();
+        $value = $this->groupID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GroupID", $value);
+            $writer->writeElementNs(null, 'GroupID', null, (string) $value);
         }
-        $value = $this->getGroupName();
+        $value = $this->groupName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GroupName", $value);
+            $writer->writeElementNs(null, 'GroupName', null, (string) $value);
         }
-        $value = $this->getThemeID();
+        $value = $this->themeID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThemeID", $v);
+                $writer->writeElementNs(null, 'ThemeID', null, (string) $v);
             }
         }
-        $value = $this->getThemeTotal();
+        $value = $this->themeTotal;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThemeTotal", $value);
+            $writer->writeElementNs(null, 'ThemeTotal', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ThemeGroupType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ThemeGroupType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
-        if (null !== $value) {
-            $this->setGroupID($value);
+        $this->themeID = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'GroupID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->groupID = (int) $value;
+                    }
+                    return true;
+                case 'GroupName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->groupName = $value;
+                    }
+                    return true;
+                case 'ThemeID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->themeID[] = (int) $value;
+                    }
+                    return true;
+                case 'ThemeTotal':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->themeTotal = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupName');
-        if (null !== $value) {
-            $this->setGroupName($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeID', true);
-        if (null !== $value) {
-            $this->setThemeID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
-        if (null !== $value) {
-            $this->setThemeTotal($value);
-        }
+        return false;
     }
 }

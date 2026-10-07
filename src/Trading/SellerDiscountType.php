@@ -191,53 +191,85 @@ class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCampaignID();
+        $value = $this->campaignID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CampaignID", $value);
+            $writer->writeElementNs(null, 'CampaignID', null, (string) $value);
         }
-        $value = $this->getCampaignDisplayName();
+        $value = $this->campaignDisplayName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName", $value);
+            $writer->writeElementNs(null, 'CampaignDisplayName', null, (string) $value);
         }
-        $value = $this->getItemDiscountAmount();
+        $value = $this->itemDiscountAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount", $value);
+            $writer->startElementNs(null, 'ItemDiscountAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingDiscountAmount();
+        $value = $this->shippingDiscountAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount", $value);
+            $writer->startElementNs(null, 'ShippingDiscountAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerDiscountType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerDiscountType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignID');
-        if (null !== $value) {
-            $this->setCampaignID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CampaignID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->campaignID = (int) $value;
+                    }
+                    return true;
+                case 'CampaignDisplayName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->campaignDisplayName = $value;
+                    }
+                    return true;
+                case 'ItemDiscountAmount':
+                    $this->itemDiscountAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingDiscountAmount':
+                    $this->shippingDiscountAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CampaignDisplayName');
-        if (null !== $value) {
-            $this->setCampaignDisplayName($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDiscountAmount');
-        if (null !== $value) {
-            $this->setItemDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingDiscountAmount');
-        if (null !== $value) {
-            $this->setShippingDiscountAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

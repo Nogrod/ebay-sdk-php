@@ -291,79 +291,108 @@ class SetNotificationPreferencesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getApplicationDeliveryPreferences();
+        $value = $this->applicationDeliveryPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences", $value);
+            $writer->startElementNs(null, 'ApplicationDeliveryPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUserDeliveryPreferenceArray();
+        $value = $this->userDeliveryPreferenceArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray");
+                    $writer->startElementNs(null, 'UserDeliveryPreferenceArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationEnable", $v);
+                $writer->startElementNs(null, 'NotificationEnable', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getUserData();
+        $value = $this->userData;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserData", $value);
+            $writer->startElementNs(null, 'UserData', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEventProperty();
+        $value = $this->eventProperty;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EventProperty", $v);
+                $writer->startElementNs(null, 'EventProperty', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getDeliveryURLName();
+        $value = $this->deliveryURLName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeliveryURLName", $value);
+            $writer->writeElementNs(null, 'DeliveryURLName', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SetNotificationPreferencesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SetNotificationPreferencesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences');
-        if (null !== $value) {
-            $this->setApplicationDeliveryPreferences(\Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType::fromKeyValue($value));
+        parent::xmlInitLists();
+        $this->userDeliveryPreferenceArray = [];
+        $this->eventProperty = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ApplicationDeliveryPreferences':
+                    $this->applicationDeliveryPreferences = \Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType::xmlRead($reader);
+                    return true;
+                case 'UserDeliveryPreferenceArray':
+                    $this->userDeliveryPreferenceArray = Func::readList($reader, 'NotificationEnable', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\NotificationEnableType::xmlRead($reader));
+                    return true;
+                case 'UserData':
+                    $this->userData = \Nogrod\eBaySDK\Trading\NotificationUserDataType::xmlRead($reader);
+                    return true;
+                case 'EventProperty':
+                    $this->eventProperty[] = \Nogrod\eBaySDK\Trading\NotificationEventPropertyType::xmlRead($reader);
+                    return true;
+                case 'DeliveryURLName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->deliveryURLName = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable');
-            $this->setUserDeliveryPreferenceArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserData');
-        if (null !== $value) {
-            $this->setUserData(\Nogrod\eBaySDK\Trading\NotificationUserDataType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventProperty');
-        if (null !== $value) {
-            $this->setEventProperty(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NotificationEventPropertyType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLName');
-        if (null !== $value) {
-            $this->setDeliveryURLName($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -315,72 +315,110 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getPictureName();
+        $value = $this->pictureName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureName", $value);
+            $writer->writeElementNs(null, 'PictureName', null, (string) $value);
         }
-        $value = $this->getPictureSystemVersion();
+        $value = $this->pictureSystemVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion", $value);
+            $writer->writeElementNs(null, 'PictureSystemVersion', null, (string) $value);
         }
-        $value = $this->getPictureSet();
+        $value = $this->pictureSet;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureSet", $value);
+            $writer->writeElementNs(null, 'PictureSet', null, (string) $value);
         }
-        $value = $this->getPictureData();
+        $value = $this->pictureData;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureData", $value);
+            $writer->startElementNs(null, 'PictureData', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPictureUploadPolicy();
+        $value = $this->pictureUploadPolicy;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy", $value);
+            $writer->writeElementNs(null, 'PictureUploadPolicy', null, (string) $value);
         }
-        $value = $this->getExternalPictureURL();
+        $value = $this->externalPictureURL;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL", $v);
+                $writer->writeElementNs(null, 'ExternalPictureURL', null, (string) $v);
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\UploadSiteHostedPicturesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureName');
-        if (null !== $value) {
-            $this->setPictureName($value);
+        parent::xmlInitLists();
+        $this->externalPictureURL = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PictureName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureName = $value;
+                    }
+                    return true;
+                case 'PictureSystemVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureSystemVersion = (int) $value;
+                    }
+                    return true;
+                case 'PictureSet':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureSet = $value;
+                    }
+                    return true;
+                case 'PictureData':
+                    $this->pictureData = \Nogrod\eBaySDK\Trading\Base64BinaryType::xmlRead($reader);
+                    return true;
+                case 'PictureUploadPolicy':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureUploadPolicy = $value;
+                    }
+                    return true;
+                case 'ExternalPictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->externalPictureURL[] = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSystemVersion');
-        if (null !== $value) {
-            $this->setPictureSystemVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSet');
-        if (null !== $value) {
-            $this->setPictureSet($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureData');
-        if (null !== $value) {
-            $this->setPictureData(\Nogrod\eBaySDK\Trading\Base64BinaryType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureUploadPolicy');
-        if (null !== $value) {
-            $this->setPictureUploadPolicy($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value) {
-            $this->setExternalPictureURL($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

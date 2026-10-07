@@ -139,46 +139,77 @@ class GetUserContactDetailsResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getUserID();
+        $value = $this->userID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
+            $writer->writeElementNs(null, 'UserID', null, (string) $value);
         }
-        $value = $this->getContactAddress();
+        $value = $this->contactAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContactAddress", $value);
+            $writer->startElementNs(null, 'ContactAddress', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRegistrationDate();
+        $value = $this->registrationDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegistrationDate", $value);
+            $writer->writeElementNs(null, 'RegistrationDate', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetUserContactDetailsResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetUserContactDetailsResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
-        if (null !== $value) {
-            $this->setUserID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'UserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->userID = $value;
+                    }
+                    return true;
+                case 'ContactAddress':
+                    $this->contactAddress = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+                case 'RegistrationDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->registrationDate = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactAddress');
-        if (null !== $value) {
-            $this->setContactAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegistrationDate');
-        if (null !== $value) {
-            $this->setRegistrationDate(new \DateTime($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

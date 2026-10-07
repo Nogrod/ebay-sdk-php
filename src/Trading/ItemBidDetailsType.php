@@ -274,61 +274,97 @@ class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getCategoryID();
+        $value = $this->categoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
+            $writer->writeElementNs(null, 'CategoryID', null, (string) $value);
         }
-        $value = $this->getBidCount();
+        $value = $this->bidCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCount", $value);
+            $writer->writeElementNs(null, 'BidCount', null, (string) $value);
         }
-        $value = $this->getSellerID();
+        $value = $this->sellerID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerID", $value);
+            $writer->writeElementNs(null, 'SellerID', null, (string) $value);
         }
-        $value = $this->getLastBidTime();
+        $value = $this->lastBidTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastBidTime", $value);
+            $writer->writeElementNs(null, 'LastBidTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ItemBidDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ItemBidDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'CategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->categoryID = $value;
+                    }
+                    return true;
+                case 'BidCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidCount = (int) $value;
+                    }
+                    return true;
+                case 'SellerID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerID = $value;
+                    }
+                    return true;
+                case 'LastBidTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastBidTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
-        if (null !== $value) {
-            $this->setCategoryID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
-        if (null !== $value) {
-            $this->setBidCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
-        if (null !== $value) {
-            $this->setSellerID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastBidTime');
-        if (null !== $value) {
-            $this->setLastBidTime(new \DateTime($value));
-        }
+        return false;
     }
 }

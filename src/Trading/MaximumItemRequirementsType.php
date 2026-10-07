@@ -109,37 +109,67 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMaximumItemCount();
+        $value = $this->maximumItemCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumItemCount", $value);
+            $writer->writeElementNs(null, 'MaximumItemCount', null, (string) $value);
         }
-        $value = $this->getMinimumFeedbackScore();
+        $value = $this->minimumFeedbackScore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore", $value);
+            $writer->writeElementNs(null, 'MinimumFeedbackScore', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemCount');
-        if (null !== $value) {
-            $this->setMaximumItemCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MaximumItemCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maximumItemCount = (int) $value;
+                    }
+                    return true;
+                case 'MinimumFeedbackScore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minimumFeedbackScore = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumFeedbackScore');
-        if (null !== $value) {
-            $this->setMinimumFeedbackScore($value);
-        }
+        return false;
     }
 }

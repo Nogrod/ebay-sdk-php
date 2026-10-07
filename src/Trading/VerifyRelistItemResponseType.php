@@ -391,47 +391,51 @@ class VerifyRelistItemResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getFees();
+        $value = $this->fees;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Fees");
+                    $writer->startElementNs(null, 'Fees', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fee", $v);
+                $writer->startElementNs(null, 'Fee', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getStartTime();
+        $value = $this->startTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTime", $value);
+            $writer->writeElementNs(null, 'StartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTime();
+        $value = $this->endTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
+            $writer->writeElementNs(null, 'EndTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getDiscountReason();
+        $value = $this->discountReason;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountReason", $v);
+                $writer->writeElementNs(null, 'DiscountReason', null, (string) $v);
             }
         }
-        $value = $this->getProductSuggestions();
+        $value = $this->productSuggestions;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions");
+                    $writer->startElementNs(null, 'ProductSuggestions', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestion", $v);
+                $writer->startElementNs(null, 'ProductSuggestion', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -441,48 +445,77 @@ class VerifyRelistItemResponseType extends AbstractResponseType
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VerifyRelistItemResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VerifyRelistItemResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->fees = [];
+        $this->discountReason = [];
+        $this->productSuggestions = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'Fees':
+                    $this->fees = Func::readList($reader, 'Fee', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeeType::xmlRead($reader));
+                    return true;
+                case 'StartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'DiscountReason':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountReason[] = $value;
+                    }
+                    return true;
+                case 'ProductSuggestions':
+                    $this->productSuggestions = Func::readList($reader, 'ProductSuggestion', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ProductSuggestionType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Fee');
-            $this->setFees(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
-        if (null !== $value) {
-            $this->setStartTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
-        if (null !== $value) {
-            $this->setEndTime(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountReason', true);
-        if (null !== $value) {
-            $this->setDiscountReason($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestions');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion');
-            $this->setProductSuggestions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -248,43 +248,49 @@ class GetSellerProfilesResponseType extends BaseResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getPaymentProfileList();
+        $value = $this->paymentProfileList;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList");
+                    $writer->startElementNs(null, 'paymentProfileList', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile", $v);
+                $writer->startElementNs(null, 'PaymentProfile', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getReturnPolicyProfileList();
+        $value = $this->returnPolicyProfileList;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList");
+                    $writer->startElementNs(null, 'returnPolicyProfileList', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile", $v);
+                $writer->startElementNs(null, 'ReturnPolicyProfile', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getShippingPolicyProfile();
+        $value = $this->shippingPolicyProfile;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile");
+                    $writer->startElementNs(null, 'shippingPolicyProfile', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile", $v);
+                $writer->startElementNs(null, 'ShippingPolicyProfile', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -294,39 +300,56 @@ class GetSellerProfilesResponseType extends BaseResponseType
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetSellerProfilesResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentProfileList');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}PaymentProfile');
-            $this->setPaymentProfileList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->paymentProfileList = [];
+        $this->returnPolicyProfileList = [];
+        $this->shippingPolicyProfile = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'paymentProfileList':
+                    $this->paymentProfileList = Func::readList($reader, 'PaymentProfile', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType::xmlRead($reader));
+                    return true;
+                case 'returnPolicyProfileList':
+                    $this->returnPolicyProfileList = Func::readList($reader, 'ReturnPolicyProfile', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::xmlRead($reader));
+                    return true;
+                case 'shippingPolicyProfile':
+                    $this->shippingPolicyProfile = Func::readList($reader, 'ShippingPolicyProfile', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyProfileList');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}ReturnPolicyProfile');
-            $this->setReturnPolicyProfileList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyProfile');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile');
-            $this->setShippingPolicyProfile(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

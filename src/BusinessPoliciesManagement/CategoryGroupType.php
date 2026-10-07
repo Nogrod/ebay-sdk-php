@@ -124,47 +124,77 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDefault();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->default;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}default", $value);
+            $writer->writeElementNs(null, 'default', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getName();
+        $value = $this->name;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}name", $value);
+            $writer->writeElementNs(null, 'name', null, (string) $value);
         }
-        $value = $this->getETRS();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->eTRS;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ETRS", $value);
+            $writer->writeElementNs(null, 'ETRS', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}default');
-        if (null !== $value) {
-            $this->setDefault(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'default':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->default = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->name = $value;
+                    }
+                    return true;
+                case 'ETRS':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eTRS = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}name');
-        if (null !== $value) {
-            $this->setName($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ETRS');
-        if (null !== $value) {
-            $this->setETRS(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

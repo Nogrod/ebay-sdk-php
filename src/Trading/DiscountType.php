@@ -108,37 +108,66 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDiscountType();
+        $value = $this->discountType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountType", $value);
+            $writer->writeElementNs(null, 'DiscountType', null, (string) $value);
         }
-        $value = $this->getAmount();
+        $value = $this->amount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Amount", $value);
+            $writer->startElementNs(null, 'Amount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\DiscountType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\DiscountType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountType');
-        if (null !== $value) {
-            $this->setDiscountType($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DiscountType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountType = $value;
+                    }
+                    return true;
+                case 'Amount':
+                    $this->amount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Amount');
-        if (null !== $value) {
-            $this->setAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

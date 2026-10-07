@@ -93,39 +93,63 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
         Func::writeDefaultNamespace($writer, "http://www.ebay.com/marketplace/selling/v1/services");
-        $value = $this->getCurrencyId();
+        $value = $this->currencyId;
         if (null !== $value) {
-            $writer->writeAttribute("currencyId", $value);
+            $writer->writeAttribute('currencyId', (string) $value);
         }
     }
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->value();
-        $writer->write($value);
+        $value = $this->__value;
+        if (null !== $value) {
+            $writer->text((string) $value);
+        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType
     {
-        $self = new self($keyValue);
-        $self->setKeyValue($keyValue);
+        $self = new self(null);
+        $self->xmlInitLists();
+        $value = Func::readValue($reader, $self);
+        if ('' !== $value) {
+            $self->value((float) $value);
+        }
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, 'value');
-        if (null !== $value) {
-            $this->value($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        switch ($reader->localName) {
+            case 'currencyId':
+                $this->currencyId = $reader->value;
+                return true;
         }
-        $value = Func::mapValue($keyValue, 'currencyId');
-        if (null !== $value) {
-            $this->setCurrencyId($value);
-        }
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        return false;
     }
 }

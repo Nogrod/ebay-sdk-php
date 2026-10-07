@@ -159,47 +159,70 @@ class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
         Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->getUnit();
+        $value = $this->unit;
         if (null !== $value) {
-            $writer->writeAttribute("unit", $value);
+            $writer->writeAttribute('unit', (string) $value);
         }
-        $value = $this->getMeasurementSystem();
+        $value = $this->measurementSystem;
         if (null !== $value) {
-            $writer->writeAttribute("measurementSystem", $value);
+            $writer->writeAttribute('measurementSystem', (string) $value);
         }
     }
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->value();
-        $writer->write($value);
+        $value = $this->__value;
+        if (null !== $value) {
+            $writer->text((string) $value);
+        }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MeasureType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MeasureType
     {
-        $self = new self($keyValue);
-        $self->setKeyValue($keyValue);
+        $self = new self(null);
+        $self->xmlInitLists();
+        $value = Func::readValue($reader, $self);
+        if ('' !== $value) {
+            $self->value((float) $value);
+        }
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, 'value');
-        if (null !== $value) {
-            $this->value($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        switch ($reader->localName) {
+            case 'unit':
+                $this->unit = $reader->value;
+                return true;
+            case 'measurementSystem':
+                $this->measurementSystem = $reader->value;
+                return true;
         }
-        $value = Func::mapValue($keyValue, 'unit');
-        if (null !== $value) {
-            $this->setUnit($value);
-        }
-        $value = Func::mapValue($keyValue, 'measurementSystem');
-        if (null !== $value) {
-            $this->setMeasurementSystem($value);
-        }
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        return false;
     }
 }

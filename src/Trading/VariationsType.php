@@ -812,41 +812,49 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getVariation();
+        $value = $this->variation;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variation", $v);
+                $writer->startElementNs(null, 'Variation', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getPictures();
+        $value = $this->pictures;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictures", $v);
+                $writer->startElementNs(null, 'Pictures', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getVariationSpecificsSet();
+        $value = $this->variationSpecificsSet;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet");
+                    $writer->startElementNs(null, 'VariationSpecificsSet', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+                $writer->startElementNs(null, 'NameValueList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getModifyNameList();
+        $value = $this->modifyNameList;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList");
+                    $writer->startElementNs(null, 'ModifyNameList', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyName", $v);
+                $writer->startElementNs(null, 'ModifyName', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -856,43 +864,59 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VariationsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VariationsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Variation');
-        if (null !== $value) {
-            $this->setVariation(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VariationType::fromKeyValue($v);
-            }, $value));
+        $this->variation = [];
+        $this->pictures = [];
+        $this->variationSpecificsSet = [];
+        $this->modifyNameList = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Variation':
+                    $this->variation[] = \Nogrod\eBaySDK\Trading\VariationType::xmlRead($reader);
+                    return true;
+                case 'Pictures':
+                    $this->pictures[] = \Nogrod\eBaySDK\Trading\PicturesType::xmlRead($reader);
+                    return true;
+                case 'VariationSpecificsSet':
+                    $this->variationSpecificsSet = Func::readList($reader, 'NameValueList', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\NameValueListType::xmlRead($reader));
+                    return true;
+                case 'ModifyNameList':
+                    $this->modifyNameList = Func::readList($reader, 'ModifyName', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ModifyNameType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictures');
-        if (null !== $value) {
-            $this->setPictures(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PicturesType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
-            $this->setVariationSpecificsSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ModifyName');
-            $this->setModifyNameList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

@@ -152,42 +152,69 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCompatibility();
+        $value = $this->compatibility;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Compatibility", $v);
+                $writer->startElementNs(null, 'Compatibility', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getReplaceAll();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->replaceAll;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReplaceAll", $value);
+            $writer->writeElementNs(null, 'ReplaceAll', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ItemCompatibilityListType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ItemCompatibilityListType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Compatibility');
-        if (null !== $value) {
-            $this->setCompatibility(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemCompatibilityType::fromKeyValue($v);
-            }, $value));
+        $this->compatibility = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Compatibility':
+                    $this->compatibility[] = \Nogrod\eBaySDK\Trading\ItemCompatibilityType::xmlRead($reader);
+                    return true;
+                case 'ReplaceAll':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->replaceAll = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReplaceAll');
-        if (null !== $value) {
-            $this->setReplaceAll(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

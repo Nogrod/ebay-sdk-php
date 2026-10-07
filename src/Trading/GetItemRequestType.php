@@ -648,111 +648,148 @@ class GetItemRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getIncludeWatchCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeWatchCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount", $value);
+            $writer->writeElementNs(null, 'IncludeWatchCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeItemSpecifics();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeItemSpecifics;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeItemSpecifics", $value);
+            $writer->writeElementNs(null, 'IncludeItemSpecifics', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeTaxTable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeTaxTable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeTaxTable", $value);
+            $writer->writeElementNs(null, 'IncludeTaxTable', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSKU();
+        $value = $this->sKU;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
+            $writer->writeElementNs(null, 'SKU', null, (string) $value);
         }
-        $value = $this->getVariationSKU();
+        $value = $this->variationSKU;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSKU", $value);
+            $writer->writeElementNs(null, 'VariationSKU', null, (string) $value);
         }
-        $value = $this->getVariationSpecifics();
+        $value = $this->variationSpecifics;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics");
+                    $writer->startElementNs(null, 'VariationSpecifics', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+                $writer->startElementNs(null, 'NameValueList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getIncludeItemCompatibilityList();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeItemCompatibilityList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeItemCompatibilityList", $value);
+            $writer->writeElementNs(null, 'IncludeItemCompatibilityList', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetItemRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetItemRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->variationSpecifics = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'IncludeWatchCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeWatchCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeItemSpecifics':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeItemSpecifics = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeTaxTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeTaxTable = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SKU':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sKU = $value;
+                    }
+                    return true;
+                case 'VariationSKU':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->variationSKU = $value;
+                    }
+                    return true;
+                case 'VariationSpecifics':
+                    $this->variationSpecifics = Func::readList($reader, 'NameValueList', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\NameValueListType::xmlRead($reader));
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'IncludeItemCompatibilityList':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeItemCompatibilityList = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
-        if (null !== $value) {
-            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemSpecifics');
-        if (null !== $value) {
-            $this->setIncludeItemSpecifics(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeTaxTable');
-        if (null !== $value) {
-            $this->setIncludeTaxTable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
-        if (null !== $value) {
-            $this->setSKU($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSKU');
-        if (null !== $value) {
-            $this->setVariationSKU($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
-            $this->setVariationSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCompatibilityList');
-        if (null !== $value) {
-            $this->setIncludeItemCompatibilityList(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

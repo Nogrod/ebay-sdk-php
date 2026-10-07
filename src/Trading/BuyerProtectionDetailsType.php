@@ -105,37 +105,67 @@ class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBuyerProtectionSource();
+        $value = $this->buyerProtectionSource;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerProtectionSource", $value);
+            $writer->writeElementNs(null, 'BuyerProtectionSource', null, (string) $value);
         }
-        $value = $this->getBuyerProtectionStatus();
+        $value = $this->buyerProtectionStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerProtectionStatus", $value);
+            $writer->writeElementNs(null, 'BuyerProtectionStatus', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BuyerProtectionDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BuyerProtectionDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionSource');
-        if (null !== $value) {
-            $this->setBuyerProtectionSource($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BuyerProtectionSource':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerProtectionSource = $value;
+                    }
+                    return true;
+                case 'BuyerProtectionStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerProtectionStatus = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerProtectionStatus');
-        if (null !== $value) {
-            $this->setBuyerProtectionStatus($value);
-        }
+        return false;
     }
 }

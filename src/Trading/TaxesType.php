@@ -184,49 +184,77 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEBayReference();
+        $value = $this->eBayReference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayReference", $value);
+            $writer->startElementNs(null, 'eBayReference', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTotalTaxAmount();
+        $value = $this->totalTaxAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount", $value);
+            $writer->startElementNs(null, 'TotalTaxAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTaxDetails();
+        $value = $this->taxDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxDetails", $v);
+                $writer->startElementNs(null, 'TaxDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TaxesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TaxesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayReference');
-        if (null !== $value) {
-            $this->setEBayReference(\Nogrod\eBaySDK\Trading\EBayTaxReferenceValueType::fromKeyValue($value));
+        $this->taxDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'eBayReference':
+                    $this->eBayReference = \Nogrod\eBaySDK\Trading\EBayTaxReferenceValueType::xmlRead($reader);
+                    return true;
+                case 'TotalTaxAmount':
+                    $this->totalTaxAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TaxDetails':
+                    $this->taxDetails[] = \Nogrod\eBaySDK\Trading\TaxDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalTaxAmount');
-        if (null !== $value) {
-            $this->setTotalTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDetails');
-        if (null !== $value) {
-            $this->setTaxDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TaxDetailsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

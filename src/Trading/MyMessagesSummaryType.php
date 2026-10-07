@@ -283,73 +283,109 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getFolderSummary();
+        $value = $this->folderSummary;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderSummary", $v);
+                $writer->startElementNs(null, 'FolderSummary', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getNewMessageCount();
+        $value = $this->newMessageCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewMessageCount", $value);
+            $writer->writeElementNs(null, 'NewMessageCount', null, (string) $value);
         }
-        $value = $this->getFlaggedMessageCount();
+        $value = $this->flaggedMessageCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount", $value);
+            $writer->writeElementNs(null, 'FlaggedMessageCount', null, (string) $value);
         }
-        $value = $this->getTotalMessageCount();
+        $value = $this->totalMessageCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalMessageCount", $value);
+            $writer->writeElementNs(null, 'TotalMessageCount', null, (string) $value);
         }
-        $value = $this->getNewHighPriorityCount();
+        $value = $this->newHighPriorityCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount", $value);
+            $writer->writeElementNs(null, 'NewHighPriorityCount', null, (string) $value);
         }
-        $value = $this->getTotalHighPriorityCount();
+        $value = $this->totalHighPriorityCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount", $value);
+            $writer->writeElementNs(null, 'TotalHighPriorityCount', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MyMessagesSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MyMessagesSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderSummary');
-        if (null !== $value) {
-            $this->setFolderSummary(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::fromKeyValue($v);
-            }, $value));
+        $this->folderSummary = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'FolderSummary':
+                    $this->folderSummary[] = \Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType::xmlRead($reader);
+                    return true;
+                case 'NewMessageCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->newMessageCount = (int) $value;
+                    }
+                    return true;
+                case 'FlaggedMessageCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->flaggedMessageCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalMessageCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalMessageCount = (int) $value;
+                    }
+                    return true;
+                case 'NewHighPriorityCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->newHighPriorityCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalHighPriorityCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalHighPriorityCount = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewMessageCount');
-        if (null !== $value) {
-            $this->setNewMessageCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlaggedMessageCount');
-        if (null !== $value) {
-            $this->setFlaggedMessageCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalMessageCount');
-        if (null !== $value) {
-            $this->setTotalMessageCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewHighPriorityCount');
-        if (null !== $value) {
-            $this->setNewHighPriorityCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalHighPriorityCount');
-        if (null !== $value) {
-            $this->setTotalHighPriorityCount($value);
-        }
+        return false;
     }
 }

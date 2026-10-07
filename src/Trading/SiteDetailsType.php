@@ -184,53 +184,87 @@ class SiteDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSite();
+        $value = $this->site;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Site", $value);
+            $writer->writeElementNs(null, 'Site', null, (string) $value);
         }
-        $value = $this->getSiteID();
+        $value = $this->siteID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteID", $value);
+            $writer->writeElementNs(null, 'SiteID', null, (string) $value);
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SiteDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SiteDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Site');
-        if (null !== $value) {
-            $this->setSite($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Site':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->site = $value;
+                    }
+                    return true;
+                case 'SiteID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->siteID = (int) $value;
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteID');
-        if (null !== $value) {
-            $this->setSiteID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

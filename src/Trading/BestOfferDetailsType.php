@@ -255,71 +255,106 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBestOfferCount();
+        $value = $this->bestOfferCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferCount", $value);
+            $writer->writeElementNs(null, 'BestOfferCount', null, (string) $value);
         }
-        $value = $this->getBestOfferEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->bestOfferEnabled;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled", $value);
+            $writer->writeElementNs(null, 'BestOfferEnabled', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBestOffer();
+        $value = $this->bestOffer;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOffer", $value);
+            $writer->startElementNs(null, 'BestOffer', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBestOfferStatus();
+        $value = $this->bestOfferStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferStatus", $value);
+            $writer->writeElementNs(null, 'BestOfferStatus', null, (string) $value);
         }
-        $value = $this->getBestOfferType();
+        $value = $this->bestOfferType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferType", $value);
+            $writer->writeElementNs(null, 'BestOfferType', null, (string) $value);
         }
-        $value = $this->getNewBestOffer();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->newBestOffer;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewBestOffer", $value);
+            $writer->writeElementNs(null, 'NewBestOffer', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BestOfferDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BestOfferDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferCount');
-        if (null !== $value) {
-            $this->setBestOfferCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BestOfferCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferCount = (int) $value;
+                    }
+                    return true;
+                case 'BestOfferEnabled':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferEnabled = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BestOffer':
+                    $this->bestOffer = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'BestOfferStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferStatus = $value;
+                    }
+                    return true;
+                case 'BestOfferType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferType = $value;
+                    }
+                    return true;
+                case 'NewBestOffer':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->newBestOffer = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferEnabled');
-        if (null !== $value) {
-            $this->setBestOfferEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
-        if (null !== $value) {
-            $this->setBestOffer(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferStatus');
-        if (null !== $value) {
-            $this->setBestOfferStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferType');
-        if (null !== $value) {
-            $this->setBestOfferType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewBestOffer');
-        if (null !== $value) {
-            $this->setNewBestOffer(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

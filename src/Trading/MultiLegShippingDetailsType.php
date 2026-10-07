@@ -152,45 +152,74 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSellerShipmentToLogisticsProvider();
+        $value = $this->sellerShipmentToLogisticsProvider;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider", $value);
+            $writer->startElementNs(null, 'SellerShipmentToLogisticsProvider', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLogisticsProviderShipmentToBuyer();
+        $value = $this->logisticsProviderShipmentToBuyer;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer", $value);
+            $writer->startElementNs(null, 'LogisticsProviderShipmentToBuyer', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFinalDestinationAddress();
+        $value = $this->finalDestinationAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FinalDestinationAddress", $value);
+            $writer->startElementNs(null, 'FinalDestinationAddress', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShipmentToLogisticsProvider');
-        if (null !== $value) {
-            $this->setSellerShipmentToLogisticsProvider(\Nogrod\eBaySDK\Trading\MultiLegShipmentType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SellerShipmentToLogisticsProvider':
+                    $this->sellerShipmentToLogisticsProvider = \Nogrod\eBaySDK\Trading\MultiLegShipmentType::xmlRead($reader);
+                    return true;
+                case 'LogisticsProviderShipmentToBuyer':
+                    $this->logisticsProviderShipmentToBuyer = \Nogrod\eBaySDK\Trading\MultiLegShipmentType::xmlRead($reader);
+                    return true;
+                case 'FinalDestinationAddress':
+                    $this->finalDestinationAddress = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticsProviderShipmentToBuyer');
-        if (null !== $value) {
-            $this->setLogisticsProviderShipmentToBuyer(\Nogrod\eBaySDK\Trading\MultiLegShipmentType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FinalDestinationAddress');
-        if (null !== $value) {
-            $this->setFinalDestinationAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
-        }
+        return false;
     }
 }

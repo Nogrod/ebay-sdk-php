@@ -371,48 +371,49 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getForceDuplicate();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->forceDuplicate;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}forceDuplicate", $value);
+            $writer->writeElementNs(null, 'forceDuplicate', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getProfileName();
+        $value = $this->profileName;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileName", $value);
+            $writer->writeElementNs(null, 'profileName', null, (string) $value);
         }
-        $value = $this->getProfileId();
+        $value = $this->profileId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileId", $value);
+            $writer->writeElementNs(null, 'profileId', null, (string) $value);
         }
-        $value = $this->getProfileType();
+        $value = $this->profileType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileType", $value);
+            $writer->writeElementNs(null, 'profileType', null, (string) $value);
         }
-        $value = $this->getProfileVersion();
+        $value = $this->profileVersion;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileVersion", $value);
+            $writer->writeElementNs(null, 'profileVersion', null, (string) $value);
         }
-        $value = $this->getProfileDesc();
+        $value = $this->profileDesc;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileDesc", $value);
+            $writer->writeElementNs(null, 'profileDesc', null, (string) $value);
         }
-        $value = $this->getDeletedDate();
+        $value = $this->deletedDate;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}deletedDate", $value);
+            $writer->writeElementNs(null, 'deletedDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getSiteId();
+        $value = $this->siteId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}siteId", $value);
+            $writer->writeElementNs(null, 'siteId', null, (string) $value);
         }
-        $value = $this->getCategoryGroups();
+        $value = $this->categoryGroups;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups");
+                    $writer->startElementNs(null, 'categoryGroups', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup", $v);
+                $writer->startElementNs(null, 'categoryGroup', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -422,56 +423,95 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}forceDuplicate');
-        if (null !== $value) {
-            $this->setForceDuplicate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        $this->categoryGroups = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'forceDuplicate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->forceDuplicate = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'profileName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileName = $value;
+                    }
+                    return true;
+                case 'profileId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileId = (int) $value;
+                    }
+                    return true;
+                case 'profileType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileType = $value;
+                    }
+                    return true;
+                case 'profileVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileVersion = (int) $value;
+                    }
+                    return true;
+                case 'profileDesc':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileDesc = $value;
+                    }
+                    return true;
+                case 'deletedDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->deletedDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'siteId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->siteId = (int) $value;
+                    }
+                    return true;
+                case 'categoryGroups':
+                    $this->categoryGroups = Func::readList($reader, 'categoryGroup', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileName');
-        if (null !== $value) {
-            $this->setProfileName($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
-        if (null !== $value) {
-            $this->setProfileId($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileType');
-        if (null !== $value) {
-            $this->setProfileType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileVersion');
-        if (null !== $value) {
-            $this->setProfileVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileDesc');
-        if (null !== $value) {
-            $this->setProfileDesc($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}deletedDate');
-        if (null !== $value) {
-            $this->setDeletedDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}siteId');
-        if (null !== $value) {
-            $this->setSiteId($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroups');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}categoryGroup');
-            $this->setCategoryGroups(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

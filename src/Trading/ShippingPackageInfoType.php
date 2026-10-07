@@ -433,101 +433,147 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getStoreID();
+        $value = $this->storeID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreID", $value);
+            $writer->writeElementNs(null, 'StoreID', null, (string) $value);
         }
-        $value = $this->getShippingTrackingEvent();
+        $value = $this->shippingTrackingEvent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTrackingEvent", $value);
+            $writer->writeElementNs(null, 'ShippingTrackingEvent', null, (string) $value);
         }
-        $value = $this->getScheduledDeliveryTimeMin();
+        $value = $this->scheduledDeliveryTimeMin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMin", $value);
+            $writer->writeElementNs(null, 'ScheduledDeliveryTimeMin', null, Func::formatDateTime($value));
         }
-        $value = $this->getScheduledDeliveryTimeMax();
+        $value = $this->scheduledDeliveryTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMax", $value);
+            $writer->writeElementNs(null, 'ScheduledDeliveryTimeMax', null, Func::formatDateTime($value));
         }
-        $value = $this->getActualDeliveryTime();
+        $value = $this->actualDeliveryTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActualDeliveryTime", $value);
+            $writer->writeElementNs(null, 'ActualDeliveryTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEstimatedDeliveryTimeMin();
+        $value = $this->estimatedDeliveryTimeMin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin", $value);
+            $writer->writeElementNs(null, 'EstimatedDeliveryTimeMin', null, Func::formatDateTime($value));
         }
-        $value = $this->getEstimatedDeliveryTimeMax();
+        $value = $this->estimatedDeliveryTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax", $value);
+            $writer->writeElementNs(null, 'EstimatedDeliveryTimeMax', null, Func::formatDateTime($value));
         }
-        $value = $this->getHandleByTime();
+        $value = $this->handleByTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HandleByTime", $value);
+            $writer->writeElementNs(null, 'HandleByTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getMinNativeEstimatedDeliveryTime();
+        $value = $this->minNativeEstimatedDeliveryTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinNativeEstimatedDeliveryTime", $value);
+            $writer->writeElementNs(null, 'MinNativeEstimatedDeliveryTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getMaxNativeEstimatedDeliveryTime();
+        $value = $this->maxNativeEstimatedDeliveryTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxNativeEstimatedDeliveryTime", $value);
+            $writer->writeElementNs(null, 'MaxNativeEstimatedDeliveryTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ShippingPackageInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ShippingPackageInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreID');
-        if (null !== $value) {
-            $this->setStoreID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'StoreID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeID = $value;
+                    }
+                    return true;
+                case 'ShippingTrackingEvent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingTrackingEvent = $value;
+                    }
+                    return true;
+                case 'ScheduledDeliveryTimeMin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->scheduledDeliveryTimeMin = new \DateTime($value);
+                    }
+                    return true;
+                case 'ScheduledDeliveryTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->scheduledDeliveryTimeMax = new \DateTime($value);
+                    }
+                    return true;
+                case 'ActualDeliveryTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->actualDeliveryTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EstimatedDeliveryTimeMin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->estimatedDeliveryTimeMin = new \DateTime($value);
+                    }
+                    return true;
+                case 'EstimatedDeliveryTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->estimatedDeliveryTimeMax = new \DateTime($value);
+                    }
+                    return true;
+                case 'HandleByTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->handleByTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'MinNativeEstimatedDeliveryTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minNativeEstimatedDeliveryTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'MaxNativeEstimatedDeliveryTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxNativeEstimatedDeliveryTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTrackingEvent');
-        if (null !== $value) {
-            $this->setShippingTrackingEvent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMin');
-        if (null !== $value) {
-            $this->setScheduledDeliveryTimeMin(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledDeliveryTimeMax');
-        if (null !== $value) {
-            $this->setScheduledDeliveryTimeMax(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActualDeliveryTime');
-        if (null !== $value) {
-            $this->setActualDeliveryTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMin');
-        if (null !== $value) {
-            $this->setEstimatedDeliveryTimeMin(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EstimatedDeliveryTimeMax');
-        if (null !== $value) {
-            $this->setEstimatedDeliveryTimeMax(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HandleByTime');
-        if (null !== $value) {
-            $this->setHandleByTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinNativeEstimatedDeliveryTime');
-        if (null !== $value) {
-            $this->setMinNativeEstimatedDeliveryTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxNativeEstimatedDeliveryTime');
-        if (null !== $value) {
-            $this->setMaxNativeEstimatedDeliveryTime(new \DateTime($value));
-        }
+        return false;
     }
 }

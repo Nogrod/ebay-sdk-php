@@ -337,81 +337,119 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSummaryDays();
+        $value = $this->summaryDays;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SummaryDays", $value);
+            $writer->writeElementNs(null, 'SummaryDays', null, (string) $value);
         }
-        $value = $this->getTotalBids();
+        $value = $this->totalBids;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalBids", $value);
+            $writer->writeElementNs(null, 'TotalBids', null, (string) $value);
         }
-        $value = $this->getBidActivityWithSeller();
+        $value = $this->bidActivityWithSeller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidActivityWithSeller", $value);
+            $writer->writeElementNs(null, 'BidActivityWithSeller', null, (string) $value);
         }
-        $value = $this->getBidsToUniqueSellers();
+        $value = $this->bidsToUniqueSellers;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidsToUniqueSellers", $value);
+            $writer->writeElementNs(null, 'BidsToUniqueSellers', null, (string) $value);
         }
-        $value = $this->getBidsToUniqueCategories();
+        $value = $this->bidsToUniqueCategories;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidsToUniqueCategories", $value);
+            $writer->writeElementNs(null, 'BidsToUniqueCategories', null, (string) $value);
         }
-        $value = $this->getBidRetractions();
+        $value = $this->bidRetractions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidRetractions", $value);
+            $writer->writeElementNs(null, 'BidRetractions', null, (string) $value);
         }
-        $value = $this->getItemBidDetails();
+        $value = $this->itemBidDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBidDetails", $v);
+                $writer->startElementNs(null, 'ItemBidDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BiddingSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BiddingSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SummaryDays');
-        if (null !== $value) {
-            $this->setSummaryDays($value);
+        $this->itemBidDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SummaryDays':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->summaryDays = (int) $value;
+                    }
+                    return true;
+                case 'TotalBids':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalBids = (int) $value;
+                    }
+                    return true;
+                case 'BidActivityWithSeller':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidActivityWithSeller = (int) $value;
+                    }
+                    return true;
+                case 'BidsToUniqueSellers':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidsToUniqueSellers = (int) $value;
+                    }
+                    return true;
+                case 'BidsToUniqueCategories':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidsToUniqueCategories = (int) $value;
+                    }
+                    return true;
+                case 'BidRetractions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidRetractions = (int) $value;
+                    }
+                    return true;
+                case 'ItemBidDetails':
+                    $this->itemBidDetails[] = \Nogrod\eBaySDK\Trading\ItemBidDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalBids');
-        if (null !== $value) {
-            $this->setTotalBids($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidActivityWithSeller');
-        if (null !== $value) {
-            $this->setBidActivityWithSeller($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueSellers');
-        if (null !== $value) {
-            $this->setBidsToUniqueSellers($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidsToUniqueCategories');
-        if (null !== $value) {
-            $this->setBidsToUniqueCategories($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidRetractions');
-        if (null !== $value) {
-            $this->setBidRetractions($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBidDetails');
-        if (null !== $value) {
-            $this->setItemBidDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemBidDetailsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

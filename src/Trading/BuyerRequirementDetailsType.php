@@ -178,55 +178,85 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShipToRegistrationCountry();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->shipToRegistrationCountry;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry", $value);
+            $writer->writeElementNs(null, 'ShipToRegistrationCountry', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getZeroFeedbackScore();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->zeroFeedbackScore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore", $value);
+            $writer->writeElementNs(null, 'ZeroFeedbackScore', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getMaximumItemRequirements();
+        $value = $this->maximumItemRequirements;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements", $value);
+            $writer->startElementNs(null, 'MaximumItemRequirements', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMaximumUnpaidItemStrikesInfo();
+        $value = $this->maximumUnpaidItemStrikesInfo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo", $value);
+            $writer->startElementNs(null, 'MaximumUnpaidItemStrikesInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BuyerRequirementDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BuyerRequirementDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipToRegistrationCountry');
-        if (null !== $value) {
-            $this->setShipToRegistrationCountry(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShipToRegistrationCountry':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shipToRegistrationCountry = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ZeroFeedbackScore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->zeroFeedbackScore = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'MaximumItemRequirements':
+                    $this->maximumItemRequirements = \Nogrod\eBaySDK\Trading\MaximumItemRequirementsType::xmlRead($reader);
+                    return true;
+                case 'MaximumUnpaidItemStrikesInfo':
+                    $this->maximumUnpaidItemStrikesInfo = \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ZeroFeedbackScore');
-        if (null !== $value) {
-            $this->setZeroFeedbackScore(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumItemRequirements');
-        if (null !== $value) {
-            $this->setMaximumItemRequirements(\Nogrod\eBaySDK\Trading\MaximumItemRequirementsType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesInfo');
-        if (null !== $value) {
-            $this->setMaximumUnpaidItemStrikesInfo(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoType::fromKeyValue($value));
-        }
+        return false;
     }
 }

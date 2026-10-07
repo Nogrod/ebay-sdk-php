@@ -273,53 +273,87 @@ class RateTableDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDomesticRateTable();
+        $value = $this->domesticRateTable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRateTable", $value);
+            $writer->writeElementNs(null, 'DomesticRateTable', null, (string) $value);
         }
-        $value = $this->getInternationalRateTable();
+        $value = $this->internationalRateTable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRateTable", $value);
+            $writer->writeElementNs(null, 'InternationalRateTable', null, (string) $value);
         }
-        $value = $this->getDomesticRateTableId();
+        $value = $this->domesticRateTableId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DomesticRateTableId", $value);
+            $writer->writeElementNs(null, 'DomesticRateTableId', null, (string) $value);
         }
-        $value = $this->getInternationalRateTableId();
+        $value = $this->internationalRateTableId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalRateTableId", $value);
+            $writer->writeElementNs(null, 'InternationalRateTableId', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RateTableDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RateTableDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTable');
-        if (null !== $value) {
-            $this->setDomesticRateTable($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DomesticRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticRateTable = $value;
+                    }
+                    return true;
+                case 'InternationalRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalRateTable = $value;
+                    }
+                    return true;
+                case 'DomesticRateTableId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticRateTableId = $value;
+                    }
+                    return true;
+                case 'InternationalRateTableId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->internationalRateTableId = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTable');
-        if (null !== $value) {
-            $this->setInternationalRateTable($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DomesticRateTableId');
-        if (null !== $value) {
-            $this->setDomesticRateTableId($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalRateTableId');
-        if (null !== $value) {
-            $this->setInternationalRateTableId($value);
-        }
+        return false;
     }
 }

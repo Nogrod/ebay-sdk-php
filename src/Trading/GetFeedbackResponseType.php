@@ -320,91 +320,126 @@ class GetFeedbackResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getFeedbackDetailArray();
+        $value = $this->feedbackDetailArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray");
+                    $writer->startElementNs(null, 'FeedbackDetailArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetail", $v);
+                $writer->startElementNs(null, 'FeedbackDetail', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getFeedbackDetailItemTotal();
+        $value = $this->feedbackDetailItemTotal;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackDetailItemTotal", $value);
+            $writer->writeElementNs(null, 'FeedbackDetailItemTotal', null, (string) $value);
         }
-        $value = $this->getFeedbackSummary();
+        $value = $this->feedbackSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackSummary", $value);
+            $writer->startElementNs(null, 'FeedbackSummary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeedbackScore();
+        $value = $this->feedbackScore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackScore", $value);
+            $writer->writeElementNs(null, 'FeedbackScore', null, (string) $value);
         }
-        $value = $this->getPaginationResult();
+        $value = $this->paginationResult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
+            $writer->startElementNs(null, 'PaginationResult', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEntriesPerPage();
+        $value = $this->entriesPerPage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EntriesPerPage", $value);
+            $writer->writeElementNs(null, 'EntriesPerPage', null, (string) $value);
         }
-        $value = $this->getPageNumber();
+        $value = $this->pageNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
+            $writer->writeElementNs(null, 'PageNumber', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetFeedbackResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetFeedbackResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetail');
-            $this->setFeedbackDetailArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeedbackDetailType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->feedbackDetailArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'FeedbackDetailArray':
+                    $this->feedbackDetailArray = Func::readList($reader, 'FeedbackDetail', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\FeedbackDetailType::xmlRead($reader));
+                    return true;
+                case 'FeedbackDetailItemTotal':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackDetailItemTotal = (int) $value;
+                    }
+                    return true;
+                case 'FeedbackSummary':
+                    $this->feedbackSummary = \Nogrod\eBaySDK\Trading\FeedbackSummaryType::xmlRead($reader);
+                    return true;
+                case 'FeedbackScore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackScore = (int) $value;
+                    }
+                    return true;
+                case 'PaginationResult':
+                    $this->paginationResult = \Nogrod\eBaySDK\Trading\PaginationResultType::xmlRead($reader);
+                    return true;
+                case 'EntriesPerPage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->entriesPerPage = (int) $value;
+                    }
+                    return true;
+                case 'PageNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pageNumber = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackDetailItemTotal');
-        if (null !== $value) {
-            $this->setFeedbackDetailItemTotal($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackSummary');
-        if (null !== $value) {
-            $this->setFeedbackSummary(\Nogrod\eBaySDK\Trading\FeedbackSummaryType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackScore');
-        if (null !== $value) {
-            $this->setFeedbackScore($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
-        if (null !== $value) {
-            $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EntriesPerPage');
-        if (null !== $value) {
-            $this->setEntriesPerPage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
-        if (null !== $value) {
-            $this->setPageNumber($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

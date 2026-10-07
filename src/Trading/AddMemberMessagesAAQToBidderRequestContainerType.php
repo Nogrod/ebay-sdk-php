@@ -142,45 +142,76 @@ class AddMemberMessagesAAQToBidderRequestContainerType implements \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCorrelationID();
+        $value = $this->correlationID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CorrelationID", $value);
+            $writer->writeElementNs(null, 'CorrelationID', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getMemberMessage();
+        $value = $this->memberMessage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", $value);
+            $writer->startElementNs(null, 'MemberMessage', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CorrelationID');
-        if (null !== $value) {
-            $this->setCorrelationID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CorrelationID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->correlationID = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'MemberMessage':
+                    $this->memberMessage = \Nogrod\eBaySDK\Trading\MemberMessageType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage');
-        if (null !== $value) {
-            $this->setMemberMessage(\Nogrod\eBaySDK\Trading\MemberMessageType::fromKeyValue($value));
-        }
+        return false;
     }
 }

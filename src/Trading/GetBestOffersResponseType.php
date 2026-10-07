@@ -274,88 +274,116 @@ class GetBestOffersResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getBestOfferArray();
+        $value = $this->bestOfferArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray");
+                    $writer->startElementNs(null, 'BestOfferArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOffer", $v);
+                $writer->startElementNs(null, 'BestOffer', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getItem();
+        $value = $this->item;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
+            $writer->startElementNs(null, 'Item', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getItemBestOffersArray();
+        $value = $this->itemBestOffersArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray");
+                    $writer->startElementNs(null, 'ItemBestOffersArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemBestOffers", $v);
+                $writer->startElementNs(null, 'ItemBestOffers', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPageNumber();
+        $value = $this->pageNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
+            $writer->writeElementNs(null, 'PageNumber', null, (string) $value);
         }
-        $value = $this->getPaginationResult();
+        $value = $this->paginationResult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
+            $writer->startElementNs(null, 'PaginationResult', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetBestOffersResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetBestOffersResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
-            $this->setBestOfferArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->bestOfferArray = [];
+        $this->itemBestOffersArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BestOfferArray':
+                    $this->bestOfferArray = Func::readList($reader, 'BestOffer', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\BestOfferType::xmlRead($reader));
+                    return true;
+                case 'Item':
+                    $this->item = \Nogrod\eBaySDK\Trading\ItemType::xmlRead($reader);
+                    return true;
+                case 'ItemBestOffersArray':
+                    $this->itemBestOffersArray = Func::readList($reader, 'ItemBestOffers', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ItemBestOffersType::xmlRead($reader));
+                    return true;
+                case 'PageNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pageNumber = (int) $value;
+                    }
+                    return true;
+                case 'PaginationResult':
+                    $this->paginationResult = \Nogrod\eBaySDK\Trading\PaginationResultType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
-        if (null !== $value) {
-            $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffersArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ItemBestOffers');
-            $this->setItemBestOffersArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemBestOffersType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
-        if (null !== $value) {
-            $this->setPageNumber($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
-        if (null !== $value) {
-            $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

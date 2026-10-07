@@ -1239,113 +1239,161 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDetailLevel();
+        $value = $this->detailLevel;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailLevel", $v);
+                $writer->writeElementNs(null, 'DetailLevel', null, (string) $v);
             }
         }
-        $value = $this->getErrorLanguage();
+        $value = $this->errorLanguage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorLanguage", $value);
+            $writer->writeElementNs(null, 'ErrorLanguage', null, (string) $value);
         }
-        $value = $this->getMessageID();
+        $value = $this->messageID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $value);
+            $writer->writeElementNs(null, 'MessageID', null, (string) $value);
         }
-        $value = $this->getVersion();
+        $value = $this->version;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Version", $value);
+            $writer->writeElementNs(null, 'Version', null, (string) $value);
         }
-        $value = $this->getEndUserIP();
+        $value = $this->endUserIP;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndUserIP", $value);
+            $writer->writeElementNs(null, 'EndUserIP', null, (string) $value);
         }
-        $value = $this->getErrorHandling();
+        $value = $this->errorHandling;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorHandling", $value);
+            $writer->writeElementNs(null, 'ErrorHandling', null, (string) $value);
         }
-        $value = $this->getInvocationID();
+        $value = $this->invocationID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvocationID", $value);
+            $writer->writeElementNs(null, 'InvocationID', null, (string) $value);
         }
-        $value = $this->getOutputSelector();
+        $value = $this->outputSelector;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutputSelector", $v);
+                $writer->writeElementNs(null, 'OutputSelector', null, (string) $v);
             }
         }
-        $value = $this->getWarningLevel();
+        $value = $this->warningLevel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WarningLevel", $value);
+            $writer->writeElementNs(null, 'WarningLevel', null, (string) $value);
         }
-        $value = $this->getBotBlock();
+        $value = $this->botBlock;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BotBlock", $value);
+            $writer->startElementNs(null, 'BotBlock', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRequesterCredentials();
+        $value = $this->requesterCredentials;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RequesterCredentials", $value);
+            $writer->startElementNs(null, 'RequesterCredentials', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AbstractRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AbstractRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailLevel', true);
-        if (null !== $value) {
-            $this->setDetailLevel($value);
+        $this->detailLevel = [];
+        $this->outputSelector = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DetailLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailLevel[] = $value;
+                    }
+                    return true;
+                case 'ErrorLanguage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorLanguage = $value;
+                    }
+                    return true;
+                case 'MessageID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->messageID = $value;
+                    }
+                    return true;
+                case 'Version':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->version = $value;
+                    }
+                    return true;
+                case 'EndUserIP':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endUserIP = $value;
+                    }
+                    return true;
+                case 'ErrorHandling':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorHandling = $value;
+                    }
+                    return true;
+                case 'InvocationID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->invocationID = $value;
+                    }
+                    return true;
+                case 'OutputSelector':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->outputSelector[] = $value;
+                    }
+                    return true;
+                case 'WarningLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->warningLevel = $value;
+                    }
+                    return true;
+                case 'BotBlock':
+                    $this->botBlock = \Nogrod\eBaySDK\Trading\BotBlockRequestType::xmlRead($reader);
+                    return true;
+                case 'RequesterCredentials':
+                    $this->requesterCredentials = \Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorLanguage');
-        if (null !== $value) {
-            $this->setErrorLanguage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageID');
-        if (null !== $value) {
-            $this->setMessageID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Version');
-        if (null !== $value) {
-            $this->setVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndUserIP');
-        if (null !== $value) {
-            $this->setEndUserIP($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorHandling');
-        if (null !== $value) {
-            $this->setErrorHandling($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvocationID');
-        if (null !== $value) {
-            $this->setInvocationID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutputSelector', true);
-        if (null !== $value) {
-            $this->setOutputSelector($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WarningLevel');
-        if (null !== $value) {
-            $this->setWarningLevel($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BotBlock');
-        if (null !== $value) {
-            $this->setBotBlock(\Nogrod\eBaySDK\Trading\BotBlockRequestType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequesterCredentials');
-        if (null !== $value) {
-            $this->setRequesterCredentials(\Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType::fromKeyValue($value));
-        }
+        return false;
     }
 }

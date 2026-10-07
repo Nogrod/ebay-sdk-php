@@ -127,45 +127,77 @@ class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMemberURL();
+        $value = $this->memberURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberURL", $value);
+            $writer->writeElementNs(null, 'MemberURL', null, (string) $value);
         }
-        $value = $this->getPictureHeight();
+        $value = $this->pictureHeight;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureHeight", $value);
+            $writer->writeElementNs(null, 'PictureHeight', null, (string) $value);
         }
-        $value = $this->getPictureWidth();
+        $value = $this->pictureWidth;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureWidth", $value);
+            $writer->writeElementNs(null, 'PictureWidth', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PictureSetMemberType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PictureSetMemberType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberURL');
-        if (null !== $value) {
-            $this->setMemberURL($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MemberURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->memberURL = $value;
+                    }
+                    return true;
+                case 'PictureHeight':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureHeight = (int) $value;
+                    }
+                    return true;
+                case 'PictureWidth':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureWidth = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureHeight');
-        if (null !== $value) {
-            $this->setPictureHeight($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureWidth');
-        if (null !== $value) {
-            $this->setPictureWidth($value);
-        }
+        return false;
     }
 }

@@ -173,45 +173,77 @@ class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCommentText();
+        $value = $this->commentText;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentText", $value);
+            $writer->writeElementNs(null, 'CommentText', null, (string) $value);
         }
-        $value = $this->getCommentType();
+        $value = $this->commentType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentType", $value);
+            $writer->writeElementNs(null, 'CommentType', null, (string) $value);
         }
-        $value = $this->getTargetUser();
+        $value = $this->targetUser;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TargetUser", $value);
+            $writer->writeElementNs(null, 'TargetUser', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FeedbackInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeedbackInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
-        if (null !== $value) {
-            $this->setCommentText($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CommentText':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentText = $value;
+                    }
+                    return true;
+                case 'CommentType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentType = $value;
+                    }
+                    return true;
+                case 'TargetUser':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->targetUser = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
-        if (null !== $value) {
-            $this->setCommentType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
-        if (null !== $value) {
-            $this->setTargetUser($value);
-        }
+        return false;
     }
 }

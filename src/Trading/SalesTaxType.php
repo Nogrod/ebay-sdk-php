@@ -223,54 +223,86 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSalesTaxPercent();
+        $value = $this->salesTaxPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent", $value);
+            $writer->writeElementNs(null, 'SalesTaxPercent', null, (string) $value);
         }
-        $value = $this->getSalesTaxState();
+        $value = $this->salesTaxState;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTaxState", $value);
+            $writer->writeElementNs(null, 'SalesTaxState', null, (string) $value);
         }
-        $value = $this->getShippingIncludedInTax();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->shippingIncludedInTax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax", $value);
+            $writer->writeElementNs(null, 'ShippingIncludedInTax', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSalesTaxAmount();
+        $value = $this->salesTaxAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTaxAmount", $value);
+            $writer->startElementNs(null, 'SalesTaxAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SalesTaxType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SalesTaxType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
-        if (null !== $value) {
-            $this->setSalesTaxPercent($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SalesTaxPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->salesTaxPercent = (float) $value;
+                    }
+                    return true;
+                case 'SalesTaxState':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->salesTaxState = $value;
+                    }
+                    return true;
+                case 'ShippingIncludedInTax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingIncludedInTax = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SalesTaxAmount':
+                    $this->salesTaxAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxState');
-        if (null !== $value) {
-            $this->setSalesTaxState($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
-        if (null !== $value) {
-            $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxAmount');
-        if (null !== $value) {
-            $this->setSalesTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

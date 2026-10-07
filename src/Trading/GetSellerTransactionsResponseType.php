@@ -324,40 +324,45 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getPaginationResult();
+        $value = $this->paginationResult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
+            $writer->startElementNs(null, 'PaginationResult', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHasMoreTransactions();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasMoreTransactions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasMoreTransactions", $value);
+            $writer->writeElementNs(null, 'HasMoreTransactions', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getTransactionsPerPage();
+        $value = $this->transactionsPerPage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionsPerPage", $value);
+            $writer->writeElementNs(null, 'TransactionsPerPage', null, (string) $value);
         }
-        $value = $this->getPageNumber();
+        $value = $this->pageNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
+            $writer->writeElementNs(null, 'PageNumber', null, (string) $value);
         }
-        $value = $this->getReturnedTransactionCountActual();
+        $value = $this->returnedTransactionCountActual;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnedTransactionCountActual", $value);
+            $writer->writeElementNs(null, 'ReturnedTransactionCountActual', null, (string) $value);
         }
-        $value = $this->getSeller();
+        $value = $this->seller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Seller", $value);
+            $writer->startElementNs(null, 'Seller', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTransactionArray();
+        $value = $this->transactionArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}TransactionArray");
+                    $writer->startElementNs(null, 'TransactionArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Transaction", $v);
+                $writer->startElementNs(null, 'Transaction', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -367,49 +372,78 @@ class GetSellerTransactionsResponseType extends AbstractResponseType
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetSellerTransactionsResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetSellerTransactionsResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
-        if (null !== $value) {
-            $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
+        parent::xmlInitLists();
+        $this->transactionArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PaginationResult':
+                    $this->paginationResult = \Nogrod\eBaySDK\Trading\PaginationResultType::xmlRead($reader);
+                    return true;
+                case 'HasMoreTransactions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasMoreTransactions = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'TransactionsPerPage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionsPerPage = (int) $value;
+                    }
+                    return true;
+                case 'PageNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pageNumber = (int) $value;
+                    }
+                    return true;
+                case 'ReturnedTransactionCountActual':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnedTransactionCountActual = (int) $value;
+                    }
+                    return true;
+                case 'Seller':
+                    $this->seller = \Nogrod\eBaySDK\Trading\UserType::xmlRead($reader);
+                    return true;
+                case 'TransactionArray':
+                    $this->transactionArray = Func::readList($reader, 'Transaction', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\TransactionType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreTransactions');
-        if (null !== $value) {
-            $this->setHasMoreTransactions(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionsPerPage');
-        if (null !== $value) {
-            $this->setTransactionsPerPage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
-        if (null !== $value) {
-            $this->setPageNumber($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnedTransactionCountActual');
-        if (null !== $value) {
-            $this->setReturnedTransactionCountActual($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Seller');
-        if (null !== $value) {
-            $this->setSeller(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Transaction');
-            $this->setTransactionArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TransactionType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

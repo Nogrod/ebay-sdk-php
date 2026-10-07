@@ -166,45 +166,74 @@ class SellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSellerShippingProfile();
+        $value = $this->sellerShippingProfile;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerShippingProfile", $value);
+            $writer->startElementNs(null, 'SellerShippingProfile', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerReturnProfile();
+        $value = $this->sellerReturnProfile;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerReturnProfile", $value);
+            $writer->startElementNs(null, 'SellerReturnProfile', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerPaymentProfile();
+        $value = $this->sellerPaymentProfile;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentProfile", $value);
+            $writer->startElementNs(null, 'SellerPaymentProfile', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerProfilesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerProfilesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerShippingProfile');
-        if (null !== $value) {
-            $this->setSellerShippingProfile(\Nogrod\eBaySDK\Trading\SellerShippingProfileType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SellerShippingProfile':
+                    $this->sellerShippingProfile = \Nogrod\eBaySDK\Trading\SellerShippingProfileType::xmlRead($reader);
+                    return true;
+                case 'SellerReturnProfile':
+                    $this->sellerReturnProfile = \Nogrod\eBaySDK\Trading\SellerReturnProfileType::xmlRead($reader);
+                    return true;
+                case 'SellerPaymentProfile':
+                    $this->sellerPaymentProfile = \Nogrod\eBaySDK\Trading\SellerPaymentProfileType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerReturnProfile');
-        if (null !== $value) {
-            $this->setSellerReturnProfile(\Nogrod\eBaySDK\Trading\SellerReturnProfileType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentProfile');
-        if (null !== $value) {
-            $this->setSellerPaymentProfile(\Nogrod\eBaySDK\Trading\SellerPaymentProfileType::fromKeyValue($value));
-        }
+        return false;
     }
 }

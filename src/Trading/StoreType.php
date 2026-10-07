@@ -407,98 +407,136 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getName();
+        $value = $this->name;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
+            $writer->writeElementNs(null, 'Name', null, (string) $value);
         }
-        $value = $this->getURLPath();
+        $value = $this->uRLPath;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URLPath", $value);
+            $writer->writeElementNs(null, 'URLPath', null, (string) $value);
         }
-        $value = $this->getURL();
+        $value = $this->uRL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URL", $value);
+            $writer->writeElementNs(null, 'URL', null, (string) $value);
         }
-        $value = $this->getDescription();
+        $value = $this->description;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
+            $writer->writeElementNs(null, 'Description', null, (string) $value);
         }
-        $value = $this->getLogo();
+        $value = $this->logo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Logo", $value);
+            $writer->startElementNs(null, 'Logo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCustomCategories();
+        $value = $this->customCategories;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}CustomCategories");
+                    $writer->startElementNs(null, 'CustomCategories', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", $v);
+                $writer->startElementNs(null, 'CustomCategory', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getMerchDisplay();
+        $value = $this->merchDisplay;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MerchDisplay", $value);
+            $writer->writeElementNs(null, 'MerchDisplay', null, (string) $value);
         }
-        $value = $this->getLastOpenedTime();
+        $value = $this->lastOpenedTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastOpenedTime", $value);
+            $writer->writeElementNs(null, 'LastOpenedTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\StoreType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\StoreType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
-        if (null !== $value) {
-            $this->setName($value);
+        $this->customCategories = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->name = $value;
+                    }
+                    return true;
+                case 'URLPath':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uRLPath = $value;
+                    }
+                    return true;
+                case 'URL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uRL = $value;
+                    }
+                    return true;
+                case 'Description':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->description = $value;
+                    }
+                    return true;
+                case 'Logo':
+                    $this->logo = \Nogrod\eBaySDK\Trading\StoreLogoType::xmlRead($reader);
+                    return true;
+                case 'CustomCategories':
+                    $this->customCategories = Func::readList($reader, 'CustomCategory', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::xmlRead($reader));
+                    return true;
+                case 'MerchDisplay':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->merchDisplay = $value;
+                    }
+                    return true;
+                case 'LastOpenedTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastOpenedTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}URLPath');
-        if (null !== $value) {
-            $this->setURLPath($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}URL');
-        if (null !== $value) {
-            $this->setURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
-        if (null !== $value) {
-            $this->setDescription($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Logo');
-        if (null !== $value) {
-            $this->setLogo(\Nogrod\eBaySDK\Trading\StoreLogoType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CustomCategories');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CustomCategory');
-            $this->setCustomCategories(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchDisplay');
-        if (null !== $value) {
-            $this->setMerchDisplay($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastOpenedTime');
-        if (null !== $value) {
-            $this->setLastOpenedTime(new \DateTime($value));
-        }
+        return false;
     }
 }

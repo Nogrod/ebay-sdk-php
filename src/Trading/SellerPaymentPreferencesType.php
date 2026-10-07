@@ -327,96 +327,136 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAlwaysUseThisPaymentAddress();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->alwaysUseThisPaymentAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AlwaysUseThisPaymentAddress", $value);
+            $writer->writeElementNs(null, 'AlwaysUseThisPaymentAddress', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getDisplayPayNowButton();
+        $value = $this->displayPayNowButton;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DisplayPayNowButton", $value);
+            $writer->writeElementNs(null, 'DisplayPayNowButton', null, (string) $value);
         }
-        $value = $this->getPayPalPreferred();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->payPalPreferred;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalPreferred", $value);
+            $writer->writeElementNs(null, 'PayPalPreferred', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getDefaultPayPalEmailAddress();
+        $value = $this->defaultPayPalEmailAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DefaultPayPalEmailAddress", $value);
+            $writer->writeElementNs(null, 'DefaultPayPalEmailAddress', null, (string) $value);
         }
-        $value = $this->getPayPalAlwaysOn();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->payPalAlwaysOn;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayPalAlwaysOn", $value);
+            $writer->writeElementNs(null, 'PayPalAlwaysOn', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSellerPaymentAddress();
+        $value = $this->sellerPaymentAddress;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress", $value);
+            $writer->startElementNs(null, 'SellerPaymentAddress', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUPSRateOption();
+        $value = $this->uPSRateOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UPSRateOption", $value);
+            $writer->writeElementNs(null, 'UPSRateOption', null, (string) $value);
         }
-        $value = $this->getFedExRateOption();
+        $value = $this->fedExRateOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FedExRateOption", $value);
+            $writer->writeElementNs(null, 'FedExRateOption', null, (string) $value);
         }
-        $value = $this->getUSPSRateOption();
+        $value = $this->uSPSRateOption;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}USPSRateOption", $value);
+            $writer->writeElementNs(null, 'USPSRateOption', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlwaysUseThisPaymentAddress');
-        if (null !== $value) {
-            $this->setAlwaysUseThisPaymentAddress(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AlwaysUseThisPaymentAddress':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->alwaysUseThisPaymentAddress = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'DisplayPayNowButton':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->displayPayNowButton = $value;
+                    }
+                    return true;
+                case 'PayPalPreferred':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->payPalPreferred = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'DefaultPayPalEmailAddress':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->defaultPayPalEmailAddress = $value;
+                    }
+                    return true;
+                case 'PayPalAlwaysOn':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->payPalAlwaysOn = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SellerPaymentAddress':
+                    $this->sellerPaymentAddress = \Nogrod\eBaySDK\Trading\AddressType::xmlRead($reader);
+                    return true;
+                case 'UPSRateOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uPSRateOption = $value;
+                    }
+                    return true;
+                case 'FedExRateOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->fedExRateOption = $value;
+                    }
+                    return true;
+                case 'USPSRateOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uSPSRateOption = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayPayNowButton');
-        if (null !== $value) {
-            $this->setDisplayPayNowButton($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalPreferred');
-        if (null !== $value) {
-            $this->setPayPalPreferred(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DefaultPayPalEmailAddress');
-        if (null !== $value) {
-            $this->setDefaultPayPalEmailAddress($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayPalAlwaysOn');
-        if (null !== $value) {
-            $this->setPayPalAlwaysOn(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentAddress');
-        if (null !== $value) {
-            $this->setSellerPaymentAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPSRateOption');
-        if (null !== $value) {
-            $this->setUPSRateOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FedExRateOption');
-        if (null !== $value) {
-            $this->setFedExRateOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}USPSRateOption');
-        if (null !== $value) {
-            $this->setUSPSRateOption($value);
-        }
+        return false;
     }
 }

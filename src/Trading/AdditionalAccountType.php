@@ -132,45 +132,76 @@ class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBalance();
+        $value = $this->balance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Balance", $value);
+            $writer->startElementNs(null, 'Balance', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCurrency();
+        $value = $this->currency;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
+            $writer->writeElementNs(null, 'Currency', null, (string) $value);
         }
-        $value = $this->getAccountCode();
+        $value = $this->accountCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountCode", $value);
+            $writer->writeElementNs(null, 'AccountCode', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AdditionalAccountType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AdditionalAccountType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Balance');
-        if (null !== $value) {
-            $this->setBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Balance':
+                    $this->balance = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'Currency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->currency = $value;
+                    }
+                    return true;
+                case 'AccountCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountCode = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
-        if (null !== $value) {
-            $this->setCurrency($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountCode');
-        if (null !== $value) {
-            $this->setAccountCode($value);
-        }
+        return false;
     }
 }

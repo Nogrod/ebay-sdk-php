@@ -307,77 +307,114 @@ class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDiscountProfileID();
+        $value = $this->discountProfileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountProfileID", $value);
+            $writer->writeElementNs(null, 'DiscountProfileID', null, (string) $value);
         }
-        $value = $this->getDiscountProfileName();
+        $value = $this->discountProfileName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountProfileName", $value);
+            $writer->writeElementNs(null, 'DiscountProfileName', null, (string) $value);
         }
-        $value = $this->getEachAdditionalAmount();
+        $value = $this->eachAdditionalAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount", $value);
+            $writer->startElementNs(null, 'EachAdditionalAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEachAdditionalAmountOff();
+        $value = $this->eachAdditionalAmountOff;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff", $value);
+            $writer->startElementNs(null, 'EachAdditionalAmountOff', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEachAdditionalPercentOff();
+        $value = $this->eachAdditionalPercentOff;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff", $value);
+            $writer->writeElementNs(null, 'EachAdditionalPercentOff', null, (string) $value);
         }
-        $value = $this->getWeightOff();
+        $value = $this->weightOff;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WeightOff", $value);
+            $writer->startElementNs(null, 'WeightOff', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMappedDiscountProfileID();
+        $value = $this->mappedDiscountProfileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID", $value);
+            $writer->writeElementNs(null, 'MappedDiscountProfileID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\DiscountProfileType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\DiscountProfileType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileID');
-        if (null !== $value) {
-            $this->setDiscountProfileID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DiscountProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountProfileID = $value;
+                    }
+                    return true;
+                case 'DiscountProfileName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountProfileName = $value;
+                    }
+                    return true;
+                case 'EachAdditionalAmount':
+                    $this->eachAdditionalAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EachAdditionalAmountOff':
+                    $this->eachAdditionalAmountOff = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EachAdditionalPercentOff':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eachAdditionalPercentOff = (float) $value;
+                    }
+                    return true;
+                case 'WeightOff':
+                    $this->weightOff = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+                case 'MappedDiscountProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->mappedDiscountProfileID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountProfileName');
-        if (null !== $value) {
-            $this->setDiscountProfileName($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmount');
-        if (null !== $value) {
-            $this->setEachAdditionalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalAmountOff');
-        if (null !== $value) {
-            $this->setEachAdditionalAmountOff(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EachAdditionalPercentOff');
-        if (null !== $value) {
-            $this->setEachAdditionalPercentOff($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightOff');
-        if (null !== $value) {
-            $this->setWeightOff(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MappedDiscountProfileID');
-        if (null !== $value) {
-            $this->setMappedDiscountProfileID($value);
-        }
+        return false;
     }
 }

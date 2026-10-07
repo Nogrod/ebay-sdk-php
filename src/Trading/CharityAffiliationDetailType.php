@@ -124,45 +124,77 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCharityID();
+        $value = $this->charityID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityID", $value);
+            $writer->writeElementNs(null, 'CharityID', null, (string) $value);
         }
-        $value = $this->getAffiliationType();
+        $value = $this->affiliationType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AffiliationType", $value);
+            $writer->writeElementNs(null, 'AffiliationType', null, (string) $value);
         }
-        $value = $this->getLastUsedTime();
+        $value = $this->lastUsedTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastUsedTime", $value);
+            $writer->writeElementNs(null, 'LastUsedTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CharityAffiliationDetailType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
-        if (null !== $value) {
-            $this->setCharityID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CharityID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->charityID = $value;
+                    }
+                    return true;
+                case 'AffiliationType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->affiliationType = $value;
+                    }
+                    return true;
+                case 'LastUsedTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastUsedTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliationType');
-        if (null !== $value) {
-            $this->setAffiliationType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastUsedTime');
-        if (null !== $value) {
-            $this->setLastUsedTime(new \DateTime($value));
-        }
+        return false;
     }
 }

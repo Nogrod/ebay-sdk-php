@@ -432,49 +432,61 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEnergyEfficiencyLabel();
+        $value = $this->energyEfficiencyLabel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel", $value);
+            $writer->startElementNs(null, 'EnergyEfficiencyLabel', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHazmat();
+        $value = $this->hazmat;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hazmat", $value);
+            $writer->startElementNs(null, 'Hazmat', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getProductSafety();
+        $value = $this->productSafety;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSafety", $value);
+            $writer->startElementNs(null, 'ProductSafety', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRepairScore();
+        $value = $this->repairScore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RepairScore", $value);
+            $writer->writeElementNs(null, 'RepairScore', null, (string) $value);
         }
-        $value = $this->getManufacturer();
+        $value = $this->manufacturer;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Manufacturer", $value);
+            $writer->startElementNs(null, 'Manufacturer', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getResponsiblePersons();
+        $value = $this->responsiblePersons;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons");
+                    $writer->startElementNs(null, 'ResponsiblePersons', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson", $v);
+                $writer->startElementNs(null, 'ResponsiblePerson', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getDocuments();
+        $value = $this->documents;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Documents");
+                    $writer->startElementNs(null, 'Documents', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Document", $v);
+                $writer->startElementNs(null, 'Document', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -484,51 +496,69 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RegulatoryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RegulatoryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel');
-        if (null !== $value) {
-            $this->setEnergyEfficiencyLabel(\Nogrod\eBaySDK\Trading\EnergyEfficiencyType::fromKeyValue($value));
+        $this->responsiblePersons = [];
+        $this->documents = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'EnergyEfficiencyLabel':
+                    $this->energyEfficiencyLabel = \Nogrod\eBaySDK\Trading\EnergyEfficiencyType::xmlRead($reader);
+                    return true;
+                case 'Hazmat':
+                    $this->hazmat = \Nogrod\eBaySDK\Trading\HazmatType::xmlRead($reader);
+                    return true;
+                case 'ProductSafety':
+                    $this->productSafety = \Nogrod\eBaySDK\Trading\ProductSafetyType::xmlRead($reader);
+                    return true;
+                case 'RepairScore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->repairScore = (float) $value;
+                    }
+                    return true;
+                case 'Manufacturer':
+                    $this->manufacturer = \Nogrod\eBaySDK\Trading\ManufacturerType::xmlRead($reader);
+                    return true;
+                case 'ResponsiblePersons':
+                    $this->responsiblePersons = Func::readList($reader, 'ResponsiblePerson', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ResponsiblePersonType::xmlRead($reader));
+                    return true;
+                case 'Documents':
+                    $this->documents = Func::readList($reader, 'Document', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\DocumentType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hazmat');
-        if (null !== $value) {
-            $this->setHazmat(\Nogrod\eBaySDK\Trading\HazmatType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSafety');
-        if (null !== $value) {
-            $this->setProductSafety(\Nogrod\eBaySDK\Trading\ProductSafetyType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepairScore');
-        if (null !== $value) {
-            $this->setRepairScore($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Manufacturer');
-        if (null !== $value) {
-            $this->setManufacturer(\Nogrod\eBaySDK\Trading\ManufacturerType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson');
-            $this->setResponsiblePersons(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Document');
-            $this->setDocuments(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

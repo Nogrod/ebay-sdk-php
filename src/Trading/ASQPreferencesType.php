@@ -196,40 +196,70 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getResetDefaultSubjects();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->resetDefaultSubjects;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects", $value);
+            $writer->writeElementNs(null, 'ResetDefaultSubjects', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSubject();
+        $value = $this->subject;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Subject", $v);
+                $writer->writeElementNs(null, 'Subject', null, (string) $v);
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ASQPreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ASQPreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResetDefaultSubjects');
-        if (null !== $value) {
-            $this->setResetDefaultSubjects(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        $this->subject = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ResetDefaultSubjects':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->resetDefaultSubjects = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Subject':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->subject[] = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Subject', true);
-        if (null !== $value) {
-            $this->setSubject($value);
-        }
+        return false;
     }
 }

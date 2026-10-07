@@ -368,90 +368,127 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getInclude();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->include;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Include", $value);
+            $writer->writeElementNs(null, 'Include', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeItemCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeItemCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeItemCount", $value);
+            $writer->writeElementNs(null, 'IncludeItemCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeFavoriteSearcheCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeFavoriteSearcheCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount", $value);
+            $writer->writeElementNs(null, 'IncludeFavoriteSearcheCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeFavoriteSellerCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeFavoriteSellerCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount", $value);
+            $writer->writeElementNs(null, 'IncludeFavoriteSellerCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSort();
+        $value = $this->sort;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Sort", $value);
+            $writer->writeElementNs(null, 'Sort', null, (string) $value);
         }
-        $value = $this->getMaxResults();
+        $value = $this->maxResults;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxResults", $value);
+            $writer->writeElementNs(null, 'MaxResults', null, (string) $value);
         }
-        $value = $this->getUserDefinedListName();
+        $value = $this->userDefinedListName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDefinedListName", $value);
+            $writer->writeElementNs(null, 'UserDefinedListName', null, (string) $value);
         }
-        $value = $this->getIncludeListContents();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeListContents;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeListContents", $value);
+            $writer->writeElementNs(null, 'IncludeListContents', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MyeBaySelectionType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MyeBaySelectionType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Include');
-        if (null !== $value) {
-            $this->setInclude(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Include':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->include = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeItemCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeItemCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeFavoriteSearcheCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeFavoriteSearcheCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeFavoriteSellerCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeFavoriteSellerCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Sort':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sort = $value;
+                    }
+                    return true;
+                case 'MaxResults':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxResults = (int) $value;
+                    }
+                    return true;
+                case 'UserDefinedListName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->userDefinedListName = $value;
+                    }
+                    return true;
+                case 'IncludeListContents':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeListContents = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeItemCount');
-        if (null !== $value) {
-            $this->setIncludeItemCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSearcheCount');
-        if (null !== $value) {
-            $this->setIncludeFavoriteSearcheCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeFavoriteSellerCount');
-        if (null !== $value) {
-            $this->setIncludeFavoriteSellerCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
-        if (null !== $value) {
-            $this->setSort($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxResults');
-        if (null !== $value) {
-            $this->setMaxResults($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedListName');
-        if (null !== $value) {
-            $this->setUserDefinedListName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeListContents');
-        if (null !== $value) {
-            $this->setIncludeListContents(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

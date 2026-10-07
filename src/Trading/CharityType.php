@@ -316,78 +316,117 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCharityName();
+        $value = $this->charityName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityName", $value);
+            $writer->writeElementNs(null, 'CharityName', null, (string) $value);
         }
-        $value = $this->getDonationPercent();
+        $value = $this->donationPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DonationPercent", $value);
+            $writer->writeElementNs(null, 'DonationPercent', null, (string) $value);
         }
-        $value = $this->getCharityID();
+        $value = $this->charityID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityID", $value);
+            $writer->writeElementNs(null, 'CharityID', null, (string) $value);
         }
-        $value = $this->getMission();
+        $value = $this->mission;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Mission", $value);
+            $writer->writeElementNs(null, 'Mission', null, (string) $value);
         }
-        $value = $this->getLogoURL();
+        $value = $this->logoURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogoURL", $value);
+            $writer->writeElementNs(null, 'LogoURL', null, (string) $value);
         }
-        $value = $this->getStatus();
+        $value = $this->status;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
+            $writer->writeElementNs(null, 'Status', null, (string) $value);
         }
-        $value = $this->getCharityListing();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->charityListing;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CharityListing", $value);
+            $writer->writeElementNs(null, 'CharityListing', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CharityType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CharityType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityName');
-        if (null !== $value) {
-            $this->setCharityName($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CharityName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->charityName = $value;
+                    }
+                    return true;
+                case 'DonationPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->donationPercent = (float) $value;
+                    }
+                    return true;
+                case 'CharityID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->charityID = $value;
+                    }
+                    return true;
+                case 'Mission':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->mission = $value;
+                    }
+                    return true;
+                case 'LogoURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->logoURL = $value;
+                    }
+                    return true;
+                case 'Status':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->status = $value;
+                    }
+                    return true;
+                case 'CharityListing':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->charityListing = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DonationPercent');
-        if (null !== $value) {
-            $this->setDonationPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityID');
-        if (null !== $value) {
-            $this->setCharityID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Mission');
-        if (null !== $value) {
-            $this->setMission($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogoURL');
-        if (null !== $value) {
-            $this->setLogoURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CharityListing');
-        if (null !== $value) {
-            $this->setCharityListing(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

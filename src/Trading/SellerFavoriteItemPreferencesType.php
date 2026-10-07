@@ -301,79 +301,118 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getSearchKeywords();
+        $value = $this->searchKeywords;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SearchKeywords", $value);
+            $writer->writeElementNs(null, 'SearchKeywords', null, (string) $value);
         }
-        $value = $this->getStoreCategoryID();
+        $value = $this->storeCategoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategoryID", $value);
+            $writer->writeElementNs(null, 'StoreCategoryID', null, (string) $value);
         }
-        $value = $this->getListingType();
+        $value = $this->listingType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingType", $value);
+            $writer->writeElementNs(null, 'ListingType', null, (string) $value);
         }
-        $value = $this->getSearchSortOrder();
+        $value = $this->searchSortOrder;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SearchSortOrder", $value);
+            $writer->writeElementNs(null, 'SearchSortOrder', null, (string) $value);
         }
-        $value = $this->getMinPrice();
+        $value = $this->minPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinPrice", $value);
+            $writer->startElementNs(null, 'MinPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMaxPrice();
+        $value = $this->maxPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxPrice", $value);
+            $writer->startElementNs(null, 'MaxPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFavoriteItemID();
+        $value = $this->favoriteItemID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteItemID", $v);
+                $writer->writeElementNs(null, 'FavoriteItemID', null, (string) $v);
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchKeywords');
-        if (null !== $value) {
-            $this->setSearchKeywords($value);
+        $this->favoriteItemID = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SearchKeywords':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->searchKeywords = $value;
+                    }
+                    return true;
+                case 'StoreCategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeCategoryID = (int) $value;
+                    }
+                    return true;
+                case 'ListingType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->listingType = $value;
+                    }
+                    return true;
+                case 'SearchSortOrder':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->searchSortOrder = $value;
+                    }
+                    return true;
+                case 'MinPrice':
+                    $this->minPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'MaxPrice':
+                    $this->maxPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'FavoriteItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->favoriteItemID[] = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
-        if (null !== $value) {
-            $this->setStoreCategoryID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingType');
-        if (null !== $value) {
-            $this->setListingType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SearchSortOrder');
-        if (null !== $value) {
-            $this->setSearchSortOrder($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinPrice');
-        if (null !== $value) {
-            $this->setMinPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxPrice');
-        if (null !== $value) {
-            $this->setMaxPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteItemID', true);
-        if (null !== $value) {
-            $this->setFavoriteItemID($value);
-        }
+        return false;
     }
 }

@@ -387,110 +387,154 @@ class FeeSettlementReportResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getInvoiceID();
+        $value = $this->invoiceID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceID", $value);
+            $writer->writeElementNs(null, 'InvoiceID', null, (string) $value);
         }
-        $value = $this->getSellerID();
+        $value = $this->sellerID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerID", $value);
+            $writer->writeElementNs(null, 'SellerID', null, (string) $value);
         }
-        $value = $this->getAccountID();
+        $value = $this->accountID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountID", $value);
+            $writer->writeElementNs(null, 'AccountID', null, (string) $value);
         }
-        $value = $this->getReportStartTime();
+        $value = $this->reportStartTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportStartTime", $value);
+            $writer->writeElementNs(null, 'ReportStartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getReportEndTime();
+        $value = $this->reportEndTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportEndTime", $value);
+            $writer->writeElementNs(null, 'ReportEndTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getInvoiceProcessingTime();
+        $value = $this->invoiceProcessingTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceProcessingTime", $value);
+            $writer->writeElementNs(null, 'InvoiceProcessingTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getReportProcessingTime();
+        $value = $this->reportProcessingTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReportProcessingTime", $value);
+            $writer->writeElementNs(null, 'ReportProcessingTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getFeeSettlementAmount();
+        $value = $this->feeSettlementAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeSettlementAmount", $value);
+            $writer->startElementNs(null, 'FeeSettlementAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLastInvoiceAmount();
+        $value = $this->lastInvoiceAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastInvoiceAmount", $value);
+            $writer->startElementNs(null, 'LastInvoiceAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeeRoundingAdjustmentAmount();
+        $value = $this->feeRoundingAdjustmentAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeRoundingAdjustmentAmount", $value);
+            $writer->startElementNs(null, 'FeeRoundingAdjustmentAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeeTotalUsageAdjustmentAmount();
+        $value = $this->feeTotalUsageAdjustmentAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeTotalUsageAdjustmentAmount", $value);
+            $writer->startElementNs(null, 'FeeTotalUsageAdjustmentAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeeSettlementReportResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceID');
-        if (null !== $value) {
-            $this->setInvoiceID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'InvoiceID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->invoiceID = $value;
+                    }
+                    return true;
+                case 'SellerID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerID = $value;
+                    }
+                    return true;
+                case 'AccountID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountID = $value;
+                    }
+                    return true;
+                case 'ReportStartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reportStartTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'ReportEndTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reportEndTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'InvoiceProcessingTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->invoiceProcessingTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'ReportProcessingTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reportProcessingTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'FeeSettlementAmount':
+                    $this->feeSettlementAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'LastInvoiceAmount':
+                    $this->lastInvoiceAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'FeeRoundingAdjustmentAmount':
+                    $this->feeRoundingAdjustmentAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'FeeTotalUsageAdjustmentAmount':
+                    $this->feeTotalUsageAdjustmentAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerID');
-        if (null !== $value) {
-            $this->setSellerID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountID');
-        if (null !== $value) {
-            $this->setAccountID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportStartTime');
-        if (null !== $value) {
-            $this->setReportStartTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportEndTime');
-        if (null !== $value) {
-            $this->setReportEndTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceProcessingTime');
-        if (null !== $value) {
-            $this->setInvoiceProcessingTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReportProcessingTime');
-        if (null !== $value) {
-            $this->setReportProcessingTime(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeSettlementAmount');
-        if (null !== $value) {
-            $this->setFeeSettlementAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastInvoiceAmount');
-        if (null !== $value) {
-            $this->setLastInvoiceAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeRoundingAdjustmentAmount');
-        if (null !== $value) {
-            $this->setFeeRoundingAdjustmentAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeTotalUsageAdjustmentAmount');
-        if (null !== $value) {
-            $this->setFeeTotalUsageAdjustmentAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -196,53 +196,87 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCategoryID();
+        $value = $this->categoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
+            $writer->writeElementNs(null, 'CategoryID', null, (string) $value);
         }
-        $value = $this->getCategoryName();
+        $value = $this->categoryName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryName", $value);
+            $writer->writeElementNs(null, 'CategoryName', null, (string) $value);
         }
-        $value = $this->getNumOfItems();
+        $value = $this->numOfItems;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NumOfItems", $value);
+            $writer->writeElementNs(null, 'NumOfItems', null, (string) $value);
         }
-        $value = $this->getKeywords();
+        $value = $this->keywords;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Keywords", $value);
+            $writer->writeElementNs(null, 'Keywords', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CategoryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CategoryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
-        if (null !== $value) {
-            $this->setCategoryID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->categoryID = $value;
+                    }
+                    return true;
+                case 'CategoryName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->categoryName = $value;
+                    }
+                    return true;
+                case 'NumOfItems':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->numOfItems = (int) $value;
+                    }
+                    return true;
+                case 'Keywords':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->keywords = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryName');
-        if (null !== $value) {
-            $this->setCategoryName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumOfItems');
-        if (null !== $value) {
-            $this->setNumOfItems($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Keywords');
-        if (null !== $value) {
-            $this->setKeywords($value);
-        }
+        return false;
     }
 }

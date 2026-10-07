@@ -258,63 +258,98 @@ class GetBidderListRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getActiveItemsOnly();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->activeItemsOnly;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveItemsOnly", $value);
+            $writer->writeElementNs(null, 'ActiveItemsOnly', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getEndTimeFrom();
+        $value = $this->endTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeFrom", $value);
+            $writer->writeElementNs(null, 'EndTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTimeTo();
+        $value = $this->endTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeTo", $value);
+            $writer->writeElementNs(null, 'EndTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getUserID();
+        $value = $this->userID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $value);
+            $writer->writeElementNs(null, 'UserID', null, (string) $value);
         }
-        $value = $this->getGranularityLevel();
+        $value = $this->granularityLevel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GranularityLevel", $value);
+            $writer->writeElementNs(null, 'GranularityLevel', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetBidderListRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetBidderListRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveItemsOnly');
-        if (null !== $value) {
-            $this->setActiveItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ActiveItemsOnly':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->activeItemsOnly = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'EndTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'UserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->userID = $value;
+                    }
+                    return true;
+                case 'GranularityLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->granularityLevel = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
-        if (null !== $value) {
-            $this->setEndTimeFrom(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeTo');
-        if (null !== $value) {
-            $this->setEndTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserID');
-        if (null !== $value) {
-            $this->setUserID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GranularityLevel');
-        if (null !== $value) {
-            $this->setGranularityLevel($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

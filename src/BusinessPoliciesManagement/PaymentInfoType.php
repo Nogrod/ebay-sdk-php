@@ -367,72 +367,109 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAcceptedPaymentMethod();
+        $value = $this->acceptedPaymentMethod;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod", $v);
+                $writer->writeElementNs(null, 'acceptedPaymentMethod', null, (string) $v);
             }
         }
-        $value = $this->getImmediatePay();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->immediatePay;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}immediatePay", $value);
+            $writer->writeElementNs(null, 'immediatePay', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPaymentInstructions();
+        $value = $this->paymentInstructions;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paymentInstructions", $value);
+            $writer->writeElementNs(null, 'paymentInstructions', null, (string) $value);
         }
-        $value = $this->getPaypalEmailAddress();
+        $value = $this->paypalEmailAddress;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}paypalEmailAddress", $value);
+            $writer->writeElementNs(null, 'paypalEmailAddress', null, (string) $value);
         }
-        $value = $this->getDepositDetails();
+        $value = $this->depositDetails;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}depositDetails", $value);
+            $writer->startElementNs(null, 'depositDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDaysToFullPayment();
+        $value = $this->daysToFullPayment;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment", $value);
+            $writer->writeElementNs(null, 'daysToFullPayment', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}acceptedPaymentMethod', true);
-        if (null !== $value) {
-            $this->setAcceptedPaymentMethod($value);
+        $this->acceptedPaymentMethod = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'acceptedPaymentMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->acceptedPaymentMethod[] = $value;
+                    }
+                    return true;
+                case 'immediatePay':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->immediatePay = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'paymentInstructions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentInstructions = $value;
+                    }
+                    return true;
+                case 'paypalEmailAddress':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paypalEmailAddress = $value;
+                    }
+                    return true;
+                case 'depositDetails':
+                    $this->depositDetails = \Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType::xmlRead($reader);
+                    return true;
+                case 'daysToFullPayment':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daysToFullPayment = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}immediatePay');
-        if (null !== $value) {
-            $this->setImmediatePay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paymentInstructions');
-        if (null !== $value) {
-            $this->setPaymentInstructions($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}paypalEmailAddress');
-        if (null !== $value) {
-            $this->setPaypalEmailAddress($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositDetails');
-        if (null !== $value) {
-            $this->setDepositDetails(\Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
-        if (null !== $value) {
-            $this->setDaysToFullPayment($value);
-        }
+        return false;
     }
 }

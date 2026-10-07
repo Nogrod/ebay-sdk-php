@@ -227,71 +227,106 @@ class GetOrdersResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getPaginationResult();
+        $value = $this->paginationResult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
+            $writer->startElementNs(null, 'PaginationResult', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHasMoreOrders();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasMoreOrders;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasMoreOrders", $value);
+            $writer->writeElementNs(null, 'HasMoreOrders', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getOrderArray();
+        $value = $this->orderArray;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderArray", $value);
+            $writer->startElementNs(null, 'OrderArray', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getOrdersPerPage();
+        $value = $this->ordersPerPage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrdersPerPage", $value);
+            $writer->writeElementNs(null, 'OrdersPerPage', null, (string) $value);
         }
-        $value = $this->getPageNumber();
+        $value = $this->pageNumber;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PageNumber", $value);
+            $writer->writeElementNs(null, 'PageNumber', null, (string) $value);
         }
-        $value = $this->getReturnedOrderCountActual();
+        $value = $this->returnedOrderCountActual;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnedOrderCountActual", $value);
+            $writer->writeElementNs(null, 'ReturnedOrderCountActual', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetOrdersResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetOrdersResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');
-        if (null !== $value) {
-            $this->setPaginationResult(\Nogrod\eBaySDK\Trading\PaginationResultType::fromKeyValue($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PaginationResult':
+                    $this->paginationResult = \Nogrod\eBaySDK\Trading\PaginationResultType::xmlRead($reader);
+                    return true;
+                case 'HasMoreOrders':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasMoreOrders = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'OrderArray':
+                    $this->orderArray = \Nogrod\eBaySDK\Trading\OrderArrayType::xmlRead($reader);
+                    return true;
+                case 'OrdersPerPage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->ordersPerPage = (int) $value;
+                    }
+                    return true;
+                case 'PageNumber':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pageNumber = (int) $value;
+                    }
+                    return true;
+                case 'ReturnedOrderCountActual':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnedOrderCountActual = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasMoreOrders');
-        if (null !== $value) {
-            $this->setHasMoreOrders(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderArray');
-        if (null !== $value) {
-            $this->setOrderArray(\Nogrod\eBaySDK\Trading\OrderArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrdersPerPage');
-        if (null !== $value) {
-            $this->setOrdersPerPage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PageNumber');
-        if (null !== $value) {
-            $this->setPageNumber($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnedOrderCountActual');
-        if (null !== $value) {
-            $this->setReturnedOrderCountActual($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -226,53 +226,83 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $v);
+                $writer->writeElementNs(null, 'ItemID', null, (string) $v);
             }
         }
-        $value = $this->getRemoveAllItems();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->removeAllItems;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllItems", $value);
+            $writer->writeElementNs(null, 'RemoveAllItems', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getVariationKey();
+        $value = $this->variationKey;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationKey", $v);
+                $writer->startElementNs(null, 'VariationKey', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RemoveFromWatchListRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RemoveFromWatchListRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID', true);
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->itemID = [];
+        $this->variationKey = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID[] = $value;
+                    }
+                    return true;
+                case 'RemoveAllItems':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->removeAllItems = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'VariationKey':
+                    $this->variationKey[] = \Nogrod\eBaySDK\Trading\VariationKeyType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllItems');
-        if (null !== $value) {
-            $this->setRemoveAllItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationKey');
-        if (null !== $value) {
-            $this->setVariationKey(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VariationKeyType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

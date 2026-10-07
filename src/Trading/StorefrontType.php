@@ -277,69 +277,107 @@ class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getStoreCategoryID();
+        $value = $this->storeCategoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategoryID", $value);
+            $writer->writeElementNs(null, 'StoreCategoryID', null, (string) $value);
         }
-        $value = $this->getStoreCategory2ID();
+        $value = $this->storeCategory2ID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategory2ID", $value);
+            $writer->writeElementNs(null, 'StoreCategory2ID', null, (string) $value);
         }
-        $value = $this->getStoreCategoryName();
+        $value = $this->storeCategoryName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategoryName", $value);
+            $writer->writeElementNs(null, 'StoreCategoryName', null, (string) $value);
         }
-        $value = $this->getStoreCategory2Name();
+        $value = $this->storeCategory2Name;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategory2Name", $value);
+            $writer->writeElementNs(null, 'StoreCategory2Name', null, (string) $value);
         }
-        $value = $this->getStoreURL();
+        $value = $this->storeURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreURL", $value);
+            $writer->writeElementNs(null, 'StoreURL', null, (string) $value);
         }
-        $value = $this->getStoreName();
+        $value = $this->storeName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreName", $value);
+            $writer->writeElementNs(null, 'StoreName', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\StorefrontType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\StorefrontType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryID');
-        if (null !== $value) {
-            $this->setStoreCategoryID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'StoreCategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeCategoryID = (int) $value;
+                    }
+                    return true;
+                case 'StoreCategory2ID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeCategory2ID = (int) $value;
+                    }
+                    return true;
+                case 'StoreCategoryName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeCategoryName = $value;
+                    }
+                    return true;
+                case 'StoreCategory2Name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeCategory2Name = $value;
+                    }
+                    return true;
+                case 'StoreURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeURL = $value;
+                    }
+                    return true;
+                case 'StoreName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->storeName = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2ID');
-        if (null !== $value) {
-            $this->setStoreCategory2ID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategoryName');
-        if (null !== $value) {
-            $this->setStoreCategoryName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategory2Name');
-        if (null !== $value) {
-            $this->setStoreCategory2Name($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreURL');
-        if (null !== $value) {
-            $this->setStoreURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreName');
-        if (null !== $value) {
-            $this->setStoreName($value);
-        }
+        return false;
     }
 }

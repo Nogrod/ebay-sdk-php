@@ -262,77 +262,115 @@ class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBiddingCount();
+        $value = $this->biddingCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BiddingCount", $value);
+            $writer->writeElementNs(null, 'BiddingCount', null, (string) $value);
         }
-        $value = $this->getWinningCount();
+        $value = $this->winningCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WinningCount", $value);
+            $writer->writeElementNs(null, 'WinningCount', null, (string) $value);
         }
-        $value = $this->getTotalWinningCost();
+        $value = $this->totalWinningCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalWinningCost", $value);
+            $writer->startElementNs(null, 'TotalWinningCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getWonCount();
+        $value = $this->wonCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WonCount", $value);
+            $writer->writeElementNs(null, 'WonCount', null, (string) $value);
         }
-        $value = $this->getTotalWonCost();
+        $value = $this->totalWonCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalWonCost", $value);
+            $writer->startElementNs(null, 'TotalWonCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getWonDurationInDays();
+        $value = $this->wonDurationInDays;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WonDurationInDays", $value);
+            $writer->writeElementNs(null, 'WonDurationInDays', null, (string) $value);
         }
-        $value = $this->getBestOfferCount();
+        $value = $this->bestOfferCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferCount", $value);
+            $writer->writeElementNs(null, 'BestOfferCount', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BuyingSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BuyingSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BiddingCount');
-        if (null !== $value) {
-            $this->setBiddingCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BiddingCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->biddingCount = (int) $value;
+                    }
+                    return true;
+                case 'WinningCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->winningCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalWinningCost':
+                    $this->totalWinningCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'WonCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->wonCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalWonCost':
+                    $this->totalWonCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'WonDurationInDays':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->wonDurationInDays = (int) $value;
+                    }
+                    return true;
+                case 'BestOfferCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferCount = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WinningCount');
-        if (null !== $value) {
-            $this->setWinningCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWinningCost');
-        if (null !== $value) {
-            $this->setTotalWinningCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonCount');
-        if (null !== $value) {
-            $this->setWonCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalWonCost');
-        if (null !== $value) {
-            $this->setTotalWonCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonDurationInDays');
-        if (null !== $value) {
-            $this->setWonDurationInDays($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferCount');
-        if (null !== $value) {
-            $this->setBestOfferCount($value);
-        }
+        return false;
     }
 }

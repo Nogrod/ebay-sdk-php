@@ -353,86 +353,127 @@ class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTimeZoneID();
+        $value = $this->timeZoneID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeZoneID", $value);
+            $writer->writeElementNs(null, 'TimeZoneID', null, (string) $value);
         }
-        $value = $this->getStandardLabel();
+        $value = $this->standardLabel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StandardLabel", $value);
+            $writer->writeElementNs(null, 'StandardLabel', null, (string) $value);
         }
-        $value = $this->getStandardOffset();
+        $value = $this->standardOffset;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StandardOffset", $value);
+            $writer->writeElementNs(null, 'StandardOffset', null, (string) $value);
         }
-        $value = $this->getDaylightSavingsLabel();
+        $value = $this->daylightSavingsLabel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DaylightSavingsLabel", $value);
+            $writer->writeElementNs(null, 'DaylightSavingsLabel', null, (string) $value);
         }
-        $value = $this->getDaylightSavingsOffset();
+        $value = $this->daylightSavingsOffset;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DaylightSavingsOffset", $value);
+            $writer->writeElementNs(null, 'DaylightSavingsOffset', null, (string) $value);
         }
-        $value = $this->getDaylightSavingsInEffect();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->daylightSavingsInEffect;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DaylightSavingsInEffect", $value);
+            $writer->writeElementNs(null, 'DaylightSavingsInEffect', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TimeZoneDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TimeZoneDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
-        if (null !== $value) {
-            $this->setTimeZoneID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TimeZoneID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->timeZoneID = $value;
+                    }
+                    return true;
+                case 'StandardLabel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->standardLabel = $value;
+                    }
+                    return true;
+                case 'StandardOffset':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->standardOffset = $value;
+                    }
+                    return true;
+                case 'DaylightSavingsLabel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daylightSavingsLabel = $value;
+                    }
+                    return true;
+                case 'DaylightSavingsOffset':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daylightSavingsOffset = $value;
+                    }
+                    return true;
+                case 'DaylightSavingsInEffect':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daylightSavingsInEffect = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardLabel');
-        if (null !== $value) {
-            $this->setStandardLabel($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StandardOffset');
-        if (null !== $value) {
-            $this->setStandardOffset($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsLabel');
-        if (null !== $value) {
-            $this->setDaylightSavingsLabel($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsOffset');
-        if (null !== $value) {
-            $this->setDaylightSavingsOffset($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaylightSavingsInEffect');
-        if (null !== $value) {
-            $this->setDaylightSavingsInEffect(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

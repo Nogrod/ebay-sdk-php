@@ -216,27 +216,29 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getAction();
+        $value = $this->action;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Action", $value);
+            $writer->writeElementNs(null, 'Action', null, (string) $value);
         }
-        $value = $this->getItemDestinationCategoryID();
+        $value = $this->itemDestinationCategoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID", $value);
+            $writer->writeElementNs(null, 'ItemDestinationCategoryID', null, (string) $value);
         }
-        $value = $this->getDestinationParentCategoryID();
+        $value = $this->destinationParentCategoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID", $value);
+            $writer->writeElementNs(null, 'DestinationParentCategoryID', null, (string) $value);
         }
-        $value = $this->getStoreCategories();
+        $value = $this->storeCategories;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories");
+                    $writer->startElementNs(null, 'StoreCategories', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", $v);
+                $writer->startElementNs(null, 'CustomCategory', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -246,37 +248,66 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SetStoreCategoriesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SetStoreCategoriesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
-        if (null !== $value) {
-            $this->setAction($value);
+        parent::xmlInitLists();
+        $this->storeCategories = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Action':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->action = $value;
+                    }
+                    return true;
+                case 'ItemDestinationCategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemDestinationCategoryID = (int) $value;
+                    }
+                    return true;
+                case 'DestinationParentCategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->destinationParentCategoryID = (int) $value;
+                    }
+                    return true;
+                case 'StoreCategories':
+                    $this->storeCategories = Func::readList($reader, 'CustomCategory', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDestinationCategoryID');
-        if (null !== $value) {
-            $this->setItemDestinationCategoryID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DestinationParentCategoryID');
-        if (null !== $value) {
-            $this->setDestinationParentCategoryID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CustomCategory');
-            $this->setStoreCategories(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

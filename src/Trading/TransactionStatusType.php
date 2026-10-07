@@ -481,118 +481,167 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEBayPaymentStatus();
+        $value = $this->eBayPaymentStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPaymentStatus", $value);
+            $writer->writeElementNs(null, 'eBayPaymentStatus', null, (string) $value);
         }
-        $value = $this->getCheckoutStatus();
+        $value = $this->checkoutStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CheckoutStatus", $value);
+            $writer->writeElementNs(null, 'CheckoutStatus', null, (string) $value);
         }
-        $value = $this->getLastTimeModified();
+        $value = $this->lastTimeModified;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastTimeModified", $value);
+            $writer->writeElementNs(null, 'LastTimeModified', null, Func::formatDateTime($value));
         }
-        $value = $this->getPaymentMethodUsed();
+        $value = $this->paymentMethodUsed;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethodUsed", $value);
+            $writer->writeElementNs(null, 'PaymentMethodUsed', null, (string) $value);
         }
-        $value = $this->getCompleteStatus();
+        $value = $this->completeStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CompleteStatus", $value);
+            $writer->writeElementNs(null, 'CompleteStatus', null, (string) $value);
         }
-        $value = $this->getBuyerSelectedShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyerSelectedShipping;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerSelectedShipping", $value);
+            $writer->writeElementNs(null, 'BuyerSelectedShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPaymentHoldStatus();
+        $value = $this->paymentHoldStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus", $value);
+            $writer->writeElementNs(null, 'PaymentHoldStatus', null, (string) $value);
         }
-        $value = $this->getInquiryStatus();
+        $value = $this->inquiryStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InquiryStatus", $value);
+            $writer->writeElementNs(null, 'InquiryStatus', null, (string) $value);
         }
-        $value = $this->getReturnStatus();
+        $value = $this->returnStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnStatus", $value);
+            $writer->writeElementNs(null, 'ReturnStatus', null, (string) $value);
         }
-        $value = $this->getPaymentInstrument();
+        $value = $this->paymentInstrument;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentInstrument", $value);
+            $writer->writeElementNs(null, 'PaymentInstrument', null, (string) $value);
         }
-        $value = $this->getDigitalStatus();
+        $value = $this->digitalStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DigitalStatus", $value);
+            $writer->writeElementNs(null, 'DigitalStatus', null, (string) $value);
         }
-        $value = $this->getCancelStatus();
+        $value = $this->cancelStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CancelStatus", $value);
+            $writer->writeElementNs(null, 'CancelStatus', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TransactionStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TransactionStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPaymentStatus');
-        if (null !== $value) {
-            $this->setEBayPaymentStatus($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'eBayPaymentStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eBayPaymentStatus = $value;
+                    }
+                    return true;
+                case 'CheckoutStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->checkoutStatus = $value;
+                    }
+                    return true;
+                case 'LastTimeModified':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastTimeModified = new \DateTime($value);
+                    }
+                    return true;
+                case 'PaymentMethodUsed':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentMethodUsed = $value;
+                    }
+                    return true;
+                case 'CompleteStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->completeStatus = $value;
+                    }
+                    return true;
+                case 'BuyerSelectedShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerSelectedShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PaymentHoldStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentHoldStatus = $value;
+                    }
+                    return true;
+                case 'InquiryStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->inquiryStatus = $value;
+                    }
+                    return true;
+                case 'ReturnStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnStatus = $value;
+                    }
+                    return true;
+                case 'PaymentInstrument':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentInstrument = $value;
+                    }
+                    return true;
+                case 'DigitalStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->digitalStatus = $value;
+                    }
+                    return true;
+                case 'CancelStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->cancelStatus = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutStatus');
-        if (null !== $value) {
-            $this->setCheckoutStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastTimeModified');
-        if (null !== $value) {
-            $this->setLastTimeModified(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethodUsed');
-        if (null !== $value) {
-            $this->setPaymentMethodUsed($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompleteStatus');
-        if (null !== $value) {
-            $this->setCompleteStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerSelectedShipping');
-        if (null !== $value) {
-            $this->setBuyerSelectedShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentHoldStatus');
-        if (null !== $value) {
-            $this->setPaymentHoldStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InquiryStatus');
-        if (null !== $value) {
-            $this->setInquiryStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnStatus');
-        if (null !== $value) {
-            $this->setReturnStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentInstrument');
-        if (null !== $value) {
-            $this->setPaymentInstrument($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DigitalStatus');
-        if (null !== $value) {
-            $this->setDigitalStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CancelStatus');
-        if (null !== $value) {
-            $this->setCancelStatus($value);
-        }
+        return false;
     }
 }

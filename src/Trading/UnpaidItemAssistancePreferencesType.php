@@ -352,66 +352,100 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDelayBeforeOpeningDispute();
+        $value = $this->delayBeforeOpeningDispute;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute", $value);
+            $writer->writeElementNs(null, 'DelayBeforeOpeningDispute', null, (string) $value);
         }
-        $value = $this->getOptInStatus();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->optInStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OptInStatus", $value);
+            $writer->writeElementNs(null, 'OptInStatus', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getAutoRelist();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->autoRelist;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AutoRelist", $value);
+            $writer->writeElementNs(null, 'AutoRelist', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getRemoveAllExcludedUsers();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->removeAllExcludedUsers;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers", $value);
+            $writer->writeElementNs(null, 'RemoveAllExcludedUsers', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getExcludedUser();
+        $value = $this->excludedUser;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludedUser", $v);
+                $writer->writeElementNs(null, 'ExcludedUser', null, (string) $v);
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DelayBeforeOpeningDispute');
-        if (null !== $value) {
-            $this->setDelayBeforeOpeningDispute($value);
+        $this->excludedUser = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DelayBeforeOpeningDispute':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->delayBeforeOpeningDispute = (int) $value;
+                    }
+                    return true;
+                case 'OptInStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->optInStatus = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'AutoRelist':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->autoRelist = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'RemoveAllExcludedUsers':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->removeAllExcludedUsers = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ExcludedUser':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->excludedUser[] = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OptInStatus');
-        if (null !== $value) {
-            $this->setOptInStatus(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AutoRelist');
-        if (null !== $value) {
-            $this->setAutoRelist(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RemoveAllExcludedUsers');
-        if (null !== $value) {
-            $this->setRemoveAllExcludedUsers(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludedUser', true);
-        if (null !== $value) {
-            $this->setExcludedUser($value);
-        }
+        return false;
     }
 }

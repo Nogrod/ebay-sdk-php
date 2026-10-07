@@ -205,61 +205,97 @@ class RegionOfOriginDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getRegionOfOrigin();
+        $value = $this->regionOfOrigin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionOfOrigin", $value);
+            $writer->writeElementNs(null, 'RegionOfOrigin', null, (string) $value);
         }
-        $value = $this->getDescription();
+        $value = $this->description;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
+            $writer->writeElementNs(null, 'Description', null, (string) $value);
         }
-        $value = $this->getStatus();
+        $value = $this->status;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
+            $writer->writeElementNs(null, 'Status', null, (string) $value);
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RegionOfOrigin');
-        if (null !== $value) {
-            $this->setRegionOfOrigin($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'RegionOfOrigin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->regionOfOrigin = $value;
+                    }
+                    return true;
+                case 'Description':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->description = $value;
+                    }
+                    return true;
+                case 'Status':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->status = $value;
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Description');
-        if (null !== $value) {
-            $this->setDescription($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

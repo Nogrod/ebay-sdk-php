@@ -387,78 +387,118 @@ class RespondToFeedbackRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getFeedbackID();
+        $value = $this->feedbackID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackID", $value);
+            $writer->writeElementNs(null, 'FeedbackID', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getTargetUserID();
+        $value = $this->targetUserID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TargetUserID", $value);
+            $writer->writeElementNs(null, 'TargetUserID', null, (string) $value);
         }
-        $value = $this->getResponseType();
+        $value = $this->responseType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponseType", $value);
+            $writer->writeElementNs(null, 'ResponseType', null, (string) $value);
         }
-        $value = $this->getResponseText();
+        $value = $this->responseText;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponseText", $value);
+            $writer->writeElementNs(null, 'ResponseText', null, (string) $value);
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RespondToFeedbackRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RespondToFeedbackRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackID');
-        if (null !== $value) {
-            $this->setFeedbackID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'FeedbackID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackID = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'TargetUserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->targetUserID = $value;
+                    }
+                    return true;
+                case 'ResponseType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->responseType = $value;
+                    }
+                    return true;
+                case 'ResponseText':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->responseText = $value;
+                    }
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUserID');
-        if (null !== $value) {
-            $this->setTargetUserID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseType');
-        if (null !== $value) {
-            $this->setResponseType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseText');
-        if (null !== $value) {
-            $this->setResponseText($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -207,67 +207,97 @@ class GetAllBiddersResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getBidArray();
+        $value = $this->bidArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}BidArray");
+                    $writer->startElementNs(null, 'BidArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Offer", $v);
+                $writer->startElementNs(null, 'Offer', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getHighBidder();
+        $value = $this->highBidder;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HighBidder", $value);
+            $writer->writeElementNs(null, 'HighBidder', null, (string) $value);
         }
-        $value = $this->getHighestBid();
+        $value = $this->highestBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HighestBid", $value);
+            $writer->startElementNs(null, 'HighestBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getListingStatus();
+        $value = $this->listingStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingStatus", $value);
+            $writer->writeElementNs(null, 'ListingStatus', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetAllBiddersResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetAllBiddersResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Offer');
-            $this->setBidArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\OfferType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->bidArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BidArray':
+                    $this->bidArray = Func::readList($reader, 'Offer', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\OfferType::xmlRead($reader));
+                    return true;
+                case 'HighBidder':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->highBidder = $value;
+                    }
+                    return true;
+                case 'HighestBid':
+                    $this->highestBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ListingStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->listingStatus = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
-        if (null !== $value) {
-            $this->setHighBidder($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
-        if (null !== $value) {
-            $this->setHighestBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
-        if (null !== $value) {
-            $this->setListingStatus($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

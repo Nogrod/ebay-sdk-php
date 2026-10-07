@@ -274,65 +274,99 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getISBN();
+        $value = $this->iSBN;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ISBN", $value);
+            $writer->writeElementNs(null, 'ISBN', null, (string) $value);
         }
-        $value = $this->getUPC();
+        $value = $this->uPC;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UPC", $value);
+            $writer->writeElementNs(null, 'UPC', null, (string) $value);
         }
-        $value = $this->getEAN();
+        $value = $this->eAN;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EAN", $value);
+            $writer->writeElementNs(null, 'EAN', null, (string) $value);
         }
-        $value = $this->getProductReferenceID();
+        $value = $this->productReferenceID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductReferenceID", $value);
+            $writer->writeElementNs(null, 'ProductReferenceID', null, (string) $value);
         }
-        $value = $this->getNameValueList();
+        $value = $this->nameValueList;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+                $writer->startElementNs(null, 'NameValueList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VariationProductListingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VariationProductListingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ISBN');
-        if (null !== $value) {
-            $this->setISBN($value);
+        $this->nameValueList = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ISBN':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->iSBN = $value;
+                    }
+                    return true;
+                case 'UPC':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uPC = $value;
+                    }
+                    return true;
+                case 'EAN':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eAN = $value;
+                    }
+                    return true;
+                case 'ProductReferenceID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->productReferenceID = $value;
+                    }
+                    return true;
+                case 'NameValueList':
+                    $this->nameValueList[] = \Nogrod\eBaySDK\Trading\NameValueListType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPC');
-        if (null !== $value) {
-            $this->setUPC($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
-        if (null !== $value) {
-            $this->setEAN($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductReferenceID');
-        if (null !== $value) {
-            $this->setProductReferenceID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
-        if (null !== $value) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

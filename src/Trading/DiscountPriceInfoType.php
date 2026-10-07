@@ -393,79 +393,114 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getOriginalRetailPrice();
+        $value = $this->originalRetailPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice", $value);
+            $writer->startElementNs(null, 'OriginalRetailPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMinimumAdvertisedPrice();
+        $value = $this->minimumAdvertisedPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice", $value);
+            $writer->startElementNs(null, 'MinimumAdvertisedPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMinimumAdvertisedPriceExposure();
+        $value = $this->minimumAdvertisedPriceExposure;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure", $value);
+            $writer->writeElementNs(null, 'MinimumAdvertisedPriceExposure', null, (string) $value);
         }
-        $value = $this->getPricingTreatment();
+        $value = $this->pricingTreatment;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PricingTreatment", $value);
+            $writer->writeElementNs(null, 'PricingTreatment', null, (string) $value);
         }
-        $value = $this->getSoldOneBay();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->soldOneBay;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldOneBay", $value);
+            $writer->writeElementNs(null, 'SoldOneBay', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSoldOffeBay();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->soldOffeBay;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldOffeBay", $value);
+            $writer->writeElementNs(null, 'SoldOffeBay', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getMadeForOutletComparisonPrice();
+        $value = $this->madeForOutletComparisonPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MadeForOutletComparisonPrice", $value);
+            $writer->startElementNs(null, 'MadeForOutletComparisonPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\DiscountPriceInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\DiscountPriceInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalRetailPrice');
-        if (null !== $value) {
-            $this->setOriginalRetailPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'OriginalRetailPrice':
+                    $this->originalRetailPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'MinimumAdvertisedPrice':
+                    $this->minimumAdvertisedPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'MinimumAdvertisedPriceExposure':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minimumAdvertisedPriceExposure = $value;
+                    }
+                    return true;
+                case 'PricingTreatment':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pricingTreatment = $value;
+                    }
+                    return true;
+                case 'SoldOneBay':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->soldOneBay = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SoldOffeBay':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->soldOffeBay = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'MadeForOutletComparisonPrice':
+                    $this->madeForOutletComparisonPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPrice');
-        if (null !== $value) {
-            $this->setMinimumAdvertisedPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumAdvertisedPriceExposure');
-        if (null !== $value) {
-            $this->setMinimumAdvertisedPriceExposure($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PricingTreatment');
-        if (null !== $value) {
-            $this->setPricingTreatment($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOneBay');
-        if (null !== $value) {
-            $this->setSoldOneBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldOffeBay');
-        if (null !== $value) {
-            $this->setSoldOffeBay(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MadeForOutletComparisonPrice');
-        if (null !== $value) {
-            $this->setMadeForOutletComparisonPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

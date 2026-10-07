@@ -243,75 +243,109 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getPictograms();
+        $value = $this->pictograms;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Pictograms");
+                    $writer->startElementNs(null, 'Pictograms', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictogram", $v);
+                $writer->writeElementNs(null, 'Pictogram', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getSignalWord();
+        $value = $this->signalWord;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SignalWord", $value);
+            $writer->writeElementNs(null, 'SignalWord', null, (string) $value);
         }
-        $value = $this->getStatements();
+        $value = $this->statements;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Statements");
+                    $writer->startElementNs(null, 'Statements', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Statement", $v);
+                $writer->writeElementNs(null, 'Statement', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getComponent();
+        $value = $this->component;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Component", $value);
+            $writer->writeElementNs(null, 'Component', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\HazmatType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\HazmatType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pictograms');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Pictogram', true);
-            $this->setPictograms($value);
+        $this->pictograms = [];
+        $this->statements = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Pictograms':
+                    $this->pictograms = Func::readList($reader, 'Pictogram', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'SignalWord':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->signalWord = $value;
+                    }
+                    return true;
+                case 'Statements':
+                    $this->statements = Func::readList($reader, 'Statement', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'Component':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->component = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SignalWord');
-        if (null !== $value) {
-            $this->setSignalWord($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Statements');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Statement', true);
-            $this->setStatements($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Component');
-        if (null !== $value) {
-            $this->setComponent($value);
-        }
+        return false;
     }
 }

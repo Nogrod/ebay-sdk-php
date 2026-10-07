@@ -194,66 +194,97 @@ class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getQualifiesForBuyItNow();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiesForBuyItNow;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow", $value);
+            $writer->writeElementNs(null, 'QualifiesForBuyItNow', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getQualifiesForBuyItNowMultiple();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiesForBuyItNowMultiple;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple", $value);
+            $writer->writeElementNs(null, 'QualifiesForBuyItNowMultiple', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getQualifiedForFixedPriceOneDayDuration();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiedForFixedPriceOneDayDuration;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration", $value);
+            $writer->writeElementNs(null, 'QualifiedForFixedPriceOneDayDuration', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getQualifiesForVariations();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiesForVariations;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations", $value);
+            $writer->writeElementNs(null, 'QualifiesForVariations', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getQualifiedForAuctionOneDayDuration();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->qualifiedForAuctionOneDayDuration;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration", $value);
+            $writer->writeElementNs(null, 'QualifiedForAuctionOneDayDuration', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FeatureEligibilityType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeatureEligibilityType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNow');
-        if (null !== $value) {
-            $this->setQualifiesForBuyItNow(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'QualifiesForBuyItNow':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiesForBuyItNow = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'QualifiesForBuyItNowMultiple':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiesForBuyItNowMultiple = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'QualifiedForFixedPriceOneDayDuration':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiedForFixedPriceOneDayDuration = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'QualifiesForVariations':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiesForVariations = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'QualifiedForAuctionOneDayDuration':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->qualifiedForAuctionOneDayDuration = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForBuyItNowMultiple');
-        if (null !== $value) {
-            $this->setQualifiesForBuyItNowMultiple(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForFixedPriceOneDayDuration');
-        if (null !== $value) {
-            $this->setQualifiedForFixedPriceOneDayDuration(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiesForVariations');
-        if (null !== $value) {
-            $this->setQualifiesForVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QualifiedForAuctionOneDayDuration');
-        if (null !== $value) {
-            $this->setQualifiedForAuctionOneDayDuration(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

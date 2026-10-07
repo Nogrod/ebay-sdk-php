@@ -167,23 +167,25 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getProfileId();
+        $value = $this->profileId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileId", $value);
+            $writer->writeElementNs(null, 'profileId', null, (string) $value);
         }
-        $value = $this->getAck();
+        $value = $this->ack;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ack", $value);
+            $writer->writeElementNs(null, 'ack', null, (string) $value);
         }
-        $value = $this->getErrorMessage();
+        $value = $this->errorMessage;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage");
+                    $writer->startElementNs(null, 'errorMessage', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}error", $v);
+                $writer->startElementNs(null, 'error', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -193,32 +195,59 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}profileId');
-        if (null !== $value) {
-            $this->setProfileId($value);
+        $this->errorMessage = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'profileId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileId = (int) $value;
+                    }
+                    return true;
+                case 'ack':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->ack = $value;
+                    }
+                    return true;
+                case 'errorMessage':
+                    $this->errorMessage = Func::readList($reader, 'error', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
-        if (null !== $value) {
-            $this->setAck($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}error');
-            $this->setErrorMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

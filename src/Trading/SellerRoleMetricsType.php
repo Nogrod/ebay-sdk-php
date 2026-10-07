@@ -358,101 +358,147 @@ class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getPositiveFeedbackLeftCount();
+        $value = $this->positiveFeedbackLeftCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount", $value);
+            $writer->writeElementNs(null, 'PositiveFeedbackLeftCount', null, (string) $value);
         }
-        $value = $this->getNegativeFeedbackLeftCount();
+        $value = $this->negativeFeedbackLeftCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount", $value);
+            $writer->writeElementNs(null, 'NegativeFeedbackLeftCount', null, (string) $value);
         }
-        $value = $this->getNeutralFeedbackLeftCount();
+        $value = $this->neutralFeedbackLeftCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount", $value);
+            $writer->writeElementNs(null, 'NeutralFeedbackLeftCount', null, (string) $value);
         }
-        $value = $this->getFeedbackLeftPercent();
+        $value = $this->feedbackLeftPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent", $value);
+            $writer->writeElementNs(null, 'FeedbackLeftPercent', null, (string) $value);
         }
-        $value = $this->getRepeatBuyerCount();
+        $value = $this->repeatBuyerCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount", $value);
+            $writer->writeElementNs(null, 'RepeatBuyerCount', null, (string) $value);
         }
-        $value = $this->getRepeatBuyerPercent();
+        $value = $this->repeatBuyerPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent", $value);
+            $writer->writeElementNs(null, 'RepeatBuyerPercent', null, (string) $value);
         }
-        $value = $this->getUniqueBuyerCount();
+        $value = $this->uniqueBuyerCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount", $value);
+            $writer->writeElementNs(null, 'UniqueBuyerCount', null, (string) $value);
         }
-        $value = $this->getTransactionPercent();
+        $value = $this->transactionPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionPercent", $value);
+            $writer->writeElementNs(null, 'TransactionPercent', null, (string) $value);
         }
-        $value = $this->getCrossBorderTransactionCount();
+        $value = $this->crossBorderTransactionCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount", $value);
+            $writer->writeElementNs(null, 'CrossBorderTransactionCount', null, (string) $value);
         }
-        $value = $this->getCrossBorderTransactionPercent();
+        $value = $this->crossBorderTransactionPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent", $value);
+            $writer->writeElementNs(null, 'CrossBorderTransactionPercent', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerRoleMetricsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerRoleMetricsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PositiveFeedbackLeftCount');
-        if (null !== $value) {
-            $this->setPositiveFeedbackLeftCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PositiveFeedbackLeftCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->positiveFeedbackLeftCount = (int) $value;
+                    }
+                    return true;
+                case 'NegativeFeedbackLeftCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->negativeFeedbackLeftCount = (int) $value;
+                    }
+                    return true;
+                case 'NeutralFeedbackLeftCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->neutralFeedbackLeftCount = (int) $value;
+                    }
+                    return true;
+                case 'FeedbackLeftPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackLeftPercent = (float) $value;
+                    }
+                    return true;
+                case 'RepeatBuyerCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->repeatBuyerCount = (int) $value;
+                    }
+                    return true;
+                case 'RepeatBuyerPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->repeatBuyerPercent = (float) $value;
+                    }
+                    return true;
+                case 'UniqueBuyerCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uniqueBuyerCount = (int) $value;
+                    }
+                    return true;
+                case 'TransactionPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionPercent = (float) $value;
+                    }
+                    return true;
+                case 'CrossBorderTransactionCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->crossBorderTransactionCount = (int) $value;
+                    }
+                    return true;
+                case 'CrossBorderTransactionPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->crossBorderTransactionPercent = (float) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NegativeFeedbackLeftCount');
-        if (null !== $value) {
-            $this->setNegativeFeedbackLeftCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NeutralFeedbackLeftCount');
-        if (null !== $value) {
-            $this->setNeutralFeedbackLeftCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackLeftPercent');
-        if (null !== $value) {
-            $this->setFeedbackLeftPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerCount');
-        if (null !== $value) {
-            $this->setRepeatBuyerCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RepeatBuyerPercent');
-        if (null !== $value) {
-            $this->setRepeatBuyerPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UniqueBuyerCount');
-        if (null !== $value) {
-            $this->setUniqueBuyerCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionPercent');
-        if (null !== $value) {
-            $this->setTransactionPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionCount');
-        if (null !== $value) {
-            $this->setCrossBorderTransactionCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CrossBorderTransactionPercent');
-        if (null !== $value) {
-            $this->setCrossBorderTransactionPercent($value);
-        }
+        return false;
     }
 }

@@ -542,31 +542,33 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getVariationSpecificValue();
+        $value = $this->variationSpecificValue;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue", $value);
+            $writer->writeElementNs(null, 'VariationSpecificValue', null, (string) $value);
         }
-        $value = $this->getPictureURL();
-        if (null !== $value) {
-            foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURL", $v);
-            }
-        }
-        $value = $this->getExternalPictureURL();
+        $value = $this->pictureURL;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL", $v);
+                $writer->writeElementNs(null, 'PictureURL', null, (string) $v);
             }
         }
-        $value = $this->getExtendedPictureDetails();
+        $value = $this->externalPictureURL;
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->writeElementNs(null, 'ExternalPictureURL', null, (string) $v);
+            }
+        }
+        $value = $this->extendedPictureDetails;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails");
+                    $writer->startElementNs(null, 'ExtendedPictureDetails', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURLs", $v);
+                $writer->startElementNs(null, 'PictureURLs', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -576,36 +578,67 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue');
-        if (null !== $value) {
-            $this->setVariationSpecificValue($value);
+        $this->pictureURL = [];
+        $this->externalPictureURL = [];
+        $this->extendedPictureDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'VariationSpecificValue':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->variationSpecificValue = $value;
+                    }
+                    return true;
+                case 'PictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureURL[] = $value;
+                    }
+                    return true;
+                case 'ExternalPictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->externalPictureURL[] = $value;
+                    }
+                    return true;
+                case 'ExtendedPictureDetails':
+                    $this->extendedPictureDetails = Func::readList($reader, 'PictureURLs', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\PictureURLsType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
-        if (null !== $value) {
-            $this->setPictureURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value) {
-            $this->setExternalPictureURL($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}PictureURLs');
-            $this->setExtendedPictureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

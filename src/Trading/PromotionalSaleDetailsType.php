@@ -135,45 +135,76 @@ class PromotionalSaleDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getOriginalPrice();
+        $value = $this->originalPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalPrice", $value);
+            $writer->startElementNs(null, 'OriginalPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getStartTime();
+        $value = $this->startTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTime", $value);
+            $writer->writeElementNs(null, 'StartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTime();
+        $value = $this->endTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
+            $writer->writeElementNs(null, 'EndTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PromotionalSaleDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PromotionalSaleDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalPrice');
-        if (null !== $value) {
-            $this->setOriginalPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'OriginalPrice':
+                    $this->originalPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'StartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
-        if (null !== $value) {
-            $this->setStartTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
-        if (null !== $value) {
-            $this->setEndTime(new \DateTime($value));
-        }
+        return false;
     }
 }

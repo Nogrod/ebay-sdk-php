@@ -122,46 +122,78 @@ class FetchTokenResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getEBayAuthToken();
+        $value = $this->eBayAuthToken;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayAuthToken", $value);
+            $writer->writeElementNs(null, 'eBayAuthToken', null, (string) $value);
         }
-        $value = $this->getHardExpirationTime();
+        $value = $this->hardExpirationTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HardExpirationTime", $value);
+            $writer->writeElementNs(null, 'HardExpirationTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getRESTToken();
+        $value = $this->rESTToken;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RESTToken", $value);
+            $writer->writeElementNs(null, 'RESTToken', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FetchTokenResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FetchTokenResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
-        if (null !== $value) {
-            $this->setEBayAuthToken($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'eBayAuthToken':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eBayAuthToken = $value;
+                    }
+                    return true;
+                case 'HardExpirationTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hardExpirationTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'RESTToken':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->rESTToken = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HardExpirationTime');
-        if (null !== $value) {
-            $this->setHardExpirationTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RESTToken');
-        if (null !== $value) {
-            $this->setRESTToken($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

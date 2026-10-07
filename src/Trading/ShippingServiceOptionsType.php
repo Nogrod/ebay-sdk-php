@@ -689,132 +689,176 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShippingService();
+        $value = $this->shippingService;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingService", $value);
+            $writer->writeElementNs(null, 'ShippingService', null, (string) $value);
         }
-        $value = $this->getShippingServiceCost();
+        $value = $this->shippingServiceCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost", $value);
+            $writer->startElementNs(null, 'ShippingServiceCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingServiceAdditionalCost();
+        $value = $this->shippingServiceAdditionalCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost", $value);
+            $writer->startElementNs(null, 'ShippingServiceAdditionalCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingServicePriority();
+        $value = $this->shippingServicePriority;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority", $value);
+            $writer->writeElementNs(null, 'ShippingServicePriority', null, (string) $value);
         }
-        $value = $this->getExpeditedService();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->expeditedService;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpeditedService", $value);
+            $writer->writeElementNs(null, 'ExpeditedService', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShippingTimeMin();
+        $value = $this->shippingTimeMin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin", $value);
+            $writer->writeElementNs(null, 'ShippingTimeMin', null, (string) $value);
         }
-        $value = $this->getShippingTimeMax();
+        $value = $this->shippingTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax", $value);
+            $writer->writeElementNs(null, 'ShippingTimeMax', null, (string) $value);
         }
-        $value = $this->getFreeShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->freeShipping;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FreeShipping", $value);
+            $writer->writeElementNs(null, 'FreeShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getLocalPickup();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->localPickup;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LocalPickup", $value);
+            $writer->writeElementNs(null, 'LocalPickup', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getImportCharge();
+        $value = $this->importCharge;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImportCharge", $value);
+            $writer->startElementNs(null, 'ImportCharge', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingPackageInfo();
+        $value = $this->shippingPackageInfo;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackageInfo", $v);
+                $writer->startElementNs(null, 'ShippingPackageInfo', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingServiceCutOffTime();
+        $value = $this->shippingServiceCutOffTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime", $value);
+            $writer->writeElementNs(null, 'ShippingServiceCutOffTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getLogisticPlanType();
+        $value = $this->logisticPlanType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LogisticPlanType", $value);
+            $writer->writeElementNs(null, 'LogisticPlanType', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingService');
-        if (null !== $value) {
-            $this->setShippingService($value);
+        $this->shippingPackageInfo = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShippingService':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingService = $value;
+                    }
+                    return true;
+                case 'ShippingServiceCost':
+                    $this->shippingServiceCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingServiceAdditionalCost':
+                    $this->shippingServiceAdditionalCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingServicePriority':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingServicePriority = (int) $value;
+                    }
+                    return true;
+                case 'ExpeditedService':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->expeditedService = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShippingTimeMin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingTimeMin = (int) $value;
+                    }
+                    return true;
+                case 'ShippingTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingTimeMax = (int) $value;
+                    }
+                    return true;
+                case 'FreeShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->freeShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'LocalPickup':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->localPickup = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ImportCharge':
+                    $this->importCharge = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ShippingPackageInfo':
+                    $this->shippingPackageInfo[] = \Nogrod\eBaySDK\Trading\ShippingPackageInfoType::xmlRead($reader);
+                    return true;
+                case 'ShippingServiceCutOffTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingServiceCutOffTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'LogisticPlanType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->logisticPlanType = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCost');
-        if (null !== $value) {
-            $this->setShippingServiceCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceAdditionalCost');
-        if (null !== $value) {
-            $this->setShippingServiceAdditionalCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServicePriority');
-        if (null !== $value) {
-            $this->setShippingServicePriority($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpeditedService');
-        if (null !== $value) {
-            $this->setExpeditedService(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMin');
-        if (null !== $value) {
-            $this->setShippingTimeMin($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingTimeMax');
-        if (null !== $value) {
-            $this->setShippingTimeMax($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FreeShipping');
-        if (null !== $value) {
-            $this->setFreeShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalPickup');
-        if (null !== $value) {
-            $this->setLocalPickup(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImportCharge');
-        if (null !== $value) {
-            $this->setImportCharge(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageInfo');
-        if (null !== $value) {
-            $this->setShippingPackageInfo(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingPackageInfoType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCutOffTime');
-        if (null !== $value) {
-            $this->setShippingServiceCutOffTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LogisticPlanType');
-        if (null !== $value) {
-            $this->setLogisticPlanType($value);
-        }
+        return false;
     }
 }

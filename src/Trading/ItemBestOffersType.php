@@ -206,58 +206,86 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getRole();
+        $value = $this->role;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Role", $value);
+            $writer->writeElementNs(null, 'Role', null, (string) $value);
         }
-        $value = $this->getBestOfferArray();
+        $value = $this->bestOfferArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}BestOfferArray");
+                    $writer->startElementNs(null, 'BestOfferArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOffer", $v);
+                $writer->startElementNs(null, 'BestOffer', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getItem();
+        $value = $this->item;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $value);
+            $writer->startElementNs(null, 'Item', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ItemBestOffersType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ItemBestOffersType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Role');
-        if (null !== $value) {
-            $this->setRole($value);
+        $this->bestOfferArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Role':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->role = $value;
+                    }
+                    return true;
+                case 'BestOfferArray':
+                    $this->bestOfferArray = Func::readList($reader, 'BestOffer', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\BestOfferType::xmlRead($reader));
+                    return true;
+                case 'Item':
+                    $this->item = \Nogrod\eBaySDK\Trading\ItemType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
-            $this->setBestOfferArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Item');
-        if (null !== $value) {
-            $this->setItem(\Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($value));
-        }
+        return false;
     }
 }

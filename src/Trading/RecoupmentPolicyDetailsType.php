@@ -167,55 +167,87 @@ class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEnforcedOnListingSite();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->enforcedOnListingSite;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnforcedOnListingSite", $value);
+            $writer->writeElementNs(null, 'EnforcedOnListingSite', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getEnforcedOnRegistrationSite();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->enforcedOnRegistrationSite;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnforcedOnRegistrationSite", $value);
+            $writer->writeElementNs(null, 'EnforcedOnRegistrationSite', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnListingSite');
-        if (null !== $value) {
-            $this->setEnforcedOnListingSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'EnforcedOnListingSite':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->enforcedOnListingSite = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'EnforcedOnRegistrationSite':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->enforcedOnRegistrationSite = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EnforcedOnRegistrationSite');
-        if (null !== $value) {
-            $this->setEnforcedOnRegistrationSite(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

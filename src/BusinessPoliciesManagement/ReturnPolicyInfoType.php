@@ -418,101 +418,147 @@ class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDescription();
+        $value = $this->description;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}description", $value);
+            $writer->writeElementNs(null, 'description', null, (string) $value);
         }
-        $value = $this->getRefundOption();
+        $value = $this->refundOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}refundOption", $value);
+            $writer->writeElementNs(null, 'refundOption', null, (string) $value);
         }
-        $value = $this->getShippingCostPaidByOption();
+        $value = $this->shippingCostPaidByOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption", $value);
+            $writer->writeElementNs(null, 'shippingCostPaidByOption', null, (string) $value);
         }
-        $value = $this->getReturnsWithinOption();
+        $value = $this->returnsWithinOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption", $value);
+            $writer->writeElementNs(null, 'returnsWithinOption', null, (string) $value);
         }
-        $value = $this->getReturnsAcceptedOption();
+        $value = $this->returnsAcceptedOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption", $value);
+            $writer->writeElementNs(null, 'returnsAcceptedOption', null, (string) $value);
         }
-        $value = $this->getWarrantyOfferedOption();
+        $value = $this->warrantyOfferedOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption", $value);
+            $writer->writeElementNs(null, 'warrantyOfferedOption', null, (string) $value);
         }
-        $value = $this->getWarrantyTypeOption();
+        $value = $this->warrantyTypeOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption", $value);
+            $writer->writeElementNs(null, 'warrantyTypeOption', null, (string) $value);
         }
-        $value = $this->getWarrantyDurationOption();
+        $value = $this->warrantyDurationOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption", $value);
+            $writer->writeElementNs(null, 'warrantyDurationOption', null, (string) $value);
         }
-        $value = $this->getRestockingFeeValue();
+        $value = $this->restockingFeeValue;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue", $value);
+            $writer->writeElementNs(null, 'restockingFeeValue', null, (string) $value);
         }
-        $value = $this->getHolidayReturns();
+        $value = $this->holidayReturns;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns", $value);
+            $writer->writeElementNs(null, 'holidayReturns', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}description');
-        if (null !== $value) {
-            $this->setDescription($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'description':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->description = $value;
+                    }
+                    return true;
+                case 'refundOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refundOption = $value;
+                    }
+                    return true;
+                case 'shippingCostPaidByOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingCostPaidByOption = $value;
+                    }
+                    return true;
+                case 'returnsWithinOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsWithinOption = $value;
+                    }
+                    return true;
+                case 'returnsAcceptedOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnsAcceptedOption = $value;
+                    }
+                    return true;
+                case 'warrantyOfferedOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->warrantyOfferedOption = $value;
+                    }
+                    return true;
+                case 'warrantyTypeOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->warrantyTypeOption = $value;
+                    }
+                    return true;
+                case 'warrantyDurationOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->warrantyDurationOption = $value;
+                    }
+                    return true;
+                case 'restockingFeeValue':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->restockingFeeValue = $value;
+                    }
+                    return true;
+                case 'holidayReturns':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->holidayReturns = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}refundOption');
-        if (null !== $value) {
-            $this->setRefundOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingCostPaidByOption');
-        if (null !== $value) {
-            $this->setShippingCostPaidByOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsWithinOption');
-        if (null !== $value) {
-            $this->setReturnsWithinOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnsAcceptedOption');
-        if (null !== $value) {
-            $this->setReturnsAcceptedOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyOfferedOption');
-        if (null !== $value) {
-            $this->setWarrantyOfferedOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyTypeOption');
-        if (null !== $value) {
-            $this->setWarrantyTypeOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}warrantyDurationOption');
-        if (null !== $value) {
-            $this->setWarrantyDurationOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}restockingFeeValue');
-        if (null !== $value) {
-            $this->setRestockingFeeValue($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}holidayReturns');
-        if (null !== $value) {
-            $this->setHolidayReturns($value);
-        }
+        return false;
     }
 }

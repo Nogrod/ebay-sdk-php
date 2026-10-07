@@ -142,45 +142,77 @@ class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getType();
+        $value = $this->type;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Type", $value);
+            $writer->writeElementNs(null, 'Type', null, (string) $value);
         }
-        $value = $this->getTime();
+        $value = $this->time;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Time", $value);
+            $writer->writeElementNs(null, 'Time', null, Func::formatDateTime($value));
         }
-        $value = $this->getReason();
+        $value = $this->reason;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Reason", $value);
+            $writer->writeElementNs(null, 'Reason', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
-        if (null !== $value) {
-            $this->setType($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Type':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->type = $value;
+                    }
+                    return true;
+                case 'Time':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->time = new \DateTime($value);
+                    }
+                    return true;
+                case 'Reason':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reason = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Time');
-        if (null !== $value) {
-            $this->setTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Reason');
-        if (null !== $value) {
-            $this->setReason($value);
-        }
+        return false;
     }
 }

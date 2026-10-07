@@ -322,93 +322,137 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMaxDelivery();
+        $value = $this->maxDelivery;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}maxDelivery", $value);
+            $writer->writeElementNs(null, 'maxDelivery', null, (string) $value);
         }
-        $value = $this->getMinDelivery();
+        $value = $this->minDelivery;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}minDelivery", $value);
+            $writer->writeElementNs(null, 'minDelivery', null, (string) $value);
         }
-        $value = $this->getMaxDeliveryDate();
+        $value = $this->maxDeliveryDate;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}maxDeliveryDate", $value);
+            $writer->writeElementNs(null, 'maxDeliveryDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getMinDeliveryDate();
+        $value = $this->minDeliveryDate;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}minDeliveryDate", $value);
+            $writer->writeElementNs(null, 'minDeliveryDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getMinConfidence();
+        $value = $this->minConfidence;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}minConfidence", $value);
+            $writer->writeElementNs(null, 'minConfidence', null, (string) $value);
         }
-        $value = $this->getMaxConfidence();
+        $value = $this->maxConfidence;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}maxConfidence", $value);
+            $writer->writeElementNs(null, 'maxConfidence', null, (string) $value);
         }
-        $value = $this->getEstimateTreatment();
+        $value = $this->estimateTreatment;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}estimateTreatment", $value);
+            $writer->writeElementNs(null, 'estimateTreatment', null, (string) $value);
         }
-        $value = $this->getMaxActualDelivery();
+        $value = $this->maxActualDelivery;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}maxActualDelivery", $value);
+            $writer->writeElementNs(null, 'maxActualDelivery', null, (string) $value);
         }
-        $value = $this->getMinActualDelivery();
+        $value = $this->minActualDelivery;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}minActualDelivery", $value);
+            $writer->writeElementNs(null, 'minActualDelivery', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\DeliveryEstimateType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\DeliveryEstimateType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}maxDelivery');
-        if (null !== $value) {
-            $this->setMaxDelivery($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'maxDelivery':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxDelivery = (int) $value;
+                    }
+                    return true;
+                case 'minDelivery':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minDelivery = (int) $value;
+                    }
+                    return true;
+                case 'maxDeliveryDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxDeliveryDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'minDeliveryDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minDeliveryDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'minConfidence':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minConfidence = (int) $value;
+                    }
+                    return true;
+                case 'maxConfidence':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxConfidence = (int) $value;
+                    }
+                    return true;
+                case 'estimateTreatment':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->estimateTreatment = $value;
+                    }
+                    return true;
+                case 'maxActualDelivery':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxActualDelivery = (int) $value;
+                    }
+                    return true;
+                case 'minActualDelivery':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minActualDelivery = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}minDelivery');
-        if (null !== $value) {
-            $this->setMinDelivery($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}maxDeliveryDate');
-        if (null !== $value) {
-            $this->setMaxDeliveryDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}minDeliveryDate');
-        if (null !== $value) {
-            $this->setMinDeliveryDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}minConfidence');
-        if (null !== $value) {
-            $this->setMinConfidence($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}maxConfidence');
-        if (null !== $value) {
-            $this->setMaxConfidence($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}estimateTreatment');
-        if (null !== $value) {
-            $this->setEstimateTreatment($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}maxActualDelivery');
-        if (null !== $value) {
-            $this->setMaxActualDelivery($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}minActualDelivery');
-        if (null !== $value) {
-            $this->setMinActualDelivery($value);
-        }
+        return false;
     }
 }

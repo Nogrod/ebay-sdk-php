@@ -281,70 +281,107 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEBayPaymentStatus();
+        $value = $this->eBayPaymentStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPaymentStatus", $value);
+            $writer->writeElementNs(null, 'eBayPaymentStatus', null, (string) $value);
         }
-        $value = $this->getLastModifiedTime();
+        $value = $this->lastModifiedTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastModifiedTime", $value);
+            $writer->writeElementNs(null, 'LastModifiedTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getPaymentMethod();
+        $value = $this->paymentMethod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
+            $writer->writeElementNs(null, 'PaymentMethod', null, (string) $value);
         }
-        $value = $this->getStatus();
+        $value = $this->status;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
+            $writer->writeElementNs(null, 'Status', null, (string) $value);
         }
-        $value = $this->getIntegratedMerchantCreditCardEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->integratedMerchantCreditCardEnabled;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled", $value);
+            $writer->writeElementNs(null, 'IntegratedMerchantCreditCardEnabled', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPaymentInstrument();
+        $value = $this->paymentInstrument;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentInstrument", $value);
+            $writer->writeElementNs(null, 'PaymentInstrument', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\CheckoutStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\CheckoutStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPaymentStatus');
-        if (null !== $value) {
-            $this->setEBayPaymentStatus($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'eBayPaymentStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eBayPaymentStatus = $value;
+                    }
+                    return true;
+                case 'LastModifiedTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastModifiedTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'PaymentMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentMethod = $value;
+                    }
+                    return true;
+                case 'Status':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->status = $value;
+                    }
+                    return true;
+                case 'IntegratedMerchantCreditCardEnabled':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->integratedMerchantCreditCardEnabled = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PaymentInstrument':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentInstrument = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedTime');
-        if (null !== $value) {
-            $this->setLastModifiedTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
-        if (null !== $value) {
-            $this->setPaymentMethod($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IntegratedMerchantCreditCardEnabled');
-        if (null !== $value) {
-            $this->setIntegratedMerchantCreditCardEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentInstrument');
-        if (null !== $value) {
-            $this->setPaymentInstrument($value);
-        }
+        return false;
     }
 }

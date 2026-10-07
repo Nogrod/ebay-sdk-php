@@ -469,108 +469,148 @@ class LeaveFeedbackRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getCommentText();
+        $value = $this->commentText;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentText", $value);
+            $writer->writeElementNs(null, 'CommentText', null, (string) $value);
         }
-        $value = $this->getCommentType();
+        $value = $this->commentType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentType", $value);
+            $writer->writeElementNs(null, 'CommentType', null, (string) $value);
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getTargetUser();
+        $value = $this->targetUser;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TargetUser", $value);
+            $writer->writeElementNs(null, 'TargetUser', null, (string) $value);
         }
-        $value = $this->getSellerItemRatingDetailArray();
+        $value = $this->sellerItemRatingDetailArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray");
+                    $writer->startElementNs(null, 'SellerItemRatingDetailArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails", $v);
+                $writer->startElementNs(null, 'ItemRatingDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
-        $value = $this->getItemArrivedWithinEDDType();
+        $value = $this->itemArrivedWithinEDDType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArrivedWithinEDDType", $value);
+            $writer->writeElementNs(null, 'ItemArrivedWithinEDDType', null, (string) $value);
         }
-        $value = $this->getItemDeliveredWithinEDD();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->itemDeliveredWithinEDD;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemDeliveredWithinEDD", $value);
+            $writer->writeElementNs(null, 'ItemDeliveredWithinEDD', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\LeaveFeedbackRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\LeaveFeedbackRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->sellerItemRatingDetailArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'CommentText':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentText = $value;
+                    }
+                    return true;
+                case 'CommentType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentType = $value;
+                    }
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'TargetUser':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->targetUser = $value;
+                    }
+                    return true;
+                case 'SellerItemRatingDetailArray':
+                    $this->sellerItemRatingDetailArray = Func::readList($reader, 'ItemRatingDetails', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::xmlRead($reader));
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+                case 'ItemArrivedWithinEDDType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemArrivedWithinEDDType = $value;
+                    }
+                    return true;
+                case 'ItemDeliveredWithinEDD':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemDeliveredWithinEDD = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
-        if (null !== $value) {
-            $this->setCommentText($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
-        if (null !== $value) {
-            $this->setCommentType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TargetUser');
-        if (null !== $value) {
-            $this->setTargetUser($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails');
-            $this->setSellerItemRatingDetailArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArrivedWithinEDDType');
-        if (null !== $value) {
-            $this->setItemArrivedWithinEDDType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemDeliveredWithinEDD');
-        if (null !== $value) {
-            $this->setItemDeliveredWithinEDD(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

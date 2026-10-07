@@ -632,151 +632,199 @@ class GetSellerListRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getMotorsDealerUsers();
+        $value = $this->motorsDealerUsers;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers");
+                    $writer->startElementNs(null, 'MotorsDealerUsers', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $v);
+                $writer->writeElementNs(null, 'UserID', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getEndTimeFrom();
+        $value = $this->endTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeFrom", $value);
+            $writer->writeElementNs(null, 'EndTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTimeTo();
+        $value = $this->endTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeTo", $value);
+            $writer->writeElementNs(null, 'EndTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getSort();
+        $value = $this->sort;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Sort", $value);
+            $writer->writeElementNs(null, 'Sort', null, (string) $value);
         }
-        $value = $this->getStartTimeFrom();
+        $value = $this->startTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTimeFrom", $value);
+            $writer->writeElementNs(null, 'StartTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getStartTimeTo();
+        $value = $this->startTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTimeTo", $value);
+            $writer->writeElementNs(null, 'StartTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getPagination();
+        $value = $this->pagination;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pagination", $value);
+            $writer->startElementNs(null, 'Pagination', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getGranularityLevel();
+        $value = $this->granularityLevel;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GranularityLevel", $value);
+            $writer->writeElementNs(null, 'GranularityLevel', null, (string) $value);
         }
-        $value = $this->getSKUArray();
+        $value = $this->sKUArray;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SKUArray");
+                    $writer->startElementNs(null, 'SKUArray', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $v);
+                $writer->writeElementNs(null, 'SKU', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getIncludeWatchCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeWatchCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount", $value);
+            $writer->writeElementNs(null, 'IncludeWatchCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getAdminEndedItemsOnly();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->adminEndedItemsOnly;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdminEndedItemsOnly", $value);
+            $writer->writeElementNs(null, 'AdminEndedItemsOnly', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCategoryID();
+        $value = $this->categoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
+            $writer->writeElementNs(null, 'CategoryID', null, (string) $value);
         }
-        $value = $this->getIncludeVariations();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeVariations;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeVariations", $value);
+            $writer->writeElementNs(null, 'IncludeVariations', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetSellerListRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetSellerListRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}UserID', true);
-            $this->setMotorsDealerUsers($value);
+        parent::xmlInitLists();
+        $this->motorsDealerUsers = [];
+        $this->sKUArray = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MotorsDealerUsers':
+                    $this->motorsDealerUsers = Func::readList($reader, 'UserID', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'EndTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'Sort':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sort = (int) $value;
+                    }
+                    return true;
+                case 'StartTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'StartTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'Pagination':
+                    $this->pagination = \Nogrod\eBaySDK\Trading\PaginationType::xmlRead($reader);
+                    return true;
+                case 'GranularityLevel':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->granularityLevel = $value;
+                    }
+                    return true;
+                case 'SKUArray':
+                    $this->sKUArray = Func::readList($reader, 'SKU', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'IncludeWatchCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeWatchCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'AdminEndedItemsOnly':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->adminEndedItemsOnly = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->categoryID = (int) $value;
+                    }
+                    return true;
+                case 'IncludeVariations':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeVariations = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
-        if (null !== $value) {
-            $this->setEndTimeFrom(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeTo');
-        if (null !== $value) {
-            $this->setEndTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Sort');
-        if (null !== $value) {
-            $this->setSort($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeFrom');
-        if (null !== $value) {
-            $this->setStartTimeFrom(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeTo');
-        if (null !== $value) {
-            $this->setStartTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
-        if (null !== $value) {
-            $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GranularityLevel');
-        if (null !== $value) {
-            $this->setGranularityLevel($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}SKU', true);
-            $this->setSKUArray($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
-        if (null !== $value) {
-            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdminEndedItemsOnly');
-        if (null !== $value) {
-            $this->setAdminEndedItemsOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
-        if (null !== $value) {
-            $this->setCategoryID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariations');
-        if (null !== $value) {
-            $this->setIncludeVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

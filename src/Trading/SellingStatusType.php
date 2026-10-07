@@ -1014,191 +1014,240 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBidCount();
+        $value = $this->bidCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCount", $value);
+            $writer->writeElementNs(null, 'BidCount', null, (string) $value);
         }
-        $value = $this->getBidIncrement();
+        $value = $this->bidIncrement;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidIncrement", $value);
+            $writer->startElementNs(null, 'BidIncrement', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getConvertedCurrentPrice();
+        $value = $this->convertedCurrentPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedCurrentPrice", $value);
+            $writer->startElementNs(null, 'ConvertedCurrentPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCurrentPrice();
+        $value = $this->currentPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrentPrice", $value);
+            $writer->startElementNs(null, 'CurrentPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHighBidder();
+        $value = $this->highBidder;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HighBidder", $value);
+            $writer->startElementNs(null, 'HighBidder', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLeadCount();
+        $value = $this->leadCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LeadCount", $value);
+            $writer->writeElementNs(null, 'LeadCount', null, (string) $value);
         }
-        $value = $this->getMinimumToBid();
+        $value = $this->minimumToBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumToBid", $value);
+            $writer->startElementNs(null, 'MinimumToBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getQuantitySold();
+        $value = $this->quantitySold;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantitySold", $value);
+            $writer->writeElementNs(null, 'QuantitySold', null, (string) $value);
         }
-        $value = $this->getReserveMet();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->reserveMet;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveMet", $value);
+            $writer->writeElementNs(null, 'ReserveMet', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSecondChanceEligible();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->secondChanceEligible;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceEligible", $value);
+            $writer->writeElementNs(null, 'SecondChanceEligible', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBidderCount();
+        $value = $this->bidderCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidderCount", $value);
+            $writer->writeElementNs(null, 'BidderCount', null, (string) $value);
         }
-        $value = $this->getListingStatus();
+        $value = $this->listingStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingStatus", $value);
+            $writer->writeElementNs(null, 'ListingStatus', null, (string) $value);
         }
-        $value = $this->getFinalValueFee();
+        $value = $this->finalValueFee;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FinalValueFee", $value);
+            $writer->startElementNs(null, 'FinalValueFee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPromotionalSaleDetails();
+        $value = $this->promotionalSaleDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalSaleDetails", $value);
+            $writer->startElementNs(null, 'PromotionalSaleDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getAdminEnded();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->adminEnded;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdminEnded", $value);
+            $writer->writeElementNs(null, 'AdminEnded', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSoldAsBin();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->soldAsBin;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldAsBin", $value);
+            $writer->writeElementNs(null, 'SoldAsBin', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getQuantitySoldByPickupInStore();
+        $value = $this->quantitySoldByPickupInStore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore", $value);
+            $writer->writeElementNs(null, 'QuantitySoldByPickupInStore', null, (string) $value);
         }
-        $value = $this->getSuggestedBidValues();
+        $value = $this->suggestedBidValues;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues");
+                    $writer->startElementNs(null, 'SuggestedBidValues', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidValue", $v);
+                $writer->startElementNs(null, 'BidValue', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getListingOnHold();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->listingOnHold;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingOnHold", $value);
+            $writer->writeElementNs(null, 'ListingOnHold', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellingStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellingStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
-        if (null !== $value) {
-            $this->setBidCount($value);
+        $this->suggestedBidValues = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BidCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidCount = (int) $value;
+                    }
+                    return true;
+                case 'BidIncrement':
+                    $this->bidIncrement = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ConvertedCurrentPrice':
+                    $this->convertedCurrentPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'CurrentPrice':
+                    $this->currentPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'HighBidder':
+                    $this->highBidder = \Nogrod\eBaySDK\Trading\UserType::xmlRead($reader);
+                    return true;
+                case 'LeadCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->leadCount = (int) $value;
+                    }
+                    return true;
+                case 'MinimumToBid':
+                    $this->minimumToBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'QuantitySold':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantitySold = (int) $value;
+                    }
+                    return true;
+                case 'ReserveMet':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reserveMet = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SecondChanceEligible':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->secondChanceEligible = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BidderCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidderCount = (int) $value;
+                    }
+                    return true;
+                case 'ListingStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->listingStatus = $value;
+                    }
+                    return true;
+                case 'FinalValueFee':
+                    $this->finalValueFee = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'PromotionalSaleDetails':
+                    $this->promotionalSaleDetails = \Nogrod\eBaySDK\Trading\PromotionalSaleDetailsType::xmlRead($reader);
+                    return true;
+                case 'AdminEnded':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->adminEnded = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SoldAsBin':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->soldAsBin = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'QuantitySoldByPickupInStore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantitySoldByPickupInStore = (int) $value;
+                    }
+                    return true;
+                case 'SuggestedBidValues':
+                    $this->suggestedBidValues = Func::readList($reader, 'BidValue', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader));
+                    return true;
+                case 'ListingOnHold':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->listingOnHold = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidIncrement');
-        if (null !== $value) {
-            $this->setBidIncrement(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedCurrentPrice');
-        if (null !== $value) {
-            $this->setConvertedCurrentPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentPrice');
-        if (null !== $value) {
-            $this->setCurrentPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighBidder');
-        if (null !== $value) {
-            $this->setHighBidder(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LeadCount');
-        if (null !== $value) {
-            $this->setLeadCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumToBid');
-        if (null !== $value) {
-            $this->setMinimumToBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySold');
-        if (null !== $value) {
-            $this->setQuantitySold($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveMet');
-        if (null !== $value) {
-            $this->setReserveMet(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceEligible');
-        if (null !== $value) {
-            $this->setSecondChanceEligible(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderCount');
-        if (null !== $value) {
-            $this->setBidderCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingStatus');
-        if (null !== $value) {
-            $this->setListingStatus($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FinalValueFee');
-        if (null !== $value) {
-            $this->setFinalValueFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalSaleDetails');
-        if (null !== $value) {
-            $this->setPromotionalSaleDetails(\Nogrod\eBaySDK\Trading\PromotionalSaleDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdminEnded');
-        if (null !== $value) {
-            $this->setAdminEnded(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldAsBin');
-        if (null !== $value) {
-            $this->setSoldAsBin(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantitySoldByPickupInStore');
-        if (null !== $value) {
-            $this->setQuantitySoldByPickupInStore($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}BidValue');
-            $this->setSuggestedBidValues(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');
-        if (null !== $value) {
-            $this->setListingOnHold(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

@@ -166,53 +166,85 @@ class PromotionalShippingDiscountDetailsType implements \Sabre\Xml\XmlSerializab
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDiscountName();
+        $value = $this->discountName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountName", $value);
+            $writer->writeElementNs(null, 'DiscountName', null, (string) $value);
         }
-        $value = $this->getShippingCost();
+        $value = $this->shippingCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCost", $value);
+            $writer->startElementNs(null, 'ShippingCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getOrderAmount();
+        $value = $this->orderAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderAmount", $value);
+            $writer->startElementNs(null, 'OrderAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getItemCount();
+        $value = $this->itemCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemCount", $value);
+            $writer->writeElementNs(null, 'ItemCount', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountName');
-        if (null !== $value) {
-            $this->setDiscountName($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DiscountName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->discountName = $value;
+                    }
+                    return true;
+                case 'ShippingCost':
+                    $this->shippingCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'OrderAmount':
+                    $this->orderAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ItemCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemCount = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingCost');
-        if (null !== $value) {
-            $this->setShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAmount');
-        if (null !== $value) {
-            $this->setOrderAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemCount');
-        if (null !== $value) {
-            $this->setItemCount($value);
-        }
+        return false;
     }
 }

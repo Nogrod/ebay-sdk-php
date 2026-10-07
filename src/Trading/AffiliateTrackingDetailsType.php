@@ -235,53 +235,87 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTrackingID();
+        $value = $this->trackingID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TrackingID", $value);
+            $writer->writeElementNs(null, 'TrackingID', null, (string) $value);
         }
-        $value = $this->getTrackingPartnerCode();
+        $value = $this->trackingPartnerCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode", $value);
+            $writer->writeElementNs(null, 'TrackingPartnerCode', null, (string) $value);
         }
-        $value = $this->getApplicationDeviceType();
+        $value = $this->applicationDeviceType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType", $value);
+            $writer->writeElementNs(null, 'ApplicationDeviceType', null, (string) $value);
         }
-        $value = $this->getAffiliateUserID();
+        $value = $this->affiliateUserID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AffiliateUserID", $value);
+            $writer->writeElementNs(null, 'AffiliateUserID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AffiliateTrackingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AffiliateTrackingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingID');
-        if (null !== $value) {
-            $this->setTrackingID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TrackingID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->trackingID = $value;
+                    }
+                    return true;
+                case 'TrackingPartnerCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->trackingPartnerCode = $value;
+                    }
+                    return true;
+                case 'ApplicationDeviceType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applicationDeviceType = $value;
+                    }
+                    return true;
+                case 'AffiliateUserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->affiliateUserID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TrackingPartnerCode');
-        if (null !== $value) {
-            $this->setTrackingPartnerCode($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationDeviceType');
-        if (null !== $value) {
-            $this->setApplicationDeviceType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AffiliateUserID');
-        if (null !== $value) {
-            $this->setAffiliateUserID($value);
-        }
+        return false;
     }
 }

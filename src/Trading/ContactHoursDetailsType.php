@@ -457,95 +457,137 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTimeZoneID();
+        $value = $this->timeZoneID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeZoneID", $value);
+            $writer->writeElementNs(null, 'TimeZoneID', null, (string) $value);
         }
-        $value = $this->getHours1Days();
+        $value = $this->hours1Days;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours1Days", $value);
+            $writer->writeElementNs(null, 'Hours1Days', null, (string) $value);
         }
-        $value = $this->getHours1AnyTime();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hours1AnyTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime", $value);
+            $writer->writeElementNs(null, 'Hours1AnyTime', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getHours1From();
+        $value = $this->hours1From;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours1From", $value);
+            $writer->writeElementNs(null, 'Hours1From', null, Func::formatTime($value));
         }
-        $value = $this->getHours1To();
+        $value = $this->hours1To;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours1To", $value);
+            $writer->writeElementNs(null, 'Hours1To', null, Func::formatTime($value));
         }
-        $value = $this->getHours2Days();
+        $value = $this->hours2Days;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours2Days", $value);
+            $writer->writeElementNs(null, 'Hours2Days', null, (string) $value);
         }
-        $value = $this->getHours2AnyTime();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hours2AnyTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime", $value);
+            $writer->writeElementNs(null, 'Hours2AnyTime', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getHours2From();
+        $value = $this->hours2From;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours2From", $value);
+            $writer->writeElementNs(null, 'Hours2From', null, Func::formatTime($value));
         }
-        $value = $this->getHours2To();
+        $value = $this->hours2To;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Hours2To", $value);
+            $writer->writeElementNs(null, 'Hours2To', null, Func::formatTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ContactHoursDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ContactHoursDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeZoneID');
-        if (null !== $value) {
-            $this->setTimeZoneID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TimeZoneID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->timeZoneID = $value;
+                    }
+                    return true;
+                case 'Hours1Days':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours1Days = $value;
+                    }
+                    return true;
+                case 'Hours1AnyTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours1AnyTime = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Hours1From':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours1From = $value;
+                    }
+                    return true;
+                case 'Hours1To':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours1To = $value;
+                    }
+                    return true;
+                case 'Hours2Days':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours2Days = $value;
+                    }
+                    return true;
+                case 'Hours2AnyTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours2AnyTime = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Hours2From':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours2From = $value;
+                    }
+                    return true;
+                case 'Hours2To':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hours2To = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1Days');
-        if (null !== $value) {
-            $this->setHours1Days($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1AnyTime');
-        if (null !== $value) {
-            $this->setHours1AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1From');
-        if (null !== $value) {
-            $this->setHours1From($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours1To');
-        if (null !== $value) {
-            $this->setHours1To($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2Days');
-        if (null !== $value) {
-            $this->setHours2Days($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2AnyTime');
-        if (null !== $value) {
-            $this->setHours2AnyTime(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2From');
-        if (null !== $value) {
-            $this->setHours2From($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Hours2To');
-        if (null !== $value) {
-            $this->setHours2To($value);
-        }
+        return false;
     }
 }

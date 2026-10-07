@@ -231,62 +231,97 @@ class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getRecipientBidderUserID();
+        $value = $this->recipientBidderUserID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecipientBidderUserID", $value);
+            $writer->writeElementNs(null, 'RecipientBidderUserID', null, (string) $value);
         }
-        $value = $this->getBuyItNowPrice();
+        $value = $this->buyItNowPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyItNowPrice", $value);
+            $writer->startElementNs(null, 'BuyItNowPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDuration();
+        $value = $this->duration;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Duration", $value);
+            $writer->writeElementNs(null, 'Duration', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getSellerMessage();
+        $value = $this->sellerMessage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerMessage", $value);
+            $writer->writeElementNs(null, 'SellerMessage', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VerifyAddSecondChanceItemRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VerifyAddSecondChanceItemRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RecipientBidderUserID');
-        if (null !== $value) {
-            $this->setRecipientBidderUserID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'RecipientBidderUserID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->recipientBidderUserID = $value;
+                    }
+                    return true;
+                case 'BuyItNowPrice':
+                    $this->buyItNowPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'Duration':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->duration = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'SellerMessage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerMessage = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowPrice');
-        if (null !== $value) {
-            $this->setBuyItNowPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Duration');
-        if (null !== $value) {
-            $this->setDuration($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerMessage');
-        if (null !== $value) {
-            $this->setSellerMessage($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

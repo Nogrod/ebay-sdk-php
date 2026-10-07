@@ -336,82 +336,119 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShortMessage();
+        $value = $this->shortMessage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShortMessage", $value);
+            $writer->writeElementNs(null, 'ShortMessage', null, (string) $value);
         }
-        $value = $this->getLongMessage();
+        $value = $this->longMessage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LongMessage", $value);
+            $writer->writeElementNs(null, 'LongMessage', null, (string) $value);
         }
-        $value = $this->getErrorCode();
+        $value = $this->errorCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorCode", $value);
+            $writer->writeElementNs(null, 'ErrorCode', null, (string) $value);
         }
-        $value = $this->getUserDisplayHint();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->userDisplayHint;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDisplayHint", $value);
+            $writer->writeElementNs(null, 'UserDisplayHint', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSeverityCode();
+        $value = $this->severityCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SeverityCode", $value);
+            $writer->writeElementNs(null, 'SeverityCode', null, (string) $value);
         }
-        $value = $this->getErrorParameters();
+        $value = $this->errorParameters;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorParameters", $v);
+                $writer->startElementNs(null, 'ErrorParameters', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getErrorClassification();
+        $value = $this->errorClassification;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorClassification", $value);
+            $writer->writeElementNs(null, 'ErrorClassification', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ErrorType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ErrorType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortMessage');
-        if (null !== $value) {
-            $this->setShortMessage($value);
+        $this->errorParameters = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShortMessage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shortMessage = $value;
+                    }
+                    return true;
+                case 'LongMessage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->longMessage = $value;
+                    }
+                    return true;
+                case 'ErrorCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorCode = $value;
+                    }
+                    return true;
+                case 'UserDisplayHint':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->userDisplayHint = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SeverityCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->severityCode = $value;
+                    }
+                    return true;
+                case 'ErrorParameters':
+                    $this->errorParameters[] = \Nogrod\eBaySDK\Trading\ErrorParameterType::xmlRead($reader);
+                    return true;
+                case 'ErrorClassification':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorClassification = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LongMessage');
-        if (null !== $value) {
-            $this->setLongMessage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCode');
-        if (null !== $value) {
-            $this->setErrorCode($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDisplayHint');
-        if (null !== $value) {
-            $this->setUserDisplayHint(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SeverityCode');
-        if (null !== $value) {
-            $this->setSeverityCode($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorParameters');
-        if (null !== $value) {
-            $this->setErrorParameters(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ErrorParameterType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorClassification');
-        if (null !== $value) {
-            $this->setErrorClassification($value);
-        }
+        return false;
     }
 }

@@ -151,45 +151,77 @@ class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getUsername();
+        $value = $this->username;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Username", $value);
+            $writer->writeElementNs(null, 'Username', null, (string) $value);
         }
-        $value = $this->getPassword();
+        $value = $this->password;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Password", $value);
+            $writer->writeElementNs(null, 'Password', null, (string) $value);
         }
-        $value = $this->getEBayAuthToken();
+        $value = $this->eBayAuthToken;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayAuthToken", $value);
+            $writer->writeElementNs(null, 'eBayAuthToken', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\XMLRequesterCredentialsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
-        if (null !== $value) {
-            $this->setUsername($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Username':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->username = $value;
+                    }
+                    return true;
+                case 'Password':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->password = $value;
+                    }
+                    return true;
+                case 'eBayAuthToken':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eBayAuthToken = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
-        if (null !== $value) {
-            $this->setPassword($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayAuthToken');
-        if (null !== $value) {
-            $this->setEBayAuthToken($value);
-        }
+        return false;
     }
 }

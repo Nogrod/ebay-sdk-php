@@ -241,61 +241,97 @@ class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAppId();
+        $value = $this->appId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AppId", $value);
+            $writer->writeElementNs(null, 'AppId', null, (string) $value);
         }
-        $value = $this->getDevId();
+        $value = $this->devId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DevId", $value);
+            $writer->writeElementNs(null, 'DevId', null, (string) $value);
         }
-        $value = $this->getAuthCert();
+        $value = $this->authCert;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuthCert", $value);
+            $writer->writeElementNs(null, 'AuthCert', null, (string) $value);
         }
-        $value = $this->getUsername();
+        $value = $this->username;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Username", $value);
+            $writer->writeElementNs(null, 'Username', null, (string) $value);
         }
-        $value = $this->getPassword();
+        $value = $this->password;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Password", $value);
+            $writer->writeElementNs(null, 'Password', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UserIdPasswordType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\UserIdPasswordType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AppId');
-        if (null !== $value) {
-            $this->setAppId($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AppId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->appId = $value;
+                    }
+                    return true;
+                case 'DevId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->devId = $value;
+                    }
+                    return true;
+                case 'AuthCert':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->authCert = $value;
+                    }
+                    return true;
+                case 'Username':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->username = $value;
+                    }
+                    return true;
+                case 'Password':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->password = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DevId');
-        if (null !== $value) {
-            $this->setDevId($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthCert');
-        if (null !== $value) {
-            $this->setAuthCert($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Username');
-        if (null !== $value) {
-            $this->setUsername($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Password');
-        if (null !== $value) {
-            $this->setPassword($value);
-        }
+        return false;
     }
 }

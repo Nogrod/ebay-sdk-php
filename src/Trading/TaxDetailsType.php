@@ -321,85 +321,123 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getImposition();
+        $value = $this->imposition;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Imposition", $value);
+            $writer->writeElementNs(null, 'Imposition', null, (string) $value);
         }
-        $value = $this->getTaxDescription();
+        $value = $this->taxDescription;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxDescription", $value);
+            $writer->writeElementNs(null, 'TaxDescription', null, (string) $value);
         }
-        $value = $this->getTaxAmount();
+        $value = $this->taxAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxAmount", $value);
+            $writer->startElementNs(null, 'TaxAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTaxOnSubtotalAmount();
+        $value = $this->taxOnSubtotalAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxOnSubtotalAmount", $value);
+            $writer->startElementNs(null, 'TaxOnSubtotalAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTaxOnShippingAmount();
+        $value = $this->taxOnShippingAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxOnShippingAmount", $value);
+            $writer->startElementNs(null, 'TaxOnShippingAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTaxOnHandlingAmount();
+        $value = $this->taxOnHandlingAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxOnHandlingAmount", $value);
+            $writer->startElementNs(null, 'TaxOnHandlingAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTaxCode();
+        $value = $this->taxCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxCode", $value);
+            $writer->writeElementNs(null, 'TaxCode', null, (string) $value);
         }
-        $value = $this->getCollectionMethod();
+        $value = $this->collectionMethod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CollectionMethod", $value);
+            $writer->writeElementNs(null, 'CollectionMethod', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TaxDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TaxDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Imposition');
-        if (null !== $value) {
-            $this->setImposition($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Imposition':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->imposition = $value;
+                    }
+                    return true;
+                case 'TaxDescription':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->taxDescription = $value;
+                    }
+                    return true;
+                case 'TaxAmount':
+                    $this->taxAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TaxOnSubtotalAmount':
+                    $this->taxOnSubtotalAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TaxOnShippingAmount':
+                    $this->taxOnShippingAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TaxOnHandlingAmount':
+                    $this->taxOnHandlingAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TaxCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->taxCode = $value;
+                    }
+                    return true;
+                case 'CollectionMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->collectionMethod = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxDescription');
-        if (null !== $value) {
-            $this->setTaxDescription($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxAmount');
-        if (null !== $value) {
-            $this->setTaxAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnSubtotalAmount');
-        if (null !== $value) {
-            $this->setTaxOnSubtotalAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnShippingAmount');
-        if (null !== $value) {
-            $this->setTaxOnShippingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxOnHandlingAmount');
-        if (null !== $value) {
-            $this->setTaxOnHandlingAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxCode');
-        if (null !== $value) {
-            $this->setTaxCode($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CollectionMethod');
-        if (null !== $value) {
-            $this->setCollectionMethod($value);
-        }
+        return false;
     }
 }

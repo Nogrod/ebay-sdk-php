@@ -124,45 +124,74 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAuthenticityVerification();
+        $value = $this->authenticityVerification;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuthenticityVerification", $value);
+            $writer->startElementNs(null, 'AuthenticityVerification', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFulfillment();
+        $value = $this->fulfillment;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fulfillment", $value);
+            $writer->startElementNs(null, 'Fulfillment', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMotorPurchase();
+        $value = $this->motorPurchase;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorPurchase", $value);
+            $writer->startElementNs(null, 'MotorPurchase', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TransactionProgramType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TransactionProgramType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuthenticityVerification');
-        if (null !== $value) {
-            $this->setAuthenticityVerification(\Nogrod\eBaySDK\Trading\AuthenticityVerificationType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AuthenticityVerification':
+                    $this->authenticityVerification = \Nogrod\eBaySDK\Trading\AuthenticityVerificationType::xmlRead($reader);
+                    return true;
+                case 'Fulfillment':
+                    $this->fulfillment = \Nogrod\eBaySDK\Trading\FulfillmentType::xmlRead($reader);
+                    return true;
+                case 'MotorPurchase':
+                    $this->motorPurchase = \Nogrod\eBaySDK\Trading\MotorPurchaseType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fulfillment');
-        if (null !== $value) {
-            $this->setFulfillment(\Nogrod\eBaySDK\Trading\FulfillmentType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorPurchase');
-        if (null !== $value) {
-            $this->setMotorPurchase(\Nogrod\eBaySDK\Trading\MotorPurchaseType::fromKeyValue($value));
-        }
+        return false;
     }
 }

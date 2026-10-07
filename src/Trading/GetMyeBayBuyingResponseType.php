@@ -599,126 +599,162 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getBuyingSummary();
+        $value = $this->buyingSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyingSummary", $value);
+            $writer->startElementNs(null, 'BuyingSummary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getWatchList();
+        $value = $this->watchList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WatchList", $value);
+            $writer->startElementNs(null, 'WatchList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBidList();
+        $value = $this->bidList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidList", $value);
+            $writer->startElementNs(null, 'BidList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBestOfferList();
+        $value = $this->bestOfferList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferList", $value);
+            $writer->startElementNs(null, 'BestOfferList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getWonList();
+        $value = $this->wonList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WonList", $value);
+            $writer->startElementNs(null, 'WonList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLostList();
+        $value = $this->lostList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LostList", $value);
+            $writer->startElementNs(null, 'LostList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFavoriteSearches();
+        $value = $this->favoriteSearches;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSearches", $value);
+            $writer->startElementNs(null, 'FavoriteSearches', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFavoriteSellers();
+        $value = $this->favoriteSellers;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FavoriteSellers", $value);
+            $writer->startElementNs(null, 'FavoriteSellers', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSecondChanceOffer();
+        $value = $this->secondChanceOffer;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer", $v);
+                $writer->startElementNs(null, 'SecondChanceOffer', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getDeletedFromWonList();
+        $value = $this->deletedFromWonList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList", $value);
+            $writer->startElementNs(null, 'DeletedFromWonList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDeletedFromLostList();
+        $value = $this->deletedFromLostList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList", $value);
+            $writer->startElementNs(null, 'DeletedFromLostList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUserDefinedList();
+        $value = $this->userDefinedList;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDefinedList", $v);
+                $writer->startElementNs(null, 'UserDefinedList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMyeBayBuyingResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMyeBayBuyingResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyingSummary');
-        if (null !== $value) {
-            $this->setBuyingSummary(\Nogrod\eBaySDK\Trading\BuyingSummaryType::fromKeyValue($value));
+        parent::xmlInitLists();
+        $this->secondChanceOffer = [];
+        $this->userDefinedList = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BuyingSummary':
+                    $this->buyingSummary = \Nogrod\eBaySDK\Trading\BuyingSummaryType::xmlRead($reader);
+                    return true;
+                case 'WatchList':
+                    $this->watchList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'BidList':
+                    $this->bidList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'BestOfferList':
+                    $this->bestOfferList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'WonList':
+                    $this->wonList = \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::xmlRead($reader);
+                    return true;
+                case 'LostList':
+                    $this->lostList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'FavoriteSearches':
+                    $this->favoriteSearches = \Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::xmlRead($reader);
+                    return true;
+                case 'FavoriteSellers':
+                    $this->favoriteSellers = \Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::xmlRead($reader);
+                    return true;
+                case 'SecondChanceOffer':
+                    $this->secondChanceOffer[] = \Nogrod\eBaySDK\Trading\ItemType::xmlRead($reader);
+                    return true;
+                case 'DeletedFromWonList':
+                    $this->deletedFromWonList = \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::xmlRead($reader);
+                    return true;
+                case 'DeletedFromLostList':
+                    $this->deletedFromLostList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'UserDefinedList':
+                    $this->userDefinedList[] = \Nogrod\eBaySDK\Trading\UserDefinedListType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WatchList');
-        if (null !== $value) {
-            $this->setWatchList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidList');
-        if (null !== $value) {
-            $this->setBidList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferList');
-        if (null !== $value) {
-            $this->setBestOfferList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WonList');
-        if (null !== $value) {
-            $this->setWonList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LostList');
-        if (null !== $value) {
-            $this->setLostList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSearches');
-        if (null !== $value) {
-            $this->setFavoriteSearches(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchListType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FavoriteSellers');
-        if (null !== $value) {
-            $this->setFavoriteSellers(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerListType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer');
-        if (null !== $value) {
-            $this->setSecondChanceOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromWonList');
-        if (null !== $value) {
-            $this->setDeletedFromWonList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeletedFromLostList');
-        if (null !== $value) {
-            $this->setDeletedFromLostList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDefinedList');
-        if (null !== $value) {
-            $this->setUserDefinedList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\UserDefinedListType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

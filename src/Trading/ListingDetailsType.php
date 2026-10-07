@@ -1026,188 +1026,242 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAdult();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->adult;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Adult", $value);
+            $writer->writeElementNs(null, 'Adult', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBindingAuction();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->bindingAuction;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BindingAuction", $value);
+            $writer->writeElementNs(null, 'BindingAuction', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCheckoutEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->checkoutEnabled;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled", $value);
+            $writer->writeElementNs(null, 'CheckoutEnabled', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getConvertedBuyItNowPrice();
+        $value = $this->convertedBuyItNowPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedBuyItNowPrice", $value);
+            $writer->startElementNs(null, 'ConvertedBuyItNowPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getConvertedStartPrice();
+        $value = $this->convertedStartPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedStartPrice", $value);
+            $writer->startElementNs(null, 'ConvertedStartPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getConvertedReservePrice();
+        $value = $this->convertedReservePrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedReservePrice", $value);
+            $writer->startElementNs(null, 'ConvertedReservePrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHasReservePrice();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasReservePrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasReservePrice", $value);
+            $writer->writeElementNs(null, 'HasReservePrice', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getRelistedItemID();
+        $value = $this->relistedItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RelistedItemID", $value);
+            $writer->writeElementNs(null, 'RelistedItemID', null, (string) $value);
         }
-        $value = $this->getSecondChanceOriginalItemID();
+        $value = $this->secondChanceOriginalItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceOriginalItemID", $value);
+            $writer->writeElementNs(null, 'SecondChanceOriginalItemID', null, (string) $value);
         }
-        $value = $this->getStartTime();
+        $value = $this->startTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTime", $value);
+            $writer->writeElementNs(null, 'StartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTime();
+        $value = $this->endTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
+            $writer->writeElementNs(null, 'EndTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getViewItemURL();
+        $value = $this->viewItemURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ViewItemURL", $value);
+            $writer->writeElementNs(null, 'ViewItemURL', null, (string) $value);
         }
-        $value = $this->getHasUnansweredQuestions();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasUnansweredQuestions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasUnansweredQuestions", $value);
+            $writer->writeElementNs(null, 'HasUnansweredQuestions', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getHasPublicMessages();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hasPublicMessages;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HasPublicMessages", $value);
+            $writer->writeElementNs(null, 'HasPublicMessages', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBuyItNowAvailable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyItNowAvailable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyItNowAvailable", $value);
+            $writer->writeElementNs(null, 'BuyItNowAvailable', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getMinimumBestOfferPrice();
+        $value = $this->minimumBestOfferPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferPrice", $value);
+            $writer->startElementNs(null, 'MinimumBestOfferPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLocalListingDistance();
+        $value = $this->localListingDistance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LocalListingDistance", $value);
+            $writer->writeElementNs(null, 'LocalListingDistance', null, (string) $value);
         }
-        $value = $this->getViewItemURLForNaturalSearch();
+        $value = $this->viewItemURLForNaturalSearch;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ViewItemURLForNaturalSearch", $value);
+            $writer->writeElementNs(null, 'ViewItemURLForNaturalSearch', null, (string) $value);
         }
-        $value = $this->getBestOfferAutoAcceptPrice();
+        $value = $this->bestOfferAutoAcceptPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferAutoAcceptPrice", $value);
+            $writer->startElementNs(null, 'BestOfferAutoAcceptPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEndingReason();
+        $value = $this->endingReason;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndingReason", $value);
+            $writer->writeElementNs(null, 'EndingReason', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ListingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ListingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Adult');
-        if (null !== $value) {
-            $this->setAdult(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Adult':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->adult = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BindingAuction':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bindingAuction = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CheckoutEnabled':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->checkoutEnabled = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ConvertedBuyItNowPrice':
+                    $this->convertedBuyItNowPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ConvertedStartPrice':
+                    $this->convertedStartPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ConvertedReservePrice':
+                    $this->convertedReservePrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'HasReservePrice':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasReservePrice = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'RelistedItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->relistedItemID = $value;
+                    }
+                    return true;
+                case 'SecondChanceOriginalItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->secondChanceOriginalItemID = $value;
+                    }
+                    return true;
+                case 'StartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'ViewItemURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->viewItemURL = $value;
+                    }
+                    return true;
+                case 'HasUnansweredQuestions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasUnansweredQuestions = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'HasPublicMessages':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hasPublicMessages = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BuyItNowAvailable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyItNowAvailable = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'MinimumBestOfferPrice':
+                    $this->minimumBestOfferPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'LocalListingDistance':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->localListingDistance = $value;
+                    }
+                    return true;
+                case 'ViewItemURLForNaturalSearch':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->viewItemURLForNaturalSearch = $value;
+                    }
+                    return true;
+                case 'BestOfferAutoAcceptPrice':
+                    $this->bestOfferAutoAcceptPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'EndingReason':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endingReason = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BindingAuction');
-        if (null !== $value) {
-            $this->setBindingAuction(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutEnabled');
-        if (null !== $value) {
-            $this->setCheckoutEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedBuyItNowPrice');
-        if (null !== $value) {
-            $this->setConvertedBuyItNowPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedStartPrice');
-        if (null !== $value) {
-            $this->setConvertedStartPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedReservePrice');
-        if (null !== $value) {
-            $this->setConvertedReservePrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasReservePrice');
-        if (null !== $value) {
-            $this->setHasReservePrice(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistedItemID');
-        if (null !== $value) {
-            $this->setRelistedItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceOriginalItemID');
-        if (null !== $value) {
-            $this->setSecondChanceOriginalItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
-        if (null !== $value) {
-            $this->setStartTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
-        if (null !== $value) {
-            $this->setEndTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewItemURL');
-        if (null !== $value) {
-            $this->setViewItemURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasUnansweredQuestions');
-        if (null !== $value) {
-            $this->setHasUnansweredQuestions(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HasPublicMessages');
-        if (null !== $value) {
-            $this->setHasPublicMessages(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowAvailable');
-        if (null !== $value) {
-            $this->setBuyItNowAvailable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinimumBestOfferPrice');
-        if (null !== $value) {
-            $this->setMinimumBestOfferPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LocalListingDistance');
-        if (null !== $value) {
-            $this->setLocalListingDistance($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ViewItemURLForNaturalSearch');
-        if (null !== $value) {
-            $this->setViewItemURLForNaturalSearch($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferAutoAcceptPrice');
-        if (null !== $value) {
-            $this->setBestOfferAutoAcceptPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndingReason');
-        if (null !== $value) {
-            $this->setEndingReason($value);
-        }
+        return false;
     }
 }

@@ -287,69 +287,107 @@ class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getPickupMethod();
+        $value = $this->pickupMethod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupMethod", $value);
+            $writer->writeElementNs(null, 'PickupMethod', null, (string) $value);
         }
-        $value = $this->getPickupStoreID();
+        $value = $this->pickupStoreID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupStoreID", $value);
+            $writer->writeElementNs(null, 'PickupStoreID', null, (string) $value);
         }
-        $value = $this->getPickupStatus();
+        $value = $this->pickupStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupStatus", $value);
+            $writer->writeElementNs(null, 'PickupStatus', null, (string) $value);
         }
-        $value = $this->getMerchantPickupCode();
+        $value = $this->merchantPickupCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MerchantPickupCode", $value);
+            $writer->writeElementNs(null, 'MerchantPickupCode', null, (string) $value);
         }
-        $value = $this->getPickupFulfillmentTime();
+        $value = $this->pickupFulfillmentTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupFulfillmentTime", $value);
+            $writer->writeElementNs(null, 'PickupFulfillmentTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getPickupLocationUUID();
+        $value = $this->pickupLocationUUID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupLocationUUID", $value);
+            $writer->writeElementNs(null, 'PickupLocationUUID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PickupMethodSelectedType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PickupMethodSelectedType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupMethod');
-        if (null !== $value) {
-            $this->setPickupMethod($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'PickupMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupMethod = $value;
+                    }
+                    return true;
+                case 'PickupStoreID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupStoreID = $value;
+                    }
+                    return true;
+                case 'PickupStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupStatus = $value;
+                    }
+                    return true;
+                case 'MerchantPickupCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->merchantPickupCode = $value;
+                    }
+                    return true;
+                case 'PickupFulfillmentTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupFulfillmentTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'PickupLocationUUID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupLocationUUID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStoreID');
-        if (null !== $value) {
-            $this->setPickupStoreID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupStatus');
-        if (null !== $value) {
-            $this->setPickupStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MerchantPickupCode');
-        if (null !== $value) {
-            $this->setMerchantPickupCode($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupFulfillmentTime');
-        if (null !== $value) {
-            $this->setPickupFulfillmentTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupLocationUUID');
-        if (null !== $value) {
-            $this->setPickupLocationUUID($value);
-        }
+        return false;
     }
 }

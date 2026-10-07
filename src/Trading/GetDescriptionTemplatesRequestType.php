@@ -140,47 +140,78 @@ class GetDescriptionTemplatesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getCategoryID();
+        $value = $this->categoryID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryID", $value);
+            $writer->writeElementNs(null, 'CategoryID', null, (string) $value);
         }
-        $value = $this->getLastModifiedTime();
+        $value = $this->lastModifiedTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastModifiedTime", $value);
+            $writer->writeElementNs(null, 'LastModifiedTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getMotorVehicles();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->motorVehicles;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorVehicles", $value);
+            $writer->writeElementNs(null, 'MotorVehicles', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
-        if (null !== $value) {
-            $this->setCategoryID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CategoryID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->categoryID = $value;
+                    }
+                    return true;
+                case 'LastModifiedTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastModifiedTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'MotorVehicles':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->motorVehicles = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastModifiedTime');
-        if (null !== $value) {
-            $this->setLastModifiedTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorVehicles');
-        if (null !== $value) {
-            $this->setMotorVehicles(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

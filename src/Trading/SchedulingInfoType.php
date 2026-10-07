@@ -124,45 +124,77 @@ class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMaxScheduledMinutes();
+        $value = $this->maxScheduledMinutes;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes", $value);
+            $writer->writeElementNs(null, 'MaxScheduledMinutes', null, (string) $value);
         }
-        $value = $this->getMinScheduledMinutes();
+        $value = $this->minScheduledMinutes;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes", $value);
+            $writer->writeElementNs(null, 'MinScheduledMinutes', null, (string) $value);
         }
-        $value = $this->getMaxScheduledItems();
+        $value = $this->maxScheduledItems;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems", $value);
+            $writer->writeElementNs(null, 'MaxScheduledItems', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SchedulingInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SchedulingInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledMinutes');
-        if (null !== $value) {
-            $this->setMaxScheduledMinutes($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MaxScheduledMinutes':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxScheduledMinutes = (int) $value;
+                    }
+                    return true;
+                case 'MinScheduledMinutes':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->minScheduledMinutes = (int) $value;
+                    }
+                    return true;
+                case 'MaxScheduledItems':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxScheduledItems = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MinScheduledMinutes');
-        if (null !== $value) {
-            $this->setMinScheduledMinutes($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxScheduledItems');
-        if (null !== $value) {
-            $this->setMaxScheduledItems($value);
-        }
+        return false;
     }
 }

@@ -142,41 +142,69 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getFeedbackSummaryPeriod();
+        $value = $this->feedbackSummaryPeriod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod", $value);
+            $writer->writeElementNs(null, 'FeedbackSummaryPeriod', null, (string) $value);
         }
-        $value = $this->getAverageRatingDetails();
+        $value = $this->averageRatingDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AverageRatingDetails", $v);
+                $writer->startElementNs(null, 'AverageRatingDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AverageRatingSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AverageRatingSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackSummaryPeriod');
-        if (null !== $value) {
-            $this->setFeedbackSummaryPeriod($value);
+        $this->averageRatingDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'FeedbackSummaryPeriod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackSummaryPeriod = $value;
+                    }
+                    return true;
+                case 'AverageRatingDetails':
+                    $this->averageRatingDetails[] = \Nogrod\eBaySDK\Trading\AverageRatingDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AverageRatingDetails');
-        if (null !== $value) {
-            $this->setAverageRatingDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AverageRatingDetailsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

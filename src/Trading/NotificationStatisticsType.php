@@ -206,61 +206,97 @@ class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDeliveredCount();
+        $value = $this->deliveredCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeliveredCount", $value);
+            $writer->writeElementNs(null, 'DeliveredCount', null, (string) $value);
         }
-        $value = $this->getQueuedNewCount();
+        $value = $this->queuedNewCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QueuedNewCount", $value);
+            $writer->writeElementNs(null, 'QueuedNewCount', null, (string) $value);
         }
-        $value = $this->getQueuedPendingCount();
+        $value = $this->queuedPendingCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QueuedPendingCount", $value);
+            $writer->writeElementNs(null, 'QueuedPendingCount', null, (string) $value);
         }
-        $value = $this->getExpiredCount();
+        $value = $this->expiredCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExpiredCount", $value);
+            $writer->writeElementNs(null, 'ExpiredCount', null, (string) $value);
         }
-        $value = $this->getErrorCount();
+        $value = $this->errorCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ErrorCount", $value);
+            $writer->writeElementNs(null, 'ErrorCount', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\NotificationStatisticsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\NotificationStatisticsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveredCount');
-        if (null !== $value) {
-            $this->setDeliveredCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DeliveredCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->deliveredCount = (int) $value;
+                    }
+                    return true;
+                case 'QueuedNewCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->queuedNewCount = (int) $value;
+                    }
+                    return true;
+                case 'QueuedPendingCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->queuedPendingCount = (int) $value;
+                    }
+                    return true;
+                case 'ExpiredCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->expiredCount = (int) $value;
+                    }
+                    return true;
+                case 'ErrorCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->errorCount = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedNewCount');
-        if (null !== $value) {
-            $this->setQueuedNewCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QueuedPendingCount');
-        if (null !== $value) {
-            $this->setQueuedPendingCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExpiredCount');
-        if (null !== $value) {
-            $this->setExpiredCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ErrorCount');
-        if (null !== $value) {
-            $this->setErrorCount($value);
-        }
+        return false;
     }
 }

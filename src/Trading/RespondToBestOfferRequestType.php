@@ -270,72 +270,110 @@ class RespondToBestOfferRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getBestOfferID();
+        $value = $this->bestOfferID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferID", $v);
+                $writer->writeElementNs(null, 'BestOfferID', null, (string) $v);
             }
         }
-        $value = $this->getAction();
+        $value = $this->action;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Action", $value);
+            $writer->writeElementNs(null, 'Action', null, (string) $value);
         }
-        $value = $this->getSellerResponse();
+        $value = $this->sellerResponse;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerResponse", $value);
+            $writer->writeElementNs(null, 'SellerResponse', null, (string) $value);
         }
-        $value = $this->getCounterOfferPrice();
+        $value = $this->counterOfferPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CounterOfferPrice", $value);
+            $writer->startElementNs(null, 'CounterOfferPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCounterOfferQuantity();
+        $value = $this->counterOfferQuantity;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CounterOfferQuantity", $value);
+            $writer->writeElementNs(null, 'CounterOfferQuantity', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RespondToBestOfferRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RespondToBestOfferRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->bestOfferID = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'BestOfferID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferID[] = $value;
+                    }
+                    return true;
+                case 'Action':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->action = $value;
+                    }
+                    return true;
+                case 'SellerResponse':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerResponse = $value;
+                    }
+                    return true;
+                case 'CounterOfferPrice':
+                    $this->counterOfferPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'CounterOfferQuantity':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->counterOfferQuantity = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID', true);
-        if (null !== $value) {
-            $this->setBestOfferID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
-        if (null !== $value) {
-            $this->setAction($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerResponse');
-        if (null !== $value) {
-            $this->setSellerResponse($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferPrice');
-        if (null !== $value) {
-            $this->setCounterOfferPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CounterOfferQuantity');
-        if (null !== $value) {
-            $this->setCounterOfferQuantity($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

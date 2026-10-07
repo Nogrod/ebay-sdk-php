@@ -127,45 +127,77 @@ class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAnnouncementStartTime();
+        $value = $this->announcementStartTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AnnouncementStartTime", $value);
+            $writer->writeElementNs(null, 'AnnouncementStartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEventTime();
+        $value = $this->eventTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EventTime", $value);
+            $writer->writeElementNs(null, 'EventTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getMessageType();
+        $value = $this->messageType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageType", $value);
+            $writer->writeElementNs(null, 'MessageType', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AnnouncementMessageType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AnnouncementMessageType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AnnouncementStartTime');
-        if (null !== $value) {
-            $this->setAnnouncementStartTime(new \DateTime($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AnnouncementStartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->announcementStartTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EventTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eventTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'MessageType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->messageType = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EventTime');
-        if (null !== $value) {
-            $this->setEventTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageType');
-        if (null !== $value) {
-            $this->setMessageType($value);
-        }
+        return false;
     }
 }

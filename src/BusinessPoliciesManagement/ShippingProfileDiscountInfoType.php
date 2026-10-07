@@ -181,55 +181,87 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDomesticFlatCalcDiscountProfileId();
+        $value = $this->domesticFlatCalcDiscountProfileId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId", $value);
+            $writer->writeElementNs(null, 'domesticFlatCalcDiscountProfileId', null, (string) $value);
         }
-        $value = $this->getIntlFlatCalcDiscountProfileId();
+        $value = $this->intlFlatCalcDiscountProfileId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId", $value);
+            $writer->writeElementNs(null, 'intlFlatCalcDiscountProfileId', null, (string) $value);
         }
-        $value = $this->getApplyDomesticPromoShippingProfile();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->applyDomesticPromoShippingProfile;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile", $value);
+            $writer->writeElementNs(null, 'applyDomesticPromoShippingProfile', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getApplyIntlPromoShippingProfile();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->applyIntlPromoShippingProfile;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile", $value);
+            $writer->writeElementNs(null, 'applyIntlPromoShippingProfile', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticFlatCalcDiscountProfileId');
-        if (null !== $value) {
-            $this->setDomesticFlatCalcDiscountProfileId($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'domesticFlatCalcDiscountProfileId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticFlatCalcDiscountProfileId = (int) $value;
+                    }
+                    return true;
+                case 'intlFlatCalcDiscountProfileId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->intlFlatCalcDiscountProfileId = (int) $value;
+                    }
+                    return true;
+                case 'applyDomesticPromoShippingProfile':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applyDomesticPromoShippingProfile = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'applyIntlPromoShippingProfile':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applyIntlPromoShippingProfile = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlFlatCalcDiscountProfileId');
-        if (null !== $value) {
-            $this->setIntlFlatCalcDiscountProfileId($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyDomesticPromoShippingProfile');
-        if (null !== $value) {
-            $this->setApplyDomesticPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}applyIntlPromoShippingProfile');
-        if (null !== $value) {
-            $this->setApplyIntlPromoShippingProfile(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

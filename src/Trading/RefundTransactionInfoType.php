@@ -289,69 +289,103 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getRefundType();
+        $value = $this->refundType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundType", $value);
+            $writer->writeElementNs(null, 'RefundType', null, (string) $value);
         }
-        $value = $this->getRefundTo();
+        $value = $this->refundTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundTo", $value);
+            $writer->startElementNs(null, 'RefundTo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getRefundTime();
+        $value = $this->refundTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundTime", $value);
+            $writer->writeElementNs(null, 'RefundTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getRefundAmount();
+        $value = $this->refundAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundAmount", $value);
+            $writer->startElementNs(null, 'RefundAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getReferenceID();
+        $value = $this->referenceID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReferenceID", $value);
+            $writer->startElementNs(null, 'ReferenceID', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeeOrCreditAmount();
+        $value = $this->feeOrCreditAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount", $value);
+            $writer->startElementNs(null, 'FeeOrCreditAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\RefundTransactionInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\RefundTransactionInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundType');
-        if (null !== $value) {
-            $this->setRefundType($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'RefundType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refundType = $value;
+                    }
+                    return true;
+                case 'RefundTo':
+                    $this->refundTo = \Nogrod\eBaySDK\Trading\UserIdentityType::xmlRead($reader);
+                    return true;
+                case 'RefundTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->refundTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'RefundAmount':
+                    $this->refundAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ReferenceID':
+                    $this->referenceID = \Nogrod\eBaySDK\Trading\TransactionReferenceType::xmlRead($reader);
+                    return true;
+                case 'FeeOrCreditAmount':
+                    $this->feeOrCreditAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundTo');
-        if (null !== $value) {
-            $this->setRefundTo(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundTime');
-        if (null !== $value) {
-            $this->setRefundTime(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RefundAmount');
-        if (null !== $value) {
-            $this->setRefundAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
-        if (null !== $value) {
-            $this->setReferenceID(\Nogrod\eBaySDK\Trading\TransactionReferenceType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount');
-        if (null !== $value) {
-            $this->setFeeOrCreditAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

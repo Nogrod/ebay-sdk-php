@@ -179,52 +179,80 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getNumberOfPolicyViolations();
+        $value = $this->numberOfPolicyViolations;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations");
+                    $writer->startElementNs(null, 'NumberOfPolicyViolations', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Count", $v);
+                $writer->writeElementNs(null, 'Count', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPolicyViolationDuration();
+        $value = $this->policyViolationDuration;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration", $v);
+                $writer->startElementNs(null, 'PolicyViolationDuration', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MaximumBuyerPolicyViolationsDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MaximumBuyerPolicyViolationsDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NumberOfPolicyViolations');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Count', true);
-            $this->setNumberOfPolicyViolations($value);
+        $this->numberOfPolicyViolations = [];
+        $this->policyViolationDuration = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'NumberOfPolicyViolations':
+                    $this->numberOfPolicyViolations = Func::readList($reader, 'Count', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? (int) $value : null;
+                    });
+                    return true;
+                case 'PolicyViolationDuration':
+                    $this->policyViolationDuration[] = \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PolicyViolationDuration');
-        if (null !== $value) {
-            $this->setPolicyViolationDuration(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

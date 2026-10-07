@@ -243,70 +243,102 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getSellingSummary();
+        $value = $this->sellingSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingSummary", $value);
+            $writer->startElementNs(null, 'SellingSummary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getScheduledList();
+        $value = $this->scheduledList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ScheduledList", $value);
+            $writer->startElementNs(null, 'ScheduledList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getActiveList();
+        $value = $this->activeList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveList", $value);
+            $writer->startElementNs(null, 'ActiveList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSoldList();
+        $value = $this->soldList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldList", $value);
+            $writer->startElementNs(null, 'SoldList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUnsoldList();
+        $value = $this->unsoldList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnsoldList", $value);
+            $writer->startElementNs(null, 'UnsoldList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSummary();
+        $value = $this->summary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
+            $writer->startElementNs(null, 'Summary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMyeBaySellingResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMyeBaySellingResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
-        if (null !== $value) {
-            $this->setSellingSummary(\Nogrod\eBaySDK\Trading\SellingSummaryType::fromKeyValue($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'SellingSummary':
+                    $this->sellingSummary = \Nogrod\eBaySDK\Trading\SellingSummaryType::xmlRead($reader);
+                    return true;
+                case 'ScheduledList':
+                    $this->scheduledList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'ActiveList':
+                    $this->activeList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'SoldList':
+                    $this->soldList = \Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::xmlRead($reader);
+                    return true;
+                case 'UnsoldList':
+                    $this->unsoldList = \Nogrod\eBaySDK\Trading\PaginatedItemArrayType::xmlRead($reader);
+                    return true;
+                case 'Summary':
+                    $this->summary = \Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
-        if (null !== $value) {
-            $this->setScheduledList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
-        if (null !== $value) {
-            $this->setActiveList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
-        if (null !== $value) {
-            $this->setSoldList(\Nogrod\eBaySDK\Trading\PaginatedOrderTransactionArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
-        if (null !== $value) {
-            $this->setUnsoldList(\Nogrod\eBaySDK\Trading\PaginatedItemArrayType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Summary');
-        if (null !== $value) {
-            $this->setSummary(\Nogrod\eBaySDK\Trading\MyeBaySellingSummaryType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -91,37 +91,67 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShippingPolicyId();
+        $value = $this->shippingPolicyId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyId", $value);
+            $writer->writeElementNs(null, 'shippingPolicyId', null, (string) $value);
         }
-        $value = $this->getShippingPolicyVersionId();
+        $value = $this->shippingPolicyVersionId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyVersionId", $value);
+            $writer->writeElementNs(null, 'shippingPolicyVersionId', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyId');
-        if (null !== $value) {
-            $this->setShippingPolicyId($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'shippingPolicyId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingPolicyId = (int) $value;
+                    }
+                    return true;
+                case 'shippingPolicyVersionId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingPolicyVersionId = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyVersionId');
-        if (null !== $value) {
-            $this->setShippingPolicyVersionId($value);
-        }
+        return false;
     }
 }

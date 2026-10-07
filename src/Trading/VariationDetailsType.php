@@ -202,61 +202,97 @@ class VariationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMaxVariationsPerItem();
+        $value = $this->maxVariationsPerItem;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxVariationsPerItem", $value);
+            $writer->writeElementNs(null, 'MaxVariationsPerItem', null, (string) $value);
         }
-        $value = $this->getMaxNamesPerVariationSpecificsSet();
+        $value = $this->maxNamesPerVariationSpecificsSet;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxNamesPerVariationSpecificsSet", $value);
+            $writer->writeElementNs(null, 'MaxNamesPerVariationSpecificsSet', null, (string) $value);
         }
-        $value = $this->getMaxValuesPerVariationSpecificsSetName();
+        $value = $this->maxValuesPerVariationSpecificsSetName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxValuesPerVariationSpecificsSetName", $value);
+            $writer->writeElementNs(null, 'MaxValuesPerVariationSpecificsSetName', null, (string) $value);
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VariationDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VariationDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxVariationsPerItem');
-        if (null !== $value) {
-            $this->setMaxVariationsPerItem($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MaxVariationsPerItem':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxVariationsPerItem = (int) $value;
+                    }
+                    return true;
+                case 'MaxNamesPerVariationSpecificsSet':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxNamesPerVariationSpecificsSet = (int) $value;
+                    }
+                    return true;
+                case 'MaxValuesPerVariationSpecificsSetName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->maxValuesPerVariationSpecificsSetName = (int) $value;
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxNamesPerVariationSpecificsSet');
-        if (null !== $value) {
-            $this->setMaxNamesPerVariationSpecificsSet($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxValuesPerVariationSpecificsSetName');
-        if (null !== $value) {
-            $this->setMaxValuesPerVariationSpecificsSetName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

@@ -607,106 +607,148 @@ class GetSellerEventsRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getStartTimeFrom();
+        $value = $this->startTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTimeFrom", $value);
+            $writer->writeElementNs(null, 'StartTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getStartTimeTo();
+        $value = $this->startTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTimeTo", $value);
+            $writer->writeElementNs(null, 'StartTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTimeFrom();
+        $value = $this->endTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeFrom", $value);
+            $writer->writeElementNs(null, 'EndTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTimeTo();
+        $value = $this->endTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTimeTo", $value);
+            $writer->writeElementNs(null, 'EndTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getModTimeFrom();
+        $value = $this->modTimeFrom;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModTimeFrom", $value);
+            $writer->writeElementNs(null, 'ModTimeFrom', null, Func::formatDateTime($value));
         }
-        $value = $this->getModTimeTo();
+        $value = $this->modTimeTo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModTimeTo", $value);
+            $writer->writeElementNs(null, 'ModTimeTo', null, Func::formatDateTime($value));
         }
-        $value = $this->getNewItemFilter();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->newItemFilter;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NewItemFilter", $value);
+            $writer->writeElementNs(null, 'NewItemFilter', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeWatchCount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeWatchCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount", $value);
+            $writer->writeElementNs(null, 'IncludeWatchCount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeVariationSpecifics();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeVariationSpecifics;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeVariationSpecifics", $value);
+            $writer->writeElementNs(null, 'IncludeVariationSpecifics', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getHideVariations();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hideVariations;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HideVariations", $value);
+            $writer->writeElementNs(null, 'HideVariations', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetSellerEventsRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetSellerEventsRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeFrom');
-        if (null !== $value) {
-            $this->setStartTimeFrom(new \DateTime($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'StartTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'StartTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'ModTimeFrom':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->modTimeFrom = new \DateTime($value);
+                    }
+                    return true;
+                case 'ModTimeTo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->modTimeTo = new \DateTime($value);
+                    }
+                    return true;
+                case 'NewItemFilter':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->newItemFilter = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeWatchCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeWatchCount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeVariationSpecifics':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeVariationSpecifics = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'HideVariations':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hideVariations = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTimeTo');
-        if (null !== $value) {
-            $this->setStartTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
-        if (null !== $value) {
-            $this->setEndTimeFrom(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeTo');
-        if (null !== $value) {
-            $this->setEndTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeFrom');
-        if (null !== $value) {
-            $this->setModTimeFrom(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModTimeTo');
-        if (null !== $value) {
-            $this->setModTimeTo(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NewItemFilter');
-        if (null !== $value) {
-            $this->setNewItemFilter(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
-        if (null !== $value) {
-            $this->setIncludeWatchCount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeVariationSpecifics');
-        if (null !== $value) {
-            $this->setIncludeVariationSpecifics(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
-        if (null !== $value) {
-            $this->setHideVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

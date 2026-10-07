@@ -384,101 +384,147 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCompanyName();
+        $value = $this->companyName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CompanyName", $value);
+            $writer->writeElementNs(null, 'CompanyName', null, (string) $value);
         }
-        $value = $this->getStreet1();
+        $value = $this->street1;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Street1", $value);
+            $writer->writeElementNs(null, 'Street1', null, (string) $value);
         }
-        $value = $this->getStreet2();
+        $value = $this->street2;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Street2", $value);
+            $writer->writeElementNs(null, 'Street2', null, (string) $value);
         }
-        $value = $this->getCityName();
+        $value = $this->cityName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CityName", $value);
+            $writer->writeElementNs(null, 'CityName', null, (string) $value);
         }
-        $value = $this->getStateOrProvince();
+        $value = $this->stateOrProvince;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StateOrProvince", $value);
+            $writer->writeElementNs(null, 'StateOrProvince', null, (string) $value);
         }
-        $value = $this->getPostalCode();
+        $value = $this->postalCode;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PostalCode", $value);
+            $writer->writeElementNs(null, 'PostalCode', null, (string) $value);
         }
-        $value = $this->getCountry();
+        $value = $this->country;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Country", $value);
+            $writer->writeElementNs(null, 'Country', null, (string) $value);
         }
-        $value = $this->getPhone();
+        $value = $this->phone;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Phone", $value);
+            $writer->writeElementNs(null, 'Phone', null, (string) $value);
         }
-        $value = $this->getEmail();
+        $value = $this->email;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Email", $value);
+            $writer->writeElementNs(null, 'Email', null, (string) $value);
         }
-        $value = $this->getContactURL();
+        $value = $this->contactURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ContactURL", $value);
+            $writer->writeElementNs(null, 'ContactURL', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ManufacturerType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ManufacturerType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CompanyName');
-        if (null !== $value) {
-            $this->setCompanyName($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CompanyName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->companyName = $value;
+                    }
+                    return true;
+                case 'Street1':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->street1 = $value;
+                    }
+                    return true;
+                case 'Street2':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->street2 = $value;
+                    }
+                    return true;
+                case 'CityName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->cityName = $value;
+                    }
+                    return true;
+                case 'StateOrProvince':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->stateOrProvince = $value;
+                    }
+                    return true;
+                case 'PostalCode':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->postalCode = $value;
+                    }
+                    return true;
+                case 'Country':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->country = $value;
+                    }
+                    return true;
+                case 'Phone':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->phone = $value;
+                    }
+                    return true;
+                case 'Email':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->email = $value;
+                    }
+                    return true;
+                case 'ContactURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->contactURL = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street1');
-        if (null !== $value) {
-            $this->setStreet1($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Street2');
-        if (null !== $value) {
-            $this->setStreet2($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CityName');
-        if (null !== $value) {
-            $this->setCityName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StateOrProvince');
-        if (null !== $value) {
-            $this->setStateOrProvince($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PostalCode');
-        if (null !== $value) {
-            $this->setPostalCode($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Country');
-        if (null !== $value) {
-            $this->setCountry($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Phone');
-        if (null !== $value) {
-            $this->setPhone($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Email');
-        if (null !== $value) {
-            $this->setEmail($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ContactURL');
-        if (null !== $value) {
-            $this->setContactURL($value);
-        }
+        return false;
     }
 }

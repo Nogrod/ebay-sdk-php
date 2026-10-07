@@ -847,115 +847,156 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShipToLocation();
+        $value = $this->shipToLocation;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shipToLocation", $v);
+                $writer->writeElementNs(null, 'shipToLocation', null, (string) $v);
             }
         }
-        $value = $this->getShippingService();
+        $value = $this->shippingService;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingService", $value);
+            $writer->writeElementNs(null, 'shippingService', null, (string) $value);
         }
-        $value = $this->getSortOrderId();
+        $value = $this->sortOrderId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}sortOrderId", $value);
+            $writer->writeElementNs(null, 'sortOrderId', null, (string) $value);
         }
-        $value = $this->getFreeShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->freeShipping;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}freeShipping", $value);
+            $writer->writeElementNs(null, 'freeShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCodFee();
+        $value = $this->codFee;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}codFee", $value);
+            $writer->startElementNs(null, 'codFee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFastShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->fastShipping;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}fastShipping", $value);
+            $writer->writeElementNs(null, 'fastShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShippingServiceAdditionalCost();
+        $value = $this->shippingServiceAdditionalCost;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingServiceAdditionalCost", $value);
+            $writer->startElementNs(null, 'shippingServiceAdditionalCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingServiceCost();
+        $value = $this->shippingServiceCost;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingServiceCost", $value);
+            $writer->startElementNs(null, 'shippingServiceCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingSurcharge();
+        $value = $this->shippingSurcharge;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingSurcharge", $value);
+            $writer->startElementNs(null, 'shippingSurcharge', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBuyerResponsibleForShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyerResponsibleForShipping;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}buyerResponsibleForShipping", $value);
+            $writer->writeElementNs(null, 'buyerResponsibleForShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBuyerResponsibleForPickup();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyerResponsibleForPickup;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}buyerResponsibleForPickup", $value);
+            $writer->writeElementNs(null, 'buyerResponsibleForPickup', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocation', true);
-        if (null !== $value) {
-            $this->setShipToLocation($value);
+        $this->shipToLocation = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'shipToLocation':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shipToLocation[] = $value;
+                    }
+                    return true;
+                case 'shippingService':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingService = $value;
+                    }
+                    return true;
+                case 'sortOrderId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sortOrderId = (int) $value;
+                    }
+                    return true;
+                case 'freeShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->freeShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'codFee':
+                    $this->codFee = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'fastShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->fastShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'shippingServiceAdditionalCost':
+                    $this->shippingServiceAdditionalCost = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'shippingServiceCost':
+                    $this->shippingServiceCost = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'shippingSurcharge':
+                    $this->shippingSurcharge = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'buyerResponsibleForShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerResponsibleForShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'buyerResponsibleForPickup':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerResponsibleForPickup = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingService');
-        if (null !== $value) {
-            $this->setShippingService($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}sortOrderId');
-        if (null !== $value) {
-            $this->setSortOrderId($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}freeShipping');
-        if (null !== $value) {
-            $this->setFreeShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}codFee');
-        if (null !== $value) {
-            $this->setCodFee(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}fastShipping');
-        if (null !== $value) {
-            $this->setFastShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingServiceAdditionalCost');
-        if (null !== $value) {
-            $this->setShippingServiceAdditionalCost(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingServiceCost');
-        if (null !== $value) {
-            $this->setShippingServiceCost(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingSurcharge');
-        if (null !== $value) {
-            $this->setShippingSurcharge(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}buyerResponsibleForShipping');
-        if (null !== $value) {
-            $this->setBuyerResponsibleForShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}buyerResponsibleForPickup');
-        if (null !== $value) {
-            $this->setBuyerResponsibleForPickup(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

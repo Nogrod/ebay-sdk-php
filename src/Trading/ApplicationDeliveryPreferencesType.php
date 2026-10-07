@@ -418,89 +418,129 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getApplicationURL();
+        $value = $this->applicationURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationURL", $value);
+            $writer->writeElementNs(null, 'ApplicationURL', null, (string) $value);
         }
-        $value = $this->getApplicationEnable();
+        $value = $this->applicationEnable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationEnable", $value);
+            $writer->writeElementNs(null, 'ApplicationEnable', null, (string) $value);
         }
-        $value = $this->getAlertEmail();
+        $value = $this->alertEmail;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AlertEmail", $value);
+            $writer->writeElementNs(null, 'AlertEmail', null, (string) $value);
         }
-        $value = $this->getAlertEnable();
+        $value = $this->alertEnable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AlertEnable", $value);
+            $writer->writeElementNs(null, 'AlertEnable', null, (string) $value);
         }
-        $value = $this->getNotificationPayloadType();
+        $value = $this->notificationPayloadType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType", $value);
+            $writer->writeElementNs(null, 'NotificationPayloadType', null, (string) $value);
         }
-        $value = $this->getDeviceType();
+        $value = $this->deviceType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeviceType", $value);
+            $writer->writeElementNs(null, 'DeviceType', null, (string) $value);
         }
-        $value = $this->getPayloadVersion();
+        $value = $this->payloadVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PayloadVersion", $value);
+            $writer->writeElementNs(null, 'PayloadVersion', null, (string) $value);
         }
-        $value = $this->getDeliveryURLDetails();
+        $value = $this->deliveryURLDetails;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails", $v);
+                $writer->startElementNs(null, 'DeliveryURLDetails', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ApplicationDeliveryPreferencesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationURL');
-        if (null !== $value) {
-            $this->setApplicationURL($value);
+        $this->deliveryURLDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ApplicationURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applicationURL = $value;
+                    }
+                    return true;
+                case 'ApplicationEnable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->applicationEnable = $value;
+                    }
+                    return true;
+                case 'AlertEmail':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->alertEmail = $value;
+                    }
+                    return true;
+                case 'AlertEnable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->alertEnable = $value;
+                    }
+                    return true;
+                case 'NotificationPayloadType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->notificationPayloadType = $value;
+                    }
+                    return true;
+                case 'DeviceType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->deviceType = $value;
+                    }
+                    return true;
+                case 'PayloadVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->payloadVersion = $value;
+                    }
+                    return true;
+                case 'DeliveryURLDetails':
+                    $this->deliveryURLDetails[] = \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ApplicationEnable');
-        if (null !== $value) {
-            $this->setApplicationEnable($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEmail');
-        if (null !== $value) {
-            $this->setAlertEmail($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AlertEnable');
-        if (null !== $value) {
-            $this->setAlertEnable($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationPayloadType');
-        if (null !== $value) {
-            $this->setNotificationPayloadType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeviceType');
-        if (null !== $value) {
-            $this->setDeviceType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PayloadVersion');
-        if (null !== $value) {
-            $this->setPayloadVersion($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails');
-        if (null !== $value) {
-            $this->setDeliveryURLDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DeliveryURLDetailType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

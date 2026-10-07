@@ -683,129 +683,173 @@ class SendInvoiceRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getOrderID();
+        $value = $this->orderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
+            $writer->writeElementNs(null, 'OrderID', null, (string) $value);
         }
-        $value = $this->getInternationalShippingServiceOptions();
+        $value = $this->internationalShippingServiceOptions;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOptions", $v);
+                $writer->startElementNs(null, 'InternationalShippingServiceOptions', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getShippingServiceOptions();
+        $value = $this->shippingServiceOptions;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions", $v);
+                $writer->startElementNs(null, 'ShippingServiceOptions', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getSalesTax();
+        $value = $this->salesTax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTax", $value);
+            $writer->startElementNs(null, 'SalesTax', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPaymentMethods();
+        $value = $this->paymentMethods;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethods", $v);
+                $writer->writeElementNs(null, 'PaymentMethods', null, (string) $v);
             }
         }
-        $value = $this->getCheckoutInstructions();
+        $value = $this->checkoutInstructions;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CheckoutInstructions", $value);
+            $writer->writeElementNs(null, 'CheckoutInstructions', null, (string) $value);
         }
-        $value = $this->getEmailCopyToSeller();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->emailCopyToSeller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EmailCopyToSeller", $value);
+            $writer->writeElementNs(null, 'EmailCopyToSeller', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSKU();
+        $value = $this->sKU;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $value);
+            $writer->writeElementNs(null, 'SKU', null, (string) $value);
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
-        $value = $this->getAdjustmentAmount();
+        $value = $this->adjustmentAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdjustmentAmount", $value);
+            $writer->startElementNs(null, 'AdjustmentAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SendInvoiceRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SendInvoiceRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+        $this->internationalShippingServiceOptions = [];
+        $this->shippingServiceOptions = [];
+        $this->paymentMethods = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'OrderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderID = $value;
+                    }
+                    return true;
+                case 'InternationalShippingServiceOptions':
+                    $this->internationalShippingServiceOptions[] = \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::xmlRead($reader);
+                    return true;
+                case 'ShippingServiceOptions':
+                    $this->shippingServiceOptions[] = \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::xmlRead($reader);
+                    return true;
+                case 'SalesTax':
+                    $this->salesTax = \Nogrod\eBaySDK\Trading\SalesTaxType::xmlRead($reader);
+                    return true;
+                case 'PaymentMethods':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentMethods[] = $value;
+                    }
+                    return true;
+                case 'CheckoutInstructions':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->checkoutInstructions = $value;
+                    }
+                    return true;
+                case 'EmailCopyToSeller':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->emailCopyToSeller = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SKU':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sKU = $value;
+                    }
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+                case 'AdjustmentAmount':
+                    $this->adjustmentAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
-        if (null !== $value) {
-            $this->setOrderID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOptions');
-        if (null !== $value) {
-            $this->setInternationalShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions');
-        if (null !== $value) {
-            $this->setShippingServiceOptions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceOptionsType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTax');
-        if (null !== $value) {
-            $this->setSalesTax(\Nogrod\eBaySDK\Trading\SalesTaxType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethods', true);
-        if (null !== $value) {
-            $this->setPaymentMethods($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CheckoutInstructions');
-        if (null !== $value) {
-            $this->setCheckoutInstructions($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailCopyToSeller');
-        if (null !== $value) {
-            $this->setEmailCopyToSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKU');
-        if (null !== $value) {
-            $this->setSKU($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdjustmentAmount');
-        if (null !== $value) {
-            $this->setAdjustmentAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

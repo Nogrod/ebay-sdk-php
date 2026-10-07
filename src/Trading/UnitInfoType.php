@@ -106,37 +106,67 @@ class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getUnitType();
+        $value = $this->unitType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnitType", $value);
+            $writer->writeElementNs(null, 'UnitType', null, (string) $value);
         }
-        $value = $this->getUnitQuantity();
+        $value = $this->unitQuantity;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnitQuantity", $value);
+            $writer->writeElementNs(null, 'UnitQuantity', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\UnitInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\UnitInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitType');
-        if (null !== $value) {
-            $this->setUnitType($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'UnitType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->unitType = $value;
+                    }
+                    return true;
+                case 'UnitQuantity':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->unitQuantity = (float) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnitQuantity');
-        if (null !== $value) {
-            $this->setUnitQuantity($value);
-        }
+        return false;
     }
 }

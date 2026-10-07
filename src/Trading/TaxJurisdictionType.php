@@ -277,70 +277,107 @@ class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getJurisdictionID();
+        $value = $this->jurisdictionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}JurisdictionID", $value);
+            $writer->writeElementNs(null, 'JurisdictionID', null, (string) $value);
         }
-        $value = $this->getSalesTaxPercent();
+        $value = $this->salesTaxPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent", $value);
+            $writer->writeElementNs(null, 'SalesTaxPercent', null, (string) $value);
         }
-        $value = $this->getShippingIncludedInTax();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->shippingIncludedInTax;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax", $value);
+            $writer->writeElementNs(null, 'ShippingIncludedInTax', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getJurisdictionName();
+        $value = $this->jurisdictionName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}JurisdictionName", $value);
+            $writer->writeElementNs(null, 'JurisdictionName', null, (string) $value);
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\TaxJurisdictionType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\TaxJurisdictionType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}JurisdictionID');
-        if (null !== $value) {
-            $this->setJurisdictionID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'JurisdictionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->jurisdictionID = $value;
+                    }
+                    return true;
+                case 'SalesTaxPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->salesTaxPercent = (float) $value;
+                    }
+                    return true;
+                case 'ShippingIncludedInTax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingIncludedInTax = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'JurisdictionName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->jurisdictionName = $value;
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SalesTaxPercent');
-        if (null !== $value) {
-            $this->setSalesTaxPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIncludedInTax');
-        if (null !== $value) {
-            $this->setShippingIncludedInTax(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}JurisdictionName');
-        if (null !== $value) {
-            $this->setJurisdictionName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

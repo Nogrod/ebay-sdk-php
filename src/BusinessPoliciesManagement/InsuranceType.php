@@ -202,53 +202,85 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDomesticInsuranceFee();
+        $value = $this->domesticInsuranceFee;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticInsuranceFee", $value);
+            $writer->startElementNs(null, 'domesticInsuranceFee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDomesticInsuranceOption();
+        $value = $this->domesticInsuranceOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticInsuranceOption", $value);
+            $writer->writeElementNs(null, 'domesticInsuranceOption', null, (string) $value);
         }
-        $value = $this->getIntlInsuranceOption();
+        $value = $this->intlInsuranceOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlInsuranceOption", $value);
+            $writer->writeElementNs(null, 'intlInsuranceOption', null, (string) $value);
         }
-        $value = $this->getIntlInsuranceFee();
+        $value = $this->intlInsuranceFee;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlInsuranceFee", $value);
+            $writer->startElementNs(null, 'intlInsuranceFee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticInsuranceFee');
-        if (null !== $value) {
-            $this->setDomesticInsuranceFee(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'domesticInsuranceFee':
+                    $this->domesticInsuranceFee = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'domesticInsuranceOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticInsuranceOption = $value;
+                    }
+                    return true;
+                case 'intlInsuranceOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->intlInsuranceOption = $value;
+                    }
+                    return true;
+                case 'intlInsuranceFee':
+                    $this->intlInsuranceFee = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticInsuranceOption');
-        if (null !== $value) {
-            $this->setDomesticInsuranceOption($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlInsuranceOption');
-        if (null !== $value) {
-            $this->setIntlInsuranceOption($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlInsuranceFee');
-        if (null !== $value) {
-            $this->setIntlInsuranceFee(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

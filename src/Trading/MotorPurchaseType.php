@@ -223,69 +223,106 @@ class MotorPurchaseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getFacilitator();
+        $value = $this->facilitator;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Facilitator", $value);
+            $writer->writeElementNs(null, 'Facilitator', null, (string) $value);
         }
-        $value = $this->getFacilitatorRefId();
+        $value = $this->facilitatorRefId;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FacilitatorRefId", $value);
+            $writer->writeElementNs(null, 'FacilitatorRefId', null, (string) $value);
         }
-        $value = $this->getServiceCost();
+        $value = $this->serviceCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ServiceCost", $value);
+            $writer->startElementNs(null, 'ServiceCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBuyerStep();
+        $value = $this->buyerStep;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerStep", $value);
+            $writer->writeElementNs(null, 'BuyerStep', null, (string) $value);
         }
-        $value = $this->getSellerStep();
+        $value = $this->sellerStep;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerStep", $value);
+            $writer->writeElementNs(null, 'SellerStep', null, (string) $value);
         }
-        $value = $this->getStatus();
+        $value = $this->status;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Status", $value);
+            $writer->writeElementNs(null, 'Status', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MotorPurchaseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MotorPurchaseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Facilitator');
-        if (null !== $value) {
-            $this->setFacilitator($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Facilitator':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->facilitator = $value;
+                    }
+                    return true;
+                case 'FacilitatorRefId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->facilitatorRefId = $value;
+                    }
+                    return true;
+                case 'ServiceCost':
+                    $this->serviceCost = \Nogrod\eBaySDK\Trading\ServiceCostType::xmlRead($reader);
+                    return true;
+                case 'BuyerStep':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyerStep = $value;
+                    }
+                    return true;
+                case 'SellerStep':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->sellerStep = $value;
+                    }
+                    return true;
+                case 'Status':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->status = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FacilitatorRefId');
-        if (null !== $value) {
-            $this->setFacilitatorRefId($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ServiceCost');
-        if (null !== $value) {
-            $this->setServiceCost(\Nogrod\eBaySDK\Trading\ServiceCostType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyerStep');
-        if (null !== $value) {
-            $this->setBuyerStep($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerStep');
-        if (null !== $value) {
-            $this->setSellerStep($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Status');
-        if (null !== $value) {
-            $this->setStatus($value);
-        }
+        return false;
     }
 }

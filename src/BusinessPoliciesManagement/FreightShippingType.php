@@ -313,80 +313,117 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getOriginPickupLocationType();
+        $value = $this->originPickupLocationType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}originPickupLocationType", $value);
+            $writer->writeElementNs(null, 'originPickupLocationType', null, (string) $value);
         }
-        $value = $this->getOriginPickupInside();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->originPickupInside;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}originPickupInside", $value);
+            $writer->writeElementNs(null, 'originPickupInside', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPackagingHelpRequired();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->packagingHelpRequired;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}packagingHelpRequired", $value);
+            $writer->writeElementNs(null, 'packagingHelpRequired', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCommodityType();
+        $value = $this->commodityType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}commodityType", $value);
+            $writer->writeElementNs(null, 'commodityType', null, (string) $value);
         }
-        $value = $this->getFreightShippingClass();
+        $value = $this->freightShippingClass;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}freightShippingClass", $value);
+            $writer->writeElementNs(null, 'freightShippingClass', null, (string) $value);
         }
-        $value = $this->getDestPickupLocationType();
+        $value = $this->destPickupLocationType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}destPickupLocationType", $value);
+            $writer->writeElementNs(null, 'destPickupLocationType', null, (string) $value);
         }
-        $value = $this->getDestPickupInside();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->destPickupInside;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}destPickupInside", $value);
+            $writer->writeElementNs(null, 'destPickupInside', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}originPickupLocationType');
-        if (null !== $value) {
-            $this->setOriginPickupLocationType($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'originPickupLocationType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->originPickupLocationType = $value;
+                    }
+                    return true;
+                case 'originPickupInside':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->originPickupInside = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'packagingHelpRequired':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->packagingHelpRequired = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'commodityType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commodityType = $value;
+                    }
+                    return true;
+                case 'freightShippingClass':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->freightShippingClass = (float) $value;
+                    }
+                    return true;
+                case 'destPickupLocationType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->destPickupLocationType = $value;
+                    }
+                    return true;
+                case 'destPickupInside':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->destPickupInside = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}originPickupInside');
-        if (null !== $value) {
-            $this->setOriginPickupInside(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}packagingHelpRequired');
-        if (null !== $value) {
-            $this->setPackagingHelpRequired(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}commodityType');
-        if (null !== $value) {
-            $this->setCommodityType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}freightShippingClass');
-        if (null !== $value) {
-            $this->setFreightShippingClass($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}destPickupLocationType');
-        if (null !== $value) {
-            $this->setDestPickupLocationType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}destPickupInside');
-        if (null !== $value) {
-            $this->setDestPickupInside(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

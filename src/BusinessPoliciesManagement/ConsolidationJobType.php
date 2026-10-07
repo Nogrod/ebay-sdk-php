@@ -71,53 +71,87 @@ class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getJobId();
+        $value = $this->jobId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}JobId", $value);
+            $writer->writeElementNs(null, 'JobId', null, (string) $value);
         }
-        $value = $this->getJobType();
+        $value = $this->jobType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}JobType", $value);
+            $writer->writeElementNs(null, 'JobType', null, (string) $value);
         }
-        $value = $this->getJobStatus();
+        $value = $this->jobStatus;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}JobStatus", $value);
+            $writer->writeElementNs(null, 'JobStatus', null, (string) $value);
         }
-        $value = $this->getSiteId();
+        $value = $this->siteId;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}SiteId", $value);
+            $writer->writeElementNs(null, 'SiteId', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobId');
-        if (null !== $value) {
-            $this->setJobId($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'JobId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->jobId = (int) $value;
+                    }
+                    return true;
+                case 'JobType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->jobType = $value;
+                    }
+                    return true;
+                case 'JobStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->jobStatus = $value;
+                    }
+                    return true;
+                case 'SiteId':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->siteId = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobType');
-        if (null !== $value) {
-            $this->setJobType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}JobStatus');
-        if (null !== $value) {
-            $this->setJobStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}SiteId');
-        if (null !== $value) {
-            $this->setSiteId($value);
-        }
+        return false;
     }
 }

@@ -245,71 +245,103 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getScheduledList();
+        $value = $this->scheduledList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ScheduledList", $value);
+            $writer->startElementNs(null, 'ScheduledList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getActiveList();
+        $value = $this->activeList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveList", $value);
+            $writer->startElementNs(null, 'ActiveList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSoldList();
+        $value = $this->soldList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldList", $value);
+            $writer->startElementNs(null, 'SoldList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUnsoldList();
+        $value = $this->unsoldList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnsoldList", $value);
+            $writer->startElementNs(null, 'UnsoldList', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellingSummary();
+        $value = $this->sellingSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellingSummary", $value);
+            $writer->startElementNs(null, 'SellingSummary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getHideVariations();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->hideVariations;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HideVariations", $value);
+            $writer->writeElementNs(null, 'HideVariations', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMyeBaySellingRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMyeBaySellingRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ScheduledList');
-        if (null !== $value) {
-            $this->setScheduledList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ScheduledList':
+                    $this->scheduledList = \Nogrod\eBaySDK\Trading\ItemListCustomizationType::xmlRead($reader);
+                    return true;
+                case 'ActiveList':
+                    $this->activeList = \Nogrod\eBaySDK\Trading\ItemListCustomizationType::xmlRead($reader);
+                    return true;
+                case 'SoldList':
+                    $this->soldList = \Nogrod\eBaySDK\Trading\ItemListCustomizationType::xmlRead($reader);
+                    return true;
+                case 'UnsoldList':
+                    $this->unsoldList = \Nogrod\eBaySDK\Trading\ItemListCustomizationType::xmlRead($reader);
+                    return true;
+                case 'SellingSummary':
+                    $this->sellingSummary = \Nogrod\eBaySDK\Trading\ItemListCustomizationType::xmlRead($reader);
+                    return true;
+                case 'HideVariations':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hideVariations = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveList');
-        if (null !== $value) {
-            $this->setActiveList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldList');
-        if (null !== $value) {
-            $this->setSoldList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnsoldList');
-        if (null !== $value) {
-            $this->setUnsoldList(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellingSummary');
-        if (null !== $value) {
-            $this->setSellingSummary(\Nogrod\eBaySDK\Trading\ItemListCustomizationType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HideVariations');
-        if (null !== $value) {
-            $this->setHideVariations(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

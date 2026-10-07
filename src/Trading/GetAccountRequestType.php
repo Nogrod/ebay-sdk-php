@@ -525,130 +525,177 @@ class GetAccountRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getAccountHistorySelection();
+        $value = $this->accountHistorySelection;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountHistorySelection", $value);
+            $writer->writeElementNs(null, 'AccountHistorySelection', null, (string) $value);
         }
-        $value = $this->getInvoiceDate();
+        $value = $this->invoiceDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceDate", $value);
+            $writer->writeElementNs(null, 'InvoiceDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getBeginDate();
+        $value = $this->beginDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BeginDate", $value);
+            $writer->writeElementNs(null, 'BeginDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndDate();
+        $value = $this->endDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndDate", $value);
+            $writer->writeElementNs(null, 'EndDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getPagination();
+        $value = $this->pagination;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pagination", $value);
+            $writer->startElementNs(null, 'Pagination', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getExcludeBalance();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->excludeBalance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeBalance", $value);
+            $writer->writeElementNs(null, 'ExcludeBalance', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getExcludeSummary();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->excludeSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeSummary", $value);
+            $writer->writeElementNs(null, 'ExcludeSummary', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeConversionRate();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeConversionRate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeConversionRate", $value);
+            $writer->writeElementNs(null, 'IncludeConversionRate', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeNettedEntries();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeNettedEntries;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeNettedEntries", $value);
+            $writer->writeElementNs(null, 'IncludeNettedEntries', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getAccountEntrySortType();
+        $value = $this->accountEntrySortType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntrySortType", $value);
+            $writer->writeElementNs(null, 'AccountEntrySortType', null, (string) $value);
         }
-        $value = $this->getCurrency();
+        $value = $this->currency;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
+            $writer->writeElementNs(null, 'Currency', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getOrderID();
+        $value = $this->orderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $value);
+            $writer->writeElementNs(null, 'OrderID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetAccountRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetAccountRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountHistorySelection');
-        if (null !== $value) {
-            $this->setAccountHistorySelection($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AccountHistorySelection':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountHistorySelection = $value;
+                    }
+                    return true;
+                case 'InvoiceDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->invoiceDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'BeginDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->beginDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'Pagination':
+                    $this->pagination = \Nogrod\eBaySDK\Trading\PaginationType::xmlRead($reader);
+                    return true;
+                case 'ExcludeBalance':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->excludeBalance = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ExcludeSummary':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->excludeSummary = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeConversionRate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeConversionRate = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeNettedEntries':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeNettedEntries = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'AccountEntrySortType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountEntrySortType = $value;
+                    }
+                    return true;
+                case 'Currency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->currency = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'OrderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
-        if (null !== $value) {
-            $this->setInvoiceDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BeginDate');
-        if (null !== $value) {
-            $this->setBeginDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndDate');
-        if (null !== $value) {
-            $this->setEndDate(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
-        if (null !== $value) {
-            $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeBalance');
-        if (null !== $value) {
-            $this->setExcludeBalance(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExcludeSummary');
-        if (null !== $value) {
-            $this->setExcludeSummary(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeConversionRate');
-        if (null !== $value) {
-            $this->setIncludeConversionRate(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeNettedEntries');
-        if (null !== $value) {
-            $this->setIncludeNettedEntries(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntrySortType');
-        if (null !== $value) {
-            $this->setAccountEntrySortType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
-        if (null !== $value) {
-            $this->setCurrency($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderID');
-        if (null !== $value) {
-            $this->setOrderID($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

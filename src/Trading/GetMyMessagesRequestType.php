@@ -373,101 +373,139 @@ class GetMyMessagesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getMessageIDs();
+        $value = $this->messageIDs;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs");
+                    $writer->startElementNs(null, 'MessageIDs', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $v);
+                $writer->writeElementNs(null, 'MessageID', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getFolderID();
+        $value = $this->folderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderID", $value);
+            $writer->writeElementNs(null, 'FolderID', null, (string) $value);
         }
-        $value = $this->getStartTime();
+        $value = $this->startTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTime", $value);
+            $writer->writeElementNs(null, 'StartTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndTime();
+        $value = $this->endTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndTime", $value);
+            $writer->writeElementNs(null, 'EndTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getExternalMessageIDs();
+        $value = $this->externalMessageIDs;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs");
+                    $writer->startElementNs(null, 'ExternalMessageIDs', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalMessageID", $v);
+                $writer->writeElementNs(null, 'ExternalMessageID', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPagination();
+        $value = $this->pagination;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pagination", $value);
+            $writer->startElementNs(null, 'Pagination', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getIncludeHighPriorityMessageOnly();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeHighPriorityMessageOnly;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeHighPriorityMessageOnly", $value);
+            $writer->writeElementNs(null, 'IncludeHighPriorityMessageOnly', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMyMessagesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMyMessagesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MessageID', true);
-            $this->setMessageIDs($value);
+        parent::xmlInitLists();
+        $this->messageIDs = [];
+        $this->externalMessageIDs = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MessageIDs':
+                    $this->messageIDs = Func::readList($reader, 'MessageID', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'FolderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->folderID = (int) $value;
+                    }
+                    return true;
+                case 'StartTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'ExternalMessageIDs':
+                    $this->externalMessageIDs = Func::readList($reader, 'ExternalMessageID', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'Pagination':
+                    $this->pagination = \Nogrod\eBaySDK\Trading\PaginationType::xmlRead($reader);
+                    return true;
+                case 'IncludeHighPriorityMessageOnly':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeHighPriorityMessageOnly = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID');
-        if (null !== $value) {
-            $this->setFolderID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartTime');
-        if (null !== $value) {
-            $this->setStartTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTime');
-        if (null !== $value) {
-            $this->setEndTime(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageIDs');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ExternalMessageID', true);
-            $this->setExternalMessageIDs($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
-        if (null !== $value) {
-            $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeHighPriorityMessageOnly');
-        if (null !== $value) {
-            $this->setIncludeHighPriorityMessageOnly(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

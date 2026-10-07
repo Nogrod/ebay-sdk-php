@@ -706,86 +706,122 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMeasurementUnit();
+        $value = $this->measurementUnit;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MeasurementUnit", $value);
+            $writer->writeElementNs(null, 'MeasurementUnit', null, (string) $value);
         }
-        $value = $this->getPackageDepth();
+        $value = $this->packageDepth;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PackageDepth", $value);
+            $writer->startElementNs(null, 'PackageDepth', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPackageLength();
+        $value = $this->packageLength;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PackageLength", $value);
+            $writer->startElementNs(null, 'PackageLength', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPackageWidth();
+        $value = $this->packageWidth;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PackageWidth", $value);
+            $writer->startElementNs(null, 'PackageWidth', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingIrregular();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->shippingIrregular;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingIrregular", $value);
+            $writer->writeElementNs(null, 'ShippingIrregular', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShippingPackage();
+        $value = $this->shippingPackage;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackage", $value);
+            $writer->writeElementNs(null, 'ShippingPackage', null, (string) $value);
         }
-        $value = $this->getWeightMajor();
+        $value = $this->weightMajor;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WeightMajor", $value);
+            $writer->startElementNs(null, 'WeightMajor', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getWeightMinor();
+        $value = $this->weightMinor;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}WeightMinor", $value);
+            $writer->startElementNs(null, 'WeightMinor', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ShipPackageDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ShipPackageDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MeasurementUnit');
-        if (null !== $value) {
-            $this->setMeasurementUnit($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MeasurementUnit':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->measurementUnit = $value;
+                    }
+                    return true;
+                case 'PackageDepth':
+                    $this->packageDepth = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+                case 'PackageLength':
+                    $this->packageLength = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+                case 'PackageWidth':
+                    $this->packageWidth = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+                case 'ShippingIrregular':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingIrregular = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShippingPackage':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingPackage = $value;
+                    }
+                    return true;
+                case 'WeightMajor':
+                    $this->weightMajor = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+                case 'WeightMinor':
+                    $this->weightMinor = \Nogrod\eBaySDK\Trading\MeasureType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageDepth');
-        if (null !== $value) {
-            $this->setPackageDepth(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageLength');
-        if (null !== $value) {
-            $this->setPackageLength(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PackageWidth');
-        if (null !== $value) {
-            $this->setPackageWidth(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingIrregular');
-        if (null !== $value) {
-            $this->setShippingIrregular(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackage');
-        if (null !== $value) {
-            $this->setShippingPackage($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMajor');
-        if (null !== $value) {
-            $this->setWeightMajor(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}WeightMinor');
-        if (null !== $value) {
-            $this->setWeightMinor(\Nogrod\eBaySDK\Trading\MeasureType::fromKeyValue($value));
-        }
+        return false;
     }
 }

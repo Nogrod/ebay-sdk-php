@@ -361,81 +361,114 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getPayer();
+        $value = $this->payer;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payer", $value);
+            $writer->startElementNs(null, 'Payer', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPayee();
+        $value = $this->payee;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payee", $value);
+            $writer->startElementNs(null, 'Payee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPaymentTime();
+        $value = $this->paymentTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentTime", $value);
+            $writer->writeElementNs(null, 'PaymentTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getPaymentAmount();
+        $value = $this->paymentAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentAmount", $value);
+            $writer->startElementNs(null, 'PaymentAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getReferenceID();
+        $value = $this->referenceID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReferenceID", $value);
+            $writer->startElementNs(null, 'ReferenceID', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeeOrCreditAmount();
+        $value = $this->feeOrCreditAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount", $value);
+            $writer->startElementNs(null, 'FeeOrCreditAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPaymentReferenceID();
+        $value = $this->paymentReferenceID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentReferenceID", $v);
+                $writer->startElementNs(null, 'PaymentReferenceID', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PaymentTransactionType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PaymentTransactionType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payer');
-        if (null !== $value) {
-            $this->setPayer(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));
+        $this->paymentReferenceID = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Payer':
+                    $this->payer = \Nogrod\eBaySDK\Trading\UserIdentityType::xmlRead($reader);
+                    return true;
+                case 'Payee':
+                    $this->payee = \Nogrod\eBaySDK\Trading\UserIdentityType::xmlRead($reader);
+                    return true;
+                case 'PaymentTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'PaymentAmount':
+                    $this->paymentAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ReferenceID':
+                    $this->referenceID = \Nogrod\eBaySDK\Trading\TransactionReferenceType::xmlRead($reader);
+                    return true;
+                case 'FeeOrCreditAmount':
+                    $this->feeOrCreditAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'PaymentReferenceID':
+                    $this->paymentReferenceID[] = \Nogrod\eBaySDK\Trading\TransactionReferenceType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payee');
-        if (null !== $value) {
-            $this->setPayee(\Nogrod\eBaySDK\Trading\UserIdentityType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentTime');
-        if (null !== $value) {
-            $this->setPaymentTime(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentAmount');
-        if (null !== $value) {
-            $this->setPaymentAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReferenceID');
-        if (null !== $value) {
-            $this->setReferenceID(\Nogrod\eBaySDK\Trading\TransactionReferenceType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeeOrCreditAmount');
-        if (null !== $value) {
-            $this->setFeeOrCreditAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentReferenceID');
-        if (null !== $value) {
-            $this->setPaymentReferenceID(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TransactionReferenceType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

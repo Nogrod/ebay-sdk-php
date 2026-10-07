@@ -746,202 +746,248 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getShowBidderNoticePreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showBidderNoticePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowBidderNoticePreferences", $value);
+            $writer->writeElementNs(null, 'ShowBidderNoticePreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowCombinedPaymentPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showCombinedPaymentPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowCombinedPaymentPreferences", $value);
+            $writer->writeElementNs(null, 'ShowCombinedPaymentPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowSellerPaymentPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showSellerPaymentPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerPaymentPreferences", $value);
+            $writer->writeElementNs(null, 'ShowSellerPaymentPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowEndOfAuctionEmailPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showEndOfAuctionEmailPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowEndOfAuctionEmailPreferences", $value);
+            $writer->writeElementNs(null, 'ShowEndOfAuctionEmailPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowSellerFavoriteItemPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showSellerFavoriteItemPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerFavoriteItemPreferences", $value);
+            $writer->writeElementNs(null, 'ShowSellerFavoriteItemPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowEmailShipmentTrackingNumberPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showEmailShipmentTrackingNumberPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowEmailShipmentTrackingNumberPreference", $value);
+            $writer->writeElementNs(null, 'ShowEmailShipmentTrackingNumberPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowRequiredShipPhoneNumberPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showRequiredShipPhoneNumberPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowRequiredShipPhoneNumberPreference", $value);
+            $writer->writeElementNs(null, 'ShowRequiredShipPhoneNumberPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowSellerExcludeShipToLocationPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showSellerExcludeShipToLocationPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerExcludeShipToLocationPreference", $value);
+            $writer->writeElementNs(null, 'ShowSellerExcludeShipToLocationPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowUnpaidItemAssistancePreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showUnpaidItemAssistancePreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowUnpaidItemAssistancePreference", $value);
+            $writer->writeElementNs(null, 'ShowUnpaidItemAssistancePreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowPurchaseReminderEmailPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showPurchaseReminderEmailPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowPurchaseReminderEmailPreferences", $value);
+            $writer->writeElementNs(null, 'ShowPurchaseReminderEmailPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowUnpaidItemAssistanceExclusionList();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showUnpaidItemAssistanceExclusionList;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowUnpaidItemAssistanceExclusionList", $value);
+            $writer->writeElementNs(null, 'ShowUnpaidItemAssistanceExclusionList', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowSellerProfilePreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showSellerProfilePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerProfilePreferences", $value);
+            $writer->writeElementNs(null, 'ShowSellerProfilePreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowSellerReturnPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showSellerReturnPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowSellerReturnPreferences", $value);
+            $writer->writeElementNs(null, 'ShowSellerReturnPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowGlobalShippingProgramPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showGlobalShippingProgramPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowGlobalShippingProgramPreference", $value);
+            $writer->writeElementNs(null, 'ShowGlobalShippingProgramPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowDispatchCutoffTimePreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showDispatchCutoffTimePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowDispatchCutoffTimePreferences", $value);
+            $writer->writeElementNs(null, 'ShowDispatchCutoffTimePreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowGlobalShippingProgramListingPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showGlobalShippingProgramListingPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowGlobalShippingProgramListingPreference", $value);
+            $writer->writeElementNs(null, 'ShowGlobalShippingProgramListingPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowOverrideGSPServiceWithIntlServicePreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showOverrideGSPServiceWithIntlServicePreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowOverrideGSPServiceWithIntlServicePreference", $value);
+            $writer->writeElementNs(null, 'ShowOverrideGSPServiceWithIntlServicePreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowPickupDropoffPreferences();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showPickupDropoffPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowPickupDropoffPreferences", $value);
+            $writer->writeElementNs(null, 'ShowPickupDropoffPreferences', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShowOutOfStockControlPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showOutOfStockControlPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShowOutOfStockControlPreference", $value);
+            $writer->writeElementNs(null, 'ShowOutOfStockControlPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getShoweBayPLUSPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->showeBayPLUSPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShoweBayPLUSPreference", $value);
+            $writer->writeElementNs(null, 'ShoweBayPLUSPreference', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetUserPreferencesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetUserPreferencesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowBidderNoticePreferences');
-        if (null !== $value) {
-            $this->setShowBidderNoticePreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ShowBidderNoticePreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showBidderNoticePreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowCombinedPaymentPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showCombinedPaymentPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowSellerPaymentPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showSellerPaymentPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowEndOfAuctionEmailPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showEndOfAuctionEmailPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowSellerFavoriteItemPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showSellerFavoriteItemPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowEmailShipmentTrackingNumberPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showEmailShipmentTrackingNumberPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowRequiredShipPhoneNumberPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showRequiredShipPhoneNumberPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowSellerExcludeShipToLocationPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showSellerExcludeShipToLocationPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowUnpaidItemAssistancePreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showUnpaidItemAssistancePreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowPurchaseReminderEmailPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showPurchaseReminderEmailPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowUnpaidItemAssistanceExclusionList':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showUnpaidItemAssistanceExclusionList = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowSellerProfilePreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showSellerProfilePreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowSellerReturnPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showSellerReturnPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowGlobalShippingProgramPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showGlobalShippingProgramPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowDispatchCutoffTimePreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showDispatchCutoffTimePreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowGlobalShippingProgramListingPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showGlobalShippingProgramListingPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowOverrideGSPServiceWithIntlServicePreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showOverrideGSPServiceWithIntlServicePreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowPickupDropoffPreferences':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showPickupDropoffPreferences = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShowOutOfStockControlPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showOutOfStockControlPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ShoweBayPLUSPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->showeBayPLUSPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowCombinedPaymentPreferences');
-        if (null !== $value) {
-            $this->setShowCombinedPaymentPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerPaymentPreferences');
-        if (null !== $value) {
-            $this->setShowSellerPaymentPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowEndOfAuctionEmailPreferences');
-        if (null !== $value) {
-            $this->setShowEndOfAuctionEmailPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerFavoriteItemPreferences');
-        if (null !== $value) {
-            $this->setShowSellerFavoriteItemPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowEmailShipmentTrackingNumberPreference');
-        if (null !== $value) {
-            $this->setShowEmailShipmentTrackingNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowRequiredShipPhoneNumberPreference');
-        if (null !== $value) {
-            $this->setShowRequiredShipPhoneNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerExcludeShipToLocationPreference');
-        if (null !== $value) {
-            $this->setShowSellerExcludeShipToLocationPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowUnpaidItemAssistancePreference');
-        if (null !== $value) {
-            $this->setShowUnpaidItemAssistancePreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowPurchaseReminderEmailPreferences');
-        if (null !== $value) {
-            $this->setShowPurchaseReminderEmailPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowUnpaidItemAssistanceExclusionList');
-        if (null !== $value) {
-            $this->setShowUnpaidItemAssistanceExclusionList(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerProfilePreferences');
-        if (null !== $value) {
-            $this->setShowSellerProfilePreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowSellerReturnPreferences');
-        if (null !== $value) {
-            $this->setShowSellerReturnPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowGlobalShippingProgramPreference');
-        if (null !== $value) {
-            $this->setShowGlobalShippingProgramPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowDispatchCutoffTimePreferences');
-        if (null !== $value) {
-            $this->setShowDispatchCutoffTimePreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowGlobalShippingProgramListingPreference');
-        if (null !== $value) {
-            $this->setShowGlobalShippingProgramListingPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowOverrideGSPServiceWithIntlServicePreference');
-        if (null !== $value) {
-            $this->setShowOverrideGSPServiceWithIntlServicePreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowPickupDropoffPreferences');
-        if (null !== $value) {
-            $this->setShowPickupDropoffPreferences(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShowOutOfStockControlPreference');
-        if (null !== $value) {
-            $this->setShowOutOfStockControlPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShoweBayPLUSPreference');
-        if (null !== $value) {
-            $this->setShoweBayPLUSPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

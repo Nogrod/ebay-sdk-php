@@ -442,101 +442,147 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBoldTitle();
+        $value = $this->boldTitle;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BoldTitle", $value);
+            $writer->writeElementNs(null, 'BoldTitle', null, (string) $value);
         }
-        $value = $this->getBorder();
+        $value = $this->border;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Border", $value);
+            $writer->writeElementNs(null, 'Border', null, (string) $value);
         }
-        $value = $this->getHighlight();
+        $value = $this->highlight;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Highlight", $value);
+            $writer->writeElementNs(null, 'Highlight', null, (string) $value);
         }
-        $value = $this->getGiftIcon();
+        $value = $this->giftIcon;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GiftIcon", $value);
+            $writer->writeElementNs(null, 'GiftIcon', null, (string) $value);
         }
-        $value = $this->getHomePageFeatured();
+        $value = $this->homePageFeatured;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HomePageFeatured", $value);
+            $writer->writeElementNs(null, 'HomePageFeatured', null, (string) $value);
         }
-        $value = $this->getFeaturedFirst();
+        $value = $this->featuredFirst;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeaturedFirst", $value);
+            $writer->writeElementNs(null, 'FeaturedFirst', null, (string) $value);
         }
-        $value = $this->getFeaturedPlus();
+        $value = $this->featuredPlus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeaturedPlus", $value);
+            $writer->writeElementNs(null, 'FeaturedPlus', null, (string) $value);
         }
-        $value = $this->getProPack();
+        $value = $this->proPack;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProPack", $value);
+            $writer->writeElementNs(null, 'ProPack', null, (string) $value);
         }
-        $value = $this->getDetailVersion();
+        $value = $this->detailVersion;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailVersion", $value);
+            $writer->writeElementNs(null, 'DetailVersion', null, (string) $value);
         }
-        $value = $this->getUpdateTime();
+        $value = $this->updateTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UpdateTime", $value);
+            $writer->writeElementNs(null, 'UpdateTime', null, Func::formatDateTime($value));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ListingFeatureDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BoldTitle');
-        if (null !== $value) {
-            $this->setBoldTitle($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BoldTitle':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->boldTitle = $value;
+                    }
+                    return true;
+                case 'Border':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->border = $value;
+                    }
+                    return true;
+                case 'Highlight':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->highlight = $value;
+                    }
+                    return true;
+                case 'GiftIcon':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->giftIcon = $value;
+                    }
+                    return true;
+                case 'HomePageFeatured':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->homePageFeatured = $value;
+                    }
+                    return true;
+                case 'FeaturedFirst':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->featuredFirst = $value;
+                    }
+                    return true;
+                case 'FeaturedPlus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->featuredPlus = $value;
+                    }
+                    return true;
+                case 'ProPack':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->proPack = $value;
+                    }
+                    return true;
+                case 'DetailVersion':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailVersion = $value;
+                    }
+                    return true;
+                case 'UpdateTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->updateTime = new \DateTime($value);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Border');
-        if (null !== $value) {
-            $this->setBorder($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Highlight');
-        if (null !== $value) {
-            $this->setHighlight($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GiftIcon');
-        if (null !== $value) {
-            $this->setGiftIcon($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HomePageFeatured');
-        if (null !== $value) {
-            $this->setHomePageFeatured($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedFirst');
-        if (null !== $value) {
-            $this->setFeaturedFirst($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeaturedPlus');
-        if (null !== $value) {
-            $this->setFeaturedPlus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProPack');
-        if (null !== $value) {
-            $this->setProPack($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailVersion');
-        if (null !== $value) {
-            $this->setDetailVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UpdateTime');
-        if (null !== $value) {
-            $this->setUpdateTime(new \DateTime($value));
-        }
+        return false;
     }
 }

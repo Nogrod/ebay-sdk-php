@@ -213,61 +213,96 @@ class SupportedSellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getProfileID();
+        $value = $this->profileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProfileID", $value);
+            $writer->writeElementNs(null, 'ProfileID', null, (string) $value);
         }
-        $value = $this->getProfileType();
+        $value = $this->profileType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProfileType", $value);
+            $writer->writeElementNs(null, 'ProfileType', null, (string) $value);
         }
-        $value = $this->getProfileName();
+        $value = $this->profileName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProfileName", $value);
+            $writer->writeElementNs(null, 'ProfileName', null, (string) $value);
         }
-        $value = $this->getShortSummary();
+        $value = $this->shortSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShortSummary", $value);
+            $writer->writeElementNs(null, 'ShortSummary', null, (string) $value);
         }
-        $value = $this->getCategoryGroup();
+        $value = $this->categoryGroup;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CategoryGroup", $value);
+            $writer->startElementNs(null, 'CategoryGroup', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SupportedSellerProfileType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SupportedSellerProfileType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileID');
-        if (null !== $value) {
-            $this->setProfileID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileID = (int) $value;
+                    }
+                    return true;
+                case 'ProfileType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileType = $value;
+                    }
+                    return true;
+                case 'ProfileName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->profileName = $value;
+                    }
+                    return true;
+                case 'ShortSummary':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shortSummary = $value;
+                    }
+                    return true;
+                case 'CategoryGroup':
+                    $this->categoryGroup = \Nogrod\eBaySDK\Trading\CategoryGroupType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileType');
-        if (null !== $value) {
-            $this->setProfileType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProfileName');
-        if (null !== $value) {
-            $this->setProfileName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShortSummary');
-        if (null !== $value) {
-            $this->setShortSummary($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryGroup');
-        if (null !== $value) {
-            $this->setCategoryGroup(\Nogrod\eBaySDK\Trading\CategoryGroupType::fromKeyValue($value));
-        }
+        return false;
     }
 }

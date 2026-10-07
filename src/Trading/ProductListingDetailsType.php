@@ -789,152 +789,201 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getIncludeStockPhotoURL();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeStockPhotoURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeStockPhotoURL", $value);
+            $writer->writeElementNs(null, 'IncludeStockPhotoURL', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getUseStockPhotoURLAsGallery();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->useStockPhotoURLAsGallery;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UseStockPhotoURLAsGallery", $value);
+            $writer->writeElementNs(null, 'UseStockPhotoURLAsGallery', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getStockPhotoURL();
+        $value = $this->stockPhotoURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StockPhotoURL", $value);
+            $writer->writeElementNs(null, 'StockPhotoURL', null, (string) $value);
         }
-        $value = $this->getCopyright();
+        $value = $this->copyright;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Copyright", $v);
+                $writer->writeElementNs(null, 'Copyright', null, (string) $v);
             }
         }
-        $value = $this->getProductReferenceID();
+        $value = $this->productReferenceID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductReferenceID", $value);
+            $writer->writeElementNs(null, 'ProductReferenceID', null, (string) $value);
         }
-        $value = $this->getDetailsURL();
+        $value = $this->detailsURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailsURL", $value);
+            $writer->writeElementNs(null, 'DetailsURL', null, (string) $value);
         }
-        $value = $this->getProductDetailsURL();
+        $value = $this->productDetailsURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductDetailsURL", $value);
+            $writer->writeElementNs(null, 'ProductDetailsURL', null, (string) $value);
         }
-        $value = $this->getReturnSearchResultOnDuplicates();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->returnSearchResultOnDuplicates;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates", $value);
+            $writer->writeElementNs(null, 'ReturnSearchResultOnDuplicates', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getISBN();
+        $value = $this->iSBN;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ISBN", $value);
+            $writer->writeElementNs(null, 'ISBN', null, (string) $value);
         }
-        $value = $this->getUPC();
+        $value = $this->uPC;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UPC", $value);
+            $writer->writeElementNs(null, 'UPC', null, (string) $value);
         }
-        $value = $this->getEAN();
+        $value = $this->eAN;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EAN", $value);
+            $writer->writeElementNs(null, 'EAN', null, (string) $value);
         }
-        $value = $this->getBrandMPN();
+        $value = $this->brandMPN;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BrandMPN", $value);
+            $writer->startElementNs(null, 'BrandMPN', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUseFirstProduct();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->useFirstProduct;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UseFirstProduct", $value);
+            $writer->writeElementNs(null, 'UseFirstProduct', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getIncludeeBayProductDetails();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->includeeBayProductDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}IncludeeBayProductDetails", $value);
+            $writer->writeElementNs(null, 'IncludeeBayProductDetails', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getNameValueList();
+        $value = $this->nameValueList;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+                $writer->startElementNs(null, 'NameValueList', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ProductListingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ProductListingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeStockPhotoURL');
-        if (null !== $value) {
-            $this->setIncludeStockPhotoURL(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+        $this->copyright = [];
+        $this->nameValueList = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'IncludeStockPhotoURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeStockPhotoURL = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'UseStockPhotoURLAsGallery':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->useStockPhotoURLAsGallery = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'StockPhotoURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->stockPhotoURL = $value;
+                    }
+                    return true;
+                case 'Copyright':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->copyright[] = $value;
+                    }
+                    return true;
+                case 'ProductReferenceID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->productReferenceID = $value;
+                    }
+                    return true;
+                case 'DetailsURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->detailsURL = $value;
+                    }
+                    return true;
+                case 'ProductDetailsURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->productDetailsURL = $value;
+                    }
+                    return true;
+                case 'ReturnSearchResultOnDuplicates':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnSearchResultOnDuplicates = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ISBN':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->iSBN = $value;
+                    }
+                    return true;
+                case 'UPC':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->uPC = $value;
+                    }
+                    return true;
+                case 'EAN':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eAN = $value;
+                    }
+                    return true;
+                case 'BrandMPN':
+                    $this->brandMPN = \Nogrod\eBaySDK\Trading\BrandMPNType::xmlRead($reader);
+                    return true;
+                case 'UseFirstProduct':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->useFirstProduct = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'IncludeeBayProductDetails':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->includeeBayProductDetails = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'NameValueList':
+                    $this->nameValueList[] = \Nogrod\eBaySDK\Trading\NameValueListType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UseStockPhotoURLAsGallery');
-        if (null !== $value) {
-            $this->setUseStockPhotoURLAsGallery(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StockPhotoURL');
-        if (null !== $value) {
-            $this->setStockPhotoURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Copyright', true);
-        if (null !== $value) {
-            $this->setCopyright($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductReferenceID');
-        if (null !== $value) {
-            $this->setProductReferenceID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DetailsURL');
-        if (null !== $value) {
-            $this->setDetailsURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductDetailsURL');
-        if (null !== $value) {
-            $this->setProductDetailsURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnSearchResultOnDuplicates');
-        if (null !== $value) {
-            $this->setReturnSearchResultOnDuplicates(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ISBN');
-        if (null !== $value) {
-            $this->setISBN($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UPC');
-        if (null !== $value) {
-            $this->setUPC($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EAN');
-        if (null !== $value) {
-            $this->setEAN($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BrandMPN');
-        if (null !== $value) {
-            $this->setBrandMPN(\Nogrod\eBaySDK\Trading\BrandMPNType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UseFirstProduct');
-        if (null !== $value) {
-            $this->setUseFirstProduct(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeeBayProductDetails');
-        if (null !== $value) {
-            $this->setIncludeeBayProductDetails(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
-        if (null !== $value) {
-            $this->setNameValueList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

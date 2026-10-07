@@ -109,37 +109,67 @@ class SellerReturnProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getReturnProfileID();
+        $value = $this->returnProfileID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnProfileID", $value);
+            $writer->writeElementNs(null, 'ReturnProfileID', null, (string) $value);
         }
-        $value = $this->getReturnProfileName();
+        $value = $this->returnProfileName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnProfileName", $value);
+            $writer->writeElementNs(null, 'ReturnProfileName', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerReturnProfileType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerReturnProfileType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileID');
-        if (null !== $value) {
-            $this->setReturnProfileID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ReturnProfileID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnProfileID = (int) $value;
+                    }
+                    return true;
+                case 'ReturnProfileName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->returnProfileName = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReturnProfileName');
-        if (null !== $value) {
-            $this->setReturnProfileName($value);
-        }
+        return false;
     }
 }

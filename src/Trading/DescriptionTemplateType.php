@@ -223,69 +223,107 @@ class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getGroupID();
+        $value = $this->groupID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GroupID", $value);
+            $writer->writeElementNs(null, 'GroupID', null, (string) $value);
         }
-        $value = $this->getID();
+        $value = $this->iD;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ID", $value);
+            $writer->writeElementNs(null, 'ID', null, (string) $value);
         }
-        $value = $this->getImageURL();
+        $value = $this->imageURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ImageURL", $value);
+            $writer->writeElementNs(null, 'ImageURL', null, (string) $value);
         }
-        $value = $this->getName();
+        $value = $this->name;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Name", $value);
+            $writer->writeElementNs(null, 'Name', null, (string) $value);
         }
-        $value = $this->getTemplateXML();
+        $value = $this->templateXML;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TemplateXML", $value);
+            $writer->writeElementNs(null, 'TemplateXML', null, (string) $value);
         }
-        $value = $this->getType();
+        $value = $this->type;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Type", $value);
+            $writer->writeElementNs(null, 'Type', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\DescriptionTemplateType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\DescriptionTemplateType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GroupID');
-        if (null !== $value) {
-            $this->setGroupID($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'GroupID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->groupID = (int) $value;
+                    }
+                    return true;
+                case 'ID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->iD = (int) $value;
+                    }
+                    return true;
+                case 'ImageURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->imageURL = $value;
+                    }
+                    return true;
+                case 'Name':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->name = $value;
+                    }
+                    return true;
+                case 'TemplateXML':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->templateXML = $value;
+                    }
+                    return true;
+                case 'Type':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->type = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ID');
-        if (null !== $value) {
-            $this->setID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ImageURL');
-        if (null !== $value) {
-            $this->setImageURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Name');
-        if (null !== $value) {
-            $this->setName($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TemplateXML');
-        if (null !== $value) {
-            $this->setTemplateXML($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Type');
-        if (null !== $value) {
-            $this->setType($value);
-        }
+        return false;
     }
 }

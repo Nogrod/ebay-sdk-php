@@ -101,37 +101,67 @@ class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getTotalNumberOfPages();
+        $value = $this->totalNumberOfPages;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalNumberOfPages", $value);
+            $writer->writeElementNs(null, 'TotalNumberOfPages', null, (string) $value);
         }
-        $value = $this->getTotalNumberOfEntries();
+        $value = $this->totalNumberOfEntries;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalNumberOfEntries", $value);
+            $writer->writeElementNs(null, 'TotalNumberOfEntries', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PaginationResultType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PaginationResultType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfPages');
-        if (null !== $value) {
-            $this->setTotalNumberOfPages($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'TotalNumberOfPages':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalNumberOfPages = (int) $value;
+                    }
+                    return true;
+                case 'TotalNumberOfEntries':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalNumberOfEntries = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalNumberOfEntries');
-        if (null !== $value) {
-            $this->setTotalNumberOfEntries($value);
-        }
+        return false;
     }
 }

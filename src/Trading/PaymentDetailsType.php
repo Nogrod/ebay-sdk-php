@@ -249,53 +249,86 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getHoursToDeposit();
+        $value = $this->hoursToDeposit;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HoursToDeposit", $value);
+            $writer->writeElementNs(null, 'HoursToDeposit', null, (string) $value);
         }
-        $value = $this->getDaysToFullPayment();
+        $value = $this->daysToFullPayment;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment", $value);
+            $writer->writeElementNs(null, 'DaysToFullPayment', null, (string) $value);
         }
-        $value = $this->getDepositAmount();
+        $value = $this->depositAmount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DepositAmount", $value);
+            $writer->startElementNs(null, 'DepositAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getDepositType();
+        $value = $this->depositType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DepositType", $value);
+            $writer->writeElementNs(null, 'DepositType', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PaymentDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PaymentDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}HoursToDeposit');
-        if (null !== $value) {
-            $this->setHoursToDeposit($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'HoursToDeposit':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hoursToDeposit = (int) $value;
+                    }
+                    return true;
+                case 'DaysToFullPayment':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daysToFullPayment = (int) $value;
+                    }
+                    return true;
+                case 'DepositAmount':
+                    $this->depositAmount = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'DepositType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->depositType = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DaysToFullPayment');
-        if (null !== $value) {
-            $this->setDaysToFullPayment($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositAmount');
-        if (null !== $value) {
-            $this->setDepositAmount(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DepositType');
-        if (null !== $value) {
-            $this->setDepositType($value);
-        }
+        return false;
     }
 }

@@ -259,50 +259,84 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getOperation();
+        $value = $this->operation;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Operation", $value);
+            $writer->writeElementNs(null, 'Operation', null, (string) $value);
         }
-        $value = $this->getFolderID();
+        $value = $this->folderID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderID", $v);
+                $writer->writeElementNs(null, 'FolderID', null, (string) $v);
             }
         }
-        $value = $this->getFolderName();
+        $value = $this->folderName;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FolderName", $v);
+                $writer->writeElementNs(null, 'FolderName', null, (string) $v);
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ReviseMyMessagesFoldersRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ReviseMyMessagesFoldersRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Operation');
-        if (null !== $value) {
-            $this->setOperation($value);
+        parent::xmlInitLists();
+        $this->folderID = [];
+        $this->folderName = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Operation':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->operation = $value;
+                    }
+                    return true;
+                case 'FolderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->folderID[] = (int) $value;
+                    }
+                    return true;
+                case 'FolderName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->folderName[] = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderID', true);
-        if (null !== $value) {
-            $this->setFolderID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}FolderName', true);
-        if (null !== $value) {
-            $this->setFolderName($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

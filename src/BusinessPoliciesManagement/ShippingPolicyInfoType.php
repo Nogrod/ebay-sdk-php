@@ -1228,203 +1228,261 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getShippingPolicyName();
+        $value = $this->shippingPolicyName;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyName", $value);
+            $writer->writeElementNs(null, 'shippingPolicyName', null, (string) $value);
         }
-        $value = $this->getDomesticShippingType();
+        $value = $this->domesticShippingType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingType", $value);
+            $writer->writeElementNs(null, 'domesticShippingType', null, (string) $value);
         }
-        $value = $this->getIntlShippingType();
+        $value = $this->intlShippingType;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlShippingType", $value);
+            $writer->writeElementNs(null, 'intlShippingType', null, (string) $value);
         }
-        $value = $this->getDispatchTimeMax();
+        $value = $this->dispatchTimeMax;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}dispatchTimeMax", $value);
+            $writer->writeElementNs(null, 'dispatchTimeMax', null, (string) $value);
         }
-        $value = $this->getDispatchTimeReason();
+        $value = $this->dispatchTimeReason;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}dispatchTimeReason", $value);
+            $writer->writeElementNs(null, 'dispatchTimeReason', null, (string) $value);
         }
-        $value = $this->getShippingOption();
+        $value = $this->shippingOption;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingOption", $value);
+            $writer->writeElementNs(null, 'shippingOption', null, (string) $value);
         }
-        $value = $this->getExcludeShipToLocation();
+        $value = $this->excludeShipToLocation;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation", $v);
+                $writer->writeElementNs(null, 'excludeShipToLocation', null, (string) $v);
             }
         }
-        $value = $this->getShippingProfileDiscountInfo();
+        $value = $this->shippingProfileDiscountInfo;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingProfileDiscountInfo", $value);
+            $writer->startElementNs(null, 'shippingProfileDiscountInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFreightShipping();
+        $value = $this->freightShipping;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}freightShipping", $value);
+            $writer->startElementNs(null, 'freightShipping', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShipToLocations();
+        $value = $this->shipToLocations;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations", $v);
+                $writer->writeElementNs(null, 'shipToLocations', null, (string) $v);
             }
         }
-        $value = $this->getDomesticShippingPolicyInfoService();
+        $value = $this->domesticShippingPolicyInfoService;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingPolicyInfoService", $v);
+                $writer->startElementNs(null, 'domesticShippingPolicyInfoService', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getIntlShippingPolicyInfoService();
+        $value = $this->intlShippingPolicyInfoService;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlShippingPolicyInfoService", $v);
+                $writer->startElementNs(null, 'intlShippingPolicyInfoService', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getInsurance();
+        $value = $this->insurance;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}insurance", $value);
+            $writer->startElementNs(null, 'insurance', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getIntlRateTable();
+        $value = $this->intlRateTable;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlRateTable", $value);
+            $writer->writeElementNs(null, 'intlRateTable', null, (string) $value);
         }
-        $value = $this->getDomesticRateTable();
+        $value = $this->domesticRateTable;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticRateTable", $value);
+            $writer->writeElementNs(null, 'domesticRateTable', null, (string) $value);
         }
-        $value = $this->getPackagingHandlingCosts();
+        $value = $this->packagingHandlingCosts;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}packagingHandlingCosts", $value);
+            $writer->startElementNs(null, 'packagingHandlingCosts', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInternationalPackagingHandlingCosts();
+        $value = $this->internationalPackagingHandlingCosts;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}internationalPackagingHandlingCosts", $value);
+            $writer->startElementNs(null, 'internationalPackagingHandlingCosts', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getShippingPolicyCurrency();
+        $value = $this->shippingPolicyCurrency;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyCurrency", $value);
+            $writer->writeElementNs(null, 'shippingPolicyCurrency', null, (string) $value);
         }
-        $value = $this->getShippingPolicyIdentity();
+        $value = $this->shippingPolicyIdentity;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyIdentity", $value);
+            $writer->startElementNs(null, 'shippingPolicyIdentity', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getGlobalShipping();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->globalShipping;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}GlobalShipping", $value);
+            $writer->writeElementNs(null, 'GlobalShipping', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getEligibleForPickupDropOff();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->eligibleForPickupDropOff;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}EligibleForPickupDropOff", $value);
+            $writer->writeElementNs(null, 'EligibleForPickupDropOff', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyName');
-        if (null !== $value) {
-            $this->setShippingPolicyName($value);
+        $this->excludeShipToLocation = [];
+        $this->shipToLocations = [];
+        $this->domesticShippingPolicyInfoService = [];
+        $this->intlShippingPolicyInfoService = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'shippingPolicyName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingPolicyName = $value;
+                    }
+                    return true;
+                case 'domesticShippingType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticShippingType = $value;
+                    }
+                    return true;
+                case 'intlShippingType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->intlShippingType = $value;
+                    }
+                    return true;
+                case 'dispatchTimeMax':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->dispatchTimeMax = (int) $value;
+                    }
+                    return true;
+                case 'dispatchTimeReason':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->dispatchTimeReason = $value;
+                    }
+                    return true;
+                case 'shippingOption':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingOption = $value;
+                    }
+                    return true;
+                case 'excludeShipToLocation':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->excludeShipToLocation[] = $value;
+                    }
+                    return true;
+                case 'shippingProfileDiscountInfo':
+                    $this->shippingProfileDiscountInfo = \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType::xmlRead($reader);
+                    return true;
+                case 'freightShipping':
+                    $this->freightShipping = \Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType::xmlRead($reader);
+                    return true;
+                case 'shipToLocations':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shipToLocations[] = $value;
+                    }
+                    return true;
+                case 'domesticShippingPolicyInfoService':
+                    $this->domesticShippingPolicyInfoService[] = \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::xmlRead($reader);
+                    return true;
+                case 'intlShippingPolicyInfoService':
+                    $this->intlShippingPolicyInfoService[] = \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::xmlRead($reader);
+                    return true;
+                case 'insurance':
+                    $this->insurance = \Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType::xmlRead($reader);
+                    return true;
+                case 'intlRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->intlRateTable = $value;
+                    }
+                    return true;
+                case 'domesticRateTable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->domesticRateTable = $value;
+                    }
+                    return true;
+                case 'packagingHandlingCosts':
+                    $this->packagingHandlingCosts = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'internationalPackagingHandlingCosts':
+                    $this->internationalPackagingHandlingCosts = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+                case 'shippingPolicyCurrency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->shippingPolicyCurrency = $value;
+                    }
+                    return true;
+                case 'shippingPolicyIdentity':
+                    $this->shippingPolicyIdentity = \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType::xmlRead($reader);
+                    return true;
+                case 'GlobalShipping':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->globalShipping = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'EligibleForPickupDropOff':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eligibleForPickupDropOff = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingType');
-        if (null !== $value) {
-            $this->setDomesticShippingType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlShippingType');
-        if (null !== $value) {
-            $this->setIntlShippingType($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}dispatchTimeMax');
-        if (null !== $value) {
-            $this->setDispatchTimeMax($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}dispatchTimeReason');
-        if (null !== $value) {
-            $this->setDispatchTimeReason($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingOption');
-        if (null !== $value) {
-            $this->setShippingOption($value);
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation', true);
-        if (null !== $value) {
-            $this->setExcludeShipToLocation($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingProfileDiscountInfo');
-        if (null !== $value) {
-            $this->setShippingProfileDiscountInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingProfileDiscountInfoType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}freightShipping');
-        if (null !== $value) {
-            $this->setFreightShipping(\Nogrod\eBaySDK\BusinessPoliciesManagement\FreightShippingType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations', true);
-        if (null !== $value) {
-            $this->setShipToLocations($value);
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingPolicyInfoService');
-        if (null !== $value) {
-            $this->setDomesticShippingPolicyInfoService(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlShippingPolicyInfoService');
-        if (null !== $value) {
-            $this->setIntlShippingPolicyInfoService(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}insurance');
-        if (null !== $value) {
-            $this->setInsurance(\Nogrod\eBaySDK\BusinessPoliciesManagement\InsuranceType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}intlRateTable');
-        if (null !== $value) {
-            $this->setIntlRateTable($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}domesticRateTable');
-        if (null !== $value) {
-            $this->setDomesticRateTable($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}packagingHandlingCosts');
-        if (null !== $value) {
-            $this->setPackagingHandlingCosts(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}internationalPackagingHandlingCosts');
-        if (null !== $value) {
-            $this->setInternationalPackagingHandlingCosts(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyCurrency');
-        if (null !== $value) {
-            $this->setShippingPolicyCurrency($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyIdentity');
-        if (null !== $value) {
-            $this->setShippingPolicyIdentity(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyIdentityType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}GlobalShipping');
-        if (null !== $value) {
-            $this->setGlobalShipping(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}EligibleForPickupDropOff');
-        if (null !== $value) {
-            $this->setEligibleForPickupDropOff(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

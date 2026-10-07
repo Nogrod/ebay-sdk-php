@@ -916,185 +916,212 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getHeader();
+        $value = $this->header;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Header", $value);
+            $writer->startElementNs(null, 'Header', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getAddFixedPriceItemRequest();
+        $value = $this->addFixedPriceItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemRequest", $v);
+                $writer->startElementNs(null, 'AddFixedPriceItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getAddItemRequest();
+        $value = $this->addItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AddItemRequest", $v);
+                $writer->startElementNs(null, 'AddItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getEndFixedPriceItemRequest();
+        $value = $this->endFixedPriceItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemRequest", $v);
+                $writer->startElementNs(null, 'EndFixedPriceItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getEndItemRequest();
+        $value = $this->endItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndItemRequest", $v);
+                $writer->startElementNs(null, 'EndItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getOrderAckRequest();
+        $value = $this->orderAckRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderAckRequest", $v);
+                $writer->startElementNs(null, 'OrderAckRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getRelistFixedPriceItemRequest();
+        $value = $this->relistFixedPriceItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemRequest", $v);
+                $writer->startElementNs(null, 'RelistFixedPriceItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getRelistItemRequest();
+        $value = $this->relistItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RelistItemRequest", $v);
+                $writer->startElementNs(null, 'RelistItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getReviseFixedPriceItemRequest();
+        $value = $this->reviseFixedPriceItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemRequest", $v);
+                $writer->startElementNs(null, 'ReviseFixedPriceItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getReviseInventoryStatusRequest();
+        $value = $this->reviseInventoryStatusRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusRequest", $v);
+                $writer->startElementNs(null, 'ReviseInventoryStatusRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getReviseItemRequest();
+        $value = $this->reviseItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReviseItemRequest", $v);
+                $writer->startElementNs(null, 'ReviseItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getSetShipmentTrackingInfoRequest();
+        $value = $this->setShipmentTrackingInfoRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest", $v);
+                $writer->startElementNs(null, 'SetShipmentTrackingInfoRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getVerifyAddFixedPriceItemRequest();
+        $value = $this->verifyAddFixedPriceItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemRequest", $v);
+                $writer->startElementNs(null, 'VerifyAddFixedPriceItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getVerifyAddItemRequest();
+        $value = $this->verifyAddItemRequest;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VerifyAddItemRequest", $v);
+                $writer->startElementNs(null, 'VerifyAddItemRequest', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BulkDataExchangeRequestsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BulkDataExchangeRequestsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Header');
-        if (null !== $value) {
-            $this->setHeader(\Nogrod\eBaySDK\Trading\MerchantDataRequestHeaderType::fromKeyValue($value));
+        $this->addFixedPriceItemRequest = [];
+        $this->addItemRequest = [];
+        $this->endFixedPriceItemRequest = [];
+        $this->endItemRequest = [];
+        $this->orderAckRequest = [];
+        $this->relistFixedPriceItemRequest = [];
+        $this->relistItemRequest = [];
+        $this->reviseFixedPriceItemRequest = [];
+        $this->reviseInventoryStatusRequest = [];
+        $this->reviseItemRequest = [];
+        $this->setShipmentTrackingInfoRequest = [];
+        $this->verifyAddFixedPriceItemRequest = [];
+        $this->verifyAddItemRequest = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Header':
+                    $this->header = \Nogrod\eBaySDK\Trading\MerchantDataRequestHeaderType::xmlRead($reader);
+                    return true;
+                case 'AddFixedPriceItemRequest':
+                    $this->addFixedPriceItemRequest[] = \Nogrod\eBaySDK\Trading\AddFixedPriceItemRequestType::xmlRead($reader);
+                    return true;
+                case 'AddItemRequest':
+                    $this->addItemRequest[] = \Nogrod\eBaySDK\Trading\AddItemRequestType::xmlRead($reader);
+                    return true;
+                case 'EndFixedPriceItemRequest':
+                    $this->endFixedPriceItemRequest[] = \Nogrod\eBaySDK\Trading\EndFixedPriceItemRequestType::xmlRead($reader);
+                    return true;
+                case 'EndItemRequest':
+                    $this->endItemRequest[] = \Nogrod\eBaySDK\Trading\EndItemRequestType::xmlRead($reader);
+                    return true;
+                case 'OrderAckRequest':
+                    $this->orderAckRequest[] = \Nogrod\eBaySDK\Trading\OrderAckRequestType::xmlRead($reader);
+                    return true;
+                case 'RelistFixedPriceItemRequest':
+                    $this->relistFixedPriceItemRequest[] = \Nogrod\eBaySDK\Trading\RelistFixedPriceItemRequestType::xmlRead($reader);
+                    return true;
+                case 'RelistItemRequest':
+                    $this->relistItemRequest[] = \Nogrod\eBaySDK\Trading\RelistItemRequestType::xmlRead($reader);
+                    return true;
+                case 'ReviseFixedPriceItemRequest':
+                    $this->reviseFixedPriceItemRequest[] = \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemRequestType::xmlRead($reader);
+                    return true;
+                case 'ReviseInventoryStatusRequest':
+                    $this->reviseInventoryStatusRequest[] = \Nogrod\eBaySDK\Trading\ReviseInventoryStatusRequestType::xmlRead($reader);
+                    return true;
+                case 'ReviseItemRequest':
+                    $this->reviseItemRequest[] = \Nogrod\eBaySDK\Trading\ReviseItemRequestType::xmlRead($reader);
+                    return true;
+                case 'SetShipmentTrackingInfoRequest':
+                    $this->setShipmentTrackingInfoRequest[] = \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequestType::xmlRead($reader);
+                    return true;
+                case 'VerifyAddFixedPriceItemRequest':
+                    $this->verifyAddFixedPriceItemRequest[] = \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemRequestType::xmlRead($reader);
+                    return true;
+                case 'VerifyAddItemRequest':
+                    $this->verifyAddItemRequest[] = \Nogrod\eBaySDK\Trading\VerifyAddItemRequestType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddFixedPriceItemRequest');
-        if (null !== $value) {
-            $this->setAddFixedPriceItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AddFixedPriceItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AddItemRequest');
-        if (null !== $value) {
-            $this->setAddItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AddItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndFixedPriceItemRequest');
-        if (null !== $value) {
-            $this->setEndFixedPriceItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EndFixedPriceItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndItemRequest');
-        if (null !== $value) {
-            $this->setEndItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EndItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderAckRequest');
-        if (null !== $value) {
-            $this->setOrderAckRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\OrderAckRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistFixedPriceItemRequest');
-        if (null !== $value) {
-            $this->setRelistFixedPriceItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RelistFixedPriceItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RelistItemRequest');
-        if (null !== $value) {
-            $this->setRelistItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RelistItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseFixedPriceItemRequest');
-        if (null !== $value) {
-            $this->setReviseFixedPriceItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ReviseFixedPriceItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseInventoryStatusRequest');
-        if (null !== $value) {
-            $this->setReviseInventoryStatusRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ReviseInventoryStatusRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReviseItemRequest');
-        if (null !== $value) {
-            $this->setReviseItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ReviseItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SetShipmentTrackingInfoRequest');
-        if (null !== $value) {
-            $this->setSetShipmentTrackingInfoRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddFixedPriceItemRequest');
-        if (null !== $value) {
-            $this->setVerifyAddFixedPriceItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VerifyAddItemRequest');
-        if (null !== $value) {
-            $this->setVerifyAddItemRequest(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VerifyAddItemRequestType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

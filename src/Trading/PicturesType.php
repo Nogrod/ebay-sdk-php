@@ -281,41 +281,69 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getVariationSpecificName();
+        $value = $this->variationSpecificName;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificName", $value);
+            $writer->writeElementNs(null, 'VariationSpecificName', null, (string) $value);
         }
-        $value = $this->getVariationSpecificPictureSet();
+        $value = $this->variationSpecificPictureSet;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet", $v);
+                $writer->startElementNs(null, 'VariationSpecificPictureSet', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PicturesType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PicturesType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificName');
-        if (null !== $value) {
-            $this->setVariationSpecificName($value);
+        $this->variationSpecificPictureSet = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'VariationSpecificName':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->variationSpecificName = $value;
+                    }
+                    return true;
+                case 'VariationSpecificPictureSet':
+                    $this->variationSpecificPictureSet[] = \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet');
-        if (null !== $value) {
-            $this->setVariationSpecificPictureSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

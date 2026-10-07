@@ -401,82 +401,118 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getDescriptionTemplate();
+        $value = $this->descriptionTemplate;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate", $v);
+                $writer->startElementNs(null, 'DescriptionTemplate', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getLayoutTotal();
+        $value = $this->layoutTotal;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LayoutTotal", $value);
+            $writer->writeElementNs(null, 'LayoutTotal', null, (string) $value);
         }
-        $value = $this->getObsoleteLayoutID();
+        $value = $this->obsoleteLayoutID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID", $v);
+                $writer->writeElementNs(null, 'ObsoleteLayoutID', null, (string) $v);
             }
         }
-        $value = $this->getObsoleteThemeID();
+        $value = $this->obsoleteThemeID;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID", $v);
+                $writer->writeElementNs(null, 'ObsoleteThemeID', null, (string) $v);
             }
         }
-        $value = $this->getThemeGroup();
+        $value = $this->themeGroup;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThemeGroup", $v);
+                $writer->startElementNs(null, 'ThemeGroup', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getThemeTotal();
+        $value = $this->themeTotal;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThemeTotal", $value);
+            $writer->writeElementNs(null, 'ThemeTotal', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetDescriptionTemplatesResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate');
-        if (null !== $value) {
-            $this->setDescriptionTemplate(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DescriptionTemplateType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->descriptionTemplate = [];
+        $this->obsoleteLayoutID = [];
+        $this->obsoleteThemeID = [];
+        $this->themeGroup = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'DescriptionTemplate':
+                    $this->descriptionTemplate[] = \Nogrod\eBaySDK\Trading\DescriptionTemplateType::xmlRead($reader);
+                    return true;
+                case 'LayoutTotal':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->layoutTotal = (int) $value;
+                    }
+                    return true;
+                case 'ObsoleteLayoutID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->obsoleteLayoutID[] = (int) $value;
+                    }
+                    return true;
+                case 'ObsoleteThemeID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->obsoleteThemeID[] = (int) $value;
+                    }
+                    return true;
+                case 'ThemeGroup':
+                    $this->themeGroup[] = \Nogrod\eBaySDK\Trading\ThemeGroupType::xmlRead($reader);
+                    return true;
+                case 'ThemeTotal':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->themeTotal = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LayoutTotal');
-        if (null !== $value) {
-            $this->setLayoutTotal($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID', true);
-        if (null !== $value) {
-            $this->setObsoleteLayoutID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID', true);
-        if (null !== $value) {
-            $this->setObsoleteThemeID($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeGroup');
-        if (null !== $value) {
-            $this->setThemeGroup(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ThemeGroupType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ThemeTotal');
-        if (null !== $value) {
-            $this->setThemeTotal($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

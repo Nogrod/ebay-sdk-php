@@ -278,78 +278,109 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAck();
+        $value = $this->ack;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ack", $value);
+            $writer->writeElementNs(null, 'ack', null, (string) $value);
         }
-        $value = $this->getErrorMessage();
+        $value = $this->errorMessage;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage");
+                    $writer->startElementNs(null, 'errorMessage', null);
                     $open = true;
                 }
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}error", $v);
+                $writer->startElementNs(null, 'error', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getVersion();
+        $value = $this->version;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}version", $value);
+            $writer->writeElementNs(null, 'version', null, (string) $value);
         }
-        $value = $this->getTimestamp();
+        $value = $this->timestamp;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}timestamp", $value);
+            $writer->writeElementNs(null, 'timestamp', null, Func::formatDateTime($value));
         }
-        $value = $this->getExtension();
+        $value = $this->extension;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}extension", $v);
+                $writer->startElementNs(null, 'extension', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\BaseResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\BaseResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}ack');
-        if (null !== $value) {
-            $this->setAck($value);
+        $this->errorMessage = [];
+        $this->extension = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ack':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->ack = $value;
+                    }
+                    return true;
+                case 'errorMessage':
+                    $this->errorMessage = Func::readList($reader, 'error', 'http://www.ebay.com/marketplace/selling/v1/services', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::xmlRead($reader));
+                    return true;
+                case 'version':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->version = $value;
+                    }
+                    return true;
+                case 'timestamp':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->timestamp = new \DateTime($value);
+                    }
+                    return true;
+                case 'extension':
+                    $this->extension[] = \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}error');
-            $this->setErrorMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}version');
-        if (null !== $value) {
-            $this->setVersion($value);
-        }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}timestamp');
-        if (null !== $value) {
-            $this->setTimestamp(new \DateTime($value));
-        }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}extension');
-        if (null !== $value) {
-            $this->setExtension(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

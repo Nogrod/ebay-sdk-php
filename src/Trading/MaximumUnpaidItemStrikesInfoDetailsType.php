@@ -179,52 +179,80 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getMaximumUnpaidItemStrikesCount();
+        $value = $this->maximumUnpaidItemStrikesCount;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount");
+                    $writer->startElementNs(null, 'MaximumUnpaidItemStrikesCount', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Count", $v);
+                $writer->writeElementNs(null, 'Count', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getMaximumUnpaidItemStrikesDuration();
+        $value = $this->maximumUnpaidItemStrikesDuration;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration", $v);
+                $writer->startElementNs(null, 'MaximumUnpaidItemStrikesDuration', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesInfoDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesCount');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Count', true);
-            $this->setMaximumUnpaidItemStrikesCount($value);
+        $this->maximumUnpaidItemStrikesCount = [];
+        $this->maximumUnpaidItemStrikesDuration = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'MaximumUnpaidItemStrikesCount':
+                    $this->maximumUnpaidItemStrikesCount = Func::readList($reader, 'Count', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? (int) $value : null;
+                    });
+                    return true;
+                case 'MaximumUnpaidItemStrikesDuration':
+                    $this->maximumUnpaidItemStrikesDuration[] = \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaximumUnpaidItemStrikesDuration');
-        if (null !== $value) {
-            $this->setMaximumUnpaidItemStrikesDuration(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

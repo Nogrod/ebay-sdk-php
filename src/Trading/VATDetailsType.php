@@ -258,63 +258,97 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getBusinessSeller();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->businessSeller;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BusinessSeller", $value);
+            $writer->writeElementNs(null, 'BusinessSeller', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getRestrictedToBusiness();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->restrictedToBusiness;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness", $value);
+            $writer->writeElementNs(null, 'RestrictedToBusiness', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getVATPercent();
+        $value = $this->vATPercent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATPercent", $value);
+            $writer->writeElementNs(null, 'VATPercent', null, (string) $value);
         }
-        $value = $this->getVATSite();
+        $value = $this->vATSite;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATSite", $value);
+            $writer->writeElementNs(null, 'VATSite', null, (string) $value);
         }
-        $value = $this->getVATID();
+        $value = $this->vATID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VATID", $value);
+            $writer->writeElementNs(null, 'VATID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\VATDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\VATDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BusinessSeller');
-        if (null !== $value) {
-            $this->setBusinessSeller(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BusinessSeller':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->businessSeller = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'RestrictedToBusiness':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->restrictedToBusiness = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'VATPercent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->vATPercent = (float) $value;
+                    }
+                    return true;
+                case 'VATSite':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->vATSite = $value;
+                    }
+                    return true;
+                case 'VATID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->vATID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RestrictedToBusiness');
-        if (null !== $value) {
-            $this->setRestrictedToBusiness(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATPercent');
-        if (null !== $value) {
-            $this->setVATPercent($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATSite');
-        if (null !== $value) {
-            $this->setVATSite($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}VATID');
-        if (null !== $value) {
-            $this->setVATID($value);
-        }
+        return false;
     }
 }

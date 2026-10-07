@@ -838,196 +838,241 @@ class GetUserPreferencesResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getBidderNoticePreferences();
+        $value = $this->bidderNoticePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidderNoticePreferences", $value);
+            $writer->startElementNs(null, 'BidderNoticePreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCombinedPaymentPreferences();
+        $value = $this->combinedPaymentPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences", $value);
+            $writer->startElementNs(null, 'CombinedPaymentPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerPaymentPreferences();
+        $value = $this->sellerPaymentPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences", $value);
+            $writer->startElementNs(null, 'SellerPaymentPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerFavoriteItemPreferences();
+        $value = $this->sellerFavoriteItemPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerFavoriteItemPreferences", $value);
+            $writer->startElementNs(null, 'SellerFavoriteItemPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEndOfAuctionEmailPreferences();
+        $value = $this->endOfAuctionEmailPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndOfAuctionEmailPreferences", $value);
+            $writer->startElementNs(null, 'EndOfAuctionEmailPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getEmailShipmentTrackingNumberPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->emailShipmentTrackingNumberPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EmailShipmentTrackingNumberPreference", $value);
+            $writer->writeElementNs(null, 'EmailShipmentTrackingNumberPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getRequiredShipPhoneNumberPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->requiredShipPhoneNumberPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference", $value);
+            $writer->writeElementNs(null, 'RequiredShipPhoneNumberPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getUnpaidItemAssistancePreferences();
+        $value = $this->unpaidItemAssistancePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences", $value);
+            $writer->startElementNs(null, 'UnpaidItemAssistancePreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerExcludeShipToLocationPreferences();
+        $value = $this->sellerExcludeShipToLocationPreferences;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences");
+                    $writer->startElementNs(null, 'SellerExcludeShipToLocationPreferences', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation", $v);
+                $writer->writeElementNs(null, 'ExcludeShipToLocation', null, (string) $v);
             }
             if ($open) {
                 $writer->endElement();
             }
         }
-        $value = $this->getPurchaseReminderEmailPreferences();
+        $value = $this->purchaseReminderEmailPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences", $value);
+            $writer->startElementNs(null, 'PurchaseReminderEmailPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerProfilePreferences();
+        $value = $this->sellerProfilePreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerProfilePreferences", $value);
+            $writer->startElementNs(null, 'SellerProfilePreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSellerReturnPreferences();
+        $value = $this->sellerReturnPreferences;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerReturnPreferences", $value);
+            $writer->startElementNs(null, 'SellerReturnPreferences', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getOfferGlobalShippingProgramPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->offerGlobalShippingProgramPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OfferGlobalShippingProgramPreference", $value);
+            $writer->writeElementNs(null, 'OfferGlobalShippingProgramPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getDispatchCutoffTimePreference();
+        $value = $this->dispatchCutoffTimePreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchCutoffTimePreference", $value);
+            $writer->startElementNs(null, 'DispatchCutoffTimePreference', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getGlobalShippingProgramListingPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->globalShippingProgramListingPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GlobalShippingProgramListingPreference", $value);
+            $writer->writeElementNs(null, 'GlobalShippingProgramListingPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getOverrideGSPServiceWithIntlServicePreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->overrideGSPServiceWithIntlServicePreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OverrideGSPServiceWithIntlServicePreference", $value);
+            $writer->writeElementNs(null, 'OverrideGSPServiceWithIntlServicePreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPickupDropoffSellerPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->pickupDropoffSellerPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupDropoffSellerPreference", $value);
+            $writer->writeElementNs(null, 'PickupDropoffSellerPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getOutOfStockControlPreference();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->outOfStockControlPreference;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference", $value);
+            $writer->writeElementNs(null, 'OutOfStockControlPreference', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getEBayPLUSPreference();
+        $value = $this->eBayPLUSPreference;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPLUSPreference", $v);
+                $writer->startElementNs(null, 'eBayPLUSPreference', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetUserPreferencesResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetUserPreferencesResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidderNoticePreferences');
-        if (null !== $value) {
-            $this->setBidderNoticePreferences(\Nogrod\eBaySDK\Trading\BidderNoticePreferencesType::fromKeyValue($value));
+        parent::xmlInitLists();
+        $this->sellerExcludeShipToLocationPreferences = [];
+        $this->eBayPLUSPreference = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'BidderNoticePreferences':
+                    $this->bidderNoticePreferences = \Nogrod\eBaySDK\Trading\BidderNoticePreferencesType::xmlRead($reader);
+                    return true;
+                case 'CombinedPaymentPreferences':
+                    $this->combinedPaymentPreferences = \Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType::xmlRead($reader);
+                    return true;
+                case 'SellerPaymentPreferences':
+                    $this->sellerPaymentPreferences = \Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType::xmlRead($reader);
+                    return true;
+                case 'SellerFavoriteItemPreferences':
+                    $this->sellerFavoriteItemPreferences = \Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType::xmlRead($reader);
+                    return true;
+                case 'EndOfAuctionEmailPreferences':
+                    $this->endOfAuctionEmailPreferences = \Nogrod\eBaySDK\Trading\EndOfAuctionEmailPreferencesType::xmlRead($reader);
+                    return true;
+                case 'EmailShipmentTrackingNumberPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->emailShipmentTrackingNumberPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'RequiredShipPhoneNumberPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->requiredShipPhoneNumberPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'UnpaidItemAssistancePreferences':
+                    $this->unpaidItemAssistancePreferences = \Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::xmlRead($reader);
+                    return true;
+                case 'SellerExcludeShipToLocationPreferences':
+                    $this->sellerExcludeShipToLocationPreferences = Func::readList($reader, 'ExcludeShipToLocation', 'urn:ebay:apis:eBLBaseComponents', static function (\XMLReader $reader) {
+                        $value = Func::readText($reader);
+                        return '' !== $value ? $value : null;
+                    });
+                    return true;
+                case 'PurchaseReminderEmailPreferences':
+                    $this->purchaseReminderEmailPreferences = \Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType::xmlRead($reader);
+                    return true;
+                case 'SellerProfilePreferences':
+                    $this->sellerProfilePreferences = \Nogrod\eBaySDK\Trading\SellerProfilePreferencesType::xmlRead($reader);
+                    return true;
+                case 'SellerReturnPreferences':
+                    $this->sellerReturnPreferences = \Nogrod\eBaySDK\Trading\SellerReturnPreferencesType::xmlRead($reader);
+                    return true;
+                case 'OfferGlobalShippingProgramPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->offerGlobalShippingProgramPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'DispatchCutoffTimePreference':
+                    $this->dispatchCutoffTimePreference = \Nogrod\eBaySDK\Trading\DispatchCutoffTimePreferencesType::xmlRead($reader);
+                    return true;
+                case 'GlobalShippingProgramListingPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->globalShippingProgramListingPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'OverrideGSPServiceWithIntlServicePreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->overrideGSPServiceWithIntlServicePreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PickupDropoffSellerPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pickupDropoffSellerPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'OutOfStockControlPreference':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->outOfStockControlPreference = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'eBayPLUSPreference':
+                    $this->eBayPLUSPreference[] = \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedPaymentPreferences');
-        if (null !== $value) {
-            $this->setCombinedPaymentPreferences(\Nogrod\eBaySDK\Trading\CombinedPaymentPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerPaymentPreferences');
-        if (null !== $value) {
-            $this->setSellerPaymentPreferences(\Nogrod\eBaySDK\Trading\SellerPaymentPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerFavoriteItemPreferences');
-        if (null !== $value) {
-            $this->setSellerFavoriteItemPreferences(\Nogrod\eBaySDK\Trading\SellerFavoriteItemPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndOfAuctionEmailPreferences');
-        if (null !== $value) {
-            $this->setEndOfAuctionEmailPreferences(\Nogrod\eBaySDK\Trading\EndOfAuctionEmailPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EmailShipmentTrackingNumberPreference');
-        if (null !== $value) {
-            $this->setEmailShipmentTrackingNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}RequiredShipPhoneNumberPreference');
-        if (null !== $value) {
-            $this->setRequiredShipPhoneNumberPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UnpaidItemAssistancePreferences');
-        if (null !== $value) {
-            $this->setUnpaidItemAssistancePreferences(\Nogrod\eBaySDK\Trading\UnpaidItemAssistancePreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerExcludeShipToLocationPreferences');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation', true);
-            $this->setSellerExcludeShipToLocationPreferences($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PurchaseReminderEmailPreferences');
-        if (null !== $value) {
-            $this->setPurchaseReminderEmailPreferences(\Nogrod\eBaySDK\Trading\PurchaseReminderEmailPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerProfilePreferences');
-        if (null !== $value) {
-            $this->setSellerProfilePreferences(\Nogrod\eBaySDK\Trading\SellerProfilePreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerReturnPreferences');
-        if (null !== $value) {
-            $this->setSellerReturnPreferences(\Nogrod\eBaySDK\Trading\SellerReturnPreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OfferGlobalShippingProgramPreference');
-        if (null !== $value) {
-            $this->setOfferGlobalShippingProgramPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DispatchCutoffTimePreference');
-        if (null !== $value) {
-            $this->setDispatchCutoffTimePreference(\Nogrod\eBaySDK\Trading\DispatchCutoffTimePreferencesType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GlobalShippingProgramListingPreference');
-        if (null !== $value) {
-            $this->setGlobalShippingProgramListingPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OverrideGSPServiceWithIntlServicePreference');
-        if (null !== $value) {
-            $this->setOverrideGSPServiceWithIntlServicePreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PickupDropoffSellerPreference');
-        if (null !== $value) {
-            $this->setPickupDropoffSellerPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OutOfStockControlPreference');
-        if (null !== $value) {
-            $this->setOutOfStockControlPreference(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPLUSPreference');
-        if (null !== $value) {
-            $this->setEBayPLUSPreference(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType::fromKeyValue($v);
-            }, $value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

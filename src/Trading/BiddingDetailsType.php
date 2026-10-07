@@ -197,62 +197,95 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getConvertedMaxBid();
+        $value = $this->convertedMaxBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedMaxBid", $value);
+            $writer->startElementNs(null, 'ConvertedMaxBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMaxBid();
+        $value = $this->maxBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxBid", $value);
+            $writer->startElementNs(null, 'MaxBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getQuantityBid();
+        $value = $this->quantityBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantityBid", $value);
+            $writer->writeElementNs(null, 'QuantityBid', null, (string) $value);
         }
-        $value = $this->getQuantityWon();
+        $value = $this->quantityWon;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}QuantityWon", $value);
+            $writer->writeElementNs(null, 'QuantityWon', null, (string) $value);
         }
-        $value = $this->getWinning();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->winning;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Winning", $value);
+            $writer->writeElementNs(null, 'Winning', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\BiddingDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\BiddingDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedMaxBid');
-        if (null !== $value) {
-            $this->setConvertedMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ConvertedMaxBid':
+                    $this->convertedMaxBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'MaxBid':
+                    $this->maxBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'QuantityBid':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantityBid = (int) $value;
+                    }
+                    return true;
+                case 'QuantityWon':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantityWon = (int) $value;
+                    }
+                    return true;
+                case 'Winning':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->winning = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxBid');
-        if (null !== $value) {
-            $this->setMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityBid');
-        if (null !== $value) {
-            $this->setQuantityBid($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}QuantityWon');
-        if (null !== $value) {
-            $this->setQuantityWon($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Winning');
-        if (null !== $value) {
-            $this->setWinning(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

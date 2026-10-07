@@ -381,95 +381,137 @@ class GetMemberMessagesRequestType extends AbstractRequestType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getMailMessageType();
+        $value = $this->mailMessageType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MailMessageType", $value);
+            $writer->writeElementNs(null, 'MailMessageType', null, (string) $value);
         }
-        $value = $this->getMessageStatus();
+        $value = $this->messageStatus;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageStatus", $value);
+            $writer->writeElementNs(null, 'MessageStatus', null, (string) $value);
         }
-        $value = $this->getDisplayToPublic();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->displayToPublic;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DisplayToPublic", $value);
+            $writer->writeElementNs(null, 'DisplayToPublic', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getStartCreationTime();
+        $value = $this->startCreationTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartCreationTime", $value);
+            $writer->writeElementNs(null, 'StartCreationTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getEndCreationTime();
+        $value = $this->endCreationTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EndCreationTime", $value);
+            $writer->writeElementNs(null, 'EndCreationTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getPagination();
+        $value = $this->pagination;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pagination", $value);
+            $writer->startElementNs(null, 'Pagination', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getMemberMessageID();
+        $value = $this->memberMessageID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessageID", $value);
+            $writer->writeElementNs(null, 'MemberMessageID', null, (string) $value);
         }
-        $value = $this->getSenderID();
+        $value = $this->senderID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SenderID", $value);
+            $writer->writeElementNs(null, 'SenderID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetMemberMessagesRequestType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetMemberMessagesRequestType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'MailMessageType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->mailMessageType = $value;
+                    }
+                    return true;
+                case 'MessageStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->messageStatus = $value;
+                    }
+                    return true;
+                case 'DisplayToPublic':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->displayToPublic = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'StartCreationTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->startCreationTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'EndCreationTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->endCreationTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'Pagination':
+                    $this->pagination = \Nogrod\eBaySDK\Trading\PaginationType::xmlRead($reader);
+                    return true;
+                case 'MemberMessageID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->memberMessageID = $value;
+                    }
+                    return true;
+                case 'SenderID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->senderID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MailMessageType');
-        if (null !== $value) {
-            $this->setMailMessageType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageStatus');
-        if (null !== $value) {
-            $this->setMessageStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}DisplayToPublic');
-        if (null !== $value) {
-            $this->setDisplayToPublic(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}StartCreationTime');
-        if (null !== $value) {
-            $this->setStartCreationTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndCreationTime');
-        if (null !== $value) {
-            $this->setEndCreationTime(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Pagination');
-        if (null !== $value) {
-            $this->setPagination(\Nogrod\eBaySDK\Trading\PaginationType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessageID');
-        if (null !== $value) {
-            $this->setMemberMessageID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SenderID');
-        if (null !== $value) {
-            $this->setSenderID($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

@@ -192,66 +192,97 @@ class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getItemRevised();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->itemRevised;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemRevised", $value);
+            $writer->writeElementNs(null, 'ItemRevised', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBuyItNowAdded();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyItNowAdded;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyItNowAdded", $value);
+            $writer->writeElementNs(null, 'BuyItNowAdded', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBuyItNowLowered();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->buyItNowLowered;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyItNowLowered", $value);
+            $writer->writeElementNs(null, 'BuyItNowLowered', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getReserveLowered();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->reserveLowered;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveLowered", $value);
+            $writer->writeElementNs(null, 'ReserveLowered', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getReserveRemoved();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->reserveRemoved;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReserveRemoved", $value);
+            $writer->writeElementNs(null, 'ReserveRemoved', null, ($value ? 'true' : 'false'));
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\ReviseStatusType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\ReviseStatusType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemRevised');
-        if (null !== $value) {
-            $this->setItemRevised(filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ItemRevised':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemRevised = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BuyItNowAdded':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyItNowAdded = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BuyItNowLowered':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->buyItNowLowered = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ReserveLowered':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reserveLowered = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ReserveRemoved':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->reserveRemoved = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowAdded');
-        if (null !== $value) {
-            $this->setBuyItNowAdded(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BuyItNowLowered');
-        if (null !== $value) {
-            $this->setBuyItNowLowered(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveLowered');
-        if (null !== $value) {
-            $this->setReserveLowered(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ReserveRemoved');
-        if (null !== $value) {
-            $this->setReserveRemoved(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
+        return false;
     }
 }

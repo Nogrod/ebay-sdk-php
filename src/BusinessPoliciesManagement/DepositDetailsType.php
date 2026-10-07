@@ -160,45 +160,76 @@ class DepositDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getDaysToFullPayment();
+        $value = $this->daysToFullPayment;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment", $value);
+            $writer->writeElementNs(null, 'daysToFullPayment', null, (string) $value);
         }
-        $value = $this->getHoursToDeposit();
+        $value = $this->hoursToDeposit;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}hoursToDeposit", $value);
+            $writer->writeElementNs(null, 'hoursToDeposit', null, (string) $value);
         }
-        $value = $this->getDepositAmount();
+        $value = $this->depositAmount;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}depositAmount", $value);
+            $writer->startElementNs(null, 'depositAmount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\DepositDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}daysToFullPayment');
-        if (null !== $value) {
-            $this->setDaysToFullPayment($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'daysToFullPayment':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->daysToFullPayment = (int) $value;
+                    }
+                    return true;
+                case 'hoursToDeposit':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->hoursToDeposit = (int) $value;
+                    }
+                    return true;
+                case 'depositAmount':
+                    $this->depositAmount = \Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}hoursToDeposit');
-        if (null !== $value) {
-            $this->setHoursToDeposit($value);
-        }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}depositAmount');
-        if (null !== $value) {
-            $this->setDepositAmount(\Nogrod\eBaySDK\BusinessPoliciesManagement\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

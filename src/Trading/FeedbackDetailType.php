@@ -761,186 +761,246 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getCommentingUser();
+        $value = $this->commentingUser;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentingUser", $value);
+            $writer->writeElementNs(null, 'CommentingUser', null, (string) $value);
         }
-        $value = $this->getFeedbackRatingStar();
+        $value = $this->feedbackRatingStar;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar", $value);
+            $writer->writeElementNs(null, 'FeedbackRatingStar', null, (string) $value);
         }
-        $value = $this->getCommentingUserScore();
+        $value = $this->commentingUserScore;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentingUserScore", $value);
+            $writer->writeElementNs(null, 'CommentingUserScore', null, (string) $value);
         }
-        $value = $this->getCommentText();
+        $value = $this->commentText;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentText", $value);
+            $writer->writeElementNs(null, 'CommentText', null, (string) $value);
         }
-        $value = $this->getCommentTime();
+        $value = $this->commentTime;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentTime", $value);
+            $writer->writeElementNs(null, 'CommentTime', null, Func::formatDateTime($value));
         }
-        $value = $this->getCommentType();
+        $value = $this->commentType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentType", $value);
+            $writer->writeElementNs(null, 'CommentType', null, (string) $value);
         }
-        $value = $this->getFeedbackResponse();
+        $value = $this->feedbackResponse;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackResponse", $value);
+            $writer->writeElementNs(null, 'FeedbackResponse', null, (string) $value);
         }
-        $value = $this->getFollowup();
+        $value = $this->followup;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Followup", $value);
+            $writer->writeElementNs(null, 'Followup', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getRole();
+        $value = $this->role;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Role", $value);
+            $writer->writeElementNs(null, 'Role', null, (string) $value);
         }
-        $value = $this->getItemTitle();
+        $value = $this->itemTitle;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemTitle", $value);
+            $writer->writeElementNs(null, 'ItemTitle', null, (string) $value);
         }
-        $value = $this->getItemPrice();
+        $value = $this->itemPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemPrice", $value);
+            $writer->startElementNs(null, 'ItemPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getFeedbackID();
+        $value = $this->feedbackID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackID", $value);
+            $writer->writeElementNs(null, 'FeedbackID', null, (string) $value);
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getCommentReplaced();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->commentReplaced;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CommentReplaced", $value);
+            $writer->writeElementNs(null, 'CommentReplaced', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getResponseReplaced();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->responseReplaced;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponseReplaced", $value);
+            $writer->writeElementNs(null, 'ResponseReplaced', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getFollowUpReplaced();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->followUpReplaced;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FollowUpReplaced", $value);
+            $writer->writeElementNs(null, 'FollowUpReplaced', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCountable();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->countable;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Countable", $value);
+            $writer->writeElementNs(null, 'Countable', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getFeedbackRevised();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->feedbackRevised;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FeedbackRevised", $value);
+            $writer->writeElementNs(null, 'FeedbackRevised', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getOrderLineItemID();
+        $value = $this->orderLineItemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderLineItemID", $value);
+            $writer->writeElementNs(null, 'OrderLineItemID', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\FeedbackDetailType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeedbackDetailType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentingUser');
-        if (null !== $value) {
-            $this->setCommentingUser($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CommentingUser':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentingUser = $value;
+                    }
+                    return true;
+                case 'FeedbackRatingStar':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackRatingStar = $value;
+                    }
+                    return true;
+                case 'CommentingUserScore':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentingUserScore = (int) $value;
+                    }
+                    return true;
+                case 'CommentText':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentText = $value;
+                    }
+                    return true;
+                case 'CommentTime':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentTime = new \DateTime($value);
+                    }
+                    return true;
+                case 'CommentType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentType = $value;
+                    }
+                    return true;
+                case 'FeedbackResponse':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackResponse = $value;
+                    }
+                    return true;
+                case 'Followup':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->followup = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'Role':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->role = $value;
+                    }
+                    return true;
+                case 'ItemTitle':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemTitle = $value;
+                    }
+                    return true;
+                case 'ItemPrice':
+                    $this->itemPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'FeedbackID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackID = $value;
+                    }
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'CommentReplaced':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->commentReplaced = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'ResponseReplaced':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->responseReplaced = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'FollowUpReplaced':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->followUpReplaced = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'Countable':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->countable = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'FeedbackRevised':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->feedbackRevised = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'OrderLineItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->orderLineItemID = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRatingStar');
-        if (null !== $value) {
-            $this->setFeedbackRatingStar($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentingUserScore');
-        if (null !== $value) {
-            $this->setCommentingUserScore($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentText');
-        if (null !== $value) {
-            $this->setCommentText($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentTime');
-        if (null !== $value) {
-            $this->setCommentTime(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentType');
-        if (null !== $value) {
-            $this->setCommentType($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackResponse');
-        if (null !== $value) {
-            $this->setFeedbackResponse($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Followup');
-        if (null !== $value) {
-            $this->setFollowup($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Role');
-        if (null !== $value) {
-            $this->setRole($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemTitle');
-        if (null !== $value) {
-            $this->setItemTitle($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemPrice');
-        if (null !== $value) {
-            $this->setItemPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackID');
-        if (null !== $value) {
-            $this->setFeedbackID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CommentReplaced');
-        if (null !== $value) {
-            $this->setCommentReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponseReplaced');
-        if (null !== $value) {
-            $this->setResponseReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FollowUpReplaced');
-        if (null !== $value) {
-            $this->setFollowUpReplaced(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Countable');
-        if (null !== $value) {
-            $this->setCountable(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}FeedbackRevised');
-        if (null !== $value) {
-            $this->setFeedbackRevised(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');
-        if (null !== $value) {
-            $this->setOrderLineItemID($value);
-        }
+        return false;
     }
 }

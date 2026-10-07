@@ -251,79 +251,114 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getCurrencyID();
+        $value = $this->currencyID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrencyID", $value);
+            $writer->writeElementNs(null, 'CurrencyID', null, (string) $value);
         }
-        $value = $this->getFlatShippingDiscount();
+        $value = $this->flatShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount", $value);
+            $writer->startElementNs(null, 'FlatShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCalculatedShippingDiscount();
+        $value = $this->calculatedShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount", $value);
+            $writer->startElementNs(null, 'CalculatedShippingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPromotionalShippingDiscount();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->promotionalShippingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount", $value);
+            $writer->writeElementNs(null, 'PromotionalShippingDiscount', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getCalculatedHandlingDiscount();
+        $value = $this->calculatedHandlingDiscount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount", $value);
+            $writer->startElementNs(null, 'CalculatedHandlingDiscount', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getPromotionalShippingDiscountDetails();
+        $value = $this->promotionalShippingDiscountDetails;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails", $value);
+            $writer->startElementNs(null, 'PromotionalShippingDiscountDetails', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getCombinedDuration();
+        $value = $this->combinedDuration;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CombinedDuration", $value);
+            $writer->writeElementNs(null, 'CombinedDuration', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\GetShippingDiscountProfilesResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\GetShippingDiscountProfilesResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrencyID');
-        if (null !== $value) {
-            $this->setCurrencyID($value);
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'CurrencyID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->currencyID = $value;
+                    }
+                    return true;
+                case 'FlatShippingDiscount':
+                    $this->flatShippingDiscount = \Nogrod\eBaySDK\Trading\FlatShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'CalculatedShippingDiscount':
+                    $this->calculatedShippingDiscount = \Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::xmlRead($reader);
+                    return true;
+                case 'PromotionalShippingDiscount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->promotionalShippingDiscount = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'CalculatedHandlingDiscount':
+                    $this->calculatedHandlingDiscount = \Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType::xmlRead($reader);
+                    return true;
+                case 'PromotionalShippingDiscountDetails':
+                    $this->promotionalShippingDiscountDetails = \Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::xmlRead($reader);
+                    return true;
+                case 'CombinedDuration':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->combinedDuration = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}FlatShippingDiscount');
-        if (null !== $value) {
-            $this->setFlatShippingDiscount(\Nogrod\eBaySDK\Trading\FlatShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedShippingDiscount');
-        if (null !== $value) {
-            $this->setCalculatedShippingDiscount(\Nogrod\eBaySDK\Trading\CalculatedShippingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscount');
-        if (null !== $value) {
-            $this->setPromotionalShippingDiscount(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CalculatedHandlingDiscount');
-        if (null !== $value) {
-            $this->setCalculatedHandlingDiscount(\Nogrod\eBaySDK\Trading\CalculatedHandlingDiscountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PromotionalShippingDiscountDetails');
-        if (null !== $value) {
-            $this->setPromotionalShippingDiscountDetails(\Nogrod\eBaySDK\Trading\PromotionalShippingDiscountDetailsType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CombinedDuration');
-        if (null !== $value) {
-            $this->setCombinedDuration($value);
-        }
+        return parent::xmlReadElement($reader);
     }
 }

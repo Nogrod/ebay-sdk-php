@@ -742,186 +742,241 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAccountState();
+        $value = $this->accountState;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountState", $value);
+            $writer->writeElementNs(null, 'AccountState', null, (string) $value);
         }
-        $value = $this->getInvoicePayment();
+        $value = $this->invoicePayment;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoicePayment", $value);
+            $writer->startElementNs(null, 'InvoicePayment', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInvoiceCredit();
+        $value = $this->invoiceCredit;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceCredit", $value);
+            $writer->startElementNs(null, 'InvoiceCredit', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInvoiceNewFee();
+        $value = $this->invoiceNewFee;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee", $value);
+            $writer->startElementNs(null, 'InvoiceNewFee', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getAdditionalAccount();
+        $value = $this->additionalAccount;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdditionalAccount", $v);
+                $writer->startElementNs(null, 'AdditionalAccount', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
-        $value = $this->getAmountPastDue();
+        $value = $this->amountPastDue;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AmountPastDue", $value);
+            $writer->startElementNs(null, 'AmountPastDue', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getBankAccountInfo();
+        $value = $this->bankAccountInfo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BankAccountInfo", $value);
+            $writer->writeElementNs(null, 'BankAccountInfo', null, (string) $value);
         }
-        $value = $this->getBankModifyDate();
+        $value = $this->bankModifyDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BankModifyDate", $value);
+            $writer->writeElementNs(null, 'BankModifyDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getBillingCycleDate();
+        $value = $this->billingCycleDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BillingCycleDate", $value);
+            $writer->writeElementNs(null, 'BillingCycleDate', null, (string) $value);
         }
-        $value = $this->getCreditCardExpiration();
+        $value = $this->creditCardExpiration;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreditCardExpiration", $value);
+            $writer->writeElementNs(null, 'CreditCardExpiration', null, Func::formatDateTime($value));
         }
-        $value = $this->getCreditCardInfo();
+        $value = $this->creditCardInfo;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreditCardInfo", $value);
+            $writer->writeElementNs(null, 'CreditCardInfo', null, (string) $value);
         }
-        $value = $this->getCreditCardModifyDate();
+        $value = $this->creditCardModifyDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CreditCardModifyDate", $value);
+            $writer->writeElementNs(null, 'CreditCardModifyDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getCurrentBalance();
+        $value = $this->currentBalance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrentBalance", $value);
+            $writer->startElementNs(null, 'CurrentBalance', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInvoiceBalance();
+        $value = $this->invoiceBalance;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceBalance", $value);
+            $writer->startElementNs(null, 'InvoiceBalance', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInvoiceDate();
+        $value = $this->invoiceDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InvoiceDate", $value);
+            $writer->writeElementNs(null, 'InvoiceDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getLastAmountPaid();
+        $value = $this->lastAmountPaid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastAmountPaid", $value);
+            $writer->startElementNs(null, 'LastAmountPaid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getLastPaymentDate();
+        $value = $this->lastPaymentDate;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LastPaymentDate", $value);
+            $writer->writeElementNs(null, 'LastPaymentDate', null, Func::formatDateTime($value));
         }
-        $value = $this->getPastDue();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->pastDue;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PastDue", $value);
+            $writer->writeElementNs(null, 'PastDue', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getPaymentMethod();
+        $value = $this->paymentMethod;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethod", $value);
+            $writer->writeElementNs(null, 'PaymentMethod', null, (string) $value);
         }
-        $value = $this->getNettedTransactionSummary();
+        $value = $this->nettedTransactionSummary;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NettedTransactionSummary", $value);
+            $writer->startElementNs(null, 'NettedTransactionSummary', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\AccountSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\AccountSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountState');
-        if (null !== $value) {
-            $this->setAccountState($value);
+        $this->additionalAccount = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'AccountState':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->accountState = $value;
+                    }
+                    return true;
+                case 'InvoicePayment':
+                    $this->invoicePayment = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'InvoiceCredit':
+                    $this->invoiceCredit = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'InvoiceNewFee':
+                    $this->invoiceNewFee = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'AdditionalAccount':
+                    $this->additionalAccount[] = \Nogrod\eBaySDK\Trading\AdditionalAccountType::xmlRead($reader);
+                    return true;
+                case 'AmountPastDue':
+                    $this->amountPastDue = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'BankAccountInfo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bankAccountInfo = $value;
+                    }
+                    return true;
+                case 'BankModifyDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bankModifyDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'BillingCycleDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->billingCycleDate = (int) $value;
+                    }
+                    return true;
+                case 'CreditCardExpiration':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->creditCardExpiration = new \DateTime($value);
+                    }
+                    return true;
+                case 'CreditCardInfo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->creditCardInfo = $value;
+                    }
+                    return true;
+                case 'CreditCardModifyDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->creditCardModifyDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'CurrentBalance':
+                    $this->currentBalance = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'InvoiceBalance':
+                    $this->invoiceBalance = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'InvoiceDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->invoiceDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'LastAmountPaid':
+                    $this->lastAmountPaid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'LastPaymentDate':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->lastPaymentDate = new \DateTime($value);
+                    }
+                    return true;
+                case 'PastDue':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pastDue = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'PaymentMethod':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->paymentMethod = $value;
+                    }
+                    return true;
+                case 'NettedTransactionSummary':
+                    $this->nettedTransactionSummary = \Nogrod\eBaySDK\Trading\NettedTransactionSummaryType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoicePayment');
-        if (null !== $value) {
-            $this->setInvoicePayment(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceCredit');
-        if (null !== $value) {
-            $this->setInvoiceCredit(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceNewFee');
-        if (null !== $value) {
-            $this->setInvoiceNewFee(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AdditionalAccount');
-        if (null !== $value) {
-            $this->setAdditionalAccount(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AdditionalAccountType::fromKeyValue($v);
-            }, $value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AmountPastDue');
-        if (null !== $value) {
-            $this->setAmountPastDue(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankAccountInfo');
-        if (null !== $value) {
-            $this->setBankAccountInfo($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BankModifyDate');
-        if (null !== $value) {
-            $this->setBankModifyDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BillingCycleDate');
-        if (null !== $value) {
-            $this->setBillingCycleDate($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardExpiration');
-        if (null !== $value) {
-            $this->setCreditCardExpiration(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardInfo');
-        if (null !== $value) {
-            $this->setCreditCardInfo($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreditCardModifyDate');
-        if (null !== $value) {
-            $this->setCreditCardModifyDate(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}CurrentBalance');
-        if (null !== $value) {
-            $this->setCurrentBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceBalance');
-        if (null !== $value) {
-            $this->setInvoiceBalance(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}InvoiceDate');
-        if (null !== $value) {
-            $this->setInvoiceDate(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastAmountPaid');
-        if (null !== $value) {
-            $this->setLastAmountPaid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}LastPaymentDate');
-        if (null !== $value) {
-            $this->setLastPaymentDate(new \DateTime($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PastDue');
-        if (null !== $value) {
-            $this->setPastDue(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaymentMethod');
-        if (null !== $value) {
-            $this->setPaymentMethod($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NettedTransactionSummary');
-        if (null !== $value) {
-            $this->setNettedTransactionSummary(\Nogrod\eBaySDK\Trading\NettedTransactionSummaryType::fromKeyValue($value));
-        }
+        return false;
     }
 }

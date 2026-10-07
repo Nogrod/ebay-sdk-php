@@ -707,47 +707,49 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getGalleryType();
+        $value = $this->galleryType;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryType", $value);
+            $writer->writeElementNs(null, 'GalleryType', null, (string) $value);
         }
-        $value = $this->getGalleryURL();
+        $value = $this->galleryURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryURL", $value);
+            $writer->writeElementNs(null, 'GalleryURL', null, (string) $value);
         }
-        $value = $this->getPictureURL();
-        if (null !== $value) {
-            foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURL", $v);
-            }
-        }
-        $value = $this->getPictureSource();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureSource", $value);
-        }
-        $value = $this->getGalleryStatus();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryStatus", $value);
-        }
-        $value = $this->getGalleryErrorInfo();
-        if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}GalleryErrorInfo", $value);
-        }
-        $value = $this->getExternalPictureURL();
+        $value = $this->pictureURL;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL", $v);
+                $writer->writeElementNs(null, 'PictureURL', null, (string) $v);
             }
         }
-        $value = $this->getExtendedPictureDetails();
+        $value = $this->pictureSource;
+        if (null !== $value) {
+            $writer->writeElementNs(null, 'PictureSource', null, (string) $value);
+        }
+        $value = $this->galleryStatus;
+        if (null !== $value) {
+            $writer->writeElementNs(null, 'GalleryStatus', null, (string) $value);
+        }
+        $value = $this->galleryErrorInfo;
+        if (null !== $value) {
+            $writer->writeElementNs(null, 'GalleryErrorInfo', null, (string) $value);
+        }
+        $value = $this->externalPictureURL;
+        if (null !== $value) {
+            foreach ($value as $v) {
+                $writer->writeElementNs(null, 'ExternalPictureURL', null, (string) $v);
+            }
+        }
+        $value = $this->extendedPictureDetails;
         if (null !== $value) {
             $open = false;
             foreach ($value as $v) {
                 if (!$open) {
-                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails");
+                    $writer->startElementNs(null, 'ExtendedPictureDetails', null);
                     $open = true;
                 }
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURLs", $v);
+                $writer->startElementNs(null, 'PictureURLs', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
             if ($open) {
                 $writer->endElement();
@@ -757,52 +759,91 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PictureDetailsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PictureDetailsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryType');
-        if (null !== $value) {
-            $this->setGalleryType($value);
+        $this->pictureURL = [];
+        $this->externalPictureURL = [];
+        $this->extendedPictureDetails = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'GalleryType':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->galleryType = $value;
+                    }
+                    return true;
+                case 'GalleryURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->galleryURL = $value;
+                    }
+                    return true;
+                case 'PictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureURL[] = $value;
+                    }
+                    return true;
+                case 'PictureSource':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->pictureSource = $value;
+                    }
+                    return true;
+                case 'GalleryStatus':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->galleryStatus = $value;
+                    }
+                    return true;
+                case 'GalleryErrorInfo':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->galleryErrorInfo = $value;
+                    }
+                    return true;
+                case 'ExternalPictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->externalPictureURL[] = $value;
+                    }
+                    return true;
+                case 'ExtendedPictureDetails':
+                    $this->extendedPictureDetails = Func::readList($reader, 'PictureURLs', 'urn:ebay:apis:eBLBaseComponents', static fn (\XMLReader $reader) => \Nogrod\eBaySDK\Trading\PictureURLsType::xmlRead($reader));
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryURL');
-        if (null !== $value) {
-            $this->setGalleryURL($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureURL', true);
-        if (null !== $value) {
-            $this->setPictureURL($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}PictureSource');
-        if (null !== $value) {
-            $this->setPictureSource($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryStatus');
-        if (null !== $value) {
-            $this->setGalleryStatus($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GalleryErrorInfo');
-        if (null !== $value) {
-            $this->setGalleryErrorInfo($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL', true);
-        if (null !== $value) {
-            $this->setExternalPictureURL($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
-        if (null !== $value) {
-            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}PictureURLs');
-            $this->setExtendedPictureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

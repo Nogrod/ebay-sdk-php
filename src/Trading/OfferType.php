@@ -698,159 +698,212 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getAction();
+        $value = $this->action;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Action", $value);
+            $writer->writeElementNs(null, 'Action', null, (string) $value);
         }
-        $value = $this->getCurrency();
+        $value = $this->currency;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Currency", $value);
+            $writer->writeElementNs(null, 'Currency', null, (string) $value);
         }
-        $value = $this->getItemID();
+        $value = $this->itemID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
+            $writer->writeElementNs(null, 'ItemID', null, (string) $value);
         }
-        $value = $this->getMaxBid();
+        $value = $this->maxBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MaxBid", $value);
+            $writer->startElementNs(null, 'MaxBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getQuantity();
+        $value = $this->quantity;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Quantity", $value);
+            $writer->writeElementNs(null, 'Quantity', null, (string) $value);
         }
-        $value = $this->getSecondChanceEnabled();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->secondChanceEnabled;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceEnabled", $value);
+            $writer->writeElementNs(null, 'SecondChanceEnabled', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getSiteCurrency();
+        $value = $this->siteCurrency;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteCurrency", $value);
+            $writer->writeElementNs(null, 'SiteCurrency', null, (string) $value);
         }
-        $value = $this->getTimeBid();
+        $value = $this->timeBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeBid", $value);
+            $writer->writeElementNs(null, 'TimeBid', null, Func::formatDateTime($value));
         }
-        $value = $this->getHighestBid();
+        $value = $this->highestBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}HighestBid", $value);
+            $writer->startElementNs(null, 'HighestBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getConvertedPrice();
+        $value = $this->convertedPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConvertedPrice", $value);
+            $writer->startElementNs(null, 'ConvertedPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTransactionID();
+        $value = $this->transactionID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TransactionID", $value);
+            $writer->writeElementNs(null, 'TransactionID', null, (string) $value);
         }
-        $value = $this->getUser();
+        $value = $this->user;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}User", $value);
+            $writer->startElementNs(null, 'User', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getUserConsent();
-        $value = null !== $value ? ($value ? 'true' : 'false') : null;
+        $value = $this->userConsent;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserConsent", $value);
+            $writer->writeElementNs(null, 'UserConsent', null, ($value ? 'true' : 'false'));
         }
-        $value = $this->getBidCount();
+        $value = $this->bidCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCount", $value);
+            $writer->writeElementNs(null, 'BidCount', null, (string) $value);
         }
-        $value = $this->getMessage();
+        $value = $this->message;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Message", $value);
+            $writer->writeElementNs(null, 'Message', null, (string) $value);
         }
-        $value = $this->getBestOfferID();
+        $value = $this->bestOfferID;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOfferID", $value);
+            $writer->writeElementNs(null, 'BestOfferID', null, (string) $value);
         }
-        $value = $this->getMyMaxBid();
+        $value = $this->myMaxBid;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MyMaxBid", $value);
+            $writer->startElementNs(null, 'MyMaxBid', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\OfferType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\OfferType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Action');
-        if (null !== $value) {
-            $this->setAction($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Action':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->action = $value;
+                    }
+                    return true;
+                case 'Currency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->currency = $value;
+                    }
+                    return true;
+                case 'ItemID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->itemID = $value;
+                    }
+                    return true;
+                case 'MaxBid':
+                    $this->maxBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'Quantity':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->quantity = (int) $value;
+                    }
+                    return true;
+                case 'SecondChanceEnabled':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->secondChanceEnabled = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'SiteCurrency':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->siteCurrency = $value;
+                    }
+                    return true;
+                case 'TimeBid':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->timeBid = new \DateTime($value);
+                    }
+                    return true;
+                case 'HighestBid':
+                    $this->highestBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'ConvertedPrice':
+                    $this->convertedPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TransactionID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->transactionID = $value;
+                    }
+                    return true;
+                case 'User':
+                    $this->user = \Nogrod\eBaySDK\Trading\UserType::xmlRead($reader);
+                    return true;
+                case 'UserConsent':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->userConsent = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                    }
+                    return true;
+                case 'BidCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bidCount = (int) $value;
+                    }
+                    return true;
+                case 'Message':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->message = $value;
+                    }
+                    return true;
+                case 'BestOfferID':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->bestOfferID = $value;
+                    }
+                    return true;
+                case 'MyMaxBid':
+                    $this->myMaxBid = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Currency');
-        if (null !== $value) {
-            $this->setCurrency($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemID');
-        if (null !== $value) {
-            $this->setItemID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MaxBid');
-        if (null !== $value) {
-            $this->setMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Quantity');
-        if (null !== $value) {
-            $this->setQuantity($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SecondChanceEnabled');
-        if (null !== $value) {
-            $this->setSecondChanceEnabled(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SiteCurrency');
-        if (null !== $value) {
-            $this->setSiteCurrency($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TimeBid');
-        if (null !== $value) {
-            $this->setTimeBid(new \DateTime($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}HighestBid');
-        if (null !== $value) {
-            $this->setHighestBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConvertedPrice');
-        if (null !== $value) {
-            $this->setConvertedPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');
-        if (null !== $value) {
-            $this->setTransactionID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}User');
-        if (null !== $value) {
-            $this->setUser(\Nogrod\eBaySDK\Trading\UserType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserConsent');
-        if (null !== $value) {
-            $this->setUserConsent(filter_var($value, FILTER_VALIDATE_BOOLEAN));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BidCount');
-        if (null !== $value) {
-            $this->setBidCount($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Message');
-        if (null !== $value) {
-            $this->setMessage($value);
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}BestOfferID');
-        if (null !== $value) {
-            $this->setBestOfferID($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MyMaxBid');
-        if (null !== $value) {
-            $this->setMyMaxBid(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
+        return false;
     }
 }

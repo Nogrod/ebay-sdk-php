@@ -98,38 +98,66 @@ class ReturnPolicyProfileType extends SellerProfileType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getReturnPolicyInfo();
+        $value = $this->returnPolicyInfo;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyInfo", $value);
+            $writer->startElementNs(null, 'returnPolicyInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getInternationalReturnPolicyInfo();
+        $value = $this->internationalReturnPolicyInfo;
         if (null !== $value) {
-            $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}internationalReturnPolicyInfo", $value);
+            $writer->startElementNs(null, 'internationalReturnPolicyInfo', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyInfo');
-        if (null !== $value) {
-            $this->setReturnPolicyInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType::fromKeyValue($value));
+        parent::xmlInitLists();
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'returnPolicyInfo':
+                    $this->returnPolicyInfo = \Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyInfoType::xmlRead($reader);
+                    return true;
+                case 'internationalReturnPolicyInfo':
+                    $this->internationalReturnPolicyInfo = \Nogrod\eBaySDK\BusinessPoliciesManagement\InternationalReturnPolicyInfoType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}internationalReturnPolicyInfo');
-        if (null !== $value) {
-            $this->setInternationalReturnPolicyInfo(\Nogrod\eBaySDK\BusinessPoliciesManagement\InternationalReturnPolicyInfoType::fromKeyValue($value));
-        }
+        return parent::xmlReadElement($reader);
     }
 }

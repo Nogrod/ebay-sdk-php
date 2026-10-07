@@ -210,57 +210,87 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getOriginalItemPrice();
+        $value = $this->originalItemPrice;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalItemPrice", $value);
+            $writer->startElementNs(null, 'OriginalItemPrice', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getOriginalItemShippingCost();
+        $value = $this->originalItemShippingCost;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalItemShippingCost", $value);
+            $writer->startElementNs(null, 'OriginalItemShippingCost', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getOriginalShippingService();
+        $value = $this->originalShippingService;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OriginalShippingService", $value);
+            $writer->writeElementNs(null, 'OriginalShippingService', null, (string) $value);
         }
-        $value = $this->getSellerDiscount();
+        $value = $this->sellerDiscount;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerDiscount", $v);
+                $writer->startElementNs(null, 'SellerDiscount', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellerDiscountsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellerDiscountsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemPrice');
-        if (null !== $value) {
-            $this->setOriginalItemPrice(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
+        $this->sellerDiscount = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'OriginalItemPrice':
+                    $this->originalItemPrice = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'OriginalItemShippingCost':
+                    $this->originalItemShippingCost = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'OriginalShippingService':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->originalShippingService = $value;
+                    }
+                    return true;
+                case 'SellerDiscount':
+                    $this->sellerDiscount[] = \Nogrod\eBaySDK\Trading\SellerDiscountType::xmlRead($reader);
+                    return true;
+            }
         }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalItemShippingCost');
-        if (null !== $value) {
-            $this->setOriginalItemShippingCost(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OriginalShippingService');
-        if (null !== $value) {
-            $this->setOriginalShippingService($value);
-        }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerDiscount');
-        if (null !== $value) {
-            $this->setSellerDiscount(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\SellerDiscountType::fromKeyValue($v);
-            }, $value));
-        }
+        return false;
     }
 }

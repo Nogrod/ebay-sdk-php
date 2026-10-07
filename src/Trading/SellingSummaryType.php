@@ -235,69 +235,105 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getActiveAuctionCount();
+        $value = $this->activeAuctionCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ActiveAuctionCount", $value);
+            $writer->writeElementNs(null, 'ActiveAuctionCount', null, (string) $value);
         }
-        $value = $this->getAuctionSellingCount();
+        $value = $this->auctionSellingCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount", $value);
+            $writer->writeElementNs(null, 'AuctionSellingCount', null, (string) $value);
         }
-        $value = $this->getTotalAuctionSellingValue();
+        $value = $this->totalAuctionSellingValue;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue", $value);
+            $writer->startElementNs(null, 'TotalAuctionSellingValue', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getTotalSoldCount();
+        $value = $this->totalSoldCount;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalSoldCount", $value);
+            $writer->writeElementNs(null, 'TotalSoldCount', null, (string) $value);
         }
-        $value = $this->getTotalSoldValue();
+        $value = $this->totalSoldValue;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TotalSoldValue", $value);
+            $writer->startElementNs(null, 'TotalSoldValue', null);
+            $value->xmlSerialize($writer);
+            $writer->endElement();
         }
-        $value = $this->getSoldDurationInDays();
+        $value = $this->soldDurationInDays;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SoldDurationInDays", $value);
+            $writer->writeElementNs(null, 'SoldDurationInDays', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\SellingSummaryType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\SellingSummaryType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ActiveAuctionCount');
-        if (null !== $value) {
-            $this->setActiveAuctionCount($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'ActiveAuctionCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->activeAuctionCount = (int) $value;
+                    }
+                    return true;
+                case 'AuctionSellingCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->auctionSellingCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalAuctionSellingValue':
+                    $this->totalAuctionSellingValue = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'TotalSoldCount':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->totalSoldCount = (int) $value;
+                    }
+                    return true;
+                case 'TotalSoldValue':
+                    $this->totalSoldValue = \Nogrod\eBaySDK\Trading\AmountType::xmlRead($reader);
+                    return true;
+                case 'SoldDurationInDays':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->soldDurationInDays = (int) $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}AuctionSellingCount');
-        if (null !== $value) {
-            $this->setAuctionSellingCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalAuctionSellingValue');
-        if (null !== $value) {
-            $this->setTotalAuctionSellingValue(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldCount');
-        if (null !== $value) {
-            $this->setTotalSoldCount($value);
-        }
-        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TotalSoldValue');
-        if (null !== $value) {
-            $this->setTotalSoldValue(\Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($value));
-        }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}SoldDurationInDays');
-        if (null !== $value) {
-            $this->setSoldDurationInDays($value);
-        }
+        return false;
     }
 }

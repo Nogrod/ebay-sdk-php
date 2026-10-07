@@ -98,34 +98,60 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
         parent::xmlSerializeElements($writer);
-        $value = $this->getJob();
+        $value = $this->job;
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}Job", $v);
+                $writer->startElementNs(null, 'Job', null);
+                $v->xmlSerialize($writer);
+                $writer->endElement();
             }
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponseType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\BusinessPoliciesManagement\GetConsolidationJobStatusResponseType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}Job');
-        if (null !== $value) {
-            $this->setJob(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::fromKeyValue($v);
-            }, $value));
+        parent::xmlInitLists();
+        $this->job = [];
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return parent::xmlReadAttribute($reader);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('http://www.ebay.com/marketplace/selling/v1/services' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'Job':
+                    $this->job[] = \Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType::xmlRead($reader);
+                    return true;
+            }
         }
+        return parent::xmlReadElement($reader);
     }
 }

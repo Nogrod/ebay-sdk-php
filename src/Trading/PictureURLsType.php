@@ -91,37 +91,67 @@ class PictureURLsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
 
     protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
     {
-        $value = $this->getEBayPictureURL();
+        $value = $this->eBayPictureURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}eBayPictureURL", $value);
+            $writer->writeElementNs(null, 'eBayPictureURL', null, (string) $value);
         }
-        $value = $this->getExternalPictureURL();
+        $value = $this->externalPictureURL;
         if (null !== $value) {
-            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL", $value);
+            $writer->writeElementNs(null, 'ExternalPictureURL', null, (string) $value);
         }
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
     {
-        return self::fromKeyValue($reader->parseInnerTree([]));
+        return self::xmlRead($reader);
     }
 
-    public static function fromKeyValue($keyValue): \Nogrod\eBaySDK\Trading\PictureURLsType
+    /**
+     * Reads the element the reader is positioned on and moves past its end.
+     */
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\PictureURLsType
     {
         $self = new self();
-        $self->setKeyValue($keyValue);
+        $self->xmlInitLists();
+        Func::readObject($reader, $self);
         return $self;
     }
 
-    public function setKeyValue($keyValue): void
+    protected function xmlInitLists(): void
     {
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}eBayPictureURL');
-        if (null !== $value) {
-            $this->setEBayPictureURL($value);
+    }
+
+    /**
+     * Called by Func::readObject(): reads the attribute the reader is positioned on,
+     * if it belongs to this type.
+     */
+    public function xmlReadAttribute(\XMLReader $reader): bool
+    {
+        return false;
+    }
+
+    /**
+     * Called by Func::readObject(): reads the child element the reader is positioned
+     * on, if it belongs to this type, and moves past its end.
+     */
+    public function xmlReadElement(\XMLReader $reader): bool
+    {
+        if ('urn:ebay:apis:eBLBaseComponents' === $reader->namespaceURI) {
+            switch ($reader->localName) {
+                case 'eBayPictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->eBayPictureURL = $value;
+                    }
+                    return true;
+                case 'ExternalPictureURL':
+                    $value = Func::readText($reader);
+                    if ('' !== $value) {
+                        $this->externalPictureURL = $value;
+                    }
+                    return true;
+            }
         }
-        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL');
-        if (null !== $value) {
-            $this->setExternalPictureURL($value);
-        }
+        return false;
     }
 }
