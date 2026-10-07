@@ -12,7 +12,6 @@ class BaseType
         $reflect = new ReflectionClass($this);
         $props = $reflect->getProperties();
         foreach ($props as $prop) {
-            $prop->setAccessible(true);
             $array[$this->translateName($prop->getName())] = $prop->getValue($this);
         }
 
@@ -23,10 +22,11 @@ class BaseType
     {
         $reflect = new ReflectionClass($this);
         foreach ($array as $key => $item) {
-            if (!($prop = $reflect->getProperty($this->camelize($key)))) {
+            $name = $this->camelize($key);
+            if (!$reflect->hasProperty($name)) {
                 continue;
             }
-            $prop->setAccessible(true);
+            $prop = $reflect->getProperty($name);
             $prop->setValue($this, $item);
         }
     }

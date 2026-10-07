@@ -41,7 +41,7 @@ class OAuthClient
      * @param Psr17Factory|null $messageFactory
      * @param ClientInterface|null $client
      */
-    public function __construct(array $config = [], Psr17Factory $messageFactory = null, ClientInterface $client = null)
+    public function __construct(array $config = [], ?Psr17Factory $messageFactory = null, ?ClientInterface $client = null)
     {
         $config = array_merge([
             'sandbox' => false,
@@ -108,8 +108,9 @@ class OAuthClient
      *
      * @return GetAppTokenRestResponse|null
      */
-    public function getAppToken(GetAppTokenRestRequest $request = null)
+    public function getAppToken(?GetAppTokenRestRequest $request = null)
     {
+        $request ??= new GetAppTokenRestRequest();
         if (!$request->getGrantType()) {
             $request->setGrantType('client_credentials');
         }
