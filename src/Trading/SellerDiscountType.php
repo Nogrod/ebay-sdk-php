@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  name, and amount of the seller discount.
  * XSD Type: SellerDiscountType
  */
-class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for a seller discount campaign. This ID is automatically
@@ -271,5 +271,20 @@ class SellerDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CampaignID'] = $this->campaignID;
+        $data['CampaignDisplayName'] = $this->campaignDisplayName;
+        $data['ItemDiscountAmount'] = $this->itemDiscountAmount;
+        $data['ShippingDiscountAmount'] = $this->shippingDiscountAmount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

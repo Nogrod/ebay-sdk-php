@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ShippingDetailsType
  */
-class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is deprecated and has been replaced by the <b>ShippingDetails.PaymentEdited</b> field.
@@ -2797,5 +2797,49 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AllowPaymentEdit'] = $this->allowPaymentEdit;
+        $data['ApplyShippingDiscount'] = $this->applyShippingDiscount;
+        $data['GlobalShipping'] = $this->globalShipping;
+        $data['CalculatedShippingRate'] = $this->calculatedShippingRate;
+        $data['ChangePaymentInstructions'] = $this->changePaymentInstructions;
+        $data['PaymentEdited'] = $this->paymentEdited;
+        $data['SalesTax'] = $this->salesTax;
+        $data['ShippingRateErrorMessage'] = $this->shippingRateErrorMessage;
+        $data['ShippingRateType'] = $this->shippingRateType;
+        $data['ShippingServiceOptions'] = Func::jsonList($this->shippingServiceOptions);
+        $data['InternationalShippingServiceOption'] = Func::jsonList($this->internationalShippingServiceOption);
+        $data['ShippingType'] = $this->shippingType;
+        $data['SellingManagerSalesRecordNumber'] = $this->sellingManagerSalesRecordNumber;
+        $data['ThirdPartyCheckout'] = $this->thirdPartyCheckout;
+        $data['TaxTable'] = Func::jsonList($this->taxTable);
+        $data['GetItFast'] = $this->getItFast;
+        $data['ShippingServiceUsed'] = $this->shippingServiceUsed;
+        $data['DefaultShippingCost'] = $this->defaultShippingCost;
+        $data['ShippingDiscountProfileID'] = $this->shippingDiscountProfileID;
+        $data['FlatShippingDiscount'] = $this->flatShippingDiscount;
+        $data['CalculatedShippingDiscount'] = $this->calculatedShippingDiscount;
+        $data['PromotionalShippingDiscount'] = $this->promotionalShippingDiscount;
+        $data['InternationalShippingDiscountProfileID'] = $this->internationalShippingDiscountProfileID;
+        $data['InternationalFlatShippingDiscount'] = $this->internationalFlatShippingDiscount;
+        $data['InternationalCalculatedShippingDiscount'] = $this->internationalCalculatedShippingDiscount;
+        $data['InternationalPromotionalShippingDiscount'] = $this->internationalPromotionalShippingDiscount;
+        $data['PromotionalShippingDiscountDetails'] = $this->promotionalShippingDiscountDetails;
+        $data['ExcludeShipToLocation'] = Func::jsonList($this->excludeShipToLocation);
+        $data['eBayEstimatedLabelCost'] = $this->eBayEstimatedLabelCost;
+        $data['SellerExcludeShipToLocationsPreference'] = $this->sellerExcludeShipToLocationsPreference;
+        $data['ShipmentTrackingDetails'] = Func::jsonList($this->shipmentTrackingDetails);
+        $data['RateTableDetails'] = $this->rateTableDetails;
+        $data['ShippingLabelPolicy'] = $this->shippingLabelPolicy;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

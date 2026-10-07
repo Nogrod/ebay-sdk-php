@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>BuyerRequirementDetails</b> container, which indicates if the seller has set any buyer requirements that apply to a listing. Sellers use buyer requirements if they want to avoid working with 'risky' buyers, who may be brand new to eBay, have low/poor Feedback scores, or who have some unpaid item strikes or buyer-initiated cancellations.
  * XSD Type: BuyerRequirementDetailsType
  */
-class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is returned as <code>true</code> if the seller has enabled the setting to block buyers/bidders who reside (according to their eBay primary shipping address) in countries that are on the seller's ship-to exclusion list.
@@ -258,5 +258,20 @@ class BuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShipToRegistrationCountry'] = $this->shipToRegistrationCountry;
+        $data['ZeroFeedbackScore'] = $this->zeroFeedbackScore;
+        $data['MaximumItemRequirements'] = $this->maximumItemRequirements;
+        $data['MaximumUnpaidItemStrikesInfo'] = $this->maximumUnpaidItemStrikesInfo;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

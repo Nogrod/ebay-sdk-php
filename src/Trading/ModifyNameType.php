@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>ModifyName</b> container in a <b>ReviseFixedPriceItem</b> or <b>RelistFixedPriceItem</b> call to rename a Variation Specific name for a multiple-variation listing. A <b>ModifyName</b> container is needed for each Variation Specific name that the seller wishes to change the name of in a multiple-variation listing.
  * XSD Type: ModifyNameType
  */
-class ModifyNameType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ModifyNameType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * In this field, the seller identifies the current name (e.g., Material) of a Variation Specific in the active listing that the seller wishes to change. If this field is used, the <b>NewName</b> field must also be specified.
@@ -195,5 +195,18 @@ class ModifyNameType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['NewName'] = $this->newName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * A list of stock-keeping unit (SKU) identifiers that a seller uses in listings.
  * XSD Type: SKUArrayType
  */
-class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A SKU (stock keeping unit) is an identifier defined by a seller.
@@ -260,5 +260,17 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SKU'] = Func::jsonList($this->sKU);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

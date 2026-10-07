@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  shipping cost of the order line item.
  * XSD Type: SellerDiscountsType
  */
-class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The original purchase price of the order line item (before any seller discounts are
@@ -292,5 +292,20 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OriginalItemPrice'] = $this->originalItemPrice;
+        $data['OriginalItemShippingCost'] = $this->originalItemShippingCost;
+        $data['OriginalShippingService'] = $this->originalShippingService;
+        $data['SellerDiscount'] = Func::jsonList($this->sellerDiscount);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

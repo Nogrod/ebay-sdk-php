@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>VariationKey</b> container to identify one or more item variations to either add or remove from an eBay user's Watch List.
  * XSD Type: VariationKeyType
  */
-class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of the fixed-price listing whose variation(s) should be added to or removed from the watch list.
@@ -206,5 +206,18 @@ class VariationKeyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemID'] = $this->itemID;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

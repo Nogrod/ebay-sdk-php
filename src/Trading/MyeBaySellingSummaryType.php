@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains summary information about the items the seller is selling.
  * XSD Type: MyeBaySellingSummaryType
  */
-class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The number of currently active auctions that will sell. That
@@ -563,5 +563,26 @@ class MyeBaySellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ActiveAuctionCount'] = $this->activeAuctionCount;
+        $data['AuctionSellingCount'] = $this->auctionSellingCount;
+        $data['TotalAuctionSellingValue'] = $this->totalAuctionSellingValue;
+        $data['TotalSoldCount'] = $this->totalSoldCount;
+        $data['TotalSoldValue'] = $this->totalSoldValue;
+        $data['SoldDurationInDays'] = $this->soldDurationInDays;
+        $data['ClassifiedAdCount'] = $this->classifiedAdCount;
+        $data['TotalListingsWithLeads'] = $this->totalListingsWithLeads;
+        $data['QuantityLimitRemaining'] = $this->quantityLimitRemaining;
+        $data['AmountLimitRemaining'] = $this->amountLimitRemaining;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

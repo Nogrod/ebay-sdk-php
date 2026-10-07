@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>ItemBidDetails</b> container that is returned in <b>GetAllBidders</b>. The <b>ItemBidDetails</b> container shows a few details about a user's bid on an auction listing. An <b>ItemBidDetails</b> container is returned for each bid that a user makes during the life of an auction listing. An <b>ItemBidDetails</b> container will only be returned to the seller of the auction listing or to an actual bidder for the listing.
  * XSD Type: ItemBidDetailsType
  */
-class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of an item listed on the eBay site.
@@ -366,5 +366,21 @@ class ItemBidDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemID'] = $this->itemID;
+        $data['CategoryID'] = $this->categoryID;
+        $data['BidCount'] = $this->bidCount;
+        $data['SellerID'] = $this->sellerID;
+        $data['LastBidTime'] = Func::jsonDate($this->lastBidTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

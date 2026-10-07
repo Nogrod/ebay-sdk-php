@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  This container is supplied for all generated pictures.
  * XSD Type: PictureSetMemberType
  */
-class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * URL for the picture.
@@ -199,5 +199,19 @@ class PictureSetMemberType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MemberURL'] = $this->memberURL;
+        $data['PictureHeight'] = $this->pictureHeight;
+        $data['PictureWidth'] = $this->pictureWidth;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

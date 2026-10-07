@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  field is returned as an empty element (i.e., a boolean value is not returned).
  * XSD Type: ShippingTermRequiredDefinitionType
  */
-class ShippingTermRequiredDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingTermRequiredDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
@@ -64,5 +64,16 @@ class ShippingTermRequiredDefinitionType implements \Sabre\Xml\XmlSerializable, 
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

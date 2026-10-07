@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetShippingDiscountProfilesResponse:
-    xml_root_name: GetShippingDiscountProfilesResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

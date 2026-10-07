@@ -19,7 +19,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>GetMemberMessages</b> and <b>GetMyMessages</b> API response. It doesn't matter if an image was uploaded using the web flow or using the API, it can be accessed using either the web flow or the API and web.
  * XSD Type: MessageMediaType
  */
-class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * URL of an image to be included in a message.
@@ -177,5 +177,18 @@ class MessageMediaType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MediaURL'] = $this->mediaURL;
+        $data['MediaName'] = $this->mediaName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

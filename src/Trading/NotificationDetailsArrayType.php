@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  This container is only returned if there were notifications related to this listing during the specified time range.
  * XSD Type: NotificationDetailsArrayType
  */
-class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Each <b>NotificationDetails</b> container consists of detailed information about one notification. <b>NotificationDetails</b> container(s) are only returned if there were one or more notifications related to this listing during the specified time range.
@@ -159,5 +159,17 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['NotificationDetails'] = Func::jsonList($this->notificationDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

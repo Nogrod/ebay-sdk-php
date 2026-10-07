@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Monetary amount. This type is used in several locations in payment policies and return policies.
  * XSD Type: Amount
  */
-class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var float $__value
@@ -151,5 +151,18 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['currencyId'] = $this->currencyId;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

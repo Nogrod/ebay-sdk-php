@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details about type of Carrier used to ship an item.
  * XSD Type: ShippingCarrierDetailsType
  */
-class ShippingCarrierDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingCarrierDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Numeric identifier.
@@ -312,5 +312,21 @@ class ShippingCarrierDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingCarrierID'] = $this->shippingCarrierID;
+        $data['Description'] = $this->description;
+        $data['ShippingCarrier'] = $this->shippingCarrier;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

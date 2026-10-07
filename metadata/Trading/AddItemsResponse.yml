@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\AddItemsResponse:
-    xml_root_name: AddItemsResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -613,4 +613,18 @@ class RelistItemResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['Fees'] = Func::jsonList($this->fees);
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['CategoryID'] = $this->categoryID;
+        $data['Category2ID'] = $this->category2ID;
+        $data['DiscountReason'] = Func::jsonList($this->discountReason);
+        $data['ProductSuggestions'] = Func::jsonList($this->productSuggestions);
+        return $data;
+    }
 }

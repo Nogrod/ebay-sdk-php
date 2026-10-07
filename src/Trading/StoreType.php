@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to provide details about a seller's eBay Store.
  * XSD Type: StoreType
  */
-class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Name of the eBay Store. The name is shown
@@ -538,5 +538,24 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['URLPath'] = $this->uRLPath;
+        $data['URL'] = $this->uRL;
+        $data['Description'] = $this->description;
+        $data['Logo'] = $this->logo;
+        $data['CustomCategories'] = Func::jsonList($this->customCategories);
+        $data['MerchDisplay'] = $this->merchDisplay;
+        $data['LastOpenedTime'] = Func::jsonDate($this->lastOpenedTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

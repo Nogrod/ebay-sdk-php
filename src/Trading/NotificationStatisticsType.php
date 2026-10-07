@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  a given application ID and time period.
  * XSD Type: NotificationStatisticsType
  */
-class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Returns the number of notifications delivered successfully during the given
@@ -298,5 +298,21 @@ class NotificationStatisticsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DeliveredCount'] = $this->deliveredCount;
+        $data['QueuedNewCount'] = $this->queuedNewCount;
+        $data['QueuedPendingCount'] = $this->queuedPendingCount;
+        $data['ExpiredCount'] = $this->expiredCount;
+        $data['ErrorCount'] = $this->errorCount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

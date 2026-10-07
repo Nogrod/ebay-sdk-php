@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details about a specific site.
  * XSD Type: SiteDetailsType
  */
-class SiteDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SiteDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Short name that identifies an eBay site. Usually, an eBay site is associated
@@ -266,5 +266,20 @@ class SiteDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Site'] = $this->site;
+        $data['SiteID'] = $this->siteID;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

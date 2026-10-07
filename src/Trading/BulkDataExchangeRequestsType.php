@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for Bulk Data Exchange Requests.
  * XSD Type: BulkDataExchangeRequestsType
  */
-class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Defines default or required values for requests in the payload.
@@ -1123,5 +1123,30 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Header'] = $this->header;
+        $data['AddFixedPriceItemRequest'] = Func::jsonList($this->addFixedPriceItemRequest);
+        $data['AddItemRequest'] = Func::jsonList($this->addItemRequest);
+        $data['EndFixedPriceItemRequest'] = Func::jsonList($this->endFixedPriceItemRequest);
+        $data['EndItemRequest'] = Func::jsonList($this->endItemRequest);
+        $data['OrderAckRequest'] = Func::jsonList($this->orderAckRequest);
+        $data['RelistFixedPriceItemRequest'] = Func::jsonList($this->relistFixedPriceItemRequest);
+        $data['RelistItemRequest'] = Func::jsonList($this->relistItemRequest);
+        $data['ReviseFixedPriceItemRequest'] = Func::jsonList($this->reviseFixedPriceItemRequest);
+        $data['ReviseInventoryStatusRequest'] = Func::jsonList($this->reviseInventoryStatusRequest);
+        $data['ReviseItemRequest'] = Func::jsonList($this->reviseItemRequest);
+        $data['SetShipmentTrackingInfoRequest'] = Func::jsonList($this->setShipmentTrackingInfoRequest);
+        $data['VerifyAddFixedPriceItemRequest'] = Func::jsonList($this->verifyAddFixedPriceItemRequest);
+        $data['VerifyAddItemRequest'] = Func::jsonList($this->verifyAddItemRequest);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

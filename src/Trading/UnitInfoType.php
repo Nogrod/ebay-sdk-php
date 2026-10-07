@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type provides information about the weight, volume or other quantity measurement of a listed item. The European Union requires listings for certain types of products to include the price per unit so buyers can accurately compare prices. eBay uses the <strong>UnitType</strong> and <strong>UnitQuantity</strong> values and the item's listed price to calculate and display the per-unit price on eBay EU sites.
  * XSD Type: UnitInfoType
  */
-class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Designation of size, weight, volume or count to be used to specify the unit quantity of the item. This value can be one of the following:
@@ -168,5 +168,18 @@ class UnitInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['UnitType'] = $this->unitType;
+        $data['UnitQuantity'] = $this->unitQuantity;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

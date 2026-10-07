@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ProductListingDetailsType
  */
-class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * If this value is <code>true</code>, the listing will use the eBay catalog product's stock photo. In an Add/Revise/Relist call, this field is set to <code>true</code> by default. If you will be using an eBay catalog product to list your item, it is always advised to include the stock photo. Sellers can also add their own pictures using one or more <b>Item.PictureDetails.PictureURL</b> fields. Seller photos are particularly recommended for used and modified products to give prospective buyers a clear sense of exactly what they are purchasing.
@@ -985,5 +985,31 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['IncludeStockPhotoURL'] = $this->includeStockPhotoURL;
+        $data['UseStockPhotoURLAsGallery'] = $this->useStockPhotoURLAsGallery;
+        $data['StockPhotoURL'] = $this->stockPhotoURL;
+        $data['Copyright'] = Func::jsonList($this->copyright);
+        $data['ProductReferenceID'] = $this->productReferenceID;
+        $data['DetailsURL'] = $this->detailsURL;
+        $data['ProductDetailsURL'] = $this->productDetailsURL;
+        $data['ReturnSearchResultOnDuplicates'] = $this->returnSearchResultOnDuplicates;
+        $data['ISBN'] = $this->iSBN;
+        $data['UPC'] = $this->uPC;
+        $data['EAN'] = $this->eAN;
+        $data['BrandMPN'] = $this->brandMPN;
+        $data['UseFirstProduct'] = $this->useFirstProduct;
+        $data['IncludeeBayProductDetails'] = $this->includeeBayProductDetails;
+        $data['NameValueList'] = Func::jsonList($this->nameValueList);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  Because a double is used to represent the amount, this also means whole monetary amounts may be returned with only one 0 after the decimal. For example, a dollar value could be returned as 1.0 instead of 1.00 in calls like <b>AddItem</b>.
  * XSD Type: AmountType
  */
-class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var float $__value
@@ -193,5 +193,18 @@ class AmountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['currencyID'] = $this->currencyID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  A seller's eligibility is determined by their Feedback score.
  * XSD Type: FeatureEligibilityType
  */
-class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates whether the seller is eligible to create auction listings enabled with the 'Buy It Now' option. A value of <code>true</code> means that the seller is eligible; a value of <code>false</code> indicates that they are not eligible.
@@ -286,5 +286,21 @@ class FeatureEligibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['QualifiesForBuyItNow'] = $this->qualifiesForBuyItNow;
+        $data['QualifiesForBuyItNowMultiple'] = $this->qualifiesForBuyItNowMultiple;
+        $data['QualifiedForFixedPriceOneDayDuration'] = $this->qualifiedForFixedPriceOneDayDuration;
+        $data['QualifiesForVariations'] = $this->qualifiesForVariations;
+        $data['QualifiedForAuctionOneDayDuration'] = $this->qualifiedForAuctionOneDayDuration;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

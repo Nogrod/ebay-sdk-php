@@ -852,4 +852,22 @@ class SendInvoiceRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['OrderID'] = $this->orderID;
+        $data['InternationalShippingServiceOptions'] = Func::jsonList($this->internationalShippingServiceOptions);
+        $data['ShippingServiceOptions'] = Func::jsonList($this->shippingServiceOptions);
+        $data['SalesTax'] = $this->salesTax;
+        $data['PaymentMethods'] = Func::jsonList($this->paymentMethods);
+        $data['CheckoutInstructions'] = $this->checkoutInstructions;
+        $data['EmailCopyToSeller'] = $this->emailCopyToSeller;
+        $data['SKU'] = $this->sKU;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['AdjustmentAmount'] = $this->adjustmentAmount;
+        return $data;
+    }
 }

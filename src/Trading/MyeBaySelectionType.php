@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  searches, favorite sellers, and second chance offers.
  * XSD Type: MyeBaySelectionType
  */
-class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Specifies whether or not to include the container in the response.
@@ -490,5 +490,24 @@ class MyeBaySelectionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Include'] = $this->include;
+        $data['IncludeItemCount'] = $this->includeItemCount;
+        $data['IncludeFavoriteSearcheCount'] = $this->includeFavoriteSearcheCount;
+        $data['IncludeFavoriteSellerCount'] = $this->includeFavoriteSellerCount;
+        $data['Sort'] = $this->sort;
+        $data['MaxResults'] = $this->maxResults;
+        $data['UserDefinedListName'] = $this->userDefinedListName;
+        $data['IncludeListContents'] = $this->includeListContents;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

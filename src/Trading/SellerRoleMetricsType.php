@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Specifies 1 year feedback metrics for a seller.
  * XSD Type: SellerRoleMetricsType
  */
-class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Count of positive feedback entries given as a seller.
@@ -500,5 +500,26 @@ class SellerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PositiveFeedbackLeftCount'] = $this->positiveFeedbackLeftCount;
+        $data['NegativeFeedbackLeftCount'] = $this->negativeFeedbackLeftCount;
+        $data['NeutralFeedbackLeftCount'] = $this->neutralFeedbackLeftCount;
+        $data['FeedbackLeftPercent'] = $this->feedbackLeftPercent;
+        $data['RepeatBuyerCount'] = $this->repeatBuyerCount;
+        $data['RepeatBuyerPercent'] = $this->repeatBuyerPercent;
+        $data['UniqueBuyerCount'] = $this->uniqueBuyerCount;
+        $data['TransactionPercent'] = $this->transactionPercent;
+        $data['CrossBorderTransactionCount'] = $this->crossBorderTransactionCount;
+        $data['CrossBorderTransactionPercent'] = $this->crossBorderTransactionPercent;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

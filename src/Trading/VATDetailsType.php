@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: VATDetailsType
  */
-class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field should be included in an Add/Revise/Relist call and set to <code>true</code> if the seller is registered on the selling site as a Business Seller. This field must be included and set to <code>true</code> if the <b>RestrictedToBusiness</b> field is also included and set to <code>true</code>. The <b>RestrictedToBusiness</b> field is used by German (Site ID 77), Austrian (Site ID 16), and Swiss (Site ID 193) sellers who wish to restrict sales of their item to other users registered as business users.
@@ -350,5 +350,21 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BusinessSeller'] = $this->businessSeller;
+        $data['RestrictedToBusiness'] = $this->restrictedToBusiness;
+        $data['VATPercent'] = $this->vATPercent;
+        $data['VATSite'] = $this->vATSite;
+        $data['VATID'] = $this->vATID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

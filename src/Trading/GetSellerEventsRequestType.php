@@ -751,4 +751,20 @@ class GetSellerEventsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['StartTimeFrom'] = Func::jsonDate($this->startTimeFrom);
+        $data['StartTimeTo'] = Func::jsonDate($this->startTimeTo);
+        $data['EndTimeFrom'] = Func::jsonDate($this->endTimeFrom);
+        $data['EndTimeTo'] = Func::jsonDate($this->endTimeTo);
+        $data['ModTimeFrom'] = Func::jsonDate($this->modTimeFrom);
+        $data['ModTimeTo'] = Func::jsonDate($this->modTimeTo);
+        $data['NewItemFilter'] = $this->newItemFilter;
+        $data['IncludeWatchCount'] = $this->includeWatchCount;
+        $data['IncludeVariationSpecifics'] = $this->includeVariationSpecifics;
+        $data['HideVariations'] = $this->hideVariations;
+        return $data;
+    }
 }

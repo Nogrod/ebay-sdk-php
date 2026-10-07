@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type that provides detailed information on a Listing Designer Theme or Layout.
  * XSD Type: DescriptionTemplateType
  */
-class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value is a unique identifier for the Listing Designer Theme group, such as Holiday/Seasonal, Special Events, or Patterns/Textures. This field is not applicable and will not be returned for a Listing Designer Layout.
@@ -325,5 +325,22 @@ class DescriptionTemplateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['GroupID'] = $this->groupID;
+        $data['ID'] = $this->iD;
+        $data['ImageURL'] = $this->imageURL;
+        $data['Name'] = $this->name;
+        $data['TemplateXML'] = $this->templateXML;
+        $data['Type'] = $this->type;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>BiddingSummary</b> container, which is returned in the <b>GetAllBidders</b> response if the <b>IncludeBiddingSummary</b> boolean field is included and set to <code>true</code> in the call request. The <b>BiddingSummary</b> container consists of bidding history information for a specific bidder (specified in the <b>User.UserID</b> field).
  * XSD Type: BiddingSummaryType
  */
-class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the length of time (in number of days) that is being used to calculate all counts in the <b>BiddingSummary</b> container. This value is generally <code>30</code> (days), which means that all counts in the container have been calculated from the present time and going back 30 days in the past.
@@ -451,5 +451,23 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SummaryDays'] = $this->summaryDays;
+        $data['TotalBids'] = $this->totalBids;
+        $data['BidActivityWithSeller'] = $this->bidActivityWithSeller;
+        $data['BidsToUniqueSellers'] = $this->bidsToUniqueSellers;
+        $data['BidsToUniqueCategories'] = $this->bidsToUniqueCategories;
+        $data['BidRetractions'] = $this->bidRetractions;
+        $data['ItemBidDetails'] = Func::jsonList($this->itemBidDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

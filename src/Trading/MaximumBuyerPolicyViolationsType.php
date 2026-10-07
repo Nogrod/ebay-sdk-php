@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is deprecated as sellers can no longer set a buyer policy violation threshold Buyer Requirement at the listing-level in Add/Revise/Relist calls.
  * XSD Type: MaximumBuyerPolicyViolationsType
  */
-class MaximumBuyerPolicyViolationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumBuyerPolicyViolationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is deprecated.
@@ -153,5 +153,18 @@ class MaximumBuyerPolicyViolationsType implements \Sabre\Xml\XmlSerializable, \S
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Count'] = $this->count;
+        $data['Period'] = $this->period;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

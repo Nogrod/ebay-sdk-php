@@ -363,4 +363,15 @@ class PlaceOfferRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Offer'] = $this->offer;
+        $data['ItemID'] = $this->itemID;
+        $data['BlockOnWarning'] = $this->blockOnWarning;
+        $data['AffiliateTrackingDetails'] = $this->affiliateTrackingDetails;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        return $data;
+    }
 }

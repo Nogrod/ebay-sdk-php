@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>BidderNoticePreferences</b> container, which consists of the seller's preference for receiving contact information for unsuccessful bidders in auction listings.
  * XSD Type: BidderNoticePreferencesType
  */
-class BidderNoticePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BidderNoticePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This boolean field should be set to <b>true</b> in a <b>SetUserPreferences</b> call if the seller wishes to receive contact information for bidders who have bid on a seller's auction item, but did not win. This might be helpful to a seller if that seller wishes to proposed Second Chance Offers to these unsuccessful bidders if the seller has multiple, identical items, or if the winning bidder does not pay for the original auction item.
@@ -116,5 +116,17 @@ class BidderNoticePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['UnsuccessfulBidderNoticeIncludeMyItems'] = $this->unsuccessfulBidderNoticeIncludeMyItems;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

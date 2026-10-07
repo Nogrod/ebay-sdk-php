@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is deprecated, as the maximum number of policy violations for a buyer is no longer a valid Buyer Requirement at the account or listing level.
  * XSD Type: PolicyViolationDurationDetailsType
  */
-class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $period
@@ -141,5 +141,18 @@ class PolicyViolationDurationDetailsType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Period'] = $this->period;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

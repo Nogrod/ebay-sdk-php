@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>SellerPaymentProfile</b> container, which is used in an Add/Revise/Relist/Verify Trading API call to reference and use a payment business policy.
  * XSD Type: SellerPaymentProfileType
  */
-class SellerPaymentProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerPaymentProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of a payment business policy. A <b>PaymentProfileID</b> and/or a <b>PaymentProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the payment settings/values of a payment business policy. If both fields are provided and their values don't match, the <b>PaymentProfileID</b> takes precedence.
@@ -171,5 +171,18 @@ class SellerPaymentProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PaymentProfileID'] = $this->paymentProfileID;
+        $data['PaymentProfileName'] = $this->paymentProfileName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

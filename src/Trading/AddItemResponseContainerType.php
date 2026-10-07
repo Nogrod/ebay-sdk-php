@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>AddItemResponseContainer</b> containers that are returned in an <b>AddItems</b> call. An <b>AddItemResponseContainer</b> container is returned for each item created through an <b>AddItems</b> call. Each item being created through an <b>AddItems</b> call is identified through a unique <b>AddItemRequestContainer.MessageID</b> value that is defined by the seller. To match up the <b>AddItemResponseContainer</b> to the <b>AddItemRequestContainer</b>, look for a <b>AddItemResponseContainer.CorrelationID</b> value that matches the <b>AddItemRequestContainer.MessageID</b> value in the request.
  * XSD Type: AddItemResponseContainerType
  */
-class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for the new listing. This field is returned as long as the listing was successfully created.
@@ -759,5 +759,26 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemID'] = $this->itemID;
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['Fees'] = Func::jsonList($this->fees);
+        $data['CategoryID'] = $this->categoryID;
+        $data['Category2ID'] = $this->category2ID;
+        $data['CorrelationID'] = $this->correlationID;
+        $data['Errors'] = Func::jsonList($this->errors);
+        $data['Message'] = $this->message;
+        $data['DiscountReason'] = Func::jsonList($this->discountReason);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

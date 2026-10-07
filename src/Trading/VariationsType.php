@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  variations and 20 "Black, Medium" variations.
  * XSD Type: VariationsType
  */
-class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -918,5 +918,20 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Variation'] = Func::jsonList($this->variation);
+        $data['Pictures'] = Func::jsonList($this->pictures);
+        $data['VariationSpecificsSet'] = Func::jsonList($this->variationSpecificsSet);
+        $data['ModifyNameList'] = Func::jsonList($this->modifyNameList);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

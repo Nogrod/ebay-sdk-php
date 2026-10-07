@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: MultiLegShippingDetailsType
  */
-class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains information about the domestic leg of a international order being shipped through the Global Shipping Program or eBay International Shipping, including the selected shipping service, the domestic shipping cost, the domestic address of the international shipping provider, and the estimated shipping time range.
@@ -221,5 +221,19 @@ class MultiLegShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SellerShipmentToLogisticsProvider'] = $this->sellerShipmentToLogisticsProvider;
+        $data['LogisticsProviderShipmentToBuyer'] = $this->logisticsProviderShipmentToBuyer;
+        $data['FinalDestinationAddress'] = $this->finalDestinationAddress;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

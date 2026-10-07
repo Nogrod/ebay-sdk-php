@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  container consists of detailed information on one order line item.
  * XSD Type: TransactionArrayType
  */
-class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>Transaction</b> container is returned for each line item in the order. This container consists of detailed information on one order line item.
@@ -171,5 +171,17 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Transaction'] = Func::jsonList($this->transaction);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

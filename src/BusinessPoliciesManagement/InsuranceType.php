@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>insurance</b> container, which contains the type and cost of domestic and international shipping insurance. The <b>insurance</b> container is required in the shipping policy if the seller offers shipping insurance to domestic and/or international buyers. Only sellers listing on the AU, FR, and IT sites can offer shipping insurance directly to the buyer.
  * XSD Type: Insurance
  */
-class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This dollar value indicates the cost to the buyer to purchase domestic shipping insurance for the item. This field is only applicable to AU, FR, or IT sellers. This field is conditionally required if the seller is offering domestic shipping insurance to the buyer, and the <b>domesticInsuranceOption</b> is 'Optional' or 'Required'.
@@ -282,5 +282,20 @@ class InsuranceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['domesticInsuranceFee'] = $this->domesticInsuranceFee;
+        $data['domesticInsuranceOption'] = $this->domesticInsuranceOption;
+        $data['intlInsuranceOption'] = $this->intlInsuranceOption;
+        $data['intlInsuranceFee'] = $this->intlInsuranceFee;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

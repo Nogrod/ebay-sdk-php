@@ -17,7 +17,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  For more details about eBay Plus, see <a href="https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/ebay-plus.html">eBay Plus</a>.
  * XSD Type: EBayPLUSPreferenceType
  */
-class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An ISO 3166 standard two-letter code that identifies a country where the seller is eligible to offer eBay Plus on fixed price listings.
@@ -218,5 +218,19 @@ class EBayPLUSPreferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Country'] = $this->country;
+        $data['OptInStatus'] = $this->optInStatus;
+        $data['ListingPreference'] = $this->listingPreference;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

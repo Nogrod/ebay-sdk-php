@@ -21,13 +21,17 @@ Add new WSDL/XSD to `config.yaml` if needed
 $ composer run-script download
 ```
 
-## Build Classes/Metadata
+## Build Classes
 
 Add new <WSDL/XSD Name>.yaml to config folder if needed
 
 ``` bash
 $ composer run-script build
 ```
+
+The generated types read and write themselves through XMLReader/XMLWriter (via
+sabre/xml); there is no JMS metadata. `TradingClient::serialize($object, 'json')`
+gives the element and attribute names as keys.
 
 ## Note 
 

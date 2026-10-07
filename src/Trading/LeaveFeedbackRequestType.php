@@ -613,4 +613,19 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['CommentText'] = $this->commentText;
+        $data['CommentType'] = $this->commentType;
+        $data['TransactionID'] = $this->transactionID;
+        $data['TargetUser'] = $this->targetUser;
+        $data['SellerItemRatingDetailArray'] = Func::jsonList($this->sellerItemRatingDetailArray);
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['ItemArrivedWithinEDDType'] = $this->itemArrivedWithinEDDType;
+        $data['ItemDeliveredWithinEDD'] = $this->itemDeliveredWithinEDD;
+        return $data;
+    }
 }

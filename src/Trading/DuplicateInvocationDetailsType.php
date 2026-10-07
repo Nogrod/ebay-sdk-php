@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>DuplicateInvocationDetails</b> container that is returned in some calls if a duplicate <b>InvocationID</b> or <b>InvocationTrackingID</b> is used in the call request.
  * XSD Type: DuplicateInvocationDetailsType
  */
-class DuplicateInvocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DuplicateInvocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value represents the duplicate <b>InvocationID</b> or <b>InvocationTrackingID</b> that was used in the call request.
@@ -199,5 +199,19 @@ class DuplicateInvocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DuplicateInvocationID'] = $this->duplicateInvocationID;
+        $data['Status'] = $this->status;
+        $data['InvocationTrackingID'] = $this->invocationTrackingID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

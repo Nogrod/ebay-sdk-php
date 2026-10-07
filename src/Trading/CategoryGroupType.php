@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>CategoryGroup</b> container, which defines the category group to which the corresponding Business Policies profile will be applied, and a flag that indicates whether or not that Business Policies profile is the default for that category group.
  * XSD Type: CategoryGroupType
  */
-class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Defines the name of the category group tied to a Business Policies profile. Valid values are
@@ -177,5 +177,18 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['IsDefault'] = $this->isDefault;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

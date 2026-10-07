@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>Messages</b> container that is returned in <b>GetMyMessages</b>. The <b>Messages</b> container consists of an array of one or more messages.
  * XSD Type: MyMessagesMessageArrayType
  */
-class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>Message</b> container is returned for each message that matches the input criteria in the call request. Each <b>Message</b> container consists of detailed information on a message. The amount of information that is returned in each <b>Message</b> container is partially dependent on the value that is set in the required <b>DetailLevel</b> field.
@@ -157,5 +157,17 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Message'] = Func::jsonList($this->message);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

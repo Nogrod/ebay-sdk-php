@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  auction or fixed-price listing. A fixed-priced listing (single or multiple-variation) with multiple quantity can spawn one or more sales transactions.
  * XSD Type: TransactionType
  */
-class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The total amount the buyer paid for the order line item. This amount includes the sale price of
@@ -3268,5 +3268,77 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AmountPaid'] = $this->amountPaid;
+        $data['AdjustmentAmount'] = $this->adjustmentAmount;
+        $data['ConvertedAdjustmentAmount'] = $this->convertedAdjustmentAmount;
+        $data['Buyer'] = $this->buyer;
+        $data['ShippingDetails'] = $this->shippingDetails;
+        $data['ConvertedAmountPaid'] = $this->convertedAmountPaid;
+        $data['ConvertedTransactionPrice'] = $this->convertedTransactionPrice;
+        $data['CreatedDate'] = Func::jsonDate($this->createdDate);
+        $data['DepositType'] = $this->depositType;
+        $data['Item'] = $this->item;
+        $data['QuantityPurchased'] = $this->quantityPurchased;
+        $data['Status'] = $this->status;
+        $data['TransactionID'] = $this->transactionID;
+        $data['TransactionPrice'] = $this->transactionPrice;
+        $data['BestOfferSale'] = $this->bestOfferSale;
+        $data['VATPercent'] = $this->vATPercent;
+        $data['ShippingServiceSelected'] = $this->shippingServiceSelected;
+        $data['BuyerMessage'] = $this->buyerMessage;
+        $data['BuyerPaidStatus'] = $this->buyerPaidStatus;
+        $data['SellerPaidStatus'] = $this->sellerPaidStatus;
+        $data['PaidTime'] = Func::jsonDate($this->paidTime);
+        $data['ShippedTime'] = Func::jsonDate($this->shippedTime);
+        $data['TotalPrice'] = $this->totalPrice;
+        $data['FeedbackLeft'] = $this->feedbackLeft;
+        $data['FeedbackReceived'] = $this->feedbackReceived;
+        $data['ContainingOrder'] = $this->containingOrder;
+        $data['FinalValueFee'] = $this->finalValueFee;
+        $data['TransactionSiteID'] = $this->transactionSiteID;
+        $data['Platform'] = $this->platform;
+        $data['Variation'] = $this->variation;
+        $data['BuyerCheckoutMessage'] = $this->buyerCheckoutMessage;
+        $data['TotalTransactionPrice'] = $this->totalTransactionPrice;
+        $data['Taxes'] = $this->taxes;
+        $data['BundlePurchase'] = $this->bundlePurchase;
+        $data['ActualShippingCost'] = $this->actualShippingCost;
+        $data['ActualHandlingCost'] = $this->actualHandlingCost;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['eBayPaymentID'] = $this->eBayPaymentID;
+        $data['SellerDiscounts'] = $this->sellerDiscounts;
+        $data['CodiceFiscale'] = $this->codiceFiscale;
+        $data['IsMultiLegShipping'] = $this->isMultiLegShipping;
+        $data['MultiLegShippingDetails'] = $this->multiLegShippingDetails;
+        $data['InvoiceSentTime'] = Func::jsonDate($this->invoiceSentTime);
+        $data['IntangibleItem'] = $this->intangibleItem;
+        $data['MonetaryDetails'] = $this->monetaryDetails;
+        $data['PickupDetails'] = Func::jsonList($this->pickupDetails);
+        $data['PickupMethodSelected'] = $this->pickupMethodSelected;
+        $data['LogisticsPlanType'] = $this->logisticsPlanType;
+        $data['BuyerPackageEnclosures'] = Func::jsonList($this->buyerPackageEnclosures);
+        $data['InventoryReservationID'] = $this->inventoryReservationID;
+        $data['ExtendedOrderID'] = $this->extendedOrderID;
+        $data['eBayPlusTransaction'] = $this->eBayPlusTransaction;
+        $data['GiftSummary'] = $this->giftSummary;
+        $data['DigitalDeliverySelected'] = $this->digitalDeliverySelected;
+        $data['Gift'] = $this->gift;
+        $data['GuaranteedShipping'] = $this->guaranteedShipping;
+        $data['GuaranteedDelivery'] = $this->guaranteedDelivery;
+        $data['eBayCollectAndRemitTax'] = $this->eBayCollectAndRemitTax;
+        $data['eBayCollectAndRemitTaxes'] = $this->eBayCollectAndRemitTaxes;
+        $data['Program'] = $this->program;
+        $data['LinkedLineItemArray'] = Func::jsonList($this->linkedLineItemArray);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

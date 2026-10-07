@@ -501,4 +501,17 @@ class RespondToFeedbackRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['FeedbackID'] = $this->feedbackID;
+        $data['ItemID'] = $this->itemID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['TargetUserID'] = $this->targetUserID;
+        $data['ResponseType'] = $this->responseType;
+        $data['ResponseText'] = $this->responseText;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

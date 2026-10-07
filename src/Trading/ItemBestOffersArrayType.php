@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the <code>ReturnAll</code> detail level is used.
  * XSD Type: ItemBestOffersArrayType
  */
-class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A collection of details about the Best Offers received for a specific item. Empty if there are no Best Offers. Includes the buyer and seller messages only if the <code>ReturnAll</code> detail level is used.
@@ -158,5 +158,17 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemBestOffers'] = Func::jsonList($this->itemBestOffers);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

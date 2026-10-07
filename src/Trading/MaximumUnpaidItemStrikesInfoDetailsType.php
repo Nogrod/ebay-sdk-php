@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details of a buyer's maximum unpaid item strikes in a pre-defined time period. This is applicable only to sellers.
  * XSD Type: MaximumUnpaidItemStrikesInfoDetailsType
  */
-class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The number of the maximum unpaid item strikes. This is applicable only to sellers.
@@ -254,5 +254,18 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaximumUnpaidItemStrikesCount'] = Func::jsonList($this->maximumUnpaidItemStrikesCount);
+        $data['MaximumUnpaidItemStrikesDuration'] = Func::jsonList($this->maximumUnpaidItemStrikesDuration);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

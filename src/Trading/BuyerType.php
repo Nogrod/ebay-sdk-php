@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by various <b>Get</b> calls, including <b>GetItem</b> and <b>GetOrders</b>. Only the order management calls return the <b>BuyerTaxIdentifier</b> container, and each call that uses <b>BuyerType</b> uses the <b>ShippingAddress</b> container a little differently.
  * XSD Type: BuyerType
  */
-class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container shows the buyer's shipping address.
@@ -361,5 +361,18 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingAddress'] = $this->shippingAddress;
+        $data['BuyerTaxIdentifier'] = Func::jsonList($this->buyerTaxIdentifier);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

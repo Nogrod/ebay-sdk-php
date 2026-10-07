@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  single Best Offer.
  * XSD Type: ItemBestOffersType
  */
-class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates whether the eBay user is in the Buyer or
@@ -287,5 +287,19 @@ class ItemBestOffersType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Role'] = $this->role;
+        $data['BestOfferArray'] = Func::jsonList($this->bestOfferArray);
+        $data['Item'] = $this->item;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

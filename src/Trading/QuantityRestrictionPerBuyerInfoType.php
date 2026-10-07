@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  during the duration of a fixed-price listing (single or multi-variation).
  * XSD Type: QuantityRestrictionPerBuyerInfoType
  */
-class QuantityRestrictionPerBuyerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class QuantityRestrictionPerBuyerInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the maximum quantity of items that a single buyer may
@@ -145,5 +145,17 @@ class QuantityRestrictionPerBuyerInfoType implements \Sabre\Xml\XmlSerializable,
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaximumQuantity'] = $this->maximumQuantity;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

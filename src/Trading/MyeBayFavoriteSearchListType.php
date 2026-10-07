@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * A list of favorite searches a user has saved on the My eBay page.
  * XSD Type: MyeBayFavoriteSearchListType
  */
-class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The total number of favorite searches saved.
@@ -200,5 +200,18 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TotalAvailable'] = $this->totalAvailable;
+        $data['FavoriteSearch'] = Func::jsonList($this->favoriteSearch);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

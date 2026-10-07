@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  conveys counts of bid retractions for the predefined time periods.
  * XSD Type: FeedbackSummaryType
  */
-class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Bid retractions count, for multiple predefined time periods preceding
@@ -971,5 +971,28 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BidRetractionFeedbackPeriodArray'] = Func::jsonList($this->bidRetractionFeedbackPeriodArray);
+        $data['NegativeFeedbackPeriodArray'] = Func::jsonList($this->negativeFeedbackPeriodArray);
+        $data['NeutralFeedbackPeriodArray'] = Func::jsonList($this->neutralFeedbackPeriodArray);
+        $data['PositiveFeedbackPeriodArray'] = Func::jsonList($this->positiveFeedbackPeriodArray);
+        $data['TotalFeedbackPeriodArray'] = Func::jsonList($this->totalFeedbackPeriodArray);
+        $data['NeutralCommentCountFromSuspendedUsers'] = $this->neutralCommentCountFromSuspendedUsers;
+        $data['UniqueNegativeFeedbackCount'] = $this->uniqueNegativeFeedbackCount;
+        $data['UniquePositiveFeedbackCount'] = $this->uniquePositiveFeedbackCount;
+        $data['UniqueNeutralFeedbackCount'] = $this->uniqueNeutralFeedbackCount;
+        $data['SellerRatingSummaryArray'] = Func::jsonList($this->sellerRatingSummaryArray);
+        $data['SellerRoleMetrics'] = $this->sellerRoleMetrics;
+        $data['BuyerRoleMetrics'] = $this->buyerRoleMetrics;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

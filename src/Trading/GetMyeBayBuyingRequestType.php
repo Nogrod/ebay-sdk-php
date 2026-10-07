@@ -656,4 +656,23 @@ class GetMyeBayBuyingRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['WatchList'] = $this->watchList;
+        $data['BidList'] = $this->bidList;
+        $data['BestOfferList'] = $this->bestOfferList;
+        $data['WonList'] = $this->wonList;
+        $data['LostList'] = $this->lostList;
+        $data['FavoriteSearches'] = $this->favoriteSearches;
+        $data['FavoriteSellers'] = $this->favoriteSellers;
+        $data['SecondChanceOffer'] = $this->secondChanceOffer;
+        $data['DeletedFromWonList'] = $this->deletedFromWonList;
+        $data['DeletedFromLostList'] = $this->deletedFromLostList;
+        $data['BuyingSummary'] = $this->buyingSummary;
+        $data['UserDefinedLists'] = $this->userDefinedLists;
+        $data['HideVariations'] = $this->hideVariations;
+        return $data;
+    }
 }

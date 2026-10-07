@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>ApplicationDeliveryPreferences</b> container to control/indicate where and how Platform Notifications and/or Client Alerts are delivered to a user application, server, and/or email address.
  * XSD Type: ApplicationDeliveryPreferencesType
  */
-class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
@@ -542,5 +542,24 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ApplicationURL'] = $this->applicationURL;
+        $data['ApplicationEnable'] = $this->applicationEnable;
+        $data['AlertEmail'] = $this->alertEmail;
+        $data['AlertEnable'] = $this->alertEnable;
+        $data['NotificationPayloadType'] = $this->notificationPayloadType;
+        $data['DeviceType'] = $this->deviceType;
+        $data['PayloadVersion'] = $this->payloadVersion;
+        $data['DeliveryURLDetails'] = Func::jsonList($this->deliveryURLDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

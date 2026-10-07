@@ -431,4 +431,14 @@ class GetSellerProfilesRequestType extends BaseRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['profileType'] = Func::jsonList($this->profileType);
+        $data['profileId'] = Func::jsonList($this->profileId);
+        $data['profileName'] = Func::jsonList($this->profileName);
+        $data['includeDetails'] = $this->includeDetails;
+        return $data;
+    }
 }

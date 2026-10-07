@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>FeedbackPeriod</b> containers that are returned in the <b>GetFeedback</b> call to indicate how many Negative, Neutral, Positive, Retracted, and Total Feedback entries a user has received within different periods of time, typically 30 days, 180 days, and 365 days.
  * XSD Type: FeedbackPeriodType
  */
-class FeedbackPeriodType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeedbackPeriodType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the total number of days in the time period for the Feedback count. Typically, the returned time periods are 30 days, 180 days, and 365 days. This field is always returned with the <b>FeedbackPeriod</b> container.
@@ -153,5 +153,18 @@ class FeedbackPeriodType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PeriodInDays'] = $this->periodInDays;
+        $data['Count'] = $this->count;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

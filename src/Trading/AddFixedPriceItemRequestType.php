@@ -114,4 +114,11 @@ class AddFixedPriceItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Item'] = $this->item;
+        return $data;
+    }
 }

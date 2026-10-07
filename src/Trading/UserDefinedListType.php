@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  "Name" element.
  * XSD Type: UserDefinedListType
  */
-class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The user's chosen name for this list.
@@ -433,5 +433,23 @@ class UserDefinedListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['ItemCount'] = $this->itemCount;
+        $data['FavoriteSearcheCount'] = $this->favoriteSearcheCount;
+        $data['FavoriteSellerCount'] = $this->favoriteSellerCount;
+        $data['ItemArray'] = Func::jsonList($this->itemArray);
+        $data['FavoriteSearches'] = $this->favoriteSearches;
+        $data['FavoriteSellers'] = $this->favoriteSellers;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

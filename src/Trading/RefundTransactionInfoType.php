@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <strong>Refund</strong> container, where the refund could be initiated either from the seller or eBay.
  * XSD Type: RefundTransactionInfoType
  */
-class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Since BOPIS (Buy Online, Pick Up In Store) is no longer supported, this field should no longer be used in the Trading API.
@@ -387,5 +387,22 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RefundType'] = $this->refundType;
+        $data['RefundTo'] = $this->refundTo;
+        $data['RefundTime'] = Func::jsonDate($this->refundTime);
+        $data['RefundAmount'] = $this->refundAmount;
+        $data['ReferenceID'] = $this->referenceID;
+        $data['FeeOrCreditAmount'] = $this->feeOrCreditAmount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

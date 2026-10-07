@@ -58,4 +58,10 @@ class GetNotificationPreferencesRequest extends GetNotificationPreferencesReques
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

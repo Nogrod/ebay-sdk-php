@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide product safety and compliance information in their eBay listings. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
  * XSD Type: ProductSafetyType
  */
-class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container is used by the seller to provide product safety pictograms for the listing. This field is conditionally required if product safety information is supplied.
@@ -348,5 +348,19 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Pictograms'] = Func::jsonList($this->pictograms);
+        $data['Statements'] = Func::jsonList($this->statements);
+        $data['Component'] = $this->component;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

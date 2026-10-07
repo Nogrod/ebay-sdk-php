@@ -154,4 +154,11 @@ class AddItemsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['AddItemResponseContainer'] = Func::jsonList($this->addItemResponseContainer);
+        return $data;
+    }
 }

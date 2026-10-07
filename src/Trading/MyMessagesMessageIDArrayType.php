@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a list of up to 10 MessageID values.
  * XSD Type: MyMessagesMessageIDArrayType
  */
-class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An ID that uniquely identifies a message for a given user.
@@ -158,5 +158,17 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MessageID'] = Func::jsonList($this->messageID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  an exact match.
  * XSD Type: ProductSuggestionType
  */
-class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The title of the product from the eBay catalog.
@@ -258,5 +258,20 @@ class ProductSuggestionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Title'] = $this->title;
+        $data['EPID'] = $this->ePID;
+        $data['StockPhoto'] = $this->stockPhoto;
+        $data['Recommended'] = $this->recommended;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

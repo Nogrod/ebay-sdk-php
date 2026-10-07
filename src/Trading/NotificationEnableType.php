@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  notification is enabled or disabled.
  * XSD Type: NotificationEnableType
  */
-class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the notification event.
@@ -154,5 +154,18 @@ class NotificationEnableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EventType'] = $this->eventType;
+        $data['EventEnable'] = $this->eventEnable;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

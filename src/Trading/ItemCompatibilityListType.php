@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  values would describe the specific vehicle, such as a 2006 Honda Accord.
  * XSD Type: ItemCompatibilityListType
  */
-class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Details for an individual compatible application, consisting of the name-value pair and related parts compatibility notes. When revising or relisting, the <b>Delete</b> field can be used to delete individual parts compatibility nodes.
@@ -216,5 +216,18 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Compatibility'] = Func::jsonList($this->compatibility);
+        $data['ReplaceAll'] = $this->replaceAll;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

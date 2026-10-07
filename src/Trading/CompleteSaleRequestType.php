@@ -575,4 +575,19 @@ class CompleteSaleRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['FeedbackInfo'] = $this->feedbackInfo;
+        $data['Shipped'] = $this->shipped;
+        $data['Paid'] = $this->paid;
+        $data['ListingType'] = $this->listingType;
+        $data['Shipment'] = $this->shipment;
+        $data['OrderID'] = $this->orderID;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

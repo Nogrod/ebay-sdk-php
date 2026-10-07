@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the unique identifier of a regulatory document associated with the listing.
  * XSD Type: DocumentType
  */
-class DocumentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DocumentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of a regulatory document associated with the listing. <br /><br /> This value can be found in the response of the <a href = "/api-docs/commerce/media/resources/document/methods/createDocument" target="_blank">createDocument</a> method of the Media API.
@@ -110,5 +110,17 @@ class DocumentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DocumentID'] = $this->documentID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

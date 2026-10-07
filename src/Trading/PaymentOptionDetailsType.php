@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: PaymentOptionDetailsType
  */
-class PaymentOptionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentOptionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This enumeration value is the enumeration that the seller would pass in to one of the <b>PaymentMethods</b> fields in an Add/Revise/Relist call (or in to a Payment busines policy).
@@ -244,5 +244,20 @@ class PaymentOptionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PaymentOption'] = $this->paymentOption;
+        $data['Description'] = $this->description;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

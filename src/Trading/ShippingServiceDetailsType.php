@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>ShippingServiceDetails</b> containers are returned if a <b>DetailName</b> field is included in the call request and set to <code>ShippingServiceDetails</code>, or if no <b>DetailName</b> field is included in the call request.
  * XSD Type: ShippingServiceDetailsType
  */
-class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Display string that applications can use to present a list of shipping service
@@ -1373,5 +1373,38 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Description'] = $this->description;
+        $data['ExpeditedService'] = $this->expeditedService;
+        $data['InternationalService'] = $this->internationalService;
+        $data['ShippingService'] = $this->shippingService;
+        $data['ShippingServiceID'] = $this->shippingServiceID;
+        $data['ShippingTimeMax'] = $this->shippingTimeMax;
+        $data['ShippingTimeMin'] = $this->shippingTimeMin;
+        $data['ServiceType'] = Func::jsonList($this->serviceType);
+        $data['ShippingPackage'] = Func::jsonList($this->shippingPackage);
+        $data['DimensionsRequired'] = $this->dimensionsRequired;
+        $data['ValidForSellingFlow'] = $this->validForSellingFlow;
+        $data['SurchargeApplicable'] = $this->surchargeApplicable;
+        $data['ShippingCarrier'] = Func::jsonList($this->shippingCarrier);
+        $data['CODService'] = $this->cODService;
+        $data['DeprecationDetails'] = Func::jsonList($this->deprecationDetails);
+        $data['MappedToShippingServiceID'] = $this->mappedToShippingServiceID;
+        $data['CostGroupFlat'] = $this->costGroupFlat;
+        $data['ShippingServicePackageDetails'] = Func::jsonList($this->shippingServicePackageDetails);
+        $data['WeightRequired'] = $this->weightRequired;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        $data['ShippingCategory'] = $this->shippingCategory;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

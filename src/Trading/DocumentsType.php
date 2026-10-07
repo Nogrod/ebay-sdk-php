@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective from December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide document information in their eBay listings. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
  * XSD Type: DocumentsType
  */
-class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A regulatory document associated with the listing.<br /><br />Regulatory documents can be created and uploaded using the <a href = "/api-docs/commerce/media/resources/document/methods/createDocument" target="_blank">createDocument</a> method of the Media API. A variety of document types can be provided for regulatory compliance. For a list of supported document types, see <a href = "/api-docs/commerce/media/types/api:DocumentTypeEnum" target="_blank">DocumentTypeEnum</a>.
@@ -159,5 +159,17 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Document'] = Func::jsonList($this->document);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

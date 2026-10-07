@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type contains details about the allocation of funds to one payee from a buyer payment for a specified order.
  * XSD Type: PaymentTransactionType
  */
-class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field indicates the eBay user or eBay partner who submitted the payment.
@@ -470,5 +470,23 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Payer'] = $this->payer;
+        $data['Payee'] = $this->payee;
+        $data['PaymentTime'] = Func::jsonDate($this->paymentTime);
+        $data['PaymentAmount'] = $this->paymentAmount;
+        $data['ReferenceID'] = $this->referenceID;
+        $data['FeeOrCreditAmount'] = $this->feeOrCreditAmount;
+        $data['PaymentReferenceID'] = Func::jsonList($this->paymentReferenceID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

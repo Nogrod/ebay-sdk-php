@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <strong>ReferenceID</strong> element, which is used to display the unique identifier of a payment (and payment type through the <strong>type</strong> attribute.
  * XSD Type: TransactionReferenceType
  */
-class TransactionReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TransactionReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -151,5 +151,18 @@ class TransactionReferenceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['type'] = $this->type;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

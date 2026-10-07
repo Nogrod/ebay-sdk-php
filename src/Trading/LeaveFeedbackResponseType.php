@@ -107,4 +107,11 @@ class LeaveFeedbackResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['FeedbackID'] = $this->feedbackID;
+        return $data;
+    }
 }

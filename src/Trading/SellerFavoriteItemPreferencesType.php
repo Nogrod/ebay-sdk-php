@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the data for the seller favorite item preferences, i.e. the manual or automatic selection criteria to display items for buyer's favourite seller opt in email marketing.
  * XSD Type: SellerFavoriteItemPreferencesType
  */
-class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The keywords in the item title for the automatic item search criteria.
@@ -414,5 +414,23 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SearchKeywords'] = $this->searchKeywords;
+        $data['StoreCategoryID'] = $this->storeCategoryID;
+        $data['ListingType'] = $this->listingType;
+        $data['SearchSortOrder'] = $this->searchSortOrder;
+        $data['MinPrice'] = $this->minPrice;
+        $data['MaxPrice'] = $this->maxPrice;
+        $data['FavoriteItemID'] = Func::jsonList($this->favoriteItemID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

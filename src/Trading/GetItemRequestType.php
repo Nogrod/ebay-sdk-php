@@ -792,4 +792,19 @@ class GetItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['IncludeWatchCount'] = $this->includeWatchCount;
+        $data['IncludeItemSpecifics'] = $this->includeItemSpecifics;
+        $data['IncludeTaxTable'] = $this->includeTaxTable;
+        $data['SKU'] = $this->sKU;
+        $data['VariationSKU'] = $this->variationSKU;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        $data['TransactionID'] = $this->transactionID;
+        $data['IncludeItemCompatibilityList'] = $this->includeItemCompatibilityList;
+        return $data;
+    }
 }

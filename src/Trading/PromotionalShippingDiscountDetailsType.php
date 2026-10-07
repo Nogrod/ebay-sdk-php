@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details of a promotional shipping discount.
  * XSD Type: PromotionalShippingDiscountDetailsType
  */
-class PromotionalShippingDiscountDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PromotionalShippingDiscountDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The type of promotional shipping discount that is detailed in the profile. If the discount type is <code>MaximumShippingCostPerOrder</code>, see <b>ShippingCost</b>. If the discount type is <code>ShippingCostXForAmountY</code>, see <b>ShippingCost</b> and <b>OrderAmount</b>. If the discount type is <code>ShippingCostXForItemCountN</code>, see <b>ShippingCost</b> and <b>ItemCount</b>.
@@ -246,5 +246,20 @@ class PromotionalShippingDiscountDetailsType implements \Sabre\Xml\XmlSerializab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DiscountName'] = $this->discountName;
+        $data['ShippingCost'] = $this->shippingCost;
+        $data['OrderAmount'] = $this->orderAmount;
+        $data['ItemCount'] = $this->itemCount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

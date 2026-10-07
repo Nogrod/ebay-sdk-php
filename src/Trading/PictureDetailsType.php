@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the data for the pictures associated with an item.
  * XSD Type: PictureDetailsType
  */
-class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <a name="galleryTypeField"></a>
@@ -845,5 +845,24 @@ class PictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['GalleryType'] = $this->galleryType;
+        $data['GalleryURL'] = $this->galleryURL;
+        $data['PictureURL'] = Func::jsonList($this->pictureURL);
+        $data['PictureSource'] = $this->pictureSource;
+        $data['GalleryStatus'] = $this->galleryStatus;
+        $data['GalleryErrorInfo'] = $this->galleryErrorInfo;
+        $data['ExternalPictureURL'] = Func::jsonList($this->externalPictureURL);
+        $data['ExtendedPictureDetails'] = Func::jsonList($this->extendedPictureDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

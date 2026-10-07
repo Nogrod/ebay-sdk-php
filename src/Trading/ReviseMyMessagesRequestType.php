@@ -359,4 +359,14 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['MessageIDs'] = Func::jsonList($this->messageIDs);
+        $data['Read'] = $this->read;
+        $data['Flagged'] = $this->flagged;
+        $data['FolderID'] = $this->folderID;
+        return $data;
+    }
 }

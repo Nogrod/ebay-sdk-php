@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  provided by the seller.
  * XSD Type: ProductSuggestionsType
  */
-class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains details for one or more individual product suggestions. The product
@@ -176,5 +176,17 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ProductSuggestion'] = Func::jsonList($this->productSuggestion);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

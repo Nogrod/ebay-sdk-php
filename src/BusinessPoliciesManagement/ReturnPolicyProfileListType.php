@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>returnPolicyProfileList</b> container, which consists of one or more return policies that match the input criteria in the <b>getSellerProfiles</b> request.
  * XSD Type: ReturnPolicyProfileList
  */
-class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Container consisting of detailed information for a specific return policy that matches the input criteria.
@@ -157,5 +157,17 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ReturnPolicyProfile'] = Func::jsonList($this->returnPolicyProfile);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

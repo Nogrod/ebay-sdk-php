@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type contains details like name, value, and additional information, that is provided by the seller about the specific condition of an item.
  * XSD Type: ConditionDescriptorType
  */
-class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A numeric ID is passed in this field. This numeric ID maps to the name of a condition descriptor. Condition descriptor name-value pairs provide more information about an item's condition in a structured way.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br /><br />In the case of trading cards, this field is used to provide condition descriptors for a card. For graded cards, the condition descriptors for <b>Grader</b> and <b>Grade</b> are required, while the condition descriptor for <b>Certification Number</b> is optional. For ungraded cards, only the <b>Card Condition</b> condition descriptor is required.
@@ -256,5 +256,19 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['Value'] = Func::jsonList($this->value);
+        $data['AdditionalInfo'] = $this->additionalInfo;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type defines the <b>additionalServiceShippingOption</b> container, which contains an additional shipping service option available to buyers (in addition to the shipping service option specified in the <b>domesticShippingPolicyInfoService</b> field.
  * XSD Type: AdditionalServiceShippingOption
  */
-class AdditionalServiceShippingOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AdditionalServiceShippingOptionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the additional shipping service option available to buyer. For a list of valid shipping service options, call the Trading API's <b>GeteBayDetails</b> call with the <b>DetailName</b> field set to <b>ShippingServiceDetails</b>. The <b>ShippingServiceDetails.ValidForSellingFlow</ b> flag must also be present in the <b>GeteBayDetails</b> response. Otherwise, that particular shipping service option is no longer valid and cannot be offered to buyers through a listing.
@@ -153,5 +153,18 @@ class AdditionalServiceShippingOptionType implements \Sabre\Xml\XmlSerializable,
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['name'] = $this->name;
+        $data['value'] = $this->value;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

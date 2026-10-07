@@ -329,4 +329,16 @@ class GetOrdersResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['PaginationResult'] = $this->paginationResult;
+        $data['HasMoreOrders'] = $this->hasMoreOrders;
+        $data['OrderArray'] = $this->orderArray;
+        $data['OrdersPerPage'] = $this->ordersPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        $data['ReturnedOrderCountActual'] = $this->returnedOrderCountActual;
+        return $data;
+    }
 }

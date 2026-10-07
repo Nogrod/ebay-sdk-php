@@ -508,4 +508,17 @@ class GetMyMessagesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['MessageIDs'] = Func::jsonList($this->messageIDs);
+        $data['FolderID'] = $this->folderID;
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['ExternalMessageIDs'] = Func::jsonList($this->externalMessageIDs);
+        $data['Pagination'] = $this->pagination;
+        $data['IncludeHighPriorityMessageOnly'] = $this->includeHighPriorityMessageOnly;
+        return $data;
+    }
 }

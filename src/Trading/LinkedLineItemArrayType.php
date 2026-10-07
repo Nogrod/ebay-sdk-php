@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains data that links line item objects from separate orders.
  * XSD Type: LinkedLineItemArrayType
  */
-class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container shows a line item that is related to the corresponding order, but not a part of that order. Details can identify the linked seller and also include delivery times, item information, and order information.
@@ -157,5 +157,17 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['LinkedLineItem'] = Func::jsonList($this->linkedLineItem);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

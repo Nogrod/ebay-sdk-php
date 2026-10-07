@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Characteristics of the My eBay Favorite Seller.
  * XSD Type: MyeBayFavoriteSellerType
  */
-class MyeBayFavoriteSellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyeBayFavoriteSellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The favorite seller's eBay user ID.
@@ -165,5 +165,18 @@ class MyeBayFavoriteSellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['UserID'] = $this->userID;
+        $data['StoreName'] = $this->storeName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

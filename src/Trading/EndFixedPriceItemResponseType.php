@@ -150,4 +150,12 @@ class EndFixedPriceItemResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['SKU'] = $this->sKU;
+        return $data;
+    }
 }

@@ -149,4 +149,12 @@ class AddMemberMessageRTQRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['MemberMessage'] = $this->memberMessage;
+        return $data;
+    }
 }

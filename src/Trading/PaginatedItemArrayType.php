@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a paginated list of items.
  * XSD Type: PaginatedItemArrayType
  */
-class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An array of one or more items returned under one or more containers in a <b>GetMyeBayBuying</b> or <b>GetMyeBaySelling</b> call response.
@@ -205,5 +205,18 @@ class PaginatedItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemArray'] = Func::jsonList($this->itemArray);
+        $data['PaginationResult'] = $this->paginationResult;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

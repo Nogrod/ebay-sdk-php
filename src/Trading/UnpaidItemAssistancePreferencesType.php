@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  See the <a href="https://www.ebay.com/help/selling/getting-paid/resolving-unpaid-items?id=4137">Resolving unpaid items with buyers</a> Help topic for more information about setting up and using the Unpaid Item preferences feature.
  * XSD Type: UnpaidItemAssistancePreferencesType
  */
-class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the number of days that should elapse before an unpaid order is cancelled on behalf of the seller.
@@ -447,5 +447,21 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DelayBeforeOpeningDispute'] = $this->delayBeforeOpeningDispute;
+        $data['OptInStatus'] = $this->optInStatus;
+        $data['AutoRelist'] = $this->autoRelist;
+        $data['RemoveAllExcludedUsers'] = $this->removeAllExcludedUsers;
+        $data['ExcludedUser'] = Func::jsonList($this->excludedUser);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

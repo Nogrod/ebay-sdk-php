@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  Details such as shipping weights are specified as measure types.
  * XSD Type: MeasureType
  */
-class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var float $__value
@@ -224,5 +224,19 @@ class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['unit'] = $this->unit;
+        $data['measurementSystem'] = $this->measurementSystem;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

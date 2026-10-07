@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: StorefrontType
  */
-class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier of a primary custom category in which to list the item. A custom category is a category that the seller created in their eBay Store. eBay Store sellers can create up to three levels of custom categories for their stores, but the API only supports root-level categories.
@@ -379,5 +379,22 @@ class StorefrontType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['StoreCategoryID'] = $this->storeCategoryID;
+        $data['StoreCategory2ID'] = $this->storeCategory2ID;
+        $data['StoreCategoryName'] = $this->storeCategoryName;
+        $data['StoreCategory2Name'] = $this->storeCategory2Name;
+        $data['StoreURL'] = $this->storeURL;
+        $data['StoreName'] = $this->storeName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

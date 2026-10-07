@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the response, all of the detail fields are returned.
  * XSD Type: NotificationDetailsType
  */
-class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Returns the destination address for the notification. This is the value set
@@ -515,5 +515,26 @@ class NotificationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DeliveryURL'] = $this->deliveryURL;
+        $data['ReferenceID'] = $this->referenceID;
+        $data['ExpirationTime'] = Func::jsonDate($this->expirationTime);
+        $data['Type'] = $this->type;
+        $data['Retries'] = $this->retries;
+        $data['DeliveryStatus'] = $this->deliveryStatus;
+        $data['NextRetryTime'] = Func::jsonDate($this->nextRetryTime);
+        $data['DeliveryTime'] = Func::jsonDate($this->deliveryTime);
+        $data['ErrorMessage'] = $this->errorMessage;
+        $data['DeliveryURLName'] = $this->deliveryURLName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

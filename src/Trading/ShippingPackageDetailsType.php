@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details about type of package used to ship an item.
  * XSD Type: ShippingPackageDetailsType
  */
-class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Numeric identifier.
@@ -395,5 +395,23 @@ class ShippingPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PackageID'] = $this->packageID;
+        $data['Description'] = $this->description;
+        $data['ShippingPackage'] = $this->shippingPackage;
+        $data['DefaultValue'] = $this->defaultValue;
+        $data['DimensionsSupported'] = $this->dimensionsSupported;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: OrderReportResponseType
  */
-class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains information about Expiration date of the user's authentication token. Only returned within the 7-day period prior to a token's expiration
@@ -333,5 +333,21 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['HardExpirationWarning'] = Func::jsonDate($this->hardExpirationWarning);
+        $data['Ack'] = $this->ack;
+        $data['Version'] = $this->version;
+        $data['Errors'] = Func::jsonList($this->errors);
+        $data['OrderArray'] = $this->orderArray;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

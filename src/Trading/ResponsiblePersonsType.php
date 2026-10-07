@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide Responsible Persons information in their eBay listings if the manufacture is not based in the EU. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
  * XSD Type: ResponsiblePersonsType
  */
-class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container consists of the detailed contact information for each Responsible Person or entity associated with the listing.
@@ -171,5 +171,17 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ResponsiblePerson'] = Func::jsonList($this->responsiblePerson);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

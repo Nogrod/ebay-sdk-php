@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type contains the data for condition descriptors associated with an item.
  * XSD Type: ConditionDescriptorsType
  */
-class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
@@ -271,5 +271,17 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ConditionDescriptor'] = Func::jsonList($this->conditionDescriptor);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

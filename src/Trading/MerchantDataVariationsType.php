@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  include 10 "Blue, Large" variations and 20 "Black, Medium" variations.
  * XSD Type: MerchantDataVariationsType
  */
-class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains data that distinguishes one variation from
@@ -192,5 +192,17 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Variation'] = Func::jsonList($this->variation);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

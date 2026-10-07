@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  and which of the buyer protection programs will cover the item.
  * XSD Type: BuyerProtectionDetailsType
  */
-class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the type of buyer protection program applicable for the item.
@@ -167,5 +167,18 @@ class BuyerProtectionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BuyerProtectionSource'] = $this->buyerProtectionSource;
+        $data['BuyerProtectionStatus'] = $this->buyerProtectionStatus;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

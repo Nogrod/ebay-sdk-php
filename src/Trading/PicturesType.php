@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>VariationSpecificName</b> (e.g., Color) whose values differ across variations.
  * XSD Type: PicturesType
  */
-class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * One aspect of the variations that will be illustrated in the
@@ -345,5 +345,18 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['VariationSpecificName'] = $this->variationSpecificName;
+        $data['VariationSpecificPictureSet'] = Func::jsonList($this->variationSpecificPictureSet);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

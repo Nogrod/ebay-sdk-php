@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The seller may not use the <b>PaymentDetails</b> container if selling a motor vehicle through a Classified Ad listing. If it is used in a Trading call, it will be dropped and the seller will get a warning that it was dropped. For a Classified Ad listing, the buyer and seller directly discuss amongst themselves any details on a deposit, or due dates for a deposit and full balance. eBay will not be involved in this process for a Classified Ad listing.</span>
  * XSD Type: PaymentDetailsType
  */
-class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is used to set the due date (in hours) for the motor vehicle deposit. The deposit amount is specified in the <b>DepositAmount</b> field. The "clock starts" on the deposit due date as soon as the buyer commits to buying the vehicle by clicking the <b>Buy It Now</b> button, by winning the auction, or by the seller accepting that buyer's Best Offer/counteroffer. The three supported values here are <code>24</code>, <code>48</code> (default), and <code>72</code> hours.
@@ -330,5 +330,20 @@ class PaymentDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['HoursToDeposit'] = $this->hoursToDeposit;
+        $data['DaysToFullPayment'] = $this->daysToFullPayment;
+        $data['DepositAmount'] = $this->depositAmount;
+        $data['DepositType'] = $this->depositType;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

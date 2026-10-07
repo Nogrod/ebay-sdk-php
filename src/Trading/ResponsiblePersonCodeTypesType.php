@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for collection of possible responsible person enumerations.
  * XSD Type: ResponsiblePersonCodeTypes
  */
-class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The type of Responsible Person associated with the listing.
@@ -170,5 +170,17 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Type'] = Func::jsonList($this->type);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

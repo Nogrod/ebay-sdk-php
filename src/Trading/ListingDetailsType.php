@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  specified fields whose values are not visible to the requesting user.
  * XSD Type: ListingDetailsType
  */
-class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * If <code>true</code>, the item is listed in a Mature category. Users must accept
@@ -1263,5 +1263,36 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Adult'] = $this->adult;
+        $data['BindingAuction'] = $this->bindingAuction;
+        $data['CheckoutEnabled'] = $this->checkoutEnabled;
+        $data['ConvertedBuyItNowPrice'] = $this->convertedBuyItNowPrice;
+        $data['ConvertedStartPrice'] = $this->convertedStartPrice;
+        $data['ConvertedReservePrice'] = $this->convertedReservePrice;
+        $data['HasReservePrice'] = $this->hasReservePrice;
+        $data['RelistedItemID'] = $this->relistedItemID;
+        $data['SecondChanceOriginalItemID'] = $this->secondChanceOriginalItemID;
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['ViewItemURL'] = $this->viewItemURL;
+        $data['HasUnansweredQuestions'] = $this->hasUnansweredQuestions;
+        $data['HasPublicMessages'] = $this->hasPublicMessages;
+        $data['BuyItNowAvailable'] = $this->buyItNowAvailable;
+        $data['MinimumBestOfferPrice'] = $this->minimumBestOfferPrice;
+        $data['LocalListingDistance'] = $this->localListingDistance;
+        $data['ViewItemURLForNaturalSearch'] = $this->viewItemURLForNaturalSearch;
+        $data['BestOfferAutoAcceptPrice'] = $this->bestOfferAutoAcceptPrice;
+        $data['EndingReason'] = $this->endingReason;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

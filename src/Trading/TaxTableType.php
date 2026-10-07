@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to express sales tax details for one or more tax jurisdictions. The concept of 'sales tax' is only applicable to eBay US and Canada (English and French) sites.
  * XSD Type: TaxTableType
  */
-class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * In a <b>SetTaxTable</b>, a <b>TaxJurisdiction</b> container is required for each tax jurisdiction that the seller wishes to make additions/changes. Sales tax details for zero or more jurisdictions (states,
@@ -217,5 +217,17 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TaxJurisdiction'] = Func::jsonList($this->taxJurisdiction);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

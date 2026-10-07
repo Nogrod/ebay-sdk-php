@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the array of <b>AccountEntry</b> objects that are conditionally returned in the <b>GetAccount</b> response.
  * XSD Type: AccountEntriesType
  */
-class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Container consisting of detailed information for each debit or credit transaction that occurs on an eBay user's account.
@@ -157,5 +157,17 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AccountEntry'] = Func::jsonList($this->accountEntry);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

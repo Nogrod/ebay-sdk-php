@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Describes or includes information associated with the SKU.
  * XSD Type: SKUDetailsType
  */
-class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Stock Keeping Unit that serves as a unique identifier for an item.
@@ -555,5 +555,23 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SKU'] = $this->sKU;
+        $data['Price'] = $this->price;
+        $data['Quantity'] = $this->quantity;
+        $data['ItemID'] = $this->itemID;
+        $data['BidCount'] = $this->bidCount;
+        $data['ReserveMet'] = $this->reserveMet;
+        $data['Variations'] = Func::jsonList($this->variations);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

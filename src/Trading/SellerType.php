@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Information about a user returned in the context of an item's seller.
  * XSD Type: SellerType
  */
-class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -1581,5 +1581,43 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AllowPaymentEdit'] = $this->allowPaymentEdit;
+        $data['BillingCurrency'] = $this->billingCurrency;
+        $data['CheckoutEnabled'] = $this->checkoutEnabled;
+        $data['CIPBankAccountStored'] = $this->cIPBankAccountStored;
+        $data['GoodStanding'] = $this->goodStanding;
+        $data['MerchandizingPref'] = $this->merchandizingPref;
+        $data['QualifiesForB2BVAT'] = $this->qualifiesForB2BVAT;
+        $data['SellerGuaranteeLevel'] = $this->sellerGuaranteeLevel;
+        $data['SellerLevel'] = $this->sellerLevel;
+        $data['SellerPaymentAddress'] = $this->sellerPaymentAddress;
+        $data['SchedulingInfo'] = $this->schedulingInfo;
+        $data['StoreOwner'] = $this->storeOwner;
+        $data['StoreURL'] = $this->storeURL;
+        $data['SellerBusinessType'] = $this->sellerBusinessType;
+        $data['RegisteredBusinessSeller'] = $this->registeredBusinessSeller;
+        $data['StoreSite'] = $this->storeSite;
+        $data['PaymentMethod'] = $this->paymentMethod;
+        $data['CharityRegistered'] = $this->charityRegistered;
+        $data['SafePaymentExempt'] = $this->safePaymentExempt;
+        $data['CharityAffiliationDetails'] = Func::jsonList($this->charityAffiliationDetails);
+        $data['TransactionPercent'] = $this->transactionPercent;
+        $data['FeatureEligibility'] = $this->featureEligibility;
+        $data['TopRatedSeller'] = $this->topRatedSeller;
+        $data['TopRatedSellerDetails'] = Func::jsonList($this->topRatedSellerDetails);
+        $data['RecoupmentPolicyConsent'] = Func::jsonList($this->recoupmentPolicyConsent);
+        $data['DomesticRateTable'] = $this->domesticRateTable;
+        $data['InternationalRateTable'] = $this->internationalRateTable;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

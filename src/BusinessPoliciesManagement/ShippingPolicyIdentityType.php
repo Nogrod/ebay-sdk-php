@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is for internal use.
  * XSD Type: ShippingPolicyIdentity
  */
-class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is for future use.
@@ -153,5 +153,18 @@ class ShippingPolicyIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['shippingPolicyId'] = $this->shippingPolicyId;
+        $data['shippingPolicyVersionId'] = $this->shippingPolicyVersionId;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

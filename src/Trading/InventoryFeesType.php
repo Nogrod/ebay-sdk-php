@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This is used in the <b>ReviseInventoryStatus</b> response to provide the set of fees associated with each unique <b>ItemID</b>.
  * XSD Type: InventoryFeesType
  */
-class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of the listing being changed. <br>
@@ -212,5 +212,18 @@ class InventoryFeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemID'] = $this->itemID;
+        $data['Fee'] = Func::jsonList($this->fee);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

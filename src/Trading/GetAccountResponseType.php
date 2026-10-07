@@ -514,4 +514,19 @@ class GetAccountResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['AccountID'] = $this->accountID;
+        $data['FeeNettingStatus'] = $this->feeNettingStatus;
+        $data['AccountSummary'] = $this->accountSummary;
+        $data['Currency'] = $this->currency;
+        $data['AccountEntries'] = Func::jsonList($this->accountEntries);
+        $data['PaginationResult'] = $this->paginationResult;
+        $data['HasMoreEntries'] = $this->hasMoreEntries;
+        $data['EntriesPerPage'] = $this->entriesPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        return $data;
+    }
 }

@@ -990,4 +990,30 @@ class GetUserPreferencesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ShowBidderNoticePreferences'] = $this->showBidderNoticePreferences;
+        $data['ShowCombinedPaymentPreferences'] = $this->showCombinedPaymentPreferences;
+        $data['ShowSellerPaymentPreferences'] = $this->showSellerPaymentPreferences;
+        $data['ShowEndOfAuctionEmailPreferences'] = $this->showEndOfAuctionEmailPreferences;
+        $data['ShowSellerFavoriteItemPreferences'] = $this->showSellerFavoriteItemPreferences;
+        $data['ShowEmailShipmentTrackingNumberPreference'] = $this->showEmailShipmentTrackingNumberPreference;
+        $data['ShowRequiredShipPhoneNumberPreference'] = $this->showRequiredShipPhoneNumberPreference;
+        $data['ShowSellerExcludeShipToLocationPreference'] = $this->showSellerExcludeShipToLocationPreference;
+        $data['ShowUnpaidItemAssistancePreference'] = $this->showUnpaidItemAssistancePreference;
+        $data['ShowPurchaseReminderEmailPreferences'] = $this->showPurchaseReminderEmailPreferences;
+        $data['ShowUnpaidItemAssistanceExclusionList'] = $this->showUnpaidItemAssistanceExclusionList;
+        $data['ShowSellerProfilePreferences'] = $this->showSellerProfilePreferences;
+        $data['ShowSellerReturnPreferences'] = $this->showSellerReturnPreferences;
+        $data['ShowGlobalShippingProgramPreference'] = $this->showGlobalShippingProgramPreference;
+        $data['ShowDispatchCutoffTimePreferences'] = $this->showDispatchCutoffTimePreferences;
+        $data['ShowGlobalShippingProgramListingPreference'] = $this->showGlobalShippingProgramListingPreference;
+        $data['ShowOverrideGSPServiceWithIntlServicePreference'] = $this->showOverrideGSPServiceWithIntlServicePreference;
+        $data['ShowPickupDropoffPreferences'] = $this->showPickupDropoffPreferences;
+        $data['ShowOutOfStockControlPreference'] = $this->showOutOfStockControlPreference;
+        $data['ShoweBayPLUSPreference'] = $this->showeBayPLUSPreference;
+        return $data;
+    }
 }

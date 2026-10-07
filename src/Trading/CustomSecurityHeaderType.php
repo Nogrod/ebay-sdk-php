@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Security header used for SOAP API calls.
  * XSD Type: CustomSecurityHeaderType
  */
-class CustomSecurityHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CustomSecurityHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Authentication token representing the user who is making the
@@ -322,5 +322,20 @@ class CustomSecurityHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['eBayAuthToken'] = $this->eBayAuthToken;
+        $data['HardExpirationWarning'] = $this->hardExpirationWarning;
+        $data['Credentials'] = $this->credentials;
+        $data['NotificationSignature'] = $this->notificationSignature;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

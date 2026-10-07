@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for Bulk Data Exchange Responses.
  * XSD Type: BulkDataExchangeResponsesType
  */
-class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var \Nogrod\eBaySDK\Trading\ActiveInventoryReportResponseType $activeInventoryReport
@@ -1189,5 +1189,32 @@ class BulkDataExchangeResponsesType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ActiveInventoryReport'] = $this->activeInventoryReport;
+        $data['AddFixedPriceItemResponse'] = Func::jsonList($this->addFixedPriceItemResponse);
+        $data['AddItemResponse'] = Func::jsonList($this->addItemResponse);
+        $data['EndFixedPriceItemResponse'] = Func::jsonList($this->endFixedPriceItemResponse);
+        $data['EndItemResponse'] = Func::jsonList($this->endItemResponse);
+        $data['FeeSettlementReport'] = $this->feeSettlementReport;
+        $data['OrderAckResponse'] = Func::jsonList($this->orderAckResponse);
+        $data['OrderReport'] = $this->orderReport;
+        $data['RelistFixedPriceItemResponse'] = Func::jsonList($this->relistFixedPriceItemResponse);
+        $data['RelistItemResponse'] = Func::jsonList($this->relistItemResponse);
+        $data['ReviseFixedPriceItemResponse'] = Func::jsonList($this->reviseFixedPriceItemResponse);
+        $data['ReviseInventoryStatusResponse'] = Func::jsonList($this->reviseInventoryStatusResponse);
+        $data['ReviseItemResponse'] = Func::jsonList($this->reviseItemResponse);
+        $data['SetShipmentTrackingInfoResponse'] = Func::jsonList($this->setShipmentTrackingInfoResponse);
+        $data['VerifyAddFixedPriceItemResponse'] = Func::jsonList($this->verifyAddFixedPriceItemResponse);
+        $data['VerifyAddItemResponse'] = Func::jsonList($this->verifyAddItemResponse);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

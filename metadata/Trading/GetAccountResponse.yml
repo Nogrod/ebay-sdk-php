@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetAccountResponse:
-    xml_root_name: GetAccountResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

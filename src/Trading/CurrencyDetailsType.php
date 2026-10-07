@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>CurrencyDetails</b> container that is returned in the <b>GeteBayDetails</b> response if 'CurrencyDetails' is used as a <b>DetailName</b> value in the request, or no <b>DetailName</b> values are used in the request. A <b>CurrencyDetails</b> container is returned for each currency value that is available to use in the <b>Item.Currency</b> field in an Add/Revise/Relist call.
  * XSD Type: CurrencyDetailsType
  */
-class CurrencyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CurrencyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Three-digit currency codes as defined in ISO 4217. The currency codes returned in
@@ -257,5 +257,20 @@ class CurrencyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Currency'] = $this->currency;
+        $data['Description'] = $this->description;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

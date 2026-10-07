@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the seller's preferences for the email that can be sent to the winner of an auction listing.
  * XSD Type: EndOfAuctionEmailPreferencesType
  */
-class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The seller can customize the text of the email that is sent to the winner of an auction listing. The text of the email is provided in this field. If the seller is going to customize the text of the email through this field, the seller must also include the <b>TextCustomized</b> field and set its value to <code>true</code>.The text of the custom message for the email.
@@ -422,5 +422,23 @@ class EndOfAuctionEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \S
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TemplateText'] = $this->templateText;
+        $data['LogoURL'] = $this->logoURL;
+        $data['LogoType'] = $this->logoType;
+        $data['EmailCustomized'] = $this->emailCustomized;
+        $data['TextCustomized'] = $this->textCustomized;
+        $data['LogoCustomized'] = $this->logoCustomized;
+        $data['CopyEmail'] = $this->copyEmail;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

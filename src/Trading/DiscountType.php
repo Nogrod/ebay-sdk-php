@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: DiscountType
  */
-class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The value in this field indicates the type of discount applied to the corresponding account entry.
@@ -169,5 +169,18 @@ class DiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DiscountType'] = $this->discountType;
+        $data['Amount'] = $this->amount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>PaymentInfo</b> container, which contains payment information related to the corresponding payment policy.
  * XSD Type: PaymentInfo
  */
-class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <span class="tablenote"><b>Note:</b>This field applies only when the seller needs to specify one or more offline payment methods. eBay now manages the electronic payment options available to buyers to pay for the item.</span>
@@ -471,5 +471,22 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['acceptedPaymentMethod'] = Func::jsonList($this->acceptedPaymentMethod);
+        $data['immediatePay'] = $this->immediatePay;
+        $data['paymentInstructions'] = $this->paymentInstructions;
+        $data['paypalEmailAddress'] = $this->paypalEmailAddress;
+        $data['depositDetails'] = $this->depositDetails;
+        $data['daysToFullPayment'] = $this->daysToFullPayment;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

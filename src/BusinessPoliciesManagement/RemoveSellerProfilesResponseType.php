@@ -154,4 +154,11 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['sellerProfileResponseStatus'] = Func::jsonList($this->sellerProfileResponseStatus);
+        return $data;
+    }
 }

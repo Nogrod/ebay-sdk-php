@@ -107,4 +107,11 @@ class RemoveOverridesRequestType extends BaseRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['profileId'] = $this->profileId;
+        return $data;
+    }
 }

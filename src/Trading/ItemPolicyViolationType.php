@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The details are the policy ID and the policy text.
  * XSD Type: ItemPolicyViolationType
  */
-class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Policy ID of the violated policy which resulted in item being administratively canceled.
@@ -154,5 +154,18 @@ class ItemPolicyViolationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PolicyID'] = $this->policyID;
+        $data['PolicyText'] = $this->policyText;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  return, and shipping policy profiles that a seller has defined for a site.
  * XSD Type: SupportedSellerProfilesType
  */
-class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Container consisting of information related to specific Business Policies payment, return,
@@ -170,5 +170,17 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SupportedSellerProfile'] = Func::jsonList($this->supportedSellerProfile);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

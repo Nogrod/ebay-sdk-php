@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>BestOffer</b> container, which consists of information on one Best Offer or counter offer. This information includes the price of the offer, the expiration of the offer, and any messaging provided by the prospective buyer or seller.
  * XSD Type: BestOfferType
  */
-class BestOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BestOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for a Best Offer. This identifier is created once a prospective buyer makes a Best Offer on an item.
@@ -584,5 +584,28 @@ class BestOfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BestOfferID'] = $this->bestOfferID;
+        $data['ExpirationTime'] = Func::jsonDate($this->expirationTime);
+        $data['Buyer'] = $this->buyer;
+        $data['Price'] = $this->price;
+        $data['Status'] = $this->status;
+        $data['Quantity'] = $this->quantity;
+        $data['BuyerMessage'] = $this->buyerMessage;
+        $data['SellerMessage'] = $this->sellerMessage;
+        $data['BestOfferCodeType'] = $this->bestOfferCodeType;
+        $data['CallStatus'] = $this->callStatus;
+        $data['NewBestOffer'] = $this->newBestOffer;
+        $data['ImmediatePayEligible'] = $this->immediatePayEligible;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

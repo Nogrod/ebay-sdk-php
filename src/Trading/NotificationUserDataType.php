@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * User data related to notifications.
  * XSD Type: NotificationUserDataType
  */
-class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An application subscribing to notifications can include an XML-compliant
@@ -122,5 +122,17 @@ class NotificationUserDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ExternalUserData'] = $this->externalUserData;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

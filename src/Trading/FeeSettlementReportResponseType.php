@@ -537,4 +537,21 @@ class FeeSettlementReportResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['InvoiceID'] = $this->invoiceID;
+        $data['SellerID'] = $this->sellerID;
+        $data['AccountID'] = $this->accountID;
+        $data['ReportStartTime'] = Func::jsonDate($this->reportStartTime);
+        $data['ReportEndTime'] = Func::jsonDate($this->reportEndTime);
+        $data['InvoiceProcessingTime'] = Func::jsonDate($this->invoiceProcessingTime);
+        $data['ReportProcessingTime'] = Func::jsonDate($this->reportProcessingTime);
+        $data['FeeSettlementAmount'] = $this->feeSettlementAmount;
+        $data['LastInvoiceAmount'] = $this->lastInvoiceAmount;
+        $data['FeeRoundingAdjustmentAmount'] = $this->feeRoundingAdjustmentAmount;
+        $data['FeeTotalUsageAdjustmentAmount'] = $this->feeTotalUsageAdjustmentAmount;
+        return $data;
+    }
 }

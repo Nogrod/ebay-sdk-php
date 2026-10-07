@@ -272,4 +272,12 @@ class GetSellerEventsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['TimeTo'] = Func::jsonDate($this->timeTo);
+        $data['ItemArray'] = Func::jsonList($this->itemArray);
+        return $data;
+    }
 }

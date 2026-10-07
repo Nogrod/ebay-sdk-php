@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type is used by the <b>MemberMessage</b> container that is returned in the <b>GetMemberMessages</b> calls. The <b>MemberMessage</b> container will consists of one or more member messages that meet the input criteria in the call request.
  * XSD Type: MemberMessageExchangeArrayType
  */
-class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Each <b>MemberMessageExchange</b> container consists of detailed information about a member-to-member message.
@@ -157,5 +157,17 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MemberMessageExchange'] = Func::jsonList($this->memberMessageExchange);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

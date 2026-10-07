@@ -154,4 +154,11 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Job'] = Func::jsonList($this->job);
+        return $data;
+    }
 }

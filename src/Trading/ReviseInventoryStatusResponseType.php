@@ -280,4 +280,12 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['InventoryStatus'] = Func::jsonList($this->inventoryStatus);
+        $data['Fees'] = Func::jsonList($this->fees);
+        return $data;
+    }
 }

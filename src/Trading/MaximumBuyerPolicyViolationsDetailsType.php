@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Although the <b>MaximumBuyerPolicyViolations</b> container is still returned in <b>GeteBayDetails</b>, a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, so this type is no longer applicable.
  * XSD Type: MaximumBuyerPolicyViolationsDetailsType
  */
-class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * As a Maximum Buyer Policy Violations threshold value can no longer be set at the account or listing level, this field is no longer applicable.
@@ -254,5 +254,18 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['NumberOfPolicyViolations'] = Func::jsonList($this->numberOfPolicyViolations);
+        $data['PolicyViolationDuration'] = Func::jsonList($this->policyViolationDuration);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

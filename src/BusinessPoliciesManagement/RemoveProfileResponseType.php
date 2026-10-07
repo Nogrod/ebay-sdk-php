@@ -60,4 +60,10 @@ class RemoveProfileResponseType extends BaseResponseType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

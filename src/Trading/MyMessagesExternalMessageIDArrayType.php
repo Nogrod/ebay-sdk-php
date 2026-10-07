@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a list of up to 10 external message IDs.
  * XSD Type: MyMessagesExternalMessageIDArrayType
  */
-class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Currently available on the US site. A message ID that uniquely identifies a message
@@ -176,5 +176,17 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ExternalMessageID'] = Func::jsonList($this->externalMessageID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

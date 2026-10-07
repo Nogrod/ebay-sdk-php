@@ -242,4 +242,14 @@ class GetBestOffersRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['BestOfferID'] = $this->bestOfferID;
+        $data['BestOfferStatus'] = $this->bestOfferStatus;
+        $data['Pagination'] = $this->pagination;
+        return $data;
+    }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details relating to a My Messages folder.
  * XSD Type: MyMessagesFolderType
  */
-class MyMessagesFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An ID that uniquely identifies a My Messages folder.
@@ -153,5 +153,18 @@ class MyMessagesFolderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['FolderID'] = $this->folderID;
+        $data['FolderName'] = $this->folderName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

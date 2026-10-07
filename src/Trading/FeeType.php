@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  an aid to help estimate the fees for a listing.
  * XSD Type: FeeType
  */
-class FeeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This is the name of the listing feature, such as <code>ListingFee</code>, <code>SubtitleFee</code>, or <code>BoldFee</code>.
@@ -213,5 +213,19 @@ class FeeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializabl
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['Fee'] = $this->fee;
+        $data['PromotionalDiscount'] = $this->promotionalDiscount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

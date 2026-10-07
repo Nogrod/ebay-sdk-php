@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>Variation</b> container, which provides full details on each item variation in a multiple-variation listing.
  * XSD Type: VariationType
  */
-class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -1193,5 +1193,29 @@ class VariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SKU'] = $this->sKU;
+        $data['StartPrice'] = $this->startPrice;
+        $data['Quantity'] = $this->quantity;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        $data['SellingStatus'] = $this->sellingStatus;
+        $data['VariationTitle'] = $this->variationTitle;
+        $data['VariationViewItemURL'] = $this->variationViewItemURL;
+        $data['Delete'] = $this->delete;
+        $data['WatchCount'] = $this->watchCount;
+        $data['PrivateNotes'] = $this->privateNotes;
+        $data['DiscountPriceInfo'] = $this->discountPriceInfo;
+        $data['VariationProductListingDetails'] = $this->variationProductListingDetails;
+        $data['VariationExtendedProducerResponsibility'] = $this->variationExtendedProducerResponsibility;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

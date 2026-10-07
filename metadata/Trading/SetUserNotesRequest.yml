@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\SetUserNotesRequest:
-    xml_root_name: SetUserNotesRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

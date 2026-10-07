@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  A separate <b>TaxDetails</b> container will be returned for each type of tax that applied to an order line item. For tax that is subject to 'eBay collect and remit', such as US sales tax or 'Goods and Services tax' for Australia or New Zealand, the <b>TaxDetails</b> container will be returned under the <b>eBayCollectAndRemitTaxes</b> container. For all other tax, the tax details will be returned under the <b>Taxes</b> container.
  * XSD Type: TaxDetailsType
  */
-class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field indicates the tax type. A separate <b>TaxDetails</b> container is returned for each unique imposition (tax type).
@@ -439,5 +439,24 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Imposition'] = $this->imposition;
+        $data['TaxDescription'] = $this->taxDescription;
+        $data['TaxAmount'] = $this->taxAmount;
+        $data['TaxOnSubtotalAmount'] = $this->taxOnSubtotalAmount;
+        $data['TaxOnShippingAmount'] = $this->taxOnShippingAmount;
+        $data['TaxOnHandlingAmount'] = $this->taxOnHandlingAmount;
+        $data['TaxCode'] = $this->taxCode;
+        $data['CollectionMethod'] = $this->collectionMethod;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

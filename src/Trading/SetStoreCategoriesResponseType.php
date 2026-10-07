@@ -276,4 +276,13 @@ class SetStoreCategoriesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['TaskID'] = $this->taskID;
+        $data['Status'] = $this->status;
+        $data['CustomCategory'] = Func::jsonList($this->customCategory);
+        return $data;
+    }
 }

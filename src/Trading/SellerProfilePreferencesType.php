@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  seller's account.
  * XSD Type: SellerProfilePreferencesType
  */
-class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Boolean flag indicating whether or not a seller has opted in to Business
@@ -227,5 +227,18 @@ class SellerProfilePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SellerProfileOptedIn'] = $this->sellerProfileOptedIn;
+        $data['SupportedSellerProfiles'] = Func::jsonList($this->supportedSellerProfiles);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

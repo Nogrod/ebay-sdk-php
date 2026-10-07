@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  For example, you might want to offer free returns for domestic shipments, but have a return policy where the buyer pays for returns from non-domestic regions.
  * XSD Type: InternationalReturnPolicyInfo
  */
-class InternationalReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class InternationalReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This optional field indicates whether or not the seller accepts international returns (returns that need to be shipped via an international shipping service).
@@ -271,5 +271,20 @@ class InternationalReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['returnsAcceptedOption'] = $this->returnsAcceptedOption;
+        $data['returnsWithinOption'] = $this->returnsWithinOption;
+        $data['shippingCostPaidByOption'] = $this->shippingCostPaidByOption;
+        $data['refundOption'] = $this->refundOption;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

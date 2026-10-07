@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: Base64BinaryType
  */
-class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -155,5 +155,18 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['contentType'] = $this->contentType;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

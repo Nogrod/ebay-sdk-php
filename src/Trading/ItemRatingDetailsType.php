@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The <b>ItemRatingDetailsType</b> contains detailed seller ratings for an order line item in one area. When buyers leave an overall Feedback rating (positive, neutral, or negative) for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers.
  * XSD Type: ItemRatingDetailsType
  */
-class ItemRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The area of a specific detailed seller rating for an order line item.
@@ -169,5 +169,18 @@ class ItemRatingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RatingDetail'] = $this->ratingDetail;
+        $data['Rating'] = $this->rating;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

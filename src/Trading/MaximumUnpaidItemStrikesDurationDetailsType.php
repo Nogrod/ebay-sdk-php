@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>MaximumUnpaidItemStrikesDuration</b> container that is returned in <b>GeteBayDetails</b>. The <b>MaximumUnpaidItemStrikesDuration</b> container indicates the periods of time that can be used when evaluating how many unpaid item strikes against a buyer during this given period will exclude the prospective buyer from purchasing the line item.
  * XSD Type: MaximumUnpaidItemStrikesDurationDetailsType
  */
-class MaximumUnpaidItemStrikesDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumUnpaidItemStrikesDurationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The period is the number of days (last 60 days, last 180 days, etc.)
@@ -165,5 +165,18 @@ class MaximumUnpaidItemStrikesDurationDetailsType implements \Sabre\Xml\XmlSeria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Period'] = $this->period;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

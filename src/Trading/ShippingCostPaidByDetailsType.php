@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ShippingCostPaidByDetailsType
  */
-class ShippingCostPaidByDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingCostPaidByDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The party who pays the shipping cost for a returned item.
@@ -157,5 +157,18 @@ class ShippingCostPaidByDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingCostPaidByOption'] = $this->shippingCostPaidByOption;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

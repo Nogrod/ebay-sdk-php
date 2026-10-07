@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type provides information about one or more order line items in a package.
  * XSD Type: ShipmentLineItemType
  */
-class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains information about one order line item in a package. The package can contain multiple units of a given order line item, and multiple order line items.
@@ -157,5 +157,17 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['LineItem'] = Func::jsonList($this->lineItem);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

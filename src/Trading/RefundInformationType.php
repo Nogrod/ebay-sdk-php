@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <strong>Refunds</strong> container, which contains an array of zero or more <strong>Refund</strong> objects, each with detailed refund information.
  * XSD Type: RefundInformationType
  */
-class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container consists of detailed information on an item refund. This container is only returned if the merchant is refunding (or providing a store credit) the buyer. A separate <strong>Refund</strong> container will be returned for each <strong>ORDER.RETURNED</strong> notification that the merchant sends to eBay through the <strong>Inbound Notifications API</strong>.
@@ -157,5 +157,17 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Refund'] = Func::jsonList($this->refund);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

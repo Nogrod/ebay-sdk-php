@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is no longer applicable as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments, and the <b>SellerInfo.IntegratedMerchantCreditCardInfo</b> container is no longer returned in <b>GetUser</b> response.
  * XSD Type: IntegratedMerchantCreditCardInfoType
  */
-class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The <b>SellerInfo.IntegratedMerchantCreditCardInfo</b> container (and this field) are no longer returned in <b>GetUser</b> response, as eBay sellers can no longer use iMCC gateway accounts to handle buyer payments.
@@ -158,5 +158,17 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SupportedSite'] = Func::jsonList($this->supportedSite);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -286,4 +286,14 @@ class PlaceOfferResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['SellingStatus'] = $this->sellingStatus;
+        $data['TransactionID'] = $this->transactionID;
+        $data['BestOffer'] = $this->bestOffer;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

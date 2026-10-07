@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the regulatory containers that are used at the listing level to provide Energy Efficiency Label information, hazardous material related information, product safety related information, manufacturer and responsible person information, and the repair score.
  * XSD Type: RegulatoryType
  */
-class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container provides information about the energy efficiency for certain durable goods.<br />
@@ -560,5 +560,23 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EnergyEfficiencyLabel'] = $this->energyEfficiencyLabel;
+        $data['Hazmat'] = $this->hazmat;
+        $data['ProductSafety'] = $this->productSafety;
+        $data['RepairScore'] = $this->repairScore;
+        $data['Manufacturer'] = $this->manufacturer;
+        $data['ResponsiblePersons'] = Func::jsonList($this->responsiblePersons);
+        $data['Documents'] = Func::jsonList($this->documents);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

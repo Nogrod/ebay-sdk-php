@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: PickupMethodSelectedType
  */
-class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the local pickup method that was selected by the buyer at checkout. This field is always returned with the <strong>PickupMethodSelected</strong> container.
@@ -389,5 +389,22 @@ class PickupMethodSelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PickupMethod'] = $this->pickupMethod;
+        $data['PickupStoreID'] = $this->pickupStoreID;
+        $data['PickupStatus'] = $this->pickupStatus;
+        $data['MerchantPickupCode'] = $this->merchantPickupCode;
+        $data['PickupFulfillmentTime'] = Func::jsonDate($this->pickupFulfillmentTime);
+        $data['PickupLocationUUID'] = $this->pickupLocationUUID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

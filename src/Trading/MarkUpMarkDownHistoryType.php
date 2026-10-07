@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  before the call is made to the time the call is made).
  * XSD Type: MarkUpMarkDownHistoryType
  */
-class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Details for a MarkDown or MarkUp event.
@@ -161,5 +161,17 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MarkUpMarkDownEvent'] = Func::jsonList($this->markUpMarkDownEvent);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

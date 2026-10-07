@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to set or identify either an Item Specific name/value pair for a category/item/variation, or to identify a Parts Compatibility name/value pair.
  * XSD Type: NameValueListType
  */
-class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Depending on the call and context, this value is either a name of an Item/Variation Specific, or a Parts Compatibility name.
@@ -385,5 +385,19 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['Value'] = Func::jsonList($this->value);
+        $data['Source'] = $this->source;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  Support Knowledge Base Article - LMS: FeeSettlementReport one time set-up process </a>.
  * XSD Type: FeeSettlementReportRequestType
  */
-class FeeSettlementReportRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeeSettlementReportRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
@@ -68,5 +68,16 @@ class FeeSettlementReportRequestType implements \Sabre\Xml\XmlSerializable, \Sab
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

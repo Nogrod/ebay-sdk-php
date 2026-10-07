@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: MembershipDetailsType
  */
-class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>Program</b> container will be returned for each eBay membership program for which the seller is enrolled. This container provides the the eBay site, the membership program (such as '<code>EBAYPLUS</code>'), and the membership expiration date.
@@ -160,5 +160,17 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Program'] = Func::jsonList($this->program);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -300,4 +300,14 @@ class GetAllBiddersResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['BidArray'] = Func::jsonList($this->bidArray);
+        $data['HighBidder'] = $this->highBidder;
+        $data['HighestBid'] = $this->highestBid;
+        $data['ListingStatus'] = $this->listingStatus;
+        return $data;
+    }
 }

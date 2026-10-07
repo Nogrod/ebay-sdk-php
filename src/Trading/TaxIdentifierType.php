@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type defines the <b>BuyerTaxIdentifier</b> container that is returned in order management calls. This container will either consist of VAT or Codice Fiscale taxpayer identification information for the buyer.
  * XSD Type: TaxIdentifierType
  */
-class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -255,5 +255,19 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Type'] = $this->type;
+        $data['ID'] = $this->iD;
+        $data['Attribute'] = Func::jsonList($this->attribute);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

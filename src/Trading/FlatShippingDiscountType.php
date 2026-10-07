@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  user for flat-rate shipping.
  * XSD Type: FlatShippingDiscountType
  */
-class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The type of discount or rule that is being used by the profile.
@@ -207,5 +207,18 @@ class FlatShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DiscountName'] = $this->discountName;
+        $data['DiscountProfile'] = Func::jsonList($this->discountProfile);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

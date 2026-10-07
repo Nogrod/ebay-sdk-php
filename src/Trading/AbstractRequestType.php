@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  VerbNameRequestType
  * XSD Type: AbstractRequestType
  */
-class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Detail levels are instructions that define standard subsets of
@@ -1395,5 +1395,27 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DetailLevel'] = Func::jsonList($this->detailLevel);
+        $data['ErrorLanguage'] = $this->errorLanguage;
+        $data['MessageID'] = $this->messageID;
+        $data['Version'] = $this->version;
+        $data['EndUserIP'] = $this->endUserIP;
+        $data['ErrorHandling'] = $this->errorHandling;
+        $data['InvocationID'] = $this->invocationID;
+        $data['OutputSelector'] = Func::jsonList($this->outputSelector);
+        $data['WarningLevel'] = $this->warningLevel;
+        $data['BotBlock'] = $this->botBlock;
+        $data['RequesterCredentials'] = $this->requesterCredentials;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

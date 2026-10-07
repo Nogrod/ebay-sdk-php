@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains an array of eBay UserID entries.
  * XSD Type: UserIDArrayType
  */
-class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique eBay user ID for the user.
@@ -188,5 +188,17 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['UserID'] = Func::jsonList($this->userID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

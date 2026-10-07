@@ -545,4 +545,18 @@ class GetFeedbackRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['UserID'] = $this->userID;
+        $data['FeedbackID'] = $this->feedbackID;
+        $data['ItemID'] = $this->itemID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['CommentType'] = Func::jsonList($this->commentType);
+        $data['FeedbackType'] = $this->feedbackType;
+        $data['Pagination'] = $this->pagination;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

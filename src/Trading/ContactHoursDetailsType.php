@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>ContactHoursDetails</b> container, which is used in Add/Revise/Relist calls to provide contact hours for the owner of a Classified Ad. The <b>ContactHoursDetails</b> container is only applicable to Classified Ad listings.
  * XSD Type: ContactHoursDetailsType
  */
-class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the local time zone of the values provided for Hours1From/Hours1To
@@ -589,5 +589,25 @@ class ContactHoursDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TimeZoneID'] = $this->timeZoneID;
+        $data['Hours1Days'] = $this->hours1Days;
+        $data['Hours1AnyTime'] = $this->hours1AnyTime;
+        $data['Hours1From'] = Func::jsonDate($this->hours1From);
+        $data['Hours1To'] = Func::jsonDate($this->hours1To);
+        $data['Hours2Days'] = $this->hours2Days;
+        $data['Hours2AnyTime'] = $this->hours2AnyTime;
+        $data['Hours2From'] = Func::jsonDate($this->hours2From);
+        $data['Hours2To'] = Func::jsonDate($this->hours2To);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details about a region or location to which the seller is willing to ship.
  * XSD Type: ShippingLocationDetailsType
  */
-class ShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Short name or abbreviation for a region (e.g., Asia) or location (e.g. Japan).
@@ -254,5 +254,20 @@ class ShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingLocation'] = $this->shippingLocation;
+        $data['Description'] = $this->description;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

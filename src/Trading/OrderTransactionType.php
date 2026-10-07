@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  into a single payment.
  * XSD Type: OrderTransactionType
  */
-class OrderTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OrderTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains the information describing an order.
@@ -153,5 +153,18 @@ class OrderTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Order'] = $this->order;
+        $data['Transaction'] = $this->transaction;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

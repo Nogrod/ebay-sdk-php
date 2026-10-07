@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>SellerExcludeShipToLocationPreferences</b> container which is returned in the <b>GetUserPreferences</b> response to indicate which geographical regions and/or individual countries the seller has added as excluded ship-to locations.
  * XSD Type: SellerExcludeShipToLocationPreferencesType
  */
-class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * One <b>ExcludeShipToLocation</b> field is returned for each geographical region or country excluded
@@ -272,5 +272,17 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ExcludeShipToLocation'] = Func::jsonList($this->excludeShipToLocation);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

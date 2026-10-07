@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to provide details on a motor vehicle order using Secure Purchase.
  * XSD Type: MotorPurchaseType
  */
-class MotorPurchaseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MotorPurchaseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The value returned in this field identifies the party that is facilitating the motor vehicle order.<br><br>Currently, only <code>CARAMEL</code> is supported.
@@ -324,5 +324,22 @@ class MotorPurchaseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Facilitator'] = $this->facilitator;
+        $data['FacilitatorRefId'] = $this->facilitatorRefId;
+        $data['ServiceCost'] = $this->serviceCost;
+        $data['BuyerStep'] = $this->buyerStep;
+        $data['SellerStep'] = $this->sellerStep;
+        $data['Status'] = $this->status;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>ShippingPackageInfoType</b> container, which is returned in order management calls. The <b>ShippingPackageInfoType</b> container provides information on delivery times and tracking information for a shipping package.
  * XSD Type: ShippingPackageInfoType
  */
-class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'Click and Collect' orders.
@@ -575,5 +575,26 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['StoreID'] = $this->storeID;
+        $data['ShippingTrackingEvent'] = $this->shippingTrackingEvent;
+        $data['ScheduledDeliveryTimeMin'] = Func::jsonDate($this->scheduledDeliveryTimeMin);
+        $data['ScheduledDeliveryTimeMax'] = Func::jsonDate($this->scheduledDeliveryTimeMax);
+        $data['ActualDeliveryTime'] = Func::jsonDate($this->actualDeliveryTime);
+        $data['EstimatedDeliveryTimeMin'] = Func::jsonDate($this->estimatedDeliveryTimeMin);
+        $data['EstimatedDeliveryTimeMax'] = Func::jsonDate($this->estimatedDeliveryTimeMax);
+        $data['HandleByTime'] = Func::jsonDate($this->handleByTime);
+        $data['MinNativeEstimatedDeliveryTime'] = Func::jsonDate($this->minNativeEstimatedDeliveryTime);
+        $data['MaxNativeEstimatedDeliveryTime'] = Func::jsonDate($this->maxNativeEstimatedDeliveryTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -514,4 +514,19 @@ class GetMemberMessagesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['MailMessageType'] = $this->mailMessageType;
+        $data['MessageStatus'] = $this->messageStatus;
+        $data['DisplayToPublic'] = $this->displayToPublic;
+        $data['StartCreationTime'] = Func::jsonDate($this->startCreationTime);
+        $data['EndCreationTime'] = Func::jsonDate($this->endCreationTime);
+        $data['Pagination'] = $this->pagination;
+        $data['MemberMessageID'] = $this->memberMessageID;
+        $data['SenderID'] = $this->senderID;
+        return $data;
+    }
 }

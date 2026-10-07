@@ -58,4 +58,10 @@ class AddMemberMessageRTQResponse extends AddMemberMessageRTQResponseType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>deliveryEstimate</b> container, which provides details on the estimated time of delivery of the item to the buyer.
  * XSD Type: DeliveryEstimate
  */
-class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The maximum number of business days that a buyer may need to wait for delivery of an item after the buyer pays for the order. This value is based on the <b>dispatchTimeMax</b> value and the shipping service option being used to ship the item.
@@ -454,5 +454,25 @@ class DeliveryEstimateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['maxDelivery'] = $this->maxDelivery;
+        $data['minDelivery'] = $this->minDelivery;
+        $data['maxDeliveryDate'] = Func::jsonDate($this->maxDeliveryDate);
+        $data['minDeliveryDate'] = Func::jsonDate($this->minDeliveryDate);
+        $data['minConfidence'] = $this->minConfidence;
+        $data['maxConfidence'] = $this->maxConfidence;
+        $data['estimateTreatment'] = $this->estimateTreatment;
+        $data['maxActualDelivery'] = $this->maxActualDelivery;
+        $data['minActualDelivery'] = $this->minActualDelivery;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

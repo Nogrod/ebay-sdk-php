@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Based on the context of the field, this type defines the user is sending or receiving a payment.
  * XSD Type: UserIdentityType
  */
-class UserIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UserIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -151,5 +151,18 @@ class UserIdentityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['type'] = $this->type;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

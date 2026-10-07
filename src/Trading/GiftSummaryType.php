@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>GiftSummary</b> container that is returned in <b>GetOrders</b> and other order management calls if a buyer has purchased a digital gift card but has sent it to another individual as a gift. The <b>GiftSummary</b> container consists of the message that the buyer wrote for the recipient of the digital gift card.
  * XSD Type: GiftSummaryType
  */
-class GiftSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class GiftSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This free-form text contains the message that the purchaser of the digital gift card left for the recipient of the gift card.
@@ -116,5 +116,17 @@ class GiftSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Message'] = $this->message;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

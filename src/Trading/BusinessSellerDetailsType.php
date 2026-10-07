@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>BusinessSellerDetails</b> container, which is returned in an <b>Item</b> node if the item's seller is registered on eBay as a Business Seller.
  * XSD Type: BusinessSellerDetailsType
  */
-class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field shows the address on file for the Business Seller.
@@ -409,5 +409,24 @@ class BusinessSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Address'] = $this->address;
+        $data['Fax'] = $this->fax;
+        $data['Email'] = $this->email;
+        $data['AdditionalContactInformation'] = $this->additionalContactInformation;
+        $data['TradeRegistrationNumber'] = $this->tradeRegistrationNumber;
+        $data['LegalInvoice'] = $this->legalInvoice;
+        $data['TermsAndConditions'] = $this->termsAndConditions;
+        $data['VATDetails'] = $this->vATDetails;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

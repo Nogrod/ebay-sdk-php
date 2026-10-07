@@ -165,4 +165,12 @@ class AddOrderResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['OrderID'] = $this->orderID;
+        $data['CreatedTime'] = Func::jsonDate($this->createdTime);
+        return $data;
+    }
 }

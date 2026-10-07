@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Base response container for all service operations. Contains error information associated with the request.
  * XSD Type: BaseResponse
  */
-class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A token representing the application-level acknowledgment code that indicates the response status, such as success. The AckValue list specifies the possible values for ack.
@@ -382,5 +382,21 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ack'] = $this->ack;
+        $data['errorMessage'] = Func::jsonList($this->errorMessage);
+        $data['version'] = $this->version;
+        $data['timestamp'] = Func::jsonDate($this->timestamp);
+        $data['extension'] = Func::jsonList($this->extension);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

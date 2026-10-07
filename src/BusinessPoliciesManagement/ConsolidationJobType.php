@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Enumerated type defining the possible shipping policies consolidation job types.
  * XSD Type: ConsolidationJobType
  */
-class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Constant for 'ShippingProfilesConsolidation' value.
@@ -153,5 +153,20 @@ class ConsolidationJobType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['JobId'] = $this->jobId;
+        $data['JobType'] = $this->jobType;
+        $data['JobStatus'] = $this->jobStatus;
+        $data['SiteId'] = $this->siteId;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

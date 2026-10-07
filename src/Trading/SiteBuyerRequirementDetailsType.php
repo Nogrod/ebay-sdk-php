@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: SiteBuyerRequirementDetailsType
  */
-class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is deprecated.
@@ -494,5 +494,24 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['LinkedPayPalAccount'] = $this->linkedPayPalAccount;
+        $data['MaximumBuyerPolicyViolations'] = $this->maximumBuyerPolicyViolations;
+        $data['MaximumItemRequirements'] = $this->maximumItemRequirements;
+        $data['MaximumUnpaidItemStrikesInfo'] = $this->maximumUnpaidItemStrikesInfo;
+        $data['MinimumFeedbackScore'] = Func::jsonList($this->minimumFeedbackScore);
+        $data['ShipToRegistrationCountry'] = $this->shipToRegistrationCountry;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

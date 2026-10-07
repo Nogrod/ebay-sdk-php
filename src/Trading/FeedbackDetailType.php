@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: FeedbackDetailType
  */
-class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The eBay User ID of the user who left the Feedback entry.
@@ -1002,5 +1002,36 @@ class FeedbackDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CommentingUser'] = $this->commentingUser;
+        $data['FeedbackRatingStar'] = $this->feedbackRatingStar;
+        $data['CommentingUserScore'] = $this->commentingUserScore;
+        $data['CommentText'] = $this->commentText;
+        $data['CommentTime'] = Func::jsonDate($this->commentTime);
+        $data['CommentType'] = $this->commentType;
+        $data['FeedbackResponse'] = $this->feedbackResponse;
+        $data['Followup'] = $this->followup;
+        $data['ItemID'] = $this->itemID;
+        $data['Role'] = $this->role;
+        $data['ItemTitle'] = $this->itemTitle;
+        $data['ItemPrice'] = $this->itemPrice;
+        $data['FeedbackID'] = $this->feedbackID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['CommentReplaced'] = $this->commentReplaced;
+        $data['ResponseReplaced'] = $this->responseReplaced;
+        $data['FollowUpReplaced'] = $this->followUpReplaced;
+        $data['Countable'] = $this->countable;
+        $data['FeedbackRevised'] = $this->feedbackRevised;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

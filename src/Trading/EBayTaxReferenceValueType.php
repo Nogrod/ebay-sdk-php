@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to indicate the type of tax identifier that is appearing in the <b>eBayReference</b> field. The tax identifier type which will vary by country/region.
  * XSD Type: eBayTaxReferenceValue
  */
-class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -187,5 +187,18 @@ class EBayTaxReferenceValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['name'] = $this->name;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

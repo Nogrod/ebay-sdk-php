@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  if theme groups are requested.
  * XSD Type: ThemeGroupType
  */
-class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for this theme group.
@@ -297,5 +297,20 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['GroupID'] = $this->groupID;
+        $data['GroupName'] = $this->groupName;
+        $data['ThemeID'] = Func::jsonList($this->themeID);
+        $data['ThemeTotal'] = $this->themeTotal;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

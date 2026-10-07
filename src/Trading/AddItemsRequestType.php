@@ -154,4 +154,11 @@ class AddItemsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['AddItemRequestContainer'] = Func::jsonList($this->addItemRequestContainer);
+        return $data;
+    }
 }

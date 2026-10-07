@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to specify domestic and international package handling costs if calculated shipping is being used.
  * XSD Type: CalculatedShippingRateType
  */
-class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Fees a seller might assess for the shipping of the item (in addition to whatever the shipping service might charge). Any packaging/handling cost specified on input is added to each shipping service on output.
@@ -175,5 +175,18 @@ class CalculatedShippingRateType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PackagingHandlingCosts'] = $this->packagingHandlingCosts;
+        $data['InternationalPackagingHandlingCosts'] = $this->internationalPackagingHandlingCosts;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

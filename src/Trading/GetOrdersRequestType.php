@@ -756,4 +756,22 @@ class GetOrdersRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['OrderIDArray'] = Func::jsonList($this->orderIDArray);
+        $data['CreateTimeFrom'] = Func::jsonDate($this->createTimeFrom);
+        $data['CreateTimeTo'] = Func::jsonDate($this->createTimeTo);
+        $data['OrderRole'] = $this->orderRole;
+        $data['OrderStatus'] = $this->orderStatus;
+        $data['ListingType'] = $this->listingType;
+        $data['Pagination'] = $this->pagination;
+        $data['ModTimeFrom'] = Func::jsonDate($this->modTimeFrom);
+        $data['ModTimeTo'] = Func::jsonDate($this->modTimeTo);
+        $data['NumberOfDays'] = $this->numberOfDays;
+        $data['IncludeFinalValueFee'] = $this->includeFinalValueFee;
+        $data['SortingOrder'] = $this->sortingOrder;
+        return $data;
+    }
 }

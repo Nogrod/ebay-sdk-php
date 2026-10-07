@@ -698,4 +698,23 @@ class GetAccountRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['AccountHistorySelection'] = $this->accountHistorySelection;
+        $data['InvoiceDate'] = Func::jsonDate($this->invoiceDate);
+        $data['BeginDate'] = Func::jsonDate($this->beginDate);
+        $data['EndDate'] = Func::jsonDate($this->endDate);
+        $data['Pagination'] = $this->pagination;
+        $data['ExcludeBalance'] = $this->excludeBalance;
+        $data['ExcludeSummary'] = $this->excludeSummary;
+        $data['IncludeConversionRate'] = $this->includeConversionRate;
+        $data['IncludeNettedEntries'] = $this->includeNettedEntries;
+        $data['AccountEntrySortType'] = $this->accountEntrySortType;
+        $data['Currency'] = $this->currency;
+        $data['ItemID'] = $this->itemID;
+        $data['OrderID'] = $this->orderID;
+        return $data;
+    }
 }

@@ -58,4 +58,10 @@ class OrderReportRequest extends OrderReportRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

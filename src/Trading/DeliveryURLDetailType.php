@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Defines settings for a notification URL (including the URL name in DeliveryURLName).
  * XSD Type: DeliveryURLDetailType
  */
-class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of a notification delivery URL. You can list up to 25 instances of
@@ -235,5 +235,19 @@ class DeliveryURLDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DeliveryURLName'] = $this->deliveryURLName;
+        $data['DeliveryURL'] = $this->deliveryURL;
+        $data['Status'] = $this->status;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

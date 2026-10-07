@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>ListingFeatureDetails</b> container in the <b>GeteBayDetails</b> response. This container indicates the listing features that are enabled or disabled for an eBay site.
  * XSD Type: ListingFeatureDetailsType
  */
-class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The enumeration value returned in this field indicates whether or not the Bold Title featured is enabled for the eBay site. If this feature is available for an eBay site, the seller can pass in <code>BoldTitle</code> as an enumeration value in the <b>ListingEnhancement</b> field of an Add/Revise/Relist call.
@@ -584,5 +584,26 @@ class ListingFeatureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BoldTitle'] = $this->boldTitle;
+        $data['Border'] = $this->border;
+        $data['Highlight'] = $this->highlight;
+        $data['GiftIcon'] = $this->giftIcon;
+        $data['HomePageFeatured'] = $this->homePageFeatured;
+        $data['FeaturedFirst'] = $this->featuredFirst;
+        $data['FeaturedPlus'] = $this->featuredPlus;
+        $data['ProPack'] = $this->proPack;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

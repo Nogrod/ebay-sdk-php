@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>DiscountDetail</b> container, which is returned if a discount is applicable to an account entry.
  * XSD Type: DiscountDetailType
  */
-class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container indicates the discount type and amount applied to an account entry.
@@ -187,5 +187,17 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Discount'] = Func::jsonList($this->discount);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>CharityAffiliationDetail</b> container that is returned in the <b>GetUser</b> response. The <b>CharityAffiliationDetail</b> container consists of information on a nonprofit charity organization associated with the seller's account. A separate <b>CharityAffiliationDetail</b> container is returned for each nonprofit charity organization associated with the seller's account.
  * XSD Type: CharityAffiliationDetailType
  */
-class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit organization.
@@ -196,5 +196,19 @@ class CharityAffiliationDetailType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CharityID'] = $this->charityID;
+        $data['AffiliationType'] = $this->affiliationType;
+        $data['LastUsedTime'] = Func::jsonDate($this->lastUsedTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

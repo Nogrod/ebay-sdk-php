@@ -18,7 +18,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The <b>GetMyeBaySelling</b> call returns order details if the seller wishes to view listings that have sold, and the <b>GetMyeBayBuying</b> call returns order details if the buyer wishes to view items they have won or purchased.
  * XSD Type: OrderType
  */
-class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique identifier for an eBay order. This identifier is globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Note that the order ID will change for a 'non-immediate payment' order as it goes from an unpaid order to a paid order.
@@ -2715,5 +2715,57 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OrderID'] = $this->orderID;
+        $data['OrderStatus'] = $this->orderStatus;
+        $data['AdjustmentAmount'] = $this->adjustmentAmount;
+        $data['AmountPaid'] = $this->amountPaid;
+        $data['AmountSaved'] = $this->amountSaved;
+        $data['CheckoutStatus'] = $this->checkoutStatus;
+        $data['ShippingDetails'] = $this->shippingDetails;
+        $data['CreatingUserRole'] = $this->creatingUserRole;
+        $data['CreatedTime'] = Func::jsonDate($this->createdTime);
+        $data['PaymentMethods'] = Func::jsonList($this->paymentMethods);
+        $data['SellerEmail'] = $this->sellerEmail;
+        $data['ShippingAddress'] = $this->shippingAddress;
+        $data['ShippingServiceSelected'] = $this->shippingServiceSelected;
+        $data['Subtotal'] = $this->subtotal;
+        $data['Total'] = $this->total;
+        $data['TransactionArray'] = Func::jsonList($this->transactionArray);
+        $data['BuyerUserID'] = $this->buyerUserID;
+        $data['PaidTime'] = Func::jsonDate($this->paidTime);
+        $data['ShippedTime'] = Func::jsonDate($this->shippedTime);
+        $data['BundlePurchase'] = $this->bundlePurchase;
+        $data['BuyerCheckoutMessage'] = $this->buyerCheckoutMessage;
+        $data['EIASToken'] = $this->eIASToken;
+        $data['PaymentHoldStatus'] = $this->paymentHoldStatus;
+        $data['RefundAmount'] = $this->refundAmount;
+        $data['RefundStatus'] = $this->refundStatus;
+        $data['IsMultiLegShipping'] = $this->isMultiLegShipping;
+        $data['MultiLegShippingDetails'] = $this->multiLegShippingDetails;
+        $data['MonetaryDetails'] = $this->monetaryDetails;
+        $data['PickupDetails'] = Func::jsonList($this->pickupDetails);
+        $data['PickupMethodSelected'] = $this->pickupMethodSelected;
+        $data['SellerUserID'] = $this->sellerUserID;
+        $data['SellerEIASToken'] = $this->sellerEIASToken;
+        $data['CancelReason'] = $this->cancelReason;
+        $data['CancelStatus'] = $this->cancelStatus;
+        $data['LogisticsPlanType'] = $this->logisticsPlanType;
+        $data['BuyerTaxIdentifier'] = Func::jsonList($this->buyerTaxIdentifier);
+        $data['BuyerPackageEnclosures'] = Func::jsonList($this->buyerPackageEnclosures);
+        $data['ExtendedOrderID'] = $this->extendedOrderID;
+        $data['ContainseBayPlusTransaction'] = $this->containseBayPlusTransaction;
+        $data['eBayCollectAndRemitTax'] = $this->eBayCollectAndRemitTax;
+        $data['OrderLineItemCount'] = $this->orderLineItemCount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

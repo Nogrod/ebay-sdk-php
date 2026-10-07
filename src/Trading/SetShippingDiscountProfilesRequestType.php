@@ -383,4 +383,17 @@ class SetShippingDiscountProfilesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['CurrencyID'] = $this->currencyID;
+        $data['CombinedDuration'] = $this->combinedDuration;
+        $data['ModifyActionCode'] = $this->modifyActionCode;
+        $data['FlatShippingDiscount'] = $this->flatShippingDiscount;
+        $data['CalculatedShippingDiscount'] = $this->calculatedShippingDiscount;
+        $data['CalculatedHandlingDiscount'] = $this->calculatedHandlingDiscount;
+        $data['PromotionalShippingDiscountDetails'] = $this->promotionalShippingDiscountDetails;
+        return $data;
+    }
 }

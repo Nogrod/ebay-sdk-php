@@ -660,4 +660,23 @@ class SetUserPreferencesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['BidderNoticePreferences'] = $this->bidderNoticePreferences;
+        $data['CombinedPaymentPreferences'] = $this->combinedPaymentPreferences;
+        $data['SellerPaymentPreferences'] = $this->sellerPaymentPreferences;
+        $data['SellerFavoriteItemPreferences'] = $this->sellerFavoriteItemPreferences;
+        $data['EndOfAuctionEmailPreferences'] = $this->endOfAuctionEmailPreferences;
+        $data['EmailShipmentTrackingNumberPreference'] = $this->emailShipmentTrackingNumberPreference;
+        $data['RequiredShipPhoneNumberPreference'] = $this->requiredShipPhoneNumberPreference;
+        $data['UnpaidItemAssistancePreferences'] = $this->unpaidItemAssistancePreferences;
+        $data['PurchaseReminderEmailPreferences'] = $this->purchaseReminderEmailPreferences;
+        $data['DispatchCutoffTimePreference'] = $this->dispatchCutoffTimePreference;
+        $data['GlobalShippingProgramListingPreference'] = $this->globalShippingProgramListingPreference;
+        $data['OverrideGSPserviceWithIntlService'] = $this->overrideGSPserviceWithIntlService;
+        $data['OutOfStockControlPreference'] = $this->outOfStockControlPreference;
+        return $data;
+    }
 }

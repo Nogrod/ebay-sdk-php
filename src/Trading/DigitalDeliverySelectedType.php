@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>DigitalDeliverySelected</b> container that is returned by <b>GetOrders</b> and other order management calls. The <b>DigitalDeliverySelected</b> container is only applicable and returned if the buyer purchased a digital gift card for themselves, or is giving the digital gift card to someone else as a gift.
  * XSD Type: DigitalDeliverySelectedType
  */
-class DigitalDeliverySelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DigitalDeliverySelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the method in which the digital gift card will be delivered to the buyer or to the person whom the purchaser is giving the digital gift card to. Currently, the only supported delivery method is by email.
@@ -194,5 +194,19 @@ class DigitalDeliverySelectedType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DeliveryMethod'] = $this->deliveryMethod;
+        $data['DeliveryStatus'] = $this->deliveryStatus;
+        $data['DeliveryDetails'] = $this->deliveryDetails;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

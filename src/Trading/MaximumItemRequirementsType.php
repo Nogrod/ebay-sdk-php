@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>MaximumItemRequirements</b> container to specify the maximum quantity of an order line item that a prospective buyer may purchase during any given 10-day period.
  * XSD Type: MaximumItemRequirementsType
  */
-class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field indicates the maximum quantity of a line item that one prospective buyer may purchase from the listing.
@@ -171,5 +171,18 @@ class MaximumItemRequirementsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaximumItemCount'] = $this->maximumItemCount;
+        $data['MinimumFeedbackScore'] = $this->minimumFeedbackScore;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

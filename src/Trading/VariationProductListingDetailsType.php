@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type defines the <b>VariationProductListingDetails</b> container that is used to specify a Global Trade Item Number (GTIN), such as an EAN, an ISBN, or a UPC value, to identify a specific product variation in a multiple-variation listing. For a multiple-variation listing, the same GTIN type(s) must be used for all product variations within the same listing. For instance, if specify an ISBN value for one product variation within the listing, an ISBN value (and not an EAN or UPC value) must be specified for all product variations within the listing.
  * XSD Type: VariationProductListingDetailsType
  */
-class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. To determine whether a specific leaf category supports or requires an ISBN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the ISBN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the ISBN value is required, recommended, or optional.
@@ -368,5 +368,21 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ISBN'] = $this->iSBN;
+        $data['UPC'] = $this->uPC;
+        $data['EAN'] = $this->eAN;
+        $data['ProductReferenceID'] = $this->productReferenceID;
+        $data['NameValueList'] = Func::jsonList($this->nameValueList);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

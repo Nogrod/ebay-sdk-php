@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Information regarding an error or warning that occurred when eBay processed the request. Not returned when the <b>ack</b> value is <b>Success</b>.
  * XSD Type: ErrorMessage
  */
-class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Details about a single error.
@@ -157,5 +157,17 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['error'] = Func::jsonList($this->error);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

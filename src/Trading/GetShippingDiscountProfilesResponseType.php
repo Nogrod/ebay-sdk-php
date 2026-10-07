@@ -361,4 +361,17 @@ class GetShippingDiscountProfilesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['CurrencyID'] = $this->currencyID;
+        $data['FlatShippingDiscount'] = $this->flatShippingDiscount;
+        $data['CalculatedShippingDiscount'] = $this->calculatedShippingDiscount;
+        $data['PromotionalShippingDiscount'] = $this->promotionalShippingDiscount;
+        $data['CalculatedHandlingDiscount'] = $this->calculatedHandlingDiscount;
+        $data['PromotionalShippingDiscountDetails'] = $this->promotionalShippingDiscountDetails;
+        $data['CombinedDuration'] = $this->combinedDuration;
+        return $data;
+    }
 }

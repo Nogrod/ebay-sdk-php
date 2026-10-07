@@ -386,4 +386,15 @@ class GetBestOffersResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['BestOfferArray'] = Func::jsonList($this->bestOfferArray);
+        $data['Item'] = $this->item;
+        $data['ItemBestOffersArray'] = Func::jsonList($this->itemBestOffersArray);
+        $data['PageNumber'] = $this->pageNumber;
+        $data['PaginationResult'] = $this->paginationResult;
+        return $data;
+    }
 }

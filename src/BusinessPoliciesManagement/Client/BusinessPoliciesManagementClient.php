@@ -3,7 +3,6 @@
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement\Client;
 
 use Http\Discovery\Psr17Factory;
-use JMS\Serializer\Serializer;
 use Nogrod\eBaySDK\Constants\Version;
 use Psr\Http\Client\ClientInterface;
 
@@ -23,14 +22,14 @@ class BusinessPoliciesManagementClient extends SellerProfilesManagementBaseClien
 
     public const SANDBOX_URL = 'https://svcs.sandbox.ebay.com/services/selling/v1/SellerProfilesManagementService';
 
-    public function __construct(array $config = [], Serializer $serializer = null, Psr17Factory $messageFactory = null, ClientInterface $client = null)
+    public function __construct(array $config = [], ?Psr17Factory $messageFactory = null, ?ClientInterface $client = null)
     {
         $config = array_merge([
             'sandbox' => false,
             'version' => Version::BUSINESSPOLICIESMANAGEMENT,
             'globalId' => null,
         ], $config);
-        parent::__construct($config, $serializer, $messageFactory, $client);
+        parent::__construct($config, $messageFactory, $client);
     }
 
     protected function getUrl(): ?string

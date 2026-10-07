@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>GetOrders</b> to indicate the current checkout status of the order.
  * XSD Type: CheckoutStatusType
  */
-class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the status of the buyer's payment for an order. If the payment was successfully processed, a value of <code>NoPaymentFailure</code> will be returned.
@@ -383,5 +383,22 @@ class CheckoutStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['eBayPaymentStatus'] = $this->eBayPaymentStatus;
+        $data['LastModifiedTime'] = Func::jsonDate($this->lastModifiedTime);
+        $data['PaymentMethod'] = $this->paymentMethod;
+        $data['Status'] = $this->status;
+        $data['IntegratedMerchantCreditCardEnabled'] = $this->integratedMerchantCreditCardEnabled;
+        $data['PaymentInstrument'] = $this->paymentInstrument;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

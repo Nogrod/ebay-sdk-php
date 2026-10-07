@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for Top-Rated Seller program information.
  * XSD Type: TopRatedSellerDetailsType
  */
-class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>TopRatedProgram</b> field is returned for each Top-Rated Seller program that the eBay user qualifies for.
@@ -158,5 +158,17 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TopRatedProgram'] = Func::jsonList($this->topRatedProgram);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

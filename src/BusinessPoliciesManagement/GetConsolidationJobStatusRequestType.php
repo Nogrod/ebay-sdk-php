@@ -107,4 +107,11 @@ class GetConsolidationJobStatusRequestType extends BaseRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['JobId'] = $this->jobId;
+        return $data;
+    }
 }

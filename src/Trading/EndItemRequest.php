@@ -58,4 +58,10 @@ class EndItemRequest extends EndItemRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

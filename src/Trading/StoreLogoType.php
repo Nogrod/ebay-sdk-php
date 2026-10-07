@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Store logo.
  * XSD Type: StoreLogoType
  */
-class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The URL of the seller's store logo.
@@ -110,5 +110,17 @@ class StoreLogoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['URL'] = $this->uRL;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

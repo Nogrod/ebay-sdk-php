@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type includes the acknowledgement of the date and time when an eBay listing was ended due to the call to <b>EndItems</b>.
  * XSD Type: EndItemResponseContainerType
  */
-class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This timestamp indicates the date and time (returned in GMT) when the specified eBay listing was ended.
@@ -345,5 +345,19 @@ class EndItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['CorrelationID'] = $this->correlationID;
+        $data['Errors'] = Func::jsonList($this->errors);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

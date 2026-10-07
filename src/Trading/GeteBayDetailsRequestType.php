@@ -157,4 +157,11 @@ class GeteBayDetailsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['DetailName'] = Func::jsonList($this->detailName);
+        return $data;
+    }
 }

@@ -200,4 +200,12 @@ class GetItemsAwaitingFeedbackRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Sort'] = $this->sort;
+        $data['Pagination'] = $this->pagination;
+        return $data;
+    }
 }

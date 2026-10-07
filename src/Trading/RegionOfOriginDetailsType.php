@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is no longer used; replaced by <b>ShippingLocationDetails</b>.
  * XSD Type: RegionOfOriginDetailsType
  */
-class RegionOfOriginDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RegionOfOriginDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * String identifier for a continent, a geographic region, or a country.
@@ -297,5 +297,21 @@ class RegionOfOriginDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RegionOfOrigin'] = $this->regionOfOrigin;
+        $data['Description'] = $this->description;
+        $data['Status'] = $this->status;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

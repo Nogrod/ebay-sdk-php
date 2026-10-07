@@ -58,4 +58,10 @@ class RespondToBestOfferResponse extends RespondToBestOfferResponseType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

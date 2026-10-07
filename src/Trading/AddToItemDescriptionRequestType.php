@@ -156,4 +156,12 @@ class AddToItemDescriptionRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['Description'] = $this->description;
+        return $data;
+    }
 }

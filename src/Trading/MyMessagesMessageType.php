@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the requested detail level.
  * XSD Type: MyMessagesMessageType
  */
-class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Display name of the eBay user that sent the message.
@@ -1259,5 +1259,39 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Sender'] = $this->sender;
+        $data['RecipientUserID'] = $this->recipientUserID;
+        $data['SendToName'] = $this->sendToName;
+        $data['Subject'] = $this->subject;
+        $data['MessageID'] = $this->messageID;
+        $data['ExternalMessageID'] = $this->externalMessageID;
+        $data['Text'] = $this->text;
+        $data['Flagged'] = $this->flagged;
+        $data['Read'] = $this->read;
+        $data['ReceiveDate'] = Func::jsonDate($this->receiveDate);
+        $data['ExpirationDate'] = Func::jsonDate($this->expirationDate);
+        $data['ItemID'] = $this->itemID;
+        $data['ResponseDetails'] = $this->responseDetails;
+        $data['Folder'] = $this->folder;
+        $data['Content'] = $this->content;
+        $data['MessageType'] = $this->messageType;
+        $data['ListingStatus'] = $this->listingStatus;
+        $data['QuestionType'] = $this->questionType;
+        $data['Replied'] = $this->replied;
+        $data['HighPriority'] = $this->highPriority;
+        $data['ItemEndTime'] = Func::jsonDate($this->itemEndTime);
+        $data['ItemTitle'] = $this->itemTitle;
+        $data['MessageMedia'] = Func::jsonList($this->messageMedia);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

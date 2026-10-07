@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type holds an array of custom categories set up by a seller for their eBay Store.
  * XSD Type: StoreCustomCategoryArrayType
  */
-class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container is used to express details about a customized eBay Store category.
@@ -157,5 +157,17 @@ class StoreCustomCategoryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CustomCategory'] = Func::jsonList($this->customCategory);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

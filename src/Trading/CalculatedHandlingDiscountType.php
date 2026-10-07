@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>CalculatedHandlingDiscount</b> container that is used in the <b>SetShippingDiscountProfiles</b> call to specify the rules used to determine package handling costs for an order in which calculated shipping is used.
  * XSD Type: CalculatedHandlingDiscountType
  */
-class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The type of discount that is detailed in the profile.
@@ -390,5 +390,21 @@ class CalculatedHandlingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DiscountName'] = $this->discountName;
+        $data['OrderHandlingAmount'] = $this->orderHandlingAmount;
+        $data['EachAdditionalAmount'] = $this->eachAdditionalAmount;
+        $data['EachAdditionalOffAmount'] = $this->eachAdditionalOffAmount;
+        $data['EachAdditionalPercentOff'] = $this->eachAdditionalPercentOff;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type that provides information, such as name and contact details, for an EU-based Responsible Person or entity, associated with the product.
  * XSD Type: ResponsiblePersonType
  */
-class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the the Responsible Person or entity.
@@ -621,5 +621,27 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CompanyName'] = $this->companyName;
+        $data['Street1'] = $this->street1;
+        $data['Street2'] = $this->street2;
+        $data['CityName'] = $this->cityName;
+        $data['StateOrProvince'] = $this->stateOrProvince;
+        $data['PostalCode'] = $this->postalCode;
+        $data['Country'] = $this->country;
+        $data['Phone'] = $this->phone;
+        $data['Email'] = $this->email;
+        $data['ContactURL'] = $this->contactURL;
+        $data['Types'] = Func::jsonList($this->types);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

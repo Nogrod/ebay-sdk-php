@@ -18,7 +18,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  filter in the request, or if no <b>DetailName</b> filters are used in the request.
  * XSD Type: ListingStartPriceDetailsType
  */
-class ListingStartPriceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ListingStartPriceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value is a string description of the listing type for which the pricing data
@@ -380,5 +380,22 @@ class ListingStartPriceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Description'] = $this->description;
+        $data['ListingType'] = $this->listingType;
+        $data['StartPrice'] = $this->startPrice;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        $data['MinBuyItNowPricePercent'] = $this->minBuyItNowPricePercent;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

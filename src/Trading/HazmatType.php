@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>Pictograms</b> and <b>Statements</b> containers, and the <b>Component</b> and <b>SignalWord</b> fields, that provide hazardous material related information. For additional information, see <a href="https://developer.ebay.com/api-docs/sell/static/metadata/feature-regulatorhazmatcontainer.html#Signal" target="_blank">Signal word information</a>.
  * XSD Type: HazmatType
  */
-class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container is used by the seller to provide pictograms for the listing.
@@ -347,5 +347,20 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Pictograms'] = Func::jsonList($this->pictograms);
+        $data['SignalWord'] = $this->signalWord;
+        $data['Statements'] = Func::jsonList($this->statements);
+        $data['Component'] = $this->component;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

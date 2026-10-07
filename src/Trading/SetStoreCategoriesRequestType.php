@@ -310,4 +310,14 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Action'] = $this->action;
+        $data['ItemDestinationCategoryID'] = $this->itemDestinationCategoryID;
+        $data['DestinationParentCategoryID'] = $this->destinationParentCategoryID;
+        $data['StoreCategories'] = Func::jsonList($this->storeCategories);
+        return $data;
+    }
 }

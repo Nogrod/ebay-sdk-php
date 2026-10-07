@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  whether the listing includes a SKU.
  * XSD Type: DiscountPriceInfoType
  */
-class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The actual retail price set by the manufacturer (OEM).
@@ -502,5 +502,23 @@ class DiscountPriceInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OriginalRetailPrice'] = $this->originalRetailPrice;
+        $data['MinimumAdvertisedPrice'] = $this->minimumAdvertisedPrice;
+        $data['MinimumAdvertisedPriceExposure'] = $this->minimumAdvertisedPriceExposure;
+        $data['PricingTreatment'] = $this->pricingTreatment;
+        $data['SoldOneBay'] = $this->soldOneBay;
+        $data['SoldOffeBay'] = $this->soldOffeBay;
+        $data['MadeForOutletComparisonPrice'] = $this->madeForOutletComparisonPrice;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

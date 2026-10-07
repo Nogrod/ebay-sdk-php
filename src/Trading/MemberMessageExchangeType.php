@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for message metadata.
  * XSD Type: MemberMessageExchangeType
  */
-class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The item about which the question was asked. Returned if the parent container is returned.
@@ -470,5 +470,23 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Item'] = $this->item;
+        $data['Question'] = $this->question;
+        $data['Response'] = Func::jsonList($this->response);
+        $data['MessageStatus'] = $this->messageStatus;
+        $data['CreationDate'] = Func::jsonDate($this->creationDate);
+        $data['LastModifiedDate'] = Func::jsonDate($this->lastModifiedDate);
+        $data['MessageMedia'] = Func::jsonList($this->messageMedia);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

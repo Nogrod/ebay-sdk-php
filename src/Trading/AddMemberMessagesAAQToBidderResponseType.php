@@ -154,4 +154,11 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['AddMemberMessagesAAQToBidderResponseContainer'] = Func::jsonList($this->addMemberMessagesAAQToBidderResponseContainer);
+        return $data;
+    }
 }

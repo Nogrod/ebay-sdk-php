@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ReturnsWithinDetailsType
  */
-class ReturnsWithinDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReturnsWithinDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Value indicates the number of days that a buyer has to return an item from the day they receive the item. This value can be passed in the Add/Revise/Relist family of API calls. Supported values can vary by eBay site.
@@ -160,5 +160,18 @@ class ReturnsWithinDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ReturnsWithinOption'] = $this->returnsWithinOption;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

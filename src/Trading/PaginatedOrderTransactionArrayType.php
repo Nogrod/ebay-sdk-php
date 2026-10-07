@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a paginated list of orders.
  * XSD Type: PaginatedOrderTransactionArrayType
  */
-class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains the list of orders.
@@ -208,5 +208,18 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OrderTransactionArray'] = Func::jsonList($this->orderTransactionArray);
+        $data['PaginationResult'] = $this->paginationResult;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

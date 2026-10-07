@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>ImageURL</b>, <b>ImageDescription</b>, and <b>ProductInformationsheet</b> regulatory fields that are used at the listing level to provide Energy Efficiency Label related information.<br><span class="tablenote"><b>Important: </b> When providing energy efficiency information on an appliance or smartphones and tablets listing, the energy efficiency <b>rating</b> and <b>range</b> of the item must be specified through the <a href = "/devzone/xml/docs/reference/ebay/additem.html#Request.Item.ItemSpecifics" target="_blank">ItemSpecifics</a> container. Use the <a href = "/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to retrieve applicable rating and range values for a specified category.</span>
  * XSD Type: EnergyEfficiencyType
  */
-class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The URL to the Energy Efficiency Label image that is applicable to an item. This field is required if an Energy Efficiency Label is provided. The URL provided must be an eBay Picture Services (EPS) URL only. You can upload pictures to eBay Picture Services via the <strong>UploadSiteHostedPictures</strong> call.
@@ -196,5 +196,19 @@ class EnergyEfficiencyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ImageURL'] = $this->imageURL;
+        $data['ImageDescription'] = $this->imageDescription;
+        $data['ProductInformationsheet'] = $this->productInformationsheet;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

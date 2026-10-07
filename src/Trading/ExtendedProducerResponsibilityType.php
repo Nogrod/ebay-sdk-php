@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <br/><br/>For <b>GetItem</b> calls, this container is only returned to the listing owner, if the container is available.
  * XSD Type: ExtendedProducerResponsibilityType
  */
-class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This is the fee paid for new items to the eco-organization (for example, "eco-organisme" in France). It is a contribution to the financing of the elimination of the item responsibly. For multiple-variation listings, the <b>EcoParticipationFee</b> in the <b>VariationExtendedProducerResponsibility</b> container is used for each variation in the listing, and not the <b>EcoParticipationFee</b> in the <b>ExtendedProducerResponsibility</b> container.
@@ -110,5 +110,17 @@ class ExtendedProducerResponsibilityType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EcoParticipationFee'] = $this->ecoParticipationFee;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

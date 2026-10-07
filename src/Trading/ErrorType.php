@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the application passed in.
  * XSD Type: ErrorType
  */
-class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A brief description of the condition that raised the error.
@@ -450,5 +450,23 @@ class ErrorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShortMessage'] = $this->shortMessage;
+        $data['LongMessage'] = $this->longMessage;
+        $data['ErrorCode'] = $this->errorCode;
+        $data['UserDisplayHint'] = $this->userDisplayHint;
+        $data['SeverityCode'] = $this->severityCode;
+        $data['ErrorParameters'] = Func::jsonList($this->errorParameters);
+        $data['ErrorClassification'] = $this->errorClassification;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

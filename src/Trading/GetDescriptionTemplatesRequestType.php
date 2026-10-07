@@ -214,4 +214,13 @@ class GetDescriptionTemplatesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['CategoryID'] = $this->categoryID;
+        $data['LastModifiedTime'] = Func::jsonDate($this->lastModifiedTime);
+        $data['MotorVehicles'] = $this->motorVehicles;
+        return $data;
+    }
 }

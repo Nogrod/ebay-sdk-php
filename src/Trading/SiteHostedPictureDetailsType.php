@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  in an <b>UploadSiteHostedPictures</b> call.
  * XSD Type: SiteHostedPictureDetailsType
  */
-class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The seller-defined name for the picture. This field is only returned if a <b>PictureName</b> value was specified in the request. A name for a picture can make it easier to track than an arbitrary, eBay-assigned URL.
@@ -471,5 +471,24 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PictureName'] = $this->pictureName;
+        $data['PictureSet'] = $this->pictureSet;
+        $data['PictureFormat'] = $this->pictureFormat;
+        $data['FullURL'] = $this->fullURL;
+        $data['BaseURL'] = $this->baseURL;
+        $data['PictureSetMember'] = Func::jsonList($this->pictureSetMember);
+        $data['ExternalPictureURL'] = $this->externalPictureURL;
+        $data['UseByDate'] = Func::jsonDate($this->useByDate);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

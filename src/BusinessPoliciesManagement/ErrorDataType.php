@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * A container for error details.
  * XSD Type: ErrorData
  */
-class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique code that identifies the particular error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
@@ -476,5 +476,24 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['errorId'] = $this->errorId;
+        $data['domain'] = $this->domain;
+        $data['subdomain'] = $this->subdomain;
+        $data['severity'] = $this->severity;
+        $data['category'] = $this->category;
+        $data['message'] = $this->message;
+        $data['exceptionId'] = $this->exceptionId;
+        $data['parameter'] = Func::jsonList($this->parameter);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

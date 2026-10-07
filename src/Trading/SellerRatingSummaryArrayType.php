@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  period in which those ratings were received (the last year or the last 30 days).
  * XSD Type: SellerRatingSummaryArrayType
  */
-class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Container consisting of a seller's Detailed Seller Rating (DSR) for each type of
@@ -187,5 +187,17 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AverageRatingSummary'] = Func::jsonList($this->averageRatingSummary);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

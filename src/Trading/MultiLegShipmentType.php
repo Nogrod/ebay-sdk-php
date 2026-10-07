@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type provides information about the shipping service, cost, address, and delivery estimates for the domestic leg of international shipments. This type is only applicable for international shipments using either the Global Shipping Program or eBay International Shipping.
  * XSD Type: MultiLegShipmentType
  */
-class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains information about the shipping service and cost of the domestic leg of a Global Shipping Program shipment.
@@ -249,5 +249,20 @@ class MultiLegShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingServiceDetails'] = $this->shippingServiceDetails;
+        $data['ShipToAddress'] = $this->shipToAddress;
+        $data['ShippingTimeMin'] = $this->shippingTimeMin;
+        $data['ShippingTimeMax'] = $this->shippingTimeMax;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * A container to specify a single eBay item to end.
  * XSD Type: EndItemRequestContainerType
  */
-class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of the eBay listing to end.
@@ -232,5 +232,19 @@ class EndItemRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemID'] = $this->itemID;
+        $data['EndingReason'] = $this->endingReason;
+        $data['MessageID'] = $this->messageID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

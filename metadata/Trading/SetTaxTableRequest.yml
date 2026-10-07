@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\SetTaxTableRequest:
-    xml_root_name: SetTaxTableRequest
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

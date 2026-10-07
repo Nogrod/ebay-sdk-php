@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>freightShipping</b> container, which consists of details related to freight shipping. This container is required to be set in a shipping policy if the seller offers freight shipping.
  * XSD Type: FreightShipping
  */
-class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * String value indicating whether the freight item is being picked up from a residence or from a commercial location. Valid values are 'Residential' and 'Commercial'.
@@ -425,5 +425,23 @@ class FreightShippingType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['originPickupLocationType'] = $this->originPickupLocationType;
+        $data['originPickupInside'] = $this->originPickupInside;
+        $data['packagingHelpRequired'] = $this->packagingHelpRequired;
+        $data['commodityType'] = $this->commodityType;
+        $data['freightShippingClass'] = $this->freightShippingClass;
+        $data['destPickupLocationType'] = $this->destPickupLocationType;
+        $data['destPickupInside'] = $this->destPickupInside;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

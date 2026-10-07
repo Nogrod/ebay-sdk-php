@@ -212,4 +212,13 @@ class GetUserContactDetailsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['UserID'] = $this->userID;
+        $data['ContactAddress'] = $this->contactAddress;
+        $data['RegistrationDate'] = Func::jsonDate($this->registrationDate);
+        return $data;
+    }
 }

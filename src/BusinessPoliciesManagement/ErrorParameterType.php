@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contextual data associated with an error.
  * XSD Type: ErrorParameter
  */
-class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -151,5 +151,18 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['name'] = $this->name;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

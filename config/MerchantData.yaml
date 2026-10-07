@@ -3,8 +3,6 @@ xml_client:
     'urn:ebay:apis:eBLBaseComponents': 'Nogrod\eBaySDK\Trading'
   destinations_php:
     'Nogrod\eBaySDK\Trading': src/MerchantData
-  destinations_jms:
-    'Nogrod\eBaySDK\Trading': metadata/MerchantData
   metadata:
     'wsdl/MerchantData.xsd': ~
   configs_jms:

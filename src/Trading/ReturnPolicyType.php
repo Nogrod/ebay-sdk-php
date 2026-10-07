@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
  * XSD Type: ReturnPolicyType
  */
-class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field indicates how the seller compensates buyers for returns</a>. <code>MoneyBack</code> is the only supported value for all marketplaces except for the US. On the US marketplace, you can set this value to either <code>MoneyBack</code> or <code>MoneyBackOrReplacement</code>. <code>MoneyBackOrReplacement</code> can be used by sellers that have the depth of inventory to support an exchange for an identical item. However, ultimately, it is up to the buyer on whether they want money back or a replacement item.
@@ -889,5 +889,29 @@ class ReturnPolicyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RefundOption'] = $this->refundOption;
+        $data['Refund'] = $this->refund;
+        $data['ReturnsWithinOption'] = $this->returnsWithinOption;
+        $data['ReturnsWithin'] = $this->returnsWithin;
+        $data['ReturnsAcceptedOption'] = $this->returnsAcceptedOption;
+        $data['ReturnsAccepted'] = $this->returnsAccepted;
+        $data['Description'] = $this->description;
+        $data['ShippingCostPaidByOption'] = $this->shippingCostPaidByOption;
+        $data['ShippingCostPaidBy'] = $this->shippingCostPaidBy;
+        $data['InternationalRefundOption'] = $this->internationalRefundOption;
+        $data['InternationalReturnsAcceptedOption'] = $this->internationalReturnsAcceptedOption;
+        $data['InternationalReturnsWithinOption'] = $this->internationalReturnsWithinOption;
+        $data['InternationalShippingCostPaidByOption'] = $this->internationalShippingCostPaidByOption;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

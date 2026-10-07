@@ -116,4 +116,11 @@ class GetStoreCategoryUpdateStatusRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['TaskID'] = $this->taskID;
+        return $data;
+    }
 }

@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the current bidding or purchase state of the listing.
  * XSD Type: OfferType
  */
-class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the type of offer being made on the specified listing.
@@ -905,5 +905,33 @@ class OfferType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Action'] = $this->action;
+        $data['Currency'] = $this->currency;
+        $data['ItemID'] = $this->itemID;
+        $data['MaxBid'] = $this->maxBid;
+        $data['Quantity'] = $this->quantity;
+        $data['SecondChanceEnabled'] = $this->secondChanceEnabled;
+        $data['SiteCurrency'] = $this->siteCurrency;
+        $data['TimeBid'] = Func::jsonDate($this->timeBid);
+        $data['HighestBid'] = $this->highestBid;
+        $data['ConvertedPrice'] = $this->convertedPrice;
+        $data['TransactionID'] = $this->transactionID;
+        $data['User'] = $this->user;
+        $data['UserConsent'] = $this->userConsent;
+        $data['BidCount'] = $this->bidCount;
+        $data['Message'] = $this->message;
+        $data['BestOfferID'] = $this->bestOfferID;
+        $data['MyMaxBid'] = $this->myMaxBid;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

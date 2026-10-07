@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type contains information about one or more payments made by the buyer to pay for an order.
  * XSD Type: PaymentInformationType
  */
-class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container consists of detailed information about each payment made by the buyer to pay for an order. In many cases, there may be only one payment - the payment made from the buyer to the seller, but in the case of an order going through the Global Shipping Program, one payment goes to the seller for the price of the order, and then an import charge and a portion of the shipping charges may go to eBay Global Shipping Program partner. In the case of an order that is subject to Australia import tax, one payment goes to the seller for the total price of the order, and the import tax goes to eBay for remittance to the Australian government.
@@ -187,5 +187,17 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Payment'] = Func::jsonList($this->payment);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

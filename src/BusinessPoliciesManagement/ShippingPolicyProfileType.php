@@ -112,4 +112,11 @@ class ShippingPolicyProfileType extends SellerProfileType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['shippingPolicyInfo'] = $this->shippingPolicyInfo;
+        return $data;
+    }
 }

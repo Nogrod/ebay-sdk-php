@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Summary details for a specified My Messages folder.
  * XSD Type: MyMessagesFolderSummaryType
  */
-class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An ID that uniquely identifies a My Messages
@@ -346,5 +346,22 @@ class MyMessagesFolderSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['FolderID'] = $this->folderID;
+        $data['FolderName'] = $this->folderName;
+        $data['NewMessageCount'] = $this->newMessageCount;
+        $data['TotalMessageCount'] = $this->totalMessageCount;
+        $data['NewHighPriorityCount'] = $this->newHighPriorityCount;
+        $data['TotalHighPriorityCount'] = $this->totalHighPriorityCount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

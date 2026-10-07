@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to display the value of the <b>name</b> attribute of the <b>BuyerTaxIdentifier.Attribute</b> field.
  * XSD Type: TaxIdentifierAttributeType
  */
-class TaxIdentifierAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TaxIdentifierAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -151,5 +151,18 @@ class TaxIdentifierAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['name'] = $this->name;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the order status, e.g. the buyer's online payment and whether the checkout process for the order is complete.
  * XSD Type: TransactionStatusType
  */
-class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the status of the buyer's payment for an order. If the payment was successfuly processed, a value of <code>NoPaymentFailure</code> will be returned.
@@ -643,5 +643,28 @@ class TransactionStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['eBayPaymentStatus'] = $this->eBayPaymentStatus;
+        $data['CheckoutStatus'] = $this->checkoutStatus;
+        $data['LastTimeModified'] = Func::jsonDate($this->lastTimeModified);
+        $data['PaymentMethodUsed'] = $this->paymentMethodUsed;
+        $data['CompleteStatus'] = $this->completeStatus;
+        $data['BuyerSelectedShipping'] = $this->buyerSelectedShipping;
+        $data['PaymentHoldStatus'] = $this->paymentHoldStatus;
+        $data['InquiryStatus'] = $this->inquiryStatus;
+        $data['ReturnStatus'] = $this->returnStatus;
+        $data['PaymentInstrument'] = $this->paymentInstrument;
+        $data['DigitalStatus'] = $this->digitalStatus;
+        $data['CancelStatus'] = $this->cancelStatus;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

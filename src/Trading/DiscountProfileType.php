@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details of a flat or calculated shipping discount rule. Shipping Discount Rules can be set up through the <b>SetShippingDiscountProfiles</b> call or through My eBay.
  * XSD Type: DiscountProfileType
  */
-class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique eBay-created unique identifier for the shipping discount, assigned when the shipping discount rule is created.
@@ -416,5 +416,23 @@ class DiscountProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['DiscountProfileID'] = $this->discountProfileID;
+        $data['DiscountProfileName'] = $this->discountProfileName;
+        $data['EachAdditionalAmount'] = $this->eachAdditionalAmount;
+        $data['EachAdditionalAmountOff'] = $this->eachAdditionalAmountOff;
+        $data['EachAdditionalPercentOff'] = $this->eachAdditionalPercentOff;
+        $data['WeightOff'] = $this->weightOff;
+        $data['MappedDiscountProfileID'] = $this->mappedDiscountProfileID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

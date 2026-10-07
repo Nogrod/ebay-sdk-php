@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>BuyerRoleMetrics</b> container, which consists of details relating to the eBay buyer's one-year history of leaving feedback for the seller.
  * XSD Type: BuyerRoleMetricsType
  */
-class BuyerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BuyerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the number of positive feedback entries that the eBay user, acting in the buying role, has left for their order partner (seller) during the last one-year period, counting back from the present date.
@@ -239,5 +239,20 @@ class BuyerRoleMetricsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PositiveFeedbackLeftCount'] = $this->positiveFeedbackLeftCount;
+        $data['NegativeFeedbackLeftCount'] = $this->negativeFeedbackLeftCount;
+        $data['NeutralFeedbackLeftCount'] = $this->neutralFeedbackLeftCount;
+        $data['FeedbackLeftPercent'] = $this->feedbackLeftPercent;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

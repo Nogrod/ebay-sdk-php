@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile.
  * XSD Type: ShippingServiceCostOverrideListType
  */
-class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service option, defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b> containers of the Business Policies shipping profile, that the seller wishes to override the shipping costs. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services.
@@ -195,5 +195,17 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingServiceCostOverride'] = Func::jsonList($this->shippingServiceCostOverride);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

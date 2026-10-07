@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Defines properties associated with a particular event.
  * XSD Type: NotificationEventPropertyType
  */
-class NotificationEventPropertyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NotificationEventPropertyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the notification event.
@@ -196,5 +196,19 @@ class NotificationEventPropertyType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EventType'] = $this->eventType;
+        $data['Name'] = $this->name;
+        $data['Value'] = $this->value;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

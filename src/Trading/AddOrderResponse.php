@@ -58,4 +58,10 @@ class AddOrderResponse extends AddOrderResponseType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

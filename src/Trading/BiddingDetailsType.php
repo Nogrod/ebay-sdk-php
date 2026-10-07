@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  information about the buyer's bidding history on a single auction item.
  * XSD Type: BiddingDetailsType
  */
-class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Converted value (from seller's currency to buyer's currency) of the amount in the <b>MaxBid</b> field. This field is only applicable and returned if the buyer purchased an item from an eBay site in another country. For active items, it is recommended to refresh the listing's data every 24 hours to pick up the current conversion rates.
@@ -287,5 +287,21 @@ class BiddingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ConvertedMaxBid'] = $this->convertedMaxBid;
+        $data['MaxBid'] = $this->maxBid;
+        $data['QuantityBid'] = $this->quantityBid;
+        $data['QuantityWon'] = $this->quantityWon;
+        $data['Winning'] = $this->winning;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

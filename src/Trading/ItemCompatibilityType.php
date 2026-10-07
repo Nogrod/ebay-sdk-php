@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * All information corresponding to an individual parts compatibility by application.
  * XSD Type: ItemCompatibilityType
  */
-class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Removes individual parts compatibility nodes from the compatibility list. Set
@@ -405,5 +405,19 @@ class ItemCompatibilityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Delete'] = $this->delete;
+        $data['NameValueList'] = Func::jsonList($this->nameValueList);
+        $data['CompatibilityNotes'] = $this->compatibilityNotes;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

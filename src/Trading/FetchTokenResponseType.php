@@ -196,4 +196,13 @@ class FetchTokenResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['eBayAuthToken'] = $this->eBayAuthToken;
+        $data['HardExpirationTime'] = Func::jsonDate($this->hardExpirationTime);
+        $data['RESTToken'] = $this->rESTToken;
+        return $data;
+    }
 }

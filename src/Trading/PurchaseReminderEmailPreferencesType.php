@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a seller's preference for sending a "Payment Reminder Email" to buyers.
  * XSD Type: PurchaseReminderEmailPreferencesType
  */
-class PurchaseReminderEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PurchaseReminderEmailPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * If true, a payment reminder Email is sent to buyers.
@@ -110,5 +110,17 @@ class PurchaseReminderEmailPreferencesType implements \Sabre\Xml\XmlSerializable
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PurchaseReminderEmailPreferences'] = $this->purchaseReminderEmailPreferences;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

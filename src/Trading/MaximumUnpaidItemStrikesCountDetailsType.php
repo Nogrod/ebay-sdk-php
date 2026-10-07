@@ -19,7 +19,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  value from buying/bidding on the item.
  * XSD Type: MaximumUnpaidItemStrikesCountDetailsType
  */
-class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Each value returned in each <b>MaximumUnpaidItemStrikesCount.Count</b> field
@@ -179,5 +179,17 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Count'] = Func::jsonList($this->count);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

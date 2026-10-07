@@ -352,4 +352,13 @@ class GetSellerProfilesResponseType extends BaseResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['paymentProfileList'] = Func::jsonList($this->paymentProfileList);
+        $data['returnPolicyProfileList'] = Func::jsonList($this->returnPolicyProfileList);
+        $data['shippingPolicyProfile'] = Func::jsonList($this->shippingPolicyProfile);
+        return $data;
+    }
 }

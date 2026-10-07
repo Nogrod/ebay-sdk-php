@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>sellerProfileResponseStatus</b> container, which is returned in the <b>removeSellerProfiles</b> response, and indicates whether or not the business policies specified in the call request were successfully deleted.
  * XSD Type: SellerProfileResponseStatus
  */
-class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for a business policy. Each payment policy, shipping policy, and return policy has its own unique <b>profileId</b>. A <b>profileId</b> value is returned for all business policies that were successfully deleted. For business policies that were not successfully deleted, the reason may be found in the <b>errorMessage</b> container.
@@ -249,5 +249,19 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['profileId'] = $this->profileId;
+        $data['ack'] = $this->ack;
+        $data['errorMessage'] = Func::jsonList($this->errorMessage);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

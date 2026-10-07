@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>ServiceCost</b> container to display any service cost to the buyer for an item that will go through the Authenticity Guarantee process.
  * XSD Type: ServiceCostType
  */
-class ServiceCostType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ServiceCostType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The amount charged to the buyer for any service cost related to an item going through the Authenticity Guarantee process. This amount is given in the currency of the listing site.
@@ -151,5 +151,18 @@ class ServiceCostType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Amount'] = $this->amount;
+        $data['ConvertedFromAmount'] = $this->convertedFromAmount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

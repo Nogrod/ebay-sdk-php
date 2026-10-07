@@ -344,4 +344,16 @@ class GetMyeBaySellingRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ScheduledList'] = $this->scheduledList;
+        $data['ActiveList'] = $this->activeList;
+        $data['SoldList'] = $this->soldList;
+        $data['UnsoldList'] = $this->unsoldList;
+        $data['SellingSummary'] = $this->sellingSummary;
+        $data['HideVariations'] = $this->hideVariations;
+        return $data;
+    }
 }

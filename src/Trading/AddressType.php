@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  shipping address, and buyer and seller registration address.
  * XSD Type: AddressType
  */
-class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -1509,5 +1509,44 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['Street'] = $this->street;
+        $data['Street1'] = $this->street1;
+        $data['Street2'] = $this->street2;
+        $data['CityName'] = $this->cityName;
+        $data['County'] = $this->county;
+        $data['StateOrProvince'] = $this->stateOrProvince;
+        $data['Country'] = $this->country;
+        $data['CountryName'] = $this->countryName;
+        $data['Phone'] = $this->phone;
+        $data['PhoneCountryCode'] = $this->phoneCountryCode;
+        $data['PhoneCountryPrefix'] = $this->phoneCountryPrefix;
+        $data['PhoneAreaOrCityCode'] = $this->phoneAreaOrCityCode;
+        $data['PhoneLocalNumber'] = $this->phoneLocalNumber;
+        $data['PostalCode'] = $this->postalCode;
+        $data['AddressID'] = $this->addressID;
+        $data['AddressOwner'] = $this->addressOwner;
+        $data['AddressStatus'] = $this->addressStatus;
+        $data['InternationalName'] = $this->internationalName;
+        $data['InternationalStateAndCity'] = $this->internationalStateAndCity;
+        $data['InternationalStreet'] = $this->internationalStreet;
+        $data['CompanyName'] = $this->companyName;
+        $data['AddressRecordType'] = $this->addressRecordType;
+        $data['FirstName'] = $this->firstName;
+        $data['LastName'] = $this->lastName;
+        $data['Phone2'] = $this->phone2;
+        $data['ReferenceID'] = $this->referenceID;
+        $data['AddressAttribute'] = Func::jsonList($this->addressAttribute);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

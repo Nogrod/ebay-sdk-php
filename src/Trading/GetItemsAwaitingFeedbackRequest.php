@@ -58,4 +58,10 @@ class GetItemsAwaitingFeedbackRequest extends GetItemsAwaitingFeedbackRequestTyp
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

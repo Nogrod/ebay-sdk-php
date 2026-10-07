@@ -218,4 +218,13 @@ class EndFixedPriceItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['EndingReason'] = $this->endingReason;
+        $data['SKU'] = $this->sKU;
+        return $data;
+    }
 }

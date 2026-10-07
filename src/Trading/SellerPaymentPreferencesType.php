@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>SetUserPreferences</b> call override the current corresponding settings in the seller's account.
  * XSD Type: SellerPaymentPreferencesType
  */
-class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Sellers include this field and set it to <code>true</code> if they want buyers to mail payment to the payment address specified in the <b>SellerPaymentPreferences.SellerPaymentAddress</b> field. A payment address only comes into play if the listing's category allows offline payments, and the seller has allowed the buyer to mail a payment. This payment address will only be displayed to winning bidders and buyers.
@@ -458,5 +458,25 @@ class SellerPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AlwaysUseThisPaymentAddress'] = $this->alwaysUseThisPaymentAddress;
+        $data['DisplayPayNowButton'] = $this->displayPayNowButton;
+        $data['PayPalPreferred'] = $this->payPalPreferred;
+        $data['DefaultPayPalEmailAddress'] = $this->defaultPayPalEmailAddress;
+        $data['PayPalAlwaysOn'] = $this->payPalAlwaysOn;
+        $data['SellerPaymentAddress'] = $this->sellerPaymentAddress;
+        $data['UPSRateOption'] = $this->uPSRateOption;
+        $data['FedExRateOption'] = $this->fedExRateOption;
+        $data['USPSRateOption'] = $this->uSPSRateOption;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

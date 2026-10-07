@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the <b>GetUser</b> call.
  * XSD Type: UserType
  */
-class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <br>
@@ -2359,5 +2359,52 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AboutMePage'] = $this->aboutMePage;
+        $data['EIASToken'] = $this->eIASToken;
+        $data['Email'] = $this->email;
+        $data['FeedbackScore'] = $this->feedbackScore;
+        $data['UniqueNegativeFeedbackCount'] = $this->uniqueNegativeFeedbackCount;
+        $data['UniquePositiveFeedbackCount'] = $this->uniquePositiveFeedbackCount;
+        $data['PositiveFeedbackPercent'] = $this->positiveFeedbackPercent;
+        $data['FeedbackPrivate'] = $this->feedbackPrivate;
+        $data['FeedbackRatingStar'] = $this->feedbackRatingStar;
+        $data['IDVerified'] = $this->iDVerified;
+        $data['eBayGoodStanding'] = $this->eBayGoodStanding;
+        $data['NewUser'] = $this->newUser;
+        $data['RegistrationAddress'] = $this->registrationAddress;
+        $data['RegistrationDate'] = Func::jsonDate($this->registrationDate);
+        $data['Site'] = $this->site;
+        $data['Status'] = $this->status;
+        $data['UserID'] = $this->userID;
+        $data['UserIDChanged'] = $this->userIDChanged;
+        $data['UserIDLastChanged'] = Func::jsonDate($this->userIDLastChanged);
+        $data['VATStatus'] = $this->vATStatus;
+        $data['BuyerInfo'] = $this->buyerInfo;
+        $data['SellerInfo'] = $this->sellerInfo;
+        $data['BusinessRole'] = $this->businessRole;
+        $data['UserSubscription'] = Func::jsonList($this->userSubscription);
+        $data['eBayWikiReadOnly'] = $this->eBayWikiReadOnly;
+        $data['TUVLevel'] = $this->tUVLevel;
+        $data['VATID'] = $this->vATID;
+        $data['BiddingSummary'] = $this->biddingSummary;
+        $data['UserAnonymized'] = $this->userAnonymized;
+        $data['UniqueNeutralFeedbackCount'] = $this->uniqueNeutralFeedbackCount;
+        $data['EnterpriseSeller'] = $this->enterpriseSeller;
+        $data['QualifiesForSelling'] = $this->qualifiesForSelling;
+        $data['ShippingAddress'] = $this->shippingAddress;
+        $data['Membership'] = Func::jsonList($this->membership);
+        $data['UserFirstName'] = $this->userFirstName;
+        $data['UserLastName'] = $this->userLastName;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

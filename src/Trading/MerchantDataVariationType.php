@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type defines the details about one specific variation.
  * XSD Type: MerchantDataVariationType
  */
-class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Stock Keeping Unit that serves as the seller's unique
@@ -411,5 +411,20 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SKU'] = $this->sKU;
+        $data['Price'] = $this->price;
+        $data['Quantity'] = $this->quantity;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

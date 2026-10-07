@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>AccountEntry</b> container returned in the <b>GetAccount</b> response. Each <b>AccountEntry</b> container consists of detailed information for a single credit or debit transaction, or an administrative action which occurred on the eBay user's account.
  * XSD Type: AccountEntryType
  */
-class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This enumeration value indicates the type of transaction or administrative action that occurred on the eBay user's account. Possible values are defined in the <b>AccountDetailEntryCodeType</b> enumerated type.
@@ -944,5 +944,34 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AccountDetailsEntryType'] = $this->accountDetailsEntryType;
+        $data['Description'] = $this->description;
+        $data['Balance'] = $this->balance;
+        $data['Date'] = Func::jsonDate($this->date);
+        $data['GrossDetailAmount'] = $this->grossDetailAmount;
+        $data['ItemID'] = $this->itemID;
+        $data['Memo'] = $this->memo;
+        $data['ConversionRate'] = $this->conversionRate;
+        $data['NetDetailAmount'] = $this->netDetailAmount;
+        $data['RefNumber'] = $this->refNumber;
+        $data['VATPercent'] = $this->vATPercent;
+        $data['Title'] = $this->title;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['TransactionID'] = $this->transactionID;
+        $data['ReceivedTopRatedDiscount'] = $this->receivedTopRatedDiscount;
+        $data['OrderId'] = $this->orderId;
+        $data['DiscountDetail'] = Func::jsonList($this->discountDetail);
+        $data['Netted'] = $this->netted;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

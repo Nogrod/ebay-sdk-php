@@ -150,4 +150,12 @@ class RemoveFromWatchListResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['WatchListCount'] = $this->watchListCount;
+        $data['WatchListMaximum'] = $this->watchListMaximum;
+        return $data;
+    }
 }

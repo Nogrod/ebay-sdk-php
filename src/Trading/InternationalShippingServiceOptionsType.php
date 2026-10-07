@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  seller must specify at least one domestic shipping service as well.
  * XSD Type: InternationalShippingServiceOptionsType
  */
-class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An international shipping service being offered by the seller to ship an item to
@@ -622,5 +622,23 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingService'] = $this->shippingService;
+        $data['ShippingServiceCost'] = $this->shippingServiceCost;
+        $data['ShippingServiceAdditionalCost'] = $this->shippingServiceAdditionalCost;
+        $data['ShippingServicePriority'] = $this->shippingServicePriority;
+        $data['ShipToLocation'] = Func::jsonList($this->shipToLocation);
+        $data['ImportCharge'] = $this->importCharge;
+        $data['ShippingServiceCutOffTime'] = Func::jsonDate($this->shippingServiceCutOffTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

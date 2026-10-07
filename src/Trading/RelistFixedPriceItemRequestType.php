@@ -293,4 +293,12 @@ class RelistFixedPriceItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Item'] = $this->item;
+        $data['DeletedField'] = Func::jsonList($this->deletedField);
+        return $data;
+    }
 }

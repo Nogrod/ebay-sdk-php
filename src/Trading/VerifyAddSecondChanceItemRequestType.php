@@ -324,4 +324,15 @@ class VerifyAddSecondChanceItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['RecipientBidderUserID'] = $this->recipientBidderUserID;
+        $data['BuyItNowPrice'] = $this->buyItNowPrice;
+        $data['Duration'] = $this->duration;
+        $data['ItemID'] = $this->itemID;
+        $data['SellerMessage'] = $this->sellerMessage;
+        return $data;
+    }
 }

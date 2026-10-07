@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  used to identify Item Specifics and individual variations within a multiple-variation listing.
  * XSD Type: NameValueListArrayType
  */
-class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <b>For the <b>AddItem</b> family of calls:</b>
@@ -374,5 +374,17 @@ class NameValueListArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['NameValueList'] = Func::jsonList($this->nameValueList);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  supported, required, or desirable.
  * XSD Type: PaginationResultType
  */
-class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the total number of pages of data that could be returned by repeated
@@ -163,5 +163,18 @@ class PaginationResultType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TotalNumberOfPages'] = $this->totalNumberOfPages;
+        $data['TotalNumberOfEntries'] = $this->totalNumberOfEntries;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

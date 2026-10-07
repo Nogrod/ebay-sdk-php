@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The <b>ProductDetails</b> container shows the substitute text that can be used in place of an actual product identifier (e.g. EAN, ISBNs, UPC, or MPN) in case the product does not have a product identifier and/or the product identifier is not known by the seller.
  * XSD Type: ProductDetailsType
  */
-class ProductDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ProductDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field contains the actual text that should be passed into the relevant product identifier fields (e.g. <b>ProductListingDetails.UPC</b> in an <b>AddItem</b> call) when creating a listing. Some eBay categories require one or more Global Trade Item Numbers (GTINs), so either the actual GTIN or this substitute text must be passed into the relevant fields.
@@ -112,5 +112,17 @@ class ProductDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ProductIdentifierUnavailableText'] = $this->productIdentifierUnavailableText;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

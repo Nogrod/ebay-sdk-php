@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>MaximumItemRequirements</b> container that is returned under the <b>BuyerRequirementDetails</b> in the <b>GeteBayDetails</b>. The Maximum Item Requirement settings of Buyer Requirements allow a seller to restrict the quantity of a line item that may be purchased during a consecutive 10-day period.
  * XSD Type: MaximumItemRequirementsDetailsType
  */
-class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Values returned in this field indicate the maximum quantity of an order line item that one buyer can purchase during a consecutive 10-day period.
@@ -249,5 +249,18 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaximumItemCount'] = Func::jsonList($this->maximumItemCount);
+        $data['MinimumFeedbackScore'] = Func::jsonList($this->minimumFeedbackScore);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

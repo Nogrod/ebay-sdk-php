@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is reserved for future use.
  * XSD Type: ServiceDefinition
  */
-class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is reserved for future use.
@@ -239,5 +239,20 @@ class ServiceDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['superscript'] = $this->superscript;
+        $data['maxDeliveryServiceDefinition'] = $this->maxDeliveryServiceDefinition;
+        $data['minDeliveryServiceDefinition'] = $this->minDeliveryServiceDefinition;
+        $data['name'] = $this->name;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

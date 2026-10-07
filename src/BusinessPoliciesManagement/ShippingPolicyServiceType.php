@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>domesticShippingPolicyInfoService</b> and <b>internationalShippingPolicyInfoService</b> containers, which consists of detailed information on domestic and international shipping service options.
  * XSD Type: ShippingPolicyService
  */
-class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * An international region (such as Asia or Europe) or a country (represented by two-letter country code) to where the seller will ship an item. To obtain valid 'Ship-To locations' for their site, the seller must call <b>GeteBayDetails</b>, using <b>ShipppingLocationDetails</b> as a <b>DetailName</b> value in the request, and then scanning the <b>ShippingLocationDetails.ShippingLocation</b> values that are returned in the response. The shipping regions and countries that may be specified as <b>shipToLocation</b> values will vary according to eBay site. The seller may include as many valid <b>shipToLocation</b> values as necessary based on where they are willing to ship an item.
@@ -821,5 +821,28 @@ class ShippingPolicyServiceType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['shipToLocation'] = Func::jsonList($this->shipToLocation);
+        $data['shippingService'] = $this->shippingService;
+        $data['shippingType'] = $this->shippingType;
+        $data['sortOrderId'] = $this->sortOrderId;
+        $data['freeShipping'] = $this->freeShipping;
+        $data['codFee'] = $this->codFee;
+        $data['fastShipping'] = $this->fastShipping;
+        $data['shippingServiceAdditionalCost'] = $this->shippingServiceAdditionalCost;
+        $data['shippingServiceCost'] = $this->shippingServiceCost;
+        $data['shippingSurcharge'] = $this->shippingSurcharge;
+        $data['shippingOverrideFee'] = $this->shippingOverrideFee;
+        $data['buyerResponsibleForShipping'] = $this->buyerResponsibleForShipping;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

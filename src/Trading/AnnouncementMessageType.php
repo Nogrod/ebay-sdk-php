@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>ShippingServiceDetails.DeprecationDetails</b> container that is returned in the <b>GeteBayDetails</b> response. The <b>ShippingServiceDetails.DeprecationDetails</b> container consists of information related to a deprecated shipping service.
  * XSD Type: AnnouncementMessageType
  */
-class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The date on which an upcoming event can start to be announced.
@@ -199,5 +199,19 @@ class AnnouncementMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AnnouncementStartTime'] = Func::jsonDate($this->announcementStartTime);
+        $data['EventTime'] = Func::jsonDate($this->eventTime);
+        $data['MessageType'] = $this->messageType;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

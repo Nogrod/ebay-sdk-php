@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <span class="tablenote"><b>Note: </b> As a part of General Product Safety Regulation (GPSR) requirements effective on December 13th, 2024, sellers operating in, or shipping to, EU-based countries or Northern Ireland are conditionally required to provide product manufacturer information in their eBay listings. For more information on GPSR, see <a href = "https://www.ebay.com/sellercenter/resources/general-product-safety-regulation" target="_blank">General Product Safety Regulation (GPSR)</a>.</span>
  * XSD Type: ManufacturerType
  */
-class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The company name of the product manufacturer.
@@ -526,5 +526,26 @@ class ManufacturerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CompanyName'] = $this->companyName;
+        $data['Street1'] = $this->street1;
+        $data['Street2'] = $this->street2;
+        $data['CityName'] = $this->cityName;
+        $data['StateOrProvince'] = $this->stateOrProvince;
+        $data['PostalCode'] = $this->postalCode;
+        $data['Country'] = $this->country;
+        $data['Phone'] = $this->phone;
+        $data['Email'] = $this->email;
+        $data['ContactURL'] = $this->contactURL;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to display the value of the <b>type</b> attribute of the <b>AddressAttribute</b> field.
  * XSD Type: AddressAttributeType
  */
-class AddressAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AddressAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $__value
@@ -151,5 +151,18 @@ class AddressAttributeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['__value'] = $this->__value;
+        $data['type'] = $this->type;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

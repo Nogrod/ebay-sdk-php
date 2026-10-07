@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  ship.
  * XSD Type: TimeZoneDetailsType
  */
-class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique identifier for a given time zone. This ID does not change for a
@@ -475,5 +475,24 @@ class TimeZoneDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TimeZoneID'] = $this->timeZoneID;
+        $data['StandardLabel'] = $this->standardLabel;
+        $data['StandardOffset'] = $this->standardOffset;
+        $data['DaylightSavingsLabel'] = $this->daylightSavingsLabel;
+        $data['DaylightSavingsOffset'] = $this->daylightSavingsOffset;
+        $data['DaylightSavingsInEffect'] = $this->daylightSavingsInEffect;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

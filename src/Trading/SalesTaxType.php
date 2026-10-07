@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to show sales tax-related details for a tax jurisdiction. The concept of 'sales tax' is only applicable to eBay US and Canada (English and French) sites.
  * XSD Type: SalesTaxType
  */
-class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This float value is the sales tax percentage rate applicable to the corresponding tax jurisdiction (US state or Canadian province). Sellers are responsible for providing accurate sales tax rates for each jurisdiction. This sales tax rate comes into play when a buyer from that tax jurisdiction makes a purchase from the seller. The value passed in is stored with a precision of 3 digits after the decimal point (##.###).
@@ -304,5 +304,20 @@ class SalesTaxType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SalesTaxPercent'] = $this->salesTaxPercent;
+        $data['SalesTaxState'] = $this->salesTaxState;
+        $data['ShippingIncludedInTax'] = $this->shippingIncludedInTax;
+        $data['SalesTaxAmount'] = $this->salesTaxAmount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

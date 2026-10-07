@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>ExcludeShippingLocationDetails</b> containers that are returned in the <b>GeteBayDetails</b> response. The values returned in the <b>ExcludeShippingLocationDetails.Location</b> fields are the values that can be specified when specifying excluded shipping locations in an Add/Revise/Relist item call, or in a shipping business policy.
  * XSD Type: ExcludeShippingLocationDetailsType
  */
-class ExcludeShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ExcludeShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The localized location name.
@@ -297,5 +297,21 @@ class ExcludeShippingLocationDetailsType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Description'] = $this->description;
+        $data['Location'] = $this->location;
+        $data['Region'] = $this->region;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

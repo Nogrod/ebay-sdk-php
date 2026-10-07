@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>DeliveryStatus</b> container, which will list the current status of whatever delivery method is being used (indicated in the <b>DigitalDeliverySelected.DeliveryMethod</b> field). Currently, the only supported delivery method is by email.
  * XSD Type: DeliveryStatusType
  */
-class DeliveryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DeliveryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the current delivery status for the digital gift card that is being delivered by email. Currently, the only supported delivery status value is 'Notified', which indicates that the link to download the digital gift card has been sent to the recipient by email.
@@ -110,5 +110,17 @@ class DeliveryStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Email'] = $this->email;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

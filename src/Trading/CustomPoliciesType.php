@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <strong>CustomPolicies</strong> container, which specifies custom policy IDs. A custom policy ID refers to the relevant policy created for product compliance and other purposes. For more information, see the <b>Custom Policies</b> page for your site (for example, <a href="https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311" target="_blank">https://www.ebay.fr/help/selling/custom-policies/custom-policies?id=5311</a>). To create and manage custom policies, use the <a href="https://developer.ebay.com/api-docs/sell/account/resources/methods#h2-custom_policy" target="_blank">custom_policy</a> resource of the <b>Account API</b>.
  * XSD Type: CustomPoliciesType
  */
-class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is used if the seller wants to apply a <i>global</i> take-back policy to the listing. The law in some countries may require sellers to take back a used product when the buyer buys a new product.<br /><br />Use this field to specify one <i>global</i> take-back policy ID for the listing.
@@ -486,5 +486,20 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TakeBackPolicyID'] = $this->takeBackPolicyID;
+        $data['RegionalTakeBackPolicies'] = Func::jsonList($this->regionalTakeBackPolicies);
+        $data['ProductCompliancePolicyID'] = Func::jsonList($this->productCompliancePolicyID);
+        $data['RegionalProductCompliancePolicies'] = Func::jsonList($this->regionalProductCompliancePolicies);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Returns token status.
  * XSD Type: TokenStatusType
  */
-class TokenStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TokenStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Current token status.
@@ -239,5 +239,20 @@ class TokenStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Status'] = $this->status;
+        $data['EIASToken'] = $this->eIASToken;
+        $data['ExpirationTime'] = Func::jsonDate($this->expirationTime);
+        $data['RevocationTime'] = Func::jsonDate($this->revocationTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

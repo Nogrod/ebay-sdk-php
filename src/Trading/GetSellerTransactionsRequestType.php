@@ -675,4 +675,20 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ModTimeFrom'] = Func::jsonDate($this->modTimeFrom);
+        $data['ModTimeTo'] = Func::jsonDate($this->modTimeTo);
+        $data['Pagination'] = $this->pagination;
+        $data['IncludeFinalValueFee'] = $this->includeFinalValueFee;
+        $data['IncludeContainingOrder'] = $this->includeContainingOrder;
+        $data['SKUArray'] = Func::jsonList($this->sKUArray);
+        $data['Platform'] = $this->platform;
+        $data['NumberOfDays'] = $this->numberOfDays;
+        $data['InventoryTrackingMethod'] = $this->inventoryTrackingMethod;
+        $data['IncludeCodiceFiscale'] = $this->includeCodiceFiscale;
+        return $data;
+    }
 }

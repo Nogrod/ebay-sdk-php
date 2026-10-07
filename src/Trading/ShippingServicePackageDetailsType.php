@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Packages supported by the enclosing shipping service.
  * XSD Type: ShippingServicePackageDetailsType
  */
-class ShippingServicePackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingServicePackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the package type.
@@ -162,5 +162,18 @@ class ShippingServicePackageDetailsType implements \Sabre\Xml\XmlSerializable, \
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Name'] = $this->name;
+        $data['DimensionsRequired'] = $this->dimensionsRequired;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

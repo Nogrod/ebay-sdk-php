@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  field during a specified time period (set in the <b>Period</b> field).
  * XSD Type: MaximumUnpaidItemStrikesInfoType
  */
-class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the maximum number of unpaid items and/or buyer-initiated cancellations that a prospective buyer is allowed to have during a specified time period (<b>MaximumUnpaidItemStrikesInfo.Period</b>) before being blocked from buying or bidding on the item.
@@ -154,5 +154,18 @@ class MaximumUnpaidItemStrikesInfoType implements \Sabre\Xml\XmlSerializable, \S
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Count'] = $this->count;
+        $data['Period'] = $this->period;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

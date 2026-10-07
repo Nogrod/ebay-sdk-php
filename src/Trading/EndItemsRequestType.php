@@ -154,4 +154,11 @@ class EndItemsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['EndItemRequestContainer'] = Func::jsonList($this->endItemRequestContainer);
+        return $data;
+    }
 }

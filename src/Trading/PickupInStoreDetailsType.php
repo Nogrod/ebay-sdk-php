@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: PickupInStoreDetailsType
  */
-class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <span class="tablenote">
@@ -172,5 +172,18 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EligibleForPickupInStore'] = $this->eligibleForPickupInStore;
+        $data['EligibleForPickupDropOff'] = $this->eligibleForPickupDropOff;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

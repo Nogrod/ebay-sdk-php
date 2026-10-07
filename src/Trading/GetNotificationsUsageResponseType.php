@@ -414,4 +414,15 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        $data['NotificationDetailsArray'] = Func::jsonList($this->notificationDetailsArray);
+        $data['MarkUpMarkDownHistory'] = Func::jsonList($this->markUpMarkDownHistory);
+        $data['NotificationStatistics'] = $this->notificationStatistics;
+        return $data;
+    }
 }

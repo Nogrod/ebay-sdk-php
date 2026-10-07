@@ -60,4 +60,10 @@ class ConsolidateShippingProfilesRequestType extends BaseRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

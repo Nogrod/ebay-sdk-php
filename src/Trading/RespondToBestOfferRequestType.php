@@ -376,4 +376,16 @@ class RespondToBestOfferRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['BestOfferID'] = Func::jsonList($this->bestOfferID);
+        $data['Action'] = $this->action;
+        $data['SellerResponse'] = $this->sellerResponse;
+        $data['CounterOfferPrice'] = $this->counterOfferPrice;
+        $data['CounterOfferQuantity'] = $this->counterOfferQuantity;
+        return $data;
+    }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * XSD Type: UserIdPasswordType
  */
-class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The application ID that is unique to each application you (or your company)
@@ -333,5 +333,21 @@ class UserIdPasswordType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AppId'] = $this->appId;
+        $data['DevId'] = $this->devId;
+        $data['AuthCert'] = $this->authCert;
+        $data['Username'] = $this->username;
+        $data['Password'] = $this->password;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

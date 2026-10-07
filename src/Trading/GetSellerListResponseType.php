@@ -422,4 +422,17 @@ class GetSellerListResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['PaginationResult'] = $this->paginationResult;
+        $data['HasMoreItems'] = $this->hasMoreItems;
+        $data['ItemArray'] = Func::jsonList($this->itemArray);
+        $data['ItemsPerPage'] = $this->itemsPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        $data['ReturnedItemCountActual'] = $this->returnedItemCountActual;
+        $data['Seller'] = $this->seller;
+        return $data;
+    }
 }

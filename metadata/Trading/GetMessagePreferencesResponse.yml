@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetMessagePreferencesResponse:
-    xml_root_name: GetMessagePreferencesResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

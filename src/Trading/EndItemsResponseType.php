@@ -154,4 +154,11 @@ class EndItemsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['EndItemResponseContainer'] = Func::jsonList($this->endItemResponseContainer);
+        return $data;
+    }
 }

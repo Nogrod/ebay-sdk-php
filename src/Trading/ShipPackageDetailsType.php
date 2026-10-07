@@ -19,7 +19,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ShipPackageDetailsType
  */
-class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Specifies the unit type of the weight and dimensions of a
@@ -823,5 +823,24 @@ class ShipPackageDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MeasurementUnit'] = $this->measurementUnit;
+        $data['PackageDepth'] = $this->packageDepth;
+        $data['PackageLength'] = $this->packageLength;
+        $data['PackageWidth'] = $this->packageWidth;
+        $data['ShippingIrregular'] = $this->shippingIrregular;
+        $data['ShippingPackage'] = $this->shippingPackage;
+        $data['WeightMajor'] = $this->weightMajor;
+        $data['WeightMinor'] = $this->weightMinor;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

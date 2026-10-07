@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Reserved for future use.
  * XSD Type: ExtensionType
  */
-class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Reserved for future use.
@@ -239,5 +239,20 @@ class ExtensionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['id'] = $this->id;
+        $data['version'] = $this->version;
+        $data['contentType'] = $this->contentType;
+        $data['value'] = $this->value;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

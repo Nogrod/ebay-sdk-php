@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  shipping service. A <b>ShippingServiceOptions</b> container is required for each domestic shipping service option that the seller will make available to buyers in an Add/Revise/Relist call. Up to four domestic shipping service options can be offered per listing.
  * XSD Type: ShippingServiceOptionsType
  */
-class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This enumeration value indicates a specific domestic shipping service option being offered by the seller to ship an item to a buyer who is located within the same country as the item. This field is required to identify each domestic shipping service option that is specified with a <b>ShippingServiceOptions</b> container.
@@ -860,5 +860,29 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingService'] = $this->shippingService;
+        $data['ShippingServiceCost'] = $this->shippingServiceCost;
+        $data['ShippingServiceAdditionalCost'] = $this->shippingServiceAdditionalCost;
+        $data['ShippingServicePriority'] = $this->shippingServicePriority;
+        $data['ExpeditedService'] = $this->expeditedService;
+        $data['ShippingTimeMin'] = $this->shippingTimeMin;
+        $data['ShippingTimeMax'] = $this->shippingTimeMax;
+        $data['FreeShipping'] = $this->freeShipping;
+        $data['LocalPickup'] = $this->localPickup;
+        $data['ImportCharge'] = $this->importCharge;
+        $data['ShippingPackageInfo'] = Func::jsonList($this->shippingPackageInfo);
+        $data['ShippingServiceCutOffTime'] = Func::jsonDate($this->shippingServiceCutOffTime);
+        $data['LogisticPlanType'] = $this->logisticPlanType;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -248,4 +248,14 @@ class GetItemShippingRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['QuantitySold'] = $this->quantitySold;
+        $data['DestinationPostalCode'] = $this->destinationPostalCode;
+        $data['DestinationCountryCode'] = $this->destinationCountryCode;
+        return $data;
+    }
 }

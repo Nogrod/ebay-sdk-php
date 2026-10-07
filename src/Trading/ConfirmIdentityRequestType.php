@@ -108,4 +108,11 @@ class ConfirmIdentityRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['SessionID'] = $this->sessionID;
+        return $data;
+    }
 }

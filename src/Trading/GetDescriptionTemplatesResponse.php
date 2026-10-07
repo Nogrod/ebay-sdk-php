@@ -63,4 +63,10 @@ class GetDescriptionTemplatesResponse extends GetDescriptionTemplatesResponseTyp
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

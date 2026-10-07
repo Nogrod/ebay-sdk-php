@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>AddMemberMessagesAAQToBidderRequestContainer</b> container. An <b>AddMemberMessagesAAQToBidderRequestContainer</b> container is required for each bidder the seller is sending a message to. The seller can communicate with up to 10 bidders with one <b>AddMemberMessagesAAQToBidder</b> call.
  * XSD Type: AddMemberMessagesAAQToBidderRequestContainerType
  */
-class AddMemberMessagesAAQToBidderRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AddMemberMessagesAAQToBidderRequestContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>CorrelationID</b> value is required for
@@ -213,5 +213,19 @@ class AddMemberMessagesAAQToBidderRequestContainerType implements \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CorrelationID'] = $this->correlationID;
+        $data['ItemID'] = $this->itemID;
+        $data['MemberMessage'] = $this->memberMessage;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

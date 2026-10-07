@@ -163,4 +163,12 @@ class GetItemShippingResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ShippingDetails'] = $this->shippingDetails;
+        $data['PickUpInStoreDetails'] = $this->pickUpInStoreDetails;
+        return $data;
+    }
 }

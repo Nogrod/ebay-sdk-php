@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is deprecated, as the maximum number of policy violations for a buyer is no longer a valid Buyer Requirement at the account or listing level.
  * XSD Type: NumberOfPolicyViolationsDetailsType
  */
-class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is deprecated.
@@ -158,5 +158,17 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Count'] = Func::jsonList($this->count);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

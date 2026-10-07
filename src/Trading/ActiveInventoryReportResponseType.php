@@ -156,4 +156,11 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['SKUDetails'] = Func::jsonList($this->sKUDetails);
+        return $data;
+    }
 }

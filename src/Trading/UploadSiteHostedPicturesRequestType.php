@@ -421,4 +421,16 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['PictureName'] = $this->pictureName;
+        $data['PictureSystemVersion'] = $this->pictureSystemVersion;
+        $data['PictureSet'] = $this->pictureSet;
+        $data['PictureData'] = $this->pictureData;
+        $data['PictureUploadPolicy'] = $this->pictureUploadPolicy;
+        $data['ExternalPictureURL'] = Func::jsonList($this->externalPictureURL);
+        return $data;
+    }
 }

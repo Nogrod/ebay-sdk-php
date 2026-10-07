@@ -378,4 +378,13 @@ class ReviseItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Item'] = $this->item;
+        $data['DeletedField'] = Func::jsonList($this->deletedField);
+        $data['VerifyOnly'] = $this->verifyOnly;
+        return $data;
+    }
 }

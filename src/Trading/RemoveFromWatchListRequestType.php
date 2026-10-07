@@ -305,4 +305,13 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = Func::jsonList($this->itemID);
+        $data['RemoveAllItems'] = $this->removeAllItems;
+        $data['VariationKey'] = Func::jsonList($this->variationKey);
+        return $data;
+    }
 }

@@ -827,4 +827,23 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['MotorsDealerUsers'] = Func::jsonList($this->motorsDealerUsers);
+        $data['EndTimeFrom'] = Func::jsonDate($this->endTimeFrom);
+        $data['EndTimeTo'] = Func::jsonDate($this->endTimeTo);
+        $data['Sort'] = $this->sort;
+        $data['StartTimeFrom'] = Func::jsonDate($this->startTimeFrom);
+        $data['StartTimeTo'] = Func::jsonDate($this->startTimeTo);
+        $data['Pagination'] = $this->pagination;
+        $data['GranularityLevel'] = $this->granularityLevel;
+        $data['SKUArray'] = Func::jsonList($this->sKUArray);
+        $data['IncludeWatchCount'] = $this->includeWatchCount;
+        $data['AdminEndedItemsOnly'] = $this->adminEndedItemsOnly;
+        $data['CategoryID'] = $this->categoryID;
+        $data['IncludeVariations'] = $this->includeVariations;
+        return $data;
+    }
 }

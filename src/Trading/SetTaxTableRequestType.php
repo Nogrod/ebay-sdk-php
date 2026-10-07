@@ -162,4 +162,11 @@ class SetTaxTableRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['TaxTable'] = Func::jsonList($this->taxTable);
+        return $data;
+    }
 }

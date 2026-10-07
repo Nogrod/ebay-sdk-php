@@ -442,4 +442,17 @@ class GetFeedbackResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['FeedbackDetailArray'] = Func::jsonList($this->feedbackDetailArray);
+        $data['FeedbackDetailItemTotal'] = $this->feedbackDetailItemTotal;
+        $data['FeedbackSummary'] = $this->feedbackSummary;
+        $data['FeedbackScore'] = $this->feedbackScore;
+        $data['PaginationResult'] = $this->paginationResult;
+        $data['EntriesPerPage'] = $this->entriesPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        return $data;
+    }
 }

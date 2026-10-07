@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>shippingProfileDiscountInfo</b> container, which consists of details related to flat-rate, calculated, and promotional shipping discounts that are offered to domestic and/or international buyers.
  * XSD Type: ShippingProfileDiscountInfo
  */
-class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier for a flat-rate or calculated shipping rule defined by the seller. If the seller specifies a valid shipping discount profile ID for either of these shipping rules, a domestic buyer may receive a shipping discount from the seller when purchasing multiple items. The seller can create and manage shipping discount profiles on My eBay, or by using the <b>SetShippingDiscountProfiles</b> and <b>GetShippingDiscountProfiles</b> calls of the Trading API.
@@ -263,5 +263,20 @@ class ShippingProfileDiscountInfoType implements \Sabre\Xml\XmlSerializable, \Sa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['domesticFlatCalcDiscountProfileId'] = $this->domesticFlatCalcDiscountProfileId;
+        $data['intlFlatCalcDiscountProfileId'] = $this->intlFlatCalcDiscountProfileId;
+        $data['applyDomesticPromoShippingProfile'] = $this->applyDomesticPromoShippingProfile;
+        $data['applyIntlPromoShippingProfile'] = $this->applyIntlPromoShippingProfile;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

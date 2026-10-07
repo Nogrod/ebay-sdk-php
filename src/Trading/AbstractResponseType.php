@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </ul>
  * XSD Type: AbstractResponseType
  */
-class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value represents the date and time when eBay processed the
@@ -949,5 +949,31 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Timestamp'] = Func::jsonDate($this->timestamp);
+        $data['Ack'] = $this->ack;
+        $data['CorrelationID'] = $this->correlationID;
+        $data['Errors'] = Func::jsonList($this->errors);
+        $data['Message'] = $this->message;
+        $data['Version'] = $this->version;
+        $data['Build'] = $this->build;
+        $data['NotificationEventName'] = $this->notificationEventName;
+        $data['DuplicateInvocationDetails'] = $this->duplicateInvocationDetails;
+        $data['RecipientUserID'] = $this->recipientUserID;
+        $data['EIASToken'] = $this->eIASToken;
+        $data['NotificationSignature'] = $this->notificationSignature;
+        $data['HardExpirationWarning'] = $this->hardExpirationWarning;
+        $data['BotBlock'] = $this->botBlock;
+        $data['ExternalUserData'] = $this->externalUserData;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

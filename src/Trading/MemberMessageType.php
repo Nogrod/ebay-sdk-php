@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for individual message information.
  * XSD Type: MemberMessageType
  */
-class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Type of message being retrieved. Note that some message
@@ -816,5 +816,28 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MessageType'] = $this->messageType;
+        $data['QuestionType'] = $this->questionType;
+        $data['EmailCopyToSender'] = $this->emailCopyToSender;
+        $data['DisplayToPublic'] = $this->displayToPublic;
+        $data['SenderID'] = $this->senderID;
+        $data['SenderEmail'] = $this->senderEmail;
+        $data['RecipientID'] = Func::jsonList($this->recipientID);
+        $data['Subject'] = $this->subject;
+        $data['Body'] = $this->body;
+        $data['MessageID'] = $this->messageID;
+        $data['ParentMessageID'] = $this->parentMessageID;
+        $data['MessageMedia'] = Func::jsonList($this->messageMedia);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

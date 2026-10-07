@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This is the base class for the request container for all service operations.
  * XSD Type: BaseRequest
  */
-class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Reserved for future use.
@@ -157,5 +157,17 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['extension'] = Func::jsonList($this->extension);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

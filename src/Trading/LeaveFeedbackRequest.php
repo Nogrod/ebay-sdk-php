@@ -58,4 +58,10 @@ class LeaveFeedbackRequest extends LeaveFeedbackRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

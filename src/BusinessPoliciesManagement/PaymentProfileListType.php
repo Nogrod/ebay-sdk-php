@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  /b> call request.
  * XSD Type: PaymentProfileList
  */
-class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Container consisting of details for a specific payment policy. A <b>PaymentProfile</b> container is returned in <b>getSellerProfiles</b> for each payment policy that matches the input criteria.
@@ -158,5 +158,17 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PaymentProfile'] = Func::jsonList($this->paymentProfile);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

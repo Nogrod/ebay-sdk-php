@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  and the user registration site, each of which must agree before eBay enforces recoupment for a seller and listing.
  * XSD Type: RecoupmentPolicyDetailsType
  */
-class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates whether recoupment policy is enforced on the site on which the item is listed.
@@ -249,5 +249,20 @@ class RecoupmentPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EnforcedOnListingSite'] = $this->enforcedOnListingSite;
+        $data['EnforcedOnRegistrationSite'] = $this->enforcedOnRegistrationSite;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

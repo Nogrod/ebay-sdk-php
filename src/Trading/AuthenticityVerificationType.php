@@ -77,7 +77,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </table>
  * XSD Type: AuthenticityVerificationType
  */
-class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The value in this field indicates whether the order line item has passed or failed the authenticity inspection, or if the test and/or results are still pending. The possible values returned here are <code>PENDING</code>, <code>PASSED</code>, <code>PASSED_WITH_EXCEPTION</code>, <code>PASSED_WITH_PARTIAL_FAILURE</code>, or <code>FAILED</code>.
@@ -268,5 +268,19 @@ class AuthenticityVerificationType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Status'] = $this->status;
+        $data['OutcomeReason'] = $this->outcomeReason;
+        $data['ServiceCost'] = $this->serviceCost;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

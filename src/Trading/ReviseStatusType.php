@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  have been changed by the revision.
  * XSD Type: ReviseStatusType
  */
-class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field is returned as <code>true</code> if the original listing has been revised. This field is always returned with the <b>ReviseStatus</b> container.
@@ -284,5 +284,21 @@ class ReviseStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ItemRevised'] = $this->itemRevised;
+        $data['BuyItNowAdded'] = $this->buyItNowAdded;
+        $data['BuyItNowLowered'] = $this->buyItNowLowered;
+        $data['ReserveLowered'] = $this->reserveLowered;
+        $data['ReserveRemoved'] = $this->reserveRemoved;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

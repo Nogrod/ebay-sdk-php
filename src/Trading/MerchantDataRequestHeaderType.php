@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Defines default or required values for requests in the payload.
  * XSD Type: MerchantDataRequestHeaderType
  */
-class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The numeric eBay Site Code for which to route the
@@ -159,5 +159,18 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SiteID'] = $this->siteID;
+        $data['Version'] = $this->version;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

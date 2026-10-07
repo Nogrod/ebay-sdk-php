@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains a seller's cut off time preferences for same day handling for item shipping.
  * XSD Type: DispatchCutoffTimePreferencesType
  */
-class DispatchCutoffTimePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DispatchCutoffTimePreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * If the seller specifies a <strong>DispatchTimeMax</strong> value of <code>0</code> to indicate same-day handling for an item, the seller's shipping commitment depends on the value of <strong>CutoffTime</strong> for the eBay site on which the item is listed.
@@ -134,5 +134,17 @@ class DispatchCutoffTimePreferencesType implements \Sabre\Xml\XmlSerializable, \
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CutoffTime'] = Func::jsonDate($this->cutoffTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

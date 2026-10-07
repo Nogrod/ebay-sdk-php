@@ -341,4 +341,16 @@ class GetMyeBaySellingResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['SellingSummary'] = $this->sellingSummary;
+        $data['ScheduledList'] = $this->scheduledList;
+        $data['ActiveList'] = $this->activeList;
+        $data['SoldList'] = $this->soldList;
+        $data['UnsoldList'] = $this->unsoldList;
+        $data['Summary'] = $this->summary;
+        return $data;
+    }
 }

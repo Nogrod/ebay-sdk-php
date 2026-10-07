@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains details of linked line item objects.
  * XSD Type: LinkedLineItemType
  */
-class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The unique identifier of the order to which the linked line item belongs.
@@ -345,5 +345,22 @@ class LinkedLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OrderID'] = $this->orderID;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['SellerUserID'] = $this->sellerUserID;
+        $data['EstimatedDeliveryTimeMax'] = Func::jsonDate($this->estimatedDeliveryTimeMax);
+        $data['EstimatedDeliveryTimeMin'] = Func::jsonDate($this->estimatedDeliveryTimeMin);
+        $data['Item'] = $this->item;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

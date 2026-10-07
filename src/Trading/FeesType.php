@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used to express all fees associated with listing an item. These are the fees that the seller will pay to eBay.
  * XSD Type: FeesType
  */
-class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A <b>Fee</b> container is returned for each listing fee associated with listing an item. Each <b>Fee</b> container consists of the fee type, the amount of the fee, and any applicable eBay promotional discount on that listing fee. A <b>Fee</b> container is returned for each listing feature, even if the associated cost is 0.
@@ -157,5 +157,17 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Fee'] = Func::jsonList($this->fee);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  feedback data returned by GetFeedback.
  * XSD Type: FeedbackPeriodArrayType
  */
-class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains one feedback statistic giving length of the period being reported
@@ -177,5 +177,17 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['FeedbackPeriod'] = Func::jsonList($this->feedbackPeriod);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

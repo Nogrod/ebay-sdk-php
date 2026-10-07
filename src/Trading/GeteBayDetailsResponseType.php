@@ -2996,4 +2996,35 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['CountryDetails'] = Func::jsonList($this->countryDetails);
+        $data['CurrencyDetails'] = Func::jsonList($this->currencyDetails);
+        $data['DispatchTimeMaxDetails'] = Func::jsonList($this->dispatchTimeMaxDetails);
+        $data['PaymentOptionDetails'] = Func::jsonList($this->paymentOptionDetails);
+        $data['RegionDetails'] = Func::jsonList($this->regionDetails);
+        $data['ShippingLocationDetails'] = Func::jsonList($this->shippingLocationDetails);
+        $data['ShippingServiceDetails'] = Func::jsonList($this->shippingServiceDetails);
+        $data['SiteDetails'] = Func::jsonList($this->siteDetails);
+        $data['TaxJurisdiction'] = Func::jsonList($this->taxJurisdiction);
+        $data['URLDetails'] = Func::jsonList($this->uRLDetails);
+        $data['TimeZoneDetails'] = Func::jsonList($this->timeZoneDetails);
+        $data['ItemSpecificDetails'] = Func::jsonList($this->itemSpecificDetails);
+        $data['RegionOfOriginDetails'] = Func::jsonList($this->regionOfOriginDetails);
+        $data['ShippingPackageDetails'] = Func::jsonList($this->shippingPackageDetails);
+        $data['ShippingCarrierDetails'] = Func::jsonList($this->shippingCarrierDetails);
+        $data['ReturnPolicyDetails'] = $this->returnPolicyDetails;
+        $data['ListingStartPriceDetails'] = Func::jsonList($this->listingStartPriceDetails);
+        $data['BuyerRequirementDetails'] = Func::jsonList($this->buyerRequirementDetails);
+        $data['ListingFeatureDetails'] = Func::jsonList($this->listingFeatureDetails);
+        $data['VariationDetails'] = $this->variationDetails;
+        $data['ExcludeShippingLocationDetails'] = Func::jsonList($this->excludeShippingLocationDetails);
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        $data['RecoupmentPolicyDetails'] = Func::jsonList($this->recoupmentPolicyDetails);
+        $data['ShippingCategoryDetails'] = Func::jsonList($this->shippingCategoryDetails);
+        $data['ProductDetails'] = $this->productDetails;
+        return $data;
+    }
 }

@@ -153,4 +153,12 @@ class UploadSiteHostedPicturesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['PictureSystemVersion'] = $this->pictureSystemVersion;
+        $data['SiteHostedPictureDetails'] = $this->siteHostedPictureDetails;
+        return $data;
+    }
 }

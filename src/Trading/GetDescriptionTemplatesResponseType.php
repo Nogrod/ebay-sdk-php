@@ -515,4 +515,16 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['DescriptionTemplate'] = Func::jsonList($this->descriptionTemplate);
+        $data['LayoutTotal'] = $this->layoutTotal;
+        $data['ObsoleteLayoutID'] = Func::jsonList($this->obsoleteLayoutID);
+        $data['ObsoleteThemeID'] = Func::jsonList($this->obsoleteThemeID);
+        $data['ThemeGroup'] = Func::jsonList($this->themeGroup);
+        $data['ThemeTotal'] = $this->themeTotal;
+        return $data;
+    }
 }

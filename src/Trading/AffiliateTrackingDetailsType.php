@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <b>AffiliateTrackingDetails</b> container, which is included in the <b>PlaceOffer</b> call to pass in eBay Partner Network affiliate-related data, so affiliates can earn commissions based on user activity and the number of calls made by the user's application.
  * XSD Type: AffiliateTrackingDetailsType
  */
-class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <span class="tablenote"><b>Note: </b> If you are using
@@ -317,5 +317,20 @@ class AffiliateTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['TrackingID'] = $this->trackingID;
+        $data['TrackingPartnerCode'] = $this->trackingPartnerCode;
+        $data['ApplicationDeviceType'] = $this->applicationDeviceType;
+        $data['AffiliateUserID'] = $this->affiliateUserID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * <span class="tablenote"><b>Note:</b> This type is used by the deprecated <b>ReturnPolicyDetails.Refund</b> container returned in <b>GeteBayDetails</b>. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To determine which refund options are supported for a specific leaf category on a specific eBay marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method. Pass the target <b>marketplace_id</b> and the category ID in the filter query parameter, and then inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields in the response for the supported domestic and international refund methods.</span>
  * XSD Type: RefundDetailsType
  */
-class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates how the seller will compensate the buyer for a returned item. This value can be passed in the Add/Revise/Relist/VerifyAdd API calls.
@@ -165,5 +165,18 @@ class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RefundOption'] = $this->refundOption;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

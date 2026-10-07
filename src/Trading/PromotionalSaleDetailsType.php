@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  information.
  * XSD Type: PromotionalSaleDetailsType
  */
-class PromotionalSaleDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PromotionalSaleDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Original price of an item whose price a seller has reduced with the Promotional Price
@@ -206,5 +206,19 @@ class PromotionalSaleDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OriginalPrice'] = $this->originalPrice;
+        $data['StartTime'] = Func::jsonDate($this->startTime);
+        $data['EndTime'] = Func::jsonDate($this->endTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

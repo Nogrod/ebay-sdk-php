@@ -112,4 +112,11 @@ class GetItemsAwaitingFeedbackResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemsAwaitingFeedback'] = $this->itemsAwaitingFeedback;
+        return $data;
+    }
 }

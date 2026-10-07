@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>AddMemberMessagesAAQToBidderResponseContainer</b> container. A <b>AddMemberMessagesAAQToBidderResponseContainer</b> container is returned for each message that was sent from the seller to the bidders/potential buyers through a separate <b>AddMemberMessagesAAQToBidderRequestContainer</b>. The <b>Ack</b> value in each <b>AddMemberMessagesAAQToBidderResponseContainer</b> container indicates whether or not each message sent through the call was successful or not, and an <b>AddMemberMessagesAAQToBidderResponseContainer</b> is matched up to the corresponding <b>AddMemberMessagesAAQToBidderRequestContainer</b> through the <b>CorrelationID</b> value.
  * XSD Type: AddMemberMessagesAAQToBidderResponseContainerType
  */
-class AddMemberMessagesAAQToBidderResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AddMemberMessagesAAQToBidderResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This is a unique identifier for a message that was sent through the <b>AddMemberMessagesAAQToBidder</b> call. The seller must provide a <b>CorrelationID</b> value for each message that is sent through an <b>AddMemberMessagesAAQToBidderRequestContainer</b> container in the request. The <b>CorrelationID</b> value returned under each <b>AddMemberMessagesAAQToBidderResponseContainer</b> container is used to correlate each member message container in the request with its corresponding member message container in the response.
@@ -153,5 +153,18 @@ class AddMemberMessagesAAQToBidderResponseContainerType implements \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CorrelationID'] = $this->correlationID;
+        $data['Ack'] = $this->ack;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

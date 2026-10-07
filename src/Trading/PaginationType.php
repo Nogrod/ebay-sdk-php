@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  required, or desirable.
  * XSD Type: PaginationType
  */
-class PaginationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PaginationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value is used to specify the maximum number of entries to return
@@ -190,5 +190,18 @@ class PaginationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['EntriesPerPage'] = $this->entriesPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <code>true</code>.
  * XSD Type: BuyingSummaryType
  */
-class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The number of auction items the user has bid on.
@@ -372,5 +372,23 @@ class BuyingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BiddingCount'] = $this->biddingCount;
+        $data['WinningCount'] = $this->winningCount;
+        $data['TotalWinningCost'] = $this->totalWinningCost;
+        $data['WonCount'] = $this->wonCount;
+        $data['TotalWonCost'] = $this->totalWonCost;
+        $data['WonDurationInDays'] = $this->wonDurationInDays;
+        $data['BestOfferCount'] = $this->bestOfferCount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

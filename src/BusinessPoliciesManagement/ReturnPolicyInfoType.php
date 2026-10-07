@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>returnPolicyInfo</b> container, which consists of detailed information on a seller's return policy.
  * XSD Type: ReturnPolicyInfo
  */
-class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field contains the seller's detailed explanation for their return policy and is displayed in the Return Policy section of the View Item page. This field is valid in only the following marketplaces (the field is otherwise ignored):
@@ -560,5 +560,26 @@ class ReturnPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['description'] = $this->description;
+        $data['refundOption'] = $this->refundOption;
+        $data['shippingCostPaidByOption'] = $this->shippingCostPaidByOption;
+        $data['returnsWithinOption'] = $this->returnsWithinOption;
+        $data['returnsAcceptedOption'] = $this->returnsAcceptedOption;
+        $data['warrantyOfferedOption'] = $this->warrantyOfferedOption;
+        $data['warrantyTypeOption'] = $this->warrantyTypeOption;
+        $data['warrantyDurationOption'] = $this->warrantyDurationOption;
+        $data['restockingFeeValue'] = $this->restockingFeeValue;
+        $data['holidayReturns'] = $this->holidayReturns;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

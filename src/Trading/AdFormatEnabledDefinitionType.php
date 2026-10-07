@@ -16,7 +16,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  To verify if a specific category on a specific eBay site supports Classified Ad listings, pass in a <b>CategoryID</b> value in the request, and then look for a <code>true</code> value in the <b>AdFormatEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
  * XSD Type: AdFormatEnabledDefinitionType
  */
-class AdFormatEnabledDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AdFormatEnabledDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
@@ -69,5 +69,16 @@ class AdFormatEnabledDefinitionType implements \Sabre\Xml\XmlSerializable, \Sabr
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

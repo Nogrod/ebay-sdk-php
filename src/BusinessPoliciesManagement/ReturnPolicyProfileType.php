@@ -160,4 +160,12 @@ class ReturnPolicyProfileType extends SellerProfileType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['returnPolicyInfo'] = $this->returnPolicyInfo;
+        $data['internationalReturnPolicyInfo'] = $this->internationalReturnPolicyInfo;
+        return $data;
+    }
 }

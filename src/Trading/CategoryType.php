@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Container for data on one listing category. Many of the <b>CategoryType</b> fields are returned <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategoryTree" target="_blank">getCategoryTree</a> or <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySubtree" target="_blank">getCategorySubtree</a> methods of the <b>Taxonomy API</b>. Add/Revise/Relist calls only use the <b>CategoryID</b> field to specify which eBay category in which to list the item.
  * XSD Type: CategoryType
  */
-class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This string value is the unique identifier of an eBay category. For listing calls, this ID must be a valid leaf on the category tree for the listing site. Validate against that marketplace's Taxonomy tree (for example, <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySubtree" target="_blank">getCategorySubtree</a> on tree 100 for eBay Motors).
@@ -278,5 +278,20 @@ class CategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CategoryID'] = $this->categoryID;
+        $data['CategoryName'] = $this->categoryName;
+        $data['NumOfItems'] = $this->numOfItems;
+        $data['Keywords'] = $this->keywords;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

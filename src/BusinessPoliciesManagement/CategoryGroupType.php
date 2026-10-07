@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>categoryGroup</b> container, which indicates the category group to which the payment, return, or shipping business policy applies to. The only two valid category groups are 'MOTORS_VEHICLE' (for motor vehicle listings) and 'ALL' (for non-motor vehicle listings). These enumeration values are case-sensitive. The 'MOTORS_VEHICLE' category group is not valid for return business policies, as return business policies cannot be used with motor vehicle listings.
  * XSD Type: CategoryGroup
  */
-class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <p class="depr"><span class="tablenote"><b>Important:</b> This field has been deprecated and is no longer used. Do not include this field in any add or set call. This field may be returned within the payload of a get call, but it can be ignored.</span></p><p>
@@ -196,5 +196,19 @@ class CategoryGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['default'] = $this->default;
+        $data['name'] = $this->name;
+        $data['ETRS'] = $this->eTRS;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

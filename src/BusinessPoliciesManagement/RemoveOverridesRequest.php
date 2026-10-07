@@ -60,4 +60,10 @@ class RemoveOverridesRequest extends RemoveOverridesRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

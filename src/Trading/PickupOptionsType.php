@@ -14,7 +14,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: PickupOptionsType
  */
-class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates an available pickup method. This field is always returned with the <strong>PickupOptions</strong> container.
@@ -193,5 +193,18 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['PickupMethod'] = $this->pickupMethod;
+        $data['PickupPriority'] = $this->pickupPriority;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

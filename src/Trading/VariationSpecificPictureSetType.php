@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>VariationSpecificPictureSet</b> container is required.
  * XSD Type: VariationSpecificPictureSetType
  */
-class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A value that is associated with <b>VariationSpecificName</b>. For example,
@@ -640,5 +640,20 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['VariationSpecificValue'] = $this->variationSpecificValue;
+        $data['PictureURL'] = Func::jsonList($this->pictureURL);
+        $data['ExternalPictureURL'] = Func::jsonList($this->externalPictureURL);
+        $data['ExtendedPictureDetails'] = Func::jsonList($this->extendedPictureDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

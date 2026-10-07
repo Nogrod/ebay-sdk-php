@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains the data defining one item. A seller populates an object of this type at listing time with the definition of a new item. A seller also uses an object of this type to relist or revise an item. Calls that retrieve item data (such as the <b>GetSellerList</b> call) return an object of this type, filled with the item's data.
  * XSD Type: ItemType
  */
-class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Return custom, application-specific data associated with the item.
@@ -8605,5 +8605,139 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ApplicationData'] = $this->applicationData;
+        $data['AutoPay'] = $this->autoPay;
+        $data['BiddingDetails'] = $this->biddingDetails;
+        $data['BuyerProtection'] = $this->buyerProtection;
+        $data['BuyItNowPrice'] = $this->buyItNowPrice;
+        $data['CategoryMappingAllowed'] = $this->categoryMappingAllowed;
+        $data['Charity'] = $this->charity;
+        $data['Country'] = $this->country;
+        $data['Currency'] = $this->currency;
+        $data['Description'] = $this->description;
+        $data['DescriptionReviseMode'] = $this->descriptionReviseMode;
+        $data['ItemID'] = $this->itemID;
+        $data['ListingDetails'] = $this->listingDetails;
+        $data['ListingDuration'] = $this->listingDuration;
+        $data['ListingEnhancement'] = Func::jsonList($this->listingEnhancement);
+        $data['ListingType'] = $this->listingType;
+        $data['Location'] = $this->location;
+        $data['LotSize'] = $this->lotSize;
+        $data['PaymentDetails'] = $this->paymentDetails;
+        $data['PaymentMethods'] = Func::jsonList($this->paymentMethods);
+        $data['PayPalEmailAddress'] = $this->payPalEmailAddress;
+        $data['PrimaryCategory'] = $this->primaryCategory;
+        $data['PrivateListing'] = $this->privateListing;
+        $data['ProductListingDetails'] = $this->productListingDetails;
+        $data['Quantity'] = $this->quantity;
+        $data['PrivateNotes'] = $this->privateNotes;
+        $data['RelistLink'] = $this->relistLink;
+        $data['IsItemEMSEligible'] = $this->isItemEMSEligible;
+        $data['ReservePrice'] = $this->reservePrice;
+        $data['ReviseStatus'] = $this->reviseStatus;
+        $data['ScheduleTime'] = Func::jsonDate($this->scheduleTime);
+        $data['SecondaryCategory'] = $this->secondaryCategory;
+        $data['FreeAddedCategory'] = $this->freeAddedCategory;
+        $data['Seller'] = $this->seller;
+        $data['SellingStatus'] = $this->sellingStatus;
+        $data['ShippingDetails'] = $this->shippingDetails;
+        $data['ShipToLocations'] = Func::jsonList($this->shipToLocations);
+        $data['Site'] = $this->site;
+        $data['StartPrice'] = $this->startPrice;
+        $data['Storefront'] = $this->storefront;
+        $data['SubTitle'] = $this->subTitle;
+        $data['TimeLeft'] = $this->timeLeft;
+        $data['Title'] = $this->title;
+        $data['UUID'] = $this->uUID;
+        $data['VATDetails'] = $this->vATDetails;
+        $data['SellerVacationNote'] = $this->sellerVacationNote;
+        $data['WatchCount'] = $this->watchCount;
+        $data['HitCount'] = $this->hitCount;
+        $data['DisableBuyerRequirements'] = $this->disableBuyerRequirements;
+        $data['BestOfferDetails'] = $this->bestOfferDetails;
+        $data['LocationDefaulted'] = $this->locationDefaulted;
+        $data['UseTaxTable'] = $this->useTaxTable;
+        $data['GetItFast'] = $this->getItFast;
+        $data['BuyerResponsibleForShipping'] = $this->buyerResponsibleForShipping;
+        $data['eBayNotes'] = $this->eBayNotes;
+        $data['QuestionCount'] = $this->questionCount;
+        $data['Relisted'] = $this->relisted;
+        $data['QuantityAvailable'] = $this->quantityAvailable;
+        $data['SKU'] = $this->sKU;
+        $data['PostalCode'] = $this->postalCode;
+        $data['PictureDetails'] = $this->pictureDetails;
+        $data['VideoDetails'] = Func::jsonList($this->videoDetails);
+        $data['ExtendedProducerResponsibility'] = $this->extendedProducerResponsibility;
+        $data['CustomPolicies'] = $this->customPolicies;
+        $data['DispatchTimeMax'] = $this->dispatchTimeMax;
+        $data['SellerContactDetails'] = $this->sellerContactDetails;
+        $data['TotalQuestionCount'] = $this->totalQuestionCount;
+        $data['ProxyItem'] = $this->proxyItem;
+        $data['ExtendedSellerContactDetails'] = $this->extendedSellerContactDetails;
+        $data['LeadCount'] = $this->leadCount;
+        $data['NewLeadCount'] = $this->newLeadCount;
+        $data['ItemSpecifics'] = Func::jsonList($this->itemSpecifics);
+        $data['ClassifiedAdPayPerLeadFee'] = $this->classifiedAdPayPerLeadFee;
+        $data['ApplyBuyerProtection'] = $this->applyBuyerProtection;
+        $data['ListingSubtype2'] = $this->listingSubtype2;
+        $data['MechanicalCheckAccepted'] = $this->mechanicalCheckAccepted;
+        $data['ItemPolicyViolation'] = $this->itemPolicyViolation;
+        $data['CrossBorderTrade'] = Func::jsonList($this->crossBorderTrade);
+        $data['BusinessSellerDetails'] = $this->businessSellerDetails;
+        $data['BuyerGuaranteePrice'] = $this->buyerGuaranteePrice;
+        $data['BuyerRequirementDetails'] = $this->buyerRequirementDetails;
+        $data['ReturnPolicy'] = $this->returnPolicy;
+        $data['PaymentAllowedSite'] = Func::jsonList($this->paymentAllowedSite);
+        $data['InventoryTrackingMethod'] = $this->inventoryTrackingMethod;
+        $data['IntegratedMerchantCreditCardEnabled'] = $this->integratedMerchantCreditCardEnabled;
+        $data['Variations'] = $this->variations;
+        $data['ItemCompatibilityList'] = $this->itemCompatibilityList;
+        $data['ItemCompatibilityCount'] = $this->itemCompatibilityCount;
+        $data['ConditionID'] = $this->conditionID;
+        $data['ConditionDescriptors'] = Func::jsonList($this->conditionDescriptors);
+        $data['ConditionDescription'] = $this->conditionDescription;
+        $data['ConditionDisplayName'] = $this->conditionDisplayName;
+        $data['Regulatory'] = $this->regulatory;
+        $data['TaxCategory'] = $this->taxCategory;
+        $data['QuantityAvailableHint'] = $this->quantityAvailableHint;
+        $data['QuantityThreshold'] = $this->quantityThreshold;
+        $data['DiscountPriceInfo'] = $this->discountPriceInfo;
+        $data['SellerProvidedTitle'] = $this->sellerProvidedTitle;
+        $data['VIN'] = $this->vIN;
+        $data['VINLink'] = $this->vINLink;
+        $data['VRM'] = $this->vRM;
+        $data['VRMLink'] = $this->vRMLink;
+        $data['SellerProfiles'] = $this->sellerProfiles;
+        $data['ShippingServiceCostOverrideList'] = Func::jsonList($this->shippingServiceCostOverrideList);
+        $data['ShippingPackageDetails'] = $this->shippingPackageDetails;
+        $data['TopRatedListing'] = $this->topRatedListing;
+        $data['QuantityRestrictionPerBuyer'] = $this->quantityRestrictionPerBuyer;
+        $data['FloorPrice'] = $this->floorPrice;
+        $data['CeilingPrice'] = $this->ceilingPrice;
+        $data['IsIntermediatedShippingEligible'] = $this->isIntermediatedShippingEligible;
+        $data['UnitInfo'] = $this->unitInfo;
+        $data['RelistParentID'] = $this->relistParentID;
+        $data['ConditionDefinition'] = $this->conditionDefinition;
+        $data['HideFromSearch'] = $this->hideFromSearch;
+        $data['ReasonHideFromSearch'] = $this->reasonHideFromSearch;
+        $data['PickupInStoreDetails'] = $this->pickupInStoreDetails;
+        $data['IgnoreQuantity'] = $this->ignoreQuantity;
+        $data['AvailableForPickupDropOff'] = $this->availableForPickupDropOff;
+        $data['EligibleForPickupDropOff'] = $this->eligibleForPickupDropOff;
+        $data['DigitalGoodInfo'] = $this->digitalGoodInfo;
+        $data['eMailDeliveryAvailable'] = $this->eMailDeliveryAvailable;
+        $data['IsSecureDescription'] = $this->isSecureDescription;
+        $data['MappingReferenceId'] = $this->mappingReferenceId;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

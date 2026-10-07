@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  <b>ItemType</b> objects, each of which conveys the data for one item listing.
  * XSD Type: ItemArrayType
  */
-class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Contains the data properties that define one item listing. <b>GetSellerEvents</b> and
@@ -266,5 +266,17 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Item'] = Func::jsonList($this->item);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

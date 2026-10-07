@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type used by the <strong>RecoupmentPolicyConsent</strong> container that is returned in the <strong>GetItem</strong> call response to indicate which sites the user (specified in <strong>UserID</strong> field of call request) has signed a cross-border trade Recoupment Policy Agreement.
  * XSD Type: RecoupmentPolicyConsentType
  */
-class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique identifier for an eBay site. Each site where the user (specified in <strong>UserID</strong> field of call request) has signed a cross-border trade Recoupment Policy Agreement is returned. The enumeration values that represent these eBay sites can be found in <strong>SiteCodeType</strong>.
@@ -158,5 +158,17 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Site'] = Func::jsonList($this->site);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -352,4 +352,15 @@ class GetBidderListRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ActiveItemsOnly'] = $this->activeItemsOnly;
+        $data['EndTimeFrom'] = Func::jsonDate($this->endTimeFrom);
+        $data['EndTimeTo'] = Func::jsonDate($this->endTimeTo);
+        $data['UserID'] = $this->userID;
+        $data['GranularityLevel'] = $this->granularityLevel;
+        return $data;
+    }
 }

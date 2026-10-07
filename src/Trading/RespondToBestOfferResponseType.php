@@ -160,4 +160,11 @@ class RespondToBestOfferResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['RespondToBestOffer'] = Func::jsonList($this->respondToBestOffer);
+        return $data;
+    }
 }

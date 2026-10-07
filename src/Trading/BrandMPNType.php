@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: BrandMPNType
  */
-class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The brand of the product. Both <b>Brand</b> and <b>MPN</b> should be specified if the <b>BrandMPN</b> container is used, or an error may occur. If Brand is a required or recommended item specific for a category, but an MPN is not applicable to the category/product, the Brand value should be specified in an <b>Item.ItemSpecifics.NameValueList</b> container instead.
@@ -200,5 +200,18 @@ class BrandMPNType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Brand'] = $this->brand;
+        $data['MPN'] = $this->mPN;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

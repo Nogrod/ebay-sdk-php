@@ -58,4 +58,10 @@ class RevokeTokenRequest extends RevokeTokenRequestType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

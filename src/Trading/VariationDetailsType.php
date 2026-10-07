@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  is called with no <b>DetailName</b> filters.
  * XSD Type: VariationDetailsType
  */
-class VariationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VariationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the maximum number of item variations that the site will allow within one multi-variation listing.
@@ -294,5 +294,21 @@ class VariationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaxVariationsPerItem'] = $this->maxVariationsPerItem;
+        $data['MaxNamesPerVariationSpecificsSet'] = $this->maxNamesPerVariationSpecificsSet;
+        $data['MaxValuesPerVariationSpecificsSetName'] = $this->maxValuesPerVariationSpecificsSetName;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

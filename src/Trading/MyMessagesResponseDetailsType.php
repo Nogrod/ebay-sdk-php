@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Details relating to the response to a message.
  * XSD Type: MyMessagesResponseDetailsType
  */
-class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Whether a message can be responded
@@ -168,5 +168,18 @@ class MyMessagesResponseDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ResponseEnabled'] = $this->responseEnabled;
+        $data['ResponseURL'] = $this->responseURL;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

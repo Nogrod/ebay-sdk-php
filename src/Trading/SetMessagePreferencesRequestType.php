@@ -107,4 +107,11 @@ class SetMessagePreferencesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ASQPreferences'] = $this->aSQPreferences;
+        return $data;
+    }
 }

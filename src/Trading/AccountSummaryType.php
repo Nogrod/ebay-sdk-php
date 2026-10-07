@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  active eBay account).
  * XSD Type: AccountSummaryType
  */
-class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the current state of the account (such as active or inactive).
@@ -978,5 +978,36 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AccountState'] = $this->accountState;
+        $data['InvoicePayment'] = $this->invoicePayment;
+        $data['InvoiceCredit'] = $this->invoiceCredit;
+        $data['InvoiceNewFee'] = $this->invoiceNewFee;
+        $data['AdditionalAccount'] = Func::jsonList($this->additionalAccount);
+        $data['AmountPastDue'] = $this->amountPastDue;
+        $data['BankAccountInfo'] = $this->bankAccountInfo;
+        $data['BankModifyDate'] = Func::jsonDate($this->bankModifyDate);
+        $data['BillingCycleDate'] = $this->billingCycleDate;
+        $data['CreditCardExpiration'] = Func::jsonDate($this->creditCardExpiration);
+        $data['CreditCardInfo'] = $this->creditCardInfo;
+        $data['CreditCardModifyDate'] = Func::jsonDate($this->creditCardModifyDate);
+        $data['CurrentBalance'] = $this->currentBalance;
+        $data['InvoiceBalance'] = $this->invoiceBalance;
+        $data['InvoiceDate'] = Func::jsonDate($this->invoiceDate);
+        $data['LastAmountPaid'] = $this->lastAmountPaid;
+        $data['LastPaymentDate'] = Func::jsonDate($this->lastPaymentDate);
+        $data['PastDue'] = $this->pastDue;
+        $data['PaymentMethod'] = $this->paymentMethod;
+        $data['NettedTransactionSummary'] = $this->nettedTransactionSummary;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

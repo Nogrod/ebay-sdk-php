@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to provide details about a nonprofit organization that will benefit from each sale generated from an eBay listing.
  * XSD Type: CharityType
  */
-class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The full name of the nonprofit organization.
@@ -428,5 +428,23 @@ class CharityType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CharityName'] = $this->charityName;
+        $data['DonationPercent'] = $this->donationPercent;
+        $data['CharityID'] = $this->charityID;
+        $data['Mission'] = $this->mission;
+        $data['LogoURL'] = $this->logoURL;
+        $data['Status'] = $this->status;
+        $data['CharityListing'] = $this->charityListing;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

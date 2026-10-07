@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>Pictogram</b> container used at the listing level to provide pictograms for the listing.
  * XSD Type: PictogramsType
  */
-class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field sets the pictogram code(s) for Hazard and product safety Pictogram(s) for the listing. If your product contains hazardous substances or mixtures, please select the values corresponding to the hazard pictograms that are stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. If your product shows universal product safety or compliance symbols, please select the values corresponding to the product safety pictograms for display in the product safety section of the listing. The seller specifies the identifier of each pictogram in this field. A separate Pictogram field is required for each Hazard or product safety pictogram.
@@ -176,5 +176,17 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Pictogram'] = Func::jsonList($this->pictogram);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

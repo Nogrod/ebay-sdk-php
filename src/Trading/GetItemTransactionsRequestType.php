@@ -638,4 +638,21 @@ class GetItemTransactionsRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['ModTimeFrom'] = Func::jsonDate($this->modTimeFrom);
+        $data['ModTimeTo'] = Func::jsonDate($this->modTimeTo);
+        $data['TransactionID'] = $this->transactionID;
+        $data['Pagination'] = $this->pagination;
+        $data['IncludeFinalValueFee'] = $this->includeFinalValueFee;
+        $data['IncludeContainingOrder'] = $this->includeContainingOrder;
+        $data['Platform'] = $this->platform;
+        $data['NumberOfDays'] = $this->numberOfDays;
+        $data['IncludeVariations'] = $this->includeVariations;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  field in this container is used by <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls to enable the Best Offer feature on a listing.
  * XSD Type: BestOfferDetailsType
  */
-class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The number of Best Offers made for this item, if any. In other words, if there are no Best Offers made, this field will not appear in the response. This field is not applicable to the <b>Add</b>/<b>Revise</b>/<b>Relist</b> calls.
@@ -356,5 +356,22 @@ class BestOfferDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BestOfferCount'] = $this->bestOfferCount;
+        $data['BestOfferEnabled'] = $this->bestOfferEnabled;
+        $data['BestOffer'] = $this->bestOffer;
+        $data['BestOfferStatus'] = $this->bestOfferStatus;
+        $data['BestOfferType'] = $this->bestOfferType;
+        $data['NewBestOffer'] = $this->newBestOffer;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

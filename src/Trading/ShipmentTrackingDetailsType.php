@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  package shipment. It also contains information about the line items shipped through the Global Shipping program.
  * XSD Type: ShipmentTrackingDetailsType
  */
-class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the shipping carrier used to ship the item. This field and the <strong>ShipmentTrackingNumber</strong> field are mutually dependent. When you submit <strong>ShippingCarrierUsed</strong>, you must also supply a value for <strong>ShipmentTrackingNumber</strong>. When you submit <strong>ShipmentTrackingNumber</strong>, you must also supply a value for <strong>ShippingCarrierUsed</strong>.
@@ -316,5 +316,19 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippingCarrierUsed'] = $this->shippingCarrierUsed;
+        $data['ShipmentTrackingNumber'] = $this->shipmentTrackingNumber;
+        $data['ShipmentLineItem'] = Func::jsonList($this->shipmentLineItem);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

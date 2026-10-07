@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  circumstances.
  * XSD Type: MarkUpMarkDownEventType
  */
-class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Whether the application has been marked up or marked down.
@@ -214,5 +214,19 @@ class MarkUpMarkDownEventType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Type'] = $this->type;
+        $data['Time'] = Func::jsonDate($this->time);
+        $data['Reason'] = $this->reason;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>Statements</b> regulatory container used at the listing level to provide statements for the listing.
  * XSD Type: StatementsType
  */
-class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This field sets the statement code(s) for hazard or product safety statement(s) for the listing. If your product contains hazardous substances or mixtures, please select the values corresponding to the hazard statements that are stated on your product's Safety Data Sheet. The selected hazard information will be displayed on your listing. If your product shows universal product safety or compliance warnings, please select the values corresponding to the product safety statements for display in the product safety section of the listing. A separate Statement field is required for each hazard or product safety statement. The seller specifies the identifier of each statement in this field.
@@ -176,5 +176,17 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Statement'] = Func::jsonList($this->statement);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  having an account will never have any additional accounts.
  * XSD Type: AdditionalAccountType
  */
-class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Indicates the current balance of the additional account.
@@ -203,5 +203,19 @@ class AdditionalAccountType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Balance'] = $this->balance;
+        $data['Currency'] = $this->currency;
+        $data['AccountCode'] = $this->accountCode;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  orders, and if so, defines whether the seller specifies any shipping discount before or after purchase.
  * XSD Type: CombinedPaymentPreferencesType
  */
-class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Specifies whether or not a seller wants to allow buyers to combine single
@@ -123,5 +123,17 @@ class CombinedPaymentPreferencesType implements \Sabre\Xml\XmlSerializable, \Sab
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CombinedPaymentOption'] = $this->combinedPaymentOption;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

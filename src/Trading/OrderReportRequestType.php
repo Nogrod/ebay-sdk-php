@@ -18,7 +18,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: OrderReportRequestType
  */
-class OrderReportRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OrderReportRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
@@ -71,5 +71,16 @@ class OrderReportRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
     public function xmlReadElement(\XMLReader $reader): bool
     {
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

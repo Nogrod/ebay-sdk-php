@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to show sales tax-related details for a tax jurisdiction. The concept of 'sales tax' is only applicable to eBay US and Canada (English and French) sites.
  * XSD Type: TaxJurisdictionType
  */
-class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This is the unique, two-digit identifier of the tax jurisdiction (such as 'CA' for California). To retrieve all <b>JurisdictionID</b> values for a site, a seller can either use a <b>GetTaxTable</b> call with <b>DetailLevel</b> set to <code>ReturnAll</code>, or they can use the <b>GeteBayDetails</b> call with <b>DetailLevel</b> name set to <code>TaxJurisdiction</code>.
@@ -379,5 +379,22 @@ class TaxJurisdictionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['JurisdictionID'] = $this->jurisdictionID;
+        $data['SalesTaxPercent'] = $this->salesTaxPercent;
+        $data['ShippingIncludedInTax'] = $this->shippingIncludedInTax;
+        $data['JurisdictionName'] = $this->jurisdictionName;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

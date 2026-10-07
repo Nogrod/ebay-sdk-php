@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  of the user the feedback is intended for, the Feedback rating, and the Feedback comment.
  * XSD Type: FeedbackInfoType
  */
-class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Textual comment that explains, clarifies, or justifies the Feedback rating specified
@@ -245,5 +245,19 @@ class FeedbackInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['CommentText'] = $this->commentText;
+        $data['CommentType'] = $this->commentType;
+        $data['TargetUser'] = $this->targetUser;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

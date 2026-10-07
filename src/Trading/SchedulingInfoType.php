@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains information for scheduling limits for the user.
  * XSD Type: SchedulingInfoType
  */
-class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Maximum number of minutes that a listing may be scheduled in advance of its going live.
@@ -196,5 +196,19 @@ class SchedulingInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaxScheduledMinutes'] = $this->maxScheduledMinutes;
+        $data['MinScheduledMinutes'] = $this->minScheduledMinutes;
+        $data['MaxScheduledItems'] = $this->maxScheduledItems;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

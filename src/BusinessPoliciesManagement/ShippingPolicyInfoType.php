@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <b>shippingPolicyInfo</b> container, which consists of detailed information for a seller's shipping policy.
  * XSD Type: ShippingPolicyInfo
  */
-class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This string value indicates the name of the shipping policy. This business policy name must be unique among all of seller's shipping policies. A <b>shippingPolicyName</b> value is required when using the <b>addSellerProfile</b> and <b>setSellerProfile</b> calls to create or update a shipping policy.
@@ -1484,5 +1484,37 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['shippingPolicyName'] = $this->shippingPolicyName;
+        $data['domesticShippingType'] = $this->domesticShippingType;
+        $data['intlShippingType'] = $this->intlShippingType;
+        $data['dispatchTimeMax'] = $this->dispatchTimeMax;
+        $data['dispatchTimeReason'] = $this->dispatchTimeReason;
+        $data['shippingOption'] = $this->shippingOption;
+        $data['excludeShipToLocation'] = Func::jsonList($this->excludeShipToLocation);
+        $data['shippingProfileDiscountInfo'] = $this->shippingProfileDiscountInfo;
+        $data['freightShipping'] = $this->freightShipping;
+        $data['shipToLocations'] = Func::jsonList($this->shipToLocations);
+        $data['domesticShippingPolicyInfoService'] = Func::jsonList($this->domesticShippingPolicyInfoService);
+        $data['intlShippingPolicyInfoService'] = Func::jsonList($this->intlShippingPolicyInfoService);
+        $data['insurance'] = $this->insurance;
+        $data['intlRateTable'] = $this->intlRateTable;
+        $data['domesticRateTable'] = $this->domesticRateTable;
+        $data['packagingHandlingCosts'] = $this->packagingHandlingCosts;
+        $data['internationalPackagingHandlingCosts'] = $this->internationalPackagingHandlingCosts;
+        $data['shippingPolicyCurrency'] = $this->shippingPolicyCurrency;
+        $data['shippingPolicyIdentity'] = $this->shippingPolicyIdentity;
+        $data['GlobalShipping'] = $this->globalShipping;
+        $data['EligibleForPickupDropOff'] = $this->eligibleForPickupDropOff;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

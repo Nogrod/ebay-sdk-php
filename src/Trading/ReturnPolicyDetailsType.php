@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: ReturnPolicyDetailsType
  */
-class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <span class="tablenote"><b>Note: </b>
@@ -696,5 +696,24 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Refund'] = Func::jsonList($this->refund);
+        $data['ReturnsWithin'] = Func::jsonList($this->returnsWithin);
+        $data['ReturnsAccepted'] = Func::jsonList($this->returnsAccepted);
+        $data['Description'] = $this->description;
+        $data['ShippingCostPaidBy'] = Func::jsonList($this->shippingCostPaidBy);
+        $data['RestockingFeeValue'] = Func::jsonList($this->restockingFeeValue);
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

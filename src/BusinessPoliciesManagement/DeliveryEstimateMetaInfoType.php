@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type that defines the <b>deliveryEstimateMetaInfo</b> container, which consists of the entity and its value on which the item delivery estimates are based.
  * XSD Type: DeliveryEstimateMetaInfo
  */
-class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The entity that item delivery estimates are based on. Valid entities include:
@@ -180,5 +180,18 @@ class DeliveryEstimateMetaInfoType implements \Sabre\Xml\XmlSerializable, \Sabre
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['key'] = $this->key;
+        $data['value'] = $this->value;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Contains summary information about the items the seller is selling.
  * XSD Type: SellingSummaryType
  */
-class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The number of currently active auctions that will sell. That
@@ -335,5 +335,22 @@ class SellingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ActiveAuctionCount'] = $this->activeAuctionCount;
+        $data['AuctionSellingCount'] = $this->auctionSellingCount;
+        $data['TotalAuctionSellingValue'] = $this->totalAuctionSellingValue;
+        $data['TotalSoldCount'] = $this->totalSoldCount;
+        $data['TotalSoldValue'] = $this->totalSoldValue;
+        $data['SoldDurationInDays'] = $this->soldDurationInDays;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

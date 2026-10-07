@@ -58,4 +58,10 @@ class VerifyRelistItemResponse extends VerifyRelistItemResponseType
     {
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        return $data;
+    }
 }

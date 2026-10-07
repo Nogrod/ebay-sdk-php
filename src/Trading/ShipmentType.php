@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the seller in <b>CompleteSale</b> to provide shipping information.
  * XSD Type: ShipmentType
  */
-class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The date and time that the seller handed off the package(s) to the shipping
@@ -240,5 +240,18 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ShippedTime'] = Func::jsonDate($this->shippedTime);
+        $data['ShipmentTrackingDetails'] = Func::jsonList($this->shipmentTrackingDetails);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

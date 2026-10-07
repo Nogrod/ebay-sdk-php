@@ -383,4 +383,15 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ApplicationDeliveryPreferences'] = $this->applicationDeliveryPreferences;
+        $data['DeliveryURLName'] = $this->deliveryURLName;
+        $data['UserDeliveryPreferenceArray'] = Func::jsonList($this->userDeliveryPreferenceArray);
+        $data['UserData'] = $this->userData;
+        $data['EventProperty'] = Func::jsonList($this->eventProperty);
+        return $data;
+    }
 }

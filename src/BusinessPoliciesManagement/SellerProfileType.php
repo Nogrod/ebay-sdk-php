@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type defines the common elements used by all business policies.
  * XSD Type: SellerProfile
  */
-class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value is for future use.
@@ -513,5 +513,25 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['forceDuplicate'] = $this->forceDuplicate;
+        $data['profileName'] = $this->profileName;
+        $data['profileId'] = $this->profileId;
+        $data['profileType'] = $this->profileType;
+        $data['profileVersion'] = $this->profileVersion;
+        $data['profileDesc'] = $this->profileDesc;
+        $data['deletedDate'] = Func::jsonDate($this->deletedDate);
+        $data['siteId'] = $this->siteId;
+        $data['categoryGroups'] = Func::jsonList($this->categoryGroups);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -112,4 +112,11 @@ class PaymentProfileType extends SellerProfileType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['paymentInfo'] = $this->paymentInfo;
+        return $data;
+    }
 }

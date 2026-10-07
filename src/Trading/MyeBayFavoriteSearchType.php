@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  the buyer.
  * XSD Type: MyeBayFavoriteSearchType
  */
-class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The name of the buyer's Saved Search on My eBay. The name defaults to the user's
@@ -1617,5 +1617,42 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['SearchName'] = $this->searchName;
+        $data['SearchQuery'] = $this->searchQuery;
+        $data['QueryKeywords'] = $this->queryKeywords;
+        $data['CategoryID'] = $this->categoryID;
+        $data['ItemSort'] = $this->itemSort;
+        $data['SortOrder'] = $this->sortOrder;
+        $data['EndTimeFrom'] = Func::jsonDate($this->endTimeFrom);
+        $data['EndTimeTo'] = Func::jsonDate($this->endTimeTo);
+        $data['MaxDistance'] = $this->maxDistance;
+        $data['PostalCode'] = $this->postalCode;
+        $data['ItemType'] = $this->itemType;
+        $data['PriceMax'] = $this->priceMax;
+        $data['PriceMin'] = $this->priceMin;
+        $data['Currency'] = $this->currency;
+        $data['BidCountMax'] = $this->bidCountMax;
+        $data['BidCountMin'] = $this->bidCountMin;
+        $data['SearchFlag'] = Func::jsonList($this->searchFlag);
+        $data['PreferredLocation'] = $this->preferredLocation;
+        $data['SellerID'] = Func::jsonList($this->sellerID);
+        $data['SellerIDExclude'] = Func::jsonList($this->sellerIDExclude);
+        $data['ItemsAvailableTo'] = $this->itemsAvailableTo;
+        $data['ItemsLocatedIn'] = $this->itemsLocatedIn;
+        $data['SellerBusinessType'] = $this->sellerBusinessType;
+        $data['Condition'] = $this->condition;
+        $data['Quantity'] = $this->quantity;
+        $data['QuantityOperator'] = $this->quantityOperator;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

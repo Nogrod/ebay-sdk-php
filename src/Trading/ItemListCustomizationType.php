@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Defines how a list of items should be returned.
  * XSD Type: ItemListCustomizationType
  */
-class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Specifies whether or not to include the container in the response.
@@ -412,5 +412,23 @@ class ItemListCustomizationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Include'] = $this->include;
+        $data['ListingType'] = $this->listingType;
+        $data['Sort'] = $this->sort;
+        $data['DurationInDays'] = $this->durationInDays;
+        $data['IncludeNotes'] = $this->includeNotes;
+        $data['Pagination'] = $this->pagination;
+        $data['OrderStatusFilter'] = $this->orderStatusFilter;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

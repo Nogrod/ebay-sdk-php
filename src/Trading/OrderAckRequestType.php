@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  This call is used to acknowledge that a single line item order, or an individual line item within a multiple line item order has been received. Once an order or order line item is successfully acknowledged with an <b>OrderAck</b> call, that order or order line item will not appear in the <b>OrderReport</b> response when you run either of those calls again.
  * XSD Type: OrderAckRequestType
  */
-class OrderAckRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class OrderAckRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique identifier for an eBay order. An eBay order can contain one or more order line items. This field is used to acknowledge a single line item order. If the eBay order has multiple line items, an <b>OrderAck</b> call will be required to acknowledge each of those order line items, and the <b>OrderLineItemID</b> field must be used instead.
@@ -189,5 +189,18 @@ class OrderAckRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OrderID'] = $this->orderID;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -15,7 +15,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  separately for each package.
  * XSD Type: SetShipmentTrackingInfoRequestType
  */
-class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * A unique identifier that identifies a single line item or multiple line item
@@ -313,5 +313,21 @@ class SetShipmentTrackingInfoRequestType implements \Sabre\Xml\XmlSerializable, 
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['OrderID'] = $this->orderID;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        $data['Shipment'] = $this->shipment;
+        $data['IsShipped'] = $this->isShipped;
+        $data['IsPaid'] = $this->isPaid;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

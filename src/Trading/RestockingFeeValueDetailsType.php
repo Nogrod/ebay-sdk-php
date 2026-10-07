@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is deprecated, as sellers are no longer allowed to set a restocking fee through a listings's return policy.
  * XSD Type: RestockingFeeValueDetailsType
  */
-class RestockingFeeValueDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RestockingFeeValueDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * @var string $restockingFeeValueOption
@@ -141,5 +141,18 @@ class RestockingFeeValueDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['RestockingFeeValueOption'] = $this->restockingFeeValueOption;
+        $data['Description'] = $this->description;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

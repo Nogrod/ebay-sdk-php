@@ -11,7 +11,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  values are computed by eBay and cannot be specified at listing time.
  * XSD Type: SellingStatusType
  */
-class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Number of bids placed so far against the auction item.
@@ -1249,5 +1249,35 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['BidCount'] = $this->bidCount;
+        $data['BidIncrement'] = $this->bidIncrement;
+        $data['ConvertedCurrentPrice'] = $this->convertedCurrentPrice;
+        $data['CurrentPrice'] = $this->currentPrice;
+        $data['HighBidder'] = $this->highBidder;
+        $data['LeadCount'] = $this->leadCount;
+        $data['MinimumToBid'] = $this->minimumToBid;
+        $data['QuantitySold'] = $this->quantitySold;
+        $data['ReserveMet'] = $this->reserveMet;
+        $data['SecondChanceEligible'] = $this->secondChanceEligible;
+        $data['BidderCount'] = $this->bidderCount;
+        $data['ListingStatus'] = $this->listingStatus;
+        $data['FinalValueFee'] = $this->finalValueFee;
+        $data['PromotionalSaleDetails'] = $this->promotionalSaleDetails;
+        $data['AdminEnded'] = $this->adminEnded;
+        $data['SoldAsBin'] = $this->soldAsBin;
+        $data['QuantitySoldByPickupInStore'] = $this->quantitySoldByPickupInStore;
+        $data['SuggestedBidValues'] = Func::jsonList($this->suggestedBidValues);
+        $data['ListingOnHold'] = $this->listingOnHold;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

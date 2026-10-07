@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  </span>
  * XSD Type: MembershipDetailType
  */
-class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value indicates the name of the membership program, such as <code>EBAYPLUS</code>. This field will always be returned with each <b>Program</b> container.
@@ -199,5 +199,19 @@ class MembershipDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['ProgramName'] = $this->programName;
+        $data['Site'] = $this->site;
+        $data['ExpiryDate'] = Func::jsonDate($this->expiryDate);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

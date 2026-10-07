@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>Program</b> container, which provides details on whether the order line item has passed or failed the authenticity inspection.
  * XSD Type: TransactionProgramType
  */
-class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This container gives status on whether the order line item has passed or failed the authenticity inspection.
@@ -193,5 +193,19 @@ class TransactionProgramType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['AuthenticityVerification'] = $this->authenticityVerification;
+        $data['Fulfillment'] = $this->fulfillment;
+        $data['MotorPurchase'] = $this->motorPurchase;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

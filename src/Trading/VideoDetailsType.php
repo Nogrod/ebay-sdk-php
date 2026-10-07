@@ -12,7 +12,7 @@ use Nogrod\XMLClientRuntime\Func;
  *  The <b>GetItem</b> call will return the <b>VideoDetails</b> container if the listing contains a video, and the seller of the item is the one making the <b>GetItem</b> call.
  * XSD Type: VideoDetailsType
  */
-class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Unique identifier of a video. This identifier is automatically created by eBay once a seller successfully uploads a video to eBay. Videos can be added using the <a href="https://developer.ebay.com/api-docs/commerce/media/resources/video/methods/uploadVideo" target="_blank">uploadVideo</a> method of the <a href="https://developer.ebay.com/api-docs/commerce/media/overview.html" target="_blank">Media API</a>.
@@ -226,5 +226,17 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['VideoID'] = Func::jsonList($this->videoID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

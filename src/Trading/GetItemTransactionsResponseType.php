@@ -499,4 +499,17 @@ class GetItemTransactionsResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['PaginationResult'] = $this->paginationResult;
+        $data['HasMoreTransactions'] = $this->hasMoreTransactions;
+        $data['TransactionsPerPage'] = $this->transactionsPerPage;
+        $data['PageNumber'] = $this->pageNumber;
+        $data['ReturnedTransactionCountActual'] = $this->returnedTransactionCountActual;
+        $data['Item'] = $this->item;
+        $data['TransactionArray'] = Func::jsonList($this->transactionArray);
+        return $data;
+    }
 }

@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type definining the <b>rateTableInfo</b> container, which identifies the domestic and international shipping rate tables referenced to determine flat-rate shipping costs based on shipping service level (Economy, Standard, Expedited, One-day) and delivery location.
  * XSD Type: RateTableInfo
  */
-class RateTableInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class RateTableInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * <span class="tablenote"><b>Note:</b>
@@ -189,5 +189,18 @@ class RateTableInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['intlRateTable'] = $this->intlRateTable;
+        $data['domesticRateTable'] = $this->domesticRateTable;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

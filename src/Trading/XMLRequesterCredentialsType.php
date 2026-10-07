@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  *
  * XSD Type: XMLRequesterCredentialsType
  */
-class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * eBay user ID (i.e., eBay.com Web site login name) for the user the application
@@ -223,5 +223,19 @@ class XMLRequesterCredentialsType implements \Sabre\Xml\XmlSerializable, \Sabre\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Username'] = $this->username;
+        $data['Password'] = $this->password;
+        $data['eBayAuthToken'] = $this->eBayAuthToken;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

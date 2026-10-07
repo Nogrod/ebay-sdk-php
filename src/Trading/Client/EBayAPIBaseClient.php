@@ -821,13 +821,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
         return $this->call('VerifyRelistItem', 'Nogrod\eBaySDK\Trading\VerifyRelistItemResponse', $verifyRelistItemRequest);
     }
 
-    protected function getJmsMetaPath(): array
-    {
-        return [
-            'Nogrod\eBaySDK\Trading' => __DIR__.'/../../../metadata/Trading',
-        ];
-    }
-
     protected function getSabre(): \Sabre\Xml\Service
     {
         $service = new \Sabre\Xml\Service();

@@ -150,4 +150,12 @@ class EndItemRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['EndingReason'] = $this->endingReason;
+        return $data;
+    }
 }

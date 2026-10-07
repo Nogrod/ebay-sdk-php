@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used by the <b>ItemSpecificDetails</b> container that is returned in the <b>GeteBayDetails</b> call. The <b>ItemSpecificDetails</b> container consists of maximum threshold values that must be adhered to when creating, revising, or relisting items with Item Specifics. Item Specifics are used to provide descriptive details of an item in a structured manner.
  * XSD Type: ItemSpecificDetailsType
  */
-class ItemSpecificDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class ItemSpecificDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This value is the maximum number of Item Specifics name-value pairs that can be used when creating, revising, or relisting an item on the specified site. Item Specifics are used to provide descriptive details of an item in a structured manner.
@@ -331,5 +331,22 @@ class ItemSpecificDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['MaxItemSpecificsPerItem'] = $this->maxItemSpecificsPerItem;
+        $data['MaxValuesPerName'] = $this->maxValuesPerName;
+        $data['MaxCharactersPerValue'] = $this->maxCharactersPerValue;
+        $data['MaxCharactersPerName'] = $this->maxCharactersPerName;
+        $data['DetailVersion'] = $this->detailVersion;
+        $data['UpdateTime'] = Func::jsonDate($this->updateTime);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

@@ -203,4 +203,12 @@ class GetTaxTableResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['LastUpdateTime'] = Func::jsonDate($this->lastUpdateTime);
+        $data['TaxTable'] = Func::jsonList($this->taxTable);
+        return $data;
+    }
 }

@@ -1075,4 +1075,29 @@ class GetUserPreferencesResponseType extends AbstractResponseType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['BidderNoticePreferences'] = $this->bidderNoticePreferences;
+        $data['CombinedPaymentPreferences'] = $this->combinedPaymentPreferences;
+        $data['SellerPaymentPreferences'] = $this->sellerPaymentPreferences;
+        $data['SellerFavoriteItemPreferences'] = $this->sellerFavoriteItemPreferences;
+        $data['EndOfAuctionEmailPreferences'] = $this->endOfAuctionEmailPreferences;
+        $data['EmailShipmentTrackingNumberPreference'] = $this->emailShipmentTrackingNumberPreference;
+        $data['RequiredShipPhoneNumberPreference'] = $this->requiredShipPhoneNumberPreference;
+        $data['UnpaidItemAssistancePreferences'] = $this->unpaidItemAssistancePreferences;
+        $data['SellerExcludeShipToLocationPreferences'] = Func::jsonList($this->sellerExcludeShipToLocationPreferences);
+        $data['PurchaseReminderEmailPreferences'] = $this->purchaseReminderEmailPreferences;
+        $data['SellerProfilePreferences'] = $this->sellerProfilePreferences;
+        $data['SellerReturnPreferences'] = $this->sellerReturnPreferences;
+        $data['OfferGlobalShippingProgramPreference'] = $this->offerGlobalShippingProgramPreference;
+        $data['DispatchCutoffTimePreference'] = $this->dispatchCutoffTimePreference;
+        $data['GlobalShippingProgramListingPreference'] = $this->globalShippingProgramListingPreference;
+        $data['OverrideGSPServiceWithIntlServicePreference'] = $this->overrideGSPServiceWithIntlServicePreference;
+        $data['PickupDropoffSellerPreference'] = $this->pickupDropoffSellerPreference;
+        $data['OutOfStockControlPreference'] = $this->outOfStockControlPreference;
+        $data['eBayPLUSPreference'] = Func::jsonList($this->eBayPLUSPreference);
+        return $data;
+    }
 }

@@ -580,4 +580,17 @@ class SetUserNotesRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['ItemID'] = $this->itemID;
+        $data['Action'] = $this->action;
+        $data['NoteText'] = $this->noteText;
+        $data['TransactionID'] = $this->transactionID;
+        $data['VariationSpecifics'] = Func::jsonList($this->variationSpecifics);
+        $data['SKU'] = $this->sKU;
+        $data['OrderLineItemID'] = $this->orderLineItemID;
+        return $data;
+    }
 }

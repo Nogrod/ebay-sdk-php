@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type specifies custom product compliance and/or take-back policies that apply to a specified country.
  * XSD Type: CountryPoliciesType
  */
-class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * Defines the 2-letter country code set.
@@ -228,5 +228,18 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['Country'] = $this->country;
+        $data['PolicyID'] = Func::jsonList($this->policyID);
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

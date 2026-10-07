@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type that defines the <b>depositDetails</b> container, which is used by the seller to specify amounts and due dates for deposits and full payment on eBay Motors (US and CA) vehicle listings. The <b>depositDetails</b> container is conditionally required if the the payment policy is for eBay Motors (US and CA) vehicles listings (<b>categoryGroup.name=MOTORS_VEHICLE</b>).
  * XSD Type: DepositDetails
  */
-class DepositDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class DepositDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * This integer value indicates the number of days that a buyer has to make their full payment to the seller and close the remaining balance on a motor vehicle transaction. This container must be specified for motor vehicles listings. Valid values are '3', '7' (default), '10', and '14'.
@@ -231,5 +231,19 @@ class DepositDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['daysToFullPayment'] = $this->daysToFullPayment;
+        $data['hoursToDeposit'] = $this->hoursToDeposit;
+        $data['depositAmount'] = $this->depositAmount;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }

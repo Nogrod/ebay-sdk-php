@@ -339,4 +339,13 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
         }
         return parent::xmlReadElement($reader);
     }
+
+    protected function jsonProperties(): array
+    {
+        $data = parent::jsonProperties();
+        $data['Operation'] = $this->operation;
+        $data['FolderID'] = Func::jsonList($this->folderID);
+        $data['FolderName'] = Func::jsonList($this->folderName);
+        return $data;
+    }
 }

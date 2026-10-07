@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * This type is used to provide details about an order line item being fulfilled by eBay or an eBay fulfillment partner.
  * XSD Type: FulfillmentType
  */
-class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
+class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
      * The value returned in this field indicates the party that is handling fulfillment of the order line item. <br> <br>
@@ -159,5 +159,18 @@ class FulfillmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
             }
         }
         return false;
+    }
+
+    protected function jsonProperties(): array
+    {
+        $data = [];
+        $data['FulfillmentBy'] = $this->fulfillmentBy;
+        $data['FulfillmentRefId'] = $this->fulfillmentRefId;
+        return $data;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return array_filter($this->jsonProperties(), static fn ($v) => null !== $v);
     }
 }
