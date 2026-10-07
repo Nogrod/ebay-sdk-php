@@ -165,7 +165,17 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippedTime();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippedTime", $value);
@@ -173,7 +183,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $value = $this->getShipmentTrackingDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShipmentTrackingDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails", $v);
             }
         }
     }

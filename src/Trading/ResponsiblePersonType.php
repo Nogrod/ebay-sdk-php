@@ -447,7 +447,17 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getCompanyName();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CompanyName", $value);
@@ -490,11 +500,16 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         }
         $value = $this->getTypes();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Types", array_map(function ($v) {
-                    return ["Type" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Types");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Type", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -553,11 +568,10 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
         if (null !== $value) {
             $this->setContactURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Types');
         if (null !== $value) {
-            $this->setTypes(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}Type');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Type', true);
+            $this->setTypes($value);
         }
     }
 }

@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing GetItemShippingResponseType
  *
- * This is the base response type of the <b>GetItemShipping</b> call. This call takes an <b>ItemID</b> value for an item that has yet to be shipped, and then returns estimated shipping costs for every shipping service that the seller has offered with the listing. This call will also return the <b>PickUpInStoreDetails.EligibleForPickupInStore</b> flag if the item is available for buyer pick-up through the In-Store Pickup feature.
+ * This is the base response type of the <b>GetItemShipping</b> call. This call takes an <b>ItemID</b> value for an item that has yet to be shipped, and then returns estimated shipping costs for every shipping service that the seller has offered with the listing.
  * XSD Type: GetItemShippingResponseType
  */
 class GetItemShippingResponseType extends AbstractResponseType
@@ -23,7 +23,9 @@ class GetItemShippingResponseType extends AbstractResponseType
     private $shippingDetails = null;
 
     /**
-     * This container is only returned in <b>GetItemShipping</b> if the In-Store Pickup feature is enabled for the listing. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings, and the merchant must have quantity of the item available in a store that is near the prospective buyer, in order for In-Store Pickup to be an available fulfillment option for that buyer.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType $pickUpInStoreDetails
      */
@@ -64,7 +66,9 @@ class GetItemShippingResponseType extends AbstractResponseType
     /**
      * Gets as pickUpInStoreDetails
      *
-     * This container is only returned in <b>GetItemShipping</b> if the In-Store Pickup feature is enabled for the listing. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings, and the merchant must have quantity of the item available in a store that is near the prospective buyer, in order for In-Store Pickup to be an available fulfillment option for that buyer.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType
      */
@@ -76,7 +80,9 @@ class GetItemShippingResponseType extends AbstractResponseType
     /**
      * Sets a new pickUpInStoreDetails
      *
-     * This container is only returned in <b>GetItemShipping</b> if the In-Store Pickup feature is enabled for the listing. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings, and the merchant must have quantity of the item available in a store that is near the prospective buyer, in order for In-Store Pickup to be an available fulfillment option for that buyer.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType $pickUpInStoreDetails
      * @return self
@@ -87,9 +93,14 @@ class GetItemShippingResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getShippingDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingDetails", $value);

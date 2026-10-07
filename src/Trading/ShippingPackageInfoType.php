@@ -13,14 +13,14 @@ use Nogrod\XMLClientRuntime\Func;
 class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'Click and Collect' orders.
      *
      * @var string $storeID
      */
     private $storeID = null;
 
     /**
-     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'Click and Collect' orders.
      *
      * @var string $shippingTrackingEvent
      */
@@ -111,7 +111,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as storeID
      *
-     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'Click and Collect' orders.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new storeID
      *
-     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * The unique identifier of the store from where the order will be delivered. This field is only applicable to 'Click and Collect' orders.
      *
      * @param string $storeID
      * @return self
@@ -137,7 +137,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as shippingTrackingEvent
      *
-     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'Click and Collect' orders.
      *
      * @return string
      */
@@ -149,7 +149,7 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new shippingTrackingEvent
      *
-     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'In-Store Pickup' and 'Click and Collect' orders.
+     * This enumeration value indicates whether or not the order has been picked up from the store indicated by the <b>StoreID</b> value. This field is only applicable to 'Click and Collect' orders.
      *
      * @param string $shippingTrackingEvent
      * @return self
@@ -422,7 +422,17 @@ class ShippingPackageInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getStoreID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreID", $value);

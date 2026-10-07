@@ -731,7 +731,17 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getAccountState();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountState", $value);
@@ -751,7 +761,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
         $value = $this->getAdditionalAccount();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["AdditionalAccount" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AdditionalAccount", $v);
             }
         }
         $value = $this->getAmountPastDue();

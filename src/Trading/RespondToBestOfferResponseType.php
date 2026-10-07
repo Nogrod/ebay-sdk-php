@@ -88,16 +88,26 @@ class RespondToBestOfferResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getRespondToBestOffer();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer", array_map(function ($v) {
-                    return ["BestOffer" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BestOffer", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -117,10 +127,11 @@ class RespondToBestOfferResponseType extends AbstractResponseType
     public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RespondToBestOffer');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}BestOffer');
             $this->setRespondToBestOffer(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BestOffer'));
+                return \Nogrod\eBaySDK\Trading\BestOfferType::fromKeyValue($v);
             }, $value));
         }
     }

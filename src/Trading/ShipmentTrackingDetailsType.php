@@ -223,7 +223,17 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingCarrierUsed();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCarrierUsed", $value);
@@ -234,11 +244,16 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
         }
         $value = $this->getShipmentLineItem();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem", array_map(function ($v) {
-                    return ["LineItem" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}LineItem", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -265,10 +280,11 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
         if (null !== $value) {
             $this->setShipmentTrackingNumber($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShipmentLineItem');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}LineItem');
             $this->setShipmentLineItem(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}LineItem'));
+                return \Nogrod\eBaySDK\Trading\LineItemType::fromKeyValue($v);
             }, $value));
         }
     }

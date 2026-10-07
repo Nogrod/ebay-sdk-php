@@ -1938,7 +1938,17 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getAboutMePage();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -2040,7 +2050,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getUserSubscription();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["UserSubscription" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserSubscription", $v);
             }
         }
         $value = $this->getEBayWikiReadOnly();
@@ -2085,11 +2095,16 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getMembership();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Membership", array_map(function ($v) {
-                    return ["Program" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Membership");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Program", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getUserFirstName();
@@ -2248,10 +2263,11 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setShippingAddress(\Nogrod\eBaySDK\Trading\AddressType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Membership');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Membership');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Program');
             $this->setMembership(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Program'));
+                return \Nogrod\eBaySDK\Trading\MembershipDetailType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserFirstName');

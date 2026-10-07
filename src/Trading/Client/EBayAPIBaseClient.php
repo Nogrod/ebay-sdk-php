@@ -206,17 +206,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     }
 
     /**
-     * Call GetAdFormatLeads
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetAdFormatLeadsRequest $getAdFormatLeadsRequest
-     * @return \Nogrod\eBaySDK\Trading\GetAdFormatLeadsResponse
-     */
-    public function getAdFormatLeads(\Nogrod\eBaySDK\Trading\GetAdFormatLeadsRequest $getAdFormatLeadsRequest): \Nogrod\eBaySDK\Trading\GetAdFormatLeadsResponse
-    {
-        return $this->call('GetAdFormatLeads', 'Nogrod\eBaySDK\Trading\GetAdFormatLeadsResponse', $getAdFormatLeadsRequest);
-    }
-
-    /**
      * Call GetAllBidders
      *
      * @param \Nogrod\eBaySDK\Trading\GetAllBiddersRequest $getAllBiddersRequest
@@ -247,28 +236,6 @@ class EBayAPIBaseClient extends \Nogrod\XMLClientRuntime\Client
     public function getBidderList(\Nogrod\eBaySDK\Trading\GetBidderListRequest $getBidderListRequest): \Nogrod\eBaySDK\Trading\GetBidderListResponse
     {
         return $this->call('GetBidderList', 'Nogrod\eBaySDK\Trading\GetBidderListResponse', $getBidderListRequest);
-    }
-
-    /**
-     * Call GetCategories
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetCategoriesRequest $getCategoriesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetCategoriesResponse
-     */
-    public function getCategories(\Nogrod\eBaySDK\Trading\GetCategoriesRequest $getCategoriesRequest): \Nogrod\eBaySDK\Trading\GetCategoriesResponse
-    {
-        return $this->call('GetCategories', 'Nogrod\eBaySDK\Trading\GetCategoriesResponse', $getCategoriesRequest);
-    }
-
-    /**
-     * Call GetCategoryFeatures
-     *
-     * @param \Nogrod\eBaySDK\Trading\GetCategoryFeaturesRequest $getCategoryFeaturesRequest
-     * @return \Nogrod\eBaySDK\Trading\GetCategoryFeaturesResponse
-     */
-    public function getCategoryFeatures(\Nogrod\eBaySDK\Trading\GetCategoryFeaturesRequest $getCategoryFeaturesRequest): \Nogrod\eBaySDK\Trading\GetCategoryFeaturesResponse
-    {
-        return $this->call('GetCategoryFeatures', 'Nogrod\eBaySDK\Trading\GetCategoryFeaturesResponse', $getCategoryFeaturesRequest);
     }
 
     /**

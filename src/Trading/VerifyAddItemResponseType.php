@@ -413,20 +413,30 @@ class VerifyAddItemResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getItemID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
         }
         $value = $this->getFees();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fees", array_map(function ($v) {
-                    return ["Fee" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Fees");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Fee", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getCategoryID();
@@ -440,16 +450,21 @@ class VerifyAddItemResponseType extends AbstractResponseType
         $value = $this->getDiscountReason();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DiscountReason" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountReason", $v);
             }
         }
         $value = $this->getProductSuggestions();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions", array_map(function ($v) {
-                    return ["ProductSuggestion" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestions");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ProductSuggestion", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -473,10 +488,11 @@ class VerifyAddItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setItemID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Fees');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Fee');
             $this->setFees(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Fee'));
+                return \Nogrod\eBaySDK\Trading\FeeType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CategoryID');
@@ -491,10 +507,11 @@ class VerifyAddItemResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setDiscountReason($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestions');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestions');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion');
             $this->setProductSuggestions(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ProductSuggestion'));
+                return \Nogrod\eBaySDK\Trading\ProductSuggestionType::fromKeyValue($v);
             }, $value));
         }
     }

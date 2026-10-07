@@ -13,14 +13,9 @@ class PickupMethodCodeType
     /**
      * Constant for 'InStorePickup' value.
      *
-     * This value indicates that the buyer will pick up the In-Store Pickup item at the
-     * merchant's physical store.
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> A merchant must be eligible for the In-Store Pickup
-     * feature to list an item that is eligible for In-Store Pickup. At this time, the
-     * In-Store Pickup feature is generally only available to large retail merchants in
-     * US, and can only be applied to multi-quantity, fixed-price listings.
+     * <span class="tablenote">
+     *  <strong>Note:</strong> BOPIS (Buy Online, Pick Up In Store) is no longer
+     * supported. This enumerated value is deprecated and should no longer be used.
      *  </span>
      */
     public const VAL_IN_STORE_PICKUP = 'InStorePickup';

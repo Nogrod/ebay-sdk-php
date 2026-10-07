@@ -14,9 +14,8 @@ class BestOfferStatusCodeType
      * Constant for 'Pending' value.
      *
      * This value indicates that the buyer's Best Offer on an item is awaiting the
-     *  seller's response (accept, decline, counter offer). A buyer's Best Offer
-     * expires
-     *  after 48 hours without a seller's response.
+     * seller's response (accept, decline, counter offer). A buyer's Best Offer expires
+     * after 24 hours without a seller's response.
      */
     public const VAL_PENDING = 'Pending';
 
@@ -42,9 +41,9 @@ class BestOfferStatusCodeType
      * Constant for 'Expired' value.
      *
      * Depending on context, this value can indicate that the buyer's Best Offer
-     * expired due to the passing of 48 hours with no seller response (accept, decline,
-     * counter offer), or that the seller's or buyer's counter offer expired due to the
-     * passing of 48 hours with no response from other party.
+     * expired due to the passing of 24 hours with no seller response (accept, decline,
+     * counter offer), or that the seller's counter offer expired due to the passing of
+     * 96 hours with no response from the buyer.
      */
     public const VAL_EXPIRED = 'Expired';
 
@@ -104,7 +103,7 @@ class BestOfferStatusCodeType
      *
      * This value indicates that the buyer and seller have come to agreement on a Best
      * Offer price, but the seller is still waiting for payment from the buyer. If the
-     * buyer does not pay within 48 hours, the Best Offer will expire.
+     * buyer does not pay within 96 hours, the Best Offer will expire.
      */
     public const VAL_PENDING_BUYER_PAYMENT = 'PendingBuyerPayment';
 

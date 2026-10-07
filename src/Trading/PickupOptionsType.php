@@ -10,7 +10,7 @@ use Nogrod\XMLClientRuntime\Func;
  * Type defining the <strong>PickupOptions</strong> container, which consists of a pickup method and the priority of the pickup method.
  *  <br/><br/>
  *  <span class="tablenote">
- *  <strong>Note:</strong> At this time, the In-Store Pickup and Click and Collect features are generally only available to large retail merchants in US, and can only be applied to multi-quantity, fixed-price listings.
+ *  <strong>Note:</strong> At this time, the Click and Collect feature can only be applied to multi-quantity, fixed-price listings.
  *  </span>
  * XSD Type: PickupOptionsType
  */
@@ -20,11 +20,11 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This value indicates an available pickup method. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, 'InStorePickup' and 'PickUpDropOff' are the only available pickup methods; however, additional pickup methods may be added to the list in future releases.
+     *  <strong>Note:</strong> At this time, 'PickUpDropOff' is the only available pickup method; however, additional pickup methods may be added to the list in future releases.
      *  </span>
      *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect feature to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @var string $pickupMethod
@@ -35,7 +35,7 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This integer value indicates the priority of the pickup method. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect features to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect features to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @var int $pickupPriority
@@ -48,11 +48,11 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This value indicates an available pickup method. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, 'InStorePickup' and 'PickUpDropOff' are the only available pickup methods; however, additional pickup methods may be added to the list in future releases.
+     *  <strong>Note:</strong> At this time, 'PickUpDropOff' is the only available pickup method; however, additional pickup methods may be added to the list in future releases.
      *  </span>
      *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect feature to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @return string
@@ -68,11 +68,11 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This value indicates an available pickup method. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, 'InStorePickup' and 'PickUpDropOff' are the only available pickup methods; however, additional pickup methods may be added to the list in future releases.
+     *  <strong>Note:</strong> At this time, 'PickUpDropOff' is the only available pickup method; however, additional pickup methods may be added to the list in future releases.
      *  </span>
      *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect feature to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect feature to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @param string $pickupMethod
@@ -90,7 +90,7 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This integer value indicates the priority of the pickup method. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect features to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect features to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @return int
@@ -106,7 +106,7 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      * This integer value indicates the priority of the pickup method. The priority of each pickup method controls the order (relative to other pickup methods) in which the corresponding pickup method will appear in the View Item and Checkout page. This field is always returned with the <strong>PickupOptions</strong> container.
      *  <br/><br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> A seller must be eligible for the In-Store Pickup or Click and Collect features to list an item that is eligible for In-Store Pickup or Click and Collect. At this time, In-Store Pickup is generally only available to large retail merchants in US, and the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
+     *  <strong>Note:</strong> A seller must be eligible for the Click and Collect features to list an item that is eligible for Click and Collect. At this time, the 'Click and Collect' feature is only available to large merchants on the eBay UK (site ID - 3), eBay Australia (Site ID - 15), and eBay Germany (Site ID - 77) sites.
      *  </span>
      *
      * @param int $pickupPriority
@@ -120,7 +120,17 @@ class PickupOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getPickupMethod();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PickupMethod", $value);

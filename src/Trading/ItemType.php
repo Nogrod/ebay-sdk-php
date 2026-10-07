@@ -172,9 +172,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br/><br/>
      *  The end time for a listing is calculated by adding the duration to the item's start time. If the listing ends early, the value of the listing duration does not change. When a listing's duration is changed, any related fees (e.g., 10-day fee) may be debited or credited (as applicable).
      *  <br><br>
-     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For
-     *  a list of valid values, call <b>GetCategoryFeatures</b> with <b>DetailLevel</b> set to <b>ReturnAll</b>
-     *  and look for <b>ListingDurations</b> information.
+     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For a list of valid listing-duration values for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method and inspect the <b>listingTypePolicies.listingDurations</b> field for the returned category.
+     *
      *  <br><br>
      *  When you revise a listing, the duration cannot be reduced if it will result in ending the listing within 24 hours of the current date-time. You are only allowed to increase the duration of the listing if fewer than 2 hours have passed since you initially listed the item and the listing has no bids. You can decrease the value of this field only if the listing has no bids (or no items have sold) and the listing does not end within 12 hours.
      *  <br>
@@ -242,7 +241,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * A lot is a set of two or more similar items included in a single listing that must be purchased together in a single order line item. The <b>Item.LotSize</b> value is the number of items in the lot. This field is required if two or more items are including in one listing.
      *  <br><br>
-     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call <b>GetCategories</b> to determine if a category supports lots. If the returned <b>CategoryArray.Category.LSD</b> (<b>LotSize</b> Disabled) value is <code>true</code>, the category does not support lots.
+     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call the <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.lsd" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> to determine if a category supports lots. If the returned <b>categoryPolicies.lsd</b> value is <code>true</code>, the category does not support lots.
      *  <br>
      *
      * @var int $lotSize
@@ -291,10 +290,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $payPalEmailAddress = null;
 
     /**
-     * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
+     * Use this container to set the primary listing category. The <b>PrimaryCategory.CategoryID</b> must be a valid leaf category on the category tree for the request site (<code>X-EBAY-API-SITEID</code> / listing <b>Item.Site</b>). A category ID that is valid only on another site's tree is rejected. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  Once you determine the appropriate eBay category for your product, use the applicable <b>Sell Metadata API</b> method for the specific category-level feature you want to verify. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -327,7 +325,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. To determine whether a specific leaf category supports or requires product identifier types, use the <b>Taxonomy API</b> getItemAspectsForCategory method. Inspect <b>localizedAspectName</b> together with the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether <b>Brand</b>, <b>MPN</b>, <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> are supported, required, recommended, or optional.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -460,26 +458,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $scheduleTime = null;
 
     /**
-     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories. For this optional second listing category, if supplied, the <b>SecondaryCategory.CategoryID</b> must also be a valid leaf category on the category tree for the request site. Two-category listings are allowed only when both category IDs are valid on that same site tree. Validate against that marketplace's Taxonomy tree (for example, <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySubtree" target="_blank">getCategorySubtree</a> on tree 100 for eBay Motors).
      *  <br>
      *  <br>
-     *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The final value fee is based
-     *  on the primary category in which the item is listed. Furthermore, you can
-     *  list the same item in an eBay Motors Parts & Accessories category and in
-     *  an eligible eBay category, as long as the primary category is associated
-     *  with the site on which you are listing. That is, the two categories can be a
-     *  mix of Motors Parts & Accessories and eBay site categories. (Real
-     *  Estate, Mature Audience (adult), and Business & Industrial categories
-     *  are not eligible for listing in two categories in this manner.) For example,
-     *  if you list on Motors, the primary category could be 6750 (eBay Motors >
-     *  Parts & Accessories > Apparel & Merchandise > Motorcycle >
-     *  Jackets & Leathers), and the secondary category could be 57988 (eBay
-     *  > Clothing, Shoes > Accessories > Men's Clothing > Outerwear).
-     *  If you list on the main eBay site, the primary category could be 57988 and
-     *  the secondary category could be 6750. <br>
+     *  Some category programs or category combinations may still limit whether an item can be listed in two categories, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the request site (<code>X-EBAY-API-SITEID</code> / <b>Item.Site</b>) category-tree requirements described above.
      *  <br>
-     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
+     *  You cannot list US eBay Motors vehicles in two categories. Some <b>Parts & Accessories</b> listings may be eligible for a secondary category, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the listing site's category-tree requirements described above.
+     *  <br>
+     *  <br>
+     *  If eBay has designated a listing category as a value category, and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request. To determine whether a specific leaf category is a value category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method and inspect the <b>valueCategory</b> field.
      *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
@@ -536,9 +524,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *
      *  New users who list their first items in selected categories on the US site
-     *  must specify at least one domestic shipping service. This applies to a
-     *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
-     *  <b>Category.ShippingTermsRequired</b>.
+     *  must specify at least one domestic shipping service. This applies to a category if the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method returns <code>true</code> for the <b>shippingTermsRequired</b> field.
+     *
      *  <br>
      *  <br>
      *  For multi-quantity, fixed-price listings, a seller can revise all shipping details of the
@@ -971,9 +958,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
      *  listings in certain categories when certain shipping services
-     *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
-     *  <b>GetCategoryFeatures</b>.<br>
-     *  <br>
+     *  (with delivery) are offered. To determine whether handling-time metadata applies to a specific leaf category, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method and inspect the <b>handlingTimeEnabled</b> field. For a list of supported handling times for the specified marketplace, use <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-shipping:marketplace-gethandlingtimes" target="_blank">getHandlingTimes</a> method.
+     *
      *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
      *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
@@ -1069,7 +1055,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -1186,10 +1172,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Required for
-     *  most categories on most sites. Use <b>ReturnPolicyEnabled</b>
-     *  in <b>GetCategoryFeatures</b> to determine which categories require this
-     *  field. Also use <b>ReturnPolicyDetails</b> in <b>GeteBayDetails</b> to determine
-     *  which <b>ReturnPolicy</b> fields can be used on each site.<br>
+     *  most categories on most sites. To determine whether return policy metadata is required for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getreturnpolicies.returnpolicy.required" target="_blank">required</a> boolean field. Use the returned category-level domestic and international return policy metadata from <b>getReturnPolicies</b> to determine which <b>ReturnPolicy</b> fields and values are supported for the applicable leaf category.
+     *  <br>
      *  <br>
      *  Australia (AU) and US eBay Motors
      *  Parts and Accessories categories typically support but do not
@@ -1212,7 +1196,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  the return policy details are only returned when the request is sent to the
      *  listing site.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <span class="tablenote"><b>Note:</b> For category-level domestic and international return-policy metadata, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method instead of GeteBayDetails.</span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
@@ -1266,9 +1250,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation at the same time. (That is, one order line item can contain
      *  multiple items from a single variation.) <br>
      *  <br>
-     *  If you list in two categories, both categories must support
-     *  listing with variations. See <b>VariationsEnabled</b> in
-     *  <b>GetCategoryFeatures</b> to determine applicable categories.<br>
+     *  If you list in two categories, both categories must support listing with variations. Use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingStructurePolicies" target="_blank">getListingStructurePolicies</a> method and inspect the <b>variationsSupported</b> field to determine whether a specific leaf category supports variations.<br>
      *  <br>
      *  <b>For ReviseFixedPriceItem and
      *  RelistFixedPriceItem:</b> Once a listing has been submitted with variations,
@@ -1320,15 +1302,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  application). For example, to specify a part's compatibility with a vehicle,
      *  the name (search name) would map to standard vehicle characteristics (e.g.,
      *  Year, Make, Model, Trim, and Engine). The values would describe the specific
-     *  vehicle, such as a 2006 Honda Accord. Use the <b>Product Metadata API</b> to
+     *  vehicle, such as a 2006 Honda Accord. Use the <b>Metadata API</b> to
      *  retrieve valid search names and corresponding values.
      *  <br><br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Use this for specifying
-     *  parts compatibility by application manually. This can only be used in
-     *  categories that support parts compatibility by application. Use <b
-     *  class="con">GetCategoryFeatures</b> with the <b>CompatibilityEnabled</b>
-     *  feature ID to determine which categories support parts compatibility by
-     *  application.
+     *  parts compatibility by application manually. To determine whether a specific leaf category supports parts compatibility by application, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getAutomotivePartsCompatibilityPolicies" target="_blank">getAutomotivePartsCompatibilityPolicies</a> method and inspect the <b>automotivePartsCompatibilityPolicies</b> container. If a leaf category appears in that container, the category supports compatibility.
+     *
      *  <br><br>
      *  <b>For ReviseFixedPriceItem and ReviseItem:</b> When you revise a
      *  listing, if the listing has bids and/or ends within 12 hours, item
@@ -1341,8 +1320,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
      *  <br/>
+     *  <span class="tablenote"><b>Note: </b> For <b>GetItem</b>: In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>For GetItem:</b> call on behalf of the seller. If anyone else includes the <b>IncludeItemCompatibilityList</b> boolean in a <b>GetItem</b> request and sets it to true, it will just be ignored and this container will not be returned.
+     *  </span>
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the <b>getProductCompatibilities</b> method of the <b>Metadata API</b>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ItemCompatibilityListType $itemCompatibilityList
@@ -1350,19 +1332,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $itemCompatibilityList = null;
 
     /**
-     * Indicates the number of compatible applications specified for the given item.
-     *  Applies to items listed with fitment by application only (either manually or
-     *  with a catalog product that supports compatibility).
-     *  <br><br>
-     *  Not returned if the item has no specified compatible applications. Not
-     *  returned if <b>IncludeItemCompatibilityList</b> is
-     *  specified in the request.
-     *  <br><br>
-     *  To retrieve the list of compatibility information, set <b>
-     *  IncludeItemCompatibilityList</b> to <code>true</code> in the request.
-     *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the eBay Motors (US) site (site ID 100) only.
+     * This field indicates the total number of vehicles that are compatibile with a Parts and Accessory item. This field is only returned for a Parts and Accessory item where the seller has included the compatible vehicle list.
      *
      * @var int $itemCompatibilityCount
      */
@@ -1374,9 +1344,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
-     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
-     *  <br><br>
-     *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To determine whether item condition is required for a specific leaf category and which condition values are supported, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  <br>
      *  <br>
      *  If you pass in a <b>ConditionID</b> value
@@ -1683,9 +1651,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     private $reasonHideFromSearch = null;
 
     /**
-     * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls by the seller to enable a listing with the 'In-Store Pickup' feature. The 'In-Store Pickup' feature is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces.
-     *  <br/><br/>
-     *  This container is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType $pickupInStoreDetails
      */
@@ -1705,9 +1673,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <a href="https://ebay.co.uk/clickandcollect/">Click and Collect</a> home page on the eBay UK site, the <a href="https://sellercentre.ebay.com.au/click-and-collect">Click and Collect</a> home page on the eBay Australia site, or the <a href="https://pages.ebay.de/einkaufen/click-and-collect.html">Click and Collect</a> home page on the eBay Germany site.
      *  <br>
      *  <br>
-     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify if a specific category on these eBay sites support Click and Collect listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in one or more <b>CategoryID</b> values and a <b>PickupDropOffEnabled</b> value in the <b>FeatureID</b> field.
+     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify whether a specific leaf category on a specific eBay marketplace supports Click and Collect listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a true value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br/><br/>
-     *  Look for a <code>true</code> value in the <b>PickupDropOffEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  Look for a <code>true</code> value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings will be automatically evaluated for Click and Collect eligibility.
@@ -2234,9 +2202,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br/><br/>
      *  The end time for a listing is calculated by adding the duration to the item's start time. If the listing ends early, the value of the listing duration does not change. When a listing's duration is changed, any related fees (e.g., 10-day fee) may be debited or credited (as applicable).
      *  <br><br>
-     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For
-     *  a list of valid values, call <b>GetCategoryFeatures</b> with <b>DetailLevel</b> set to <b>ReturnAll</b>
-     *  and look for <b>ListingDurations</b> information.
+     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For a list of valid listing-duration values for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method and inspect the <b>listingTypePolicies.listingDurations</b> field for the returned category.
+     *
      *  <br><br>
      *  When you revise a listing, the duration cannot be reduced if it will result in ending the listing within 24 hours of the current date-time. You are only allowed to increase the duration of the listing if fewer than 2 hours have passed since you initially listed the item and the listing has no bids. You can decrease the value of this field only if the listing has no bids (or no items have sold) and the listing does not end within 12 hours.
      *  <br>
@@ -2263,9 +2230,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br/><br/>
      *  The end time for a listing is calculated by adding the duration to the item's start time. If the listing ends early, the value of the listing duration does not change. When a listing's duration is changed, any related fees (e.g., 10-day fee) may be debited or credited (as applicable).
      *  <br><br>
-     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For
-     *  a list of valid values, call <b>GetCategoryFeatures</b> with <b>DetailLevel</b> set to <b>ReturnAll</b>
-     *  and look for <b>ListingDurations</b> information.
+     *  The valid choice of values depends on the listing format (see <b>Item.ListingType</b>). For a list of valid listing-duration values for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method and inspect the <b>listingTypePolicies.listingDurations</b> field for the returned category.
+     *
      *  <br><br>
      *  When you revise a listing, the duration cannot be reduced if it will result in ending the listing within 24 hours of the current date-time. You are only allowed to increase the duration of the listing if fewer than 2 hours have passed since you initially listed the item and the listing has no bids. You can decrease the value of this field only if the listing has no bids (or no items have sold) and the listing does not end within 12 hours.
      *  <br>
@@ -2475,7 +2441,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * A lot is a set of two or more similar items included in a single listing that must be purchased together in a single order line item. The <b>Item.LotSize</b> value is the number of items in the lot. This field is required if two or more items are including in one listing.
      *  <br><br>
-     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call <b>GetCategories</b> to determine if a category supports lots. If the returned <b>CategoryArray.Category.LSD</b> (<b>LotSize</b> Disabled) value is <code>true</code>, the category does not support lots.
+     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call the <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.lsd" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> to determine if a category supports lots. If the returned <b>categoryPolicies.lsd</b> value is <code>true</code>, the category does not support lots.
      *  <br>
      *
      * @return int
@@ -2490,7 +2456,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *
      * A lot is a set of two or more similar items included in a single listing that must be purchased together in a single order line item. The <b>Item.LotSize</b> value is the number of items in the lot. This field is required if two or more items are including in one listing.
      *  <br><br>
-     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call <b>GetCategories</b> to determine if a category supports lots. If the returned <b>CategoryArray.Category.LSD</b> (<b>LotSize</b> Disabled) value is <code>true</code>, the category does not support lots.
+     *  Lots can be used for auction and fixed-price listings. Lot items can be listed only in lot-enabled categories. Call the <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.lsd" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> to determine if a category supports lots. If the returned <b>categoryPolicies.lsd</b> value is <code>true</code>, the category does not support lots.
      *  <br>
      *
      * @param int $lotSize
@@ -2698,10 +2664,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as primaryCategory
      *
-     * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
+     * Use this container to set the primary listing category. The <b>PrimaryCategory.CategoryID</b> must be a valid leaf category on the category tree for the request site (<code>X-EBAY-API-SITEID</code> / listing <b>Item.Site</b>). A category ID that is valid only on another site's tree is rejected. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  Once you determine the appropriate eBay category for your product, use the applicable <b>Sell Metadata API</b> method for the specific category-level feature you want to verify. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -2726,10 +2691,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new primaryCategory
      *
-     * This container is used in an Add/Revise/Relist call to set the primary listing category. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
+     * Use this container to set the primary listing category. The <b>PrimaryCategory.CategoryID</b> must be a valid leaf category on the category tree for the request site (<code>X-EBAY-API-SITEID</code> / listing <b>Item.Site</b>). A category ID that is valid only on another site's tree is rejected. This field is conditionally required in an Add call unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller successfully uses an eBay catalog product to create a listing, the listing title, listing description, Item Specifics, listing category, and stock photo defined in the catalog product is used to create the listing.<br>
      *  <br>
-     *  Once you determine the appropriate eBay category for your product, and want to know which listing features it supports, you can use the
-     *  <b>GetCategoryFeatures</b> call. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
+     *  Once you determine the appropriate eBay category for your product, use the applicable <b>Sell Metadata API</b> method for the specific category-level feature you want to verify. To discover required, recommended, and optional Item Specifics for a category, use the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API.
      *  <br>
      *  <br>
      *  If you do use an eBay catalog product, it is advised that you do not include this field, as any primary category ID you specify in this field may get dropped if this category is different than the primary category defined in the eBay catalog product.
@@ -2791,7 +2755,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. To determine whether a specific leaf category supports or requires product identifier types, use the <b>Taxonomy API</b> getItemAspectsForCategory method. Inspect <b>localizedAspectName</b> together with the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether <b>Brand</b>, <b>MPN</b>, <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> are supported, required, recommended, or optional.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -2823,7 +2787,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      * This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the product (if available).
      *  <br>
      *  <br>
-     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. Note that the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types.
+     *  In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not allow listings to be created using a catalog product. To determine whether a specific leaf category supports or requires product identifier types, use the <b>Taxonomy API</b> getItemAspectsForCategory method. Inspect <b>localizedAspectName</b> together with the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether <b>Brand</b>, <b>MPN</b>, <b>EAN</b>, <b>ISBN</b>, or <b>UPC</b> are supported, required, recommended, or optional.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
@@ -3156,26 +3120,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as secondaryCategory
      *
-     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories. For this optional second listing category, if supplied, the <b>SecondaryCategory.CategoryID</b> must also be a valid leaf category on the category tree for the request site. Two-category listings are allowed only when both category IDs are valid on that same site tree. Validate against that marketplace's Taxonomy tree (for example, <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySubtree" target="_blank">getCategorySubtree</a> on tree 100 for eBay Motors).
      *  <br>
      *  <br>
-     *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The final value fee is based
-     *  on the primary category in which the item is listed. Furthermore, you can
-     *  list the same item in an eBay Motors Parts & Accessories category and in
-     *  an eligible eBay category, as long as the primary category is associated
-     *  with the site on which you are listing. That is, the two categories can be a
-     *  mix of Motors Parts & Accessories and eBay site categories. (Real
-     *  Estate, Mature Audience (adult), and Business & Industrial categories
-     *  are not eligible for listing in two categories in this manner.) For example,
-     *  if you list on Motors, the primary category could be 6750 (eBay Motors >
-     *  Parts & Accessories > Apparel & Merchandise > Motorcycle >
-     *  Jackets & Leathers), and the secondary category could be 57988 (eBay
-     *  > Clothing, Shoes > Accessories > Men's Clothing > Outerwear).
-     *  If you list on the main eBay site, the primary category could be 57988 and
-     *  the secondary category could be 6750. <br>
+     *  Some category programs or category combinations may still limit whether an item can be listed in two categories, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the request site (<code>X-EBAY-API-SITEID</code> / <b>Item.Site</b>) category-tree requirements described above.
      *  <br>
-     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
+     *  You cannot list US eBay Motors vehicles in two categories. Some <b>Parts & Accessories</b> listings may be eligible for a secondary category, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the listing site's category-tree requirements described above.
+     *  <br>
+     *  <br>
+     *  If eBay has designated a listing category as a value category, and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request. To determine whether a specific leaf category is a value category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method and inspect the <b>valueCategory</b> field.
      *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
@@ -3195,26 +3149,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new secondaryCategory
      *
-     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories.
+     * The unique identifier for a secondary category. This field is only applicable if the seller decides to list the item under two categories. For this optional second listing category, if supplied, the <b>SecondaryCategory.CategoryID</b> must also be a valid leaf category on the category tree for the request site. Two-category listings are allowed only when both category IDs are valid on that same site tree. Validate against that marketplace's Taxonomy tree (for example, <a href="../../../../../api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySubtree" target="_blank">getCategorySubtree</a> on tree 100 for eBay Motors).
      *  <br>
      *  <br>
-     *  You cannot list US eBay Motors vehicles in two categories. However, you can
-     *  list Parts & Accessories in two categories. The final value fee is based
-     *  on the primary category in which the item is listed. Furthermore, you can
-     *  list the same item in an eBay Motors Parts & Accessories category and in
-     *  an eligible eBay category, as long as the primary category is associated
-     *  with the site on which you are listing. That is, the two categories can be a
-     *  mix of Motors Parts & Accessories and eBay site categories. (Real
-     *  Estate, Mature Audience (adult), and Business & Industrial categories
-     *  are not eligible for listing in two categories in this manner.) For example,
-     *  if you list on Motors, the primary category could be 6750 (eBay Motors >
-     *  Parts & Accessories > Apparel & Merchandise > Motorcycle >
-     *  Jackets & Leathers), and the secondary category could be 57988 (eBay
-     *  > Clothing, Shoes > Accessories > Men's Clothing > Outerwear).
-     *  If you list on the main eBay site, the primary category could be 57988 and
-     *  the secondary category could be 6750. <br>
+     *  Some category programs or category combinations may still limit whether an item can be listed in two categories, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the request site (<code>X-EBAY-API-SITEID</code> / <b>Item.Site</b>) category-tree requirements described above.
      *  <br>
-     *  If eBay has designated a listing category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.)
+     *  <br>
+     *  You cannot list US eBay Motors vehicles in two categories. Some <b>Parts & Accessories</b> listings may be eligible for a secondary category, and a secondary category may incur an additional listing fee. Any secondary category used must still comply with the listing site's category-tree requirements described above.
+     *  <br>
+     *  <br>
+     *  If eBay has designated a listing category as a value category, and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request. To determine whether a specific leaf category is a value category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method and inspect the <b>valueCategory</b> field.
      *  <br>
      *  <br>
      *  To remove this value when relisting an item, use <b>DeletedField</b>.
@@ -3340,9 +3284,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *
      *  New users who list their first items in selected categories on the US site
-     *  must specify at least one domestic shipping service. This applies to a
-     *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
-     *  <b>Category.ShippingTermsRequired</b>.
+     *  must specify at least one domestic shipping service. This applies to a category if the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method returns <code>true</code> for the <b>shippingTermsRequired</b> field.
+     *
      *  <br>
      *  <br>
      *  For multi-quantity, fixed-price listings, a seller can revise all shipping details of the
@@ -3391,9 +3334,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *
      *  New users who list their first items in selected categories on the US site
-     *  must specify at least one domestic shipping service. This applies to a
-     *  category if <b>GetCategoryFeatures</b> returns <code>true</code> for
-     *  <b>Category.ShippingTermsRequired</b>.
+     *  must specify at least one domestic shipping service. This applies to a category if the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method returns <code>true</code> for the <b>shippingTermsRequired</b> field.
+     *
      *  <br>
      *  <br>
      *  For multi-quantity, fixed-price listings, a seller can revise all shipping details of the
@@ -4746,9 +4688,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
      *  listings in certain categories when certain shipping services
-     *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
-     *  <b>GetCategoryFeatures</b>.<br>
-     *  <br>
+     *  (with delivery) are offered. To determine whether handling-time metadata applies to a specific leaf category, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method and inspect the <b>handlingTimeEnabled</b> field. For a list of supported handling times for the specified marketplace, use <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-shipping:marketplace-gethandlingtimes" target="_blank">getHandlingTimes</a> method.
+     *
      *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
      *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
@@ -4784,9 +4725,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <br>
      *  <b>For Add/Revise/Relist calls:</b> Required for
      *  listings in certain categories when certain shipping services
-     *  (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
-     *  <b>GetCategoryFeatures</b>.<br>
-     *  <br>
+     *  (with delivery) are offered. To determine whether handling-time metadata applies to a specific leaf category, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getShippingPolicies" target="_blank">getShippingPolicies</a> method and inspect the <b>handlingTimeEnabled</b> field. For a list of supported handling times for the specified marketplace, use <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-shipping:marketplace-gethandlingtimes" target="_blank">getHandlingTimes</a> method.
+     *
      *  The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values
      *  on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely large items where freight shipping may be required. <br>
      *  <br>
@@ -5014,7 +4954,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -5061,7 +5001,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -5104,7 +5044,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -5147,7 +5087,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -5189,7 +5129,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Note:</b> If a listing is associated with an eBay catalog product, the seller does not need to pass in any Item Specifics that are already defined in the eBay catalog product. Sellers can make a call to the <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method of the Taxonomy API to see if the category supports any 'instance aspects', which can be thought of as Item Specifics that are unique to the specific item that is being listed. Instance aspects are indicated if the corresponding <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory#response.aspects.aspectConstraint.aspectApplicableTo" target="_blank">aspectApplicableTo</a> field of the <b>getItemAspectsForCategory</b> response shows a value of <code>ITEM</code> (and not <code>PRODUCT</code>). Many categories support the following instance aspects: <em>Custom Bundle</em>, <em>Bundle Description</em>, <em>Modified Item</em>, <em>Modification Description</em>, and <em>California Prop 65 Warning</em>. These instance aspects allow the seller to provide more information about product bundles or modified products in a structured way. Depending on the category, there are other instance aspects as well.
      *  </span>
      *
-     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. Use <b>GetCategoryFeatures</b> to see which categories support <b>ConditionID</b> and to get a list of valid condition IDs. (If you specify <b>ConditionID</b> and you also specify <b>Condition</b> as a Item Specific, eBay drops the condition Item Specific.)
+     *  <span class="tablenote"><b>Note:</b> To specify an item's condition, use the <b>ConditionID</b> field instead of a condition Item Specific. To determine whether a category supports ConditionID and which condition values are valid, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  </span>
      *
      *  <b>For GetItem</b>: This list is returned only when you specify <b>IncludeItemSpecifics</b> in the request (and the seller included Item Specifics in their listing).
@@ -5578,10 +5518,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Required for
-     *  most categories on most sites. Use <b>ReturnPolicyEnabled</b>
-     *  in <b>GetCategoryFeatures</b> to determine which categories require this
-     *  field. Also use <b>ReturnPolicyDetails</b> in <b>GeteBayDetails</b> to determine
-     *  which <b>ReturnPolicy</b> fields can be used on each site.<br>
+     *  most categories on most sites. To determine whether return policy metadata is required for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getreturnpolicies.returnpolicy.required" target="_blank">required</a> boolean field. Use the returned category-level domestic and international return policy metadata from <b>getReturnPolicies</b> to determine which <b>ReturnPolicy</b> fields and values are supported for the applicable leaf category.
+     *  <br>
      *  <br>
      *  Australia (AU) and US eBay Motors
      *  Parts and Accessories categories typically support but do not
@@ -5604,7 +5542,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  the return policy details are only returned when the request is sent to the
      *  listing site.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <span class="tablenote"><b>Note:</b> For category-level domestic and international return-policy metadata, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method instead of GeteBayDetails.</span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
@@ -5632,10 +5570,8 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  </span>
      *  <br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Required for
-     *  most categories on most sites. Use <b>ReturnPolicyEnabled</b>
-     *  in <b>GetCategoryFeatures</b> to determine which categories require this
-     *  field. Also use <b>ReturnPolicyDetails</b> in <b>GeteBayDetails</b> to determine
-     *  which <b>ReturnPolicy</b> fields can be used on each site.<br>
+     *  most categories on most sites. To determine whether return policy metadata is required for a specific leaf category, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <a href="https://developer.ebay.com/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getreturnpolicies.returnpolicy.required" target="_blank">required</a> boolean field. Use the returned category-level domestic and international return policy metadata from <b>getReturnPolicies</b> to determine which <b>ReturnPolicy</b> fields and values are supported for the applicable leaf category.
+     *  <br>
      *  <br>
      *  Australia (AU) and US eBay Motors
      *  Parts and Accessories categories typically support but do not
@@ -5658,7 +5594,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  the return policy details are only returned when the request is sent to the
      *  listing site.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     *  <span class="tablenote"><b>Note:</b> For category-level domestic and international return-policy metadata, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method instead of GeteBayDetails.</span>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more information on setting separate domestic and international return policies, see the
      *  <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
@@ -5830,9 +5766,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation at the same time. (That is, one order line item can contain
      *  multiple items from a single variation.) <br>
      *  <br>
-     *  If you list in two categories, both categories must support
-     *  listing with variations. See <b>VariationsEnabled</b> in
-     *  <b>GetCategoryFeatures</b> to determine applicable categories.<br>
+     *  If you list in two categories, both categories must support listing with variations. Use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingStructurePolicies" target="_blank">getListingStructurePolicies</a> method and inspect the <b>variationsSupported</b> field to determine whether a specific leaf category supports variations.<br>
      *  <br>
      *  <b>For ReviseFixedPriceItem and
      *  RelistFixedPriceItem:</b> Once a listing has been submitted with variations,
@@ -5895,9 +5829,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  variation at the same time. (That is, one order line item can contain
      *  multiple items from a single variation.) <br>
      *  <br>
-     *  If you list in two categories, both categories must support
-     *  listing with variations. See <b>VariationsEnabled</b> in
-     *  <b>GetCategoryFeatures</b> to determine applicable categories.<br>
+     *  If you list in two categories, both categories must support listing with variations. Use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingStructurePolicies" target="_blank">getListingStructurePolicies</a> method and inspect the <b>variationsSupported</b> field to determine whether a specific leaf category supports variations.<br>
      *  <br>
      *  <b>For ReviseFixedPriceItem and
      *  RelistFixedPriceItem:</b> Once a listing has been submitted with variations,
@@ -5956,15 +5888,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  application). For example, to specify a part's compatibility with a vehicle,
      *  the name (search name) would map to standard vehicle characteristics (e.g.,
      *  Year, Make, Model, Trim, and Engine). The values would describe the specific
-     *  vehicle, such as a 2006 Honda Accord. Use the <b>Product Metadata API</b> to
+     *  vehicle, such as a 2006 Honda Accord. Use the <b>Metadata API</b> to
      *  retrieve valid search names and corresponding values.
      *  <br><br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Use this for specifying
-     *  parts compatibility by application manually. This can only be used in
-     *  categories that support parts compatibility by application. Use <b
-     *  class="con">GetCategoryFeatures</b> with the <b>CompatibilityEnabled</b>
-     *  feature ID to determine which categories support parts compatibility by
-     *  application.
+     *  parts compatibility by application manually. To determine whether a specific leaf category supports parts compatibility by application, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getAutomotivePartsCompatibilityPolicies" target="_blank">getAutomotivePartsCompatibilityPolicies</a> method and inspect the <b>automotivePartsCompatibilityPolicies</b> container. If a leaf category appears in that container, the category supports compatibility.
+     *
      *  <br><br>
      *  <b>For ReviseFixedPriceItem and ReviseItem:</b> When you revise a
      *  listing, if the listing has bids and/or ends within 12 hours, item
@@ -5977,8 +5906,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
      *  <br/>
+     *  <span class="tablenote"><b>Note: </b> For <b>GetItem</b>: In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>For GetItem:</b> call on behalf of the seller. If anyone else includes the <b>IncludeItemCompatibilityList</b> boolean in a <b>GetItem</b> request and sets it to true, it will just be ignored and this container will not be returned.
+     *  </span>
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the <b>getProductCompatibilities</b> method of the <b>Metadata API</b>.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ItemCompatibilityListType
@@ -5996,15 +5928,12 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  application). For example, to specify a part's compatibility with a vehicle,
      *  the name (search name) would map to standard vehicle characteristics (e.g.,
      *  Year, Make, Model, Trim, and Engine). The values would describe the specific
-     *  vehicle, such as a 2006 Honda Accord. Use the <b>Product Metadata API</b> to
+     *  vehicle, such as a 2006 Honda Accord. Use the <b>Metadata API</b> to
      *  retrieve valid search names and corresponding values.
      *  <br><br>
      *  <b>For the <b>AddItem</b> family of calls:</b> Use this for specifying
-     *  parts compatibility by application manually. This can only be used in
-     *  categories that support parts compatibility by application. Use <b
-     *  class="con">GetCategoryFeatures</b> with the <b>CompatibilityEnabled</b>
-     *  feature ID to determine which categories support parts compatibility by
-     *  application.
+     *  parts compatibility by application manually. To determine whether a specific leaf category supports parts compatibility by application, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getAutomotivePartsCompatibilityPolicies" target="_blank">getAutomotivePartsCompatibilityPolicies</a> method and inspect the <b>automotivePartsCompatibilityPolicies</b> container. If a leaf category appears in that container, the category supports compatibility.
+     *
      *  <br><br>
      *  <b>For ReviseFixedPriceItem and ReviseItem:</b> When you revise a
      *  listing, if the listing has bids and/or ends within 12 hours, item
@@ -6017,8 +5946,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  class="con">IncludeItemCompatibilityList</b> is set to <code>true</code> in the
      *  <b>GetItem</b> request.
      *  <br/>
+     *  <span class="tablenote"><b>Note: </b> For <b>GetItem</b>: In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>For GetItem:</b> call on behalf of the seller. If anyone else includes the <b>IncludeItemCompatibilityList</b> boolean in a <b>GetItem</b> request and sets it to true, it will just be ignored and this container will not be returned.
+     *  </span>
+     *  <br/>
      *  <span class="tablenote">
-     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the eBay Product API's <b>getProductCompatibilities</b> call.
+     *  <strong>Note:</strong> <strong>Compatibility</strong> includes only parts compatibility details that were specified manually; that is, they do not correspond to an eBay catalog product (listings not associated with a <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/GetItem.html#Response.Item.ProductListingDetails.ProductReferenceID" target="_blank">ProductReferenceID</a>). To retrieve parts compatibility details that <em>do</em> correspond to eBay catalog products, use the <b>getProductCompatibilities</b> method of the <b>Metadata API</b>.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ItemCompatibilityListType $itemCompatibilityList
@@ -6033,19 +5965,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as itemCompatibilityCount
      *
-     * Indicates the number of compatible applications specified for the given item.
-     *  Applies to items listed with fitment by application only (either manually or
-     *  with a catalog product that supports compatibility).
-     *  <br><br>
-     *  Not returned if the item has no specified compatible applications. Not
-     *  returned if <b>IncludeItemCompatibilityList</b> is
-     *  specified in the request.
-     *  <br><br>
-     *  To retrieve the list of compatibility information, set <b>
-     *  IncludeItemCompatibilityList</b> to <code>true</code> in the request.
-     *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the eBay Motors (US) site (site ID 100) only.
+     * This field indicates the total number of vehicles that are compatibile with a Parts and Accessory item. This field is only returned for a Parts and Accessory item where the seller has included the compatible vehicle list.
      *
      * @return int
      */
@@ -6057,19 +5977,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new itemCompatibilityCount
      *
-     * Indicates the number of compatible applications specified for the given item.
-     *  Applies to items listed with fitment by application only (either manually or
-     *  with a catalog product that supports compatibility).
-     *  <br><br>
-     *  Not returned if the item has no specified compatible applications. Not
-     *  returned if <b>IncludeItemCompatibilityList</b> is
-     *  specified in the request.
-     *  <br><br>
-     *  To retrieve the list of compatibility information, set <b>
-     *  IncludeItemCompatibilityList</b> to <code>true</code> in the request.
-     *  <br><br>
-     *  Parts Compatibility is supported in limited Parts & Accessories
-     *  categories for the eBay Motors (US) site (site ID 100) only.
+     * This field indicates the total number of vehicles that are compatibile with a Parts and Accessory item. This field is only returned for a Parts and Accessory item where the seller has included the compatible vehicle list.
      *
      * @param int $itemCompatibilityCount
      * @return self
@@ -6088,9 +5996,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
-     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
-     *  <br><br>
-     *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To determine whether item condition is required for a specific leaf category and which condition values are supported, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  <br>
      *  <br>
      *  If you pass in a <b>ConditionID</b> value
@@ -6129,9 +6035,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <span class="tablenote"><b>Important: </b>
      *  For trading card listings in <b>Non-Sport Trading Card Singles (<code>183050</code>)</b>, <b>CCG Individual Cards (<code>183454</code>)</b>, and <b>Sports Trading Card Singles (<code>261328</code>)</b> categories, Condition ID 2750 can be used to specify the card as a <b>Graded</b> card and Condition ID 4000 can be used to specify the card as an <b>Ungraded</b> card. If either of these condition IDs are used, the seller is required to use the <b>ConditionDescriptors</b> container to provide one or more applicable Condition Descriptor name-value pairs. See the <a href="https://developer.ebay.com/devzone/XML/docs/Reference/eBay/AddItem.html#Request.Item.ConditionDescriptors">ConditionDescriptors</a> field description for more information.
      *  </span>
-     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to <code>ConditionValues</code>.
-     *  <br><br>
-     *  In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear in the actual eBay listing.
+     *  Most eBay listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To determine whether item condition is required for a specific leaf category and which condition values are supported, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method. Inspect the <b>itemConditionRequired</b> field to see whether item condition is required, and inspect the <b>conditionId</b> and <b>conditionDescription</b> fields for the supported condition values for the category.
      *  <br>
      *  <br>
      *  If you pass in a <b>ConditionID</b> value
@@ -7151,9 +7055,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Gets as pickupInStoreDetails
      *
-     * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls by the seller to enable a listing with the 'In-Store Pickup' feature. The 'In-Store Pickup' feature is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces.
-     *  <br/><br/>
-     *  This container is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType
      */
@@ -7165,9 +7069,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
     /**
      * Sets a new pickupInStoreDetails
      *
-     * This container is used in <b>Add</b>/<b>Revise</b>/<b>Relist</b>/<b>Verify</b> listing calls by the seller to enable a listing with the 'In-Store Pickup' feature. The 'In-Store Pickup' feature is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces.
-     *  <br/><br/>
-     *  This container is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     * <span class="tablenote"><b>Note: </b>
+     *  BOPIS (Buy Online, Pick Up In Store) is no longer supported. This container remains relevant for Click and Collect-related fields in the Trading API.
+     *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\PickupInStoreDetailsType $pickupInStoreDetails
      * @return self
@@ -7213,9 +7117,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <a href="https://ebay.co.uk/clickandcollect/">Click and Collect</a> home page on the eBay UK site, the <a href="https://sellercentre.ebay.com.au/click-and-collect">Click and Collect</a> home page on the eBay Australia site, or the <a href="https://pages.ebay.de/einkaufen/click-and-collect.html">Click and Collect</a> home page on the eBay Germany site.
      *  <br>
      *  <br>
-     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify if a specific category on these eBay sites support Click and Collect listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in one or more <b>CategoryID</b> values and a <b>PickupDropOffEnabled</b> value in the <b>FeatureID</b> field.
+     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify whether a specific leaf category on a specific eBay marketplace supports Click and Collect listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a true value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br/><br/>
-     *  Look for a <code>true</code> value in the <b>PickupDropOffEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  Look for a <code>true</code> value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings will be automatically evaluated for Click and Collect eligibility.
@@ -7237,9 +7141,9 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      *  <a href="https://ebay.co.uk/clickandcollect/">Click and Collect</a> home page on the eBay UK site, the <a href="https://sellercentre.ebay.com.au/click-and-collect">Click and Collect</a> home page on the eBay Australia site, or the <a href="https://pages.ebay.de/einkaufen/click-and-collect.html">Click and Collect</a> home page on the eBay Germany site.
      *  <br>
      *  <br>
-     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify if a specific category on these eBay sites support Click and Collect listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in one or more <b>CategoryID</b> values and a <b>PickupDropOffEnabled</b> value in the <b>FeatureID</b> field.
+     *  Not all categories on the UK, Australia, and Germany sites support Click and Collect listings. To verify whether a specific leaf category on a specific eBay marketplace supports Click and Collect listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a true value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br/><br/>
-     *  Look for a <code>true</code> value in the <b>PickupDropOffEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  Look for a <code>true</code> value in the <b>listingTypePolicies.pickupDropOffEnabled</b> field for the returned category.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b> For Click and Collect eligible sellers, the Click and Collect feature can only be enabled at the account level, and then each of the seller's listings will be automatically evaluated for Click and Collect eligibility.
@@ -7404,7 +7308,17 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getApplicationData();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationData", $value);
@@ -7466,7 +7380,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getListingEnhancement();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ListingEnhancement" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingEnhancement", $v);
             }
         }
         $value = $this->getListingType();
@@ -7488,7 +7402,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getPaymentMethods();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["PaymentMethods" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentMethods", $v);
             }
         }
         $value = $this->getPayPalEmailAddress();
@@ -7561,7 +7475,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getShipToLocations();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShipToLocations" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipToLocations", $v);
             }
         }
         $value = $this->getSite();
@@ -7668,11 +7582,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getVideoDetails();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails", array_map(function ($v) {
-                    return ["VideoID" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VideoDetails");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VideoID", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getExtendedProducerResponsibility();
@@ -7714,11 +7633,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getItemSpecifics();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics", array_map(function ($v) {
-                    return ["NameValueList" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecifics");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getClassifiedAdPayPerLeadFee();
@@ -7745,7 +7669,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getCrossBorderTrade();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["CrossBorderTrade" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CrossBorderTrade", $v);
             }
         }
         $value = $this->getBusinessSellerDetails();
@@ -7767,7 +7691,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         $value = $this->getPaymentAllowedSite();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["PaymentAllowedSite" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentAllowedSite", $v);
             }
         }
         $value = $this->getInventoryTrackingMethod();
@@ -7797,11 +7721,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getConditionDescriptors();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors", array_map(function ($v) {
-                    return ["ConditionDescriptor" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getConditionDescription();
@@ -7858,11 +7787,16 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         }
         $value = $this->getShippingServiceCostOverrideList();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList", array_map(function ($v) {
-                    return ["ShippingServiceCostOverride" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getShippingPackageDetails();
@@ -8209,11 +8143,10 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setPictureDetails(\Nogrod\eBaySDK\Trading\PictureDetailsType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoDetails', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VideoDetails');
         if (null !== $value) {
-            $this->setVideoDetails(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}VideoID');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}VideoID', true);
+            $this->setVideoDetails($value);
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedProducerResponsibility');
         if (null !== $value) {
@@ -8251,10 +8184,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setNewLeadCount($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemSpecifics');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
             $this->setItemSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));
+                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ClassifiedAdPayPerLeadFee');
@@ -8325,10 +8259,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setConditionID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptors');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor');
             $this->setConditionDescriptors(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor'));
+                return \Nogrod\eBaySDK\Trading\ConditionDescriptorType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ConditionDescription');
@@ -8383,10 +8318,11 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
         if (null !== $value) {
             $this->setSellerProfiles(\Nogrod\eBaySDK\Trading\SellerProfilesType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverrideList');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride');
             $this->setShippingServiceCostOverrideList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride'));
+                return \Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails');

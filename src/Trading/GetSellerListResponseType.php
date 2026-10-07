@@ -292,9 +292,14 @@ class GetSellerListResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getPaginationResult();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaginationResult", $value);
@@ -306,11 +311,16 @@ class GetSellerListResponseType extends AbstractResponseType
         }
         $value = $this->getItemArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemArray", array_map(function ($v) {
-                    return ["Item" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ItemArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Item", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getItemsPerPage();
@@ -354,10 +364,11 @@ class GetSellerListResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setHasMoreItems(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemArray');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Item');
             $this->setItemArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Item'));
+                return \Nogrod\eBaySDK\Trading\ItemType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ItemsPerPage');

@@ -219,16 +219,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     private $soldAsBin = null;
 
     /**
-     * Indicates the total quantity of items sold and picked up by buyers using the In-Store Pickup option. This value is the total number of items purchased by one or more buyers using the In-Store Pickup option, and is not the total number of In-Store Pickup orders. So, if two buyers selected the In-Store Pickup option, but each of these buyers bought a quantity of five of these items (in same purchase), the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be '10' and not '2'.
-     *  <br>
-     *  <br>
-     *  In the case of multi-variation, fixed-price listings, each <b>Item.Variations.Variation.SellingStatus.QuantitySoldByPickupInStore</b> value indicates the total quantity of that corresponding item variation (for example, large blue shirts) sold and picked up by buyers using the In-Store Pickup option, and the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be the total quantity of all item variations sold for the listing.
-     *  <br>
-     *  <br>
-     *  This field is returned only if the listing is eligible for In-Store Pickup (<b>EligibleForPickupInStore</b> is returned as <code>true</code>).
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
+     * <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
      *  </span>
      *
      * @var int $quantitySoldByPickupInStore
@@ -862,16 +855,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Gets as quantitySoldByPickupInStore
      *
-     * Indicates the total quantity of items sold and picked up by buyers using the In-Store Pickup option. This value is the total number of items purchased by one or more buyers using the In-Store Pickup option, and is not the total number of In-Store Pickup orders. So, if two buyers selected the In-Store Pickup option, but each of these buyers bought a quantity of five of these items (in same purchase), the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be '10' and not '2'.
-     *  <br>
-     *  <br>
-     *  In the case of multi-variation, fixed-price listings, each <b>Item.Variations.Variation.SellingStatus.QuantitySoldByPickupInStore</b> value indicates the total quantity of that corresponding item variation (for example, large blue shirts) sold and picked up by buyers using the In-Store Pickup option, and the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be the total quantity of all item variations sold for the listing.
-     *  <br>
-     *  <br>
-     *  This field is returned only if the listing is eligible for In-Store Pickup (<b>EligibleForPickupInStore</b> is returned as <code>true</code>).
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
+     * <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
      *  </span>
      *
      * @return int
@@ -884,16 +870,9 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
     /**
      * Sets a new quantitySoldByPickupInStore
      *
-     * Indicates the total quantity of items sold and picked up by buyers using the In-Store Pickup option. This value is the total number of items purchased by one or more buyers using the In-Store Pickup option, and is not the total number of In-Store Pickup orders. So, if two buyers selected the In-Store Pickup option, but each of these buyers bought a quantity of five of these items (in same purchase), the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be '10' and not '2'.
-     *  <br>
-     *  <br>
-     *  In the case of multi-variation, fixed-price listings, each <b>Item.Variations.Variation.SellingStatus.QuantitySoldByPickupInStore</b> value indicates the total quantity of that corresponding item variation (for example, large blue shirts) sold and picked up by buyers using the In-Store Pickup option, and the <b>Item.SellingStatus.QuantitySoldByPickupInStore</b> value would be the total quantity of all item variations sold for the listing.
-     *  <br>
-     *  <br>
-     *  This field is returned only if the listing is eligible for In-Store Pickup (<b>EligibleForPickupInStore</b> is returned as <code>true</code>).
-     *  <br/><br/>
-     *  <span class="tablenote">
-     *  <strong>Note:</strong> At this time, the In-Store Pickup feature is generally only available to large retail merchants, and can only be applied to multi-quantity, fixed-price listings.
+     * <br/><br/>
+     *  <span class="tablenote"><b>Note: </b>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
      *  </span>
      *
      * @param int $quantitySoldByPickupInStore
@@ -1024,7 +1003,17 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getBidCount();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidCount", $value);
@@ -1099,11 +1088,16 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         }
         $value = $this->getSuggestedBidValues();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues", array_map(function ($v) {
-                    return ["BidValue" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BidValue", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getListingOnHold();
@@ -1195,10 +1189,11 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         if (null !== $value) {
             $this->setQuantitySoldByPickupInStore($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SuggestedBidValues');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}BidValue');
             $this->setSuggestedBidValues(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}BidValue'));
+                return \Nogrod\eBaySDK\Trading\AmountType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ListingOnHold');

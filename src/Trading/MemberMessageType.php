@@ -638,7 +638,17 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getMessageType();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageType", $value);
@@ -668,7 +678,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $value = $this->getRecipientID();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["RecipientID" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecipientID", $v);
             }
         }
         $value = $this->getSubject();
@@ -690,7 +700,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
         $value = $this->getMessageMedia();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["MessageMedia" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageMedia", $v);
             }
         }
     }

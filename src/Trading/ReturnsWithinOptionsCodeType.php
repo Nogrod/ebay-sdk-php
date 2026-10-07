@@ -5,10 +5,9 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing ReturnsWithinOptionsCodeType
  *
- * This enumerated type contains the list of values that can be used by the seller in an Add/Revise/Relist call to set the number of days (after the purchase date) that a buyer has to return an item (if the return policy states that items can be returned) for a refund or an exchange. These same values are also returned in the <b>GeteBayDetails</b> call.
+ * This enumerated type is used by the deprecated <b>ReturnsWithinOption</b> and contains the list of values that can be used by the seller in an Add/Revise/Relist call to set the number of days (after the purchase date) that a buyer has to return an item (if the return policy states that items can be returned) for a refund or an exchange.
  *  <br><br>
- *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call returns site-default Return Policy settings. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
- *  </span>
+ *  <span class="tablenote"><b>Note:</b> To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method. Pass the target <b>marketplace_id</b> and the category ID in the filter query parameter, and then inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields in the response.</span>
  * XSD Type: ReturnsWithinOptionsCodeType
  */
 class ReturnsWithinOptionsCodeType

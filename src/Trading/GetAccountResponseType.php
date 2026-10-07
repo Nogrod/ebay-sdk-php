@@ -364,9 +364,14 @@ class GetAccountResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getAccountID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountID", $value);
@@ -385,11 +390,16 @@ class GetAccountResponseType extends AbstractResponseType
         }
         $value = $this->getAccountEntries();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries", array_map(function ($v) {
-                    return ["AccountEntry" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}AccountEntries");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountEntry", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getPaginationResult();
@@ -442,10 +452,11 @@ class GetAccountResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setCurrency($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}AccountEntries');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}AccountEntry');
             $this->setAccountEntries(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}AccountEntry'));
+                return \Nogrod\eBaySDK\Trading\AccountEntryType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');

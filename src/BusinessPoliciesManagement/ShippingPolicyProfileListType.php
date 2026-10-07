@@ -92,11 +92,21 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "http://www.ebay.com/marketplace/selling/v1/services");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingPolicyProfile();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingPolicyProfile" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}ShippingPolicyProfile", $v);
             }
         }
     }

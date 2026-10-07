@@ -152,9 +152,13 @@ class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
-        $value = $this->value();
-        $writer->write($value);
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
         $value = $this->getUnit();
         if (null !== $value) {
             $writer->writeAttribute("unit", $value);
@@ -163,6 +167,12 @@ class MeasureType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
         if (null !== $value) {
             $writer->writeAttribute("measurementSystem", $value);
         }
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        $value = $this->value();
+        $writer->write($value);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed

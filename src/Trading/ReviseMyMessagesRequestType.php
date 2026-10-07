@@ -256,16 +256,26 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getMessageIDs();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs", array_map(function ($v) {
-                    return ["MessageID" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MessageIDs");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MessageID", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getRead();
@@ -299,11 +309,10 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
     public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MessageIDs');
         if (null !== $value) {
-            $this->setMessageIDs(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}MessageID');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MessageID', true);
+            $this->setMessageIDs($value);
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Read');
         if (null !== $value) {

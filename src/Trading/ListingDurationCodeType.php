@@ -7,7 +7,7 @@ namespace Nogrod\eBaySDK\Trading;
  *
  * This enumerated type contains the list of values that can be used by the seller to set the duration (number of days or Good 'Til Cancelled) of a listing.
  *  <br><br>
- *  Listing durations available to the seller vary based on the site, category, listing type, and the seller's selling profile, so it is a best practice for the seller to call <b>GetCategoryFeatures</b> with <b>ListingDurations</b> included as a <b>FeatureID</b> value in the call request. The <b>GetCategoryFeatures</b> response will include the complete list of listing duration values that can be used for the various listing types.
+ *  Listing durations available to the seller vary based on the marketplace, leaf category, and listing type, so it is a best practice to use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method for the target marketplace and category. Inspect the <b>listingTypePolicies.listingDurations</b> array in the response to see the supported duration values for each listing type.
  * XSD Type: ListingDurationCodeType
  */
 class ListingDurationCodeType
@@ -18,10 +18,13 @@ class ListingDurationCodeType
      * This value is used to set the duration of the listing to one day. A one-day
      * listing duration is typically only available to sellers with a Feedback score of
      * 10 or higher, so sellers with a Feedback score of less than 10 may be restricted
-     * from using a one-day listing duration. The seller can call
-     * <b>GetCategoryFeatures</b> with <b>ListingDurations</b> included as a
-     * <b>FeatureID</b> value in the call request to see if the one-day listing
-     * duration is available. <br><br>
+     * from using a one-day listing duration. To determine whether the one-day listing
+     * duration is supported for a specific leaf category and listing type on a
+     * marketplace, use the Metadata API <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies"
+     * target="_blank">getListingTypePolicies</a> method and inspect the
+     * <b>listingTypePolicies.listingDurations.durationValues</b> array for the
+     * applicable <b>listingType</b> value. <br><br>
      *  A one-day listing duration is generally applicable to an auction listing or to
      * a Real Estate Classified Ad.
      */

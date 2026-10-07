@@ -7,9 +7,8 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PaymentOptionDetailsType
  *
- * This type is used by the <b>PaymentOptionDetails</b> containers that are returned in <b>GeteBayDetails</b> if the <code>PaymentOptionDetails</code> value is used in a <b>DetailName</b> field in the call request.
- *  <br><br>
- *  <span class="tablenote"><b>Note: </b> Although site-level payment options are still returned in <b>GeteBayDetails</b>, it may be better to use the <b>GetCategoryFeatures</b> call instead, as this call returns the specific payment options that are accepted in specific categories.
+ * <br><br>
+ *  <span class="tablenote"><b>Note: </b> This type is used by the deprecated <b>PaymentOptionDetails</b> containers that are returned in <b>GeteBayDetails</b> if the <code>PaymentOptionDetails</code> value is used in a <b>DetailName</b> field in the call request. Although site-level payment options are still returned in <b>GeteBayDetails</b>, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method to retrieve the offline payment methods that are accepted for a specific leaf category on a marketplace. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then inspect the <b>categoryPolicies.paymentMethods</b> array in the response.
  *  </span>
  *  <br>
  *  <span class="tablenote"><b>Note: </b> Sellers no longer have to specify any electronic payment methods for listings, so one or more <b>PaymentMethods</b> fields will only be needed for listings that require/support payments off of eBay's platform. If an electronic payment is supplied in a <b>PaymentMethods</b> field, a warning will be triggered and the payment method will be dropped.
@@ -152,7 +151,17 @@ class PaymentOptionDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getPaymentOption();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOption", $value);

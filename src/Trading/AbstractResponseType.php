@@ -26,7 +26,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  time format and converting to and from the GMT time zone. <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> and other Trading API calls are designed to retrieve very large sets
+     *  Trading API calls are designed to retrieve very large sets
      *  of metadata that change once a day or less often. To improve performance, these
      *  calls return cached responses when you request all available data (with no
      *  filters). When this occurs, this time value reflects the time the cached response
@@ -56,17 +56,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @var string $correlationID
      */
@@ -206,7 +196,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  time format and converting to and from the GMT time zone. <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> and other Trading API calls are designed to retrieve very large sets
+     *  Trading API calls are designed to retrieve very large sets
      *  of metadata that change once a day or less often. To improve performance, these
      *  calls return cached responses when you request all available data (with no
      *  filters). When this occurs, this time value reflects the time the cached response
@@ -232,7 +222,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  time format and converting to and from the GMT time zone. <br>
      *  <br>
      *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> and other Trading API calls are designed to retrieve very large sets
+     *  Trading API calls are designed to retrieve very large sets
      *  of metadata that change once a day or less often. To improve performance, these
      *  calls return cached responses when you request all available data (with no
      *  filters). When this occurs, this time value reflects the time the cached response
@@ -290,17 +280,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @return string
      */
@@ -319,17 +299,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @param string $correlationID
      * @return self
@@ -776,7 +746,17 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getTimestamp();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Timestamp", $value);
@@ -792,7 +772,7 @@ class AbstractResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
         $value = $this->getErrors();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["Errors" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Errors", $v);
             }
         }
         $value = $this->getMessage();

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/funcs.php';
 
 use Laminas\Code\Generator\ClassGenerator;
 use Laminas\Code\Generator\DocBlockGenerator;
@@ -10,8 +9,9 @@ use Symfony\Component\Yaml\Yaml;
 $files = Yaml::parseFile(__DIR__ . '/config.yaml');
 
 $outputDir = __DIR__ . '/wsdl/';
-rrmdir($outputDir);
-mkdir($outputDir);
+if (!is_dir($outputDir)) {
+    mkdir($outputDir);
+}
 
 $phpFile = new FileGenerator();
 $phpFile->setDocBlock(new DocBlockGenerator('This file is auto-generated. DO NOT EDIT!'));
@@ -28,6 +28,8 @@ foreach ($files as $key => $value) {
         $version = $xml->xpath('//wsdl:service//wsdl:Version|//wsdl:service//wsdl:version|//wsdl:service//ns:Version')[0];
         echo $key . ' - ' . $version . PHP_EOL;
         $class->addConstant(strtoupper($key), (string) $version);
+    } elseif (!empty($value['pinned']) && is_file($outputDir . $key . '.xsd')) {
+        echo $key . ' - pinned, skipped' . PHP_EOL;
     } elseif (!empty($value['xsd'])) {
         file_put_contents($outputDir . $key . '.xsd', file_get_contents($value['xsd']));
     }

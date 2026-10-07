@@ -407,7 +407,17 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getApplicationURL();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationURL", $value);
@@ -439,7 +449,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
         $value = $this->getDeliveryURLDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DeliveryURLDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeliveryURLDetails", $v);
             }
         }
     }

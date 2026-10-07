@@ -58,9 +58,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     ];
 
     /**
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\PaymentOptionDetailsType[] $paymentOptionDetails
@@ -239,12 +237,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * Lists the supported values that may be used for return policies on the specified eBay site, such as the return period, supported restocking fees, and refund options.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>ReturnPolicyDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
-     *  </span>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This container has been staged for deprecation. Although domestic return policy metadata is still getting returned at the moment, it is recommended that users start making plans to use the <b>GetCategoryFeatures</b> call instead to retrieve category-level, domestic return policy metadata.
+     *  This container is deprecated. To get supported domestic and international return-policy settings for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method of the <b>Metadata API</b>. This method returns category-level domestic and international return-policy metadata for each applicable leaf category, including <b>refundMethods</b>, <b>returnsAcceptanceEnabled</b>, <b>returnPeriods</b>, and <b>returnShippingCostPayers</b>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $returnPolicyDetails
@@ -297,7 +290,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     ];
 
     /**
-     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>getListingStructurePolicies</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
@@ -691,9 +684,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Adds as paymentOptionDetails
      *
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @return self
@@ -711,9 +702,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * isset paymentOptionDetails
      *
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @param int|string $index
@@ -727,9 +716,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * unset paymentOptionDetails
      *
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @param int|string $index
@@ -743,9 +730,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Gets as paymentOptionDetails
      *
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType>
@@ -758,9 +743,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Sets a new paymentOptionDetails
      *
-     * Although the supported payment methods for the specified eBay site are returned, it is recommended that the seller use <b>GetCategoryFeatures</b> instead, and pass in <b>PaymentMethods</b> as a <b>FeatureID</b> value in the request.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b> This container is only returned if <b>PaymentOptionDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
+     * <span class="tablenote"><b>Note: </b> This container is deprecated. To get supported payment methods for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies" target="_blank">getCategoryPolicies</a> method of the <b>Metadata API</b> and look out for the <b>paymentMethods</b> array returned in the response for each leaf category.
      *  </span>
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType> $paymentOptionDetails
@@ -1872,12 +1855,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * Lists the supported values that may be used for return policies on the specified eBay site, such as the return period, supported restocking fees, and refund options.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>ReturnPolicyDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
-     *  </span>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This container has been staged for deprecation. Although domestic return policy metadata is still getting returned at the moment, it is recommended that users start making plans to use the <b>GetCategoryFeatures</b> call instead to retrieve category-level, domestic return policy metadata.
+     *  This container is deprecated. To get supported domestic and international return-policy settings for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method of the <b>Metadata API</b>. This method returns category-level domestic and international return-policy metadata for each applicable leaf category, including <b>refundMethods</b>, <b>returnsAcceptanceEnabled</b>, <b>returnPeriods</b>, and <b>returnShippingCostPayers</b>.
      *  </span>
      *
      * @return \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType
@@ -1893,12 +1871,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      * Lists the supported values that may be used for return policies on the specified eBay site, such as the return period, supported restocking fees, and refund options.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  This container is only returned if <b>ReturnPolicyDetails</b> is included as a
-     *  <b>DetailName</b> filter in the request, or if no <b>DetailName</b>
-     *  filters are used in the request.
-     *  </span>
-     *  <span class="tablenote"><b>Note: </b>
-     *  This container has been staged for deprecation. Although domestic return policy metadata is still getting returned at the moment, it is recommended that users start making plans to use the <b>GetCategoryFeatures</b> call instead to retrieve category-level, domestic return policy metadata.
+     *  This container is deprecated. To get supported domestic and international return-policy settings for one or more leaf categories on an eBay marketplace, use the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method of the <b>Metadata API</b>. This method returns category-level domestic and international return-policy metadata for each applicable leaf category, including <b>refundMethods</b>, <b>returnsAcceptanceEnabled</b>, <b>returnPeriods</b>, and <b>returnShippingCostPayers</b>.
      *  </span>
      *
      * @param \Nogrod\eBaySDK\Trading\ReturnPolicyDetailsType $returnPolicyDetails
@@ -2210,7 +2183,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Gets as variationDetails
      *
-     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>getListingStructurePolicies</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
@@ -2226,7 +2199,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
     /**
      * Sets a new variationDetails
      *
-     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>GetCategoryFeatures</b> to determine which categories on a site support variations.
+     * Site-level validation rules for multiple-variation listings (for example, the maximum number of variations per listing). Use <b>getListingStructurePolicies</b> to determine which categories on a site support variations.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  This container is only returned if <b>VariationDetails</b> is included as a <b>DetailName</b> filter in the request, or if no <b>DetailName</b> filters are used in the request.
@@ -2682,97 +2655,102 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getCountryDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["CountryDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CountryDetails", $v);
             }
         }
         $value = $this->getCurrencyDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["CurrencyDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CurrencyDetails", $v);
             }
         }
         $value = $this->getDispatchTimeMaxDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DispatchTimeMaxDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DispatchTimeMaxDetails", $v);
             }
         }
         $value = $this->getPaymentOptionDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["PaymentOptionDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PaymentOptionDetails", $v);
             }
         }
         $value = $this->getRegionDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["RegionDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionDetails", $v);
             }
         }
         $value = $this->getShippingLocationDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingLocationDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingLocationDetails", $v);
             }
         }
         $value = $this->getShippingServiceDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingServiceDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceDetails", $v);
             }
         }
         $value = $this->getSiteDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["SiteDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SiteDetails", $v);
             }
         }
         $value = $this->getTaxJurisdiction();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["TaxJurisdiction" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction", $v);
             }
         }
         $value = $this->getURLDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["URLDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}URLDetails", $v);
             }
         }
         $value = $this->getTimeZoneDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["TimeZoneDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TimeZoneDetails", $v);
             }
         }
         $value = $this->getItemSpecificDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ItemSpecificDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemSpecificDetails", $v);
             }
         }
         $value = $this->getRegionOfOriginDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["RegionOfOriginDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RegionOfOriginDetails", $v);
             }
         }
         $value = $this->getShippingPackageDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingPackageDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackageDetails", $v);
             }
         }
         $value = $this->getShippingCarrierDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingCarrierDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCarrierDetails", $v);
             }
         }
         $value = $this->getReturnPolicyDetails();
@@ -2782,19 +2760,19 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         $value = $this->getListingStartPriceDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ListingStartPriceDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingStartPriceDetails", $v);
             }
         }
         $value = $this->getBuyerRequirementDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["BuyerRequirementDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerRequirementDetails", $v);
             }
         }
         $value = $this->getListingFeatureDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ListingFeatureDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ListingFeatureDetails", $v);
             }
         }
         $value = $this->getVariationDetails();
@@ -2804,7 +2782,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         $value = $this->getExcludeShippingLocationDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ExcludeShippingLocationDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeShippingLocationDetails", $v);
             }
         }
         $value = $this->getUpdateTime();
@@ -2814,13 +2792,13 @@ class GeteBayDetailsResponseType extends AbstractResponseType
         $value = $this->getRecoupmentPolicyDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["RecoupmentPolicyDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RecoupmentPolicyDetails", $v);
             }
         }
         $value = $this->getShippingCategoryDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingCategoryDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCategoryDetails", $v);
             }
         }
         $value = $this->getProductDetails();

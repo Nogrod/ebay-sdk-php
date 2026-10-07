@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
 
+use Nogrod\XMLClientRuntime\Func;
+
 /**
  * Class representing GetConsolidationJobStatusRequest
  *
@@ -9,9 +11,15 @@ namespace Nogrod\eBaySDK\BusinessPoliciesManagement;
  */
 class GetConsolidationJobStatusRequest extends GetConsolidationJobStatusRequestType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        Func::writeRootNamespace($writer, 'http://www.ebay.com/marketplace/selling/v1/services');
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed

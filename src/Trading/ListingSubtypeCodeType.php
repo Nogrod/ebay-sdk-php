@@ -14,10 +14,14 @@ class ListingSubtypeCodeType
      * Constant for 'ClassifiedAd' value.
      *
      * This value indicates that the lead generation listing is a classifed ad. Note
-     * that only some eBay categories support classified ad listings. Use the
-     * <strong>GetCategoryFeatures</strong> call (with <strong>FeatureID</strong> value
-     * set to <code>AdFormatEnabled</code>) to see which categories support classified
-     * ad listings.
+     * that only some eBay categories support classified ad listings. To determine
+     * whether a specific leaf category on a specific eBay marketplace supports
+     * Classified Ad listings, use the <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getClassifiedAdPolicies"
+     * target="_blank">getClassifiedAdPolicies</a> method. Pass the target
+     * marketplace_id and the leaf category ID in the filter query parameter, and then
+     * inspect the <b>classifiedAdPolicies.adFormatEnabled</b> field for the returned
+     * category.
      */
     public const VAL_CLASSIFIED_AD = 'ClassifiedAd';
 
@@ -26,10 +30,14 @@ class ListingSubtypeCodeType
      *
      * This value indicates that the lead generation listing is a US Motors Local
      * Market listing. Note that only some eBay Motors categories support Motors Local
-     * Market listings. Use the <strong>GetCategoryFeatures</strong> call (with the
-     * <strong>SITEID</strong> header set to <code>100</code> and the
-     * <strong>FeatureID</strong> value set to <code>LocalMarketAdFormatEnabled</code>)
-     * to see which eBay Motors categories support Motors Local Market listings.
+     * Market listings. To determine whether a specific leaf category supports Motors
+     * Local Market Classified Ad listings, use the <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getMotorsListingPolicies"
+     * target="_blank">getMotorsListingPolicies</a> method. For eBay US Motors
+     * categories, specify <b>marketplace_id</b> as <code>EBAY_MOTORS_US</code>, pass
+     * the leaf category ID in the filter query parameter, and then inspect the
+     * <b>motorsListingPolicies.localMarketAdFormatEnabled</b> field for the returned
+     * category.
      */
     public const VAL_LOCAL_MARKET_BEST_OFFER_ONLY = 'LocalMarketBestOfferOnly';
 

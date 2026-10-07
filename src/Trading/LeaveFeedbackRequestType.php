@@ -461,9 +461,14 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getItemID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
@@ -486,11 +491,16 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         }
         $value = $this->getSellerItemRatingDetailArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray", array_map(function ($v) {
-                    return ["ItemRatingDetails" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getOrderLineItemID();
@@ -543,10 +553,11 @@ class LeaveFeedbackRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setTargetUser($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SellerItemRatingDetailArray');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails');
             $this->setSellerItemRatingDetailArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ItemRatingDetails'));
+                return \Nogrod\eBaySDK\Trading\ItemRatingDetailsType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderLineItemID');

@@ -19,7 +19,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <p><span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
+     *  <strong>Note:</strong> For Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
      *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
      *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br><br>-<em> Vault to vault orders: Buyer and Seller View</em><br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&amp;apos;s address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address (<b>GetItemTransactions</b> only).<br> <br>
@@ -85,7 +85,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <p><span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
+     *  <strong>Note:</strong> For Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
      *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
      *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br><br>-<em> Vault to vault orders: Buyer and Seller View</em><br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&amp;apos;s address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address (<b>GetItemTransactions</b> only).<br> <br>
@@ -139,7 +139,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      *  <p><span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address.
      *  </span></p>
      *  <p><span class="tablenote">
-     *  <strong>Note:</strong> For In-Store Pickup and Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
+     *  <strong>Note:</strong> For Click and Collect orders, this is the address of the merchant's store where the buyer will pick up the order. This is only applicable for <b>GetItemTransactions</b> and <b>GetSellerTransactions</b> calls.
      *  </span></p>
      *  <p><span class="tablenote"><b>Note:</b>
      *  For eBay Vault scenarios: <strong>GetItemTransactions</strong> calls, and <strong>GetSellerTransactions</strong> calls (Seller View only), mock address details are returned for: <br><br>-<em> Vault to vault orders: Buyer and Seller View</em><br><br>-<em> Ship to vault orders</em>: Mock addresses are returned for the Buyer View (only); the address returned for the Seller View will be the authenticator&amp;apos;s address.<br><br>-<em> Vault in-hand submission orders</em>: the address returned for the Buyer View will be the authenticator's address (<b>GetItemTransactions</b> only).<br> <br>
@@ -287,7 +287,17 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingAddress();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingAddress", $value);
@@ -295,7 +305,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
         $value = $this->getBuyerTaxIdentifier();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["BuyerTaxIdentifier" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyerTaxIdentifier", $v);
             }
         }
     }

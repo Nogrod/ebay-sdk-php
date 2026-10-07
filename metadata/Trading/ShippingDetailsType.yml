@@ -378,3 +378,14 @@ Nogrod\eBaySDK\Trading\ShippingDetailsType:
                 getter: getRateTableDetails
                 setter: setRateTableDetails
             type: Nogrod\eBaySDK\Trading\RateTableDetailsType
+        shippingLabelPolicy:
+            expose: true
+            access_type: public_method
+            serialized_name: ShippingLabelPolicy
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getShippingLabelPolicy
+                setter: setShippingLabelPolicy
+            type: string

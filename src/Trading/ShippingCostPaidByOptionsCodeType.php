@@ -5,9 +5,7 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing ShippingCostPaidByOptionsCodeType
  *
- * This enumerated type contains the values that specify the party (seller/buyer) who will be responsible for paying the return shipping cost if an item is returned. One of these values is set by the seller when establishing/setting a return policy for an item.
- *  <br><br>
- *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call returns site-default Return Policy settings. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To discover what return shipping 'payee' values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsShipmentPayeeValues</code> and/or <code>InternationalReturnsShipmentPayeeValues</code> as <b>FeatureID</b> values to see the return shipping 'payee' values available for domestic and international returns, respectively.
+ * <span class="tablenote"><b>Note:</b> This enumerated type is returned in the deprecated <b>ReturnPolicyDetails.ShippingCostPaidByOption</b> field returned in <b>GeteBayDetails</b>. To determine who is responsible for return shipping costs for a specific leaf category on a specific eBay marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method. Pass the target <b>marketplace_id</b> and the category ID in the filter query parameter, and then inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields in the response.
  *  </span>
  * XSD Type: ShippingCostPaidByOptionsCodeType
  */

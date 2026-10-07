@@ -7,29 +7,19 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing PickupInStoreDetailsType
  *
- * Complex type defining the <b>PickupInStoreDetails</b> container, that is used in Add/Revise/Relist calls to enable the listing for In-Store Pickup or Click and Collect.
+ * Complex type defining the <b>PickupInStoreDetails</b> container, that is used in Add/Revise/Relist calls to enable the listing for Click and Collect.
  *  <br/><br/>
  *  <span class="tablenote">
- *  <strong>Note:</strong> At this time, In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces, and can only be applied to multiple-quantity, fixed-price listings. The Click and Collect feature is only available to large merchants on the UK, Australia, and Germany marketplaces.
+ *  <strong>Note:</strong> At this time, the Click and Collect feature is only available to large merchants on the UK, Australia, and Germany marketplaces.
  *  </span>
  * XSD Type: PickupInStoreDetailsType
  */
 class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * <b>For Add/Revise/Relist/Verify calls</b>: this field is included to enable the listing for In-Store Pickup. To enable the listing for In-Store Pickup, the seller includes this boolean field and sets its value to <code>true</code>. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings.
-     *  <br/><br/>
-     *  In addition to setting the <b>EligibleForPickupInStore</b> boolean field to <code>true</code>, the merchant must also perform the following actions in an <b>Add/Revise/Relist/Verify</b> call to enable the In-Store Pickup option on a multiple-quantity, fixed-price listing:
-     *  <ul>
-     *  <li>Have inventory for the product at one or more physical stores tied to the seller's account. By using the REST-based <b>Inventory API</b>, sellers can associate physical stores to their account by using the <b>Create Inventory Location</b> call, and then, using the <b>Create Inventory Item</b> call, they can add inventory to specific stores;</li>
-     *  <li>Include the seller-defined SKU value of the product(s) in the call request. For a single-variation listing, the SKU value would be specified in the <b>Item.SKU</b> field, and for a multiple-variation listing, the SKU value(s) would be specified in the <b>Item.Variations.Variation.SKU</b> field(s);</li>
-     *  <li>Set an immediate payment requirement on the item.
-     *  </li>
-     *  </ul>
-     *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
-     *  <br/><br/>
-     *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
-     *  <br/>
+     * <span class="tablenote">
+     *  <strong>Note:</strong> BOPIS (Buy Online, Pick Up In Store) is no longer supported. This field is deprecated and should no longer be used.
+     *  </span>
      *
      * @var bool $eligibleForPickupInStore
      */
@@ -48,19 +38,9 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Gets as eligibleForPickupInStore
      *
-     * <b>For Add/Revise/Relist/Verify calls</b>: this field is included to enable the listing for In-Store Pickup. To enable the listing for In-Store Pickup, the seller includes this boolean field and sets its value to <code>true</code>. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings.
-     *  <br/><br/>
-     *  In addition to setting the <b>EligibleForPickupInStore</b> boolean field to <code>true</code>, the merchant must also perform the following actions in an <b>Add/Revise/Relist/Verify</b> call to enable the In-Store Pickup option on a multiple-quantity, fixed-price listing:
-     *  <ul>
-     *  <li>Have inventory for the product at one or more physical stores tied to the seller's account. By using the REST-based <b>Inventory API</b>, sellers can associate physical stores to their account by using the <b>Create Inventory Location</b> call, and then, using the <b>Create Inventory Item</b> call, they can add inventory to specific stores;</li>
-     *  <li>Include the seller-defined SKU value of the product(s) in the call request. For a single-variation listing, the SKU value would be specified in the <b>Item.SKU</b> field, and for a multiple-variation listing, the SKU value(s) would be specified in the <b>Item.Variations.Variation.SKU</b> field(s);</li>
-     *  <li>Set an immediate payment requirement on the item.
-     *  </li>
-     *  </ul>
-     *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
-     *  <br/><br/>
-     *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
-     *  <br/>
+     * <span class="tablenote">
+     *  <strong>Note:</strong> BOPIS (Buy Online, Pick Up In Store) is no longer supported. This field is deprecated and should no longer be used.
+     *  </span>
      *
      * @return bool
      */
@@ -72,19 +52,9 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
     /**
      * Sets a new eligibleForPickupInStore
      *
-     * <b>For Add/Revise/Relist/Verify calls</b>: this field is included to enable the listing for In-Store Pickup. To enable the listing for In-Store Pickup, the seller includes this boolean field and sets its value to <code>true</code>. In-Store Pickup as a fulfillment method is only available to a limited number of large retail merchants in the US, Canada, UK, Germany, and Australia marketplaces. The In-Store Pickup feature can only be applied to multiple-quantity, fixed-price listings.
-     *  <br/><br/>
-     *  In addition to setting the <b>EligibleForPickupInStore</b> boolean field to <code>true</code>, the merchant must also perform the following actions in an <b>Add/Revise/Relist/Verify</b> call to enable the In-Store Pickup option on a multiple-quantity, fixed-price listing:
-     *  <ul>
-     *  <li>Have inventory for the product at one or more physical stores tied to the seller's account. By using the REST-based <b>Inventory API</b>, sellers can associate physical stores to their account by using the <b>Create Inventory Location</b> call, and then, using the <b>Create Inventory Item</b> call, they can add inventory to specific stores;</li>
-     *  <li>Include the seller-defined SKU value of the product(s) in the call request. For a single-variation listing, the SKU value would be specified in the <b>Item.SKU</b> field, and for a multiple-variation listing, the SKU value(s) would be specified in the <b>Item.Variations.Variation.SKU</b> field(s);</li>
-     *  <li>Set an immediate payment requirement on the item.
-     *  </li>
-     *  </ul>
-     *  When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available) will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item.
-     *  <br/><br/>
-     *  This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
-     *  <br/>
+     * <span class="tablenote">
+     *  <strong>Note:</strong> BOPIS (Buy Online, Pick Up In Store) is no longer supported. This field is deprecated and should no longer be used.
+     *  </span>
      *
      * @param bool $eligibleForPickupInStore
      * @return self
@@ -129,7 +99,17 @@ class PickupInStoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getEligibleForPickupInStore();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {

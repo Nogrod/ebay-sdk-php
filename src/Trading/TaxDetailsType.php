@@ -40,7 +40,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     /**
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.<span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $taxOnSubtotalAmount
      */
@@ -168,7 +168,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Gets as taxOnSubtotalAmount
      *
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.<span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -181,7 +181,7 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      * Sets a new taxOnSubtotalAmount
      *
      * This value is the amount of sales tax applied based on the unit cost of the
-     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.
+     *  order line item for the corresponding imposition (tax type) and includes taxes that are applied against the <a href="https://www.ebay.co.uk/help/buying/paying-items/buyer-protection-fee?id=5594" target="_blank">Buyer Protection fee</a>.<span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $taxOnSubtotalAmount
      * @return self
@@ -310,7 +310,17 @@ class TaxDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getImposition();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Imposition", $value);

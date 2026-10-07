@@ -531,7 +531,17 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getVariationSpecificValue();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificValue", $value);
@@ -539,22 +549,27 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         $value = $this->getPictureURL();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["PictureURL" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURL", $v);
             }
         }
         $value = $this->getExternalPictureURL();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ExternalPictureURL" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExternalPictureURL", $v);
             }
         }
         $value = $this->getExtendedPictureDetails();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails", array_map(function ($v) {
-                    return ["PictureURLs" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}PictureURLs", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -585,10 +600,11 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $this->setExternalPictureURL($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ExtendedPictureDetails');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}PictureURLs');
             $this->setExtendedPictureDetails(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}PictureURLs'));
+                return \Nogrod\eBaySDK\Trading\PictureURLsType::fromKeyValue($v);
             }, $value));
         }
     }

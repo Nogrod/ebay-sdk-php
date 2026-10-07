@@ -10,14 +10,14 @@ use Nogrod\XMLClientRuntime\Func;
  * Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format by translating it into a radix-64 representation. The term "Base64" originates from a specific MIME content transfer encoding.
  *  <br/><br/>
  *  <span class="tablenote">
- *  <strong>Note:</strong> This type contains the name or reference ID of the binary attachment, not the attachment data. 
+ *  <strong>Note:</strong> This type contains the name or reference ID of the binary attachment, not the attachment data.
  *  </span>
  * XSD Type: Base64BinaryType
  */
 class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * @var mixed $__value
+     * @var string $__value
      */
     private $__value = null;
 
@@ -31,7 +31,7 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Construct
      *
-     * @param mixed $value
+     * @param string $value
      */
     public function __construct($value)
     {
@@ -41,8 +41,8 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
     /**
      * Gets or sets the inner value
      *
-     * @param mixed $value
-     * @return mixed
+     * @param string $value
+     * @return string
      */
     public function value()
     {
@@ -90,12 +90,23 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+        $value = $this->getContentType();
+        if (null !== $value) {
+            $writer->writeAttribute("contentType", $value);
+        }
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->value();
         $writer->write($value);
-        $value = $this->getContentType();
-        if (null !== $value)
-        $writer->writeAttribute("contentType", $value);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed
@@ -112,12 +123,13 @@ class Base64BinaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function setKeyValue($keyValue): void
     {
-        $value = Func::mapObject($keyValue, 'value');
-        if (null !== $value)
-        $this->value(\\AnySimpleType::fromKeyValue($value));
+        $value = Func::mapValue($keyValue, 'value');
+        if (null !== $value) {
+            $this->value($value);
+        }
         $value = Func::mapValue($keyValue, 'contentType');
-        if (null !== $value)
-        $this->setContentType($value);
+        if (null !== $value) {
+            $this->setContentType($value);
+        }
     }
 }
-

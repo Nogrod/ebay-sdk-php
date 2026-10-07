@@ -7,10 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing RefundDetailsType
  *
- * Type defining the <b>ReturnPolicyDetails.Refund</b> container that is returned in <b>GeteBayDetails</b>. All of the values (along with descriptions for each value) that can be used as a Refund Option when listing an item is returned under the <b>ReturnPolicyDetails.Refund</b> container.
- *  <br><br>
- *  <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call returns site-default Return Policy settings. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
- *  </span>
+ * <span class="tablenote"><b>Note:</b> This type is used by the deprecated <b>ReturnPolicyDetails.Refund</b> container returned in <b>GeteBayDetails</b>. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To determine which refund options are supported for a specific leaf category on a specific eBay marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method. Pass the target <b>marketplace_id</b> and the category ID in the filter query parameter, and then inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields in the response for the supported domestic and international refund methods.</span>
  * XSD Type: RefundDetailsType
  */
 class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -95,7 +92,17 @@ class RefundDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getRefundOption();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundOption", $value);

@@ -393,13 +393,18 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getDescriptionTemplate();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DescriptionTemplate" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DescriptionTemplate", $v);
             }
         }
         $value = $this->getLayoutTotal();
@@ -409,19 +414,19 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
         $value = $this->getObsoleteLayoutID();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ObsoleteLayoutID" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ObsoleteLayoutID", $v);
             }
         }
         $value = $this->getObsoleteThemeID();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ObsoleteThemeID" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ObsoleteThemeID", $v);
             }
         }
         $value = $this->getThemeGroup();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ThemeGroup" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ThemeGroup", $v);
             }
         }
         $value = $this->getThemeTotal();

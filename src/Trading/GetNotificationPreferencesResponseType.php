@@ -271,9 +271,14 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getApplicationDeliveryPreferences();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ApplicationDeliveryPreferences", $value);
@@ -284,11 +289,16 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         }
         $value = $this->getUserDeliveryPreferenceArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray", array_map(function ($v) {
-                    return ["NotificationEnable" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationEnable", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getUserData();
@@ -298,7 +308,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         $value = $this->getEventProperty();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["EventProperty" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EventProperty", $v);
             }
         }
     }
@@ -326,10 +336,11 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setDeliveryURLName($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserDeliveryPreferenceArray');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable');
             $this->setUserDeliveryPreferenceArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NotificationEnable'));
+                return \Nogrod\eBaySDK\Trading\NotificationEnableType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}UserData');

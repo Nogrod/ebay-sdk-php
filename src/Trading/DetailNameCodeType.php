@@ -41,15 +41,13 @@ class DetailNameCodeType
     /**
      * Constant for 'PaymentOptionDetails' value.
      *
-     * This enumeration value can be included in a <b>DetailName</b> field if the user
-     * wishes to retrieve all payment methods that are accepted on the specified eBay
-     * site. Note that the accepted payment methods within an eBay site can vary by
-     * category and/or by listing format, so a user may also want to make a
-     * <b>GetCategoryFeatures</b> call to retrieve category-level payment method
-     * metadata. To retrieve the accepted payment methods for a specific category on a
-     * specific site with <b>GetCategoryFeatures</b>, the user specifies the listing
-     * category ID through the <b>CategoryID</b>, and sets the <b>FeatureID</b> value
-     * to <code>PaymentMethods</code>.
+     * This value should not be used as the <b>PaymentOptionDetails</b> container
+     * returned in <b>GeteBayDetails</b> is deprecated. To retrieve category-level
+     * payment method metadata, use the <b>Sell Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies"
+     * target="_blank">getCategoryPolicies</a> method and review the
+     * <b>paymentMethods</b> field for the applicable leaf category. Note that accepted
+     * payment methods can vary by category and/or listing format.
      */
     public const VAL_PAYMENT_OPTION_DETAILS = 'PaymentOptionDetails';
 
@@ -230,19 +228,19 @@ class DetailNameCodeType
     /**
      * Constant for 'ReturnPolicyDetails' value.
      *
-     * This enumeration value can be included in a <b>DetailName</b> field if the user
-     * wishes to retrieve the return policy values that can be passed in through the
-     * <b>ReturnPolicy</b> container of an Add/Revise/Relist API call (or in a Return
-     * business policy). These values include the return period, the 'Money back'
-     * options that the seller can make available to the buyers, and who pays for
-     * return shipping (Buyer or Seller).
+     * This value should not be used as the <b>ReturnPolicyDetails</b> container
+     * returned in <b>GeteBayDetails</b> is deprecated. Instead, use the <b>Sell
+     * Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies"
+     * target="_blank">getReturnPolicies</a> method.
      *  <br><br>
-     *  <span class="tablenote"><b>Note:</b> As of September 2018, the
-     * <b>GetCategoryFeatures</b> call started returning category-level metadata for
-     * both domestic and international return policies. Due to this update, developers
-     * may want to consider using that call for return policy metadata instead, as the
-     * <b>GeteBayDetails</b> call only retrieves site-level metadata, and does not
-     * distinguish between domestic and international metadata.</span>
+     *  <span class="tablenote"><b>Note:</b> The <b>Sell Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies"
+     * target="_blank">getReturnPolicies</a> method returns category-level domestic and
+     * international return policy metadata for the applicable leaf category, including
+     * refundMethods, returnsAcceptanceEnabled, returnPeriods,
+     * returnShippingCostPayers, and the corresponding internationalOverride
+     * fields.</span>
      */
     public const VAL_RETURN_POLICY_DETAILS = 'ReturnPolicyDetails';
 

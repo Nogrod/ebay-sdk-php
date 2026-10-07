@@ -29,7 +29,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
     /**
      * This field must be included in an Add/Revise/Relist call and set to <code>true</code> if a German (Site ID 77), Austrian (Site ID 16), or Swiss (Site ID 193) seller wishes to restrict sales of their item to other users registered on eBay as business users. If this field is set as <code>true</code>, the <b>BusinessSeller</b> field must also be included and set to <code>true</code>. This feature is not available on any other eBay marketplaces.
      *  <br><br>
-     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <b>GetCategories</b> call can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>B2BVATEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
+     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.b2bVatEnabled" target="_blank">getCategoryPolicies</a> of the <b>Metadata API</b> can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>b2bVatEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
      *  <br><br>
      *  This field is returned in 'Get' calls only if set on the listing, and the person making the call owns the listing. However, other Business Seller-related information will be returned to all users in 'Get' calls under the <b>SellerInfo</b> and <b>BusinessSellerDetails</b> containers.
      *
@@ -108,7 +108,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This field must be included in an Add/Revise/Relist call and set to <code>true</code> if a German (Site ID 77), Austrian (Site ID 16), or Swiss (Site ID 193) seller wishes to restrict sales of their item to other users registered on eBay as business users. If this field is set as <code>true</code>, the <b>BusinessSeller</b> field must also be included and set to <code>true</code>. This feature is not available on any other eBay marketplaces.
      *  <br><br>
-     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <b>GetCategories</b> call can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>B2BVATEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
+     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.b2bVatEnabled" target="_blank">getCategoryPolicies</a> of the <b>Metadata API</b> can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>b2bVatEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
      *  <br><br>
      *  This field is returned in 'Get' calls only if set on the listing, and the person making the call owns the listing. However, other Business Seller-related information will be returned to all users in 'Get' calls under the <b>SellerInfo</b> and <b>BusinessSellerDetails</b> containers.
      *
@@ -124,7 +124,7 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      *
      * This field must be included in an Add/Revise/Relist call and set to <code>true</code> if a German (Site ID 77), Austrian (Site ID 16), or Swiss (Site ID 193) seller wishes to restrict sales of their item to other users registered on eBay as business users. If this field is set as <code>true</code>, the <b>BusinessSeller</b> field must also be included and set to <code>true</code>. This feature is not available on any other eBay marketplaces.
      *  <br><br>
-     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <b>GetCategories</b> call can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>B2BVATEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
+     *  This field can be included and set to <code>true</code> only by Business Sellers registered on one of the three sites above, and only if the listing category supports Business-to-Business listings. The <a href="../../../../../api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies#response.categoryPolicies.b2bVatEnabled" target="_blank">getCategoryPolicies</a> of the <b>Metadata API</b> can be used by the seller (using one of the Site IDs above) to see which categories support Business-to-Business listings. A <b>b2bVatEnabled</b> boolean field will be returned as <code>true</code> if a listing category supports Business-to-Business listings.
      *  <br><br>
      *  This field is returned in 'Get' calls only if set on the listing, and the person making the call owns the listing. However, other Business Seller-related information will be returned to all users in 'Get' calls under the <b>SellerInfo</b> and <b>BusinessSellerDetails</b> containers.
      *
@@ -247,7 +247,17 @@ class VATDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getBusinessSeller();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {

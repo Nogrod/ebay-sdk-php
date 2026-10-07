@@ -11,9 +11,14 @@ namespace Nogrod\eBaySDK\Trading;
  */
 class DeleteMyMessagesResponseType extends AbstractResponseType
 {
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed

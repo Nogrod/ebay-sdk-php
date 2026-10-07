@@ -574,16 +574,26 @@ class GetOrdersRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getOrderIDArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray", array_map(function ($v) {
-                    return ["OrderID" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}OrderIDArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OrderID", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getCreateTimeFrom();
@@ -648,11 +658,10 @@ class GetOrdersRequestType extends AbstractRequestType
     public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}OrderIDArray');
         if (null !== $value) {
-            $this->setOrderIDArray(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}OrderID');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}OrderID', true);
+            $this->setOrderIDArray($value);
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}CreateTimeFrom');
         if (null !== $value) {

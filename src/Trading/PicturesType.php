@@ -270,7 +270,17 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getVariationSpecificName();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificName", $value);
@@ -278,7 +288,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
         $value = $this->getVariationSpecificPictureSet();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["VariationSpecificPictureSet" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificPictureSet", $v);
             }
         }
     }

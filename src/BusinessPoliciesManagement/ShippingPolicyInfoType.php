@@ -1217,7 +1217,17 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "http://www.ebay.com/marketplace/selling/v1/services");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingPolicyName();
         if (null !== $value) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shippingPolicyName", $value);
@@ -1245,7 +1255,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = $this->getExcludeShipToLocation();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["excludeShipToLocation" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}excludeShipToLocation", $v);
             }
         }
         $value = $this->getShippingProfileDiscountInfo();
@@ -1259,19 +1269,19 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
         $value = $this->getShipToLocations();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["shipToLocations" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}shipToLocations", $v);
             }
         }
         $value = $this->getDomesticShippingPolicyInfoService();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["domesticShippingPolicyInfoService" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}domesticShippingPolicyInfoService", $v);
             }
         }
         $value = $this->getIntlShippingPolicyInfoService();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["intlShippingPolicyInfoService" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}intlShippingPolicyInfoService", $v);
             }
         }
         $value = $this->getInsurance();

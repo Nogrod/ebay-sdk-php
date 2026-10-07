@@ -130,11 +130,21 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingServiceCostOverride();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingServiceCostOverride" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceCostOverride", $v);
             }
         }
     }

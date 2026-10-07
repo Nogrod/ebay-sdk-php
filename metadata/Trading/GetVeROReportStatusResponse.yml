@@ -1,3 +1,0 @@
-Nogrod\eBaySDK\Trading\GetVeROReportStatusResponse:
-    xml_root_name: GetVeROReportStatusResponse
-    xml_root_namespace: 'urn:ebay:apis:eBLBaseComponents'

@@ -7,7 +7,7 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MemberMessageExchangeArrayType
  *
- * Type is used by the <b>MemberMessage</b> container that is returned in the <b>GetMemberMessages</b> and <b>GetAdFormatLeads</b> calls. The <b>MemberMessage</b> container will consists of one or more member messages that meet the input criteria in the call request.
+ * Type is used by the <b>MemberMessage</b> container that is returned in the <b>GetMemberMessages</b> calls. The <b>MemberMessage</b> container will consists of one or more member messages that meet the input criteria in the call request.
  * XSD Type: MemberMessageExchangeArrayType
  */
 class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
@@ -92,11 +92,21 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getMemberMessageExchange();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["MemberMessageExchange" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange", $v);
             }
         }
     }

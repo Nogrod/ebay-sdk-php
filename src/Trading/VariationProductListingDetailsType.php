@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
 class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. To determine whether a specific leaf category supports or requires an ISBN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the ISBN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the ISBN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -24,7 +24,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     private $iSBN = null;
 
     /**
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. To determine whether a specific leaf category supports or requires a UPC value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the UPC aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the UPC value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -35,7 +35,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     private $uPC = null;
 
     /**
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. To determine whether a specific leaf category supports or requires an EAN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the EAN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the EAN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -65,7 +65,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as iSBN
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. To determine whether a specific leaf category supports or requires an ISBN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the ISBN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the ISBN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -81,7 +81,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new iSBN
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> call to see if an ISBN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. To determine whether a specific leaf category supports or requires an ISBN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the ISBN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the ISBN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an ISBN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -99,7 +99,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as uPC
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. To determine whether a specific leaf category supports or requires a UPC value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the UPC aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the UPC value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -115,7 +115,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new uPC
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. The seller can use the <b>GetCategoryFeatures</b> call to see if a UPC is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different products. To determine whether a specific leaf category supports or requires a UPC value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the UPC aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the UPC value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects a UPC value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -133,7 +133,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Gets as eAN
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. To determine whether a specific leaf category supports or requires an EAN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the EAN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the EAN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -149,7 +149,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
     /**
      * Sets a new eAN
      *
-     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> call to see if an EAN is supported/required for a category.
+     * This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. To determine whether a specific leaf category supports or requires an EAN value for a variation listing, use the <b>Taxonomy API</b> <a href="https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getItemAspectsForCategory" target="_blank">getItemAspectsForCategory</a> method. Inspect the <b>localizedAspectName</b> field to find the EAN aspect for the category, and then use the <b>aspectRequired</b> and <b>aspectUsage</b> fields to determine whether the EAN value is required, recommended, or optional.
      *  <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
      *  If the listing is being posted to a category that expects an EAN value, but one doesn't exist for the product, the seller must provide a string indicating that the product identifier is unavailable. This text varies by marketplace. Refer to <a href="https://developer.ebay.com/api-docs/sell/static/inventory/product-identifier-text.html" target="_blank">Product Identifier Text</a> for the specific text based on the listing marketplace.
@@ -263,7 +263,17 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getISBN();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ISBN", $value);
@@ -283,7 +293,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
         $value = $this->getNameValueList();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["NameValueList" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
             }
         }
     }

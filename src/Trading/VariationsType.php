@@ -801,35 +801,55 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getVariation();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["Variation" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Variation", $v);
             }
         }
         $value = $this->getPictures();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["Pictures" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Pictures", $v);
             }
         }
         $value = $this->getVariationSpecificsSet();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet", array_map(function ($v) {
-                    return ["NameValueList" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getModifyNameList();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList", array_map(function ($v) {
-                    return ["ModifyName" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ModifyNameList");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModifyName", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -860,16 +880,18 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
                 return \Nogrod\eBaySDK\Trading\PicturesType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecificsSet');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
             $this->setVariationSpecificsSet(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));
+                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ModifyNameList');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ModifyName');
             $this->setModifyNameList(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ModifyName'));
+                return \Nogrod\eBaySDK\Trading\ModifyNameType::fromKeyValue($v);
             }, $value));
         }
     }

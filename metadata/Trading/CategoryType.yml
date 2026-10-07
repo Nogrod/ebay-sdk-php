@@ -5,39 +5,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
             serialized_name: xmlns
             xml_attribute: true
     properties:
-        bestOfferEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: BestOfferEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getBestOfferEnabled
-                setter: setBestOfferEnabled
-            type: bool
-        autoPayEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: AutoPayEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getAutoPayEnabled
-                setter: setAutoPayEnabled
-            type: bool
-        b2BVATEnabled:
-            expose: true
-            access_type: public_method
-            serialized_name: B2BVATEnabled
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getB2BVATEnabled
-                setter: setB2BVATEnabled
-            type: bool
         categoryID:
             expose: true
             access_type: public_method
@@ -49,17 +16,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 getter: getCategoryID
                 setter: setCategoryID
             type: string
-        categoryLevel:
-            expose: true
-            access_type: public_method
-            serialized_name: CategoryLevel
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCategoryLevel
-                setter: setCategoryLevel
-            type: int
         categoryName:
             expose: true
             access_type: public_method
@@ -71,54 +27,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 getter: getCategoryName
                 setter: setCategoryName
             type: string
-        categoryParentID:
-            expose: true
-            access_type: public_method
-            serialized_name: CategoryParentID
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getCategoryParentID
-                setter: setCategoryParentID
-            xml_list:
-                inline: true
-                entry_name: CategoryParentID
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            type: array<string>
-        expired:
-            expose: true
-            access_type: public_method
-            serialized_name: Expired
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getExpired
-                setter: setExpired
-            type: bool
-        leafCategory:
-            expose: true
-            access_type: public_method
-            serialized_name: LeafCategory
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLeafCategory
-                setter: setLeafCategory
-            type: bool
-        virtual:
-            expose: true
-            access_type: public_method
-            serialized_name: Virtual
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getVirtual
-                setter: setVirtual
-            type: bool
         numOfItems:
             expose: true
             access_type: public_method
@@ -130,39 +38,6 @@ Nogrod\eBaySDK\Trading\CategoryType:
                 getter: getNumOfItems
                 setter: setNumOfItems
             type: int
-        oRPA:
-            expose: true
-            access_type: public_method
-            serialized_name: ORPA
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getORPA
-                setter: setORPA
-            type: bool
-        oRRA:
-            expose: true
-            access_type: public_method
-            serialized_name: ORRA
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getORRA
-                setter: setORRA
-            type: bool
-        lSD:
-            expose: true
-            access_type: public_method
-            serialized_name: LSD
-            xml_element:
-                cdata: false
-                namespace: 'urn:ebay:apis:eBLBaseComponents'
-            accessor:
-                getter: getLSD
-                setter: setLSD
-            type: bool
         keywords:
             expose: true
             access_type: public_method

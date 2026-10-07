@@ -138,7 +138,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     private $localPickup = null;
 
     /**
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties. <span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $importCharge
      */
@@ -528,7 +528,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as importCharge
      *
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties. <span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -540,7 +540,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new importCharge
      *
-     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs and taxes for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties.
+     * For orders using eBay International Shipping, when using the <b>GetOrders</b> call, the <b>OrderArray.Order.ShippingServiceSelected.ImportCharge</b> field contains only customs charges.<br /><br />For the Global Shipping Program, which is only supported in the UK, this field contains the total cost of customs for the international leg of an order shipped using the Global Shipping Program. This amount is calculated and supplied for each item by the international shipping provider when a buyer views the item properties. <span class="tablenote"><strong>Note:</strong> As part of EU Customs Reform (effective July 1, 2026), for orders shipped to EU member states, this field will also include EU customs fees.</span>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $importCharge
      * @return self
@@ -678,7 +678,17 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingService();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingService", $value);
@@ -725,7 +735,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = $this->getShippingPackageInfo();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingPackageInfo" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackageInfo", $v);
             }
         }
         $value = $this->getShippingServiceCutOffTime();

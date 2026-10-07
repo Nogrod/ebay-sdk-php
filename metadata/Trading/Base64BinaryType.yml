@@ -12,9 +12,9 @@ Nogrod\eBaySDK\Trading\Base64BinaryType:
             accessor:
                 getter: value
                 setter: value
+            type: string
             xml_element:
                 cdata: false
-            type: \AnySimpleType
         contentType:
             expose: true
             access_type: public_method

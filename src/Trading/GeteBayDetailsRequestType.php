@@ -92,13 +92,18 @@ class GeteBayDetailsRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getDetailName();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DetailName" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailName", $v);
             }
         }
     }

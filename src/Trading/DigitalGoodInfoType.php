@@ -15,7 +15,7 @@ class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * This field must be included in the request and set to <code>true</code> if the seller plans to list a digital gift card in a category that supports digital gift cards.
      *  <br><br>
-     *  To verify if a specific category on a specific eBay site supports digital gift card listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in a <b>CategoryID</b> value and a <b>DigitalGoodDeliveryEnabled</b> value in the <b>FeatureID</b> field. Look for a <code>true</code> value in the <b>DigitalGoodDeliveryEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  To verify whether a specific leaf category on a specific eBay marketplace supports digital gift card listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a <code>true</code> value in the <b>listingTypePolicies.digitalGoodDeliveryEnabled</b> field for the returned category.
      *
      * @var bool $digitalDelivery
      */
@@ -26,7 +26,7 @@ class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This field must be included in the request and set to <code>true</code> if the seller plans to list a digital gift card in a category that supports digital gift cards.
      *  <br><br>
-     *  To verify if a specific category on a specific eBay site supports digital gift card listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in a <b>CategoryID</b> value and a <b>DigitalGoodDeliveryEnabled</b> value in the <b>FeatureID</b> field. Look for a <code>true</code> value in the <b>DigitalGoodDeliveryEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  To verify whether a specific leaf category on a specific eBay marketplace supports digital gift card listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a <code>true</code> value in the <b>listingTypePolicies.digitalGoodDeliveryEnabled</b> field for the returned category.
      *
      * @return bool
      */
@@ -40,7 +40,7 @@ class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *
      * This field must be included in the request and set to <code>true</code> if the seller plans to list a digital gift card in a category that supports digital gift cards.
      *  <br><br>
-     *  To verify if a specific category on a specific eBay site supports digital gift card listings, use the <a href="https://developer.ebay.com/DevZone/XML/docs/Reference/eBay/GetCategoryFeatures.html">GetCategoryFeatures</a> call, passing in a <b>CategoryID</b> value and a <b>DigitalGoodDeliveryEnabled</b> value in the <b>FeatureID</b> field. Look for a <code>true</code> value in the <b>DigitalGoodDeliveryEnabled</b> field of the corresponding <b>Category</b> node (match up the <b>CategoryID</b> values if more than one Category IDs were passed in the request).
+     *  To verify whether a specific leaf category on a specific eBay marketplace supports digital gift card listings, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies" target="_blank">getListingTypePolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then look for a <code>true</code> value in the <b>listingTypePolicies.digitalGoodDeliveryEnabled</b> field for the returned category.
      *
      * @param bool $digitalDelivery
      * @return self
@@ -53,7 +53,17 @@ class DigitalGoodInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getDigitalDelivery();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {

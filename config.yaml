@@ -4,6 +4,8 @@ Trading:
 MerchantData:
   url: ~
   xsd: https://developer.ebay.com/webservices/1255/merchantdataservice.xsd
+  # wsdl/MerchantData.xsd carries manual fixes (e.g. OrderID); don't overwrite it on download
+  pinned: true
 BusinessPoliciesManagement:
   url: https://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl
   xsd: ~

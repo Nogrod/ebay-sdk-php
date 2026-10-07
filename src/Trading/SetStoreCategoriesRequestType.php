@@ -208,9 +208,14 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getAction();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Action", $value);
@@ -225,11 +230,16 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         }
         $value = $this->getStoreCategories();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories", array_map(function ($v) {
-                    return ["CustomCategory" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}StoreCategories");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}CustomCategory", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -261,10 +271,11 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setDestinationParentCategoryID($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}StoreCategories');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}CustomCategory');
             $this->setStoreCategories(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}CustomCategory'));
+                return \Nogrod\eBaySDK\Trading\StoreCustomCategoryType::fromKeyValue($v);
             }, $value));
         }
     }

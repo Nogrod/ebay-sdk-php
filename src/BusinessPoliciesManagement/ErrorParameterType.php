@@ -86,13 +86,23 @@ class ErrorParameterType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
-        $value = $this->value();
-        $writer->write($value);
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "http://www.ebay.com/marketplace/selling/v1/services");
         $value = $this->getName();
         if (null !== $value) {
             $writer->writeAttribute("name", $value);
         }
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        $value = $this->value();
+        $writer->write($value);
     }
 
     public static function xmlDeserialize(\Sabre\Xml\Reader $reader): mixed

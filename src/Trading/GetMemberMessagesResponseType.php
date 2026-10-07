@@ -154,16 +154,26 @@ class GetMemberMessagesResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getMemberMessage();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage", array_map(function ($v) {
-                    return ["MemberMessageExchange" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MemberMessage");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getPaginationResult();
@@ -192,10 +202,11 @@ class GetMemberMessagesResponseType extends AbstractResponseType
     public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MemberMessage');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange');
             $this->setMemberMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}MemberMessageExchange'));
+                return \Nogrod\eBaySDK\Trading\MemberMessageExchangeType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}PaginationResult');

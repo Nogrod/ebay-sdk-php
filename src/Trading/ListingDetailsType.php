@@ -215,8 +215,7 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
     /**
      * This field is needed if the seller is selling a motor vehicle through a Motors Local Listing. The string value supplied in this field actually sets the radius of the area (in miles) in which the vehicle will be available and exposed to interested local buyers. The seller's supplied <b>PostalCode</b> or <b>Location</b> field value will be used as the center point for this radius.
      *  <br/><br/>
-     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. The user can call
-     *  <b>GetCategoryFeatures</b>, including <code>LocalListingDistances</code> as a <b>FeatureID</b> value to retrieve the local listing distances supported by a given site, category, and Local Market subscription level.
+     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. To retrieve the supported local listing distances for a specific leaf category on a specific marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getMotorsListingPolicies" target="_blank">getMotorsListingPolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then inspect the <b>motorsListingPolicies.localListingDistances</b> array in the response. The localListingDistances.distances array contains the supported radius values in miles, and the <b>localListingDistances.distanceType</b> field identifies the applicable Local Market subscription type.
      *
      * @var string $localListingDistance
      */
@@ -857,8 +856,7 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This field is needed if the seller is selling a motor vehicle through a Motors Local Listing. The string value supplied in this field actually sets the radius of the area (in miles) in which the vehicle will be available and exposed to interested local buyers. The seller's supplied <b>PostalCode</b> or <b>Location</b> field value will be used as the center point for this radius.
      *  <br/><br/>
-     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. The user can call
-     *  <b>GetCategoryFeatures</b>, including <code>LocalListingDistances</code> as a <b>FeatureID</b> value to retrieve the local listing distances supported by a given site, category, and Local Market subscription level.
+     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. To retrieve the supported local listing distances for a specific leaf category on a specific marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getMotorsListingPolicies" target="_blank">getMotorsListingPolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then inspect the <b>motorsListingPolicies.localListingDistances</b> array in the response. The localListingDistances.distances array contains the supported radius values in miles, and the <b>localListingDistances.distanceType</b> field identifies the applicable Local Market subscription type.
      *
      * @return string
      */
@@ -872,8 +870,7 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      *
      * This field is needed if the seller is selling a motor vehicle through a Motors Local Listing. The string value supplied in this field actually sets the radius of the area (in miles) in which the vehicle will be available and exposed to interested local buyers. The seller's supplied <b>PostalCode</b> or <b>Location</b> field value will be used as the center point for this radius.
      *  <br/><br/>
-     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. The user can call
-     *  <b>GetCategoryFeatures</b>, including <code>LocalListingDistances</code> as a <b>FeatureID</b> value to retrieve the local listing distances supported by a given site, category, and Local Market subscription level.
+     *  There is a closed set of radius values that can be set in this field, and it depends on the seller's subscription level. To retrieve the supported local listing distances for a specific leaf category on a specific marketplace, use the <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getMotorsListingPolicies" target="_blank">getMotorsListingPolicies</a> method. Pass the target <b>marketplace_id</b> and the leaf category ID in the filter query parameter, and then inspect the <b>motorsListingPolicies.localListingDistances</b> array in the response. The localListingDistances.distances array contains the supported radius values in miles, and the <b>localListingDistances.distanceType</b> field identifies the applicable Local Market subscription type.
      *
      * @param string $localListingDistance
      * @return self
@@ -1018,7 +1015,17 @@ class ListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getAdult();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {

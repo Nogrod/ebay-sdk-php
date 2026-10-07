@@ -135,20 +135,30 @@ class GetMyMessagesResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getSummary();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Summary", $value);
         }
         $value = $this->getMessages();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Messages", array_map(function ($v) {
-                    return ["Message" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Messages");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Message", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -172,10 +182,11 @@ class GetMyMessagesResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setSummary(\Nogrod\eBaySDK\Trading\MyMessagesSummaryType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Messages');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Message');
             $this->setMessages(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Message'));
+                return \Nogrod\eBaySDK\Trading\MyMessagesMessageType::fromKeyValue($v);
             }, $value));
         }
     }

@@ -27,11 +27,14 @@ class ListingTypeCodeType
      * marketplace site, and the auction listings will also appear in the seller's eBay
      * Store (if the seller has an eBay Store).
      *  <br><br>
-     *  Although listing durations may vary by eBay marketplace and category, typical
-     * listing durations for auctions are 3, 5, 7, and 10 days. It is recommended that
-     * the seller uses the <b>GetCategoryFeatures</b> call to retrieve the actual
-     * listing durations that are supported for auctions on a particular marketplace
-     * and category.
+     *  Because listing durations vary by marketplace and leaf category, use the
+     * <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies"
+     * target="_blank">getListingTypePolicies</a> method for the target marketplace and
+     * category. Inspect the <b>listingTypePolicies.listingDurations</b> array in the
+     * response and look for the entry whose <b>listingType</b> value is
+     * <code>AUCTION</code> to see the supported <b>durationValues</b> for auction
+     * listings.
      */
     public const VAL_CHINESE = 'Chinese';
 
@@ -66,12 +69,13 @@ class ListingTypeCodeType
      * express interest, a buyer fills in a contact form that eBay forwards to the
      * seller as a lead. This format does not enable buyers and sellers to transact
      * online through eBay, and eBay Feedback is not available for ad format listings.
-     *  <br><br>
-     *  Although listing durations may vary by eBay marketplace and category, typical
-     * listing durations for real estate ads are 30 and 90 days. It is recommended that
-     * the seller uses the <b>GetCategoryFeatures</b> call to retrieve the actual
-     * listing durations that are supported for real estate ads on a particular
-     * marketplace and category.
+     *  <br><br&gt;Because listing durations vary by marketplace and leaf category, use
+     * the <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies"
+     * target="_blank">getListingTypePolicies</a> method for the target marketplace and
+     * category. Inspect the listingTypePolicies.listingDurations array in the response
+     * and look for the entry whose <b>listingType</b> value is <code>AD_TYPE</code> to
+     * see the supported durationValues for real estate classified ad listings.
      */
     public const VAL_AD_TYPE = 'AdType';
 
@@ -137,9 +141,14 @@ class ListingTypeCodeType
      *  With the 'GTC' listing duration, the listing will remain active as long as the
      * listing shows that inventory is available for purchase (available quantity is
      * '1' or more). For sellers listing motor vehicles on the eBay US Motors, eBay UK,
-     * or eBay Italy sites, it is recommended that the seller uses the
-     * <b>GetCategoryFeatures</b> call to retrieve the supported listing durations for
-     * their particular marketplace and category.
+     * or eBay Italy sites, to retrieve the supported listing durations for a
+     * fixed-price listing in a specific leaf category and marketplace, use the
+     * <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies"
+     * target="_blank">getListingTypePolicies</a> method. Inspect the
+     * <b>listingTypePolicies.listingDurations</b> array in the response and look for
+     * the entry whose <b>listingType</b> value is <code>FIXED_PRICE_ITEM</code> to see
+     * the supported <b>durationValues</b> for that category.
      *  <br>
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
@@ -172,11 +181,14 @@ class ListingTypeCodeType
      * categories, including Business and Industrial categories, Travel, ans Specialty
      * Services.
      *  <br><br>
-     *  Although listing durations may vary by eBay marketplace and category, typical
-     * listing durations for (non-Real Estate) classified ads are 30, 60, and 90 days.
-     * It is recommended that the seller uses the <b>GetCategoryFeatures</b> call to
-     * retrieve the actual listing durations that are supported for real estate ads on
-     * a particular marketplace and category.
+     *  Because listing durations vary by marketplace and leaf category, use the
+     * <b>Metadata API</b> <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getListingTypePolicies"
+     * target="_blank">getListingTypePolicies</a> method for the target marketplace and
+     * category. Inspect the <b>listingTypePolicies.listingDurations</b> array in the
+     * response and look for the entry whose <b>listingType</b> value is
+     * <code>LEAD_GENERATION</code> to see the supported <b>durationValues</b> for
+     * non-Real Estate classified ad listings.
      */
     public const VAL_LEAD_GENERATION = 'LeadGeneration';
 

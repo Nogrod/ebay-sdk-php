@@ -157,17 +157,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @var string $messageID
      */
@@ -736,17 +726,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @return string
      */
@@ -765,17 +745,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      *  help you track and confirm that a response is returned for every request and to
      *  match specific responses to specific requests.
      *  If you do not pass a <b>MessageID</b> value in the request,
-     *  <b>CorrelationID</b> is not returned.<br>
-     *  <br>
-     *  <span class="tablenote"><b>Note:</b>
-     *  <b>GetCategories</b> is designed to retrieve very large sets of metadata
-     *  that change once a day or less often. To improve performance, these calls return
-     *  cached responses when you request all available data (with no filters). When this
-     *  occurs, the <b>MessageID</b> and <b>CorrelationID</b> fields
-     *  aren't applicable. However, if you specify an input filter to reduce the amount of
-     *  data returned, the calls retrieve the latest data (not cached). When this occurs,
-     *  <b>MessageID</b> and <b>CorrelationID</b> are applicable.
-     *  </span>
+     *  <b>CorrelationID</b> is not returned.
      *
      * @param string $messageID
      * @return self
@@ -1258,11 +1228,21 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getDetailLevel();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DetailLevel" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DetailLevel", $v);
             }
         }
         $value = $this->getErrorLanguage();
@@ -1292,7 +1272,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = $this->getOutputSelector();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["OutputSelector" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}OutputSelector", $v);
             }
         }
         $value = $this->getWarningLevel();

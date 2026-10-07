@@ -145,12 +145,11 @@ class GetItemRequestType extends AbstractRequestType
     private $transactionID = null;
 
     /**
-     * This field is used to specify whether or not to retrieve Parts
-     *  Compatiblity information for a motor part or accessory listing. If this field is included and set to <code>true</code>, the <b>Item.ItemCompatibilityList</b> container will be returned if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the listed motor part or accesory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
+     * This field is included and set to 'true' if the user wants to retrieve the <b>Item.ItemCompatibilityList</b> container for a parts and accessory listing if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the parts and accessory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>GetItem</b> call on behalf of the seller. If anyone else includes this field and sets it to true, it will just be ignored and the <b>Item.ItemCompatibilityList</b> container will not be returned.
+     *  </span>
      *  If this field is included and set to <code>false</code> or omitted, but a Parts Compatibility list does exist for the listing, the <b>Item.ItemCompatibilityList</b> container will not be returned, but the <b>Item.ItemCompatibilityCount</b> field will be returned, and this field will simply indicate the quantity of motor vehicles that are compatible with the the listed motor part or accesory item.
-     *  <br><br>
-     *  Parts Compatibility lists are only applicable to motor parts and accessory categories on the sites that support eBay Motors - US, CA, UK, and DE.
      *
      * @var bool $includeItemCompatibilityList
      */
@@ -610,12 +609,11 @@ class GetItemRequestType extends AbstractRequestType
     /**
      * Gets as includeItemCompatibilityList
      *
-     * This field is used to specify whether or not to retrieve Parts
-     *  Compatiblity information for a motor part or accessory listing. If this field is included and set to <code>true</code>, the <b>Item.ItemCompatibilityList</b> container will be returned if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the listed motor part or accesory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
+     * This field is included and set to 'true' if the user wants to retrieve the <b>Item.ItemCompatibilityList</b> container for a parts and accessory listing if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the parts and accessory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>GetItem</b> call on behalf of the seller. If anyone else includes this field and sets it to true, it will just be ignored and the <b>Item.ItemCompatibilityList</b> container will not be returned.
+     *  </span>
      *  If this field is included and set to <code>false</code> or omitted, but a Parts Compatibility list does exist for the listing, the <b>Item.ItemCompatibilityList</b> container will not be returned, but the <b>Item.ItemCompatibilityCount</b> field will be returned, and this field will simply indicate the quantity of motor vehicles that are compatible with the the listed motor part or accesory item.
-     *  <br><br>
-     *  Parts Compatibility lists are only applicable to motor parts and accessory categories on the sites that support eBay Motors - US, CA, UK, and DE.
      *
      * @return bool
      */
@@ -627,12 +625,11 @@ class GetItemRequestType extends AbstractRequestType
     /**
      * Sets a new includeItemCompatibilityList
      *
-     * This field is used to specify whether or not to retrieve Parts
-     *  Compatiblity information for a motor part or accessory listing. If this field is included and set to <code>true</code>, the <b>Item.ItemCompatibilityList</b> container will be returned if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the listed motor part or accesory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
+     * This field is included and set to 'true' if the user wants to retrieve the <b>Item.ItemCompatibilityList</b> container for a parts and accessory listing if a Parts Compatibility list exists for the listing. A Parts Compatibility list is a list of motor vehicles that are compatible with the parts and accessory item. If a Parts Compatibility list does not exist for the listing, this field will have no effect if it is included, regardless of its value (<code>true</code> or <code>false</code>).
      *  <br><br>
+     *  <span class="tablenote"><b>Note: </b> In all eBay marketplaces except for the US and Canada, the <b>Item.ItemCompatibilityList</b> container will only be returned to the seller of the listing or to a user who is authorized to make a <b>GetItem</b> call on behalf of the seller. If anyone else includes this field and sets it to true, it will just be ignored and the <b>Item.ItemCompatibilityList</b> container will not be returned.
+     *  </span>
      *  If this field is included and set to <code>false</code> or omitted, but a Parts Compatibility list does exist for the listing, the <b>Item.ItemCompatibilityList</b> container will not be returned, but the <b>Item.ItemCompatibilityCount</b> field will be returned, and this field will simply indicate the quantity of motor vehicles that are compatible with the the listed motor part or accesory item.
-     *  <br><br>
-     *  Parts Compatibility lists are only applicable to motor parts and accessory categories on the sites that support eBay Motors - US, CA, UK, and DE.
      *
      * @param bool $includeItemCompatibilityList
      * @return self
@@ -643,9 +640,14 @@ class GetItemRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getItemID();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ItemID", $value);
@@ -675,11 +677,16 @@ class GetItemRequestType extends AbstractRequestType
         }
         $value = $this->getVariationSpecifics();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics", array_map(function ($v) {
-                    return ["NameValueList" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}VariationSpecifics");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NameValueList", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getTransactionID();
@@ -732,10 +739,11 @@ class GetItemRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setVariationSKU($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}VariationSpecifics');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NameValueList');
             $this->setVariationSpecifics(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NameValueList'));
+                return \Nogrod\eBaySDK\Trading\NameValueListType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}TransactionID');

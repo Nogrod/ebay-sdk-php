@@ -156,7 +156,17 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "http://www.ebay.com/marketplace/selling/v1/services");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "http://www.ebay.com/marketplace/selling/v1/services");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getProfileId();
         if (null !== $value) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}profileId", $value);
@@ -167,11 +177,16 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
         }
         $value = $this->getErrorMessage();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage", array_map(function ($v) {
-                    return ["error" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{http://www.ebay.com/marketplace/selling/v1/services}errorMessage");
+                    $open = true;
+                }
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}error", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -198,10 +213,11 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
         if (null !== $value) {
             $this->setAck($value);
         }
-        $value = Func::mapArray($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
+        $value = Func::mapObject($keyValue, '{http://www.ebay.com/marketplace/selling/v1/services}errorMessage');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{http://www.ebay.com/marketplace/selling/v1/services}error');
             $this->setErrorMessage(array_map(function ($v) {
-                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue(Func::mapObject($v, '{http://www.ebay.com/marketplace/selling/v1/services}error'));
+                return \Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType::fromKeyValue($v);
             }, $value));
         }
     }

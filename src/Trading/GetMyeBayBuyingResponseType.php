@@ -591,9 +591,14 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getBuyingSummary();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}BuyingSummary", $value);
@@ -629,7 +634,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         $value = $this->getSecondChanceOffer();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["SecondChanceOffer" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SecondChanceOffer", $v);
             }
         }
         $value = $this->getDeletedFromWonList();
@@ -643,7 +648,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
         $value = $this->getUserDefinedList();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["UserDefinedList" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserDefinedList", $v);
             }
         }
     }

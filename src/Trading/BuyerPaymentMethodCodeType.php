@@ -8,7 +8,7 @@ namespace Nogrod\eBaySDK\Trading;
  * This enumerated type defines different payment methods that can be used by buyers to pay sellers for purchases. Supported payment methods vary by eBay marketplace, by eBay Category, and even by listing format. If a seller is listing, revising, or relisting an item with a Trading API call, the seller should use one of the following metadata calls to see which payment methods are supported at the site and category level:
  *  <ul>
  *  <li><b>GeteBayDetails</b>: through <b>PaymentOptionDetails</b> containers in the response, this call will show the seller all of the payment methods that are available for the specified marketplace. To retrieve this metadata, the seller should include the <b>DetailName</b> field in the request, and set its value to <code>PaymentOptionDetails</code></li>
- *  <li><b>GetCategoryFeatures</b>: through <b>PaymentMethod</b> fields that are returned under the <b>SiteDefaults</b> container or under one or more <b>Category</b> containers in the response, this call will show the seller all of the payment methods that are available for the specified marketplace, including any category exceptions. To retrieve this metadata, the seller should include the <b>FeatureID</b> field in the request, and set its value to <code>PaymentMethods</code>. Note that <b>Category</b> containers will only be returned for categories that differ from Site Defaults as far as supported payment methods are concerned. </li>
+ *  <li><b>getCategoryPolicies</b> (Sell Metadata API): through the <b>paymentMethods</b> field returned for leaf categories, this method shows the seller the payment methods that are available for the specified marketplace and category. <br><br><b>Note</b>: <b>Metadata API</b> methods return metadata for leaf categories, so there is no site-defaults model.<br><br><b>Note</b>: As eBay now controls all of the online payment methods available to buyers, sellers will only specify offline payment methods for listings that require/support offline payment.</li>
  *  </ul>
  *  <br>
  *  <span class="tablenote"><b>Note: </b>
@@ -34,9 +34,10 @@ class BuyerPaymentMethodCodeType
      * not supported on all marketplaces.
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  To see if this enumeration value is a supported payment method for a site and
-     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
-     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  To see whether this payment method is supported for a category, call <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies"
+     * target="_blank">getCategoryPolicies</a> and inspect the <b>paymentMethods</b>
+     * field.
      *  </span>
      */
     public const VAL_MOCC = 'MOCC';
@@ -73,9 +74,10 @@ class BuyerPaymentMethodCodeType
      * marketplaces.
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  To see if this enumeration value is a supported payment method for a site and
-     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
-     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  To see whether this payment method is supported for a category, call <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies"
+     * target="_blank">getCategoryPolicies</a> and inspect the <b>paymentMethods</b>
+     * field.
      *  </span>
      */
     public const VAL_PERSONAL_CHECK = 'PersonalCheck';
@@ -88,9 +90,10 @@ class BuyerPaymentMethodCodeType
      * on all marketplaces.
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  To see if this enumeration value is a supported payment method for a site and
-     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
-     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  To see whether this payment method is supported for a category, call <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies"
+     * target="_blank">getCategoryPolicies</a> and inspect the <b>paymentMethods</b>
+     * field.
      *  </span>
      */
     public const VAL_COD = 'COD';
@@ -141,9 +144,10 @@ class BuyerPaymentMethodCodeType
      * This value is only applicable for offline payments.
      *  <br>
      *  <span class="tablenote"><b>Note: </b>
-     *  To see if this enumeration value is a supported payment method for a site and
-     * category, call <b>GetCategoryFeatures</b> specifying the listing category ID and
-     * including the <b>FeatureID</b> field set to <code>PaymentMethods</code>.
+     *  To see whether this payment method is supported for a category, call <a
+     * href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getCategoryPolicies"
+     * target="_blank">getCategoryPolicies</a> and inspect the <b>paymentMethods</b>
+     * field.
      *  </span>
      */
     public const VAL_CASH_ON_PICKUP = 'CashOnPickup';

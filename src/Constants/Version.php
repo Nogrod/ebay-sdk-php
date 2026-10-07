@@ -8,7 +8,7 @@ namespace Nogrod\eBaySDK\Constants;
 
 class Version
 {
-    public const TRADING = '1451';
+    public const TRADING = '1487';
 
     public const BUSINESSPOLICIESMANAGEMENT = '1.0.0';
 }

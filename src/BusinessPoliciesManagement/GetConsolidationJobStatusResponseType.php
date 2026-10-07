@@ -90,13 +90,18 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getJob();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["Job" => $v]]);
+                $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}Job", $v);
             }
         }
     }

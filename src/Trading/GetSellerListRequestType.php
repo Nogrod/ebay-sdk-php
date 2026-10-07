@@ -624,16 +624,26 @@ class GetSellerListRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getMotorsDealerUsers();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers", array_map(function ($v) {
-                    return ["UserID" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}UserID", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getEndTimeFrom();
@@ -666,11 +676,16 @@ class GetSellerListRequestType extends AbstractRequestType
         }
         $value = $this->getSKUArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                    return ["SKU" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SKUArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getIncludeWatchCount();
@@ -709,11 +724,10 @@ class GetSellerListRequestType extends AbstractRequestType
     public function setKeyValue($keyValue): void
     {
         parent::setKeyValue($keyValue);
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MotorsDealerUsers');
         if (null !== $value) {
-            $this->setMotorsDealerUsers(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}UserID');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}UserID', true);
+            $this->setMotorsDealerUsers($value);
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}EndTimeFrom');
         if (null !== $value) {
@@ -743,11 +757,10 @@ class GetSellerListRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setGranularityLevel($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
         if (null !== $value) {
-            $this->setSKUArray(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}SKU', true);
+            $this->setSKUArray($value);
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}IncludeWatchCount');
         if (null !== $value) {

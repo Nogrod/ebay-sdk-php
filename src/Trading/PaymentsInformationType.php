@@ -166,23 +166,43 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getPayments();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payments", array_map(function ($v) {
-                    return ["Payment" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Payments");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Payment", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getRefunds();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refunds", array_map(function ($v) {
-                    return ["Refund" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Refunds");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refund", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -201,16 +221,18 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function setKeyValue($keyValue): void
     {
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Payments');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Payment');
             $this->setPayments(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Payment'));
+                return \Nogrod\eBaySDK\Trading\PaymentTransactionType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refunds');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Refunds');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Refund');
             $this->setRefunds(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Refund'));
+                return \Nogrod\eBaySDK\Trading\RefundTransactionInfoType::fromKeyValue($v);
             }, $value));
         }
     }

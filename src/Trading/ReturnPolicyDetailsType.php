@@ -7,21 +7,16 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ReturnPolicyDetailsType
  *
- * Type defining the <b>ReturnPolicyDetails</b> container, which is returned in <b>GeteBayDetails</b>, and provides the seller with the Return Policy features (and applicable values) that are supported by the listing site. This container is only returned if <b>ReturnPolicyDetails</b> is included as a <b>DetailName</b>
- *  filter in the call request, or if no <b>DetailName</b> filters are used in the request.
- *  <br/><br/>
- *  <span class="tablenote"><b>Note: </b>
- *  The <b>GeteBayDetails</b> call returns site-default Return Policy settings. For most categories within a given eBay site, the supported Return Policy options/values are the same, but there a few exceptions. To discover what Return Policy features/settings that a particular category supports, call <b>GetCategoryFeatures</b> and include any or all of the domestic and or international Return Policy-related <b>FeatureID</b> values to see the Return Policy features/settings available for domestic and international returns, respectively.
+ * <span class="tablenote"><b>Note: </b>
+ *  This type is used by the deprecated <b>ReturnPolicyDetails</b> container that may still be returned in <b>GeteBayDetails</b>. For category-specific return-policy metadata, use the Sell <b>Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method. This method returns category-level domestic and international return-policy metadata for the applicable leaf category, including <b>policyDescriptionEnabled</b>, <b>refundMethods</b>, <b>returnsAcceptanceEnabled</b>, <b>returnPeriods</b>, and <b>returnShippingCostPayers</b>.
  *  </span>
  * XSD Type: ReturnPolicyDetailsType
  */
 class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\RefundDetailsType[] $refund
@@ -31,10 +26,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     ];
 
     /**
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType[] $returnsWithin
@@ -44,10 +38,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     ];
 
     /**
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType[] $returnsAccepted
@@ -57,18 +49,16 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     ];
 
     /**
-     * This field is returned with a value of <code>true</code> if the site supports a text description of the seller's Return Policy in listings. If the site does support a text description of the seller's Return Policy, it is set through the <b>ReturnPolicy.Description</b> field in an Add/Revise/Relist API call. Currently, the only eBay sites that support Return Policy descriptions are Germany, Austria, France, Italy, and Spain.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover if a Return Policy desciption is supported by a particular category, call <b>GetCategoryFeatures</b> and include <code>ReturnPolicyDescriptionEnabled</code> as a <b>FeatureID</b> value to see if the category supports the use of a Return Policy description.
-     *  </span>
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is used by the deprecated <b>ReturnPolicyDetails</b> container returned in <b>GeteBayDetails</b>. For category-specific support, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.policyDescriptionEnabled</b> and <b>returnPolicies.international.policyDescriptionEnabled</b> fields for the target marketplace and category.
+     *  &lt;/span&gt;
      *
      * @var bool $description
      */
     private $description = null;
 
     /**
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @var \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType[] $shippingCostPaidBy
      */
@@ -102,10 +92,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as refund
      *
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @return self
@@ -123,10 +111,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset refund
      *
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @param int|string $index
@@ -140,10 +126,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset refund
      *
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @param int|string $index
@@ -157,10 +141,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as refund
      *
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\RefundDetailsType>
@@ -173,10 +155,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new refund
      *
-     * This container consists of the supported refund/exchange/replacement item options that the seller may make available to the buyer in case the buyer wants to return the original item. Enumeration value(s) returned in <b>RefundOption</b> field(s) can be used in the <b>ReturnPolicy.RefundOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover what refund options that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticRefundMethodValues</code> and/or <code>InternationalRefundMethodValues</code> as <b>FeatureID</b> values to see the refund options available for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.Refund</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which refund methods are supported for a specific leaf category on a specific eBay marketplace, call the <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> method and inspect the <b>returnPolicies.domestic.refundMethods</b> and <b>returnPolicies.international.refundMethods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>RefundOption</b> and <b>InternationalRefundOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. If MONEY_BACK is returned by <b>getReturnPolicies</b>, use <b>MoneyBack</b> in <b>RefundOption</b> and <b>InternationalRefundOption</b>.
      *  </span>
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\RefundDetailsType> $refund
@@ -191,10 +171,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as returnsWithin
      *
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @return self
@@ -212,10 +191,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset returnsWithin
      *
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @param int|string $index
@@ -229,10 +207,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset returnsWithin
      *
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @param int|string $index
@@ -246,10 +223,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as returnsWithin
      *
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType>
@@ -262,10 +238,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new returnsWithin
      *
-     * This container consists of the supported time periods within which the buyer can return the item, starting from the day they receive the item. Enumeration value(s) returned in <b>ReturnsWithinOption</b> field(s) can be used in the <b>ReturnPolicy.ReturnsWithinOption</b> field in an Add/Revise/Relist API call.
-     *  <br/><br/>
+     * <br/><br/>
      *  <span class="tablenote"><b>Note: </b>
-     *  To discover what return durations that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively.
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsWithin</b> container that may still be returned in <b>GeteBayDetails</b>. To determine which return periods are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnPeriods</b> and <b>returnPolicies.international.returnPeriods</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsWithinOption</b> and <b>InternationalReturnsWithinOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. For example, if <b>getReturnPolicies</b> returns a <b>returnPeriods.value</b> of <code>30</code>, use <code>Days_30</code> in <b>ReturnsWithinOption</b> or <b>InternationalReturnsWithinOption</b>.
      *  </span>
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType> $returnsWithin
@@ -280,10 +255,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as returnsAccepted
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @return self
@@ -301,10 +274,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset returnsAccepted
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @param int|string $index
@@ -318,10 +289,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset returnsAccepted
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @param int|string $index
@@ -335,10 +304,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as returnsAccepted
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType>
@@ -351,10 +318,8 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new returnsAccepted
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ReturnsAcceptedOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether or not the seller allows the buyer to return the item.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover the enumeration values that a particular category supports, call <b>GetCategoryFeatures</b> and include <code>DomesticReturnsAcceptedValues</code> and/or <code>InternationalReturnsAcceptedValues</code> as <b>FeatureID</b> values to see the <b>ReturnPolicy.ReturnsAcceptedOption</b> and <b>ReturnPolicy.InternationalReturnsAcceptedOption</b> values supported for domestic and international returns, respectively.
+     * <span class="tablenote"><b>Note: </b>
+     *  This type defines the deprecated <b>ReturnPolicyDetails.ReturnsAccepted</b> container that may still be returned in <b>GeteBayDetails</b>. To determine whether returns are supported for a specific leaf category on a specific eBay marketplace, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnsAcceptanceEnabled</b> and <b>returnPolicies.international.returnsAcceptanceEnabled</b> fields. When using legacy Trading API ReturnPolicy fields, use <b>ReturnsAcceptedOption</b> and <b>InternationalReturnsAcceptedOption</b> to indicate whether or not the seller accepts returns for categories where return policies are applicable. Note that not accepting returns is still a valid return policy.
      *  </span>
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType> $returnsAccepted
@@ -369,11 +334,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as description
      *
-     * This field is returned with a value of <code>true</code> if the site supports a text description of the seller's Return Policy in listings. If the site does support a text description of the seller's Return Policy, it is set through the <b>ReturnPolicy.Description</b> field in an Add/Revise/Relist API call. Currently, the only eBay sites that support Return Policy descriptions are Germany, Austria, France, Italy, and Spain.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover if a Return Policy desciption is supported by a particular category, call <b>GetCategoryFeatures</b> and include <code>ReturnPolicyDescriptionEnabled</code> as a <b>FeatureID</b> value to see if the category supports the use of a Return Policy description.
-     *  </span>
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is used by the deprecated <b>ReturnPolicyDetails</b> container returned in <b>GeteBayDetails</b>. For category-specific support, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.policyDescriptionEnabled</b> and <b>returnPolicies.international.policyDescriptionEnabled</b> fields for the target marketplace and category.
+     *  &lt;/span&gt;
      *
      * @return bool
      */
@@ -385,11 +348,9 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new description
      *
-     * This field is returned with a value of <code>true</code> if the site supports a text description of the seller's Return Policy in listings. If the site does support a text description of the seller's Return Policy, it is set through the <b>ReturnPolicy.Description</b> field in an Add/Revise/Relist API call. Currently, the only eBay sites that support Return Policy descriptions are Germany, Austria, France, Italy, and Spain.
-     *  <br/><br/>
-     *  <span class="tablenote"><b>Note: </b>
-     *  To discover if a Return Policy desciption is supported by a particular category, call <b>GetCategoryFeatures</b> and include <code>ReturnPolicyDescriptionEnabled</code> as a <b>FeatureID</b> value to see if the category supports the use of a Return Policy description.
-     *  </span>
+     * <span class="tablenote"><b>Note: </b>
+     *  This field is used by the deprecated <b>ReturnPolicyDetails</b> container returned in <b>GeteBayDetails</b>. For category-specific support, call <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.policyDescriptionEnabled</b> and <b>returnPolicies.international.policyDescriptionEnabled</b> fields for the target marketplace and category.
+     *  &lt;/span&gt;
      *
      * @param bool $description
      * @return self
@@ -403,7 +364,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as shippingCostPaidBy
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType $shippingCostPaidBy
@@ -420,7 +381,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset shippingCostPaidBy
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @param int|string $index
      * @return bool
@@ -433,7 +394,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset shippingCostPaidBy
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @param int|string $index
      * @return void
@@ -446,7 +407,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as shippingCostPaidBy
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType>
      */
@@ -458,7 +419,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new shippingCostPaidBy
      *
-     * This container consists of the enumeration values that can be passed into the <b>ReturnPolicy.ShippingCostPaidByOption</b> or <b>ReturnPolicy.InternationalShippingCostPaidByOption</b> field when using an Add/Revise/Relist API call. This value will indicate whether the buyer or seller is responsible for return shipping cost. The enumeration value(s) returned in <b>ShippingCostPaidByOption</b> field(s) can be used in the <b>ReturnPolicy.ShippingCostPaidByOption</b> field in an
+     * This type defines the deprecated <b>ReturnPolicyDetails.ShippingCostPaidBy</b> container that may still be returned in <b>GeteBayDetails</b>. This value indicates whether the buyer or seller is responsible for return shipping cost. For category-specific support, call the <b>Sell Metadata API</b> <a href="https://developer.ebay.com/api-docs/sell/metadata/resources/marketplace/methods/getReturnPolicies" target="_blank">getReturnPolicies</a> and inspect the <b>returnPolicies.domestic.returnShippingCostPayers</b> and <b>returnPolicies.international.returnShippingCostPayers</b> fields for the target marketplace and category. When using legacy Trading API ReturnPolicy fields, use <b>ShippingCostPaidByOption</b> and <b>InternationalShippingCostPaidByOption</b> to pass one of the supported values returned by <b>getReturnPolicies</b>. Note that for SNAD returns, the seller is always responsible for return shipping cost.
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType> $shippingCostPaidBy
      * @return self
@@ -592,23 +553,33 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getRefund();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["Refund" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Refund", $v);
             }
         }
         $value = $this->getReturnsWithin();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ReturnsWithin" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsWithin", $v);
             }
         }
         $value = $this->getReturnsAccepted();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ReturnsAccepted" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ReturnsAccepted", $v);
             }
         }
         $value = $this->getDescription();
@@ -619,13 +590,13 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
         $value = $this->getShippingCostPaidBy();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingCostPaidBy" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCostPaidBy", $v);
             }
         }
         $value = $this->getRestockingFeeValue();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["RestockingFeeValue" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RestockingFeeValue", $v);
             }
         }
         $value = $this->getDetailVersion();

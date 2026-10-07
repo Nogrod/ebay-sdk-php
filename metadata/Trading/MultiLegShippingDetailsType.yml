@@ -27,3 +27,14 @@ Nogrod\eBaySDK\Trading\MultiLegShippingDetailsType:
                 getter: getLogisticsProviderShipmentToBuyer
                 setter: setLogisticsProviderShipmentToBuyer
             type: Nogrod\eBaySDK\Trading\MultiLegShipmentType
+        finalDestinationAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: FinalDestinationAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:ebay:apis:eBLBaseComponents'
+            accessor:
+                getter: getFinalDestinationAddress
+                setter: setFinalDestinationAddress
+            type: Nogrod\eBaySDK\Trading\AddressType

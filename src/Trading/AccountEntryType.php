@@ -705,7 +705,17 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getAccountDetailsEntryType();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}AccountDetailsEntryType", $value);
@@ -773,11 +783,16 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         }
         $value = $this->getDiscountDetail();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail", array_map(function ($v) {
-                    return ["Discount" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}DiscountDetail");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Discount", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getNetted();
@@ -865,10 +880,11 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
         if (null !== $value) {
             $this->setOrderId($value);
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountDetail');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}DiscountDetail');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Discount');
             $this->setDiscountDetail(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DiscountType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Discount'));
+                return \Nogrod\eBaySDK\Trading\DiscountType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Netted');

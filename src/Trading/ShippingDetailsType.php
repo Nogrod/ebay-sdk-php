@@ -118,7 +118,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $shippingRateType = null;
 
     /**
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -161,7 +161,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     ];
 
     /**
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -440,17 +440,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     private $eBayEstimatedLabelCost = null;
 
     /**
-     * Sellers can set up a global Exclude Ship-To List through their My eBay account.
-     *  The Exclude Ship-To List defines the countries to where the seller does not
-     *  ship, by default.
+     * Sellers can set up a global Exclude Ship-To List through their My eBay account. This list defines the countries to which the seller does not ship by default.
      *  <br><br>
-     *  This flag returns true if the Exclude Ship-To List is enabled by the seller for
-     *  the associated item. If <code>false</code>, the seller's Exclude Ship-To List is either not
-     *  set up, or it has been overridden by the seller when they listed the item with
-     *  ExcludeShipToLocation fields.
+     *  This field returns <code>true</code> when the listing does not have an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. This includes listings with no item-level Exclude Ship-To List, including cases where the seller has no My eBay Exclude Ship-To List and did not specify <b>ExcludeShipToLocation</b>.
      *  <br><br>
-     *  In the response, <b>ExcludeShipToLocation</b> fields detail the locations to where the
-     *  seller will not ship the item, regardless of the value returned in this field.
+     *  This field returns <code>false</code> when the listing has an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. An item-level list can be stored when the seller specifies <b>ExcludeShipToLocation</b> in an Add, Relist, or Revise request, or when the seller omits <b>ExcludeShipToLocation</b> and the seller's My eBay Exclude Ship-To List is applied at listing time.
+     *  <br><br>
+     *  A value of <code>false</code> does not mean that shipping exclusions were not applied. A value of <code>true</code> does not by itself mean that a My eBay Exclude Ship-To List exists.
+     *  <br><br>
+     *  In the response, <b>ExcludeShipToLocation</b> fields list the locations to which the seller will not ship the item, regardless of the value of this field.
      *
      * @var bool $sellerExcludeShipToLocationsPreference
      */
@@ -499,6 +497,17 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      * @var \Nogrod\eBaySDK\Trading\RateTableDetailsType $rateTableDetails
      */
     private $rateTableDetails = null;
+
+    /**
+     * Indicates the shipping label policy for the order line item. When present, the seller must generate and use a shipping label in accordance with the specified policy. If not returned, no shipping label policy is enforced. Possible value: <code>EBAY_ONLY</code>: The item must be shipped using an eBay-provided shipping label.
+     *  <br /><br />
+     *  <span class="tablenote">
+     *  <b>Note</b>: If using Trading WSDL Version 1455 or above, the <b>ShippingLabelPolicy</b> will be returned. If using a Trading WSDL older than Version 1455, the <b>ShippingLabelPolicy</b> will not be returned. To incorporate the new logic while using a Trading WSDL that is older than 1455, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1455 or higher. WSDL versions earlier than 1307 may have limited support for this header-based compatibility behavior.
+     *  </span>
+     *
+     * @var string $shippingLabelPolicy
+     */
+    private $shippingLabelPolicy = null;
 
     /**
      * Gets as allowPaymentEdit
@@ -811,7 +820,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as shippingServiceOptions
      *
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -862,7 +871,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset shippingServiceOptions
      *
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -909,7 +918,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset shippingServiceOptions
      *
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -956,7 +965,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as shippingServiceOptions
      *
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -1002,7 +1011,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new shippingServiceOptions
      *
-     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, generally at least one <b>ShippingServiceOptions</b> container will be required.
+     * This container is used to provide details on a specific domestic shipping service option, including the unique identifier of the shipping service option and the costs related to domestic shipping service. A separate <b>ShippingServiceOptions</b> container is needed for each domestic shipping service option that is available to ship the item. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>ShippingServiceOptions</b> nodes, the repeating nodes must be
      *  contiguous. For example, you can insert <b>InternationalShippingServiceOption</b> nodes
@@ -1050,7 +1059,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Adds as internationalShippingServiceOption
      *
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -1077,7 +1086,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * isset internationalShippingServiceOption
      *
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -1100,7 +1109,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * unset internationalShippingServiceOption
      *
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -1123,7 +1132,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as internationalShippingServiceOption
      *
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -1145,7 +1154,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new internationalShippingServiceOption
      *
-     * Shipping costs and options related to an international shipping service. If used, at least one domestic shipping service must also be provided in <b>ShippingServiceOptions</b>.
+     * Shipping costs and options related to an international shipping service. Unless a fulfillment business policy is being used, at least one <b>ShippingServiceOptions</b> or <b>InternationalShippingServiceOption</b> container will be required.
      *  <br><br>
      *  If you specify multiple <b>InternationalShippingServiceOption</b> nodes, the repeating nodes must be contiguous. That is, you cannot insert other nodes between <b>InternationalShippingServiceOption</b> nodes.
      *  <br><br>
@@ -2122,17 +2131,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Gets as sellerExcludeShipToLocationsPreference
      *
-     * Sellers can set up a global Exclude Ship-To List through their My eBay account.
-     *  The Exclude Ship-To List defines the countries to where the seller does not
-     *  ship, by default.
+     * Sellers can set up a global Exclude Ship-To List through their My eBay account. This list defines the countries to which the seller does not ship by default.
      *  <br><br>
-     *  This flag returns true if the Exclude Ship-To List is enabled by the seller for
-     *  the associated item. If <code>false</code>, the seller's Exclude Ship-To List is either not
-     *  set up, or it has been overridden by the seller when they listed the item with
-     *  ExcludeShipToLocation fields.
+     *  This field returns <code>true</code> when the listing does not have an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. This includes listings with no item-level Exclude Ship-To List, including cases where the seller has no My eBay Exclude Ship-To List and did not specify <b>ExcludeShipToLocation</b>.
      *  <br><br>
-     *  In the response, <b>ExcludeShipToLocation</b> fields detail the locations to where the
-     *  seller will not ship the item, regardless of the value returned in this field.
+     *  This field returns <code>false</code> when the listing has an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. An item-level list can be stored when the seller specifies <b>ExcludeShipToLocation</b> in an Add, Relist, or Revise request, or when the seller omits <b>ExcludeShipToLocation</b> and the seller's My eBay Exclude Ship-To List is applied at listing time.
+     *  <br><br>
+     *  A value of <code>false</code> does not mean that shipping exclusions were not applied. A value of <code>true</code> does not by itself mean that a My eBay Exclude Ship-To List exists.
+     *  <br><br>
+     *  In the response, <b>ExcludeShipToLocation</b> fields list the locations to which the seller will not ship the item, regardless of the value of this field.
      *
      * @return bool
      */
@@ -2144,17 +2151,15 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
     /**
      * Sets a new sellerExcludeShipToLocationsPreference
      *
-     * Sellers can set up a global Exclude Ship-To List through their My eBay account.
-     *  The Exclude Ship-To List defines the countries to where the seller does not
-     *  ship, by default.
+     * Sellers can set up a global Exclude Ship-To List through their My eBay account. This list defines the countries to which the seller does not ship by default.
      *  <br><br>
-     *  This flag returns true if the Exclude Ship-To List is enabled by the seller for
-     *  the associated item. If <code>false</code>, the seller's Exclude Ship-To List is either not
-     *  set up, or it has been overridden by the seller when they listed the item with
-     *  ExcludeShipToLocation fields.
+     *  This field returns <code>true</code> when the listing does not have an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. This includes listings with no item-level Exclude Ship-To List, including cases where the seller has no My eBay Exclude Ship-To List and did not specify <b>ExcludeShipToLocation</b>.
      *  <br><br>
-     *  In the response, <b>ExcludeShipToLocation</b> fields detail the locations to where the
-     *  seller will not ship the item, regardless of the value returned in this field.
+     *  This field returns <code>false</code> when the listing has an item-level Exclude Ship-To List that is newer than the seller's My eBay Exclude Ship-To List. An item-level list can be stored when the seller specifies <b>ExcludeShipToLocation</b> in an Add, Relist, or Revise request, or when the seller omits <b>ExcludeShipToLocation</b> and the seller's My eBay Exclude Ship-To List is applied at listing time.
+     *  <br><br>
+     *  A value of <code>false</code> does not mean that shipping exclusions were not applied. A value of <code>true</code> does not by itself mean that a My eBay Exclude Ship-To List exists.
+     *  <br><br>
+     *  In the response, <b>ExcludeShipToLocation</b> fields list the locations to which the seller will not ship the item, regardless of the value of this field.
      *
      * @param bool $sellerExcludeShipToLocationsPreference
      * @return self
@@ -2364,9 +2369,53 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         return $this;
     }
 
+    /**
+     * Gets as shippingLabelPolicy
+     *
+     * Indicates the shipping label policy for the order line item. When present, the seller must generate and use a shipping label in accordance with the specified policy. If not returned, no shipping label policy is enforced. Possible value: <code>EBAY_ONLY</code>: The item must be shipped using an eBay-provided shipping label.
+     *  <br /><br />
+     *  <span class="tablenote">
+     *  <b>Note</b>: If using Trading WSDL Version 1455 or above, the <b>ShippingLabelPolicy</b> will be returned. If using a Trading WSDL older than Version 1455, the <b>ShippingLabelPolicy</b> will not be returned. To incorporate the new logic while using a Trading WSDL that is older than 1455, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1455 or higher. WSDL versions earlier than 1307 may have limited support for this header-based compatibility behavior.
+     *  </span>
+     *
+     * @return string
+     */
+    public function getShippingLabelPolicy()
+    {
+        return $this->shippingLabelPolicy;
+    }
+
+    /**
+     * Sets a new shippingLabelPolicy
+     *
+     * Indicates the shipping label policy for the order line item. When present, the seller must generate and use a shipping label in accordance with the specified policy. If not returned, no shipping label policy is enforced. Possible value: <code>EBAY_ONLY</code>: The item must be shipped using an eBay-provided shipping label.
+     *  <br /><br />
+     *  <span class="tablenote">
+     *  <b>Note</b>: If using Trading WSDL Version 1455 or above, the <b>ShippingLabelPolicy</b> will be returned. If using a Trading WSDL older than Version 1455, the <b>ShippingLabelPolicy</b> will not be returned. To incorporate the new logic while using a Trading WSDL that is older than 1455, developers can also use the X-EBAY-API-COMPATIBILITY-LEVEL header and set its value to 1455 or higher. WSDL versions earlier than 1307 may have limited support for this header-based compatibility behavior.
+     *  </span>
+     *
+     * @param string $shippingLabelPolicy
+     * @return self
+     */
+    public function setShippingLabelPolicy($shippingLabelPolicy)
+    {
+        $this->shippingLabelPolicy = $shippingLabelPolicy;
+        return $this;
+    }
+
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getAllowPaymentEdit();
         $value = null !== $value ? ($value ? 'true' : 'false') : null;
         if (null !== $value) {
@@ -2411,13 +2460,13 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = $this->getShippingServiceOptions();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingServiceOptions" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServiceOptions", $v);
             }
         }
         $value = $this->getInternationalShippingServiceOption();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["InternationalShippingServiceOption" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}InternationalShippingServiceOption", $v);
             }
         }
         $value = $this->getShippingType();
@@ -2435,11 +2484,16 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         }
         $value = $this->getTaxTable();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxTable", array_map(function ($v) {
-                    return ["TaxJurisdiction" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}TaxTable");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getGetItFast();
@@ -2496,7 +2550,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = $this->getExcludeShipToLocation();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ExcludeShipToLocation" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ExcludeShipToLocation", $v);
             }
         }
         $value = $this->getEBayEstimatedLabelCost();
@@ -2511,12 +2565,16 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = $this->getShipmentTrackingDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShipmentTrackingDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipmentTrackingDetails", $v);
             }
         }
         $value = $this->getRateTableDetails();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RateTableDetails", $value);
+        }
+        $value = $this->getShippingLabelPolicy();
+        if (null !== $value) {
+            $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingLabelPolicy", $value);
         }
     }
 
@@ -2594,10 +2652,11 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         if (null !== $value) {
             $this->setThirdPartyCheckout(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}TaxTable');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction');
             $this->setTaxTable(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}TaxJurisdiction'));
+                return \Nogrod\eBaySDK\Trading\TaxJurisdictionType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}GetItFast');
@@ -2669,6 +2728,10 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}RateTableDetails');
         if (null !== $value) {
             $this->setRateTableDetails(\Nogrod\eBaySDK\Trading\RateTableDetailsType::fromKeyValue($value));
+        }
+        $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}ShippingLabelPolicy');
+        if (null !== $value) {
+            $this->setShippingLabelPolicy($value);
         }
     }
 }

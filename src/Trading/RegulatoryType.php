@@ -421,7 +421,17 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getEnergyEfficiencyLabel();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}EnergyEfficiencyLabel", $value);
@@ -444,20 +454,30 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         }
         $value = $this->getResponsiblePersons();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons", array_map(function ($v) {
-                    return ["ResponsiblePerson" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getDocuments();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Documents", array_map(function ($v) {
-                    return ["Document" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}Documents");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Document", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
     }
@@ -496,16 +516,18 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
         if (null !== $value) {
             $this->setManufacturer(\Nogrod\eBaySDK\Trading\ManufacturerType::fromKeyValue($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePersons');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson');
             $this->setResponsiblePersons(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}ResponsiblePerson'));
+                return \Nogrod\eBaySDK\Trading\ResponsiblePersonType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}Documents');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}Document');
             $this->setDocuments(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}Document'));
+                return \Nogrod\eBaySDK\Trading\DocumentType::fromKeyValue($v);
             }, $value));
         }
     }

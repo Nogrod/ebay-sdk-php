@@ -629,8 +629,9 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'ItemMarkedPaid' value.
      *
-     * This notification is sent to a subscribed buyer and seller when that seller has
-     * marked an order as 'paid'.
+     * This notification is decommissioned. Users can no longer subscribe to this event
+     * and instances of the notification event type will stop being sent to
+     * subscribers.
      */
     public const VAL_ITEM_MARKED_PAID = 'ItemMarkedPaid';
 
@@ -829,6 +830,10 @@ class NotificationEventTypeCodeType
      * shopping cart is about
      *  to end. This event has a <b>TimeLeft</b> property that defines the 'ending
      * soon' threshold value.
+     *  <br><br>
+     *  This notification is deprecated, and will be decommissioned on January 11,
+     * 2027. After decommission, users can no longer subscribe to this event and
+     * instances of the notification event type will stop being sent to subscribers.
      */
     public const VAL_SHOPPING_CART_ITEM_ENDING_SOON = 'ShoppingCartItemEndingSoon';
 
@@ -1015,8 +1020,8 @@ class NotificationEventTypeCodeType
     /**
      * Constant for 'ItemReadyForPickup' value.
      *
-     * This notification is sent to a subscribed buyer when an In-Store Pickup or Click
-     * and Collect order is ready to be picked up at the merchant's store.
+     * This notification is sent to a subscribed buyer when a Click and Collect order
+     * is ready to be picked up at the merchant's store.
      */
     public const VAL_ITEM_READY_FOR_PICKUP = 'ItemReadyForPickup';
 

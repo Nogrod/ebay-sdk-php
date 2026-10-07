@@ -513,9 +513,14 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getModTimeFrom();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ModTimeFrom", $value);
@@ -540,11 +545,16 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         }
         $value = $this->getSKUArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKUArray", array_map(function ($v) {
-                    return ["SKU" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}SKUArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}SKU", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getPlatform();
@@ -601,11 +611,10 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
         if (null !== $value) {
             $this->setIncludeContainingOrder(filter_var($value, FILTER_VALIDATE_BOOLEAN));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray', true);
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}SKUArray');
         if (null !== $value) {
-            $this->setSKUArray(array_map(function ($v) {
-                return Func::mapValue($v, '{urn:ebay:apis:eBLBaseComponents}SKU');
-            }, $value));
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}SKU', true);
+            $this->setSKUArray($value);
         }
         $value = Func::mapValue($keyValue, '{urn:ebay:apis:eBLBaseComponents}Platform');
         if (null !== $value) {

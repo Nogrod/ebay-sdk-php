@@ -90,9 +90,14 @@ class ReturnPolicyProfileType extends SellerProfileType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getReturnPolicyInfo();
         if (null !== $value) {
             $writer->writeElement("{http://www.ebay.com/marketplace/selling/v1/services}returnPolicyInfo", $value);

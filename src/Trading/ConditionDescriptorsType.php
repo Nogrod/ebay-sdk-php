@@ -14,10 +14,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 {
     /**
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @var \Nogrod\eBaySDK\Trading\ConditionDescriptorType[] $conditionDescriptor
@@ -30,10 +44,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Adds as conditionDescriptor
      *
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @return self
@@ -52,10 +80,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * isset conditionDescriptor
      *
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @param int|string $index
@@ -70,10 +112,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * unset conditionDescriptor
      *
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @param int|string $index
@@ -88,10 +144,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Gets as conditionDescriptor
      *
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType>
@@ -105,10 +175,24 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      * Sets a new conditionDescriptor
      *
      * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text inputs.<br /><br />To retrieve all condition descriptor numeric IDs for a category, use the <a href = "/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies">getItemConditionPolicies</a> method of the <b>Metadata API</b>.<br>
-     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card categories (<b>CategoryID</b>):<br />
-     *  <ul><li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
+     *  <span class="tablenote"><b>Note: </b> The use of Condition Descriptors is currently only available for the following trading card leaf categories (<b>CategoryID</b>):<br />
+     *  <ul>
+     *  <li>Non-Sport Trading Card Singles (<code>183050</code>)</li>
      *  <li>CCG Individual Cards (<code>183454</code>)</li>
-     *  <li>Sports Trading Card Singles (<code>261328</code>)</li></ul>
+     *  <li>Sports Trading Card Singles (<code>261328</code>)</li>
+     *  </ul>
+     *  and the following coin categories:
+     *  <ul>
+     *  <li>Coins: US (<code>253</code>)</li>
+     *  <li>Coins: World (<code>256</code>)</li>
+     *  <li>Coins: Canada (<code>3377</code>)</li>
+     *  <li>Coins: Ancient (<code>4733</code>)</li>
+     *  <li>Coins: Medieval (<code>18466</code>)</li>
+     *  </ul>
+     *  <br />
+     *  Note that these coin categories are not leaf categories, so condition grading is available for all leaf categories descending from the above categories (except for rolls, sets, and lots).
+     *  <br /><br />
+     *  Additionally, condition grading is available for Salvage items in select categories for eligible users. Use the <a href="/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies" target="_blank">getItemConditionPolicies</a> method to see supported categories.
      *  </span>
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\ConditionDescriptorType> $conditionDescriptor
@@ -122,11 +206,21 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getConditionDescriptor();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ConditionDescriptor" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ConditionDescriptor", $v);
             }
         }
     }

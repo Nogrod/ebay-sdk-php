@@ -499,7 +499,17 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getShippingService();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingService", $value);
@@ -519,7 +529,7 @@ class InternationalShippingServiceOptionsType implements \Sabre\Xml\XmlSerializa
         $value = $this->getShipToLocation();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShipToLocation" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShipToLocation", $v);
             }
         }
         $value = $this->getImportCharge();

@@ -5,7 +5,10 @@ namespace Nogrod\eBaySDK\Trading;
 /**
  * Class representing RefundSourceTypeCodeType
  *
- * Enumerated type defining the refund types that a merchant can offer a buyer who is returning an In-Store Pickup item to the store.
+ * <span class="tablenote">
+ *  <strong>Note:</strong>
+ *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this simple type and its associated enumerated values should no longer be used in the Trading API.
+ *  </span>
  * XSD Type: RefundSourceTypeCodeType
  */
 class RefundSourceTypeCodeType
@@ -13,23 +16,21 @@ class RefundSourceTypeCodeType
     /**
      * Constant for 'StoreCredit' value.
      *
-     * This value indicates that the merchant issued a store credit to the buyer for
-     * the amount of the returned item(s).
+     * Deprecated.
      */
     public const VAL_STORE_CREDIT = 'StoreCredit';
 
     /**
      * Constant for 'PaymentRefund' value.
      *
-     * This value indicates that the merchant issued a cash refund (or debit
-     * card/credit card reversal) to the buyer for the amount of the returned item(s).
+     * Deprecated.
      */
     public const VAL_PAYMENT_REFUND = 'PaymentRefund';
 
     /**
      * Constant for 'CustomCode' value.
      *
-     * This value is reserved for internal or future use.
+     * Deprecated.
      */
     public const VAL_CUSTOM_CODE = 'CustomCode';
 

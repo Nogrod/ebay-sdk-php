@@ -13,7 +13,7 @@ use Nogrod\XMLClientRuntime\Func;
 class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable
 {
     /**
-     * This value indicates whether the merchant refunded or provided a store credit to the buyer for the returned In-Store Pickup item. Applicable values are 'REFUND' and 'STORE_CREDIT'. This value is picked up by eBay when the merchant passes in the <strong>REFUND_TYPE</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay.
+     * Since BOPIS (Buy Online, Pick Up In Store) is no longer supported, this field should no longer be used in the Trading API.
      *
      * @var string $refundType
      */
@@ -40,7 +40,7 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $refundTime = null;
 
     /**
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
      *  <br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> For <strong>GetItemTransactions</strong> and <strong>GetSellerTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
@@ -53,16 +53,24 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     private $refundAmount = null;
 
     /**
-     * This value is a merchant-defined identifier used to track In-Store Pickup refunds. This value is picked up by eBay when the merchant passes in the <strong>REFUND_ID</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay. This field is not returned if the merchant does not set this value through <strong>ORDER.RETURNED</strong> notification.
-     *  <br/><br/>
-     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @var \Nogrod\eBaySDK\Trading\TransactionReferenceType $referenceID
      */
     private $referenceID = null;
 
     /**
-     * This dollar value is the total amount of the refund to the buyer for the In-Store Pickup order. Typically, this dollar value will be the same as the <strong>RefundAmount</strong> value, unless the merchant is issuing multiple refund transactions to the buyer, in which case, the <strong>FeeOrCreditAmount</strong> value will be the cumulative amount for multiple refund transactions. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $feeOrCreditAmount
      */
@@ -71,7 +79,7 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as refundType
      *
-     * This value indicates whether the merchant refunded or provided a store credit to the buyer for the returned In-Store Pickup item. Applicable values are 'REFUND' and 'STORE_CREDIT'. This value is picked up by eBay when the merchant passes in the <strong>REFUND_TYPE</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay.
+     * Since BOPIS (Buy Online, Pick Up In Store) is no longer supported, this field should no longer be used in the Trading API.
      *
      * @return string
      */
@@ -83,7 +91,7 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new refundType
      *
-     * This value indicates whether the merchant refunded or provided a store credit to the buyer for the returned In-Store Pickup item. Applicable values are 'REFUND' and 'STORE_CREDIT'. This value is picked up by eBay when the merchant passes in the <strong>REFUND_TYPE</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay.
+     * Since BOPIS (Buy Online, Pick Up In Store) is no longer supported, this field should no longer be used in the Trading API.
      *
      * @param string $refundType
      * @return self
@@ -161,7 +169,7 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as refundAmount
      *
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
      *  <br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> For <strong>GetItemTransactions</strong> and <strong>GetSellerTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
@@ -179,7 +187,7 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new refundAmount
      *
-     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for In-Store Pick or Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * This dollar value is the amount of the refund to the buyer for this specific refund transaction. This field is not returned for Click and Collect orders where the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
      *  <br/>
      *  <span class="tablenote">
      *  <strong>Note:</strong> For <strong>GetItemTransactions</strong> and <strong>GetSellerTransactions</strong>, the final value fee amount deducted from the seller's payout funds for the sale is not included in this field, which means that the amount in this field may not reflect the buyer's actual refund amount.
@@ -199,9 +207,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as referenceID
      *
-     * This value is a merchant-defined identifier used to track In-Store Pickup refunds. This value is picked up by eBay when the merchant passes in the <strong>REFUND_ID</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay. This field is not returned if the merchant does not set this value through <strong>ORDER.RETURNED</strong> notification.
-     *  <br/><br/>
-     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @return \Nogrod\eBaySDK\Trading\TransactionReferenceType
      */
@@ -213,9 +224,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new referenceID
      *
-     * This value is a merchant-defined identifier used to track In-Store Pickup refunds. This value is picked up by eBay when the merchant passes in the <strong>REFUND_ID</strong> parameter through the payload of an <strong>ORDER.RETURNED</strong> notification sent to eBay. This field is not returned if the merchant does not set this value through <strong>ORDER.RETURNED</strong> notification.
-     *  <br/><br/>
-     *  <b>For GetOrders and GetItemTransactions only:</b> If using Trading WSDL Version 1019 or above, this field will only be returned to the buyer or seller, and no longer returned at all to third parties. If using a Trading WSDL older than Version 1019, the correct payment identifier is returned to the buyer or seller, but the payment identifier will be masked to all third parties.
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @param \Nogrod\eBaySDK\Trading\TransactionReferenceType $referenceID
      * @return self
@@ -229,7 +243,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as feeOrCreditAmount
      *
-     * This dollar value is the total amount of the refund to the buyer for the In-Store Pickup order. Typically, this dollar value will be the same as the <strong>RefundAmount</strong> value, unless the merchant is issuing multiple refund transactions to the buyer, in which case, the <strong>FeeOrCreditAmount</strong> value will be the cumulative amount for multiple refund transactions. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -241,7 +260,12 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new feeOrCreditAmount
      *
-     * This dollar value is the total amount of the refund to the buyer for the In-Store Pickup order. Typically, this dollar value will be the same as the <strong>RefundAmount</strong> value, unless the merchant is issuing multiple refund transactions to the buyer, in which case, the <strong>FeeOrCreditAmount</strong> value will be the cumulative amount for multiple refund transactions. This field is not returned if the merchant issued the buyer a store credit instead of a refund (RefundType=STORE_CREDIT).
+     * <br/>
+     *  <span class="tablenote">
+     *  <strong>Note:</strong>
+     *  Since BOPIS (Buy Online, Pick Up In Store) is no longer available, this container and its associated fields are no longer available for active use in the Trading API.
+     *  </span>
+     *  <br/>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $feeOrCreditAmount
      * @return self
@@ -254,7 +278,17 @@ class RefundTransactionInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getRefundType();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}RefundType", $value);

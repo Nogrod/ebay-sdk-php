@@ -293,9 +293,14 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         return $this;
     }
 
-    public function xmlSerialize(\Sabre\Xml\Writer $writer): void
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
-        parent::xmlSerialize($writer);
+        parent::xmlSerializeAttributes($writer);
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
+        parent::xmlSerializeElements($writer);
         $value = $this->getStartTime();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}StartTime", $value);
@@ -306,20 +311,30 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         }
         $value = $this->getNotificationDetailsArray();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray", array_map(function ($v) {
-                    return ["NotificationDetails" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}NotificationDetails", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getMarkUpMarkDownHistory();
         if (null !== $value) {
-            $value = is_array($value) ? $value : iterator_to_array($value);
-            if ([] !== $value) {
-                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory", array_map(function ($v) {
-                    return ["MarkUpMarkDownEvent" => $v];
-                }, $value));
+            $open = false;
+            foreach ($value as $v) {
+                if (!$open) {
+                    $writer->startElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory");
+                    $open = true;
+                }
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent", $v);
+            }
+            if ($open) {
+                $writer->endElement();
             }
         }
         $value = $this->getNotificationStatistics();
@@ -351,16 +366,18 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
         if (null !== $value) {
             $this->setEndTime(new \DateTime($value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationDetailsArray');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}NotificationDetails');
             $this->setNotificationDetailsArray(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}NotificationDetails'));
+                return \Nogrod\eBaySDK\Trading\NotificationDetailsType::fromKeyValue($v);
             }, $value));
         }
-        $value = Func::mapArray($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory');
+        $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownHistory');
         if (null !== $value) {
+            $value = Func::mapArray($value, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent');
             $this->setMarkUpMarkDownHistory(array_map(function ($v) {
-                return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue(Func::mapObject($v, '{urn:ebay:apis:eBLBaseComponents}MarkUpMarkDownEvent'));
+                return \Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType::fromKeyValue($v);
             }, $value));
         }
         $value = Func::mapObject($keyValue, '{urn:ebay:apis:eBLBaseComponents}NotificationStatistics');

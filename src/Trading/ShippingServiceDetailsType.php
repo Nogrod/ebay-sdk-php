@@ -1087,7 +1087,17 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
 
     public function xmlSerialize(\Sabre\Xml\Writer $writer): void
     {
-        $writer->writeAttribute("xmlns", "urn:ebay:apis:eBLBaseComponents");
+        $this->xmlSerializeAttributes($writer);
+        $this->xmlSerializeElements($writer);
+    }
+
+    protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
+    {
+        Func::writeDefaultNamespace($writer, "urn:ebay:apis:eBLBaseComponents");
+    }
+
+    protected function xmlSerializeElements(\Sabre\Xml\Writer $writer): void
+    {
         $value = $this->getDescription();
         if (null !== $value) {
             $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}Description", $value);
@@ -1121,13 +1131,13 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = $this->getServiceType();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ServiceType" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ServiceType", $v);
             }
         }
         $value = $this->getShippingPackage();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingPackage" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingPackage", $v);
             }
         }
         $value = $this->getDimensionsRequired();
@@ -1148,7 +1158,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = $this->getShippingCarrier();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingCarrier" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingCarrier", $v);
             }
         }
         $value = $this->getCODService();
@@ -1159,7 +1169,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = $this->getDeprecationDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["DeprecationDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}DeprecationDetails", $v);
             }
         }
         $value = $this->getMappedToShippingServiceID();
@@ -1173,7 +1183,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
         $value = $this->getShippingServicePackageDetails();
         if (null !== $value) {
             foreach ($value as $v) {
-                $writer->write([["ShippingServicePackageDetails" => $v]]);
+                $writer->writeElement("{urn:ebay:apis:eBLBaseComponents}ShippingServicePackageDetails", $v);
             }
         }
         $value = $this->getWeightRequired();
