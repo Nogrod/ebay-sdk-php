@@ -33,6 +33,16 @@ The generated types read and write themselves through XMLReader/XMLWriter (via
 sabre/xml); there is no JMS metadata. `TradingClient::serialize($object, 'json')`
 gives the element and attribute names as keys.
 
+## Tests
+
+``` bash
+$ composer test
+```
+
+The build runs them as its last step. They cover what eBay is strict about,
+above all that every request in a bulk data exchange file declares its own
+`xmlns`.
+
 ## Note 
 
 The code in this project is provided under the 

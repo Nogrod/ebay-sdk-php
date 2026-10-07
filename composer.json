@@ -14,7 +14,6 @@
   ],
   "require": {
     "php": "^8.0",
-    "php-http/multipart-stream-builder": "^1.1",
     "nogrod/xml-client-runtime": "^0.7"
   },
   "require-dev": {
@@ -23,20 +22,28 @@
     "goetas-webservices/soap-reader": "dev-master",
     "goetas-webservices/wsdl-reader": "dev-master",
     "goetas-webservices/xsd2php": "dev-master",
-    "symfony/var-dumper": "*"
+    "symfony/var-dumper": "*",
+    "phpunit/phpunit": "^12.0 || ^13.0"
   },
   "autoload": {
     "psr-4": {
       "Nogrod\\eBaySDK\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Nogrod\\eBaySDK\\Tests\\": "tests"
+    }
+  },
   "scripts": {
     "build": [
       "xml-client -vvv generate config",
       "php-cs-fixer fix src",
-      ".\\copy.bat"
+      ".\\copy.bat",
+      "@test"
     ],
-    "download": "@php wsdldl.php"
+    "download": "@php wsdldl.php",
+    "test": "phpunit"
   },
   "config": {
     "allow-plugins": {

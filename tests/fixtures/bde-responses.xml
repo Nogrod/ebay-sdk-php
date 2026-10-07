@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BulkDataExchangeResponses xmlns="urn:ebay:apis:eBLBaseComponents">
+  <AddFixedPriceItemResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+    <Timestamp>2026-10-07T10:15:30.123Z</Timestamp>
+    <Ack>Warning</Ack>
+    <Errors>
+      <ShortMessage>Hinweis &amp; Warnung</ShortMessage>
+      <LongMessage><![CDATA[Text mit <b>CDATA</b> & Sonderzeichen äöü]]></LongMessage>
+      <ErrorCode>21917091</ErrorCode>
+      <SeverityCode>Warning</SeverityCode>
+      <ErrorParameters ParamID="0">
+        <Value>5</Value>
+      </ErrorParameters>
+      <ErrorParameters ParamID="1">
+        <Value>Zweiter</Value>
+      </ErrorParameters>
+      <ErrorClassification>RequestError</ErrorClassification>
+    </Errors>
+    <Errors>
+      <ShortMessage>Zweiter Fehler</ShortMessage>
+      <SeverityCode>Warning</SeverityCode>
+    </Errors>
+    <Version>1487</Version>
+    <Build>E1487_CORE_API_1</Build>
+    <ItemID>123456789012</ItemID>
+    <SKU>SKU-1</SKU>
+    <StartTime>2026-10-07T10:15:29.000Z</StartTime>
+    <EndTime>2026-11-06T10:15:29.000Z</EndTime>
+    <Fees>
+      <Fee>
+        <Name>AuctionLengthFee</Name>
+        <Fee currencyID="EUR">0.0</Fee>
+      </Fee>
+      <Fee>
+        <Name>InsertionFee</Name>
+        <Fee currencyID="EUR">0.35</Fee>
+        <PromotionalDiscount currencyID="EUR">0.35</PromotionalDiscount>
+      </Fee>
+      <Fee>
+        <Name>ListingFee</Name>
+        <Fee currencyID="EUR">0.0</Fee>
+      </Fee>
+    </Fees>
+    <CorrelationID>abc</CorrelationID>
+    <UnknownFutureElement><Nested>ignored</Nested></UnknownFutureElement>
+  </AddFixedPriceItemResponse>
+  <ReviseInventoryStatusResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+    <Ack>Success</Ack>
+    <InventoryStatus>
+      <SKU>SKU-2</SKU>
+      <ItemID>2</ItemID>
+      <StartPrice currencyID="EUR">12.5</StartPrice>
+      <Quantity>0</Quantity>
+    </InventoryStatus>
+    <InventoryStatus>
+      <SKU>SKU-3</SKU>
+      <ItemID>3</ItemID>
+      <StartPrice currencyID="EUR">7</StartPrice>
+      <Quantity>15</Quantity>
+    </InventoryStatus>
+    <Fees>
+      <ItemID>2</ItemID>
+      <Fee><Name>ListingFee</Name><Fee currencyID="EUR">0.0</Fee></Fee>
+    </Fees>
+  </ReviseInventoryStatusResponse>
+  <OrderAckResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+    <Ack>Success</Ack>
+    <Empty/>
+  </OrderAckResponse>
+</BulkDataExchangeResponses>

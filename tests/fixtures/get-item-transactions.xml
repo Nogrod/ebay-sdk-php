@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetItemTransactionsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+  <Timestamp>2026-10-07T08:00:00.000Z</Timestamp>
+  <Ack>Success</Ack>
+  <Version>1487</Version>
+  <PaginationResult>
+    <TotalNumberOfPages>1</TotalNumberOfPages>
+    <TotalNumberOfEntries>2</TotalNumberOfEntries>
+  </PaginationResult>
+  <HasMoreTransactions>false</HasMoreTransactions>
+  <TransactionsPerPage>100</TransactionsPerPage>
+  <PageNumber>1</PageNumber>
+  <ReturnedTransactionCountActual>2</ReturnedTransactionCountActual>
+  <Item>
+    <AutoPay>true</AutoPay>
+    <Currency>EUR</Currency>
+    <ItemID>110000000001</ItemID>
+    <ListingDetails>
+      <StartTime>2026-09-01T00:00:00.000Z</StartTime>
+      <ViewItemURL>https://www.ebay.de/itm/110000000001</ViewItemURL>
+    </ListingDetails>
+    <ListingType>FixedPriceItem</ListingType>
+    <PrimaryCategory><CategoryID>33564</CategoryID></PrimaryCategory>
+    <Quantity>10</Quantity>
+    <SellingStatus>
+      <CurrentPrice currencyID="EUR">49.95</CurrentPrice>
+      <QuantitySold>2</QuantitySold>
+      <ListingStatus>Active</ListingStatus>
+    </SellingStatus>
+    <ShippingDetails>
+      <CalculatedShippingRate>
+        <WeightMajor unit="kg" measurementSystem="Metric">2</WeightMajor>
+        <WeightMinor unit="g" measurementSystem="Metric">500</WeightMinor>
+      </CalculatedShippingRate>
+    </ShippingDetails>
+    <Site>Germany</Site>
+    <Title>Bremsscheibe &amp; Beläge</Title>
+    <ItemSpecifics>
+      <NameValueList><Name>Marke</Name><Value>Meyle</Value></NameValueList>
+      <NameValueList><Name>Einbauposition</Name><Value>Vorne</Value><Value>Links</Value></NameValueList>
+      <NameValueList><Name>Herstellernummer</Name><Value>015 521 0006</Value></NameValueList>
+    </ItemSpecifics>
+    <SKU>SKU-1</SKU>
+    <PictureDetails>
+      <PictureURL>https://i.ebayimg.com/1.jpg</PictureURL>
+      <PictureURL>https://i.ebayimg.com/2.jpg</PictureURL>
+    </PictureDetails>
+  </Item>
+  <TransactionArray>
+    <Transaction>
+      <AmountPaid currencyID="EUR">99.9</AmountPaid>
+      <Buyer><Email>a@example.com</Email><UserID>buyer_a</UserID></Buyer>
+      <CreatedDate>2026-10-06T12:00:00.000Z</CreatedDate>
+      <QuantityPurchased>2</QuantityPurchased>
+      <TransactionID>1000</TransactionID>
+      <TransactionPrice currencyID="EUR">49.95</TransactionPrice>
+      <ContainingOrder>
+        <OrderID>01-11111-11111</OrderID>
+        <OrderStatus>Completed</OrderStatus>
+      </ContainingOrder>
+      <ExtendedOrderID>01-11111-11111</ExtendedOrderID>
+      <Variation>
+        <SKU>SKU-1-A</SKU>
+        <VariationSpecifics>
+          <NameValueList><Name>Farbe</Name><Value>Rot</Value></NameValueList>
+          <NameValueList><Name>Größe</Name><Value>L</Value></NameValueList>
+        </VariationSpecifics>
+      </Variation>
+    </Transaction>
+    <Transaction>
+      <AmountPaid currencyID="EUR">49.95</AmountPaid>
+      <Buyer><UserID>buyer_b</UserID></Buyer>
+      <QuantityPurchased>1</QuantityPurchased>
+      <TransactionID>1001</TransactionID>
+      <ContainingOrder>
+        <OrderID>02-22222-22222</OrderID>
+      </ContainingOrder>
+    </Transaction>
+    <Transaction>
+      <TransactionID>1002</TransactionID>
+      <ContainingOrder><OrderID>03-33333-33333</OrderID></ContainingOrder>
+    </Transaction>
+  </TransactionArray>
+  <PayPalPreferred>false</PayPalPreferred>
+</GetItemTransactionsResponse>
