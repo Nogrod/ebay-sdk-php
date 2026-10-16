@@ -7,17 +7,16 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing SetShipmentTrackingInfoResponseType
  *
- * Response to a SetShipmentTrackingInfo request that verifies whether or not the
- *  call request reached the eBay servers with or without errors.
+ * Response to a SetShipmentTrackingInfo request that verifies whether or not
+ *  the call request reached the eBay servers with or without errors.
  * XSD Type: SetShipmentTrackingInfoResponseType
  */
 class SetShipmentTrackingInfoResponseType extends AbstractResponseType
 {
     /**
-     * OrderID is always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     * OrderID is always returned in the response. You can use this field
+     *  to track whether or not a response is returned for every request, and to match
+     *  specific responses to Specific requests.
      *
      * @var string $orderID
      */
@@ -25,9 +24,8 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
 
     /**
      * OrderLineItemID is required upon input and always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     *  response. You can use this field to track whether or not a response is returned for
+     *  every request, and to match specific responses to Specific requests.
      *
      * @var string $orderLineItemID
      */
@@ -36,10 +34,9 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
     /**
      * Gets as orderID
      *
-     * OrderID is always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     * OrderID is always returned in the response. You can use this field
+     *  to track whether or not a response is returned for every request, and to match
+     *  specific responses to Specific requests.
      *
      * @return string
      */
@@ -51,10 +48,9 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
     /**
      * Sets a new orderID
      *
-     * OrderID is always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     * OrderID is always returned in the response. You can use this field
+     *  to track whether or not a response is returned for every request, and to match
+     *  specific responses to Specific requests.
      *
      * @param string $orderID
      * @return self
@@ -69,9 +65,8 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
      * Gets as orderLineItemID
      *
      * OrderLineItemID is required upon input and always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     *  response. You can use this field to track whether or not a response is returned for
+     *  every request, and to match specific responses to Specific requests.
      *
      * @return string
      */
@@ -84,9 +79,8 @@ class SetShipmentTrackingInfoResponseType extends AbstractResponseType
      * Sets a new orderLineItemID
      *
      * OrderLineItemID is required upon input and always returned in the
-     *  response. You can use this field to track whether or not a response is
-     *  returned for every request, and to match specific responses to
-     *  Specific requests.
+     *  response. You can use this field to track whether or not a response is returned for
+     *  every request, and to match specific responses to Specific requests.
      *
      * @param string $orderLineItemID
      * @return self

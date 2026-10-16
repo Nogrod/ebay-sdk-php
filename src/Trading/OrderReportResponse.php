@@ -5,9 +5,9 @@ namespace Nogrod\eBaySDK\Trading;
 use Nogrod\XMLClientRuntime\Func;
 
 /**
- * Class representing FeeSettlementReport
+ * Class representing OrderReportResponse
  */
-class FeeSettlementReport extends FeeSettlementReportResponseType
+class OrderReportResponse extends OrderReportResponseType
 {
     protected function xmlSerializeAttributes(\Sabre\Xml\Writer $writer): void
     {
@@ -28,7 +28,7 @@ class FeeSettlementReport extends FeeSettlementReportResponseType
     /**
      * Reads the element the reader is positioned on and moves past its end.
      */
-    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\FeeSettlementReport
+    public static function xmlRead(\XMLReader $reader): \Nogrod\eBaySDK\Trading\OrderReportResponse
     {
         $self = new self();
         $self->xmlInitLists();

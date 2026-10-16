@@ -1,4 +1,5 @@
 xcopy /y src\MerchantData\ActiveInventoryReport.php src\Trading\
+xcopy /y src\MerchantData\ActiveInventoryReportResponse.php src\Trading\
 xcopy /y src\MerchantData\ActiveInventoryReportRequest.php src\Trading\
 xcopy /y src\MerchantData\ActiveInventoryReportRequestType.php src\Trading\
 xcopy /y src\MerchantData\ActiveInventoryReportResponseType.php src\Trading\
@@ -6,10 +7,6 @@ xcopy /y src\MerchantData\BulkDataExchangeRequests.php src\Trading\
 xcopy /y src\MerchantData\BulkDataExchangeRequestsType.php src\Trading\
 xcopy /y src\MerchantData\BulkDataExchangeResponses.php src\Trading\
 xcopy /y src\MerchantData\BulkDataExchangeResponsesType.php src\Trading\
-xcopy /y src\MerchantData\FeeSettlementReport.php src\Trading\
-xcopy /y src\MerchantData\FeeSettlementReportRequest.php src\Trading\
-xcopy /y src\MerchantData\FeeSettlementReportRequestType.php src\Trading\
-xcopy /y src\MerchantData\FeeSettlementReportResponseType.php src\Trading\
 xcopy /y src\MerchantData\MerchantDataRequestHeaderType.php src\Trading\
 xcopy /y src\MerchantData\MerchantDataVariationType.php src\Trading\
 xcopy /y src\MerchantData\MerchantDataVariationsType.php src\Trading\
@@ -18,6 +15,7 @@ xcopy /y src\MerchantData\OrderAckRequestType.php src\Trading\
 xcopy /y src\MerchantData\OrderAckResponse.php src\Trading\
 xcopy /y src\MerchantData\OrderAckResponseType.php src\Trading\
 xcopy /y src\MerchantData\OrderReport.php src\Trading\
+xcopy /y src\MerchantData\OrderReportResponse.php src\Trading\
 xcopy /y src\MerchantData\OrderReportRequest.php src\Trading\
 xcopy /y src\MerchantData\OrderReportRequestType.php src\Trading\
 xcopy /y src\MerchantData\OrderReportResponseType.php src\Trading\

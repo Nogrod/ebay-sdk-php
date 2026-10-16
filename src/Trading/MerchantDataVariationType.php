@@ -13,57 +13,44 @@ use Nogrod\XMLClientRuntime\Func;
 class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
-     * Stock Keeping Unit that serves as the seller's unique
-     *  identifier for items within the same variation.
-     *  You can use the variation's SKU instead of the
-     *  variation specifics to revise a variation and to
-     *  keep track of your eBay inventory.<br>
-     *  <br>
-     *  Many merchants assign a SKU to an item of a specific type,
-     *  size, and color. This way, they can keep track of how many
-     *  products of each type, size, and color are selling, and
-     *  they can re-stock their shelves or update the variation
-     *  quantity on eBay according to customer demand. <br>
-     *  <br>
-     *  Only returned if the seller specified a SKU for the
-     *  variation.
+     * Stock Keeping Unit that serves as the seller's unique identifier for
+     *  items within the same variation. You can use the variation's SKU instead of the
+     *  variation specifics to revise a variation and to keep track of your eBay
+     *  inventory.<br> <br> Many merchants assign a SKU to an item of a specific
+     *  type, size, and color. This way, they can keep track of how many products of each type,
+     *  size, and color are selling, and they can re-stock their shelves or update the variation
+     *  quantity on eBay according to customer demand. <br> <br> Only returned if
+     *  the seller specified a SKU for the variation.
      *
      * @var string $sKU
      */
     private $sKU = null;
 
     /**
-     * The fixed price of all items identified by this variation.
-     *  For example, a "Blue, Large" variation price could be USD 10.00,
-     *  and a "Black, Medium" variation price could be USD 5.00.<br>
-     *  <br>
+     * The fixed price of all items identified by this variation. For example,
+     *  a "Blue, Large" variation price could be USD 10.00, and a "Black, Medium" variation
+     *  price could be USD 5.00.<br> <br>
      *
      * @var \Nogrod\eBaySDK\Trading\AmountType $price
      */
     private $price = null;
 
     /**
-     * <b>For ActiveInventoryReport:</b>
-     *  The number of items available for sale that are associated
-     *  with this variation.<br>
+     * <b>For ActiveInventoryReport:</b> The number of items
+     *  available for sale that are associated with this variation.<br>
      *
      * @var int $quantity
      */
     private $quantity = null;
 
     /**
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @var \Nogrod\eBaySDK\Trading\NameValueListType[] $variationSpecifics
      */
@@ -72,20 +59,14 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as sKU
      *
-     * Stock Keeping Unit that serves as the seller's unique
-     *  identifier for items within the same variation.
-     *  You can use the variation's SKU instead of the
-     *  variation specifics to revise a variation and to
-     *  keep track of your eBay inventory.<br>
-     *  <br>
-     *  Many merchants assign a SKU to an item of a specific type,
-     *  size, and color. This way, they can keep track of how many
-     *  products of each type, size, and color are selling, and
-     *  they can re-stock their shelves or update the variation
-     *  quantity on eBay according to customer demand. <br>
-     *  <br>
-     *  Only returned if the seller specified a SKU for the
-     *  variation.
+     * Stock Keeping Unit that serves as the seller's unique identifier for
+     *  items within the same variation. You can use the variation's SKU instead of the
+     *  variation specifics to revise a variation and to keep track of your eBay
+     *  inventory.<br> <br> Many merchants assign a SKU to an item of a specific
+     *  type, size, and color. This way, they can keep track of how many products of each type,
+     *  size, and color are selling, and they can re-stock their shelves or update the variation
+     *  quantity on eBay according to customer demand. <br> <br> Only returned if
+     *  the seller specified a SKU for the variation.
      *
      * @return string
      */
@@ -97,20 +78,14 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new sKU
      *
-     * Stock Keeping Unit that serves as the seller's unique
-     *  identifier for items within the same variation.
-     *  You can use the variation's SKU instead of the
-     *  variation specifics to revise a variation and to
-     *  keep track of your eBay inventory.<br>
-     *  <br>
-     *  Many merchants assign a SKU to an item of a specific type,
-     *  size, and color. This way, they can keep track of how many
-     *  products of each type, size, and color are selling, and
-     *  they can re-stock their shelves or update the variation
-     *  quantity on eBay according to customer demand. <br>
-     *  <br>
-     *  Only returned if the seller specified a SKU for the
-     *  variation.
+     * Stock Keeping Unit that serves as the seller's unique identifier for
+     *  items within the same variation. You can use the variation's SKU instead of the
+     *  variation specifics to revise a variation and to keep track of your eBay
+     *  inventory.<br> <br> Many merchants assign a SKU to an item of a specific
+     *  type, size, and color. This way, they can keep track of how many products of each type,
+     *  size, and color are selling, and they can re-stock their shelves or update the variation
+     *  quantity on eBay according to customer demand. <br> <br> Only returned if
+     *  the seller specified a SKU for the variation.
      *
      * @param string $sKU
      * @return self
@@ -124,10 +99,9 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as price
      *
-     * The fixed price of all items identified by this variation.
-     *  For example, a "Blue, Large" variation price could be USD 10.00,
-     *  and a "Black, Medium" variation price could be USD 5.00.<br>
-     *  <br>
+     * The fixed price of all items identified by this variation. For example,
+     *  a "Blue, Large" variation price could be USD 10.00, and a "Black, Medium" variation
+     *  price could be USD 5.00.<br> <br>
      *
      * @return \Nogrod\eBaySDK\Trading\AmountType
      */
@@ -139,10 +113,9 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new price
      *
-     * The fixed price of all items identified by this variation.
-     *  For example, a "Blue, Large" variation price could be USD 10.00,
-     *  and a "Black, Medium" variation price could be USD 5.00.<br>
-     *  <br>
+     * The fixed price of all items identified by this variation. For example,
+     *  a "Blue, Large" variation price could be USD 10.00, and a "Black, Medium" variation
+     *  price could be USD 5.00.<br> <br>
      *
      * @param \Nogrod\eBaySDK\Trading\AmountType $price
      * @return self
@@ -156,9 +129,8 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as quantity
      *
-     * <b>For ActiveInventoryReport:</b>
-     *  The number of items available for sale that are associated
-     *  with this variation.<br>
+     * <b>For ActiveInventoryReport:</b> The number of items
+     *  available for sale that are associated with this variation.<br>
      *
      * @return int
      */
@@ -170,9 +142,8 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new quantity
      *
-     * <b>For ActiveInventoryReport:</b>
-     *  The number of items available for sale that are associated
-     *  with this variation.<br>
+     * <b>For ActiveInventoryReport:</b> The number of items
+     *  available for sale that are associated with this variation.<br>
      *
      * @param int $quantity
      * @return self
@@ -186,18 +157,13 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Adds as nameValueList
      *
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\NameValueListType $nameValueList
@@ -214,18 +180,13 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * isset variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @param int|string $index
      * @return bool
@@ -238,18 +199,13 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * unset variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @param int|string $index
      * @return void
@@ -262,18 +218,13 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Gets as variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\NameValueListType>
      */
@@ -285,18 +236,13 @@ class MerchantDataVariationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
     /**
      * Sets a new variationSpecifics
      *
-     * A list of name/value pairs that uniquely identify the
-     *  variation within the listing. All variations specify
-     *  the same set of names, and each variation provides a
-     *  unique combination of values for those
-     *  names. For example, if the items vary by color and size,
-     *  then every variation specifies Color and Size as names,
-     *  and no two variations specify the same combination of
-     *  color and size values.<br>
-     *  <br>
-     *  If a variation has no SKU, use the variation specifics
-     *  as a unique ID to revise the variation and to keep
-     *  track of your eBay inventory.
+     * A list of name/value pairs that uniquely identify the variation within
+     *  the listing. All variations specify the same set of names, and each variation provides a
+     *  unique combination of values for those names. For example, if the items vary by color
+     *  and size, then every variation specifies Color and Size as names, and no two variations
+     *  specify the same combination of color and size values.<br> <br> If a
+     *  variation has no SKU, use the variation specifics as a unique ID to revise the variation
+     *  and to keep track of your eBay inventory.
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\NameValueListType> $variationSpecifics
      * @return self

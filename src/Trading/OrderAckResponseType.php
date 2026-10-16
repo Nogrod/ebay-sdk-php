@@ -13,7 +13,10 @@ use Nogrod\XMLClientRuntime\Func;
 class OrderAckResponseType extends AbstractResponseType
 {
     /**
-     * This is the unique identifier of the order line item that was successfully acknowledged. This field is returned whether an <b>OrderID</b> (for a single line item order) or an <b>OrderLineItemID</b> value was passed into the call request.
+     * This is the unique identifier of the order line item that was
+     *  successfully acknowledged. This field is returned whether an
+     *  <b>OrderID</b> (for a single line item order) or an
+     *  <b>OrderLineItemID</b> value was passed into the call request.
      *
      * @var string $orderLineItemID
      */
@@ -22,7 +25,10 @@ class OrderAckResponseType extends AbstractResponseType
     /**
      * Gets as orderLineItemID
      *
-     * This is the unique identifier of the order line item that was successfully acknowledged. This field is returned whether an <b>OrderID</b> (for a single line item order) or an <b>OrderLineItemID</b> value was passed into the call request.
+     * This is the unique identifier of the order line item that was
+     *  successfully acknowledged. This field is returned whether an
+     *  <b>OrderID</b> (for a single line item order) or an
+     *  <b>OrderLineItemID</b> value was passed into the call request.
      *
      * @return string
      */
@@ -34,7 +40,10 @@ class OrderAckResponseType extends AbstractResponseType
     /**
      * Sets a new orderLineItemID
      *
-     * This is the unique identifier of the order line item that was successfully acknowledged. This field is returned whether an <b>OrderID</b> (for a single line item order) or an <b>OrderLineItemID</b> value was passed into the call request.
+     * This is the unique identifier of the order line item that was
+     *  successfully acknowledged. This field is returned whether an
+     *  <b>OrderID</b> (for a single line item order) or an
+     *  <b>OrderLineItemID</b> value was passed into the call request.
      *
      * @param string $orderLineItemID
      * @return self

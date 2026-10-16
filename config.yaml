@@ -3,8 +3,8 @@ Trading:
   xsd: https://developer.ebay.com/webservices/latest/ebaysvc.xsd
 MerchantData:
   url: ~
-  xsd: https://developer.ebay.com/webservices/1255/merchantdataservice.xsd
-  # wsdl/MerchantData.xsd carries manual fixes (e.g. OrderID); don't overwrite it on download
+  xsd: https://developer.ebay.com/webservices/latest/merchantdataservice.xsd
+  # wsdl/MerchantData.xsd carries a manual fix (OrderID in SetShipmentTrackingInfoResponseType); download it by hand and re-apply the fix
   pinned: true
 BusinessPoliciesManagement:
   url: https://developer.ebay.com/webservices/business-policies/latest/SellerProfilesManagementService.wsdl

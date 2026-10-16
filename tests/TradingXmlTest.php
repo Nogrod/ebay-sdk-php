@@ -106,6 +106,48 @@ final class TradingXmlTest extends TestCase
         }
     }
 
+    /**
+     * wsdl/MerchantData.xsd is eBay's schema of the upload and result files.
+     */
+    public function testBdeFileIsValidAgainstEbaySchema(): void
+    {
+        $doc = new \DOMDocument();
+        $doc->loadXML(self::writeFile(self::bdeRequests()));
+
+        $previous = libxml_use_internal_errors(true);
+        try {
+            $valid = $doc->schemaValidate(__DIR__.'/../wsdl/MerchantData.xsd');
+            $errors = array_map(fn (\LibXMLError $e) => trim($e->message), libxml_get_errors());
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous);
+        }
+        $this->assertTrue($valid, implode("\n", $errors));
+    }
+
+    /**
+     * The schema references the global request elements; the *Type classes they
+     * extend must give the same file.
+     */
+    public function testElementAndTypeClassesWriteTheSameFile(): void
+    {
+        $add = new T\AddFixedPriceItemRequest();
+        $add->setItem(self::item(1));
+        $status = new T\InventoryStatusType();
+        $status->setSKU('SKU-2');
+        $status->setQuantity(3);
+        $revise = new T\ReviseInventoryStatusRequest();
+        $revise->setInventoryStatus([$status]);
+        $tracking = new T\SetShipmentTrackingInfoRequest();
+        $tracking->setOrderID('01-11111-11111');
+        $bde = new T\BulkDataExchangeRequests();
+        $bde->setAddFixedPriceItemRequest([$add]);
+        $bde->setReviseInventoryStatusRequest([$revise]);
+        $bde->setSetShipmentTrackingInfoRequest([$tracking]);
+
+        $this->assertSame(self::writeFile(self::bdeRequests()), self::writeFile($bde));
+    }
+
     public function testRequestsOfGlobalElementClassesDeclareTheirNamespace(): void
     {
         $requests = [];

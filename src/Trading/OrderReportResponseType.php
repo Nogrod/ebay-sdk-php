@@ -7,39 +7,55 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing OrderReportResponseType
  *
- * <b>OrderReport</b> shows detailed information on all unacknowledged orders, and all unacknowledged line items in each order from the past 30 days. The unique identifier of each order is shown in the <b>Order.OrderID</b> response field, and unique identifier of each order line item is shown in a separate <b>Transaction.OrderLineItemID</b> response field. Only unfulfilled orders will appear in the response, and orders that have already shipped will not. Sellers use the information in <b>OrderReport</b> to make inventory updates and start order fulfillment.
- *  <br/><br/>
- *  <span class="tablenote"><b>Note: </b> Once orders and order line items have been acknowledged with the <b>OrderAck</b> call, those orders and order line items will no longer appear in the <b>OrderReport</b> response. See
- *  <a href="https://developer.ebay.com/DevZone/large-merchant-services/Concepts/LMS_APIGuide.html#soldrpt"
- *  target="_blank">Acknowledging Sales</a> for more information.
- *  </span>
+ * <b>OrderReport</b> shows detailed information on all
+ *  unacknowledged orders, and all unacknowledged line items in each order from the past 30
+ *  days. The unique identifier of each order is shown in the <b>Order.OrderID</b>
+ *  response field, and unique identifier of each order line item is shown in a separate
+ *  <b>Transaction.OrderLineItemID</b> response field. Only unfulfilled orders will
+ *  appear in the response, and orders that have already shipped will not. Sellers use the
+ *  information in <b>OrderReport</b> to make inventory updates and start order
+ *  fulfillment. <br/><br/> <span class="tablenote"><b>Note: </b>
+ *  Once orders and order line items have been acknowledged with the <b>OrderAck</b>
+ *  call, those orders and order line items will no longer appear in the
+ *  <b>OrderReport</b> response. See <a
+ *  href="https://developer.ebay.com/api-docs/sell/static/feed/lms-feeds-managing-inventory.html#acknowledging-sales"
+ *  target="_blank">Acknowledging Sales</a> for more information. </span>
  * XSD Type: OrderReportResponseType
  */
 class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
-     * Contains information about Expiration date of the user's authentication token. Only returned within the 7-day period prior to a token's expiration
+     * Contains information about Expiration date of the user's authentication
+     *  token. Only returned within the 7-day period prior to a token's expiration
      *
      * @var \DateTime $hardExpirationWarning
      */
     private $hardExpirationWarning = null;
 
     /**
-     * An enumeration value that indicates the status of the current job. Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an <b>Errors</b> container.
+     * An enumeration value that indicates the status of the current job.
+     *  Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value
+     *  other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an
+     *  <b>Errors</b> container.
      *
      * @var string $ack
      */
     private $ack = null;
 
     /**
-     * This value indicates the version of the Merchant Data WSDL that eBay used to process the request.
+     * This value indicates the version of the Merchant Data WSDL that eBay
+     *  used to process the request.
      *
      * @var string $version
      */
     private $version = null;
 
     /**
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @var \Nogrod\eBaySDK\Trading\ErrorType[] $errors
      */
@@ -48,7 +64,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     ];
 
     /**
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
+     * This container is an array of unacknowledged orders for the seller that
+     *  occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
      * @var \Nogrod\eBaySDK\Trading\OrderArrayType $orderArray
      */
@@ -57,7 +74,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as hardExpirationWarning
      *
-     * Contains information about Expiration date of the user's authentication token. Only returned within the 7-day period prior to a token's expiration
+     * Contains information about Expiration date of the user's authentication
+     *  token. Only returned within the 7-day period prior to a token's expiration
      *
      * @return \DateTime
      */
@@ -69,7 +87,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new hardExpirationWarning
      *
-     * Contains information about Expiration date of the user's authentication token. Only returned within the 7-day period prior to a token's expiration
+     * Contains information about Expiration date of the user's authentication
+     *  token. Only returned within the 7-day period prior to a token's expiration
      *
      * @param \DateTime $hardExpirationWarning
      * @return self
@@ -83,7 +102,10 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as ack
      *
-     * An enumeration value that indicates the status of the current job. Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an <b>Errors</b> container.
+     * An enumeration value that indicates the status of the current job.
+     *  Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value
+     *  other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an
+     *  <b>Errors</b> container.
      *
      * @return string
      */
@@ -95,7 +117,10 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new ack
      *
-     * An enumeration value that indicates the status of the current job. Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an <b>Errors</b> container.
+     * An enumeration value that indicates the status of the current job.
+     *  Values may include 'Success', 'Warning', 'Failure', or 'Partial Failure'. If any value
+     *  other that 'Success' is displayed, the error(s)/issue(s) should be displayed under an
+     *  <b>Errors</b> container.
      *
      * @param string $ack
      * @return self
@@ -109,7 +134,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as version
      *
-     * This value indicates the version of the Merchant Data WSDL that eBay used to process the request.
+     * This value indicates the version of the Merchant Data WSDL that eBay
+     *  used to process the request.
      *
      * @return string
      */
@@ -121,7 +147,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new version
      *
-     * This value indicates the version of the Merchant Data WSDL that eBay used to process the request.
+     * This value indicates the version of the Merchant Data WSDL that eBay
+     *  used to process the request.
      *
      * @param string $version
      * @return self
@@ -135,7 +162,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Adds as errors
      *
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\ErrorType $errors
@@ -152,7 +183,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * isset errors
      *
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @param int|string $index
      * @return bool
@@ -165,7 +200,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * unset errors
      *
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @param int|string $index
      * @return void
@@ -178,7 +217,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as errors
      *
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\ErrorType>
      */
@@ -190,7 +233,11 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new errors
      *
-     * An <b>Errors</b> container is returned for each warning or error that occurs when the call is processed. Each <b>Errors</b> container consists of detailed information on the warning or error, including the actual error message and information on any input parameters that actually triggered the warning or error.
+     * An <b>Errors</b> container is returned for each warning or
+     *  error that occurs when the call is processed. Each <b>Errors</b> container
+     *  consists of detailed information on the warning or error, including the actual error
+     *  message and information on any input parameters that actually triggered the warning or
+     *  error.
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\ErrorType> $errors
      * @return self
@@ -204,7 +251,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Gets as orderArray
      *
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
+     * This container is an array of unacknowledged orders for the seller that
+     *  occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
      * @return \Nogrod\eBaySDK\Trading\OrderArrayType
      */
@@ -216,7 +264,8 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
     /**
      * Sets a new orderArray
      *
-     * This container is an array of unacknowledged orders for the seller that occurred within the last 30 days (or less based on the Bulk Data Exchange job).
+     * This container is an array of unacknowledged orders for the seller that
+     *  occurred within the last 30 days (or less based on the Bulk Data Exchange job).
      *
      * @param \Nogrod\eBaySDK\Trading\OrderArrayType $orderArray
      * @return self

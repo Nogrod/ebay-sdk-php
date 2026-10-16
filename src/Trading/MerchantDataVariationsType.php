@@ -7,23 +7,20 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing MerchantDataVariationsType
  *
- * Variations are multiple similar (but not identical) items in a
- *  single fixed-price (or Store Inventory Format) listing.
- *  For example, a single listing could contain multiple items of the
- *  same brand and model that vary by color and size (like "Blue, Large" and "Black, Medium").
- *  Each variation can have its own quantity and price. For example, a listing could
- *  include 10 "Blue, Large" variations and 20 "Black, Medium" variations.
+ * Variations are multiple similar (but not identical) items in a single
+ *  fixed-price (or Store Inventory Format) listing. For example, a single listing could contain
+ *  multiple items of the same brand and model that vary by color and size (like "Blue, Large"
+ *  and "Black, Medium"). Each variation can have its own quantity and price. For example, a
+ *  listing could include 10 "Blue, Large" variations and 20 "Black, Medium" variations.
  * XSD Type: MerchantDataVariationsType
  */
 class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @var \Nogrod\eBaySDK\Trading\MerchantDataVariationType[] $variation
      */
@@ -34,12 +31,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Adds as variation
      *
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @return self
      * @param \Nogrod\eBaySDK\Trading\MerchantDataVariationType $variation
@@ -56,12 +51,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * isset variation
      *
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @param int|string $index
      * @return bool
@@ -74,12 +67,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * unset variation
      *
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @param int|string $index
      * @return void
@@ -92,12 +83,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Gets as variation
      *
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @return iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType>
      */
@@ -109,12 +98,10 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
     /**
      * Sets a new variation
      *
-     * Contains data that distinguishes one variation from
-     *  another.
-     *  For example, if the items vary by color and size,
-     *  each Variation node specifies a combination of one of
-     *  those colors and sizes. Always returned when variations
-     *  are present.
+     * Contains data that distinguishes one variation from another. For
+     *  example, if the items vary by color and size, each Variation node specifies a
+     *  combination of one of those colors and sizes. Always returned when variations are
+     *  present.
      *
      * @param iterable<\Nogrod\eBaySDK\Trading\MerchantDataVariationType> $variation
      * @return self

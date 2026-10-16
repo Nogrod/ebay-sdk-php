@@ -7,8 +7,8 @@ use Nogrod\XMLClientRuntime\Func;
 /**
  * Class representing ActiveInventoryReportResponseType
  *
- * A report that contains all of the active listings for a specific seller. The eBay
- *  servers read the token information passed in by the seller's application to
+ * A report that contains all of the active listings for a specific seller.
+ *  The eBay servers read the token information passed in by the seller's application to
  *  determine which seller's data to retrieve.
  * XSD Type: ActiveInventoryReportResponseType
  */

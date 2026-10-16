@@ -13,16 +13,16 @@ use Nogrod\XMLClientRuntime\Func;
 class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializable, \JsonSerializable
 {
     /**
-     * The numeric eBay Site Code for which to route the
-     *  requests in the payload. E.g. 77 for eBay Germany.
+     * The numeric eBay Site Code for which to route the requests in the
+     *  payload. E.g. 77 for eBay Germany.
      *
      * @var int $siteID
      */
     private $siteID = null;
 
     /**
-     * Default version for each request in the payload.
-     *  Can be overridden at the request level.
+     * Default version for each request in the payload. Can be overridden at
+     *  the request level.
      *
      * @var string $version
      */
@@ -31,8 +31,8 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as siteID
      *
-     * The numeric eBay Site Code for which to route the
-     *  requests in the payload. E.g. 77 for eBay Germany.
+     * The numeric eBay Site Code for which to route the requests in the
+     *  payload. E.g. 77 for eBay Germany.
      *
      * @return int
      */
@@ -44,8 +44,8 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new siteID
      *
-     * The numeric eBay Site Code for which to route the
-     *  requests in the payload. E.g. 77 for eBay Germany.
+     * The numeric eBay Site Code for which to route the requests in the
+     *  payload. E.g. 77 for eBay Germany.
      *
      * @param int $siteID
      * @return self
@@ -59,8 +59,8 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Gets as version
      *
-     * Default version for each request in the payload.
-     *  Can be overridden at the request level.
+     * Default version for each request in the payload. Can be overridden at
+     *  the request level.
      *
      * @return string
      */
@@ -72,8 +72,8 @@ class MerchantDataRequestHeaderType implements \Sabre\Xml\XmlSerializable, \Sabr
     /**
      * Sets a new version
      *
-     * Default version for each request in the payload.
-     *  Can be overridden at the request level.
+     * Default version for each request in the payload. Can be overridden at
+     *  the request level.
      *
      * @param string $version
      * @return self
