@@ -2,6 +2,8 @@
 
 namespace Nogrod\eBaySDK\Tests;
 
+use Nogrod\eBaySDK\BusinessPoliciesManagement as BPM;
+use Nogrod\eBaySDK\BusinessPoliciesManagement\Client\BusinessPoliciesManagementClient;
 use Nogrod\eBaySDK\Constants\Version;
 use Nogrod\eBaySDK\OAuth\Client\OAuthClient;
 use Nogrod\eBaySDK\OAuth\GetUserTokenRestRequest;
@@ -21,6 +23,13 @@ final class ClientTest extends TestCase
           <Ack>Success</Ack>
           <Item><ItemID>110000000001</ItemID><SKU>SKU-1</SKU><Quantity>3</Quantity></Item>
         </GetItemResponse>
+        XML;
+
+    private const BPM_RESPONSE = <<<'XML'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <getSellerProfilesResponse xmlns="http://www.ebay.com/marketplace/selling/v1/services">
+          <ack>Success</ack>
+        </getSellerProfilesResponse>
         XML;
 
     public function testTradingCallSendsHeadersAndBodyAndReadsTheResponse(): void
@@ -68,6 +77,32 @@ final class ClientTest extends TestCase
 
         $this->expectException(UnexpectedFormatException::class);
         $client->getItem(new T\GetItemRequest());
+    }
+
+    public function testBusinessPoliciesCallWithOAuthOnlySendsNoAuthNAuthHeader(): void
+    {
+        $http = new FakeHttpClient(self::BPM_RESPONSE);
+        $client = new BusinessPoliciesManagementClient(['oauth' => 'token', 'globalId' => 'EBAY-DE'], null, $http);
+
+        $response = $client->getSellerProfiles(new BPM\GetSellerProfilesRequest());
+
+        $this->assertSame('Success', $response->getAck());
+        $sent = $http->request;
+        $this->assertSame(BusinessPoliciesManagementClient::PRODUCTION_URL, (string) $sent->getUri());
+        $this->assertSame('getSellerProfiles', $sent->getHeaderLine('X-EBAY-SOA-OPERATION-NAME'));
+        $this->assertSame('token', $sent->getHeaderLine('X-EBAY-SOA-SECURITY-IAFTOKEN'));
+        $this->assertFalse($sent->hasHeader('X-EBAY-SOA-SECURITY-TOKEN'));
+    }
+
+    public function testBusinessPoliciesCallWithAuthNAuthTokenSendsBothHeaders(): void
+    {
+        $http = new FakeHttpClient(self::BPM_RESPONSE);
+        $client = new BusinessPoliciesManagementClient(['auth' => 'auth-token', 'oauth' => 'token', 'globalId' => 'EBAY-DE'], null, $http);
+
+        $client->getSellerProfiles(new BPM\GetSellerProfilesRequest());
+
+        $this->assertSame('auth-token', $http->request->getHeaderLine('X-EBAY-SOA-SECURITY-TOKEN'));
+        $this->assertSame('token', $http->request->getHeaderLine('X-EBAY-SOA-SECURITY-IAFTOKEN'));
     }
 
     public function testOAuthAppTokenWithoutRequest(): void

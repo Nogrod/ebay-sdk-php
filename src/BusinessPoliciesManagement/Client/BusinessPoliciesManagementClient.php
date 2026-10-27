@@ -40,8 +40,12 @@ class BusinessPoliciesManagementClient extends SellerProfilesManagementBaseClien
     protected function buildHeaders(string $operation): array
     {
         $headers = [];
-        $headers[self::X_EBAY_SOA_SECURITY_TOKEN] = $this->getConfig('auth');
-        $headers[self::X_EBAY_SOA_SECURITY_IAFTOKEN] = $this->getConfig('oauth');
+        if ($this->getConfig('auth') !== null) {
+            $headers[self::X_EBAY_SOA_SECURITY_TOKEN] = $this->getConfig('auth');
+        }
+        if ($this->getConfig('oauth') !== null) {
+            $headers[self::X_EBAY_SOA_SECURITY_IAFTOKEN] = $this->getConfig('oauth');
+        }
         $headers[self::X_EBAY_SOA_GLOBAL_ID] = $this->getConfig('globalId');
         $headers[self::X_EBAY_SOA_OPERATION_NAME] = $operation;
         $headers[self::X_EBAY_SOA_SERVICE_VERSION] = $this->getConfig('version');
