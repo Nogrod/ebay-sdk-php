@@ -46,6 +46,7 @@ class ItemCompatibilityListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToCompatibility(\Nogrod\eBaySDK\Trading\ItemCompatibilityType $compatibility)
     {
+        $this->compatibility ??= [];
         if (!is_array($this->compatibility)) {
             throw new \LogicException('compatibility is a lazy iterable and cannot be appended to; set an array instead.');
         }

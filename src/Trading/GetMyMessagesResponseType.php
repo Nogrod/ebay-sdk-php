@@ -76,6 +76,7 @@ class GetMyMessagesResponseType extends AbstractResponseType
      */
     public function addToMessages(\Nogrod\eBaySDK\Trading\MyMessagesMessageType $message)
     {
+        $this->messages ??= [];
         if (!is_array($this->messages)) {
             throw new \LogicException('messages is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -69,6 +69,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileType($profileType)
     {
+        $this->profileType ??= [];
         if (!is_array($this->profileType)) {
             throw new \LogicException('profileType is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -148,6 +149,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileId($profileId)
     {
+        $this->profileId ??= [];
         if (!is_array($this->profileId)) {
             throw new \LogicException('profileId is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -227,6 +229,7 @@ class GetSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileName($profileName)
     {
+        $this->profileName ??= [];
         if (!is_array($this->profileName)) {
             throw new \LogicException('profileName is a lazy iterable and cannot be appended to; set an array instead.');
         }

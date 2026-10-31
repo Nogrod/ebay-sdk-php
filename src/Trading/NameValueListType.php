@@ -156,6 +156,7 @@ class NameValueListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToValue($value)
     {
+        $this->value ??= [];
         if (!is_array($this->value)) {
             throw new \LogicException('value is a lazy iterable and cannot be appended to; set an array instead.');
         }

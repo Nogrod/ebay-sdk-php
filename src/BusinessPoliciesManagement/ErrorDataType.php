@@ -280,6 +280,7 @@ class ErrorDataType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToParameter(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorParameterType $parameter)
     {
+        $this->parameter ??= [];
         if (!is_array($this->parameter)) {
             throw new \LogicException('parameter is a lazy iterable and cannot be appended to; set an array instead.');
         }

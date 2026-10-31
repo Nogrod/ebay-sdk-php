@@ -41,6 +41,7 @@ class PaymentInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPayment(\Nogrod\eBaySDK\Trading\PaymentTransactionType $payment)
     {
+        $this->payment ??= [];
         if (!is_array($this->payment)) {
             throw new \LogicException('payment is a lazy iterable and cannot be appended to; set an array instead.');
         }

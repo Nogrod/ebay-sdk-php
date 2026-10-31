@@ -896,6 +896,7 @@ class SellingStatusType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToSuggestedBidValues(\Nogrod\eBaySDK\Trading\AmountType $bidValue)
     {
+        $this->suggestedBidValues ??= [];
         if (!is_array($this->suggestedBidValues)) {
             throw new \LogicException('suggestedBidValues is a lazy iterable and cannot be appended to; set an array instead.');
         }

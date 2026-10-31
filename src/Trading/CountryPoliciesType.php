@@ -91,6 +91,7 @@ class CountryPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToPolicyID($policyID)
     {
+        $this->policyID ??= [];
         if (!is_array($this->policyID)) {
             throw new \LogicException('policyID is a lazy iterable and cannot be appended to; set an array instead.');
         }

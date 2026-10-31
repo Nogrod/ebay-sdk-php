@@ -45,6 +45,7 @@ class SellerRatingSummaryArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToAverageRatingSummary(\Nogrod\eBaySDK\Trading\AverageRatingSummaryType $averageRatingSummary)
     {
+        $this->averageRatingSummary ??= [];
         if (!is_array($this->averageRatingSummary)) {
             throw new \LogicException('averageRatingSummary is a lazy iterable and cannot be appended to; set an array instead.');
         }

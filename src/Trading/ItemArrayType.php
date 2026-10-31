@@ -68,6 +68,7 @@ class ItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToItem(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        $this->item ??= [];
         if (!is_array($this->item)) {
             throw new \LogicException('item is a lazy iterable and cannot be appended to; set an array instead.');
         }

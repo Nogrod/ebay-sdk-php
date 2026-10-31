@@ -37,6 +37,7 @@ class TransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      */
     public function addToTransaction(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        $this->transaction ??= [];
         if (!is_array($this->transaction)) {
             throw new \LogicException('transaction is a lazy iterable and cannot be appended to; set an array instead.');
         }

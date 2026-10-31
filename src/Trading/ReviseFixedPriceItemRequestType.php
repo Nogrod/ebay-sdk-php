@@ -120,6 +120,7 @@ class ReviseFixedPriceItemRequestType extends AbstractRequestType
      */
     public function addToDeletedField($deletedField)
     {
+        $this->deletedField ??= [];
         if (!is_array($this->deletedField)) {
             throw new \LogicException('deletedField is a lazy iterable and cannot be appended to; set an array instead.');
         }

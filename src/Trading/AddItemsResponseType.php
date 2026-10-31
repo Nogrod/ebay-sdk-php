@@ -31,6 +31,7 @@ class AddItemsResponseType extends AbstractResponseType
      */
     public function addToAddItemResponseContainer(\Nogrod\eBaySDK\Trading\AddItemResponseContainerType $addItemResponseContainer)
     {
+        $this->addItemResponseContainer ??= [];
         if (!is_array($this->addItemResponseContainer)) {
             throw new \LogicException('addItemResponseContainer is a lazy iterable and cannot be appended to; set an array instead.');
         }

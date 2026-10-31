@@ -165,6 +165,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToPictureURL($pictureURL)
     {
+        $this->pictureURL ??= [];
         if (!is_array($this->pictureURL)) {
             throw new \LogicException('pictureURL is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -373,6 +374,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToExternalPictureURL($externalPictureURL)
     {
+        $this->externalPictureURL ??= [];
         if (!is_array($this->externalPictureURL)) {
             throw new \LogicException('externalPictureURL is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -470,6 +472,7 @@ class VariationSpecificPictureSetType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToExtendedPictureDetails(\Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs)
     {
+        $this->extendedPictureDetails ??= [];
         if (!is_array($this->extendedPictureDetails)) {
             throw new \LogicException('extendedPictureDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

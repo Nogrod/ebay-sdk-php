@@ -399,6 +399,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToCountryDetails(\Nogrod\eBaySDK\Trading\CountryDetailsType $countryDetails)
     {
+        $this->countryDetails ??= [];
         if (!is_array($this->countryDetails)) {
             throw new \LogicException('countryDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -495,6 +496,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToCurrencyDetails(\Nogrod\eBaySDK\Trading\CurrencyDetailsType $currencyDetails)
     {
+        $this->currencyDetails ??= [];
         if (!is_array($this->currencyDetails)) {
             throw new \LogicException('currencyDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -598,6 +600,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToDispatchTimeMaxDetails(\Nogrod\eBaySDK\Trading\DispatchTimeMaxDetailsType $dispatchTimeMaxDetails)
     {
+        $this->dispatchTimeMaxDetails ??= [];
         if (!is_array($this->dispatchTimeMaxDetails)) {
             throw new \LogicException('dispatchTimeMaxDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -692,6 +695,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToPaymentOptionDetails(\Nogrod\eBaySDK\Trading\PaymentOptionDetailsType $paymentOptionDetails)
     {
+        $this->paymentOptionDetails ??= [];
         if (!is_array($this->paymentOptionDetails)) {
             throw new \LogicException('paymentOptionDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -771,6 +775,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRegionDetails(\Nogrod\eBaySDK\Trading\RegionDetailsType $regionDetails)
     {
+        $this->regionDetails ??= [];
         if (!is_array($this->regionDetails)) {
             throw new \LogicException('regionDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -870,6 +875,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingLocationDetails(\Nogrod\eBaySDK\Trading\ShippingLocationDetailsType $shippingLocationDetails)
     {
+        $this->shippingLocationDetails ??= [];
         if (!is_array($this->shippingLocationDetails)) {
             throw new \LogicException('shippingLocationDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -969,6 +975,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingServiceDetails(\Nogrod\eBaySDK\Trading\ShippingServiceDetailsType $shippingServiceDetails)
     {
+        $this->shippingServiceDetails ??= [];
         if (!is_array($this->shippingServiceDetails)) {
             throw new \LogicException('shippingServiceDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1068,6 +1075,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToSiteDetails(\Nogrod\eBaySDK\Trading\SiteDetailsType $siteDetails)
     {
+        $this->siteDetails ??= [];
         if (!is_array($this->siteDetails)) {
             throw new \LogicException('siteDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1168,6 +1176,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToTaxJurisdiction(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        $this->taxJurisdiction ??= [];
         if (!is_array($this->taxJurisdiction)) {
             throw new \LogicException('taxJurisdiction is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1271,6 +1280,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToURLDetails(\Nogrod\eBaySDK\Trading\URLDetailsType $uRLDetails)
     {
+        $this->uRLDetails ??= [];
         if (!is_array($this->uRLDetails)) {
             throw new \LogicException('uRLDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1370,6 +1380,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToTimeZoneDetails(\Nogrod\eBaySDK\Trading\TimeZoneDetailsType $timeZoneDetails)
     {
+        $this->timeZoneDetails ??= [];
         if (!is_array($this->timeZoneDetails)) {
             throw new \LogicException('timeZoneDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1469,6 +1480,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToItemSpecificDetails(\Nogrod\eBaySDK\Trading\ItemSpecificDetailsType $itemSpecificDetails)
     {
+        $this->itemSpecificDetails ??= [];
         if (!is_array($this->itemSpecificDetails)) {
             throw new \LogicException('itemSpecificDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1568,6 +1580,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRegionOfOriginDetails(\Nogrod\eBaySDK\Trading\RegionOfOriginDetailsType $regionOfOriginDetails)
     {
+        $this->regionOfOriginDetails ??= [];
         if (!is_array($this->regionOfOriginDetails)) {
             throw new \LogicException('regionOfOriginDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1667,6 +1680,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingPackageDetails(\Nogrod\eBaySDK\Trading\ShippingPackageDetailsType $shippingPackageDetails)
     {
+        $this->shippingPackageDetails ??= [];
         if (!is_array($this->shippingPackageDetails)) {
             throw new \LogicException('shippingPackageDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1766,6 +1780,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingCarrierDetails(\Nogrod\eBaySDK\Trading\ShippingCarrierDetailsType $shippingCarrierDetails)
     {
+        $this->shippingCarrierDetails ??= [];
         if (!is_array($this->shippingCarrierDetails)) {
             throw new \LogicException('shippingCarrierDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1899,6 +1914,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToListingStartPriceDetails(\Nogrod\eBaySDK\Trading\ListingStartPriceDetailsType $listingStartPriceDetails)
     {
+        $this->listingStartPriceDetails ??= [];
         if (!is_array($this->listingStartPriceDetails)) {
             throw new \LogicException('listingStartPriceDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1998,6 +2014,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToBuyerRequirementDetails(\Nogrod\eBaySDK\Trading\SiteBuyerRequirementDetailsType $buyerRequirementDetails)
     {
+        $this->buyerRequirementDetails ??= [];
         if (!is_array($this->buyerRequirementDetails)) {
             throw new \LogicException('buyerRequirementDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2097,6 +2114,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToListingFeatureDetails(\Nogrod\eBaySDK\Trading\ListingFeatureDetailsType $listingFeatureDetails)
     {
+        $this->listingFeatureDetails ??= [];
         if (!is_array($this->listingFeatureDetails)) {
             throw new \LogicException('listingFeatureDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2231,6 +2249,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToExcludeShippingLocationDetails(\Nogrod\eBaySDK\Trading\ExcludeShippingLocationDetailsType $excludeShippingLocationDetails)
     {
+        $this->excludeShippingLocationDetails ??= [];
         if (!is_array($this->excludeShippingLocationDetails)) {
             throw new \LogicException('excludeShippingLocationDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2364,6 +2383,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToRecoupmentPolicyDetails(\Nogrod\eBaySDK\Trading\RecoupmentPolicyDetailsType $recoupmentPolicyDetails)
     {
+        $this->recoupmentPolicyDetails ??= [];
         if (!is_array($this->recoupmentPolicyDetails)) {
             throw new \LogicException('recoupmentPolicyDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2476,6 +2496,7 @@ class GeteBayDetailsResponseType extends AbstractResponseType
      */
     public function addToShippingCategoryDetails(\Nogrod\eBaySDK\Trading\ShippingCategoryDetailsType $shippingCategoryDetails)
     {
+        $this->shippingCategoryDetails ??= [];
         if (!is_array($this->shippingCategoryDetails)) {
             throw new \LogicException('shippingCategoryDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

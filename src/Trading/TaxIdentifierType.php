@@ -105,6 +105,7 @@ class TaxIdentifierType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToAttribute(\Nogrod\eBaySDK\Trading\TaxIdentifierAttributeType $attribute)
     {
+        $this->attribute ??= [];
         if (!is_array($this->attribute)) {
             throw new \LogicException('attribute is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -229,6 +229,7 @@ class SellerFavoriteItemPreferencesType implements \Sabre\Xml\XmlSerializable, \
      */
     public function addToFavoriteItemID($favoriteItemID)
     {
+        $this->favoriteItemID ??= [];
         if (!is_array($this->favoriteItemID)) {
             throw new \LogicException('favoriteItemID is a lazy iterable and cannot be appended to; set an array instead.');
         }

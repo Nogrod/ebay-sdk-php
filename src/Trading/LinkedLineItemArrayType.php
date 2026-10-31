@@ -31,6 +31,7 @@ class LinkedLineItemArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToLinkedLineItem(\Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem)
     {
+        $this->linkedLineItem ??= [];
         if (!is_array($this->linkedLineItem)) {
             throw new \LogicException('linkedLineItem is a lazy iterable and cannot be appended to; set an array instead.');
         }

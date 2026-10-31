@@ -31,6 +31,7 @@ class RemoveSellerProfilesResponseType extends BaseResponseType
      */
     public function addToSellerProfileResponseStatus(\Nogrod\eBaySDK\BusinessPoliciesManagement\SellerProfileResponseStatusType $sellerProfileResponseStatus)
     {
+        $this->sellerProfileResponseStatus ??= [];
         if (!is_array($this->sellerProfileResponseStatus)) {
             throw new \LogicException('sellerProfileResponseStatus is a lazy iterable and cannot be appended to; set an array instead.');
         }

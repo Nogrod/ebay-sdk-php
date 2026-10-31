@@ -31,6 +31,7 @@ class BuyerPackageEnclosuresType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToBuyerPackageEnclosure(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        $this->buyerPackageEnclosure ??= [];
         if (!is_array($this->buyerPackageEnclosure)) {
             throw new \LogicException('buyerPackageEnclosure is a lazy iterable and cannot be appended to; set an array instead.');
         }

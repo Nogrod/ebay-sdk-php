@@ -50,6 +50,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToPictograms($pictogram)
     {
+        $this->pictograms ??= [];
         if (!is_array($this->pictograms)) {
             throw new \LogicException('pictograms is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -145,6 +146,7 @@ class HazmatType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToStatements($statement)
     {
+        $this->statements ??= [];
         if (!is_array($this->statements)) {
             throw new \LogicException('statements is a lazy iterable and cannot be appended to; set an array instead.');
         }

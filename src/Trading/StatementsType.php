@@ -37,6 +37,7 @@ class StatementsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToStatement($statement)
     {
+        $this->statement ??= [];
         if (!is_array($this->statement)) {
             throw new \LogicException('statement is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -33,6 +33,7 @@ class NotificationDetailsArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToNotificationDetails(\Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails)
     {
+        $this->notificationDetails ??= [];
         if (!is_array($this->notificationDetails)) {
             throw new \LogicException('notificationDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

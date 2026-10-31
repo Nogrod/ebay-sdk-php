@@ -173,6 +173,7 @@ class OrderReportResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
     {
+        $this->errors ??= [];
         if (!is_array($this->errors)) {
             throw new \LogicException('errors is a lazy iterable and cannot be appended to; set an array instead.');
         }

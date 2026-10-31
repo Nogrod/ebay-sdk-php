@@ -31,6 +31,7 @@ class ExtendedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToPictureURLs(\Nogrod\eBaySDK\Trading\PictureURLsType $pictureURLs)
     {
+        $this->pictureURLs ??= [];
         if (!is_array($this->pictureURLs)) {
             throw new \LogicException('pictureURLs is a lazy iterable and cannot be appended to; set an array instead.');
         }

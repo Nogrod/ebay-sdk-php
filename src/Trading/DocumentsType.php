@@ -33,6 +33,7 @@ class DocumentsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseria
      */
     public function addToDocument(\Nogrod\eBaySDK\Trading\DocumentType $document)
     {
+        $this->document ??= [];
         if (!is_array($this->document)) {
             throw new \LogicException('document is a lazy iterable and cannot be appended to; set an array instead.');
         }

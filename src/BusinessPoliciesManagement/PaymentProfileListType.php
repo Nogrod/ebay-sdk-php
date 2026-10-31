@@ -32,6 +32,7 @@ class PaymentProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPaymentProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile)
     {
+        $this->paymentProfile ??= [];
         if (!is_array($this->paymentProfile)) {
             throw new \LogicException('paymentProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

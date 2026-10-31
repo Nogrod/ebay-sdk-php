@@ -149,6 +149,7 @@ class SetStoreCategoriesRequestType extends AbstractRequestType
      */
     public function addToStoreCategories(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        $this->storeCategories ??= [];
         if (!is_array($this->storeCategories)) {
             throw new \LogicException('storeCategories is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -112,6 +112,7 @@ class TaxesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToTaxDetails(\Nogrod\eBaySDK\Trading\TaxDetailsType $taxDetails)
     {
+        $this->taxDetails ??= [];
         if (!is_array($this->taxDetails)) {
             throw new \LogicException('taxDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -31,6 +31,7 @@ class SetTaxTableRequestType extends AbstractRequestType
      */
     public function addToTaxTable(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        $this->taxTable ??= [];
         if (!is_array($this->taxTable)) {
             throw new \LogicException('taxTable is a lazy iterable and cannot be appended to; set an array instead.');
         }

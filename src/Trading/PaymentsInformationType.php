@@ -36,6 +36,7 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToPayments(\Nogrod\eBaySDK\Trading\PaymentTransactionType $payment)
     {
+        $this->payments ??= [];
         if (!is_array($this->payments)) {
             throw new \LogicException('payments is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -105,6 +106,7 @@ class PaymentsInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRefunds(\Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund)
     {
+        $this->refunds ??= [];
         if (!is_array($this->refunds)) {
             throw new \LogicException('refunds is a lazy iterable and cannot be appended to; set an array instead.');
         }

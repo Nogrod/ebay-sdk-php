@@ -35,6 +35,7 @@ class MarkUpMarkDownHistoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToMarkUpMarkDownEvent(\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType $markUpMarkDownEvent)
     {
+        $this->markUpMarkDownEvent ??= [];
         if (!is_array($this->markUpMarkDownEvent)) {
             throw new \LogicException('markUpMarkDownEvent is a lazy iterable and cannot be appended to; set an array instead.');
         }

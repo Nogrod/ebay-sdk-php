@@ -232,6 +232,7 @@ class UnpaidItemAssistancePreferencesType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToExcludedUser($excludedUser)
     {
+        $this->excludedUser ??= [];
         if (!is_array($this->excludedUser)) {
             throw new \LogicException('excludedUser is a lazy iterable and cannot be appended to; set an array instead.');
         }

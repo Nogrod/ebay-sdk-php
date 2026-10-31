@@ -31,6 +31,7 @@ class AccountEntriesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToAccountEntry(\Nogrod\eBaySDK\Trading\AccountEntryType $accountEntry)
     {
+        $this->accountEntry ??= [];
         if (!is_array($this->accountEntry)) {
             throw new \LogicException('accountEntry is a lazy iterable and cannot be appended to; set an array instead.');
         }

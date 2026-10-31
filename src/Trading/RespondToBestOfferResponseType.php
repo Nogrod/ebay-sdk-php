@@ -29,6 +29,7 @@ class RespondToBestOfferResponseType extends AbstractResponseType
      */
     public function addToRespondToBestOffer(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        $this->respondToBestOffer ??= [];
         if (!is_array($this->respondToBestOffer)) {
             throw new \LogicException('respondToBestOffer is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -129,6 +129,7 @@ class PicturesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToVariationSpecificPictureSet(\Nogrod\eBaySDK\Trading\VariationSpecificPictureSetType $variationSpecificPictureSet)
     {
+        $this->variationSpecificPictureSet ??= [];
         if (!is_array($this->variationSpecificPictureSet)) {
             throw new \LogicException('variationSpecificPictureSet is a lazy iterable and cannot be appended to; set an array instead.');
         }

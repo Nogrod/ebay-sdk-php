@@ -97,6 +97,7 @@ class RespondToBestOfferRequestType extends AbstractRequestType
      */
     public function addToBestOfferID($bestOfferID)
     {
+        $this->bestOfferID ??= [];
         if (!is_array($this->bestOfferID)) {
             throw new \LogicException('bestOfferID is a lazy iterable and cannot be appended to; set an array instead.');
         }

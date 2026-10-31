@@ -55,6 +55,7 @@ class VideoDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToVideoID($videoID)
     {
+        $this->videoID ??= [];
         if (!is_array($this->videoID)) {
             throw new \LogicException('videoID is a lazy iterable and cannot be appended to; set an array instead.');
         }

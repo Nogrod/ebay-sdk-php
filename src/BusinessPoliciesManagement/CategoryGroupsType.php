@@ -31,6 +31,7 @@ class CategoryGroupsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToCategoryGroup(\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup)
     {
+        $this->categoryGroup ??= [];
         if (!is_array($this->categoryGroup)) {
             throw new \LogicException('categoryGroup is a lazy iterable and cannot be appended to; set an array instead.');
         }

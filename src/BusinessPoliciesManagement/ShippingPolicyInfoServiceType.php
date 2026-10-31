@@ -239,6 +239,7 @@ class ShippingPolicyInfoServiceType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToShipToLocation($shipToLocation)
     {
+        $this->shipToLocation ??= [];
         if (!is_array($this->shipToLocation)) {
             throw new \LogicException('shipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
         }

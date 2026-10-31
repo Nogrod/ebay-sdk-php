@@ -80,6 +80,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      */
     public function addToMessageIDs($messageID)
     {
+        $this->messageIDs ??= [];
         if (!is_array($this->messageIDs)) {
             throw new \LogicException('messageIDs is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -238,6 +239,7 @@ class GetMyMessagesRequestType extends AbstractRequestType
      */
     public function addToExternalMessageIDs($externalMessageID)
     {
+        $this->externalMessageIDs ??= [];
         if (!is_array($this->externalMessageIDs)) {
             throw new \LogicException('externalMessageIDs is a lazy iterable and cannot be appended to; set an array instead.');
         }

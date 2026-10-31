@@ -45,6 +45,7 @@ class ShippingServiceCostOverrideListType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToShippingServiceCostOverride(\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType $shippingServiceCostOverride)
     {
+        $this->shippingServiceCostOverride ??= [];
         if (!is_array($this->shippingServiceCostOverride)) {
             throw new \LogicException('shippingServiceCostOverride is a lazy iterable and cannot be appended to; set an array instead.');
         }

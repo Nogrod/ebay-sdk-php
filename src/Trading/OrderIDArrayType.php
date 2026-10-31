@@ -37,6 +37,7 @@ class OrderIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToOrderID($orderID)
     {
+        $this->orderID ??= [];
         if (!is_array($this->orderID)) {
             throw new \LogicException('orderID is a lazy iterable and cannot be appended to; set an array instead.');
         }

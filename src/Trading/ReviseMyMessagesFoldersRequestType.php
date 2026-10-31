@@ -86,6 +86,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      */
     public function addToFolderID($folderID)
     {
+        $this->folderID ??= [];
         if (!is_array($this->folderID)) {
             throw new \LogicException('folderID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -172,6 +173,7 @@ class ReviseMyMessagesFoldersRequestType extends AbstractRequestType
      */
     public function addToFolderName($folderName)
     {
+        $this->folderName ??= [];
         if (!is_array($this->folderName)) {
             throw new \LogicException('folderName is a lazy iterable and cannot be appended to; set an array instead.');
         }

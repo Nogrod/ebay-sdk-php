@@ -40,6 +40,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToMaximumItemCount($maximumItemCount)
     {
+        $this->maximumItemCount ??= [];
         if (!is_array($this->maximumItemCount)) {
             throw new \LogicException('maximumItemCount is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -109,6 +110,7 @@ class MaximumItemRequirementsDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToMinimumFeedbackScore($minimumFeedbackScore)
     {
+        $this->minimumFeedbackScore ??= [];
         if (!is_array($this->minimumFeedbackScore)) {
             throw new \LogicException('minimumFeedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
         }

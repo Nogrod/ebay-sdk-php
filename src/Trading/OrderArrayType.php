@@ -40,6 +40,7 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToOrder(\Nogrod\eBaySDK\Trading\OrderType $order)
     {
+        $this->order ??= [];
         if (!is_array($this->order)) {
             throw new \LogicException('order is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -109,6 +110,7 @@ class OrderArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
     {
+        $this->errors ??= [];
         if (!is_array($this->errors)) {
             throw new \LogicException('errors is a lazy iterable and cannot be appended to; set an array instead.');
         }

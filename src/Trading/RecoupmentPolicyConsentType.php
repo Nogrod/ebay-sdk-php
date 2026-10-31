@@ -31,6 +31,7 @@ class RecoupmentPolicyConsentType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToSite($site)
     {
+        $this->site ??= [];
         if (!is_array($this->site)) {
             throw new \LogicException('site is a lazy iterable and cannot be appended to; set an array instead.');
         }

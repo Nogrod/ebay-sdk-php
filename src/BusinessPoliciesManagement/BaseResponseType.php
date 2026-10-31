@@ -85,6 +85,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToErrorMessage(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error)
     {
+        $this->errorMessage ??= [];
         if (!is_array($this->errorMessage)) {
             throw new \LogicException('errorMessage is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -206,6 +207,7 @@ class BaseResponseType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToExtension(\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension)
     {
+        $this->extension ??= [];
         if (!is_array($this->extension)) {
             throw new \LogicException('extension is a lazy iterable and cannot be appended to; set an array instead.');
         }

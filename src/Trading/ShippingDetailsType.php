@@ -861,6 +861,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToShippingServiceOptions(\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType $shippingServiceOptions)
     {
+        $this->shippingServiceOptions ??= [];
         if (!is_array($this->shippingServiceOptions)) {
             throw new \LogicException('shippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1076,6 +1077,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToInternationalShippingServiceOption(\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType $internationalShippingServiceOption)
     {
+        $this->internationalShippingServiceOption ??= [];
         if (!is_array($this->internationalShippingServiceOption)) {
             throw new \LogicException('internationalShippingServiceOption is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1330,6 +1332,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToTaxTable(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        $this->taxTable ??= [];
         if (!is_array($this->taxTable)) {
             throw new \LogicException('taxTable is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1899,6 +1902,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        $this->excludeShipToLocation ??= [];
         if (!is_array($this->excludeShipToLocation)) {
             throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2196,6 +2200,7 @@ class ShippingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToShipmentTrackingDetails(\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType $shipmentTrackingDetails)
     {
+        $this->shipmentTrackingDetails ??= [];
         if (!is_array($this->shipmentTrackingDetails)) {
             throw new \LogicException('shipmentTrackingDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

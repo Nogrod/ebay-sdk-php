@@ -1462,6 +1462,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToUserSubscription($userSubscription)
     {
+        $this->userSubscription ??= [];
         if (!is_array($this->userSubscription)) {
             throw new \LogicException('userSubscription is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1809,6 +1810,7 @@ class UserType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToMembership(\Nogrod\eBaySDK\Trading\MembershipDetailType $program)
     {
+        $this->membership ??= [];
         if (!is_array($this->membership)) {
             throw new \LogicException('membership is a lazy iterable and cannot be appended to; set an array instead.');
         }

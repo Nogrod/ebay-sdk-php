@@ -201,6 +201,7 @@ class GetAccountResponseType extends AbstractResponseType
      */
     public function addToAccountEntries(\Nogrod\eBaySDK\Trading\AccountEntryType $accountEntry)
     {
+        $this->accountEntries ??= [];
         if (!is_array($this->accountEntries)) {
             throw new \LogicException('accountEntries is a lazy iterable and cannot be appended to; set an array instead.');
         }

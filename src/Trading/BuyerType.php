@@ -202,6 +202,7 @@ class BuyerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerTaxIdentifier(\Nogrod\eBaySDK\Trading\TaxIdentifierType $buyerTaxIdentifier)
     {
+        $this->buyerTaxIdentifier ??= [];
         if (!is_array($this->buyerTaxIdentifier)) {
             throw new \LogicException('buyerTaxIdentifier is a lazy iterable and cannot be appended to; set an array instead.');
         }

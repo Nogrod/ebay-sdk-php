@@ -38,6 +38,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToNumberOfPolicyViolations($count)
     {
+        $this->numberOfPolicyViolations ??= [];
         if (!is_array($this->numberOfPolicyViolations)) {
             throw new \LogicException('numberOfPolicyViolations is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -107,6 +108,7 @@ class MaximumBuyerPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToPolicyViolationDuration(\Nogrod\eBaySDK\Trading\PolicyViolationDurationDetailsType $policyViolationDuration)
     {
+        $this->policyViolationDuration ??= [];
         if (!is_array($this->policyViolationDuration)) {
             throw new \LogicException('policyViolationDuration is a lazy iterable and cannot be appended to; set an array instead.');
         }

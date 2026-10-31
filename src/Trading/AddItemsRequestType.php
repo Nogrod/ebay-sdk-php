@@ -31,6 +31,7 @@ class AddItemsRequestType extends AbstractRequestType
      */
     public function addToAddItemRequestContainer(\Nogrod\eBaySDK\Trading\AddItemRequestContainerType $addItemRequestContainer)
     {
+        $this->addItemRequestContainer ??= [];
         if (!is_array($this->addItemRequestContainer)) {
             throw new \LogicException('addItemRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
         }

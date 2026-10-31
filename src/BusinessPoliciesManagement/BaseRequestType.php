@@ -31,6 +31,7 @@ class BaseRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToExtension(\Nogrod\eBaySDK\BusinessPoliciesManagement\ExtensionType $extension)
     {
+        $this->extension ??= [];
         if (!is_array($this->extension)) {
             throw new \LogicException('extension is a lazy iterable and cannot be appended to; set an array instead.');
         }

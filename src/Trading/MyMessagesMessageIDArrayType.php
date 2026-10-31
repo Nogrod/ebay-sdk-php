@@ -31,6 +31,7 @@ class MyMessagesMessageIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToMessageID($messageID)
     {
+        $this->messageID ??= [];
         if (!is_array($this->messageID)) {
             throw new \LogicException('messageID is a lazy iterable and cannot be appended to; set an array instead.');
         }

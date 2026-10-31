@@ -41,6 +41,7 @@ class MerchantDataVariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToVariation(\Nogrod\eBaySDK\Trading\MerchantDataVariationType $variation)
     {
+        $this->variation ??= [];
         if (!is_array($this->variation)) {
             throw new \LogicException('variation is a lazy iterable and cannot be appended to; set an array instead.');
         }

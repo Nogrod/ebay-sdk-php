@@ -152,6 +152,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariation(\Nogrod\eBaySDK\Trading\VariationType $variation)
     {
+        $this->variation ??= [];
         if (!is_array($this->variation)) {
             throw new \LogicException('variation is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -302,6 +303,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToPictures(\Nogrod\eBaySDK\Trading\PicturesType $pictures)
     {
+        $this->pictures ??= [];
         if (!is_array($this->pictures)) {
             throw new \LogicException('pictures is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -501,6 +503,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariationSpecificsSet(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        $this->variationSpecificsSet ??= [];
         if (!is_array($this->variationSpecificsSet)) {
             throw new \LogicException('variationSpecificsSet is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -700,6 +703,7 @@ class VariationsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToModifyNameList(\Nogrod\eBaySDK\Trading\ModifyNameType $modifyName)
     {
+        $this->modifyNameList ??= [];
         if (!is_array($this->modifyNameList)) {
             throw new \LogicException('modifyNameList is a lazy iterable and cannot be appended to; set an array instead.');
         }

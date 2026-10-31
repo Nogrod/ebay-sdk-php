@@ -75,6 +75,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToDescriptionTemplate(\Nogrod\eBaySDK\Trading\DescriptionTemplateType $descriptionTemplate)
     {
+        $this->descriptionTemplate ??= [];
         if (!is_array($this->descriptionTemplate)) {
             throw new \LogicException('descriptionTemplate is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -170,6 +171,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToObsoleteLayoutID($obsoleteLayoutID)
     {
+        $this->obsoleteLayoutID ??= [];
         if (!is_array($this->obsoleteLayoutID)) {
             throw new \LogicException('obsoleteLayoutID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -239,6 +241,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToObsoleteThemeID($obsoleteThemeID)
     {
+        $this->obsoleteThemeID ??= [];
         if (!is_array($this->obsoleteThemeID)) {
             throw new \LogicException('obsoleteThemeID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -308,6 +311,7 @@ class GetDescriptionTemplatesResponseType extends AbstractResponseType
      */
     public function addToThemeGroup(\Nogrod\eBaySDK\Trading\ThemeGroupType $themeGroup)
     {
+        $this->themeGroup ??= [];
         if (!is_array($this->themeGroup)) {
             throw new \LogicException('themeGroup is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -69,6 +69,7 @@ class ConditionDescriptorsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToConditionDescriptor(\Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor)
     {
+        $this->conditionDescriptor ??= [];
         if (!is_array($this->conditionDescriptor)) {
             throw new \LogicException('conditionDescriptor is a lazy iterable and cannot be appended to; set an array instead.');
         }

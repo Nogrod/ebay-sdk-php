@@ -31,6 +31,7 @@ class IntegratedMerchantCreditCardInfoType implements \Sabre\Xml\XmlSerializable
      */
     public function addToSupportedSite($supportedSite)
     {
+        $this->supportedSite ??= [];
         if (!is_array($this->supportedSite)) {
             throw new \LogicException('supportedSite is a lazy iterable and cannot be appended to; set an array instead.');
         }

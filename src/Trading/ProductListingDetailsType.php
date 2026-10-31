@@ -280,6 +280,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToCopyright($copyright)
     {
+        $this->copyright ??= [];
         if (!is_array($this->copyright)) {
             throw new \LogicException('copyright is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -717,6 +718,7 @@ class ProductListingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        $this->nameValueList ??= [];
         if (!is_array($this->nameValueList)) {
             throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
         }

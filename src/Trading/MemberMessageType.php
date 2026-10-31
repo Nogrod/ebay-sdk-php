@@ -348,6 +348,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToRecipientID($recipientID)
     {
+        $this->recipientID ??= [];
         if (!is_array($this->recipientID)) {
             throw new \LogicException('recipientID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -577,6 +578,7 @@ class MemberMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        $this->messageMedia ??= [];
         if (!is_array($this->messageMedia)) {
             throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
         }

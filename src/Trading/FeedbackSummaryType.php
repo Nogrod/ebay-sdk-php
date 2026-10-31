@@ -122,6 +122,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToBidRetractionFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->bidRetractionFeedbackPeriodArray ??= [];
         if (!is_array($this->bidRetractionFeedbackPeriodArray)) {
             throw new \LogicException('bidRetractionFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -196,6 +197,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToNegativeFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->negativeFeedbackPeriodArray ??= [];
         if (!is_array($this->negativeFeedbackPeriodArray)) {
             throw new \LogicException('negativeFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -270,6 +272,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToNeutralFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->neutralFeedbackPeriodArray ??= [];
         if (!is_array($this->neutralFeedbackPeriodArray)) {
             throw new \LogicException('neutralFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -344,6 +347,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToPositiveFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->positiveFeedbackPeriodArray ??= [];
         if (!is_array($this->positiveFeedbackPeriodArray)) {
             throw new \LogicException('positiveFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -418,6 +422,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToTotalFeedbackPeriodArray(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->totalFeedbackPeriodArray ??= [];
         if (!is_array($this->totalFeedbackPeriodArray)) {
             throw new \LogicException('totalFeedbackPeriodArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -603,6 +608,7 @@ class FeedbackSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToSellerRatingSummaryArray(\Nogrod\eBaySDK\Trading\AverageRatingSummaryType $averageRatingSummary)
     {
+        $this->sellerRatingSummaryArray ??= [];
         if (!is_array($this->sellerRatingSummaryArray)) {
             throw new \LogicException('sellerRatingSummaryArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

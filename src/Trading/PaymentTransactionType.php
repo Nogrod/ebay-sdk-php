@@ -281,6 +281,7 @@ class PaymentTransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToPaymentReferenceID(\Nogrod\eBaySDK\Trading\TransactionReferenceType $paymentReferenceID)
     {
+        $this->paymentReferenceID ??= [];
         if (!is_array($this->paymentReferenceID)) {
             throw new \LogicException('paymentReferenceID is a lazy iterable and cannot be appended to; set an array instead.');
         }

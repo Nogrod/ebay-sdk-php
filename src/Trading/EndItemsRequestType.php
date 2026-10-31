@@ -31,6 +31,7 @@ class EndItemsRequestType extends AbstractRequestType
      */
     public function addToEndItemRequestContainer(\Nogrod\eBaySDK\Trading\EndItemRequestContainerType $endItemRequestContainer)
     {
+        $this->endItemRequestContainer ??= [];
         if (!is_array($this->endItemRequestContainer)) {
             throw new \LogicException('endItemRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
         }

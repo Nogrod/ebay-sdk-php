@@ -2267,6 +2267,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToListingEnhancement($listingEnhancement)
     {
+        $this->listingEnhancement ??= [];
         if (!is_array($this->listingEnhancement)) {
             throw new \LogicException('listingEnhancement is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2528,6 +2529,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        $this->paymentMethods ??= [];
         if (!is_array($this->paymentMethods)) {
             throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -3406,6 +3408,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToShipToLocations($shipToLocations)
     {
+        $this->shipToLocations ??= [];
         if (!is_array($this->shipToLocations)) {
             throw new \LogicException('shipToLocations is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -4547,6 +4550,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToVideoDetails($videoID)
     {
+        $this->videoDetails ??= [];
         if (!is_array($this->videoDetails)) {
             throw new \LogicException('videoDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -4970,6 +4974,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToItemSpecifics(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        $this->itemSpecifics ??= [];
         if (!is_array($this->itemSpecifics)) {
             throw new \LogicException('itemSpecifics is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -5317,6 +5322,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToCrossBorderTrade($crossBorderTrade)
     {
+        $this->crossBorderTrade ??= [];
         if (!is_array($this->crossBorderTrade)) {
             throw new \LogicException('crossBorderTrade is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -5619,6 +5625,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToPaymentAllowedSite($paymentAllowedSite)
     {
+        $this->paymentAllowedSite ??= [];
         if (!is_array($this->paymentAllowedSite)) {
             throw new \LogicException('paymentAllowedSite is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -6080,6 +6087,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToConditionDescriptors(\Nogrod\eBaySDK\Trading\ConditionDescriptorType $conditionDescriptor)
     {
+        $this->conditionDescriptors ??= [];
         if (!is_array($this->conditionDescriptors)) {
             throw new \LogicException('conditionDescriptors is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -6637,6 +6645,7 @@ class ItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToShippingServiceCostOverrideList(\Nogrod\eBaySDK\Trading\ShippingServiceCostOverrideType $shippingServiceCostOverride)
     {
+        $this->shippingServiceCostOverrideList ??= [];
         if (!is_array($this->shippingServiceCostOverrideList)) {
             throw new \LogicException('shippingServiceCostOverrideList is a lazy iterable and cannot be appended to; set an array instead.');
         }

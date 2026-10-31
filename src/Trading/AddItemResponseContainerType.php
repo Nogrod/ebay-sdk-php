@@ -213,6 +213,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToFees(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        $this->fees ??= [];
         if (!is_array($this->fees)) {
             throw new \LogicException('fees is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -405,6 +406,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToErrors(\Nogrod\eBaySDK\Trading\ErrorType $errors)
     {
+        $this->errors ??= [];
         if (!is_array($this->errors)) {
             throw new \LogicException('errors is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -530,6 +532,7 @@ class AddItemResponseContainerType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToDiscountReason($discountReason)
     {
+        $this->discountReason ??= [];
         if (!is_array($this->discountReason)) {
             throw new \LogicException('discountReason is a lazy iterable and cannot be appended to; set an array instead.');
         }

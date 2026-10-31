@@ -110,6 +110,7 @@ class ThemeGroupType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToThemeID($themeID)
     {
+        $this->themeID ??= [];
         if (!is_array($this->themeID)) {
             throw new \LogicException('themeID is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -84,6 +84,7 @@ class ShipmentType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToShipmentTrackingDetails(\Nogrod\eBaySDK\Trading\ShipmentTrackingDetailsType $shipmentTrackingDetails)
     {
+        $this->shipmentTrackingDetails ??= [];
         if (!is_array($this->shipmentTrackingDetails)) {
             throw new \LogicException('shipmentTrackingDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

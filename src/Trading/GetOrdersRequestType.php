@@ -147,6 +147,7 @@ class GetOrdersRequestType extends AbstractRequestType
      */
     public function addToOrderIDArray($orderID)
     {
+        $this->orderIDArray ??= [];
         if (!is_array($this->orderIDArray)) {
             throw new \LogicException('orderIDArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

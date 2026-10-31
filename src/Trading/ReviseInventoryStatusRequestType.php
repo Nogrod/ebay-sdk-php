@@ -34,6 +34,7 @@ class ReviseInventoryStatusRequestType extends AbstractRequestType
      */
     public function addToInventoryStatus(\Nogrod\eBaySDK\Trading\InventoryStatusType $inventoryStatus)
     {
+        $this->inventoryStatus ??= [];
         if (!is_array($this->inventoryStatus)) {
             throw new \LogicException('inventoryStatus is a lazy iterable and cannot be appended to; set an array instead.');
         }

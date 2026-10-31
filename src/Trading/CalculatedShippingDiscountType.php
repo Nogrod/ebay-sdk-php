@@ -82,6 +82,7 @@ class CalculatedShippingDiscountType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToDiscountProfile(\Nogrod\eBaySDK\Trading\DiscountProfileType $discountProfile)
     {
+        $this->discountProfile ??= [];
         if (!is_array($this->discountProfile)) {
             throw new \LogicException('discountProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

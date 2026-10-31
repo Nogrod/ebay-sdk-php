@@ -255,6 +255,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToResponsiblePersons(\Nogrod\eBaySDK\Trading\ResponsiblePersonType $responsiblePerson)
     {
+        $this->responsiblePersons ??= [];
         if (!is_array($this->responsiblePersons)) {
             throw new \LogicException('responsiblePersons is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -344,6 +345,7 @@ class RegulatoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToDocuments(\Nogrod\eBaySDK\Trading\DocumentType $document)
     {
+        $this->documents ??= [];
         if (!is_array($this->documents)) {
             throw new \LogicException('documents is a lazy iterable and cannot be appended to; set an array instead.');
         }

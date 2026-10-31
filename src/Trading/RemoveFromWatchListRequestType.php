@@ -54,6 +54,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      */
     public function addToItemID($itemID)
     {
+        $this->itemID ??= [];
         if (!is_array($this->itemID)) {
             throw new \LogicException('itemID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -159,6 +160,7 @@ class RemoveFromWatchListRequestType extends AbstractRequestType
      */
     public function addToVariationKey(\Nogrod\eBaySDK\Trading\VariationKeyType $variationKey)
     {
+        $this->variationKey ??= [];
         if (!is_array($this->variationKey)) {
             throw new \LogicException('variationKey is a lazy iterable and cannot be appended to; set an array instead.');
         }

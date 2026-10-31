@@ -386,6 +386,7 @@ class ResponsiblePersonType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToTypes($type)
     {
+        $this->types ??= [];
         if (!is_array($this->types)) {
             throw new \LogicException('types is a lazy iterable and cannot be appended to; set an array instead.');
         }

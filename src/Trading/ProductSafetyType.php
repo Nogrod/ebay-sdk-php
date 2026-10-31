@@ -56,6 +56,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToPictograms($pictogram)
     {
+        $this->pictograms ??= [];
         if (!is_array($this->pictograms)) {
             throw new \LogicException('pictograms is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -140,6 +141,7 @@ class ProductSafetyType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToStatements($statement)
     {
+        $this->statements ??= [];
         if (!is_array($this->statements)) {
             throw new \LogicException('statements is a lazy iterable and cannot be appended to; set an array instead.');
         }

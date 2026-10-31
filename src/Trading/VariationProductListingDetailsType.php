@@ -202,6 +202,7 @@ class VariationProductListingDetailsType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToNameValueList(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        $this->nameValueList ??= [];
         if (!is_array($this->nameValueList)) {
             throw new \LogicException('nameValueList is a lazy iterable and cannot be appended to; set an array instead.');
         }

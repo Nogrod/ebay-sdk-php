@@ -83,6 +83,7 @@ class ConditionDescriptorType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToValue($value)
     {
+        $this->value ??= [];
         if (!is_array($this->value)) {
             throw new \LogicException('value is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -99,6 +99,7 @@ class PaymentInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToAcceptedPaymentMethod($acceptedPaymentMethod)
     {
+        $this->acceptedPaymentMethod ??= [];
         if (!is_array($this->acceptedPaymentMethod)) {
             throw new \LogicException('acceptedPaymentMethod is a lazy iterable and cannot be appended to; set an array instead.');
         }

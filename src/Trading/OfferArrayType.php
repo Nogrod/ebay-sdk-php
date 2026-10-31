@@ -31,6 +31,7 @@ class OfferArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToOffer(\Nogrod\eBaySDK\Trading\OfferType $offer)
     {
+        $this->offer ??= [];
         if (!is_array($this->offer)) {
             throw new \LogicException('offer is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -31,6 +31,7 @@ class ShippingPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToShippingPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile)
     {
+        $this->shippingPolicyProfile ??= [];
         if (!is_array($this->shippingPolicyProfile)) {
             throw new \LogicException('shippingPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

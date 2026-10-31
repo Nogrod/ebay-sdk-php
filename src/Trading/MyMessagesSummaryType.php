@@ -73,6 +73,7 @@ class MyMessagesSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToFolderSummary(\Nogrod\eBaySDK\Trading\MyMessagesFolderSummaryType $folderSummary)
     {
+        $this->folderSummary ??= [];
         if (!is_array($this->folderSummary)) {
             throw new \LogicException('folderSummary is a lazy iterable and cannot be appended to; set an array instead.');
         }

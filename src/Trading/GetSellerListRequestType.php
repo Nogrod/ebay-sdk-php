@@ -142,6 +142,7 @@ class GetSellerListRequestType extends AbstractRequestType
      */
     public function addToMotorsDealerUsers($userID)
     {
+        $this->motorsDealerUsers ??= [];
         if (!is_array($this->motorsDealerUsers)) {
             throw new \LogicException('motorsDealerUsers is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -429,6 +430,7 @@ class GetSellerListRequestType extends AbstractRequestType
      */
     public function addToSKUArray($sKU)
     {
+        $this->sKUArray ??= [];
         if (!is_array($this->sKUArray)) {
             throw new \LogicException('sKUArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

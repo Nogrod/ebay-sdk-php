@@ -122,6 +122,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      */
     public function addToNotificationDetailsArray(\Nogrod\eBaySDK\Trading\NotificationDetailsType $notificationDetails)
     {
+        $this->notificationDetailsArray ??= [];
         if (!is_array($this->notificationDetailsArray)) {
             throw new \LogicException('notificationDetailsArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -196,6 +197,7 @@ class GetNotificationsUsageResponseType extends AbstractResponseType
      */
     public function addToMarkUpMarkDownHistory(\Nogrod\eBaySDK\Trading\MarkUpMarkDownEventType $markUpMarkDownEvent)
     {
+        $this->markUpMarkDownHistory ??= [];
         if (!is_array($this->markUpMarkDownHistory)) {
             throw new \LogicException('markUpMarkDownHistory is a lazy iterable and cannot be appended to; set an array instead.');
         }

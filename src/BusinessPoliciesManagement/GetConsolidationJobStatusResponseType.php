@@ -31,6 +31,7 @@ class GetConsolidationJobStatusResponseType extends BaseResponseType
      */
     public function addToJob(\Nogrod\eBaySDK\BusinessPoliciesManagement\ConsolidationJobType $job)
     {
+        $this->job ??= [];
         if (!is_array($this->job)) {
             throw new \LogicException('job is a lazy iterable and cannot be appended to; set an array instead.');
         }

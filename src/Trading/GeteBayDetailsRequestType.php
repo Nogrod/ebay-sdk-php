@@ -33,6 +33,7 @@ class GeteBayDetailsRequestType extends AbstractRequestType
      */
     public function addToDetailName($detailName)
     {
+        $this->detailName ??= [];
         if (!is_array($this->detailName)) {
             throw new \LogicException('detailName is a lazy iterable and cannot be appended to; set an array instead.');
         }

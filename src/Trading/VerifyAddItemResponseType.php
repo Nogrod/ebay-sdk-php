@@ -115,6 +115,7 @@ class VerifyAddItemResponseType extends AbstractResponseType
      */
     public function addToFees(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        $this->fees ??= [];
         if (!is_array($this->fees)) {
             throw new \LogicException('fees is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -281,6 +282,7 @@ class VerifyAddItemResponseType extends AbstractResponseType
      */
     public function addToDiscountReason($discountReason)
     {
+        $this->discountReason ??= [];
         if (!is_array($this->discountReason)) {
             throw new \LogicException('discountReason is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -354,6 +356,7 @@ class VerifyAddItemResponseType extends AbstractResponseType
      */
     public function addToProductSuggestions(\Nogrod\eBaySDK\Trading\ProductSuggestionType $productSuggestion)
     {
+        $this->productSuggestions ??= [];
         if (!is_array($this->productSuggestions)) {
             throw new \LogicException('productSuggestions is a lazy iterable and cannot be appended to; set an array instead.');
         }

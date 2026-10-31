@@ -43,6 +43,7 @@ class GetMemberMessagesResponseType extends AbstractResponseType
      */
     public function addToMemberMessage(\Nogrod\eBaySDK\Trading\MemberMessageExchangeType $memberMessageExchange)
     {
+        $this->memberMessage ??= [];
         if (!is_array($this->memberMessage)) {
             throw new \LogicException('memberMessage is a lazy iterable and cannot be appended to; set an array instead.');
         }

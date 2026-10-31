@@ -244,6 +244,7 @@ class GetFeedbackRequestType extends AbstractRequestType
      */
     public function addToCommentType($commentType)
     {
+        $this->commentType ??= [];
         if (!is_array($this->commentType)) {
             throw new \LogicException('commentType is a lazy iterable and cannot be appended to; set an array instead.');
         }

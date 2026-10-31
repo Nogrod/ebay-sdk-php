@@ -31,6 +31,7 @@ class FeedbackDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToFeedbackDetail(\Nogrod\eBaySDK\Trading\FeedbackDetailType $feedbackDetail)
     {
+        $this->feedbackDetail ??= [];
         if (!is_array($this->feedbackDetail)) {
             throw new \LogicException('feedbackDetail is a lazy iterable and cannot be appended to; set an array instead.');
         }

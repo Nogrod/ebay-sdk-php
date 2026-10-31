@@ -785,6 +785,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        $this->paymentMethods ??= [];
         if (!is_array($this->paymentMethods)) {
             throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1136,6 +1137,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToTransactionArray(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        $this->transactionArray ??= [];
         if (!is_array($this->transactionArray)) {
             throw new \LogicException('transactionArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1607,6 +1609,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToPickupDetails(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        $this->pickupDetails ??= [];
         if (!is_array($this->pickupDetails)) {
             throw new \LogicException('pickupDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1900,6 +1903,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerTaxIdentifier(\Nogrod\eBaySDK\Trading\TaxIdentifierType $buyerTaxIdentifier)
     {
+        $this->buyerTaxIdentifier ??= [];
         if (!is_array($this->buyerTaxIdentifier)) {
             throw new \LogicException('buyerTaxIdentifier is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2013,6 +2017,7 @@ class OrderType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToBuyerPackageEnclosures(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        $this->buyerPackageEnclosures ??= [];
         if (!is_array($this->buyerPackageEnclosures)) {
             throw new \LogicException('buyerPackageEnclosures is a lazy iterable and cannot be appended to; set an array instead.');
         }

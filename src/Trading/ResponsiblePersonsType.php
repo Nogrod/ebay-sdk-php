@@ -37,6 +37,7 @@ class ResponsiblePersonsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToResponsiblePerson(\Nogrod\eBaySDK\Trading\ResponsiblePersonType $responsiblePerson)
     {
+        $this->responsiblePerson ??= [];
         if (!is_array($this->responsiblePerson)) {
             throw new \LogicException('responsiblePerson is a lazy iterable and cannot be appended to; set an array instead.');
         }

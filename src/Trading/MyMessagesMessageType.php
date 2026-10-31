@@ -915,6 +915,7 @@ class MyMessagesMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        $this->messageMedia ??= [];
         if (!is_array($this->messageMedia)) {
             throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
         }

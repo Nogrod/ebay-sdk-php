@@ -561,6 +561,7 @@ class ShippingServiceOptionsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingPackageInfo(\Nogrod\eBaySDK\Trading\ShippingPackageInfoType $shippingPackageInfo)
     {
+        $this->shippingPackageInfo ??= [];
         if (!is_array($this->shippingPackageInfo)) {
             throw new \LogicException('shippingPackageInfo is a lazy iterable and cannot be appended to; set an array instead.');
         }

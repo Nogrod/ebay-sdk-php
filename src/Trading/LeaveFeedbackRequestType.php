@@ -316,6 +316,7 @@ class LeaveFeedbackRequestType extends AbstractRequestType
      */
     public function addToSellerItemRatingDetailArray(\Nogrod\eBaySDK\Trading\ItemRatingDetailsType $itemRatingDetails)
     {
+        $this->sellerItemRatingDetailArray ??= [];
         if (!is_array($this->sellerItemRatingDetailArray)) {
             throw new \LogicException('sellerItemRatingDetailArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

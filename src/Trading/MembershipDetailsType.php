@@ -34,6 +34,7 @@ class MembershipDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToProgram(\Nogrod\eBaySDK\Trading\MembershipDetailType $program)
     {
+        $this->program ??= [];
         if (!is_array($this->program)) {
             throw new \LogicException('program is a lazy iterable and cannot be appended to; set an array instead.');
         }

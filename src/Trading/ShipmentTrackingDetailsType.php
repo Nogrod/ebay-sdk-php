@@ -162,6 +162,7 @@ class ShipmentTrackingDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToShipmentLineItem(\Nogrod\eBaySDK\Trading\LineItemType $lineItem)
     {
+        $this->shipmentLineItem ??= [];
         if (!is_array($this->shipmentLineItem)) {
             throw new \LogicException('shipmentLineItem is a lazy iterable and cannot be appended to; set an array instead.');
         }

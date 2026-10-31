@@ -51,6 +51,7 @@ class TaxTableType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToTaxJurisdiction(\Nogrod\eBaySDK\Trading\TaxJurisdictionType $taxJurisdiction)
     {
+        $this->taxJurisdiction ??= [];
         if (!is_array($this->taxJurisdiction)) {
             throw new \LogicException('taxJurisdiction is a lazy iterable and cannot be appended to; set an array instead.');
         }

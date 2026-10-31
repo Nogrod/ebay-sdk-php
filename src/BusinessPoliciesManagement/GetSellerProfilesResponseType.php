@@ -43,6 +43,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToPaymentProfileList(\Nogrod\eBaySDK\BusinessPoliciesManagement\PaymentProfileType $paymentProfile)
     {
+        $this->paymentProfileList ??= [];
         if (!is_array($this->paymentProfileList)) {
             throw new \LogicException('paymentProfileList is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -112,6 +113,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToReturnPolicyProfileList(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile)
     {
+        $this->returnPolicyProfileList ??= [];
         if (!is_array($this->returnPolicyProfileList)) {
             throw new \LogicException('returnPolicyProfileList is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -181,6 +183,7 @@ class GetSellerProfilesResponseType extends BaseResponseType
      */
     public function addToShippingPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyProfileType $shippingPolicyProfile)
     {
+        $this->shippingPolicyProfile ??= [];
         if (!is_array($this->shippingPolicyProfile)) {
             throw new \LogicException('shippingPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -39,6 +39,7 @@ class ModifyNameArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToModifyName(\Nogrod\eBaySDK\Trading\ModifyNameType $modifyName)
     {
+        $this->modifyName ??= [];
         if (!is_array($this->modifyName)) {
             throw new \LogicException('modifyName is a lazy iterable and cannot be appended to; set an array instead.');
         }

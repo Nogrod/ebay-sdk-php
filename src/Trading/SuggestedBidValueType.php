@@ -31,6 +31,7 @@ class SuggestedBidValueType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToBidValue(\Nogrod\eBaySDK\Trading\AmountType $bidValue)
     {
+        $this->bidValue ??= [];
         if (!is_array($this->bidValue)) {
             throw new \LogicException('bidValue is a lazy iterable and cannot be appended to; set an array instead.');
         }

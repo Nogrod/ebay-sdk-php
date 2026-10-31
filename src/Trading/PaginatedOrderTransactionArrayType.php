@@ -37,6 +37,7 @@ class PaginatedOrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToOrderTransactionArray(\Nogrod\eBaySDK\Trading\OrderTransactionType $orderTransaction)
     {
+        $this->orderTransactionArray ??= [];
         if (!is_array($this->orderTransactionArray)) {
             throw new \LogicException('orderTransactionArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

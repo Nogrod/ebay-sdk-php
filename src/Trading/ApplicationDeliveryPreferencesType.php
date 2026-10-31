@@ -318,6 +318,7 @@ class ApplicationDeliveryPreferencesType implements \Sabre\Xml\XmlSerializable, 
      */
     public function addToDeliveryURLDetails(\Nogrod\eBaySDK\Trading\DeliveryURLDetailType $deliveryURLDetails)
     {
+        $this->deliveryURLDetails ??= [];
         if (!is_array($this->deliveryURLDetails)) {
             throw new \LogicException('deliveryURLDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

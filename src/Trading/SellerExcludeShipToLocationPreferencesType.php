@@ -69,6 +69,7 @@ class SellerExcludeShipToLocationPreferencesType implements \Sabre\Xml\XmlSerial
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        $this->excludeShipToLocation ??= [];
         if (!is_array($this->excludeShipToLocation)) {
             throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
         }

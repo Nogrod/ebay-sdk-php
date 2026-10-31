@@ -129,6 +129,7 @@ class GetSellerListResponseType extends AbstractResponseType
      */
     public function addToItemArray(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        $this->itemArray ??= [];
         if (!is_array($this->itemArray)) {
             throw new \LogicException('itemArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

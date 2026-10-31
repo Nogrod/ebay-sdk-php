@@ -31,6 +31,7 @@ class AddMemberMessagesAAQToBidderResponseType extends AbstractResponseType
      */
     public function addToAddMemberMessagesAAQToBidderResponseContainer(\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderResponseContainerType $addMemberMessagesAAQToBidderResponseContainer)
     {
+        $this->addMemberMessagesAAQToBidderResponseContainer ??= [];
         if (!is_array($this->addMemberMessagesAAQToBidderResponseContainer)) {
             throw new \LogicException('addMemberMessagesAAQToBidderResponseContainer is a lazy iterable and cannot be appended to; set an array instead.');
         }

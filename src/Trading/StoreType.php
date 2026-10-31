@@ -255,6 +255,7 @@ class StoreType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializa
      */
     public function addToCustomCategories(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $customCategory)
     {
+        $this->customCategories ??= [];
         if (!is_array($this->customCategories)) {
             throw new \LogicException('customCategories is a lazy iterable and cannot be appended to; set an array instead.');
         }

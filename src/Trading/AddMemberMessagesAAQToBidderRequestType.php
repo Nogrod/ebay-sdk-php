@@ -31,6 +31,7 @@ class AddMemberMessagesAAQToBidderRequestType extends AbstractRequestType
      */
     public function addToAddMemberMessagesAAQToBidderRequestContainer(\Nogrod\eBaySDK\Trading\AddMemberMessagesAAQToBidderRequestContainerType $addMemberMessagesAAQToBidderRequestContainer)
     {
+        $this->addMemberMessagesAAQToBidderRequestContainer ??= [];
         if (!is_array($this->addMemberMessagesAAQToBidderRequestContainer)) {
             throw new \LogicException('addMemberMessagesAAQToBidderRequestContainer is a lazy iterable and cannot be appended to; set an array instead.');
         }

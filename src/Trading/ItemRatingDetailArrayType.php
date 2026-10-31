@@ -35,6 +35,7 @@ class ItemRatingDetailArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToItemRatingDetails(\Nogrod\eBaySDK\Trading\ItemRatingDetailsType $itemRatingDetails)
     {
+        $this->itemRatingDetails ??= [];
         if (!is_array($this->itemRatingDetails)) {
             throw new \LogicException('itemRatingDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

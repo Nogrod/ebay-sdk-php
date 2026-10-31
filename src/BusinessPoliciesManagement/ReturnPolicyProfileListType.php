@@ -31,6 +31,7 @@ class ReturnPolicyProfileListType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToReturnPolicyProfile(\Nogrod\eBaySDK\BusinessPoliciesManagement\ReturnPolicyProfileType $returnPolicyProfile)
     {
+        $this->returnPolicyProfile ??= [];
         if (!is_array($this->returnPolicyProfile)) {
             throw new \LogicException('returnPolicyProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

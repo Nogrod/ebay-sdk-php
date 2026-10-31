@@ -846,6 +846,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToCharityAffiliationDetails(\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType $charityAffiliationDetail)
     {
+        $this->charityAffiliationDetails ??= [];
         if (!is_array($this->charityAffiliationDetails)) {
             throw new \LogicException('charityAffiliationDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1027,6 +1028,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToTopRatedSellerDetails($topRatedProgram)
     {
+        $this->topRatedSellerDetails ??= [];
         if (!is_array($this->topRatedSellerDetails)) {
             throw new \LogicException('topRatedSellerDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1100,6 +1102,7 @@ class SellerType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializ
      */
     public function addToRecoupmentPolicyConsent($site)
     {
+        $this->recoupmentPolicyConsent ??= [];
         if (!is_array($this->recoupmentPolicyConsent)) {
             throw new \LogicException('recoupmentPolicyConsent is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -1990,6 +1990,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToPickupDetails(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        $this->pickupDetails ??= [];
         if (!is_array($this->pickupDetails)) {
             throw new \LogicException('pickupDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2143,6 +2144,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToBuyerPackageEnclosures(\Nogrod\eBaySDK\Trading\BuyerPackageEnclosureType $buyerPackageEnclosure)
     {
+        $this->buyerPackageEnclosures ??= [];
         if (!is_array($this->buyerPackageEnclosures)) {
             throw new \LogicException('buyerPackageEnclosures is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -2539,6 +2541,7 @@ class TransactionType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToLinkedLineItemArray(\Nogrod\eBaySDK\Trading\LinkedLineItemType $linkedLineItem)
     {
+        $this->linkedLineItemArray ??= [];
         if (!is_array($this->linkedLineItemArray)) {
             throw new \LogicException('linkedLineItemArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

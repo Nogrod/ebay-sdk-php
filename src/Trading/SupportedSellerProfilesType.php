@@ -36,6 +36,7 @@ class SupportedSellerProfilesType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToSupportedSellerProfile(\Nogrod\eBaySDK\Trading\SupportedSellerProfileType $supportedSellerProfile)
     {
+        $this->supportedSellerProfile ??= [];
         if (!is_array($this->supportedSellerProfile)) {
             throw new \LogicException('supportedSellerProfile is a lazy iterable and cannot be appended to; set an array instead.');
         }

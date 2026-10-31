@@ -41,6 +41,7 @@ class DiscountDetailType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToDiscount(\Nogrod\eBaySDK\Trading\DiscountType $discount)
     {
+        $this->discount ??= [];
         if (!is_array($this->discount)) {
             throw new \LogicException('discount is a lazy iterable and cannot be appended to; set an array instead.');
         }

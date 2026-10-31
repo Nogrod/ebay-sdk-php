@@ -830,6 +830,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSearchFlag($searchFlag)
     {
+        $this->searchFlag ??= [];
         if (!is_array($this->searchFlag)) {
             throw new \LogicException('searchFlag is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -942,6 +943,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSellerID($sellerID)
     {
+        $this->sellerID ??= [];
         if (!is_array($this->sellerID)) {
             throw new \LogicException('sellerID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1036,6 +1038,7 @@ class MyeBayFavoriteSearchType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToSellerIDExclude($sellerIDExclude)
     {
+        $this->sellerIDExclude ??= [];
         if (!is_array($this->sellerIDExclude)) {
             throw new \LogicException('sellerIDExclude is a lazy iterable and cannot be appended to; set an array instead.');
         }

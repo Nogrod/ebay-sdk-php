@@ -179,6 +179,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToAddFixedPriceItemRequest(\Nogrod\eBaySDK\Trading\AddFixedPriceItemRequest $addFixedPriceItemRequest)
     {
+        $this->addFixedPriceItemRequest ??= [];
         if (!is_array($this->addFixedPriceItemRequest)) {
             throw new \LogicException('addFixedPriceItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -238,6 +239,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToEndFixedPriceItemRequest(\Nogrod\eBaySDK\Trading\EndFixedPriceItemRequest $endFixedPriceItemRequest)
     {
+        $this->endFixedPriceItemRequest ??= [];
         if (!is_array($this->endFixedPriceItemRequest)) {
             throw new \LogicException('endFixedPriceItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -297,6 +299,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToReviseFixedPriceItemRequest(\Nogrod\eBaySDK\Trading\ReviseFixedPriceItemRequest $reviseFixedPriceItemRequest)
     {
+        $this->reviseFixedPriceItemRequest ??= [];
         if (!is_array($this->reviseFixedPriceItemRequest)) {
             throw new \LogicException('reviseFixedPriceItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -356,6 +359,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToRelistFixedPriceItemRequest(\Nogrod\eBaySDK\Trading\RelistFixedPriceItemRequest $relistFixedPriceItemRequest)
     {
+        $this->relistFixedPriceItemRequest ??= [];
         if (!is_array($this->relistFixedPriceItemRequest)) {
             throw new \LogicException('relistFixedPriceItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -415,6 +419,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToVerifyAddFixedPriceItemRequest(\Nogrod\eBaySDK\Trading\VerifyAddFixedPriceItemRequest $verifyAddFixedPriceItemRequest)
     {
+        $this->verifyAddFixedPriceItemRequest ??= [];
         if (!is_array($this->verifyAddFixedPriceItemRequest)) {
             throw new \LogicException('verifyAddFixedPriceItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -474,6 +479,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToAddItemRequest(\Nogrod\eBaySDK\Trading\AddItemRequest $addItemRequest)
     {
+        $this->addItemRequest ??= [];
         if (!is_array($this->addItemRequest)) {
             throw new \LogicException('addItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -533,6 +539,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToEndItemRequest(\Nogrod\eBaySDK\Trading\EndItemRequest $endItemRequest)
     {
+        $this->endItemRequest ??= [];
         if (!is_array($this->endItemRequest)) {
             throw new \LogicException('endItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -592,6 +599,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToReviseItemRequest(\Nogrod\eBaySDK\Trading\ReviseItemRequest $reviseItemRequest)
     {
+        $this->reviseItemRequest ??= [];
         if (!is_array($this->reviseItemRequest)) {
             throw new \LogicException('reviseItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -651,6 +659,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToRelistItemRequest(\Nogrod\eBaySDK\Trading\RelistItemRequest $relistItemRequest)
     {
+        $this->relistItemRequest ??= [];
         if (!is_array($this->relistItemRequest)) {
             throw new \LogicException('relistItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -710,6 +719,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToVerifyAddItemRequest(\Nogrod\eBaySDK\Trading\VerifyAddItemRequest $verifyAddItemRequest)
     {
+        $this->verifyAddItemRequest ??= [];
         if (!is_array($this->verifyAddItemRequest)) {
             throw new \LogicException('verifyAddItemRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -769,6 +779,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToReviseInventoryStatusRequest(\Nogrod\eBaySDK\Trading\ReviseInventoryStatusRequest $reviseInventoryStatusRequest)
     {
+        $this->reviseInventoryStatusRequest ??= [];
         if (!is_array($this->reviseInventoryStatusRequest)) {
             throw new \LogicException('reviseInventoryStatusRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -828,6 +839,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToOrderAckRequest(\Nogrod\eBaySDK\Trading\OrderAckRequest $orderAckRequest)
     {
+        $this->orderAckRequest ??= [];
         if (!is_array($this->orderAckRequest)) {
             throw new \LogicException('orderAckRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -887,6 +899,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToSetShipmentTrackingInfoRequest(\Nogrod\eBaySDK\Trading\SetShipmentTrackingInfoRequest $setShipmentTrackingInfoRequest)
     {
+        $this->setShipmentTrackingInfoRequest ??= [];
         if (!is_array($this->setShipmentTrackingInfoRequest)) {
             throw new \LogicException('setShipmentTrackingInfoRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -946,6 +959,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToActiveInventoryReportRequest(\Nogrod\eBaySDK\Trading\ActiveInventoryReportRequest $activeInventoryReportRequest)
     {
+        $this->activeInventoryReportRequest ??= [];
         if (!is_array($this->activeInventoryReportRequest)) {
             throw new \LogicException('activeInventoryReportRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -1005,6 +1019,7 @@ class BulkDataExchangeRequestsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToOrderReportRequest(\Nogrod\eBaySDK\Trading\OrderReportRequest $orderReportRequest)
     {
+        $this->orderReportRequest ??= [];
         if (!is_array($this->orderReportRequest)) {
             throw new \LogicException('orderReportRequest is a lazy iterable and cannot be appended to; set an array instead.');
         }

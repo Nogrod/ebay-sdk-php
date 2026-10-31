@@ -64,6 +64,7 @@ class MyeBayFavoriteSellerListType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToFavoriteSeller(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSellerType $favoriteSeller)
     {
+        $this->favoriteSeller ??= [];
         if (!is_array($this->favoriteSeller)) {
             throw new \LogicException('favoriteSeller is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -38,6 +38,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToMaximumUnpaidItemStrikesCount($count)
     {
+        $this->maximumUnpaidItemStrikesCount ??= [];
         if (!is_array($this->maximumUnpaidItemStrikesCount)) {
             throw new \LogicException('maximumUnpaidItemStrikesCount is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -107,6 +108,7 @@ class MaximumUnpaidItemStrikesInfoDetailsType implements \Sabre\Xml\XmlSerializa
      */
     public function addToMaximumUnpaidItemStrikesDuration(\Nogrod\eBaySDK\Trading\MaximumUnpaidItemStrikesDurationDetailsType $maximumUnpaidItemStrikesDuration)
     {
+        $this->maximumUnpaidItemStrikesDuration ??= [];
         if (!is_array($this->maximumUnpaidItemStrikesDuration)) {
             throw new \LogicException('maximumUnpaidItemStrikesDuration is a lazy iterable and cannot be appended to; set an array instead.');
         }

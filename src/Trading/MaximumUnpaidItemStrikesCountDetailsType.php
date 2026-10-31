@@ -44,6 +44,7 @@ class MaximumUnpaidItemStrikesCountDetailsType implements \Sabre\Xml\XmlSerializ
      */
     public function addToCount($count)
     {
+        $this->count ??= [];
         if (!is_array($this->count)) {
             throw new \LogicException('count is a lazy iterable and cannot be appended to; set an array instead.');
         }

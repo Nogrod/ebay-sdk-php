@@ -32,6 +32,7 @@ class ItemBestOffersArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToItemBestOffers(\Nogrod\eBaySDK\Trading\ItemBestOffersType $itemBestOffers)
     {
+        $this->itemBestOffers ??= [];
         if (!is_array($this->itemBestOffers)) {
             throw new \LogicException('itemBestOffers is a lazy iterable and cannot be appended to; set an array instead.');
         }

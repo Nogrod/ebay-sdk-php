@@ -400,6 +400,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      */
     public function addToSellerExcludeShipToLocationPreferences($excludeShipToLocation)
     {
+        $this->sellerExcludeShipToLocationPreferences ??= [];
         if (!is_array($this->sellerExcludeShipToLocationPreferences)) {
             throw new \LogicException('sellerExcludeShipToLocationPreferences is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -739,6 +740,7 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      */
     public function addToEBayPLUSPreference(\Nogrod\eBaySDK\Trading\EBayPLUSPreferenceType $eBayPLUSPreference)
     {
+        $this->eBayPLUSPreference ??= [];
         if (!is_array($this->eBayPLUSPreference)) {
             throw new \LogicException('eBayPLUSPreference is a lazy iterable and cannot be appended to; set an array instead.');
         }

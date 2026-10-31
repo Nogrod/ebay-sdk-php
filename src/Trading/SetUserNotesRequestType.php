@@ -263,6 +263,7 @@ class SetUserNotesRequestType extends AbstractRequestType
      */
     public function addToVariationSpecifics(\Nogrod\eBaySDK\Trading\NameValueListType $nameValueList)
     {
+        $this->variationSpecifics ??= [];
         if (!is_array($this->variationSpecifics)) {
             throw new \LogicException('variationSpecifics is a lazy iterable and cannot be appended to; set an array instead.');
         }

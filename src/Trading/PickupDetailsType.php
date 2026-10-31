@@ -47,6 +47,7 @@ class PickupDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToPickupOptions(\Nogrod\eBaySDK\Trading\PickupOptionsType $pickupOptions)
     {
+        $this->pickupOptions ??= [];
         if (!is_array($this->pickupOptions)) {
             throw new \LogicException('pickupOptions is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -35,6 +35,7 @@ class ResponsiblePersonCodeTypesType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToType($type)
     {
+        $this->type ??= [];
         if (!is_array($this->type)) {
             throw new \LogicException('type is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -31,6 +31,7 @@ class ShipmentLineItemType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xml
      */
     public function addToLineItem(\Nogrod\eBaySDK\Trading\LineItemType $lineItem)
     {
+        $this->lineItem ??= [];
         if (!is_array($this->lineItem)) {
             throw new \LogicException('lineItem is a lazy iterable and cannot be appended to; set an array instead.');
         }

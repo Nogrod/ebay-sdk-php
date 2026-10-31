@@ -37,6 +37,7 @@ class PictogramsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToPictogram($pictogram)
     {
+        $this->pictogram ??= [];
         if (!is_array($this->pictogram)) {
             throw new \LogicException('pictogram is a lazy iterable and cannot be appended to; set an array instead.');
         }

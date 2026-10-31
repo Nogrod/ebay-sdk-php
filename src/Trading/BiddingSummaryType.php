@@ -265,6 +265,7 @@ class BiddingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToItemBidDetails(\Nogrod\eBaySDK\Trading\ItemBidDetailsType $itemBidDetails)
     {
+        $this->itemBidDetails ??= [];
         if (!is_array($this->itemBidDetails)) {
             throw new \LogicException('itemBidDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

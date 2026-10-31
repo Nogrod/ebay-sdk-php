@@ -31,6 +31,7 @@ class RefundInformationType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\Xm
      */
     public function addToRefund(\Nogrod\eBaySDK\Trading\RefundTransactionInfoType $refund)
     {
+        $this->refund ??= [];
         if (!is_array($this->refund)) {
             throw new \LogicException('refund is a lazy iterable and cannot be appended to; set an array instead.');
         }

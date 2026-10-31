@@ -73,6 +73,7 @@ class ReviseMyMessagesRequestType extends AbstractRequestType
      */
     public function addToMessageIDs($messageID)
     {
+        $this->messageIDs ??= [];
         if (!is_array($this->messageIDs)) {
             throw new \LogicException('messageIDs is a lazy iterable and cannot be appended to; set an array instead.');
         }

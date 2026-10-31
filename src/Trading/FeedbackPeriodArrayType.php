@@ -39,6 +39,7 @@ class FeedbackPeriodArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToFeedbackPeriod(\Nogrod\eBaySDK\Trading\FeedbackPeriodType $feedbackPeriod)
     {
+        $this->feedbackPeriod ??= [];
         if (!is_array($this->feedbackPeriod)) {
             throw new \LogicException('feedbackPeriod is a lazy iterable and cannot be appended to; set an array instead.');
         }

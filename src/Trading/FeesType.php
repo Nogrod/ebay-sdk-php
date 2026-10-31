@@ -31,6 +31,7 @@ class FeesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserializab
      */
     public function addToFee(\Nogrod\eBaySDK\Trading\FeeType $fee)
     {
+        $this->fee ??= [];
         if (!is_array($this->fee)) {
             throw new \LogicException('fee is a lazy iterable and cannot be appended to; set an array instead.');
         }

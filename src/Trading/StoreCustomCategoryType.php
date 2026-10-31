@@ -148,6 +148,7 @@ class StoreCustomCategoryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToChildCategory(\Nogrod\eBaySDK\Trading\StoreCustomCategoryType $childCategory)
     {
+        $this->childCategory ??= [];
         if (!is_array($this->childCategory)) {
             throw new \LogicException('childCategory is a lazy iterable and cannot be appended to; set an array instead.');
         }

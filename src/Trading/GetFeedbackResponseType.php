@@ -81,6 +81,7 @@ class GetFeedbackResponseType extends AbstractResponseType
      */
     public function addToFeedbackDetailArray(\Nogrod\eBaySDK\Trading\FeedbackDetailType $feedbackDetail)
     {
+        $this->feedbackDetailArray ??= [];
         if (!is_array($this->feedbackDetailArray)) {
             throw new \LogicException('feedbackDetailArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -138,6 +138,7 @@ class SellerDiscountsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToSellerDiscount(\Nogrod\eBaySDK\Trading\SellerDiscountType $sellerDiscount)
     {
+        $this->sellerDiscount ??= [];
         if (!is_array($this->sellerDiscount)) {
             throw new \LogicException('sellerDiscount is a lazy iterable and cannot be appended to; set an array instead.');
         }

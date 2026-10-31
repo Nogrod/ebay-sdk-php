@@ -58,6 +58,7 @@ class GetBestOffersResponseType extends AbstractResponseType
      */
     public function addToBestOfferArray(\Nogrod\eBaySDK\Trading\BestOfferType $bestOffer)
     {
+        $this->bestOfferArray ??= [];
         if (!is_array($this->bestOfferArray)) {
             throw new \LogicException('bestOfferArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -153,6 +154,7 @@ class GetBestOffersResponseType extends AbstractResponseType
      */
     public function addToItemBestOffersArray(\Nogrod\eBaySDK\Trading\ItemBestOffersType $itemBestOffers)
     {
+        $this->itemBestOffersArray ??= [];
         if (!is_array($this->itemBestOffersArray)) {
             throw new \LogicException('itemBestOffersArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

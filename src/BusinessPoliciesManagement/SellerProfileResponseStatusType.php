@@ -95,6 +95,7 @@ class SellerProfileResponseStatusType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToErrorMessage(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error)
     {
+        $this->errorMessage ??= [];
         if (!is_array($this->errorMessage)) {
             throw new \LogicException('errorMessage is a lazy iterable and cannot be appended to; set an array instead.');
         }

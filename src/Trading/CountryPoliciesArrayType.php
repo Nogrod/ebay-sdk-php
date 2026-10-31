@@ -31,6 +31,7 @@ class CountryPoliciesArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToCountryPolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        $this->countryPolicies ??= [];
         if (!is_array($this->countryPolicies)) {
             throw new \LogicException('countryPolicies is a lazy iterable and cannot be appended to; set an array instead.');
         }

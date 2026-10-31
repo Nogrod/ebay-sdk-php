@@ -236,6 +236,7 @@ class UploadSiteHostedPicturesRequestType extends AbstractRequestType
      */
     public function addToExternalPictureURL($externalPictureURL)
     {
+        $this->externalPictureURL ??= [];
         if (!is_array($this->externalPictureURL)) {
             throw new \LogicException('externalPictureURL is a lazy iterable and cannot be appended to; set an array instead.');
         }

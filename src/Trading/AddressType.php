@@ -1097,6 +1097,7 @@ class AddressType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseriali
      */
     public function addToAddressAttribute(\Nogrod\eBaySDK\Trading\AddressAttributeType $addressAttribute)
     {
+        $this->addressAttribute ??= [];
         if (!is_array($this->addressAttribute)) {
             throw new \LogicException('addressAttribute is a lazy iterable and cannot be appended to; set an array instead.');
         }

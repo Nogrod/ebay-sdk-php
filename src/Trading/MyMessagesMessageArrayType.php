@@ -31,6 +31,7 @@ class MyMessagesMessageArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToMessage(\Nogrod\eBaySDK\Trading\MyMessagesMessageType $message)
     {
+        $this->message ??= [];
         if (!is_array($this->message)) {
             throw new \LogicException('message is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -65,6 +65,7 @@ class SKUArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeserial
      */
     public function addToSKU($sKU)
     {
+        $this->sKU ??= [];
         if (!is_array($this->sKU)) {
             throw new \LogicException('sKU is a lazy iterable and cannot be appended to; set an array instead.');
         }

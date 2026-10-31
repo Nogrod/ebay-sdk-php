@@ -41,6 +41,7 @@ class UserIDArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeser
      */
     public function addToUserID($userID)
     {
+        $this->userID ??= [];
         if (!is_array($this->userID)) {
             throw new \LogicException('userID is a lazy iterable and cannot be appended to; set an array instead.');
         }

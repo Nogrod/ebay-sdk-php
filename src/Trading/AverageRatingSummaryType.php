@@ -66,6 +66,7 @@ class AverageRatingSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml
      */
     public function addToAverageRatingDetails(\Nogrod\eBaySDK\Trading\AverageRatingDetailsType $averageRatingDetails)
     {
+        $this->averageRatingDetails ??= [];
         if (!is_array($this->averageRatingDetails)) {
             throw new \LogicException('averageRatingDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

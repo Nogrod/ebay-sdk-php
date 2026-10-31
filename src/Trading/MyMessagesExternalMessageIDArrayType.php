@@ -37,6 +37,7 @@ class MyMessagesExternalMessageIDArrayType implements \Sabre\Xml\XmlSerializable
      */
     public function addToExternalMessageID($externalMessageID)
     {
+        $this->externalMessageID ??= [];
         if (!is_array($this->externalMessageID)) {
             throw new \LogicException('externalMessageID is a lazy iterable and cannot be appended to; set an array instead.');
         }

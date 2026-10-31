@@ -306,6 +306,7 @@ class GetSellerTransactionsRequestType extends AbstractRequestType
      */
     public function addToSKUArray($sKU)
     {
+        $this->sKUArray ??= [];
         if (!is_array($this->sKUArray)) {
             throw new \LogicException('sKUArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

@@ -132,6 +132,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToResponse($response)
     {
+        $this->response ??= [];
         if (!is_array($this->response)) {
             throw new \LogicException('response is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -283,6 +284,7 @@ class MemberMessageExchangeType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToMessageMedia(\Nogrod\eBaySDK\Trading\MessageMediaType $messageMedia)
     {
+        $this->messageMedia ??= [];
         if (!is_array($this->messageMedia)) {
             throw new \LogicException('messageMedia is a lazy iterable and cannot be appended to; set an array instead.');
         }

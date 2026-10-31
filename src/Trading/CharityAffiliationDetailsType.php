@@ -31,6 +31,7 @@ class CharityAffiliationDetailsType implements \Sabre\Xml\XmlSerializable, \Sabr
      */
     public function addToCharityAffiliationDetail(\Nogrod\eBaySDK\Trading\CharityAffiliationDetailType $charityAffiliationDetail)
     {
+        $this->charityAffiliationDetail ??= [];
         if (!is_array($this->charityAffiliationDetail)) {
             throw new \LogicException('charityAffiliationDetail is a lazy iterable and cannot be appended to; set an array instead.');
         }

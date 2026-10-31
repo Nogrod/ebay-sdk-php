@@ -39,6 +39,7 @@ class NotificationEnableArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\
      */
     public function addToNotificationEnable(\Nogrod\eBaySDK\Trading\NotificationEnableType $notificationEnable)
     {
+        $this->notificationEnable ??= [];
         if (!is_array($this->notificationEnable)) {
             throw new \LogicException('notificationEnable is a lazy iterable and cannot be appended to; set an array instead.');
         }

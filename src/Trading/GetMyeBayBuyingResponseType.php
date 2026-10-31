@@ -385,6 +385,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      */
     public function addToSecondChanceOffer(\Nogrod\eBaySDK\Trading\ItemType $secondChanceOffer)
     {
+        $this->secondChanceOffer ??= [];
         if (!is_array($this->secondChanceOffer)) {
             throw new \LogicException('secondChanceOffer is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -524,6 +525,7 @@ class GetMyeBayBuyingResponseType extends AbstractResponseType
      */
     public function addToUserDefinedList(\Nogrod\eBaySDK\Trading\UserDefinedListType $userDefinedList)
     {
+        $this->userDefinedList ??= [];
         if (!is_array($this->userDefinedList)) {
             throw new \LogicException('userDefinedList is a lazy iterable and cannot be appended to; set an array instead.');
         }

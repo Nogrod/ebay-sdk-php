@@ -49,6 +49,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      */
     public function addToInventoryStatus(\Nogrod\eBaySDK\Trading\InventoryStatusType $inventoryStatus)
     {
+        $this->inventoryStatus ??= [];
         if (!is_array($this->inventoryStatus)) {
             throw new \LogicException('inventoryStatus is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -133,6 +134,7 @@ class ReviseInventoryStatusResponseType extends AbstractResponseType
      */
     public function addToFees(\Nogrod\eBaySDK\Trading\InventoryFeesType $fees)
     {
+        $this->fees ??= [];
         if (!is_array($this->fees)) {
             throw new \LogicException('fees is a lazy iterable and cannot be appended to; set an array instead.');
         }

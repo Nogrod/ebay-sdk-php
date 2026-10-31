@@ -31,6 +31,7 @@ class RemoveSellerProfilesRequestType extends BaseRequestType
      */
     public function addToProfileIds($profileIds)
     {
+        $this->profileIds ??= [];
         if (!is_array($this->profileIds)) {
             throw new \LogicException('profileIds is a lazy iterable and cannot be appended to; set an array instead.');
         }

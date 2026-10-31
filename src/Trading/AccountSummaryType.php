@@ -276,6 +276,7 @@ class AccountSummaryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToAdditionalAccount(\Nogrod\eBaySDK\Trading\AdditionalAccountType $additionalAccount)
     {
+        $this->additionalAccount ??= [];
         if (!is_array($this->additionalAccount)) {
             throw new \LogicException('additionalAccount is a lazy iterable and cannot be appended to; set an array instead.');
         }

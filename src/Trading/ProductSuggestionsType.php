@@ -38,6 +38,7 @@ class ProductSuggestionsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToProductSuggestion(\Nogrod\eBaySDK\Trading\ProductSuggestionType $productSuggestion)
     {
+        $this->productSuggestion ??= [];
         if (!is_array($this->productSuggestion)) {
             throw new \LogicException('productSuggestion is a lazy iterable and cannot be appended to; set an array instead.');
         }

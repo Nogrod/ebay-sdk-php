@@ -64,6 +64,7 @@ class MyeBayFavoriteSearchListType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToFavoriteSearch(\Nogrod\eBaySDK\Trading\MyeBayFavoriteSearchType $favoriteSearch)
     {
+        $this->favoriteSearch ??= [];
         if (!is_array($this->favoriteSearch)) {
             throw new \LogicException('favoriteSearch is a lazy iterable and cannot be appended to; set an array instead.');
         }

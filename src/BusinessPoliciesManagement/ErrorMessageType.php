@@ -31,6 +31,7 @@ class ErrorMessageType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToError(\Nogrod\eBaySDK\BusinessPoliciesManagement\ErrorDataType $error)
     {
+        $this->error ??= [];
         if (!is_array($this->error)) {
             throw new \LogicException('error is a lazy iterable and cannot be appended to; set an array instead.');
         }

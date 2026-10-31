@@ -299,6 +299,7 @@ class SellerProfileType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDes
      */
     public function addToCategoryGroups(\Nogrod\eBaySDK\BusinessPoliciesManagement\CategoryGroupType $categoryGroup)
     {
+        $this->categoryGroups ??= [];
         if (!is_array($this->categoryGroups)) {
             throw new \LogicException('categoryGroups is a lazy iterable and cannot be appended to; set an array instead.');
         }

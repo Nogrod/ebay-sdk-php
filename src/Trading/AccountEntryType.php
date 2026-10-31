@@ -612,6 +612,7 @@ class AccountEntryType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDese
      */
     public function addToDiscountDetail(\Nogrod\eBaySDK\Trading\DiscountType $discount)
     {
+        $this->discountDetail ??= [];
         if (!is_array($this->discountDetail)) {
             throw new \LogicException('discountDetail is a lazy iterable and cannot be appended to; set an array instead.');
         }

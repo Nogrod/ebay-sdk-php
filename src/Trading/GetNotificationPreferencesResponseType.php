@@ -112,6 +112,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
      */
     public function addToUserDeliveryPreferenceArray(\Nogrod\eBaySDK\Trading\NotificationEnableType $notificationEnable)
     {
+        $this->userDeliveryPreferenceArray ??= [];
         if (!is_array($this->userDeliveryPreferenceArray)) {
             throw new \LogicException('userDeliveryPreferenceArray is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -208,6 +209,7 @@ class GetNotificationPreferencesResponseType extends AbstractResponseType
      */
     public function addToEventProperty(\Nogrod\eBaySDK\Trading\NotificationEventPropertyType $eventProperty)
     {
+        $this->eventProperty ??= [];
         if (!is_array($this->eventProperty)) {
             throw new \LogicException('eventProperty is a lazy iterable and cannot be appended to; set an array instead.');
         }

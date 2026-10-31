@@ -200,6 +200,7 @@ class SiteBuyerRequirementDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToMinimumFeedbackScore($feedbackScore)
     {
+        $this->minimumFeedbackScore ??= [];
         if (!is_array($this->minimumFeedbackScore)) {
             throw new \LogicException('minimumFeedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
         }

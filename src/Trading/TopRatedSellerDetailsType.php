@@ -31,6 +31,7 @@ class TopRatedSellerDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToTopRatedProgram($topRatedProgram)
     {
+        $this->topRatedProgram ??= [];
         if (!is_array($this->topRatedProgram)) {
             throw new \LogicException('topRatedProgram is a lazy iterable and cannot be appended to; set an array instead.');
         }

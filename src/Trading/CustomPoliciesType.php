@@ -105,6 +105,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToRegionalTakeBackPolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        $this->regionalTakeBackPolicies ??= [];
         if (!is_array($this->regionalTakeBackPolicies)) {
             throw new \LogicException('regionalTakeBackPolicies is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -194,6 +195,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToProductCompliancePolicyID($productCompliancePolicyID)
     {
+        $this->productCompliancePolicyID ??= [];
         if (!is_array($this->productCompliancePolicyID)) {
             throw new \LogicException('productCompliancePolicyID is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -285,6 +287,7 @@ class CustomPoliciesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToRegionalProductCompliancePolicies(\Nogrod\eBaySDK\Trading\CountryPoliciesType $countryPolicies)
     {
+        $this->regionalProductCompliancePolicies ??= [];
         if (!is_array($this->regionalProductCompliancePolicies)) {
             throw new \LogicException('regionalProductCompliancePolicies is a lazy iterable and cannot be appended to; set an array instead.');
         }

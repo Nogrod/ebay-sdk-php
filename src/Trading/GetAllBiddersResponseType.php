@@ -54,6 +54,7 @@ class GetAllBiddersResponseType extends AbstractResponseType
      */
     public function addToBidArray(\Nogrod\eBaySDK\Trading\OfferType $offer)
     {
+        $this->bidArray ??= [];
         if (!is_array($this->bidArray)) {
             throw new \LogicException('bidArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

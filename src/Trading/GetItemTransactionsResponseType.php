@@ -282,6 +282,7 @@ class GetItemTransactionsResponseType extends AbstractResponseType
      */
     public function addToTransactionArray(\Nogrod\eBaySDK\Trading\TransactionType $transaction)
     {
+        $this->transactionArray ??= [];
         if (!is_array($this->transactionArray)) {
             throw new \LogicException('transactionArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

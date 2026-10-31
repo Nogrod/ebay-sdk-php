@@ -337,6 +337,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToDetailLevel($detailLevel)
     {
+        $this->detailLevel ??= [];
         if (!is_array($this->detailLevel)) {
             throw new \LogicException('detailLevel is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -969,6 +970,7 @@ class AbstractRequestType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlD
      */
     public function addToOutputSelector($outputSelector)
     {
+        $this->outputSelector ??= [];
         if (!is_array($this->outputSelector)) {
             throw new \LogicException('outputSelector is a lazy iterable and cannot be appended to; set an array instead.');
         }

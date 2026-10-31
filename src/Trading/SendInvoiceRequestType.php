@@ -257,6 +257,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToInternationalShippingServiceOptions(\Nogrod\eBaySDK\Trading\InternationalShippingServiceOptionsType $internationalShippingServiceOptions)
     {
+        $this->internationalShippingServiceOptions ??= [];
         if (!is_array($this->internationalShippingServiceOptions)) {
             throw new \LogicException('internationalShippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -334,6 +335,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToShippingServiceOptions(\Nogrod\eBaySDK\Trading\ShippingServiceOptionsType $shippingServiceOptions)
     {
+        $this->shippingServiceOptions ??= [];
         if (!is_array($this->shippingServiceOptions)) {
             throw new \LogicException('shippingServiceOptions is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -456,6 +458,7 @@ class SendInvoiceRequestType extends AbstractRequestType
      */
     public function addToPaymentMethods($paymentMethods)
     {
+        $this->paymentMethods ??= [];
         if (!is_array($this->paymentMethods)) {
             throw new \LogicException('paymentMethods is a lazy iterable and cannot be appended to; set an array instead.');
         }

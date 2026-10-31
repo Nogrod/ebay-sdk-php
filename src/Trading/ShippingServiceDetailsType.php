@@ -429,6 +429,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToServiceType($serviceType)
     {
+        $this->serviceType ??= [];
         if (!is_array($this->serviceType)) {
             throw new \LogicException('serviceType is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -498,6 +499,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingPackage($shippingPackage)
     {
+        $this->shippingPackage ??= [];
         if (!is_array($this->shippingPackage)) {
             throw new \LogicException('shippingPackage is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -649,6 +651,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingCarrier($shippingCarrier)
     {
+        $this->shippingCarrier ??= [];
         if (!is_array($this->shippingCarrier)) {
             throw new \LogicException('shippingCarrier is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -764,6 +767,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToDeprecationDetails(\Nogrod\eBaySDK\Trading\AnnouncementMessageType $deprecationDetails)
     {
+        $this->deprecationDetails ??= [];
         if (!is_array($this->deprecationDetails)) {
             throw new \LogicException('deprecationDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -904,6 +908,7 @@ class ShippingServiceDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\X
      */
     public function addToShippingServicePackageDetails(\Nogrod\eBaySDK\Trading\ShippingServicePackageDetailsType $shippingServicePackageDetails)
     {
+        $this->shippingServicePackageDetails ??= [];
         if (!is_array($this->shippingServicePackageDetails)) {
             throw new \LogicException('shippingServicePackageDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

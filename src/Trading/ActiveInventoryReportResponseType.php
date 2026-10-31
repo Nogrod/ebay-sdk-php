@@ -33,6 +33,7 @@ class ActiveInventoryReportResponseType extends AbstractResponseType
      */
     public function addToSKUDetails(\Nogrod\eBaySDK\Trading\SKUDetailsType $sKUDetails)
     {
+        $this->sKUDetails ??= [];
         if (!is_array($this->sKUDetails)) {
             throw new \LogicException('sKUDetails is a lazy iterable and cannot be appended to; set an array instead.');
         }

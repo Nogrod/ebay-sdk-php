@@ -31,6 +31,7 @@ class OrderTransactionArrayType implements \Sabre\Xml\XmlSerializable, \Sabre\Xm
      */
     public function addToOrderTransaction(\Nogrod\eBaySDK\Trading\OrderTransactionType $orderTransaction)
     {
+        $this->orderTransaction ??= [];
         if (!is_array($this->orderTransaction)) {
             throw new \LogicException('orderTransaction is a lazy iterable and cannot be appended to; set an array instead.');
         }

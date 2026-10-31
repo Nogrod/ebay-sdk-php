@@ -31,6 +31,7 @@ class NumberOfPolicyViolationsDetailsType implements \Sabre\Xml\XmlSerializable,
      */
     public function addToCount($count)
     {
+        $this->count ??= [];
         if (!is_array($this->count)) {
             throw new \LogicException('count is a lazy iterable and cannot be appended to; set an array instead.');
         }

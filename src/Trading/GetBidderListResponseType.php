@@ -63,6 +63,7 @@ class GetBidderListResponseType extends AbstractResponseType
      */
     public function addToBidItemArray(\Nogrod\eBaySDK\Trading\ItemType $item)
     {
+        $this->bidItemArray ??= [];
         if (!is_array($this->bidItemArray)) {
             throw new \LogicException('bidItemArray is a lazy iterable and cannot be appended to; set an array instead.');
         }

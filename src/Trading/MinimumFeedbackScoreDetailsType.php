@@ -34,6 +34,7 @@ class MinimumFeedbackScoreDetailsType implements \Sabre\Xml\XmlSerializable, \Sa
      */
     public function addToFeedbackScore($feedbackScore)
     {
+        $this->feedbackScore ??= [];
         if (!is_array($this->feedbackScore)) {
             throw new \LogicException('feedbackScore is a lazy iterable and cannot be appended to; set an array instead.');
         }

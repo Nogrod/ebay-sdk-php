@@ -84,6 +84,7 @@ class ASQPreferencesType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDe
      */
     public function addToSubject($subject)
     {
+        $this->subject ??= [];
         if (!is_array($this->subject)) {
             throw new \LogicException('subject is a lazy iterable and cannot be appended to; set an array instead.');
         }

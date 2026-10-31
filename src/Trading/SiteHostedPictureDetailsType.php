@@ -215,6 +215,7 @@ class SiteHostedPictureDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre
      */
     public function addToPictureSetMember(\Nogrod\eBaySDK\Trading\PictureSetMemberType $pictureSetMember)
     {
+        $this->pictureSetMember ??= [];
         if (!is_array($this->pictureSetMember)) {
             throw new \LogicException('pictureSetMember is a lazy iterable and cannot be appended to; set an array instead.');
         }

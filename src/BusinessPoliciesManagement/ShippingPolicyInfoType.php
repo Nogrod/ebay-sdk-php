@@ -503,6 +503,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToExcludeShipToLocation($excludeShipToLocation)
     {
+        $this->excludeShipToLocation ??= [];
         if (!is_array($this->excludeShipToLocation)) {
             throw new \LogicException('excludeShipToLocation is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -674,6 +675,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToShipToLocations($shipToLocations)
     {
+        $this->shipToLocations ??= [];
         if (!is_array($this->shipToLocations)) {
             throw new \LogicException('shipToLocations is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -769,6 +771,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToDomesticShippingPolicyInfoService(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType $domesticShippingPolicyInfoService)
     {
+        $this->domesticShippingPolicyInfoService ??= [];
         if (!is_array($this->domesticShippingPolicyInfoService)) {
             throw new \LogicException('domesticShippingPolicyInfoService is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -848,6 +851,7 @@ class ShippingPolicyInfoType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\X
      */
     public function addToIntlShippingPolicyInfoService(\Nogrod\eBaySDK\BusinessPoliciesManagement\ShippingPolicyInfoServiceType $intlShippingPolicyInfoService)
     {
+        $this->intlShippingPolicyInfoService ??= [];
         if (!is_array($this->intlShippingPolicyInfoService)) {
             throw new \LogicException('intlShippingPolicyInfoService is a lazy iterable and cannot be appended to; set an array instead.');
         }

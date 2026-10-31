@@ -31,6 +31,7 @@ class MemberMessageExchangeArrayType implements \Sabre\Xml\XmlSerializable, \Sab
      */
     public function addToMemberMessageExchange(\Nogrod\eBaySDK\Trading\MemberMessageExchangeType $memberMessageExchange)
     {
+        $this->memberMessageExchange ??= [];
         if (!is_array($this->memberMessageExchange)) {
             throw new \LogicException('memberMessageExchange is a lazy iterable and cannot be appended to; set an array instead.');
         }

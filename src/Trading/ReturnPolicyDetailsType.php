@@ -101,6 +101,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRefund(\Nogrod\eBaySDK\Trading\RefundDetailsType $refund)
     {
+        $this->refund ??= [];
         if (!is_array($this->refund)) {
             throw new \LogicException('refund is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -181,6 +182,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToReturnsWithin(\Nogrod\eBaySDK\Trading\ReturnsWithinDetailsType $returnsWithin)
     {
+        $this->returnsWithin ??= [];
         if (!is_array($this->returnsWithin)) {
             throw new \LogicException('returnsWithin is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -264,6 +266,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToReturnsAccepted(\Nogrod\eBaySDK\Trading\ReturnsAcceptedDetailsType $returnsAccepted)
     {
+        $this->returnsAccepted ??= [];
         if (!is_array($this->returnsAccepted)) {
             throw new \LogicException('returnsAccepted is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -371,6 +374,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToShippingCostPaidBy(\Nogrod\eBaySDK\Trading\ShippingCostPaidByDetailsType $shippingCostPaidBy)
     {
+        $this->shippingCostPaidBy ??= [];
         if (!is_array($this->shippingCostPaidBy)) {
             throw new \LogicException('shippingCostPaidBy is a lazy iterable and cannot be appended to; set an array instead.');
         }
@@ -440,6 +444,7 @@ class ReturnPolicyDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\
      */
     public function addToRestockingFeeValue(\Nogrod\eBaySDK\Trading\RestockingFeeValueDetailsType $restockingFeeValue)
     {
+        $this->restockingFeeValue ??= [];
         if (!is_array($this->restockingFeeValue)) {
             throw new \LogicException('restockingFeeValue is a lazy iterable and cannot be appended to; set an array instead.');
         }

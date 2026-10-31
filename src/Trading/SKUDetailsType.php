@@ -311,6 +311,7 @@ class SKUDetailsType implements \Sabre\Xml\XmlSerializable, \Sabre\Xml\XmlDeseri
      */
     public function addToVariations(\Nogrod\eBaySDK\Trading\MerchantDataVariationType $variation)
     {
+        $this->variations ??= [];
         if (!is_array($this->variations)) {
             throw new \LogicException('variations is a lazy iterable and cannot be appended to; set an array instead.');
         }
